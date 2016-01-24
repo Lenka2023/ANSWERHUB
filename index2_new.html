@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style0_new.css"type="text/css"/ 
+    <!--[if lt IE 9]>
+    <script>
+      var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
+      for (var i = 0; i < e.length; i++) {
+        document.createElement(e[i]);
+      }
+    </script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="page_cont one">
+      <div class="header">
+        <br class="cbt">
+        <img src="img/12.png" class="header_img" alt="2-копия">
+      </div>
+      <br class="cbt">
+      <div class="content">
+        <table border=0>
+          <tbody>
+            <tr>
+              <td rowspan=2>
+                <ul id="header_list">
+                  <span class="strong">CONTENTS INCLUDE:</span>
+                  <a href="#towhy">
+                    <li>Why Get Git?</li>
+                  </a>
+                  <a href="#tocreate">
+                    <li><span>Create a Repo</span></li>
+                  </a>
+                  <a href="#totypcial">
+                    <li><span>Typcial Local Workflow</span></li>
+                  </a>
+                  <a href="#toviewing">
+                    <li><span>Viewing</span></li>
+                  </a>
+                  <a href="#tobranches">
+                    <li><span>Branches</span></li>
+                  </a>
+                  <a href="#tothe">
+                    <li><span>The Remote Workflow... and More!</span></li>
+                  </a>
+                </ul>
+              </td>
+              <td class="header_gettingstarted">
+                <h1>Getting Started with <span>Git</span></h1>
+              </td>
+            </tr>
+            <tr>
+              <td class="header_jordan">
+                <span class="strong">By: Jordan McCullough</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="titletop strong">
+          <span id="towhy">WHY GET GIT?</span>
+        </div>
+        <br><span id="since">Since its inception in 2005, Git continues to grow as the de facto standard
+        for version control in both local and distributed environments. With its
+        beginnings rooted in the open source community, and Linus Torvald's
+        original authorship, Git's many features encompass social-driven
+        collaboration that exceeds that of other version control systems.</span>
+        <br><span class="since">Git is supported across common platforms and provides a wide-range of
+        uses, from simple change-tracking to sophisticated collaboration, which
+        are features attainable for every level of user and objective.</span>
+        <div class="title  strong">
+          <br><span>DISTRIBUTED VERSION CONTROL</span>
+        </div>
+        <br><span id="since">What sets Git apart from more traditional, centralized version controls
+        systems is its work-local, commit-often, publish-when-you-can
+        methodology. With no requirement for a server, Git is liberated from any
+        network, always retains full history on the user's machine, and can quickly
+        be setup to publish and act as a Distributed Version Control System
+        (DVCS).</span>
+        <br><span class="since">The simplicity of creating a new Git repository, tracking history, and sharing
+        via a service such as GitHub paves the way for limitless content version
+        control.</span>
+        <div class="title  strong ">
+          <br><span>GETTING STARTED</span>
+        </div>
+        <br><span class="since strong size">Installing Git</span>
+        <br><span class="since">Git has a light footprint. For most platforms, you can copy the binaries
+        to a folder on the executable search $PATH. Git is primarily written in C,
+        which means there is a unique distribution or installer for each supported
+        platform.</span>
+        <br><span class="since">Check the version using the following command to verify that Git is
+        installed and successfully operational:</span>
+        <div class="gray">
+          <br><span>git --version</span>
+        </div>
+        <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="HotTipL">
+                  <h1 class="tip">Hot<br>Tip</h1>
+                </td>
+                <td class="HotTipR">
+                  <span class=" hot">The canonical (and official) reference for Git installers can be found
+                  at <a  href= "http://git-scm.com/download">http://git-scm.com/download</a></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+        <br><span class="since strong size">Establishing User Identity</span>
+        <br><span  class="since">Once you have a distribution of Git installed for your platform, identify
+        yourself with a username and email address. This is strictly to credit your
+        efforts on commits and should be done for each machine on which you'll
+        be using Git.</span>
+        <div class="gray">
+          <br><span>git config --global user.name "Jordan McCullough"</span>
+          <br><span>git config --global user.email "jmccullough@github.com"</span>
+          <br><span>git config --global color.ui "auto"</span>
+        </div>
+        <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="HotTipL">
+                  <h1 class="tip">Hot<br>Tip</h1>
+                </td>
+                <td class="HotTipR">
+                  <span class="hot">Git does not directly support repository authentication or authorization. It delegates this by way of the protocol (SSH or HTTPS) or operating system (file system permissions) serving the repository. </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+        <br><span class="since">These commands store your preferences in a file named .gitconfig inside
+        your home directory (~ on UNIX and Mac, and %USERPROFILE% on
+        Windows).</span>
+        <div class="title  strong">
+          <br><span>GITHUB</span>
+        </div>
+        <br><span class="since">With the advent of Git as the industry-standard DVCS, a remarkable
+        solution to maximizing its social nature arrived in the form of GitHub.com.
+        <br class="since">GitHub.com makes storing Git repositories and sharing code simple. Once
+        published to GitHub, the process of sharing Git repositories, facilitating
+        code review, and contributing content changes becomes simpler than ever.</span>
+        <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="HotTipL">
+                  <h1 class="tip">Hot<br>Tip</h1>
+                </td>
+                <td class="HotTipR">
+                  <span class="hot">GitHub promotes open source by providing free accounts for publicaccess
+                  repositories. Should a repository require private-only access,
+                  private account support is available for a nominal signup fee. Both
+                  account types are available at https://github.com/signup/</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+        <div class="title  strong">
+          <br><span id="tocreate">CREATING A REPO</span>
+        </div>
+        <br><span class="since">A Git repo can be created locally and independent of any network
+        connection, or via GitHub's user interface.</span>
+        <br class="cbt">
+        <br><span class="since strong size">Locally</span>
+        <br><span class="since">From a command prompt, change directories to an empty folder or an
+        existing project directory that you want to put under version control.
+        Then, initialize the directory as a Git repository by typing the following
+        commands:</span>
+        <div class="gray">
+          <br><span>git init</span>
+          <br><span>git add .</span>
+          <br><span>git commit -m "The first commit"</span>
+        </div>
+        <br><span class="since">The first command, init, builds a .git directory that contains all the
+        metadata and repository history. Git uniquely stores everything in just a</span>
+                <br><span id="since">single directory at the top of the project. </span>
+        <br><span id="since">Next, the add command with the dot wildcard instructs Git to begin tracking all files within and beneath the current directory. </span>
+        <br><span id="since">Lastly, the commit function creates the permanent history of all files, with the -m option supplying a message alongside the history marker.</span> 
+        <br class="cbt">
+        <br><span class="since strong size">Via GitHub </span>
+        <br><span id="since">Once signed into GitHub, click the "Create a new" repo button to initialize a repository within your GitHub account. Supply the Repository name field, and click "Create repository".</span> 
+        <div>
+          <img src="img/22.png" alt="22">
+        </div>
+        <br><span id="since">Obtain the new GitHub repository locally by performing a clone of the path provided from the GitHub repo page.</span> 
+        <div class="gray">
+          <br><span>git clone git@github.com:githubtrainer/hellogitworld.git </span>
+        </div>
+        <br><span id="since">The clone command performs several subtasks under the hood. Thus, all GitHub files are copied to your local machine with all Git commit history.</span> 
+        <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="HotTipL">
+                  <h1 class="tip">Hot<br>Tip</h1>
+                </td>
+                <td class="HotTipR">
+                  <span class="hot"> Cloning from GitHub establishes a local repository that initially mirrors the one on GitHub. The new local repo will also be preconfigured with Git remote "bookmark" for synchronizing code between local and GitHub repositories. </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+        <div class="title  strong">
+          <br><span id="totypcial">TYPCIAL LOCAL WORKFLOW</span>
+        </div>
+        <br><span class="since strong size">Editing</span>
+        <br><span class="since">Once you've cloned or initialized a new Git project, begin changing files 
+        as needed for your current assignment. There is no locking of files 
+        or a traditional VCS checkout concept. Simply begin editing files in a 
+        progression toward a committable state.</span>
+        <br class="cbt">
+        <br><span class="since strong size">Adding (Staging)</span>
+        <br><span class="since">When new or modified files are ready for the next commit, they must first 
+        be staged with the add command. Files can be staged one by one, by folder 
+        name, or by wildcard pattern.</span>
+        <div class="gray">
+          <br><span>git add index.html</span>
+          <br><span>git add javascript/</span>
+          <br><span>git add *.js</span>
+        </div>
+        <br><span class="since">The -i option activates interactive add mode, a step-by-step set of prompts 
+        that assist in preparing the staging area for the next commit.</span>
+        <div class="gray">
+          <br><span>git add -i</span>
+        </div>
+        <br><span class="since">The -p option is a shortcut for activation of the patch sub-mode of the 
+        interactive prompt, which allows for precise pieces within a file to be 
+        selected for staging.</span>
+        <div class="gray">
+          <br><span>git add -p</span>
+        </div>
+        <br><span class="since strong size">Committing</span>
+        <br><span  class="since">Once all desired files are added and staged, a commit command 
+        transactionally saves the pending additions to the local repository. The 
+        default text $EDITOR will be opened for entry of the commit message.</span>
+        <div class="gray">
+          <br><span>git commit</span>
+        </div>
+        <br><span class="since">To supply the commit message directly at the command prompt:</span>
+        <div class="gray">
+          <br><span>git commit -m "Your commit message"</span>
+        </div>
+        <br><span class="since">If you made a mistake in the message for your last commit, you can edit 
+        the text (while leaving the changed file(s) untouched) with:</span>
+        <div class="gray">
+          <br><span>git commit --amend</span>
+        </div>
+        <br><span class="since strong size">Moving</span>
+        <br><span class="since">If you need to move a file, Git can detect your manual relocation of the file 
+        and will show it as a pending "move." However, it is often more prudent 
+        to use the Git-specific command to relocate a file and track its new 
+        destination.</span>
+        <div class="gray">
+          <br><span>git mv originalfile.txt newsubdir/newfilename.txt</span>
+        </div>
+        <br><span class="since strong size">Removing</span>
+        <br><span class="since">If you wish to expunge a file from the current state of the branch, simply 
+        tell Git to remove it. It will be put in a pending deletion state and can be 
+        confirmed and completed by the next commit.</span>
+        <div class="gray">
+          <br><span>git rm filetoremove.txt</span>
+        </div>
+        <br><span class="since strong size">Aborting</span>
+        <br><span class="since">f you want to abort all current, uncommitted changes and restore all files 
+        to the last committed state, a reset with this specific option will accomplish 
+        this:</span>
+        <div class="gray">
+          <br><span>git reset --hard</span>
+        </div>
+        <br><span class="since">Resetting with the --hard option recursively discards all currently 
+        uncommitted (unstaged or uncommitted staged) changes. Any files with 
+        changes will be overwritten to that of the last commit.</span>
+        <br><span class="since">A more targeted means of restoring just one file's changes is to use the 
+        checkout command.</span>
+        <div class="gray">
+          <br><span>git checkout modifiedfile.txt</span>
+        </div>
+        <div class="title  strong">
+          <br><span id="toviewing">VIEWING</span>
+        </div>
+        <br><span class="since">Daily work calls for strong support of viewing current and historical facts 
+        about your repository, often from different points of view. This includes the 
+        state of a current working directory, the changes made compared to past 
+        commit history, and commit history in its entirety.</span>
+        <br class="cbt">
+        <br><span class="since strong size">Status</span>
+        <br><span  class="since">To check the current status of a project's local directories and files , such as 
+        modified, new, deleted, or untracked, invoke the following status command:</span>
+        <div class="gray">
+          <br><span>git status</span>
+        </div>
+        <div>
+          <img src="img/32.png" alt="32">
+        </div>
+        <br><span class="since strong size">Diff</span>
+        <br><span class="since">Git offers a patch-style view of the difference between the currently edited
+        and committed files. A diff compares the patches between any two points
+        in history or changes.</span>
+        <div class="gray">
+          <br><span>git diff </span>
+          <br><span>git diff --staged </span>
+          <br><span>git diff HEAD </span>
+        </div>
+        <div>
+          <img src="img/312.png" alt="312">
+        </div>
+        <br><span class="since">git diff outputs a comparison of changes in the uncommitted and unstaged
+        file changes in the working directory to that in the staging area. Should the
+        staging area be empty, the comparison passes through to the most recent
+        commit.</span>
+        <br><span class="since">git diff--staged compares any staged (added) files to the most recent
+        commit.</span>
+        <br><span class="since">Lastly, git diff HEAD is an efficient means of circumventing any comparison
+        of working directory changes to staged ones and directly compared
+        modified files to the most recent commit.</span>
+        <br class="cbt">
+        <br><span class="since strong size">Log</span>
+        <br><span  class="since">The full list of changes since the initialization of the repository; since a
+        certain date, or a limited set from the most recent commit, is right at your
+        fingertips, even when disconnected from all networks:</span>
+        <div class="gray">
+          <br><span>git log </span>
+          <br><span>git log -3 </span>
+          <br><span>git log --since=yesterday </span>
+        </div>
+        <div>
+          <img src="img/322.png" alt="322">
+        </div>
+        <br><span  class="since strong size">Blame</span>
+        <br><span class="since">When one is trying to discover why and when a certain line was added, cut
+        to the chase and have Git annotate each line of a source file with the name
+        and date it came into existence:</span>
+        <div class="gray">
+          <br><span>git blame &ltfilename&gt </span>
+        </div>
+        <div class="title  strong">
+          <br><span id="tobranches">BRANCHING </span>
+        </div>
+        <br><span class="since">Branching in Git appears much the same as it does in other version control
+        systems, but the difference lies in the fact that Git branches can be targeted
+        to exist only locally, or be shared with (pushed to) the rest of the team.
+        The concept of inexpensive local branches increases the frequency in
+        which developers use branching, thus opening it up to use for quick private
+        experiments that may be discarded or merged onto a well-known branch
+        depending on their success.</span>
+        <div class="gray">
+          <br><span>git branch &ltnew branch name&gt &ltfrom branch&gt </span>
+          <br><span>git branch &ltnew branch name&gt </span>
+        </div>
+        <br><span class="since strong size">Choosing a Branch</span>
+        <br><span class="since">Checking out, or switching to, a branch is as simple as providing its name:</span>
+        <div class="gray">
+          <br><span>git checkout&lt branch name&gt </span>
+        </div>
+        <br><span class="since">Local and remote git branches are checked out using the same command
+        in a radical change of operation for users coming from other systems like
+        Subversion. Remote branches are read-only until "tracked" and copied to a
+        local branch. Local branches are where new work is performed and code is
+        committed.</span>
+        <div class="gray">
+          <br><span>git branch &ltnew branch name&gt &ltfrom branch&gt </span>
+          <br><span>git checkout &ltnew branch name&gt </span>
+        </div>
+        <br><span class="since">or alternatively, in a combined command:</span>
+        <div class="gray">
+          <br><span>git checkout -b &ltnew branch name&gt &ltfrom branch&gt </span>
+        </div>
+        <br><span class="since strong size">Listing Branches</span>
+        <br><span class="since">To list the complete set of current local and remote branches known to Git,
+        use the following command::</span>
+        <div class="gray">
+          <br><span>git branch -a </span>
+        </div>
+        <div>
+          <img src="img/332.png" alt="332">
+        </div>
+        <br><span class="since">The local branches typically have simple names like master and
+        experiment. Local branches are shown in white by Git's default syntax
+        highlighting. Remote branches are prefixed by "remotes" and are shown in
+        red.</span>
+        <br class="cbt">
+        <br><span class="since strong size">Merging</span>
+        <br><span class="since">Like other popular version control systems, Git allows you to merge one or
+        more branches into the current branch.</span>
+        <div class="gray">
+          <br><span>git merge &ltbranch one&gt </span>
+          <br><span>git merge &ltbranch one&gt &ltbranch two&gt </span>
+        </div>
+        <br>
+        <span class="since">
+          If any conflicts are encountered, with Git, a notification message is
+          displayed and the files are internally marked with >>>>>>>>> and <<<<<<<<
+          around the conflicting portion of the file contents. Once these conflicts are
+          manually resolved, issue a git add 
+          <filename>
+          for the resolved file, then
+          commit in the usual manner.
+        </span>
+        <br class="cbt">
+        <br><span class="since strong size">Rebase</span>
+        <br><span class="since">Rebasing is the rewinding of existing commits on a branch with the intent
+        of moving the branch start point forward, then replaying the rewound
+        commits. This allows developers to test their branch changes safely in
+        isolation on their private branch just as if they were made on top of the
+        mainline code, including any recent mainline bug fixes.</span>
+        <div class="gray">
+          <br><span>git rebase &ltsource branch name&gt </span>
+          <br><span>git rebase &ltsource branch name&gt &ltdestination branch name&gt </span>
+        </div>
+        <div class="title  strong">
+          <br><span>COMMIT HASHES & SHORTHAND </span>
+        </div>
+        <br><span class="since">Rather than a sequential revision ID, Git marks each commit with a SHA-1 hash that is unique to the user committing the changes, the folders containing changed files, and the modified files comprising the changeset. This allows commits to be made independent of any central coordinating server.</span> 
+        <br class="cbt">
+        <br><span class="since">A full SHA-1 hash is 40 hex characters, such as</span> 
+        <br><span class="since">64de179becc3ed324daab72f7238df1404723672</span> 
+        <br class="cbt">
+        <br><span class="since">To efficiently navigate the history of hashes, several symbolic shorthand notations can be used as listed in the table below. Additionally, any unique sub-portion of the hash can be used. Git will let you know when the characters supplied are not enough to be unique. In most cases, 4-5 characters are sufficient. </span>
+        <table class="blue">
+          <tr >
+            <th>Shorthand </th>
+            <th>Definition</th>
+          </tr>
+          <tr >
+            <th ><span class="normal">HEAD</span></td>
+            <th ><span class="normal">Last commit</span></td>
+          </tr>
+          <tr >
+            <th ><span class="normal">HEAD^ </span></th>
+            <th ><span class="normal">One commit ago</span></th>
+          </tr>
+          <tr >
+            <th><span class="normal">HEAD^^</span></th>
+            <th><span class="normal">Two commits ago</span></th>
+          </tr>
+          <tr >
+            <th><span class="normal">HEAD~1</span></th>
+            <th><span class="normal">One commit ago</span></th>
+          </tr>
+          <tr >
+            <th><span class="normal">HEAD~3</span></th>
+            <th><span class="normal">Three commits ago</span></th>
+          </tr>
+        </table>
+        <br><span class="since">Git shorthand can be used in combination with all Git commands that accept a specific commit or range of commits. Examples include:</span> 
+        <div class="gray">
+          <br><span>git diff HEAD~3 </span>
+          <br><span>git checkout HEAD^^ git merge RELEASE-1.0 </span>
+        </div>
+        <div class="title  strong">
+          <br><span>ADVANCED COMMANDS </span>
+        </div>
+        <br><span class="since">In addition to the core Git workflow, many additional commands offer both shortcuts and productivity improvements for day-to-day development tasks. </span>
+        <br class="cbt">
+        <br><span class="since strong size">Stashing </span>
+        <br><span class="since">Git offers a useful feature for those times when file modifications are in an incomplete state and not yet ready for a commit. To temporarily return to the last commit, yet retain any uncommited changes, using stash on modified files places all uncommitted changes onto a stack. </span>
+        <div class="gray">
+          <br><span>git stash </span>
+        </div>
+        <br><span class="since">When you are ready to write the stashed changes back into the working copy of the files, simply pop them back off the stack.</span> 
+        <div class="gray">
+          <br><span>git stash pop </span>
+        </div>
+        <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="HotTipL">
+                  <h1 class="tip">Hot<br>Tip</h1>
+                </td>
+                <td class="HotTipR">
+                  <span> Stashing will only set aside modified, tracked files. New, untracked files will remain in untouched and in the working directory.</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+        <br><span class="since strong size">Tagging </span>
+        <br><span class="since">Git provides tagging to mark a specific commit in your timeline of changes, and serve as a useful identifier in history. A tag can be created for any commit in history by passing the commit hash. If no commit hash is provided, the most recent commit (i.e. HEAD) will be used by default. </span>
+        <div class="gray">
+          <br><span>git tag &lttag name&gt </span>
+          <br><span>git tag &lttag name&gt &ltcommithash&gt </span>
+        </div>
+        <br><span class="since">To list all tags of the current Git repository:</span> 
+        <div class="gray">
+          <br><span>git tag </span>
+        </div>
+        <div class="title  strong">
+          <br><span id="tothe">THE REMOTE WORKFLOW </span>
+        </div>
+        <br><span class="since">Working with remote repositories is one of the primary features of Git. You can push or pull, depending on your desired workflow with colleagues and based on the repository operating system file and protocol permissions. Git repositories are most typically shared via SSH, though a lightweight daemon is also provided. </span>
+        <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="HotTipL">
+                  <h1 class="tip">Hot<br>Tip</h1>
+                </td>
+                <td class="HotTipR">
+                  <span class="world_down">Git repository sharing via the simple daemon is introduced at <a href= "http:// www.kernel.org/pub/software/scm/git/docs/git-daemon.html"><span class "world_down">http:// www.kernel.org/pub/software/scm/git/docs/git-daemon.html</span></a> Sharing over SSH and Gitosis is documented in the Git Community Book at <a href= "http://book.git-scm.com/4_setting_up_a_private_repository.html"><span class=" world_down">http://book.git-scm.com/4_setting_up_a_private_repository.html</span></a>  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+        <br><span class="since strong size">Remotes </span>
+        <br><span class="since">While full URLs to other repositories can be specified as a source or destination for the majority of Git commands, this quickly becomes unwieldy and a shorthand solution is called for. These bookmarks of other repository locations are called remotes. </span>
+        <br><span class="since">The full addresses of your configured remotes can be viewed with: </span>
+        <div class="gray">
+          <br><span>git remote -v </span>
+        </div>
+        <br><span class="since">If a local repository was cloned from another Git source, an "origin" remote will already be present in the list returned typing this command: </span>
+        <div class="gray">
+          <br><span>git remote -v </span>
+        </div>
+        <br><span class="since">To add a new remote, type:</span> 
+        <div class="gray">
+          <br><span>git remote add &ltremote name&gt &ltremote address&gt </span>
+        </div>
+        <br><span class="since strong size">Push </span>
+        <br><span class="since">Pushing with Git is the transmission of local changes to a colleague or community repository with sufficiently open permissions to allow you to write to it. </span>
+        <div class="gray">
+          <br><span>git push &ltremote name&gt &ltbranch name&gt </span>
+          <br><span>git push &ltremote name&gt &ltlocal branch name:remote branch name&gt </span>
+        </div>
+        <br><span class="since">The push command performs a publishing action, and sends the Git commit history of one or more branches to an upstream Git repository. Pushed branched are then accessible to anyone with access to this remote Git repository. <br></span>
+        <br class="cbt">
+        <br><span class="since strong size">Pull </span>
+        <br><span class="since">The action of a Git pull consists of the combination of retrieving (fetching) a remote repository's contents and automatically merging the file changes and commit history into the current branch.</span>
+        <br class="cbt">
+        <br><span class="since strong size" >Fetch </span>
+        <br><span class="since">An alternative to pulling content, which automatically merges inbound changes with your local history, is to retrieve the remote (upstream) changes and store the content conveniently in a cache for evaluation or selective merging. </span>
+        <div class="gray">
+          <br><span>git fetch &ltremotename&gt </span>
+          <br><span>git merge &ltremotename/branchname&gt </span>
+        </div>
+        <div class="title  strong">
+          <br><span>EXPLORING GITHUB</span>
+        </div>
+        <br><span  class="since">After successfully cloning, committing, and pushing change history to your
+        upstream remote GitHub repository, you are ready to begin exploring the
+        social coding features that uniquely set Git and GitHub apart from other
+        distributed version control systems.</span>
+        <br class="cbt">
+        <br><span class="since strong size">Forking a Repo</span>
+        <br><span  class="since">Whether to modify a teammate's work or an open source project, GitHub
+        forking provides a full copy of a repository from the original and places it
+        into your own account. This supplies full Git commit history, full read/write
+        privileges, and means for modifying and contributing changes back to the
+        original author.</span>
+        <br><span  class="since">Fork any accessible GitHub repository by clicking the "Fork" button atop the
+        repository.</span>
+        <div>
+          <img src="img/51.png" alt="51">
+        </div>
+        <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="HotTipL">
+                  <h1 class="tip">Hot<br>Tip</h1>
+                </td>
+                <td class="HotTipR">
+                  <span>All forked repositories show the original repository name under the
+                  repository page heading.</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+        <br><span class="since strong size">Pull Request</span>
+        <br><span  class="since">Repository forks always maintain an association with their original heritage,
+        thus simplifying contributions back to the original code by means of a pull
+        request. GitHub's pull requests permit forked repository owners to offer
+        project changes, to the original repository authors by means of commit
+        history.</span>
+        <br><span  class="since">To create a pull request, browse to the desired forked repository, choose a branch with the branch selector, and then click the "Pull Request" button.Dropdowns specifying the destination repository (parent repo) and branch, as well as the contributing repository (fork repo) and feature branch control the contents and destination of the request.</span>
+        <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="HotTipL">
+                  <h1 class="tip">Hot<br>Tip</h1>
+                </td>
+                <td class="HotTipR">
+                  <span>Pull Requests can be applied against the same repository, thus
+                  providing issue-tracking and traceability of merges for both the
+                  project owner and team members.</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+        <br><span  class="since">The repository owner receiving the pull request will be notified of the
+        inbound change and will have the option of merging, commenting, or
+        closing the pull request. This allows the repo owner to manage and
+        incorporate contributions.</span>
+        <div>
+          <img src="img/532.png" alt="532">
+        </div>
+        <div class="title  strong">
+          <br><span>GUIS</span>
+        </div>
+        <br><span  class="since">Standard Git distributions provide two user interfaces written in Tcl/Tk,
+        which provides a quick means of making commits and reviewing history in
+        a unified view.</span>
+        <br><span  class="since">Git Gui offers a panel by which to select files to add, review a list of staged
+        changes, and complete the commit with a message.</span>
+        <div class="gray">
+          <br><span>git gui</span>
+        </div>
+        <br><span  class="since">Gitk offers a diagram visualization of the project's commit history and
+        branching. They both assume that the current working directory is the
+        repository you wish to inspect.</span>
+        <div class="gray">
+          <br><span>gitk --all</span>
+        </div>
+        <div>
+          <img src="img/522.png" alt="522">
+        </div>
+        <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="HotTipL">
+                  <h1 class="tip">Hot<br>Tip</h1>
+                </td>
+                <td class="HotTipR">
+                  <span>Git is incredibly powerful, but its openness can be scary for
+                  enterprise-level projects. To maximize code quality and minimize
+                  potentially harmful effects of DVCS, check out Refcard #179: Git
+                  Patterns and Anti-Patterns: Scaling from Workgroup to Enterprise
+                  (forthcoming).</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+        <div class="title  strong">
+          <br><span>SUBVERSION & GIT</span>
+        </div>
+        <br><span  class="since">Git is a highly interoperable version control system, from its composition
+        of small executables up through the ready-to-use read and write support to
+        remote Subversion repositories, all while providing the majority of benefits
+        of Git on the local copy of the repository.</span>
+        <br class="cbt">
+        <br><span class="since strong size">Cloning</span>
+        <br><span  class="since">To retrieve a local working copy of a Subversion repository that uses
+        the traditional structure (trunk, tags, branches) and convert it into a Git
+        repository, use a syntax very similar to that for a traditional Git repository.</span>
+        <div class="gray">
+          <br><span>git svn clone --stdlayout &ltsvn-repo-url&gt</span>
+        </div>
+        <br><span  class="since">Note the progress messages during the operation. Clones of large
+        Subversion repositories may take hours to complete.</span>
+        <br class="cbt">
+        <br><span class="since strong size">Pushing Git Commits to Subversion</span>
+        <br><span  class="since">Git commits can be pushed transactionally, one for one, to the cloned
+        Subversion repository. When the Git commits are at good point for
+        publishing to the Subversion repository, type:</span>
+        <div class="gray">
+          <br><span>git svn dcommit</span>
+        </div>
+        <br><span class="since strong size">Retrieving Subversion Changes</span>
+        <br><span class="since">When changes are made in Subversion and it is necessary to bring the Git
+        repository up-to-date with those changes, rebase to the latest state of the
+        Subversion repo.</span>
+        <div class="gray">
+          <br><span>git svn rebase</span>
+        </div>
+        <br><span class="since strong size">Subversion on GitHub</span>
+        <br><span  class="since">For teams or individual users looking to make the move to hosting projects
+        on GitHub, yet still maintaining a workflow with Subversion, the move is
+        simple and easy.</span>
+        <br><span  class="since">All repositories on GitHub are fully compatible with SVN tools and
+        operations, including the traditional layouts for trunk and branches.</span>
+        <br><span class="since">To perform a traditional SVN checkout against a repository on GitHub use 
+        the following:</span>
+        <div class="gray">
+          <br><span>svn checkout https://github.com/&ltusername&gt/&ltproject&gt</span>
+        </div>
+        <br><span  class="since">Partial checkouts are also available with the typical SVN checkout
+        operation and partial's path parameter:</span>
+        <div class="gray">
+          <br><span>svn checkout https://github.com/&ltusername&gt/&ltproject&gt &ltpartial&gt</span>
+        </div>
+        <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="HotTipL">
+                  <h1 class="tip">Hot<br>Tip</h1>
+                </td>
+                <td class="HotTipR">
+                  <span>A GitHub-hosted repository supports mixed-VCS teams. The same
+                  repository interacting with SVN can also be cloned and pushed with
+                  Git.</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+        <div class="titletop strong">
+          <span>REFERENCES</span>
+        </div>
+        <br><span class="since strong size">Official Git Home Page</span>
+        <br><span  class="since">Installers, release notes, and documentation pages:</span>
+        <br><a href="http://git-scm.org">http://git-scm.org</a>
+        <br><span class="since strong size">GitHub</span>
+        <br><span  class="since">Sign Up, Help, & Social Coding Guides</span>
+        <br><a href="https://github.com">https://github.com</a>
+        <br><a href="https://github.com/signup/">https://github.com/signup/</a>
+        <br><a href="https://help.github.com">https://help.github.com</a>
+        <br class="cbt">
+      </div>
+      <div id="sources">
+        <table>
+          <tbody>
+            <tr>
+              <td class="align_left medium_padding align_top">
+                <br><span class="since strong">ABOUT THE AUTHORS</span><br>
+                <br><img src="img/622.png" alt="622" CLASS="TextWrap SmallIcon" ><span  class="since">Jordan McCullough is a JavaScript and front-end design
+                consultant with Ambient Ideas, LLC, a company he
+                co-founded in 1999. His projects include clients from
+                around the globe and span industries from television to
+                transportation and real estate to advertising. Jordan enjoys
+                sharing his insights throughout the software development
+                community and can often be found attending technology
+                conferences and contributing to open source software projects on GitHub.</span>
+              </td>
+              <td  class="align_left medium_padding align_top">
+                <br><span class="since strong">RECOMMENDED BOOK</span><br>
+                <br><img src="img/612.png" alt="612" CLASS="TextWrap SmallIcon"><span  class="since">Get up to speed on Git for tracking, branching,
+                merging, and managing code revisions.
+                Through a series of step-by-step tutorials,
+                this practical guide takes you quickly from
+                Git fundamentals to advanced techniques,
+                and provides friendly yet rigorous advice for
+                navigating the many functions of this open
+                source version control system.</span>
+				</p><br><a href="Buy Here" id="buyhere" class="strong">Buy Here</a>
+              </td>
+            </tr>
+          </tbody>
+        </table id="pow">
+      </div>
+            <div class="footer">
+        <span> DZone, Inc. | www.dzone.</span>
+      </div>
+    </div>	
+  </body>
+</html>
