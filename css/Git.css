@@ -90,12 +90,7 @@ body {
 .strong {
     font-weight: bold;
 }
-.normal{
-font-weight: normal;
-}
 
-}
-}
 /* только для Internet Explorer 4+ */
 
 @font-face {
@@ -338,5 +333,9 @@ color:white;
 .blue  th{
   border: 1px solid black; 
   }
-
-
+.blue  tr{
+  border: 1px solid black; 
+  }
+.blue  td{
+  border: 1px solid black; 
+  }
