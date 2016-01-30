@@ -22,18 +22,7 @@
         width: 487px;
     }
 }
-#down {
-    margin-top: 10px;
-}
-hgroup {
-	position:center;
-    text-align: right;
-    float: right;
-    width: 500px;
-    height: 300px;
-    margin-top: -150px;
-    margin-right: -200px;
-}
+
 
 .border {
     margin-top: 20px;
@@ -60,7 +49,7 @@ color:white;
     margin-top: 20px;
 }
 body {
-    font-family: Graublau Sans Web, EuroSansProLig, Arial, sans-serif;
+    font-family: 'Roboto-Italic', Roboto-Black, Graublau Sans Web, EuroSansProLig, Arial, sans-serif;
     /* Ширина блока */
     
     padding: 5px;
@@ -73,29 +62,22 @@ body {
     height: 30px;
 	padding: 10px;
 }
-.since {
+.move_left {
     text-align: left;
 }
 
-#page {
-    border: thin solid;
-    
-    width: 90%;
-    padding-left: 50px;
-    padding-right: 50px;
-    background: white;
-    padding-top: 5px;
-	margin: 0 auto;
-}
 .strong {
     font-weight: bold;
 }
 
+.underline {
+    text-decoration: underline;
+}
 /* только для Internet Explorer 4+ */
 
 @font-face {
-    font-family: Cardo99s-webfont;
-    src: url(fonts/Cardo99s-webfont.eot);
+    font-family: Roboto-Italic;
+    src: url(fonts/Roboto-Italic.eot);
     /* IE9 */
 }
 @font-face {
@@ -107,18 +89,6 @@ img {
     height: auto;
 }
 
-.block {
-    float: right;
-    background: blue;
-    width: 80%;
-    height: 90px;
-    border-radius: 0 20px 20px 0;
-    text-align: left;
-    padding-top: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
 table {
     width: 100%;
     text-align: center;
@@ -127,15 +97,7 @@ table {
 #pow{
 text-align:bottom;
 }
-.border {
-    margin-top: 20px;
-}
-#imgmarg {
-    margin: 20px;
-}
-#tab {
-    margin-left: 20px;
-}
+
 #sources {
     border: thin solid;
     background: lightblue;
@@ -144,24 +106,22 @@ text-align:bottom;
 	vertical-align:top;
 }
 #sources a{
-color:black;
+	color:black;
 }
 
 .world_down{
-white-space:pre-wrap;word-break:break-all;
+	white-space:pre-wrap;
+	word-break:break-all;
 
 }
-h2 {
-    text-align: center;
+
+
+#title_font {
+	font-size: 50px;
+	color:red;
 }
-h6 {
-    color: white;
-    font-size: 12px;
-}
 
-
-
-.size {
+.font_size {
     font-size: 20px;
 }
 .page_cont {
@@ -183,47 +143,56 @@ h6 {
     background-color: white;
 	border: 1px solid black;
 }
-#header {
+.top_page {
     margin: 0 auto;
     padding: 0 15px;
     box-sizing: content-box;
-    position: relative
+    position: relative;
 }
-#header img {
+#top_page img {
 	width: 100%;
 }
 
-#header_list {
+#top_page_list {
 	list-style: none;
 	text-align: left;
 	vertical-align: top;
 }
+ol {
+        list-style-type: disc; 
+	margin-left:15px;
+	margin-top:20px;
+   }
 
-#header_list li {
+#top_page_list li {
 	background: url(../img/marker2.png) left center no-repeat;
 	padding: 5px 0px 5px 20px; 
 }
-.header_gettingstarted span{
+#ul_color{
+color:NavajoWhite;
+}
+
+.main_title span{
  color:red;   
 }
-.header_gettingstarted {
+.main_title {
     vertical-align: top;
 	text-align: right;
 }
-.header_gettingstarted H1 {
+.main_title H1 {
 	padding: 5px;
-    /* Поля вокруг текста */
+    
 }
 
-.header_jordan {
+.down_title {
     font-size: 20pt;
     text-align: right;
 	vertical-align: bottom;
 }
 
-.header_jordan span {
+.down_title  span {
     padding: 5px;
-    /* Поля вокруг текста */
+    
 }
 
 table {
@@ -259,20 +228,24 @@ color:white;
 	border-radius: 0px 5px 5px 0px;
 	padding: 15px 30px 15px 35px;
 }
-
-.gray {
+.commands {
     font-family:
     /*Geneva, Arial Helvetica,*/
-    
-    Cardo99s-webfont, monospace;
-    background: #f0f0f0;
-    border: 1px solid lightgrey;
-    padding-bottom: 20px;
+        Cardo99s-webfont, monospace;
+        padding-bottom: 20px;
     padding-top: 0px;
     margin-top: 5px;
     margin-bottom: 5px;
     padding-left: 15px;
     margin-top: 20px;
+}
+.WebSocket_color_commands{ 
+    background: LightYellow;
+    border: 1px solid NavajoWhite;
+}
+.git_color_commands {
+	background: #f0f0f0;
+	border: 1px solid lightgrey;
 }
 
 .TextWrap {
@@ -282,10 +255,6 @@ color:white;
 
 .SmallIcon {
 	width: 150px;
-}
-
-.align_center {
-	text-align: center;
 }
 
 .align_left {
@@ -300,42 +269,42 @@ color:white;
 .medium_padding {
 	padding: 15px 15px 15px 15px;
 }
-.header_img {
+.main_title_img {
 	width: 55%;
 }
-.blue tr:nth-child(1) {
+.Shorthand_Definition tr:nth-child(1) {
   background: CornflowerBlue;
   border: 1px solid black; 
 }
-.blue tr:nth-child(2) {
+.Shorthand_Definition tr:nth-child(2) {
   background: SkyBlue;
   border: 1px solid black; 
 }
-.blue tr:nth-child(4) {
+.Shorthand_Definition tr:nth-child(4) {
   background: SkyBlue;
   border: 1px solid black; 
 }
-.blue tr:nth-child(6) {
+.Shorthand_Definition tr:nth-child(6) {
   background: SkyBlue;
   border: 1px solid black; 
 }
-.blue tr:nth-child(3) {
+.Shorthand_Definition tr:nth-child(3) {
   background: LightBlue;
   border: 1px solid black; 
 }
-.blue tr:nth-child(5) {
+.Shorthand_Definition tr:nth-child(5) {
   background: LightBlue;
   border: 1px solid black; 
 }
-.blue  {
+.Shorthand_Definition {
   border: 1px solid black; 
   }
-.blue  th{
+.Shorthand_Definition  th{
   border: 1px solid black; 
   }
-.blue  tr{
+.Shorthand_Definition  tr{
   border: 1px solid black; 
   }
-.blue  td{
+.Shorthand_Definition  td{
   border: 1px solid black; 
   }
