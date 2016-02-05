@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"type="text/css"/ 
+    <!--[if lt IE 9]>
+    <script>
+      var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
+      for (var i = 0; i < e.length; i++) {
+        document.createElement(e[i]);
+      }
+    </script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="page_cont one">
+      <div class="top_page">
+        <br class="cbt">
+        <img src="img/12.png" class="top_page_img" alt="2-копия">
+      </div>
+      <br class="cbt">
+      <div class="content">
+        <table border=0>
+          <tbody>
+            <tr>
+              <td rowspan=2>
+                <ul class="top_page_list">
+                  <span class="strong">CONTENTS INCLUDE:</span>
+                  <a href="#towhat">
+                    <li>What are jQuery Selectors?</li>
+                  </a>
+                  <a href="#totypes">
+                    <li><span>Types of jQuery Selectors</span></li>
+                  </a>
+                  <a href="#tobasic">
+                    <li><span>Basic CSS Selectors</span></li>
+                  </a>
+                  <a href="#tocustom">
+                    <li><span>Custom jQuery Selectors</span></li>
+                  </a>
+                  <a href="#tomatched">
+                    <li><span>Matched Set Methods</span></li>
+                  </a>
+                  <a href="#tohot">
+                    <li><span>Hot Tips and more...</span></li>
+                  </a>
+                </ul>
+              </td>
+              <td class="main_title">
+                <span class="title_font">JQUERY SELECTORS</span></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="down_title ">
+                <span class="strong">By: Bear Bibeault & Yehuda Katz</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="titletop strong">
+          <span id="towhy">WHAT ARE JQUERY SELECTORS?</span>
+        </div>
+        <br><span  class="move_left ">jQuery selectors are one of the most important aspects of the
+jQuery library. These selectors use familiar CSS syntax to allow
+page authors to quickly and easily identify any set of page
+elements to operate upon with the jQuery library methods.
+Understanding jQuery selectors is the key to using the jQuery
+library most effectively. This reference card puts the power of
+jQuery selectors at your very fingertips.</span>
+ <br class="cbt">
+		<br><span  class="move_left ">A jQuery statement typically follows the syntax pattern:</span>
+		 <div class="commands">
+          <br><span>$(selector).methodName();</span>
+        </div>
+		<br><span  class="move_left ">The selector is a string expression that identifies the set of
+DOM elements that will be collected into a matched set to be
+operated upon by the jQuery methods.</span>
+  <br class="cbt">
+		<br><span  class="move_left ">Many of the jQuery operations can also be chained:</span>
+		<div class="commands">
+          <br><span>$(selector).method1().method2().method3();</span>
+        </div>
+		<br><span  class="move_left ">As an example, let's say that we want to hide the DOM element
+with the id value of goAway and to add class name incognito:</span>
+<div class="commands">
+          <br><span>$('#goAway').hide().addClass('incognito');</span>
+        </div>
+		<br><span  class="move_left ">Applying the methods is easy. Constructing the selector
+expressions is where the cleverness lies.</span>
+<div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="hotTipLeft">
+                  <h1 >Hot<br>Tip</h1>
+                </td>
+                <td class="hotTipRight">
+                  <span>The wrapped set created by the application of a
+selector can be treated as a JavaScript array for
+convenience. It is particularly useful to use array
+indexing to directly access elements within the
+wrapped set.
+For example:
+var element = $('img')[0];
+will set the variable element to the first element
+in the matched set. </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br class="cbt">
+        </div>
+ <div class="titletop strong">
+          <span id="totypes">TYPES OF JQUERY SELECTORS</span>
+        </div>
+		<br><span  class="move_left ">There are three categories of jQuery selectors: Basic CSS
+selectors, Positional selectors, and Custom jQuery selectors.</span>
+<br class="cbt">
+<br><span  class="move_left ">The Basic Selectors are known as "find selectors" as they are used
+to find elements within the DOM. The Positional and Custom
+Selectors are "filter selectors" as they filter a set of elements
+(which defaults to the entire set of elements in the DOM).</span>
+<br class="cbt">
+<br><span class="move_left strong font_size" id="tobasic">Basic CSS Selectors</span>
+<br class="cbt">
+<br><span  class="move_left ">These selectors follow standard CSS3 syntax and semantics.</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            			<th>Syntax </th>
+            			<th>Description</th>
+          		</tr>
+          		<tr>
+            			<td><span >*</span></td>
+            			<td><span >Matches any element.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >E </span></td>
+            			<td><span >Matches all elements with tag name E.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span>E F</span></td>
+            			<td><span>Matches all elements with tag name F that are descendants of E.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >E>F</span></td>
+            			<td><span >Matches all elements with tag name F that are direct children of E.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >E+F</span></td>
+            			<td><span >Matches all elements witd tag name F that are immediately preceded by a sibling of tag name E.</span></td>
+          		</tr>
+
+                        <tr>
+            			<td><span >E~F</span></td>
+            			<td><span >Matches all elements with tag name F that are preceded by any sibling of tag name E.</span></td>
+          		</tr>
+			 <tr>
+            			<td><span >E:has(F)</span></td>
+            			<td><span >Matches all elements with tag name E that have at least one descendant with tag name F.</span></td>
+          		</tr>
+			<tr>
+            			<td><span >E.c</span></td>
+            			<td><span >Matches all elements E that possess a class name of c.Omitting E is identical to *.c.</span></td>
+          		</tr>
+			<tr>
+            			<td><span >E#i</span></td>
+            			<td><span >Matches all elements E that possess an id value of i. Omitting E is identical to *#i.</span></td>
+          		</tr>
+			<tr>
+            			<td><span >E[a]</span></td>
+            			<td><span >Matches all elements E that posses an attribute a of any value.</span></td>
+          		</tr>
+			<tr>
+            			<td><span >E[a=v]</span></td>
+            			<td><span >Matches all elements E that posses an attribute a whose value is exactly v.</span></td>
+          		</tr>
+			<tr>
+            			<td><span >E[a^=v]</span></td>
+            			<td><span >Matches all elements E that posses an attribute a whose value starts with v.</span></td>
+          		</tr>
+			<tr>
+            			<td><span >E[a$=v]</span></td>
+            			<td><span >Matches all elements E that posses an attribute a whose value ends with v.</span></td>
+          		</tr>
+			<tr>
+            			<td><span >E[a*=v]</span></td>
+            			<td><span >Matches all elements E that posses an attribute a whose value contains v.</span></td>
+          		</tr>
+		<tbody>
+        </table>
+		<br><span class="move_left strong font_size"> Examples</span>
+<ul class="example">
+   <li><span>$('div') selects all &ltdiv&gt elements</span></li>
+   <li><span>$('fieldset a') selects all &lta&gt elements within
+&ltfieldset&gt elements</span></li>
+<br><span class="move_left strong font_size">Basic CSS Selectors, continued</span>
+    </ul> 
+  <br><span class="move_left strong font_size"> Examples</span>
+<ul class="example">
+   <li><span>$('li>p') selects all &ltp&gt elements that are direct children of &ltli&gt elements</span></li>
+   <li><span>$('div~p') selects all &ltdiv&gt elements that are preceded by a &ltp&gt element</span></li>
+   <li><span>$('p:has(b)') selects all &ltp&gt elements that contain a &ltb&gt element</span></li>
+   <li><span>$('div.someClass') selects all &ltdiv&gt elements with a class name of someClass</span></li>
+   <li><span>$('.someClass') selects all elements with class name someClass</span></li>
+   <li><span>$('#testButton') selects the element with the id value of testButton</span></li>
+   <li><span>$('img[alt]') selects all &ltimg&gt elements that possess an alt attribute</span></li>
+   <li><span>$('a[href$=.pdf]') selects all &lta&gt elements that possess an href attribute that ends in .pdf</span></li>
+   <li><span>$('button[id*=test]') selects all buttons whose id attributes contain test</span></li>
+</ul> 
+<div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="hotTipLeft">
+                  <h1 >Hot<br>Tip</h1>
+                </td>
+                <td class="hotTipRight">
+                  <span>You can create the union of multiple disparate
+selectors by listing them, separated by commas,
+in a single call to $(). For example, the following
+matches all &ltdiv&gt and &ltp&gt elements:
+$('div,p')
+While the following, matches all &ltdiv&gt elements
+with a title attribute, and all &ltimg&gt elements
+with alt attributes:
+$('div[title],img[alt]') </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+         </div>
+<br><span class="move_left strong font_size">Positional Selectors</span>
+<br class="cbt">
+<br><span  class="move_left ">These selectors match based upon positional relationships
+between elements. These selectors can be appended to any
+base selector (which we'll denote by B) to filter the matches
+based upon position. If B is omitted, it is assumed to be *
+(the pool of all elements).</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            			<th>Syntax </th>
+            			<th>Description</th>
+          		</tr>
+          		<tr>
+            			<td><span >B:first</span></td>
+            			<td><span >Selects the first element on the page matching the base selector B.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:last </span></td>
+            			<td><span >Selects the last element on the page matching the base selector B.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span>B:first-child</span></td>
+            			<td><span>Selects all elements from B that are first children.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:last-child</span></td>
+            			<td><span >B:last-child Selects all elements from B that are last children.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:only-child</span></td>
+            			<td><span >Selects all elements from B that are only children.</span></td>
+          		</tr>
+			<tr>
+            			<td><span >B:nth-child(n)</span></td>
+            			<td><span >Selects all elements from B that are n-th ordinal children. Starts at 1.</span></td>
+          		</tr>
+			<tr>
+            			<td><span >B:nth-child(odd|even)</span></td>
+            			<td><span >Selects all elements from B that are even or odd ordinal children. The first child is considered odd (ordinal 1).</span></td>
+          		</tr>
+			<tr>
+            			<td><span >B:nth-child(Xn+Y)</span></td>
+            			<td><span >Selects all elements from B that match the formula. X denotes an ordinal multiplier, while Y denotes an offset. Y may be omitted if 0. See the following examples.</span></td>
+          		</tr>
+			<tr>
+            			<td><span >B:even</span></td>
+            			<td><span >Selects the even elements within the set of elements defined by B.</span></td>
+          		</tr>
+		<tbody>
+        </table>
+<br><span class="move_left strong font_size">Positional Selectors, continued</span>
+<br class="cbt">
+		<table class="syntax_description">
+		<tbody>
+          		<tr>
+            			<th>Syntax </th>
+            			<th>Description</th>
+          		</tr>
+          		<tr>
+            			<td><span >B:odd</span></td>
+            			<td><span >Selects the odd elements within the set of elements defined by B.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:eq(n) </span></td>
+            			<td><span >Selects the n-th element within the set of elements defined by B. Starts at 0.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span>B:gt(n)</span></td>
+            			<td><span>Selects elements within the set of elements defined by B that follow the n-th element (exclusive). Starts at 0.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:lt(n)</span></td>
+            			<td><span >Selects elements within the set of elements defined by B that precede the n-th element (exclusive). Starts at 0.</span></td>
+          		</tr>
+          		
+		<tbody>
+        </table>
+		<br><span class="move_left strong font_size"> Examples</span>
+<ul class="example">
+   <li><span>$('p:first') selects the first &ltp&gt element on the page</span></li>
+   <li><span>$('img[src$=.png]:first') selects the first &ltimg&gt
+element on the page that has a src attribute ending in .png</span></li>
+   <li><span>$('button.small:last') selects the last &ltbutton&gt
+element on the page that has a class name of small</span></li>
+   <li><span>$('li:first-child') selects all &ltli&gt elements that are
+first children within their lists</span></li>
+   <li><span>$('a:only-child') selects all &lta&gt elements that are the
+only element within their parent</span></li>
+   <li><span>$('li:nth-child(2)') selects all &ltli&gt elements that
+are the second item within their lists</span></li>
+   <li><span>$('tr:nth-child(odd)') selects all odd &lttr&gt elements
+within a table</span></li>
+   <li><span>$('div:nth-child(5n)') selects every 5th &ltdiv&gt
+element</span></li>
+   <li><span>$('div:nth-child(5n+1)') selects the element after
+every 5th &ltdiv&gt element</span></li>
+   <li><span>$('.someClass:eq(1)') selects the second element
+with a class name of someClass</span></li>
+   <li><span>$('.someClass:gt(1)') selects all but the first two
+elements with a class name of someClass</span></li>
+   <li><span>$('.someClass:lt(4)') selects the first four elements
+with a class name of someClass</span></li>
+  </ul> 
+<div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="hotTipLeft">
+                  <h1 >Hot<br>Tip</h1>
+                </td>
+                <td class="hotTipRight">
+                  <span>Note that the :nth-child selectors begin
+counting at 1, while the :eq, :gt and :lt
+selectors begin with 0. </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+         </div>
+<br><span class="move_left strong font_size" id="tocustom">jQuery Custom Selectors</span>
+<br class="cbt">
+<br><span  class="move_left ">These selectors are provided by jQuery to allow for commonly
+used, or just plain handy, selections that were not anticipated
+by the CSS Specification. Like the Positional Selectors, these
+selectors filter a base matching set (which we denote with B).
+Omitting B is interpreted as the set of all elements. These
+selectors may be combined; see the examples for some
+powerful selector combinations.</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            			<th>Syntax </th>
+            			<th>Description</th>
+          		</tr>
+          		<tr>
+            			<td><span >B:animated</span></td>
+            			<td><span >Selects elements from the base set B that are currently under animated control via one of the jQuery animation methods.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:button </span></td>
+            			<td><span >Selects elements of B that are of any button type; that is: button, input[type=submit], input[type=reset] or input[type=button].</span></td>
+          		</tr>
+          		<tr>
+            			<td><span>B:checkbox</span></td>
+            			<td><span>Selects elements of B that are of type input[type=checkbox].</span></td>
+          		</tr>
+          		
+		<tbody>
+        </table>
+<br><span class="move_left strong font_size">jQuery Custom Selectors, continued</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            			<th>Syntax</th>
+            			<th>Description</th>
+          		</tr>
+          		<tr>
+            			<td><span >B:enabled</span></td>
+            			<td><span >Selects form elements from B that are in enabled state.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:file </span></td>
+            			<td><span >Selects elements of B that are of type input[type=file].</span></td>
+          		</tr>
+          		<tr>
+            			<td><span>B:header</span></td>
+            			<td><span>Selects elements from B that are of the header types:that is &lth1&gt through &lth6&gt.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:hidden</span></td>
+            			<td><span >Selects elements of B that are hidden.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:image</span></td>
+            			<td><span >Selects elements of B that are of type input[type=image].</span></td>
+          		</tr>
+			<tr>
+            			<td><span >B:input</span></td>
+            			<td><span >Selects form input elements from B; that is, &ltinput&gt, &ltselect&gt, &lttextarea&gt and &ltbutton&gt elements.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:not(f) </span></td>
+            			<td><span >Selects elements of B that do not match the filter selector specified by f. A filter selector is any selector beginning with : (colon), A base set B cannot be specified as part of f.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span>B:parent</span></td>
+            			<td><span>Selects elements of B that are parents of non-empty element children.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:password</span></td>
+            			<td><span >Selects elements of B that are of type input[type=password].</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:radio</span></td>
+            			<td><span >Selects elements of B that are of type input[type=radio].</span></td>
+          		</tr>
+			<tr>
+            			<td><span >B:reset</span></td>
+            			<td><span >Selects elements of B that are of type input[type=reset] or button[type=reset].</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:selected </span></td>
+            			<td><span >Selects elements of B that are in selected state. Only &ltoption&gt elements posses this state.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span>B:submit</span></td>
+            			<td><span>Selects elements of B that are of type input[type=submit] or button[type=submit].</span></th>
+          		</tr>
+          		<tr>
+            			<td><span >B:text</span></td>
+            			<td><span >Selects elements of B that are of type input[type=text].</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >B:visible</span></td>
+            			<td><span >Selects form elements from B that are not hidden.</span></td>
+          		</tr>
+		<tbody>
+		
+        </table>
+		<br><span class="move_left strong font_size"> Examples</span>
+<ul class="example">
+   <li><span>$('img:animated') selects all &ltimg&gt elements that are
+undergoing animation</span></li>
+   <li><span>$(':button:hidden') selects all button type elements
+that are hidden</span></li>
+   <li><span>$('input[name=myRadioGroup]:radio:checked')
+selects all radio elements with the name attribute value of
+myRadioGroup that are checked</span></li>
+   <li><span>$(':text:disabled') selects all text fields that are
+disabled</span></li>
+   <li><span>$('#xyz p :header') selects all header type elements
+within &ltp&gt elements that are within an element with an id
+value of xyz. Note the space before :header that prevents
+it from binding directly to the p.</span></li>
+   <li><span>$('option:not(:selected)') selects all unselected
+&ltoption&gt elements</span></li>
+   <li><span>$('#myForm button:not(.someClass)') selects all
+buttons from the &ltform&gt with the id of myForm that do not
+possess the class name someClass.</span></li>
+   <li><span>$('select[name=choices] :selected') selects the
+selected &ltoption&gt elements within the &ltselect&gt element
+named choices.</span></li>
+   <li><span>$('p:contains(coffee)') selects all &ltp&gt elements that
+contain the text coffee</span></li>
+     </ul> 
+	 <br><span  class="move_left ">Used either separately, or in combination, the jQuery selectors
+give you a great deal of power to easily create a set of elements
+that you wish to operate upon with the jQuery methods.</span>
+<div class="titletop strong">
+          <span id="tomatched">MACHED SET METHODS</span>
+        </div>
+<br><span  class="move_left ">While the jQuery selectors give us great flexibility in identifying
+which DOM elements are to be added to a matched set,
+sometimes there are match criteria that cannot be expressed
+by selectors alone. Also, given the power of jQuery method
+chaining, we may wish to adjust the contents of the matched
+set between method invocations.</span>
+<br class="cbt">
+<br><span  class="move_left ">For these situations, jQuery provides methods that operate
+not upon the elements within the matched set, but on the
+matched set itself. This section will summarize those methods.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Adding New Elements</span>
+<br class="cbt">
+<br><span  class="move_left ">For adding new elements to a matched set, the add() method
+is provided:</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+				
+            		<th colspan="2" >	add(expression) </th>
+            		
+          		<tr>
+            			<td><span >expression</span></td>
+            			<td><span >(String) A selector expression that specifies the DOM elements to be added to the matched set, or an HTML string of new elements to create and add to the set. (Element) A reference to an existing element to add. (Array) Array of references to elements to add.</span></td>
+          		</tr>
+          		
+		<tbody>
+        </table>
+<br><span  class="move_left ">The add() method returns a new matched set that is the
+union of elements in the original wrapped set and any elements
+either passed directly as the expression argument, or
+matched by the selector of the expression argument.</span>
+<br><span  class="move_left ">Consider:</span>
+<div class="commands">
+          <br><span>$('div').add('p').css('color','red');</span>
+        </div>
+<br><span  class="move_left ">This statement creates a matched set of all &ltdiv&gt elements,
+then creates a new matched set of the already matched &ltdiv&gt
+elements and all &ltp&gt elements. The second matched set's elements
+(all &ltdiv&gt and all &ltp&gt elements) are then given the CSS
+color property of "red".</span>
+<br class="cbt">
+<br><span  class="move_left ">You may think this is not all that useful because the same could
+have been achieved with:</span>
+<div class="commands">
+          <br><span>$('div,p').css('color','red');</span>
+        </div>
+<br><span  class="move_left ">But now consider:</span>
+<div class="commands">
+          <br><span>$('div').css('font-weight','bold').add('p').
+css('color','red');</span>
+        </div>
+<br><span  class="move_left ">Here the first created matched set of &ltdiv&gt elements is assigned
+a bold rendition, and then the second matched set,
+with &ltp&gt elements added, is colored red.</span>
+<br class="cbt">
+<br><span  class="move_left ">jQuery chaining (in which the css() method returns the
+matched set) allows us to create efficient statements such as
+this one that can accomplish a great deal with little in the way
+of script.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">More Examples</span>
+<div class="commands">
+          <br><span>$('div').add(someElement).css('border','3px solid
+pink');</span>
+		  <br><span>$('div')</span>
+		  <br><span>.add([element1,element2])</span>
+		  <br><span>.css('border','3px solid pink');</span>
+        </div>
+<br><span class="move_left strong font_size">Removing Matched Elements</span>
+<br class="cbt">
+<br><span  class="move_left ">What if we want to remove elements from the matched set?
+That's the job of the not() method:</span>
+		<table class="syntax_description">
+		<tbody>
+          		<tr>
+            		<th colspan="2">not(expression)	 </th>
+            		</tr>
+          		<tr>
+            			<td><span >expression</span></td>
+            			<td><span >(String) A selector expression that specifies the DOM elements
+to be removed from the matched set.
+(Element) A reference to an existing element to remove.
+(Array) Array of references to elements to remove.</span></td>
+          		</tr>
+          		
+		<tbody>
+        </table>
+<br><span  class="move_left ">Like add(), this method creates and returns a new matched
+set, except with the elements specified by the expression
+argument removed. The argument can be a jQuery selector, or
+references to elements to remove.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size"> Examples</span>
+<div class="commands">
+          <br><span>$('body *').css('font-weight','bold')</span>
+		  <br><span>.not('p').css('color','red');</span>
+		          </div>
+				  <br><span  class="move_left ">Makes all body elements bold, then makes all but &ltp&gt
+elements red.</span>
+<div class="commands">
+          <br><span>$('body *').css('font-weight','bold')</span>
+		  <br><span>.not(anElement).css('color','red');</span>
+		          </div>
+				  <br><span  class="move_left ">Similar to the previous except the element referenced by
+variable anElement is not included in the second set (and
+therefore not colored red).</span>
+<div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="hotTipLeft">
+                  <h1>Hot<br>Tip</h1>
+                </td>
+                <td class="hotTipRight">
+                  <span>Avoid a typical beginner's mistake and never
+confuse the not() method, which will remove
+elements from the matched set, with the
+remove() method, which will remove the
+elements in the matched set from the HTML DOM! </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+<br><span class="move_left strong font_size">Finding Descendants</span>
+<br class="cbt">
+				  <br><span  class="move_left ">Sometimes it's useful to limit the search for elements to
+descendants of already identified elements. The find()
+method does just that:</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            		<th colspan="2">find(expression)</th>
+            		</tr>
+          		<tr>
+            			<td><span >expression</span></td>
+            			<td><span >(String) A selector expression that specifies which descendant
+elements are to be matched.</span></td>
+          		</tr>
+          		
+		<tbody>
+        </table>
+				  <br><span  class="move_left ">Unlike the previously examined methods, find() only accepts
+a selector expression as its argument. The elements within the
+existing matched set will be searched for descendants that
+match the expression. Any elements in the original matched
+set that match the selector are not included in the new set.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size"> Examples</span>
+<div class="commands">
+          <br><span>$('div').css('background-color','blue')</span>
+		  <br><span>.find('img').css('border','1px solid aqua');;</span>
+		          </div>
+				  <br><span  class="move_left ">Selects all &ltdiv&gt elements, makes their background blue,
+selects all &ltimg&gt elements that are descendants of those
+&ltdiv&gt elements (but not &ltimg&gt elements that are not
+descendants) and gives them an aqua border.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Filtering Matched Sets</span>
+<br class="cbt">
+				  <br><span  class="move_left ">When really fine-grained control is required for filtering the elements
+of a matched set, the filter() method comes in handy:</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            		<th colspan="2">filter(expression)	 </th>
+            		</tr>
+          		<tr>
+            			<td><span >expression</span></td>
+            			<td><span >(String) A selector expression that specifies which elements
+are to be retained.
+(Function) A function used to determine if an element should
+be included in the new set or not. This function is passed the
+zero-based ordinal of the element within the original set, and
+the function context (this) is set to the current element.
+Returning false as the function result causes the element to
+not be included in the new set.</span></td>
+          		</tr>
+          		
+		<tbody>
+        </table>
+				  <br><span  class="move_left ">The filter() method can be passed either a selector expression
+(comma-separated if more than one is desired) or a function.
+When passed a selector, it acts like the inverse of not(),
+retaining elements that match the selector (as opposed to
+excluding them). When passed a function, the function is invoked
+for each element and decisions that cannot be expressed
+by selectors can be made regarding the exclusion or inclusion
+of each element.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size"> Examples</span>
+<div class="commands">
+          <br><span>$('.bashful').show()</span>
+		  <br><span>.filter('img[src$=.gif]').attr('title','Hi there!');</span>
+		          </div>
+<br><span  class="move_left ">Selects all elements with class name bashful, makes sure
+that they are visible, filters the set down to just GIF images,
+and assigns a title attribute to them.</span>
+<div class="commands">
+          <br><span>$('img[src^=images/]').filter(function(){</span>
+		  <br><span>return $(this).attr('title').match(/.+@.+\.com/)!= null;</span>
+		  <br><span>})</span>
+		  <br><span>.hide();</span>
+		          </div>
+<br><span  class="move_left ">Selects images from a specific folder, filters them to only
+those whose title attribute matches a rudimentary .com
+email address, and hides those elements.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Slicing and Dicing Matched Sets</span>
+<br class="cbt">
+<br><span  class="move_left ">Rather than matching elements by selector, we may sometimes
+wish to slice up a matched set based upon the position of the
+elements within the set. This section introduces two methods
+that do that for us.</span>
+<br class="cbt">
+<br><span  class="move_left ">Both of these methods assume zero-based indexing.</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            			<th colspan="2">slice(being,end)</th>
+            			
+          		</tr>
+          		<tr>
+            			<td><span >begin</span></td>
+            			<td><span >(Number) The beginning position of the first element to be included in the new set.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >end </span></td>
+            			<td><span >(Number) The end position of the first element to not be included in the new set. If omitted, all elements from begin to the end of the set are included.</span></td>
+          		</tr>
+       		<tbody>
+        </table>
+<br><span class="move_left strong font_size">Examples</span>
+<div class="commands">
+          <br><span>$('body *').slice(2).hide();</span>
+		  		          </div>
+<br><span  class="move_left ">Selects all body elements, then creates a new set containing
+all but the first two elements, and hides them.</span>
+<div class="commands">
+          <br><span>$('body *').slice(2,3).hide();</span>
+		  		          </div>
+<br><span  class="move_left ">Selects all body elements, then creates a new set containing
+the third element in the set and hides it. Note that the new
+set contains just one element: that at position 2. The element
+at position 3 is not included.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Slicing and Dicing Matched Sets, continued</span>
+		<table class="syntax_description">
+		<tbody>
+          		<tr>
+            		<th colspan="2">eq(position)</th>
+            		</tr>
+          		<tr>
+            			<td><span >position</span></td><td><span >(Number) The position of a single element to be included in the new set.</span></td>
+          		</tr>
+          		
+		<tbody>
+        </table>
+<br><span  class="move_left ">The eq(n) method can be considered shorthand for
+slice(n,n+1).</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Matching by Relationship</span>
+<br class="cbt">
+<br><span  class="move_left ">Frequently we may want to create new matched sets based
+upon relationships between elements. These methods are
+similar enough that we'll present them en masse in the
+following table:</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            			<th>Method </th>
+            			<th>Description</th>
+          		</tr>
+          		<tr>
+            			<td><span >children(expression)</span></td>
+            			<td><span >Creates a new matched set containing all unique
+children of the elements in the original matched set
+that match the optional expression.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >next(expression) </span></td>
+            			<td><span >Creates a new matched set containing unique
+following (next) siblings of the elements in the
+original matched set that match the optional
+expression. Only immediately following siblings
+are returned.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span>nextAll(expression)</span></td>
+            			<td><span>Creates a new matched set containing unique
+following (next) siblings of the elements in the
+original matched set that match the optional
+expression. All following siblings are returned.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >parent(expression)</span></td>
+            			<td><span >Creates a new matched set containing unique
+immediate parents of tde elements in the original
+matched set that match the optional expression.</span></td>
+          		</tr>
+          		<tr>
+            			<td><span >parents(expression)</span></td>
+            			<td><span >Creates a new matched set containing all
+ancestors of the elements in the original matched
+set that match the optional expression.</span></td>
+          		</tr>
+<tr>
+            			<td><span >prev(expression)</span></td>
+            			<td><span >Creates a new matched set containing unique
+preceding siblings of the elements in the original
+matched set that match the optional expression.
+Only immediately preceding siblings are returned.</span></td>
+          		</tr>
+<tr>
+            			<td><span >prevAll(expression)</span></td>
+            			<td><span >Creates a new matched set containing unique
+preceding siblings of the elements in the original
+matched set that match the optional expression. All
+preceding siblings are returned.</span></td>
+          		</tr>
+<tr>
+            			<td><span >siblings(expression)</span></td>
+            			<td><span >Creates a new matched set containing unique
+siblings of the elements in the original matched set
+that match the optional expression.</span></td>
+          		</tr>
+<tr>
+            			<td><span >contents()</span></td>
+            			<td><span >Creates a new matched set containing all unique
+children of the elements in the original matched set
+including text nodes. When used on an &ltiframe&gt,
+matches the content document.</span></td>
+          		</tr>
+		<tbody>
+        </table>
+<br><span  class="move_left ">For all methods that accept a filtering expression, the expression
+may be omitted in which case no filtering occurs.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Translating Elements</span>
+<br class="cbt">
+<br><span  class="move_left ">There may be times that you want to translate the elements
+within a matched set to other values. jQuery provides the
+map() method for this purpose.</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            		<th colspan="2">map(callback) </th>
+            		</tr>
+          		<tr>
+            			<td><span >callback</span></td>
+            			<td><span >(Function) A callback function called for each element in the
+matched set. The return values of the invocations are collected
+into an array that is returned as the result of the map() method.
+The current element is set as the function context (this) for
+each invocation.</span></td>
+          		</tr>
+          		
+		<tbody>
+        </table>
+<br><span  class="move_left ">For example, let's say that you wanted to collect the values of
+all form elements within a form named myForm:</span>
+<div class="commands">
+          <br><span>var values = $('#myForm :input').map(function(){</span>
+		            <br><span>return $(this).val();</span>
+		            <br><span>});</span>
+		  		          </div>
+						  <div class="border">
+          <table class="elliptic">
+            <tbody>
+              <tr>
+                <td class="hotTipLeft">
+                  <h1>Hot<br>Tip</h1>
+                </td>
+                <td class="hotTipRight">
+                  <span>The map() function returns a jQuery object
+instance. To convert this to a normal JavaScript
+array, you can use the get() method without
+parameters:
+var values = $('#myForm :input').map(function(){
+return $(this).val();
+}).get();
+In this case, values references a JavaScript array rather than
+a jQuery wrapped object. </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+         </div>
+<br><span class="move_left strong font_size">Controlling Chaining</span>
+<br class="cbt">
+<br><span  class="move_left ">All of the methods examined create new matched sets whose
+contents are determined in the manner explained for each
+method. But what happens to the original? Is it dismissed?</span>
+<br class="cbt">
+<br><span  class="move_left ">It is not. When a new wrapped set is created it is placed on the
+top of a stack of sets, with the top-most set being the one
+to which any methods will be applied (as we have seen in the
+examples). But jQuery allows you to "pop" the top-most set
+off that stack so that you can apply methods to the original
+set. It does this with the end() method:</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            		<th colspan="2">end() </th>
+            		</tr>
+          		<tr>
+            			<td><span >(no arguments)</span></td>
+				<td><span ></span></td>
+				
+          		</tr>
+          		
+		<tbody>
+        </table>
+<br><span  class="move_left ">Consider a previous example:</span>
+<div class="commands">
+          <br><span>$('div').add('p').css('color','red');</span>
+		            </div>
+<br><span  class="move_left ">As we recall, this creates a matched set of &ltdiv&gt elements,
+then creates a new set that also contains the &ltp&gt elements.
+Since this latter set is at the top of the stack when the css()
+method is called, it is the second set that is affected. Now
+consider:</span>
+<div class="commands">
+          <br><span>$('div').add('p').css('color','red').end().hide();</span>
+</div>
+<br><span  class="move_left ">After the css() method is called, the end() method pops
+the second set off the stack "exposing" the original set of just
+&ltdiv&gt elements, which are then hidden.</span>
+<br class="cbt">
+<br><span  class="move_left ">Another useful method to affect how chaining the sets operates
+is the andSelf() method:</span>
+<table class="syntax_description">
+		<tbody>
+          		<tr>
+            		<th colspan="2">andSelf()	 </th>
+            		</tr>
+          		<tr>
+            			<td><span>(no arguments)</span></td>
+            			<td></td>
+          		</tr>
+          		
+		<tbody>
+        </table>
+<br><span class="move_left strong font_size">Controlling Chaining, continued</span>
+<br class="cbt">
+<br><span  class="move_left ">Calling andSelf() creates yet another new matched set that
+is the union of the top two matched sets on the stack. This can
+be useful for performing an action on a set, creating a new distinct set, and then applying a method (or methods) to them
+all. Consider:</span>
+<div class="commands">
+          <br><span>$('div').css('background-color,'yellow')</span>
+		            <br><span>.children('img').css('border','4px ridge maroon')</span>
+		            <br><span>.andSelf().css('margin','4em');</span>
+		  		          </div>
+<br><span  class="move_left ">All &ltdiv&gt elements are selected and their background set to
+yellow. Then, the &ltimg&gt children of those &ltdiv&gt elements are
+selected and have a border applied. Finally, the two sets are merged, and a wide margin is applied to all &ltdiv&gt elements
+and their &ltimg&gt children.</span>
+<br class="cbt">
+<br><span  class="move_left ">Between jQuery selectors and the jQuery methods that allow
+us to manipulate the matched sets, we can see that jQuery
+gives us some powerful tools to select the DOM elements
+that we can then operate upon with the many jQuery methods
+(as well as the dozens and dozens of jQuery plugins) that are
+available to us.</span>
+ </div>
+<div class="down_page">
+        <table>
+          <tbody>
+            <tr>
+              <td class="align_left medium_padding align_top">
+                <br><span class="move_left strong">ABOUT THE AUTHORS</span><br>
+				<br><span class="move_left strong">Bear Bibeault</span><br>
+                <br><img src="img/bear2.png" alt="622" class="textWrap smallIcon" ><span  class="move_left ">Bear Bibeault has been writing software for over three decades, starting with a
+Tic-Tac-Toe program written on a Control Data Cyber supercomputer via a 100-baud
+teletype. He is a Software Architect and Technical Manager for a company that builds
+and maintains a large financial web application used by the accountants that many of
+the Fortune 500 companies keep in their dungeons. He also serves as a "sheriff" at
+the popular JavaRanch.com.</span>
+  <br><span><span class="move_left strong">Publications:</span>jQuery in Action, Ajax in Practice, Prototype and Scriptaculous in Action (Manning)</span><br>
+<br><span><span class="move_left strong">Notable Projects:</span>"Sheriff" at JavaRanch.com, FrontMan Web Application Controller</span><br>            
+			   
+			   				<br><span class="move_left strong">Yehuda Katz</span><br>
+                <br><img src="img/Yehuda2.png" alt="622" class="textWrap smallIcon" ><span  class="move_left ">Yehuda Katz has been involved in a number of open-source projects over the past
+several years. In addition to being a core team member of the jQuery project, he is
+also a core member of Merb, an alternative to Ruby on Rails (also written in Ruby).
+He speaks about jQuery and Ruby at a number of regional conferences, and is the
+JavaScript expert on the Merb team. He recently joined EngineYard working on
+the Merb project full-time.</span>
+<br><span><span class="move_left strong">Publication:</span>jQuery in Action (Manning)</span><br>
+<br><span><span class="move_left strong">Notable Projects:</span>Visual jQuery.com, jQuery Plugin Coordinator, Merb, DataMapper ORM</span><br>
+<br></span><span class="move_left strong">Web site:</span>www.yehudakatz.com </span><br>
+</td>
+<td  class="align_left medium_padding align_top">
+                <br><span class="move_left strong">RECOMMENDED BOOK</span><br>
+                <br><img src="img/page62.png" alt="612" class="textWrap smallIcon"><span  class="move_left ">jQuery in Action is a
+fast-paced introduction
+and guide to the
+jQuery library. It shows
+you how to traverse
+HTML documents,
+handle events, perform
+animations, and add
+Ajax to your web pages using jQuery. You
+learn how jQuery interacts with other tools
+and how to build jQuery plugins.</span>
+				<br><a href="Buy Here" class="buyhere" class="strong">Buy Here</a>
+<br><span class="strong">books.dzone.com/books/</span>
+<br><span class="strong">jquery-in-action</span>
+				</td>
+            </tr>
+          </tbody>
+        </table class="pow">
+      </div>
+            <div class="footer">
+        <span> DZone, Inc. | www.dzone.</span>
+      </div>
+    </div>	
+  </body>
+</html>
