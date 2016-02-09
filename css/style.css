@@ -1,4 +1,4 @@
-﻿
+
 @media (min-width: 1000px) {
     .one {
         width: 1005px;
@@ -15,7 +15,9 @@
     }
 }
 
-
+pre{
+padding-top:1%
+}
 .border {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -42,9 +44,9 @@ color:#FFFFFF;
 }
 body {
         /*font-family: 'Open Sans', Roboto-Black, Graublau Sans Web, EuroSansProLig, Arial, sans-serif;*/
-	font-family: OpenSans, sans-serif;;
+	font-family: 'Roboto-Medium';
         padding: 5px;
-        background:#FFCC99 ;
+        background:#FFCCCC/*FFFF66*/;
 }
 .footer {
 	text-align: center;
@@ -63,8 +65,8 @@ body {
     text-decoration: underline;
 }
 @font-face {
-    font-family: 'Open Sans', sans-serif;
-    src: url(../fonts/OpenSans-Regular.eot);
+    font-family: 'Roboto-Medium';
+    src: url(../fonts/Roboto-Regular.eot);
     /* IE9 */
 }
 
@@ -84,7 +86,7 @@ text-align:bottom;
 
 .down_page {
 	border: thin solid;
-	background: #99CCFF; 
+	background: #CCCCFF/*99CCFF*/; 
 	padding: 15px;
 	text-align: left;
 	vertical-align:top;
@@ -94,8 +96,6 @@ text-align:bottom;
 	color:#000000;
 	
 }
-
-
 
 .title_font {
 	font-size: 50px;
@@ -188,7 +188,7 @@ table {
 }
 
 .hotTipLeft {
-        background: #FFFF33;    
+        background: #FFCC99/*FFFF33*/;    
         text-align: center;
 	vertical-align: middle;
 	border-radius: 5px 0px 0px 5px;
@@ -202,24 +202,19 @@ table {
 	color:#FFFFFF;
 }
 .hotTipRight {
-        background: #3333FF;
+        background: #993366/*3333FF*/;
         text-align: left;
 	vertical-align: center;
 	border-radius: 0px 5px 5px 0px;
 	padding: 15px 30px 15px 35px;
 }
+
 .commands {
-        font-family:
-        /*Geneva, Arial Helvetica,*/
-        Cardo99s-webfont, monospace;
-        padding-bottom: 20px;
+        padding-bottom:20px;  
 	background: #CCCCCC;
 	border: 1px solid #999999;
-        padding-top: 0px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        padding-left: 15px;
-        margin-top: 20px;
+        margin-top: 15px;
+        
 }
 
 .textWrap {
@@ -246,39 +241,12 @@ table {
 .main_title_img {
 	width: 55%;
 }
-.shorthand_definition th{
-  	background:#6699FF ;
-  	border: 1px solid #000000; 
-}
-.shorthand_definition tr:nth-child(2n) {
-  	background: #66CCFF;
-  	padding-top:5px;
-  	padding-bottom:5px;
-  	border: 1px solid #000000; 
-}
-
-.shorthand_definition tr:nth-child(2n-1) {
-  	background:#99CCFF;
-  	border: 1px solid #000000; 
-  	padding-top:5px;
-  	padding-bottom:5px;
-}
-
-.shorthand_definition {
-	border: 1px solid #000000; 
-	margin-top:20px;
-	margin-bottom:20px;
-}
-
-.shorthand_definition  td{
-  	border: 1px solid #000000; 
-}
   .syntax_description td:nth-child(2n-1){
 	width:15%;
-	background:#CCFFFF;
+	background:#FFCCCC/*CCFFFF*/;
 }
 .syntax_description td:nth-child(2n){
-	background:#FFFF99;
+	background:#FFCC99/*FFFF99*/;
 }
 .syntax_description{
 	border: 1px solid #000000; 
@@ -288,15 +256,20 @@ table {
 }
 .syntax_description th{
 	border: 1px solid #000000;
-	background:#99CCFF;
+	background:#CCCCFF/*99CCFF*/;
+	padding-top:5px;
+  	padding-bottom:5px;
+	padding-left:5px;
 }
 .syntax_description tr{
 	border: 1px solid #000000; 
 	padding-top:5px;
 	padding-bottom:5px;
+	padding-left:5px;
 }
 .syntax_description td{
 	border: 1px solid #000000; 
 	padding-top:5px;
 	padding-bottom:5px;
+	padding-left:5px;
 }
