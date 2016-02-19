@@ -67,7 +67,7 @@
 	<br class="cbt">
 		<br><span  class="move_left ">A jQuery statement typically follows the syntax pattern:</span>
 		<div class="commands"><pre>		 
-		selector).methodName();</pre>
+    selector).methodName();</pre>
 		</div>
 		<br><span  class="move_left ">The selector is a string expression that identifies the set of
 		DOM elements that will be collected into a matched set to be
@@ -75,12 +75,12 @@
 	<br class="cbt">
 		<br><span  class="move_left ">Many of the jQuery operations can also be chained:</span>
 		<div class="commands"><pre>		
-		$(selector).method1().method2().method3();</pre>
+    $(selector).method1().method2().method3();</pre>
 		</div>
 		<br><span  class="move_left ">As an example, let's say that we want to hide the DOM element
 		with the id value of goAway and to add class name incognito:</span>
 		<div class="commands"><pre>
-		$('#goAway').hide().addClass('incognito');</pre>
+    $('#goAway').hide().addClass('incognito');</pre>
 		</div>
 		<br><span  class="move_left ">Applying the methods is easy. Constructing the selector
 		expressions is where the cleverness lies.</span>
@@ -513,7 +513,7 @@
 		matched by the selector of the expression argument.</span>
 		<br><span  class="move_left ">Consider:</span>
 		<div class="commands"><pre>
-		$('div').add('p').css('color','red');</pre>
+    $('div').add('p').css('color','red');</pre>
 				</div>
 		<br><span  class="move_left ">This statement creates a matched set of all &ltdiv&gt elements,
 		then creates a new matched set of the already matched &ltdiv&gt
@@ -524,12 +524,12 @@
 		<br><span  class="move_left ">You may think this is not all that useful because the same could
 		have been achieved with:</span>
 		<div class="commands"><pre>
-		$('div,p').css('color','red');</pre>
+    $('div,p').css('color','red');</pre>
 				</div>
 		<br><span  class="move_left ">But now consider:</span>
 		<div class="commands"><pre>
-		$('div').css('font-weight','bold').add('p').
-		css('color','red');</pre>
+    $('div').css('font-weight','bold').add('p').
+    css('color','red');</pre>
 				</div>
 		<br><span  class="move_left ">Here the first created matched set of &ltdiv&gt elements is assigned
 		a bold rendition, and then the second matched set,
@@ -542,10 +542,10 @@
 	<br class="cbt">
 		<br><span class="move_left strong font_size">More Examples</span>
 		<div class="commands"><pre>
-		$('div').add(someElement).css('border','3px solid pink');
-		$('div')
-		.add([element1,element2])
-		.css('border','3px solid pink');</pre>
+    $('div').add(someElement).css('border','3px solid pink');
+    $('div')
+    .add([element1,element2])
+    .css('border','3px solid pink');</pre>
 		</div>
 		<br><span class="move_left strong font_size">Removing Matched Elements</span>
 <br class="cbt">
@@ -573,14 +573,14 @@
 	<br class="cbt">
 		<br><span class="move_left strong font_size"> Examples</span>
 		<div class="commands"><pre>
-		$('body *').css('font-weight','bold')
-		.not('p').css('color','red');</pre>
+    $('body *').css('font-weight','bold')
+    .not('p').css('color','red');</pre>
 		</div>
 		<br><span  class="move_left ">Makes all body elements bold, then makes all but &ltp&gt
 		elements red.</span>
 		<div class="commands"><pre>
-		$('body *').css('font-weight','bold')
-		.not(anElement).css('color','red');</pre>
+    $('body *').css('font-weight','bold')
+    .not(anElement).css('color','red');</pre>
 		</div>
 		<br><span  class="move_left ">Similar to the previous except the element referenced by
 		variable anElement is not included in the second set (and
@@ -629,8 +629,8 @@
 	<br class="cbt">
 		<br><span class="move_left strong font_size"> Examples</span>
 		<div class="commands"><pre>
-		$('div').css('background-color','blue')
-		.find('img').css('border','1px solid aqua');;</pre>
+    $('div').css('background-color','blue')
+    .find('img').css('border','1px solid aqua');;</pre>
 		</div>
 		<br><span  class="move_left ">Selects all &ltdiv&gt elements, makes their background blue,
 		selects all &ltimg&gt elements that are descendants of those
@@ -671,18 +671,18 @@
 	<br class="cbt">
 		<br><span class="move_left strong font_size"> Examples</span>
 		<div class="commands"><pre>
-		$('.bashful').show()
-		.filter('img[src$=.gif]').attr('title','Hi there!');</pre>
+    $('.bashful').show()
+    .filter('img[src$=.gif]').attr('title','Hi there!');</pre>
 		</div>
 		<br><span  class="move_left ">Selects all elements with class name bashful, makes sure
 		that they are visible, filters the set down to just GIF images,
 		and assigns a title attribute to them.</span>
 		<div class="commands"><pre>
-		$('img[src^=images/]').filter(function()
-		{
-			return $(this).attr('title').match(/.+@.+\.com/)!= null;
-		})
-		.hide();</pre>
+    $('img[src^=images/]').filter(function()
+    {
+	    return $(this).attr('title').match(/.+@.+\.com/)!= null;
+    })
+    .hide();</pre>
 						  </div>
 		<br><span  class="move_left ">Selects images from a specific folder, filters them to only
 		those whose title attribute matches a rudimentary .com
@@ -714,12 +714,12 @@
 				</table>
 		<br><span class="move_left strong font_size">Examples</span>
 		<div class="commands"><pre>
-		$('body *').slice(2).hide();</pre>
+    $('body *').slice(2).hide();</pre>
 		</div>
 		<br><span  class="move_left ">Selects all body elements, then creates a new set containing
 		all but the first two elements, and hides them.</span>
 		<div class="commands"><pre>
-		$('body *').slice(2,3).hide();</pre>
+    $('body *').slice(2,3).hide();</pre>
 		</div>
 		<br><span  class="move_left ">Selects all body elements, then creates a new set containing
 		the third element in the set and hides it. Note that the new
@@ -842,10 +842,10 @@
 		<br><span  class="move_left ">For example, let's say that you wanted to collect the values of
 		all form elements within a form named myForm:</span>
 		<div class="commands"><pre>
-		var values = $('#myForm :input').map(function()
-		{
-			return $(this).val();
-		});</pre>
+    var values = $('#myForm :input').map(function()
+    {
+        return $(this).val();
+    });</pre>
 								  </div>
 								  <div class="border">
 				  <table class="elliptic">
@@ -896,7 +896,7 @@
 				</table>
 		<br><span  class="move_left ">Consider a previous example:</span>
 		<div class="commands"><pre>
-		$('div').add('p').css('color','red');</pre>
+    $('div').add('p').css('color','red');</pre>
 		</div>
 		<br><span  class="move_left ">As we recall, this creates a matched set of &ltdiv&gt elements,
 		then creates a new set that also contains the &ltp&gt elements.
@@ -904,7 +904,7 @@
 		method is called, it is the second set that is affected. Now
 		consider:</span>
 		<div class="commands"><pre>
-		$('div').add('p').css('color','red').end().hide();</pre>
+    $('div').add('p').css('color','red').end().hide();</pre>
 		</div>
 		<br><span  class="move_left ">After the css() method is called, the end() method pops
 		the second set off the stack "exposing" the original set of just
@@ -931,9 +931,9 @@
 		be useful for performing an action on a set, creating a new distinct set, and then applying a method (or methods) to them
 		all. Consider:</span>
 		<div class="commands"><pre>
-		$('div').css('background-color,'yellow')
-		.children('img').css('border','4px ridge maroon')
-		.andSelf().css('margin','4em');</pre>
+    $('div').css('background-color,'yellow')
+    .children('img').css('border','4px ridge maroon')
+    .andSelf().css('margin','4em');</pre>
 		</div>
 		<br><span  class="move_left ">All &ltdiv&gt elements are selected and their background set to
 		yellow. Then, the &ltimg&gt children of those &ltdiv&gt elements are

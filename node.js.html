@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"type="text/css"/ 
+    <!--[if lt IE 9]>
+    <script>
+      var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
+      for (var i = 0; i < e.length; i++) {
+        document.createElement(e[i]);
+      }
+    </script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="page_cont one">
+      <br class="cbt">
+      <div class="content">
+        <table border=0>
+          <tbody>
+            <tr>
+              <td rowspan=2>
+                <ul class="top_page_list">
+                  <span class="strong">CONTENTS INCLUDE:</span>
+                  <a href="#towhat">
+                    <li>What Is Node?</li>
+                  </a>
+                  <a href="#tohow">
+                    <li><span>How Does Node Work?</span></li>
+                  </a>
+                  <a href="#toArchitecture">
+                    <li><span>Architecture</span></li>
+                  </a>
+                  <a href="#toNode">
+                    <li><span>Node Performance<br>Characteristics</span></li>
+                  </a>
+                  <a href="#toGood">
+                    <li><span>What Is Node Good For?<br>...and more!</span></li>
+                  </a>
+                </ul>
+              </td>
+              <td class="main_title">
+                <span class="title_font">Node.js</span>
+                <h1>Server-Side JavaScript for Backends, API Servers, and Web Apps</h1>
+              </td>
+            </tr>
+            <tr>
+              <td class="down_title ">
+                <span class="strong">By:  Bert Belder</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="titletop strong">
+          <span id="towhat">WHAT IS NODE?</span>
+				</div>
+				<br><span class="move_left ">First, a quick note: The terms "Node.js" and "Node" are used
+		interchangeably. The official description according to the
+		<a href="https://nodejs.org/en/">nodejs.org</a> website is as follows:</span>
+	<br class="cbt">
+		<br><span class="move_left ">"Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine."
+		<br class="cbt">Translation: Node runs on top of Google's open-source
+		JavaScript engine called V8. It's written in C++ and is used in
+		Google's Chrome browser. It's fast!</span>
+	<br class="cbt">
+		<br><span class="move_left ">"Node.js uses an event-driven, non-blocking I/O model that makes it
+		lightweight and efficient."</span>
+	<br class="cbt">
+		<br><span class="move_left ">Translation: Node.js pairs JavaScript's naturally event-driven,
+		asynchronous coding style with non-blocking I/O libraries
+		for performing server tasks such as working with filesystems
+		& databases. This pairing makes it easy to write fast, efficient,
+		and non-blocking applications that would be difficult &
+		complex to author in traditionally synchronous languages.</span>
+	<br class="cbt">
+		<br><span class="move_left ">"Node.js's package ecosystem, npm, is the largest ecosystem of open
+		source libraries in the world."</span>
+		<br><span class="move_left ">Translation: npm (name always lower-case) is the tool used
+		to install and manage dependencies in the Node world as well
+		as the main repository where public Node.js packages are
+		registered. The later, with almost 200,000 packages and over
+		2 billion monthly downloads, has almost twice the number of
+		packages of the next largest ecosystem, Maven. In addition
+		to Node.js libraries, npm also lists more and more front-end
+		packages, but that's a different topic!</span>
+		<div class="titletop strong">
+				  <span id="towhat">NODE IS JAVASCRIPT ON THE SERVER</span>
+				</div>
+				<br><span class="move_left ">Node allows developers to write server-side applications in
+		JavaScript. Server-side applications perform tasks that aren't
+		suitably performed on the client, like processing and persisting
+		data or files, plus tasks like connecting to other networked
+		servers, serving web pages and pushing notifications. Seeing
+		that JavaScript is an incredibly popular language with web and
+		mobile front-end developers, the ability to use this same skill
+		to program server-side tasks, in theory, increases a developer's
+		productivity. In some cases it even allows the same code to be
+		shared between client and server.</span>
+		<div class="titletop strong">
+				  <span id="tohow">HOW DOES NODE WORK?</span>
+				</div>
+		<br><span class="move_left strong font_size">Synchronous vs asynchronous programming</span>
+	<br class="cbt">
+				<br><span class="move_left ">C and Java traditionally use synchronous I/O, which means
+		that when a program starts an I/O operation, the rest of the
+		program stops until that operation is completed. You can get
+		around this by writing multithreaded programs, but for some
+		developers, writing these types of applications in a distributed
+		networking environment can be daunting. Of course there is also the issue of the number of threads a system can actually
+		spawn, and writing "thread-safe" code adds significant
+		complexity to any codebase. Node, by contrast, is singlethreaded,
+		but provides for asynchronous & non-blocking code
+		by default.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Synchronous vs asynchronous: by analogySynchronous vs asynchronous: by analogy</span>
+	<br class="cbt">
+		<br><span class="move_left ">In order to understand non-blocking I/O, let's picture a
+		common scenario: ordering food at a restaurant.</span>
+	<br class="cbt">
+		<br><span class="move_left ">A typical experience would be something like this:</span>
+		<ol>
+			   <li><span>You sit at a table and the server takes your drink order.</span></li>
+			   <li><span>The server goes back to the bar and passes your order to a
+		bartender.</span></li> 
+			<li><span>While the bartender is working on your drink, the server
+		moves on to take another table's drink order.</span></li> 
+			<li><span>The server goes back to the bar and passes along the
+		other table's order.</span></li> 
+			<li><span>Before the server brings back your drinks, you order some
+		food.</span></li> 
+			<li><span>The server passes your food order to the kitchen.</span></li> 
+			<li><span>Your drinks are ready now, so the server picks them up
+		and brings them back to your table.</span></li> 
+			<li><span>The other table's drinks are ready, so the server picks
+		them up and takes them to the other table.</span></li> 
+			<li><span>Finally your food is ready, so server picks it up and brings
+		it back to your table.</span></li> 
+		</ol>
+		<br><span class="move_left ">Basically every interaction with the server follows the same pattern.</span>
+		<ol class="decimal">
+				<li>You order something from the server.</li>
+				<li>The server hands your order off to the bar or kitchen,
+		freeing him up to take new orders or to deliver orders
+		that are completed.</li>
+				<li>When your order is completed, the kitchen or bar alerts
+		the server, and he delivers it to you.</li> 
+		</ol>
+		<img src="img/node12.png" alt="622">
+	<br class="cbt">
+		<br><span class="move_left ">Notice that at no point in time is the server doing more than one
+		thing. He can only process one request at a time, but he does not
+		wait around for the orders to be filled. This is how non-blocking
+		Node.js applications work. In Node, your application code is like
+		a restaurant server processing orders, and the bar/kitchen is the
+		operating system handling your I/O calls.</span>
+	<br class="cbt">
+		<br><span class="move_left ">Your single-threaded JavaScript application is responsible for all
+		the processing up to the moment it requires I/O. Then, it hands
+		the work off to the operating system, which processes the I/O
+		and calls your application back when it's finished. For contrast,
+		imagine if our restaurant were synchronous: every time the server
+		took an order, he would wait for the bar/kitchen to finish the order
+		before taking the next request. This would be very slow! This is how
+		blocking I/O works.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Event loop concurrency model</span>
+	<br class="cbt">
+		<br><span class="move_left ">Node leverages a browser-style concurrency model on the server.
+		As we all know, JavaScript was originally designed for the browser
+		where code execution is triggered by events such as mouse clicks or
+		the completion of an Ajax request. Moved to the server, this same
+		model allows for the idea of an event loop for server events such as
+		network requests. In a nutshell, JavaScript waits for an event and
+		whenever that event happens, a callback function occurs.</span>
+	<br class="cbt">
+		<br><span class="move_left ">For example, your browser is constantly looping waiting for events
+		like clicks or mouse-overs to occur, but this listening for events
+		doesn't block the browser from performing other tasks. On the
+		server this means that instead of a program waiting for a response
+		from a database query, file access, or connection to an external API,
+		it immediately moves on to the next unit of work until the event
+		returns with a response. Instead of blocking the server waiting for
+		I/O to complete, the event loop allows applications to process other
+		requests while waiting for I/O results. In this way Node achieves
+		multitasking more efficiently than using threads.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Event loop analogy: mail carrier</span>
+	<br class="cbt">
+		<br><span class="move_left ">A mail carrier "loops" through the mailboxes on her route, checking
+		each for new letters (events). In your postbox she finds a letter
+		addressed to IBM; you are requesting a quote for their cloud backup
+		service. She takes the letter, and when her loop takes her past
+		IBM headquarters she drops it off. She does not wait for IBM's
+		response, she continues on her loop, picking up & delivering other
+		letters while IBM processes your request (does an I/O operation).</span>
+	<br class="cbt">
+		<br><span class="move_left ">The next three times she passes IBM there is no response ready,
+		so she continues on her loop delivering other letters. The fourth
+		time she passes IBM, they have a response ready. She picks it up &
+		delivers the quote to you. The response, addressed to the original
+		sender, is like the callback, routed to the original caller with the
+		response data (the quote).</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Event loop code example</span>
+	<br class="cbt">
+		<br><span class="move_left ">Let's look at a simple example of asynchronously reading a file. This
+		is a two step process:</span>
+		<ol class="decimal">
+				<li>The filename is passed to the OS (via Node and libuv)</li>
+				<li>The readHandler callback function is executed with the
+		response (a Buffer)</li>
+    
+		</ol>
+		<div class="commands"><pre>		
+    var fs = require('fs');
+    fs.readFile('my_file.txt', function readHandler(err, data) 
+    {
+        if (err) throw err;
+        // convert the buffer to string and output it
+        console.log(data.toString());
+    });</pre>
+        </div>
+		<br><span class="move_left ">The request to read the file goes through Node bindings to libuv.
+		Then libuv gives the task of reading the file to a thread. When the
+		thread completes reading the file into the buffer, the results goes
+		to V8 and then through the Node bindings in the form of a callback
+		function. In the callback shown the `data` argument is a Buffer with
+		the file data.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Example of an http server using node:</span>
+		<div class="commands"><pre>
+    var http = require('http');
+    http.createServer(
+    function (request, response) 
+    {
+        response.writeHead(200, {'Content-Type': 'text/plain'});
+        response.end('Hello World\n');
+    }
+    ).listen(8080);
+    console.log('Server running at http://localhost:8080/');      
+</pre>
+        </div>
+		<br><span class="move_left ">The "event >> callback" mechanism here is the same as in our read
+		file example, but in one case we initiated the operation (read file)
+		that results in an event being triggered, whereas in this example,
+		the events are triggered in response to external input (an
+		incoming HTTP request).</span>
+		<div class="titletop strong">
+				  <span id="toArchitecture">ARCHITECTURE</span>
+				</div>
+				<br><span class="move_left ">There are four building blocks that constitute Node. First, Node
+		encapsulates libuv<a href="https://github.com/libuv/libuv">libuv</a> to handle asynchronous events and Google's V8
+		to provide a run-time for JavaScript. Libuv is what abstracts away
+		all of the underlying network and file system functionality on both
+		Windows and POSIX-based systems like Linux, Mac OSX and Unix.
+		The core functionality of Node, modules like Assert, HTTP, Crypto
+		etc., reside in a core library written in JavaScript. The Node bindings
+		provide the glue connecting these technologies to each other and to
+		the operating system.</span>
+		<img src="img/node22.png" alt="322">
+		<div class="titletop strong">
+				  <span id="toNode">NODE PERFORMANCE CHARACTERISTICS</span>
+				</div>
+				<br><span class="move_left ">Everyone knows benchmarks are a specific measurement and
+		don't account for all cases. Certainly, what and how you measure
+		matters a lot. But there's one thing we can all agree on: at high
+		levels of concurrency (thousands of connections) your server
+		needs to become asynchronous and non-blocking. We could have
+		finished that sentence with IO, but the issue is that if any part of
+		your server code blocks, you're going to need a thread. At these
+		levels of concurrency, you can't go about creating threads for every
+		connection. So, the whole code path needs to be non-blocking and async, not just the IO layer. This is where Node excels. Some
+		examples of Node performance benchmarks and related posts:</span>
+		<ol>
+			<li><a href="https://strongloop.com/strongblog/node-js-is-faster-than-java/">Strongloop</a></li>
+			<li><a href="http://engineering.linkedin.com/nodejs/blazing-fast-nodejs-10-performance-tips-linkedin-mobile">LinkedIn</a></li>
+			<li><a href="https://dzone.com/articles/performance-comparison-between">DZone</a></li>
+		</ol>
+		<div class="titletop strong">
+				  <span id="toGood">WHAT IS NODE GOOD FOR?</span>
+				</div>
+		<br><span class="move_left strong font_size">Web applications</span>
+	<br class="cbt">
+		<br><span class="move_left ">Many modern web applications are SPAs (single page applications)
+		that put most rendering and UI concerns in the client code, calling
+		the server only to request or update data.</span>
+		<br><span class="move_left ">Reasons why:</span>
+		<ol>
+				<li><span>Single page applications most frequently request and send
+			data (e.g. JSON) rather than rendered pages (html), thus
+			payloads are smaller but more frequent. Node's asynchronous
+			model excels at handling these high-frequency, smallpayload
+			requests.</span></li>
+				 <li><span>Node's rich ecosystem of npm modules allows you to build
+			web applications front to back with the relative ease of a
+			scripting language that is already ubiquitously understood on
+			the front end.</span></li>
+				<li><span>Single Page Applications must be written in (or compiled to)
+			JavaScript. A Node backend means the whole stack is in one
+		language.</span></li>
+    
+		</ol>
+		<br><span class="move_left ">Examples of frameworks for Node:</span>
+		<ol>
+			<li><a href="http://expressjs.com/">Express</a></li>
+			<li><a href="http://sailsjs.org/">Sails.js</a></li>
+			<li><a href="http://hapijs.com/">Hapi</a></li>
+			<li><a href="https://www.meteor.com/">Meteor</a></li>
+			<li><a href="http://meanjs.org/">MEAN.js</a></li>
+		</ol>
+		<br><span class="move_left strong font_size">Api servers and mobile backends</span>
+	<br class="cbt">
+		<br><span class="move_left ">An I/O library at its heart, Node.js is a popular choice for APIs and
+		mobile backends. Node's ease of use has been applied toward the
+		classic enterprise application use case to be able to gather and
+		normalize existing data and services.</span>
+	<br class="cbt">
+		<br><span class="move_left ">Reasons why:</span>
+		<ol>
+				<li><span>As the shift toward hybrid mobile applications becomes more
+			dominant in the enterprise, the re-use of code written in
+			JavaScript on the client side can be leveraged on the server</span></li>
+				 <li><span>Node's rich ecosystem has almost every underlying driver or
+			connector to enterprise data sources such as RDBMS, Files,
+			NoSQL, etc. that would be of interest to mobile clients</span></li>
+				<li><span>JSON, the de-facto standard format for API data interchange,
+			is a representation of native JavaScript objects, so of course
+			Node handles it easily. If it happens that you need to support
+			another format (XML e.g.), there's probably a module for it.</span></li>
+				
+		</ol>
+	<br class="cbt">
+		<br><span class="move_left ">Examples of mobile backends built with Node:</span>
+		<ol>
+		   <li><span><a href="http://loopback.io/">LoopBack</a>(Open-source framework)</span></li>
+		   <li><span><a href="https://parse.com/">Parse</a>(Proprietary)</span></li>
+		   <li><span><a href="http://www.feedhenry.com/">FeedHenry</a>(Proprietary)</span></li>
+		   <li><span><a href="http://www.appcelerator.com/product/">Appcelerator Cloud Services</a>(Proprietary)</span></li>
+		   <li><span><a href="http://restify.com/">Restify</a>(Open-source framework)</span></li>
+		</ol>
+		<br><span class="move_left strong font_size">Iot servers</span>
+	<br class="cbt">
+		<br><span class="move_left ">As more and more objects in the workplace, the home, and beyond
+		get connected into the "Internet of Things," Node.js is emerging as
+		the server technology of choice for many IoT platforms.</span>
+	<br class="cbt">
+		<br><span class="move_left ">Reasons why:</span>
+		<ol>
+			<li><span>Sensors reporting temperature, vehicle speed, etc. can
+		generate lots of data points, each one as small as a single
+		number. Node.js is built to efficiently handle this sort of
+		"many requests, small payloads" use-case.</span></li>
+			 <li><span>Node.js's popularity as a platform for building APIs means
+		that its strengths and weaknesses here are well explored, and
+		there are many mature solutions that fit the IoT problem.</span></li>
+		</ol>
+		<br><span class="move_left ">Examples of open-source IoT servers built in Node:</span>
+		<ol>
+			<li><a href="http://www.zettajs.org/">Zetta</a></li>
+			<li><a href="https://www.npmjs.com/package/mqtt-connection">mqtt-connection</a></li>
+			<li><a href="https://github.com/adafruit/adafruit-io-node">adafruit-io</a></li>
+			<li><a href="https://github.com/sparkfun/phant">phant</a></li>
+			
+		</ol>
+		<div class="titletop strong">
+          <span id="towhat">HOW DO I INSTALL NODE?</span>
+        </div>
+
+		<br><span class="move_left ">Installers exist for a variety of platforms including Windows, Mac
+		OS X, Linux, SunOS - and of course you can compile it yourself
+		from source. Official downloads are available from the nodejs.org
+		website:<a href="nodejs.org/en/download">nodejs.org/en/download</a> </span>
+		<div class="titletop strong">
+				  <span id="towhat">HOW CAN I MAKE NODE USEFUL?</span>
+				</div>
+		<br><span class="move_left strong font_size">What is nmp?</span>
+	<br class="cbt">
+<br><span class="move_left ">Node Package Manager ("npm") is the command-line package
+		manager for Node that manages dependencies for your application.
+		<a href="https://www.npmjs.com/">npmjs.com</a> is the public repository where you can obtain and
+		publish modules.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">How does nmp work?</span>
+	<br class="cbt">
+		<br><span class="move_left ">In order for your Node application to be useful, it is going to need
+		things like libraries, web and testing frameworks, data-connectivity,
+		parsers and other functionality. You enable this functionality by
+		installing specific modules via npm. npm comes bundled with Node.
+		js (since v0.6.3) so you can start using it right away!</span>
+	<br class="cbt">
+		<br><span class="move_left ">You can install any package with this command:</span>
+		<div class="commands"><pre>
+    $ npm install &ltname of module&gt   
+</pre>
+        </div>
+		<br><span class="move_left ">Some popular and most used modules include:</span>
+	<br class="cbt">
+		<a href="https://www.npmjs.com/package/express">express</a>
+		<br><span class="move_left ">A fast, unopinionated, minimalist web framework for Node. Express
+		aims to provide small, robust tooling for HTTP servers, making it
+		a great solution for single page applications, web sites, hybrids, or
+		public HTTP APIs.</span>
+	<br class="cbt">
+		<a href="https://lodash.com/">lodash</a>
+		<br><span class="move_left ">Lodash is a "toolbelt" utility library with methods for performing lots
+		of common JavaScript tasks. It can be used stand-alone, in conjunction
+		with other small libraries, or in the context of a larger framework</span>
+	<br class="cbt">
+		<a href="https://npmjs.org/package/async">async</a>
+		<br><span class="move_left ">Async is a utility module which provides straightforward, powerful
+		functions for working with asynchronous JavaScript. Although
+		originally designed for use with Node, it can also be used directly in
+		the browser. Async provides around 20 functions that include the
+		usual 'functional' suspects (map, reduce, filter, each...) in addition
+		to your async function.</span>
+	<br class="cbt">
+		<a href="https://www.npmjs.com/package/request">request</a>
+		<br><span class="move_left ">A simplified HTTP request client. It supports HTTPS and follows
+		redirects by default.</span>
+	<br class="cbt">
+		<a href="https://www.npmjs.com/package/grunt">grunt</a>
+		<br><span class="move_left ">A JavaScript task runner that helps automate tasks. Grunt can
+		perform repetitive tasks like minification, compilation, unit testing,
+		linting, etc. The Grunt ecosystem is also quite large with hundreds
+		of plugins to choose from. You can find the listing of plugins here.</span>
+	<br class="cbt">
+		<a href="https://www.npmjs.com/package/socket.io">socket.io</a>
+		<br><span class="move_left ">Socket.io makes WebSockets and real-time possible in all browsers
+		and provides built-in multiplexing, horizontal scalability, automatic
+		JSON encoding/decoding, and more.</span>
+	<br class="cbt">
+		<a href="https://npmjs.org/package/mongoose">mongoose</a>
+		<br><span class="move_left ">A MongoDB object modeling tool designed to work in an asynchronous
+		environment. It includes built-in type casting, validation, query
+		building, business logic hooks and more, out of the box.</span>
+		<div class="titletop strong">
+				  <span id="towhat">WHAT IS NEW IN NODE V4.X?</span>
+				</div>
+		<br><span class="move_left ">After Node v0.10 came v0.12. Naturally v0.12 was followed by
+		v4.0. What happened here?! io.js happened, and with it, Node got
+		semantic versioning (semver).</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Io.js</span>
+	<br class="cbt">
+		<br><span class="move_left ">First some history: in 2015, a group of Node.js developers &
+		core platform engineers were eager to start using the latest and
+		greatest Node and V8 features, and unwilling to wait for them to
+		be land in the joyent/node "master" release channel. So, they
+		forked the Node.js project on GitHub. As the name "Node.js" was
+		trademarked, they gave their fork the name "io.js" referencing the
+		asynchronous I/O nature of Node. The fork was always meant to be
+		temporary, and later in 2015 io.js was merged back into the main
+		Node release channel, which now lives at    on GitHub,
+		and the next version of io.js/node was <a href=" https://nodejs.org/en/blog/announcements/foundation-v4-announce/">released as Node.js v4.0.0.</a> </span>
+	<br class="cbt">
+		<br><span class="move_left ">Along with the project merger came the organization of the official
+		<a href="https://nodejs.org/en/foundation/">Node.js Foundation</a> to serve the community. The foundation's
+		mission is "to enable widespread adoption and help accelerate
+		development of Node.js and other related modules through an open
+		governance model..." Both IBM and StrongLoop were among the very
+		first members of this organization and believe strongly in its mission.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Semver</span>
+	<br class="cbt">
+		<br><span class="move_left ">When io.js was merged into Node.js, it brought with it semver, or
+		semantic versioning. In addition to Node.js itself, many popular
+		Node libraries use semver, so it's worth getting familiar with.</span>
+	<br class="cbt">
+		<br><span class="move_left ">Semver is a common standard for release numbering, intended
+		to add semantic meaning to the numbers so developers can know
+		at a glance whether a version change is likely to break their build.
+		Semver versions are three numbers in the form "MAJOR.MINOR.
+		PATCH". For example, in 2.11.3, the major version is 2, the minor 11
+		and the patch 3. The meanings are as follows:</span>
+		<ol>
+			   <li><span>MAJOR: incremented when releasing breaking API changes.</span></li>
+			   <li><span>MINOR: incremented when releasing new features or
+			enhancements that don't break backward compatibility</span></li>
+			   <li><span>PATCH: incremented when releasing a bug-fix or other patch</span></li>
+   
+		</ol>
+		<br><span class="move_left ">This means if you are using version 3.0.0 of a library, you should
+		be able to upgrade it to any version 3.*.* without your application
+		breaking. (Note the "should!!") <a href="https://npmjs.org/package/mongoose">Semver ranges </a>are used extensively in npm. Some common ones are <a href="https://github.com/npm/node-semver#tilde-ranges-123-12-1">tilde ranges</a>  (which fixates all but
+		the last number, so ~1.2.3 will upgrade all the way to 1.2.9999 but
+		not to 1.3) and <a href=" https://github.com/npm/node-semver#ranges">caret ranges</a> (which fixates only the first number, so
+		^1.2.3 will update to 1.999.999 but not to 2.0).</span>
+		<br><span class="move_left ">Node.js, in addition to following semver, has another bit of
+		information encoded in the version number: whether or not a version
+		is a Long Term Support release. Even-numbered major version
+		numbers are LTS releases, odd-numbered major versions are not (they
+		are supported in a stable capacity for six months, then superseded).</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Long term support releases</span>
+	<br class="cbt">
+		<br><span class="move_left ">In its early days, new Node.js releases came fast, and often brought
+		with them breaking API changes. With 4.0, Node now has a
+		predictable release schedule with LTS releases. LTS releases happen
+		once per year on April first (v4.2 LTS is the exception, having been
+		released in October). An <a href="https://github.com/nodejs/LTS/#lts-plan">LTS release</a> will receive patches and bug
+		fixes (no new features) for 18 months. After that it's retired to
+		Maintenance mode and only updated with "critical bugs, critical
+		security fixes, and documentation.</span>
+		<br><span class="move_left ">LTS releases allow companies and teams to build an application
+		against a particular version of Node and be confident that a release
+		won't take them by surprise in 3 months and force costly updates.
+		This regular, predictable release schedule makes Node.js much
+		more Enterprise friendly.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">V8 upgrade</span>
+	<br class="cbt">
+		<br><span class="move_left ">Moving from v0.12 to v4.0, Node jumped from V8 v3.28 to v4.5.
+		V8 is the engine that actually interprets and runs the code in your
+		program, so the main thing you'd notice if you updated versions &
+		ran the same (Node v0.12 compatible) code is that it probably runs
+		faster. That's not all that came with the new version of V8, however,
+		it also brought with it several <a href="https://nodejs.org/en/docs/es6/">ES6 features </a> and Typed Arrays.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Typed arrays</span>
+	<br class="cbt">
+		<br><span class="move_left ">Typed Arrays (Uint8Array, Int16Array, Float32Array etc.) are not
+		directly accessible in Node.js, but from version 4 they back the
+		Buffer class. The main difference from the old version is that new
+		Buffers are zeroed out upon initialization. If you don't know what
+		any of that means, don't worry, you're not likely to come across
+		it very frequently! Typed Arrays allow for better optimization and
+		efficient handling of Buffer data.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Es6 features</span>
+	<br class="cbt">
+		<br><span class="move_left ">First of all, what is ES6 (aka ES2015)? ES stands for "ECMAScript"
+		and is used chiefly to refer to versions of the JavaScript language
+		standard, not implementations of JavaScript. ES2015 is a synonym
+		for ES6. Unlike most languages, there are many large, competing JS
+		interpreters (V8 for Chrome, SpiderMonkey for Firefox, Chakra for
+		Internet Explorer, etc), and this means there is never one canonical
+		set of supported features. ES2015 basically means "modern
+		JavaScript as it exists in 2015." In the future, ES versions will be
+		incremented annually. Let's examine some key ES6 features:</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Generators</span>
+	<br class="cbt">
+		<br><span class="move_left "><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators">Generators</a> (and iterators) are one of the most talked-about features
+		of ES6. In the simplest terms, generators are special functions that
+		return iterators. Iterators are objects that implement an interface
+		allowing them to return many values, one after the next, and report
+		when they have reached the end of their available values. This is
+		very similar to the Iterable interface in Java. To return repeatedly, generator functions use the new yield keyword instead of return.
+		When invoked as an iterator, a generator will run until it gets to yield,
+		return that value, then pick up from that point when it's called again.</span>
+		<div class="commands"><pre>
+    function* myGenerator()
+    {
+        yield 1;
+        yield "hello world";
+    }
+    var gen = myGenerator();
+    console.log(gen.next().value); // 1
+    console.log(gen.next().value); // "hello world"
+    var last = gen.next();
+    console.log([last.value, last.done]); // [undefined, true]</pre>     
+
+				</div>
+				<br><span class="move_left ">For iterating over a generator, it usually makes more sense to use
+		<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of">for...of</a>, another new ES6 feature:</span>	
+				<div class="commands"><pre>
+    //.. generator set up as above
+    for(foobar of gen)
+    {
+        console.log(foobar);
+    } // output:
+    // 1
+    // "hello world"</pre>	
+
+				</div>
+		<br><span class="move_left ">Although iteration is the most obvious use of generators, they are
+		being used just as much (if not more) to create creative <a href="https://medium.com/@tjholowaychuk/callbacks-vs-coroutines-174f1fe66127#.4lgulsk50">new</a>
+		<a href="https://medium.com/@tjholowaychuk/callbacks-vs-coroutines-174f1fe66127#.7cfjz4dlq">mechanisms</a> for asynchronous flow control. The concepts here can
+		be confusing and it's not crucial that you master them right away,
+		just be aware that generators are used for far more than just iteration.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Arrow functions</span>
+	<br class="cbt">
+		<br><span class="move_left ">Though Object Oriented patterns are very common in JavaScript,
+		<a href="http://www.sitepoint.com/introduction-functional-javascript/">Functional Programming</a> paradigms are becoming more and more
+		popular in the JS community. In FP, one writes functions very
+		frequently (sometimes one per line). This fact is partly responsible
+		for the new, shorter, arrow function syntax for creating anonymous
+		functions in ES6. Arrow functions (in most cases) allow the
+		omission of curly braces, parentheses, and the "return" keyword.</span>
+	<br class="cbt">
+		<br><span class="move_left ">Consider the following code to get the total of the squares of just the
+		odd numbers in an array:</span>		
+				<div class="commands"><pre>
+    var squareTotals = [1,2,3,4,5]
+    .filter(function(n){ return n % 2; })
+    .map(function(n){ return n * n; })
+    .reduce(function(sum, n){ return sum + n; });
+    // squareTotals === 35</pre>		
+
+				</div>
+		<br><span class="move_left ">Readability is greatly increased when short functions like this are
+		written with "fat arrow" syntax (arrow functions):</span>		
+				<div class="commands"><pre>
+    var squareTotals = [1,2,3,4,5]
+    .filter(n => n % 2)
+    .map(n => n * n)
+    .reduce((sum, n) => sum + n);		
+</pre>
+				</div>
+		<br><span class="move_left strong font_size">Native promises</span>
+	<br class="cbt">
+				<br><span class="move_left ">Promises are a wrapper around callbacks that allow programmers
+		to write asynchronous code in a synchronous-looking way. Code
+		written with promises is frequently easier to reason about and
+		requires less nesting.</span>
+		<br><span class="move_left strong ">Without promises:</span>		
+				<div class="commands"><pre>
+    readJsonFile('urls.json', function(err, data)
+    {
+	var url = //get first URL
+	if(err) return handleError(err);
+        getWebpage(url, function(err, response)
+        {
+            if(err) return handleError(err);
+            parseHtml(response.body, function(err, html)
+            {
+				if(err) return handleError(err);
+				writeHtmlToFile(html, function(err)
+                {
+                    if(err) return handleError(err);
+                    console.log('done');
+                });
+            });
+        });
+    });	</pre>	
+
+				</div>
+		<br><span class="move_left "><span class="strong ">With promises</span> (promise creation code omitted, this just shows
+		consuming promises):</span>		
+				<div class="commands"><pre>
+    readJson('urls.json') // returns a Promise
+    .then(getWebpage)
+    .then(parseHtml)
+    .then(writeHtmlToFile)
+    .then(function()
+    {
+        console.log('done');
+    })
+    .catch(handleError);</pre>		
+
+				</div>
+		<br><span class="move_left strong font_size">Many more!</span>	
+	<br class="cbt">	
+			<br><span class="move_left ">There are many more new ES6 features than the three described
+		here. For a more comprehensive overview, be sure to read the <a href="https://nodejs.org/en/docs/es6/">Node.
+		js docs on ES6</a>, and for a survey of all ES6 features (not just those in
+		Node 4.0) there is a great <a href="https://github.com/lukehoban/es6features">GitHub repo outlining the additions.</a></span>	
+		<div class="titletop strong">
+				  <span id="towhat">NODE API GUIDE</span>
+				</div>
+				<br><span class="move_left ">Below is a list of the most commonly used Node APIs. For
+		a complete list and for an APIs current state of stability or
+		development, please consult the <a href="https://nodejs.org/api/">Node API documentation.</a></span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Buffer</span>
+	<br class="cbt">
+				<br><span class="move_left ">Functions for manipulating, creating and consuming octet streams,
+		which you may encounter when dealing with TCP streams or the file
+		system. Raw data is stored in instances of the <a href="https://nodejs.org/api/buffer.html">Buffer</a> class. A Buffer
+		is similar to an array of integers but corresponds to a raw memory
+		allocation outside the V8 heap. A Buffer cannot be resized.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Child process</span>
+	<br class="cbt">
+				<br><span class="move_left ">Functions for spawning new processes and handling their input and
+		output. Node provides a tri-directional popen(3) facility through the
+		<a href="https://nodejs.org/api/child_process.html">child_process</a> module.</span>
+	<br class="cbt">
+				<br><span class="move_left strong font_size">Cluster</span>
+			<br class="cbt">
+				<br><span class="move_left ">A single instance of Node runs in a single thread. To take advantage
+		of multi-core systems, the user will sometimes want to launch a
+		cluster of Node processes to handle the load. The <a href="https://nodejs.org/api/cluster.html">Cluster</a> module
+		allows you to easily create child processes that all share server ports.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Cripto</span>
+	<br class="cbt">
+				<br><span class="move_left ">Functions for dealing with secure credentials that you might
+		use in an HTTPS connection. The <a href="https://nodejs.org/api/crypto.html">Crypto</a> module offers a way of
+		encapsulating secure credentials to be used as part of a secure
+		HTTPS net or http connection. It also offers a set of wrappers for
+		OpenSSL's hash, hmac, cipher, decipher, sign and verify methods.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Debugger</span>
+	<br class="cbt">
+	
+				<br><span class="move_left ">You can access the V8 engine's <a href="https://nodejs.org/api/debugger.html">debugger</a> with Node's built-in
+		client and use it to debug your own scripts. Just launch Node with the debug argument (node debug server.js). A more feature-filled
+		alternative debugger is <a href="https://www.npmjs.com/package/node-inspector">node-inspector</a>. It leverages Google's Blink
+		DevTools, allows you to navigate source files, set breakpoints and
+		edit variables and object properties, among other things.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Events</span>
+	<br class="cbt">
+		<br><span class="move_left ">Contains the EventEmitter class used by many other Node objects.
+		<a href="https://nodejs.org/api/events.html">Events</a> defines the API for attaching and removing event listeners
+		and interacting with them. Typically, event names are represented
+		by a camel-cased string; however, there aren't any strict restrictions
+		on case, as any string will be accepted. Functions can then be
+		attached to objects, to be executed when an event is emitted.
+		These functions are called listeners. Inside a listener function, the
+		object is the EventEmitter that the listener was attached to. All
+		EventEmitters emit the event newListener (when new listeners are
+		added) and removeListener (when a listener is removed).</span>	
+		<br><span class="move_left ">To access the EventEmitter class use:
+		<div class="commands"><pre>
+    require('events').EventEmitter</pre>		
+
+        </div>
+		<br><span class="move_left ">emitter.on(event, listener) adds a listener to the end of the
+		listeners array for the specified event. For example:</span>
+		<div class="commands"><pre>
+    server.on('connection', function (stream) 
+    {
+        console.log('someone connected!');
+    });	</pre>	
+
+        </div>
+		<br><span class="move_left ">This calls returns emitter, which means that calls can be chained.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Filesystem</span>
+	<br class="cbt">
+		<br><span class="move_left ">The <a href="https://nodejs.org/api/fs.html">Filesystem</a> API contains methods to manipulate files on disk.
+		In addition to read and write methods, there are methods to create
+		symlinks, watch files, check permissions and other file stats, etc..
+		The major point of note here is that as I/O operations, the core
+		filesystem methods are asynchronous. There are synchronous
+		versions of most methods as well (e.g. readFileSync in addition
+		to readFile), but these synchronous methods should be avoided
+		when performance is a consideration! Node.js' asynchronous nature
+		depends on the event loop continuing to loop; if it's blocked for a
+		synchronous I/O operation, much of Node's speed is lost.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Globals</span>
+	<br class="cbt">
+		<br><span class="move_left "><a href="https://nodejs.org/api/globals.html">Globals</a> allow for objects to be available in all modules. (Except
+		where noted in the documentation.)</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Http</span>
+	<br class="cbt">
+		<br><span class="move_left "><a href="https://nodejs.org/api/http.html">HTTP</a> is the most important and most used module for a web
+		developer. It allows you to create HTTP servers and make them
+		listen on a given port. It also contains the request and response
+		objects that hold information about incoming requests and outgoing
+		responses. You also use this to make HTTP requests from your
+		application and do things with their responses. HTTP message
+		headers are represented by an object like this:</span>
+		<div class="commands"><pre>
+    { 
+        'content-length': '123',
+        'content-type': 'text/plain',
+        'connection': 'keep-alive',
+        'accept': '*/*' 
+    }	</pre>	
+
+        </div>
+		<br><span class="move_left ">In order to support the full spectrum of possible HTTP applications,
+		Node's HTTP API is very low-level. It deals with stream handling
+		and message parsing only. It parses a message into headers and
+		body but it does not parse the actual headers or the body.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Modules</span>
+	<br class="cbt">
+		<br><span class="move_left ">Node has a simple <a href="https://nodejs.org/api/modules.html">module loading system</a>. In Node, files and
+		modules are in one-to-one correspondence. As an example, foo.js
+		loads the module circle.js in the same directory.</span>
+	<br class="cbt">
+		<br><span class="move_left ">The contents of foo.js:</span>
+		<div class="commands"><pre>
+    require('events').EventEmitter</pre>		
+
+        </div>
+		<br><span class="move_left ">emitter.on(event, listener) adds a listener to the end of the
+		listeners array for the specified event. For example:</span>
+		<div class="commands"><pre>
+    var circle = r equire('./circle.js');
+    console.log( 'The area of a c ircle of radius 4 is '
+    + c ircle.area(4));	</pre>	
+
+        </div>
+		<br><span class="move_left ">The contents of circle.js:</span>
+		<div class="commands"><pre>
+    var PI = Math.PI;
+    exports.area = function (r) 
+    {
+        return PI * r * r;
+    };
+    exports.circumference = function (r) 
+    {
+        return 2 * PI * r;
+    };</pre>		
+
+        </div>
+		<br><span class="move_left ">The module circle.js has exported the functions area() and
+		circumference(). To add functions and objects to the root of your
+		module, you can add them to the special exports object. Variables
+		local to the module will be private, as though the module was
+		wrapped in a function. In this example the variable PI is private to
+		circle.js.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Net</span>
+	<br class="cbt">
+		<br><span class="move_left "><a href="https://nodejs.org/api/net.html">Net</a> is one of the most important pieces of functionality in Node
+		core. It allows for the creation of network server objects to listen for
+		connections and act on them. It allows for the reading and writing
+		to sockets. Most of the time, if you're working on web applications,
+		you won't interact with Net directly. Instead you'll use the <a href="https://nodejs.org/api/http.html">HTTP
+		module</a> to create HTTP-specific servers. If you want to create TCP
+		servers or sockets and interact with them directly, you'll want to
+		work with the Net API.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Process</span>
+	<br class="cbt">
+		<br><span class="move_left ">The <a href="https://nodejs.org/api/process.html">Process</a> object is used for accessing stdin, stdout, command
+		line arguments, the process ID, environment variables, and other
+		elements of the system related to the currently-executing Node
+		processes. It is an instance of EventEmitter. Here's example of
+		listening for uncaughtException:</span>
+		<div class="commands"><pre>
+    process.on('uncaughtException', function(err) 
+    {
+        console.log('Caught exception: ' + err);
+    });
+    setTimeout(function() 
+    {
+        console.log('This will still run.');
+    }, 500);
+    // Intentionally cause an exception, but don't catch it.
+    nonexistentFunc();
+    console.log('This will not run.');</pre>		
+
+        </div>
+		<br><span class="move_left strong font_size">Repl</span>
+	<br class="cbt">
+		<br><span class="move_left ">Stands for <a href="https://nodejs.org/api/repl.html">Read-Eval-Print-Loop</a>. You can add a REPL to your own
+		programs just like Node's standalone REPL, which you get when
+		you run Node with no arguments. REPL can be used for debugging
+		or testing.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Stream</span>
+	<br class="cbt">
+		<br><span class="move_left "><a href="https://nodejs.org/api/stream.html">Stream</a> is an abstract interface for streaming data that is
+		implemented by other Node objects, like HTTP server requests,and even stdio. Most of the time you'll want to consult the
+		documentation for the actual object you're working with rather than
+		looking at the interface definition. Streams are readable, writable,
+		or both. All streams are instances of <a href="https://nodejs.org/api/events.html#events_class_events_eventemitter">EventEmitter</a>.</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Util</span>
+	<br class="cbt">
+		<br><span class="move_left ">The <a href="https://nodejs.org/api/util.html">Util</a> API contains various utility methods, mostly for metatasks
+		like logging and debugging. It's included here to highlight
+		one method: inherits. Constructor inheritance can be a bit
+		unwieldy in JavaScript; util.inherits makes such code a bit easier
+		to write (and read).</span>
+		<div class="titletop strong">
+				  <span id="towhat">DEVELOPER TOOLS FOR NODE</span>
+				</div>
+		<br><span class="move_left ">Below are some key tools widely adopted in the enterprise and in
+		the community for developing Node applications:</span>
+	<br class="cbt">
+		<br><span class="move_left strong font_size">Development environments</span>
+		<table class="syntax_description">
+				<tbody>
+						<tr>
+								<th>PRODUCT/PROJECT </th>
+								<th>FEATURES/HIGHLIGHTS</th>
+						</tr>
+						<tr>
+								<td><span ><a href="http://www.jetbrains.com/webstorm/">WebStorm</a></span></td>
+								<td><span >Code analysis &middot Cross-platform &middot IntelliJ-based</span></td>
+						</tr>
+						<tr>
+								<td><span ><a href="http://www.sublimetext.com/">Sublime Text</a> </span></td>
+								<td><span >Goto anything &middot Customizable &middot Cross-platform</span></td>
+						</tr>
+						<tr>
+								<td><span><a href="https://atom.io/">Atom</a></span></td>
+								<td><span>Built on JavaScript &middot Extensible &middot Maintained by GitHub</span></td>
+						</tr>
+						<tr>
+								<td><span ><a href="http://www.nodeclipse.org/">Nodeclipse</a></span></td>
+								<td><span >Open source &middot Built on Eclipse</span></td>
+						</tr>
+						<tr>
+								<td><span ><a href="https://c9.io/">Cloud9 IDE</a></span></td>
+								<td><span >Cloud-based &middot Collaborative &middot Debug and deploy</span></td>
+						</tr>
+
+								<tr>
+								<td><span ><a href="https://www.visualstudio.com/en-us/features/node-js-vs.aspx">Visual Studio</a></span></td>
+								<td><span >Matches all elements with tag name F that are preceded by any sibling of tag name E.</span></td>
+						</tr>
+					 			
+				</tbody>
+				</table>
+		<br><span class="move_left strong font_size">Application performance monitoring</span>
+		<table class="syntax_description">
+				<tbody>
+						<tr>
+								<th>PRODUCT/PROJECT </th>
+								<th>FEATURES/HIGHLIGHTS</th>
+						</tr>
+						<tr>
+								<td><span ><a href="https://strongloop.com/node-js/arc/">StrongLoop Arc</a></span></td>
+								<td><span >Error tracing &middot Event loop response times &middot Slowest endpoints</span></td>
+						</tr>
+						<tr>
+								<td><span ><a href="http://newrelic.com/nodejs">New Relic</a> </span></td>
+								<td><span >Error rates &middot Transaction response times &middot Throughput monitoring</span></td>
+						</tr>
+						<tr>
+								<td><span><a href="https://www.appdynamics.com/solutions/nodejs-monitoring/">AppDynamics</a></span></td>
+								<td><span>Error tracing &middot Endpoint response time &middot Historical metrics</span></td>
+						</tr>
+						<tr>
+								<td><span ><a href="https://keymetrics.io/">Keymetrics</a></span></td>
+								<td><span >CPU monitoring &middot Load balancing &middot Exception reporting</span></td>
+						</tr>
+						
+					
+				</tbody>
+				</table>
+		<br><span class="move_left strong font_size">Debugging</span>
+		<table class="syntax_description">
+				<tbody>
+						<tr>
+								<th>PRODUCT/PROJECT </th>
+								<th>FEATURES/HIGHLIGHTS</th>
+						</tr>
+						<tr>
+								<td><span ><a href="https://nodejs.org/api/util.html">V8 Debugger</a></span></td>
+								<td><span >Manual code injection &middot Breakpoints &middot Event exception handling</span></td>
+						</tr>
+						<tr>
+								<td><span ><a href="https://github.com/node-inspector/node-inspector">Node Inspector</a></span></td>
+								<td><span >Google Blink Dev-Tools based &middot Breakpoints &middot CPU & memory Profiling</span></td>
+						</tr>
+						<tr>
+								<td><span><a href="https://c9.io/">Cloud9 IDE</a></span></td>
+								<td><span>Code analysis &middot Cross-platform &middot VCS integration</span></td>
+						</tr>
+						<tr>
+								<td><span ><a href="http://www.jetbrains.com/webstorm/">WebStorm</a></span></td>
+								<td><span >Code analysis &middot Cross-platform &middot VCS integration</span></td>
+						</tr>
+						<tr>
+								<td><span ><a href="http://www.nodeclipse.org/">Nodeclipse</a></span></td>
+								<td><span >Code completion &middot Built-on Eclipse &middot Tracing and breakpoints</span></td>
+						</tr>
+
+								
+					
+				</tbody>
+				</table>
+				</div>
+		<div class="down_page">
+         <table>
+          <tbody>
+            <tr>
+              <td class="align_left medium_padding align_top">
+                <br><span class="move_left strong">ABOUT THE AUTHORS</span><br>
+                <br><img src="img/author2n.png" alt="622" class="textWrap smallIcon" ><span  class="move_left ">Having been programming since he was a little kid, Bert
+		Belder got involved with open source when he started to
+		port Node.js to Windows. It got him the core contributor
+		badge, and he hasn't left the project since. In 2012, Bert
+		founded his company StrongLoop together with longtime
+		Node contributor Ben Noordhuis, in an effort to lead Node to world
+		domination. After the acquisition of StrongLoop in 2015, Bert joined
+		IBM to help Node.js grow in the enterprise space.</span>
+              </td>
+              <td  class="align_left medium_padding align_top">
+                <br><span class="move_left strong">RESOURCES</span><br>
+        <ol>
+					<li><a href="https://strongloop.com/">StrongLoop websiteStrongLoop website</a></li>
+					<li><a href="https://strongloop.com/strongblog/">StrongLoop technical blog</a></li>
+					<li><a href="https://nodejs.org/en/">Official Node website</a></li>
+					<li><a href="https://nodejs.org/en/download/">Node downloads</a></li>
+					<li><a href="https://nodejs.org/api/">Node documentation</a></li>
+					<li><a href="http://devdocs.io/node/">devdocs searchable documentation</a></li>
+					<li><a href="https://github.com/nodejs/node">Node on GitHub</a></li>
+					<li><a href="https://www.npmjs.com/">Official npm website</a></li>
+					<li><a href="https://docs.npmjs.com/">npm documentation</a></li>
+					<li><a href="http://nodeschool.io/ru/">Nodeschool</a></li>
+					<li><a href="http://stackoverflow.com/questions/tagged/node.js">Stack Overflow</a></li>
+					<li><a href="https://groups.google.com/forum/#!forum/nodejs">Node Google Group</a></li>
+		</ol>
+              </td>
+            </tr>
+          </tbody>
+         </table class="pow">
+			</div>
+            <div class="footer">
+        <span> DZone, Inc. | www.dzone.</span>
+      </div>
+    </div>	
+  </body>
+</html>
