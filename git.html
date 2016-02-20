@@ -88,7 +88,7 @@
         <br><span class="move_left ">Check the version using the following command to verify that Git is
         installed and successfully operational:</span>
         <div class="commands"><pre>		
-        git --version</pre>
+    git --version</pre>
         </div>
         <div class="border">
           <table class="elliptic">
@@ -111,9 +111,9 @@
         efforts on commits and should be done for each machine on which you'll
         be using Git.</span>
         <div class="commands"><pre>		
-	git config --global user.name "Jordan McCullough"
-	git config --global user.email "jmccullough@github.com"
-	git config --global color.ui "auto"</pre>
+    git config --global user.name "Jordan McCullough"
+    git config --global user.email "jmccullough@github.com"
+    git config --global color.ui "auto"</pre>
         </div>
         <div class="border">
           <table class="elliptic">
@@ -171,9 +171,9 @@
         Then, initialize the directory as a Git repository by typing the following
         commands:</span>
         <div class="commands"><pre>		
-	git init
-	git add .
-	git commit -m "The first commit"</pre>
+    git init
+    git add .
+    git commit -m "The first commit"</pre>
         </div>
         <br><span class="move_left ">The first command, init, builds a .git directory that contains all the
         metadata and repository history. Git uniquely stores everything in just a</span>
@@ -189,7 +189,7 @@
         </div>
         <br><span class="move_left ">Obtain the new GitHub repository locally by performing a clone of the path provided from the GitHub repo page.</span> 
         <div class="commands"><pre>		
-        git clone git@github.com:githubtrainer/hellogitworld.git</pre> 
+    git clone git@github.com:githubtrainer/hellogitworld.git</pre> 
         </div>
         <br><span class="move_left ">The clone command performs several subtasks under the hood. Thus, all GitHub files are copied to your local machine with all Git commit history.</span> 
         <div class="border">
@@ -223,20 +223,20 @@
         be staged with the add command. Files can be staged one by one, by folder 
         name, or by wildcard pattern.</span>
         <div class="commands"><pre>		
-	git add index.html
-	git add javascript/
-	git add *.js</pre>
+    git add index.html
+    git add javascript/
+    git add *.js</pre>
         </div>
         <br><span class="move_left ">The -i option activates interactive add mode, a step-by-step set of prompts 
         that assist in preparing the staging area for the next commit.</span>
         <div class="commands"><pre>		
-        git add -i</pre>
+    git add -i</pre>
         </div>
         <br><span class="move_left ">The -p option is a shortcut for activation of the patch sub-mode of the 
         interactive prompt, which allows for precise pieces within a file to be 
         selected for staging.</span>
         <div class="commands"><pre>		
-        git add -p</pre>
+    git add -p</pre>
         </div>
         <br><span class="move_left strong font_size">Committing</span>
 	<br class="cbt">
@@ -244,16 +244,16 @@
         transactionally saves the pending additions to the local repository. The 
         default text $EDITOR will be opened for entry of the commit message.</span>
         <div class="commands"><pre>		
-        git commit</pre>
+    git commit</pre>
         </div>
         <br><span class="move_left ">To supply the commit message directly at the command prompt:</span>
         <div class="commands"><pre>		
-        git commit -m "Your commit message"</pre>
+    git commit -m "Your commit message"</pre>
         </div>
         <br><span class="move_left ">If you made a mistake in the message for your last commit, you can edit 
         the text (while leaving the changed file(s) untouched) with:</span>
         <div class="commands"><pre>		
-        git commit --amend</pre>
+    git commit --amend</pre>
         </div>
         <br><span class="move_left strong font_size">Moving</span>
 	<br class="cbt">
@@ -262,7 +262,7 @@
         to use the Git-specific command to relocate a file and track its new 
         destination.</span>
         <div class="commands"><pre>		
-        git mv originalfile.txt newsubdir/newfilename.txt</pre>
+    git mv originalfile.txt newsubdir/newfilename.txt</pre>
         </div>
         <br><span class="move_left strong font_size">Removing</span>
 	<br class="cbt">
@@ -270,7 +270,7 @@
         tell Git to remove it. It will be put in a pending deletion state and can be 
         confirmed and completed by the next commit.</span>
         <div class="commands"><pre>		
-        git rm filetoremove.txt</pre>
+    git rm filetoremove.txt</pre>
         </div>
         <br><span class="move_left strong font_size">Aborting</span>
 	<br class="cbt">
@@ -278,7 +278,7 @@
         to the last committed state, a reset with this specific option will accomplish 
         this:</span>
         <div class="commands"><pre>		
-        git reset --hard</pre>
+    git reset --hard</pre>
         </div>
         <br><span class="move_left ">Resetting with the --hard option recursively discards all currently 
         uncommitted (unstaged or uncommitted staged) changes. Any files with 
@@ -286,7 +286,7 @@
         <br><span class="move_left ">A more targeted means of restoring just one file's changes is to use the 
         checkout command.</span>
         <div class="commands"><pre>		
-        git checkout modifiedfile.txt</pre>
+    git checkout modifiedfile.txt</pre>
         </div>
         <div class="title  strong">
           <br><span id="toviewing">VIEWING</span>
@@ -301,7 +301,7 @@
         <br><span  class="move_left ">To check the current status of a project's local directories and files , such as 
         modified, new, deleted, or untracked, invoke the following status command:</span>
         <div class="commands"><pre>		
-        git status</pre>
+    git status</pre>
         </div>
         <div>
           <img src="img/32.png" alt="32">
@@ -312,9 +312,9 @@
         and committed files. A diff compares the patches between any two points
         in history or changes.</span>
         <div class="commands"><pre>		
-        git diff 
-        git diff --staged 
-        git diff HEAD</pre> 
+    git diff 
+    git diff --staged 
+    git diff HEAD</pre> 
         </div>
         <div>
           <img src="img/312.png" alt="312">
@@ -335,9 +335,9 @@
         certain date, or a limited set from the most recent commit, is right at your
         fingertips, even when disconnected from all networks:</span>
         <div class="commands"><pre>		
-        git log 
-        git log -3 
-        git log --since=yesterday</pre> 
+    git log 
+    git log -3 
+    git log --since=yesterday</pre> 
         </div>
         <div>
           <img src="img/322.png" alt="322">
@@ -348,7 +348,7 @@
         to the chase and have Git annotate each line of a source file with the name
         and date it came into existence:</span>
         <div class="commands"><pre>		
-        git blame &ltfilename&gt</pre>
+    git blame &ltfilename&gt</pre>
         </div>
         <div class="title  strong">
           <br><span id="tobranches">BRANCHING </span>
@@ -361,14 +361,14 @@
         experiments that may be discarded or merged onto a well-known branch
         depending on their success.</span>
         <div class="commands"><pre>		
-        git branch &ltnew branch name&gt &ltfrom branch&gt
-        git branch &ltnew branch name&gt </pre> 
+    git branch &ltnew branch name&gt &ltfrom branch&gt
+    git branch &ltnew branch name&gt </pre> 
         </div>
         <br><span class="move_left strong font_size">Choosing a Branch</span>
 	<br class="cbt">
         <br><span class="move_left ">Checking out, or switching to, a branch is as simple as providing its name:</span>
         <div class="commands"><pre>		
-        git checkout&lt branch name&gt </pre>
+    git checkout&lt branch name&gt </pre>
         </div>
         <br><span class="move_left ">Local and remote git branches are checked out using the same command
         in a radical change of operation for users coming from other systems like
@@ -376,19 +376,19 @@
         local branch. Local branches are where new work is performed and code is
         committed.</span>
         <div class="commands"><pre>		
-        git branch &ltnew branch name&gt &ltfrom branch&gt 
-        git checkout &ltnew branch name&gt </pre>
+    git branch &ltnew branch name&gt &ltfrom branch&gt 
+    git checkout &ltnew branch name&gt </pre>
         </div>
         <br><span class="move_left ">or alternatively, in a combined command:</span>
         <div class="commands"><pre>		
-        git checkout -b &ltnew branch name&gt &ltfrom branch&gt </pre>
+    git checkout -b &ltnew branch name&gt &ltfrom branch&gt </pre>
         </div>
         <br><span class="move_left strong font_size">Listing Branches</span>
 	<br class="cbt">
         <br><span class="move_left ">To list the complete set of current local and remote branches known to Git,
         use the following command::</span>
         <div class="commands"><pre>		
-        git branch -a </pre>
+    git branch -a </pre>
         </div>
         <div>
           <img src="img/332.png" alt="332">
@@ -403,8 +403,8 @@
         <br><span class="move_left ">Like other popular version control systems, Git allows you to merge one or
         more branches into the current branch.</span>
         <div class="commands"><pre>		
-        git merge &ltbranch one&gt 
-        git merge &ltbranch one&gt &ltbranch two&gt </pre>
+    git merge &ltbranch one&gt 
+    git merge &ltbranch one&gt &ltbranch two&gt </pre>
         </div>
         <br>
         <span class="move_left ">
@@ -425,8 +425,8 @@
         isolation on their private branch just as if they were made on top of the
         mainline code, including any recent mainline bug fixes.</span>
         <div class="commands"><pre>		
-        git rebase &ltsource branch name&gt 
-        git rebase &ltsource branch name&gt &ltdestination branch name&gt </pre>
+    git rebase &ltsource branch name&gt 
+    git rebase &ltsource branch name&gt &ltdestination branch name&gt </pre>
         </div>
         <div class="title  strong">
           <br><span>COMMIT HASHES & SHORTHAND </span>
@@ -467,8 +467,8 @@
         </table>
         <br><span class="move_left ">Git shorthand can be used in combination with all Git commands that accept a specific commit or range of commits. Examples include:</span> 
         <div class="commands"><pre>		
-        git diff HEAD~3 
-        git checkout HEAD^^ git merge RELEASE-1.0 </pre>
+    git diff HEAD~3 
+    git checkout HEAD^^ git merge RELEASE-1.0 </pre>
         </div>
         <div class="title  strong">
           <br><span>ADVANCED COMMANDS </span>
@@ -479,11 +479,11 @@
 	<br class="cbt">
         <br><span class="move_left ">Git offers a useful feature for those times when file modifications are in an incomplete state and not yet ready for a commit. To temporarily return to the last commit, yet retain any uncommited changes, using stash on modified files places all uncommitted changes onto a stack. </span>
         <div class="commands"><pre>		
-        git stash </pre>
+    git stash </pre>
         </div>
         <br><span class="move_left ">When you are ready to write the stashed changes back into the working copy of the files, simply pop them back off the stack.</span> 
         <div class="commands"><pre>		
-        git stash pop </pre>
+    git stash pop </pre>
         </div>
         <div class="border">
           <table class="elliptic">
@@ -504,12 +504,12 @@
 	<br class="cbt">
         <br><span class="move_left ">Git provides tagging to mark a specific commit in your timeline of changes, and serve as a useful identifier in history. A tag can be created for any commit in history by passing the commit hash. If no commit hash is provided, the most recent commit (i.e. HEAD) will be used by default. </span>
         <div class="commands"><pre>		
-        git tag &lttag name&gt 
-        git tag &lttag name&gt &ltcommithash&gt </pre>
+    git tag &lttag name&gt 
+    git tag &lttag name&gt &ltcommithash&gt </pre>
         </div>
         <br><span class="move_left ">To list all tags of the current Git repository:</span> 
         <div class="commands"><pre>		
-        git tag </pre>
+    git tag </pre>
         </div>
         <div class="title  strong">
           <br><span id="tothe">THE REMOTE WORKFLOW </span>
@@ -535,22 +535,22 @@
         <br><span class="move_left ">While full URLs to other repositories can be specified as a source or destination for the majority of Git commands, this quickly becomes unwieldy and a shorthand solution is called for. These bookmarks of other repository locations are called remotes. </span>
         <br><span class="move_left ">The full addresses of your configured remotes can be viewed with: </span>
         <div class="commands"><pre>		
-        git remote -v </pre>
+    git remote -v </pre>
         </div>
         <br><span class="move_left ">If a local repository was cloned from another Git source, an "origin" remote will already be present in the list returned typing this command: </span>
         <div class="commands"><pre>		
-        git remote -v </pre>
+    git remote -v </pre>
         </div>
         <br><span class="move_left ">To add a new remote, type:</span> 
         <div class="commands"><pre>		
-        git remote add &ltremote name&gt &ltremote address&gt </pre>
+    git remote add &ltremote name&gt &ltremote address&gt </pre>
         </div>
         <br><span class="move_left strong font_size">Push </span>
 	<br class="cbt">
         <br><span class="move_left ">Pushing with Git is the transmission of local changes to a colleague or community repository with sufficiently open permissions to allow you to write to it. </span>
         <div class="commands"><pre>		
-        git push &ltremote name&gt &ltbranch name&gt 
-        git push &ltremote name&gt &ltlocal branch name:remote branch name&gt </pre>
+    git push &ltremote name&gt &ltbranch name&gt 
+    git push &ltremote name&gt &ltlocal branch name:remote branch name&gt </pre>
         </div>
         <br><span class="move_left ">The push command performs a publishing action, and sends the Git commit history of one or more branches to an upstream Git repository. Pushed branched are then accessible to anyone with access to this remote Git repository. <br></span>
         <br class="cbt">
@@ -562,8 +562,8 @@
 	<br class="cbt">
         <br><span class="move_left ">An alternative to pulling content, which automatically merges inbound changes with your local history, is to retrieve the remote (upstream) changes and store the content conveniently in a cache for evaluation or selective merging. </span>
         <div class="commands"><pre>		
-        git fetch &ltremotename&gt 
-        git merge &ltremotename/branchname&gt </pre>
+    git fetch &ltremotename&gt 
+    git merge &ltremotename/branchname&gt </pre>
         </div>
         <div class="title  strong">
           <br><span>EXPLORING GITHUB</span>
@@ -642,13 +642,13 @@
         <br><span  class="move_left ">Git Gui offers a panel by which to select files to add, review a list of staged
         changes, and complete the commit with a message.</span>
         <div class="commands"><pre>		
-        git gui</pre>
+    git gui</pre>
         </div>
         <br><span  class="move_left ">Gitk offers a diagram visualization of the project's commit history and
         branching. They both assume that the current working directory is the
         repository you wish to inspect.</span>
         <div class="commands"><pre>		
-        gitk --all </pre>
+    gitk --all </pre>
         </div>
         <div>
           <img src="img/522.png" alt="522">
@@ -686,7 +686,7 @@
         the traditional structure (trunk, tags, branches) and convert it into a Git
         repository, use a syntax very similar to that for a traditional Git repository.</span>
         <div class="commands"><pre>		
-        git svn clone --stdlayout &ltsvn-repo-url&gt</pre>
+    git svn clone --stdlayout &ltsvn-repo-url&gt</pre>
         </div>
         <br><span  class="move_left ">Note the progress messages during the operation. Clones of large
         Subversion repositories may take hours to complete.</span>
@@ -697,7 +697,7 @@
         Subversion repository. When the Git commits are at good point for
         publishing to the Subversion repository, type:</span>
         <div class="commands"><pre>		
-        git svn dcommit</pre>
+    git svn dcommit</pre>
         </div>
         <br><span class="move_left strong font_size">Retrieving Subversion Changes</span>
 	<br class="cbt">
@@ -705,7 +705,7 @@
         repository up-to-date with those changes, rebase to the latest state of the
         Subversion repo.</span>
         <div class="commands"><pre>		
-        git svn rebase</pre>
+    git svn rebase</pre>
         </div>
         <br><span class="move_left strong font_size">Subversion on GitHub</span>
 	<br class="cbt">
@@ -717,12 +717,12 @@
         <br><span class="move_left ">To perform a traditional SVN checkout against a repository on GitHub use 
         the following:</span>
         <div class="commands"><pre>		
-        svn checkout https://github.com/&ltusername&gt/&ltproject&gt</pre>
+    svn checkout https://github.com/&ltusername&gt/&ltproject&gt</pre>
         </div>
         <br><span  class="move_left ">Partial checkouts are also available with the typical SVN checkout
         operation and partial's path parameter:</span>
         <div class="commands"><pre>		
-        svn checkout https://github.com/&ltusername&gt/&ltproject&gt &ltpartial&gt</pre>
+    svn checkout https://github.com/&ltusername&gt/&ltproject&gt &ltpartial&gt</pre>
         </div>
         <div class="border">
           <table class="elliptic">
