@@ -46,9 +46,7 @@ body {
         /*font-family: 'Open Sans', Roboto-Black, Graublau Sans Web, EuroSansProLig, Arial, sans-serif;*/
 	font-family: 'Roboto-Medium';
         padding: 5px;
-
-        background:#FFCC99;
-
+        background:#CCFF66/*FFFF66*/;
 }
 .footer {
 	text-align: center;
@@ -88,7 +86,7 @@ text-align:bottom;
 
 .down_page {
 	border: thin solid;
-	background: #CCCCFF/*99CCFF*/; 
+	background: #99FF99/*99CCFF*/; 
 	padding: 15px;
 	text-align: left;
 	vertical-align:top;
@@ -190,7 +188,7 @@ table {
 }
 
 .hotTipLeft {
-        background: #FFCC99/*FFFF33*/;    
+        background: #CCFF33/*FFFF33*/;    
         text-align: center;
 	vertical-align: middle;
 	border-radius: 5px 0px 0px 5px;
@@ -204,7 +202,7 @@ table {
 	color:#FFFFFF;
 }
 .hotTipRight {
-        background: #993366/*3333FF*/;
+        background: #009900/*3333FF*/;
         text-align: left;
 	vertical-align: center;
 	border-radius: 0px 5px 5px 0px;
@@ -245,10 +243,10 @@ table {
 }
   .syntax_description td:nth-child(2n-1){
 	width:15%;
-	background:#FFCCCC/*CCFFFF*/;
+	background:#CCFF99/*CCFFFF*/;
 }
 .syntax_description td:nth-child(2n){
-	background:#FFCC99/*FFFF99*/;
+	background:#CCFF33/*FFFF99*/;
 }
 .syntax_description{
 	border: 1px solid #000000; 
@@ -258,11 +256,7 @@ table {
 }
 .syntax_description th{
 	border: 1px solid #000000;
-<<<<<<< HEAD
-	background:#99CCFF;
-=======
-	background:#CCCCFF/*99CCFF*/;
->>>>>>> a2133e8c293fdd22c3040b4358ed48fc427b06e5
+	background:#99FF99/*99CCFF*/;
 	padding-top:5px;
   	padding-bottom:5px;
 	padding-left:5px;
