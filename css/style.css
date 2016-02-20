@@ -46,9 +46,7 @@ body {
         /*font-family: 'Open Sans', Roboto-Black, Graublau Sans Web, EuroSansProLig, Arial, sans-serif;*/
 	font-family: 'Roboto-Medium';
         padding: 5px;
-
-        background:#FFCC99;
-
+        background:#FFCCCC/*FFFF66*/;
 }
 .footer {
 	text-align: center;
@@ -258,11 +256,7 @@ table {
 }
 .syntax_description th{
 	border: 1px solid #000000;
-<<<<<<< HEAD
-	background:#99CCFF;
-=======
 	background:#CCCCFF/*99CCFF*/;
->>>>>>> a2133e8c293fdd22c3040b4358ed48fc427b06e5
 	padding-top:5px;
   	padding-bottom:5px;
 	padding-left:5px;
