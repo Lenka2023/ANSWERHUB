@@ -21,20 +21,10 @@
 a[href^="#"]{ 
 color:#CC0033; 
 }
-.title {
-    padding-top: 0px;
-    background: #CC0033 ;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    margin-top: 20px;
-}
-.titletop span{
-color:#FFFFFF;
-}
 .title span{
 color:#FFFFFF;
 }
-.titletop {
+.title {
     padding-top: 20px;
     background: #CC0033 ;
     padding-bottom: 20px;
