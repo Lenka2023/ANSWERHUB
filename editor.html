@@ -27,33 +27,46 @@ document.getElementById("text").style.padding-left: 20px;
    <div class="page_cont one">
     <br class="cbt">
       <div class="content">
-  <input type="button" onclick="Title()" value="Title" />
-  <input type="button" onclick="Title()" value="Text" />
-  
-  <select name='takeation'>
-    <option class='head'>List</option>
-    <option value='Action 1'>Main List</option>
-    <option value='Action 2'>Square List</option>
-    <option value='Action 3'>Decimal List</option>
-	<option value='Action 3'>Simple List</option>
-</select>
-  
-  <input type="button" onclick="Title()" value="Main title" />
-  <input type="button" onclick="Title()" value="Capture" />
+	   <div class="center">
+<table border=0>
+          <tbody>
+            <tr>
+              <td>
+               <span class="strong">List</span><br>
+  <input type="radio" name="list" value="Main List"> Main List<Br>
+   <input type="radio" name="list" value="Square List"> Square List<Br>
+   <input type="radio" name="list" value="Decimal List"> Decimal List<Br>
+   <input type="radio" name="list" value="Simple List"> Simple List<Br>
+
+<span class="strong">Title</span><br>
+  <input type="radio" name="title" value="Main title"> Main title<Br>
+   <input type="radio" name="title" value="Middle Title"> Middle Title<Br>
+   <input type="radio" name="title" value="Down title"> Down title<Br>
+   <input type="radio" name="title" value="Small title"> Small title<Br>
+ 
+              </td>
+              <td >
+			  <input type="button" onclick="Title()" value="Capture" />
   <input type="button" onclick="Title()" value="Hot Tip" />
   <input type="button" onclick="Title()" value="Commands" />
-  <input type="button" onclick="Title()" value="Small Title" />
+  
   <input type="button" onclick="Title()" value="SmallIcon" />
   <input type="button" onclick="Title()" value="Table" />
-  <input type="button" onclick="Title()" value="Middle Title" />
+  
   <input type="button" onclick="Title()" value="Href" />
-  <input type="button" onclick="Title()" value="Title" />
+    <p><textarea id="text" rows="10" cols="45" name="text"></textarea ></p>
+                              </td>
+            </tr>
+            
+          </tbody>
+        </table>
   
+
+    
+  </div> 
+</div>
+    </div>
   
- 
-  <p><textarea id="text" rows="10" cols="45" name="text"></textarea ></p>
-   </div>
-  </div>
   </body>
    <script>
    getElementById(text)
