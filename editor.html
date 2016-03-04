@@ -1,78 +1,147 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <script type="text/javascript">
-function Title()
-{
-document.getElementById("text").style.padding-top: 20px;
-document.getElementById("text").style.background: #CC0033 ;
-document.getElementById("text").style.padding-bottom: 20px;
-document.getElementById("text").style.padding-left: 20px;
- document.getElementById("text").style.margin-top: 20px;
- document.getElementById("text").innerHTML="Новый текст!";
-}
-</script>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css"type="text/css"/ 
-    <!--[if lt IE 9]>
-    <script>
-      var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
-      for (var i = 0; i < e.length; i++) {
-        document.createElement(e[i]);
-      }
-    </script>
-    <![endif]-->
-  </head>
-  <body>
-   <div class="page_cont one">
-    <br class="cbt">
-      <div class="content">
-	   <div class="center">
-<table border=0>
-          <tbody>
-            <tr>
-              <td>
-			  <div class="float_left">
-			  <div class="float_left">
-               <span class="strong">List</span><br>
-  <input type="radio" name="list" value="Main List"> Main List<Br>
-   <input type="radio" name="list" value="Square List"> Square List<Br>
-   <input type="radio" name="list" value="Decimal List"> Decimal List<Br>
-   <input type="radio" name="list" value="Simple List"> Simple List<Br>
-</div>
-<div class="float_left">
-<span class="strong">Title</span><br>
-  <input type="radio" name="title" value="Main title"> Main title<Br>
-   <input type="radio" name="title" value="Middle Title"> Middle Title<Br>
-   <input type="radio" name="title" value="Down title"> Down title<Br>
-   <input type="radio" name="title" value="Small title"> Small title<Br>
-</div>
- </div>
-              </td>
-              <td >
-			  <input type="button" onclick="Title()" value="Capture" />
-  <input type="button" onclick="Title()" value="Hot Tip" />
-  <input type="button" onclick="Title()" value="Commands" />
-  
-  <input type="button" onclick="Title()" value="SmallIcon" />
-  <input type="button" onclick="Title()" value="Table" />
-  
-  <input type="button" onclick="Title()" value="Href" />
-    <p><textarea id="text" rows="10" cols="45" name="text"></textarea ></p>
-                              </td>
-            </tr>
-            
-          </tbody>
-        </table>
-  
-
-    
-  </div> 
-</div>
-    </div>
-  
-  </body>
-   <script>
-   getElementById(text)
-    </script>
-  </html>
+	<head>
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css"type="text/css"/ 
+		<!--[if lt IE 9]>
+		<script>
+			var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
+			for (var i = 0; i < e.length; i++) {
+			  document.createElement(e[i]);
+			}
+		</script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="page_cont one">
+			<br class="cbt">
+			<div class="content">
+				<div class="center">
+					<table border=0>
+						<tbody>
+							<tr>
+								<td>
+									<label>
+										<select NAME="name1" onchange="vahtaChange(this)">
+											<option>Capture</option>
+											<option>Hot Tip</option>
+											<option>Code</option>
+											<option>SmallIcon</option>
+											<option>Table</option>
+											<option>Link</option>
+											<option>List</option>
+											<option>Title</option>
+										</select>
+									</label>
+									<label id="otherVahta" style="display:none">
+								</td>
+								<label id="otherVahta" style="display:none">
+									<select NAME="name2">
+										<option> Main List</option>
+										<option>Square List</option>
+										<option>Decimal List</option>
+										<option>Simple List</option>
+									</select>
+									</SELECT>
+								</label>
+								<label id="sameVahta" style="display:none">
+									<select name="name3">
+										<option> Main title</option>
+										<option>Middle Title</option>
+										<option>Down title</option>
+										<option>Small title</option>
+									</select>
+								</label>
+                                                                <label id="linkVahta" style="display:none">
+									<select name="name3">
+										<option> Link</option>
+										<option>Link Title</option>
+									</select>
+								</label>
+								<label id="capture" style="display:none">
+									<select name="name4">
+										<option> Capture</option>
+										<option>Capture Title</option>
+									</select>
+								</label>
+								<SCRIPT LANGUAGE="JavaScript">
+									<!--
+										function vahtaChange(combo){
+										
+										  if(combo.value == 'List'){
+										    document.getElementById('otherVahta').style.display = 'block';
+										  }else{
+										  document.getElementById('otherVahta').style.display = 'none';
+										  }
+                                                                                  if(combo.value == 'Link'){
+										    document.getElementById('linkVahta').style.display = 'block';
+										  }else{
+										  document.getElementById('linkVahta').style.display = 'none';
+										  }
+										  if(combo.value == 'Capture'){
+										    document.getElementById('capture').style.display = 'block';
+										  }else{
+										  document.getElementById('capture').style.display = 'none';
+										  }
+										  if(combo.value == 'Title'){
+										    document.getElementById('sameVahta').style.display = 'block';
+										     }else{
+										  document.getElementById('sameVahta').style.display = 'none';
+										  }
+										 }
+										//-->
+								</SCRIPT>
+								<td >
+									
+									<button onclick="HotTip()">Hot Tip</button>
+									<button onclick="Code()">Code</button>
+									<button onclick="SmallIcon()">SmallIcon</button>
+									<button onclick="Table()">Table</button>
+									<p><textarea id="text" rows="10" cols="45" name="text"></textarea></p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<span id="RESULT">qwe</span>
+		<script>
+			function Code()
+			{
+				
+				var expression = document.getElementById("text").value;
+				document.getElementById("RESULT").innerText='<div class="commands">'+expression+'</div>';
+			}
+                        
+			
+			function SmallIcon()
+			{
+				
+				var expression = document.getElementById("text").value;
+				document.getElementById("RESULT").innerText='<div class="textWrap smallIcon">'+expression+'</div>';
+			}
+                        function HotTip()
+			{
+				
+				var expression = document.getElementById("text").value;
+				document.getElementById("RESULT").innerText='<div class="border">'+
+          '<table class="elliptic">'+
+            '<tbody>'+
+              '<tr>'+
+                '<td class="hotTipLeft">'+
+                  '<h1>Hot<br>Tip</h1>'+
+                '</td>'+
+                '<td class="hotTipRight">'+
+                  '<span>'+expression+'</span>'+
+                '</td>'+
+              '</tr>'+
+            '</tbody>'+
+          '</table>'+
+          '<br class="cbt">'+
+        '</div>';
+			}
+                        
+		</script>
+	</body>
+</html>
