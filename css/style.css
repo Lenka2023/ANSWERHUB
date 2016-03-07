@@ -115,7 +115,7 @@ table {
     box-sizing: content-box;
     position: relative;
 }
-.example li{
+.square {
 	list-style-type:square;
 
 }
@@ -124,7 +124,7 @@ table {
 	text-align: left;
 	vertical-align: top;
 }
-ol {
+.disc{
     list-style-type: disc; 
 	margin-left:15px;
 	margin-top:20px;
@@ -197,7 +197,7 @@ table {
         
 }
 
-.textWrap {
+.textwrap {
 	float: left;
 	margin: 10px;
 }
