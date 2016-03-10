@@ -17,131 +17,226 @@
 			<br class="cbt">
 			<div class="content">
 				<div class="center">
-					<table border=0>
-						<tbody>
-							<tr>
-								<td>
-									<label>
-										<select NAME="name1" onchange="vahtaChange(this)">
-											<option>Capture</option>
-											<option>Hot Tip</option>
-											<option>Code</option>
-											<option>SmallIcon</option>
-											<option>Table</option>
-											<option>Link</option>
-											<option>List</option>
-											<option>Title</option>
-										</select>
-									</label>
-									<label id="otherVahta" style="display:none">
-								</td>
-								<label id="otherVahta" style="display:none">
-									<select NAME="name2">
-										<option> Main List</option>
-										<option>Square List</option>
-										<option>Decimal List</option>
-										<option>Simple List</option>
-									</select>
-									</SELECT>
-								</label>
-								<label id="sameVahta" style="display:none">
-									<select name="name3">
-										<option> Main title</option>
-										<option>Middle Title</option>
-										<option>Down title</option>
-										<option>Small title</option>
-									</select>
-								</label>
-                                                                <label id="linkVahta" style="display:none">
-									<select name="name3">
-										<option> Link</option>
-										<option>Link Title</option>
-									</select>
-								</label>
-								<label id="capture" style="display:none">
-									<select name="name4">
-										<option> Capture</option>
-										<option>Capture Title</option>
-									</select>
-								</label>
-								<SCRIPT LANGUAGE="JavaScript">
-									<!--
-										function vahtaChange(combo){
-										
-										  if(combo.value == 'List'){
-										    document.getElementById('otherVahta').style.display = 'block';
-										  }else{
-										  document.getElementById('otherVahta').style.display = 'none';
-										  }
-                                                                                  if(combo.value == 'Link'){
-										    document.getElementById('linkVahta').style.display = 'block';
-										  }else{
-										  document.getElementById('linkVahta').style.display = 'none';
-										  }
-										  if(combo.value == 'Capture'){
-										    document.getElementById('capture').style.display = 'block';
-										  }else{
-										  document.getElementById('capture').style.display = 'none';
-										  }
-										  if(combo.value == 'Title'){
-										    document.getElementById('sameVahta').style.display = 'block';
-										     }else{
-										  document.getElementById('sameVahta').style.display = 'none';
-										  }
-										 }
-										//-->
-								</SCRIPT>
-								<td >
+					
+								                             
 									
-									<button onclick="HotTip()">Hot Tip</button>
-									<button onclick="Code()">Code</button>
-									<button onclick="SmallIcon()">SmallIcon</button>
-									<button onclick="Table()">Table</button>
-									<p><textarea id="text" rows="10" cols="45" name="text"></textarea></p>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+										<button onclick="Main_List()"> Main List</button>
+										<button onclick="Square_List()">Square List</button>
+										<button onclick="Decimal_List()">Decimal List</button>
+										<button onclick="Simple_List()">Disc List</button>
+										<button onclick="Main_title()"> Main title</button>
+										<button onclick="Middle_Title()">Middle Title</button>
+										<button onclick="Down_title()">Down title</button>
+										<button onclick="Small_title()">Small title</button>
+										<button onclick="Capture()">Capture</button>
+										<button onclick="Hot_Tip()">Hot Tip</button>
+										<button onclick="Code()">Code</button>
+										<button onclick="SmallIcon()">SmallIcon</button>
+										<button onclick="Table()">Table</button>
+										<button onclick="Link()">Link</button>
+										<button onclick="Text()">Text</button>
+										<button onclick="CBT()">CBT</button>
+									<p><textarea id="text" rows="15" cols="135" name="text"></textarea></p>
+									<div class="area">
+									<span id="RESULTHTML">qwe</span>
+									</div>
+									
+							
+						
 				</div>
 			</div>
 		</div>
 		<span id="RESULT">qwe</span>
-		<script>
-			function Code()
+<script type="text/javascript">
+function CBT()
+			{
+				
+				
+				document.getElementById("RESULT").innerText='<br class="cbt">';
+				document.getElementById("RESULTHTML").innerHTML='<br class="cbt">';
+			}
+
+
+function Text()
 			{
 				
 				var expression = document.getElementById("text").value;
-				document.getElementById("RESULT").innerText='<div class="commands">'+expression+'</div>';
+				document.getElementById("text").focus();
+                        document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("RESULT").innerText='<div class="move_left">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="move_left">'+expression+'</div>';
 			}
-                        
-			
+			function Link()
+			{
+				
+				var Link_Title= document.getElementById("text").value;
+				document.getElementById("text").focus();
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				var x=prompt("Enter a link","");
+				document.getElementById("RESULT").innerText='<a  href="'+x+'">'+Link_Title+'</a>';
+				document.getElementById("RESULTHTML").innerHTML='<a  href="'+x+'">'+Link_Title+'</a>';
+			}
+                  function Code()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="commands">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="commands">'+expression+'</div>';
+			}
+						function Main_List()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="top_page_list">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="top_page_list">'+expression+'</div>';
+			}
+			function Square_List()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="square ">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="square">'+expression+'</div>';
+			}
+			function Decimal_List()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="decimal">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="decimal">'+expression+'</div>';
+			}
+			function Disc_List()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="disc">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="disc">'+expression+'</div>';
+			}
+			function Main_title()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="main_title">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="main_title">'+expression+'</div>';
+
+			}
+			function Middle_Title()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="commands">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="commands">'+expression+'</div>';
+			}
+			function Down_title()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="down_title">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="down_title">'+expression+'</div>';
+
+			}
+			function Small_title()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="move_left strong font_size">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="move_left strong font_size">'+expression+'</div>';
+
+			}
+					function Capture()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				var x=prompt("Enter title of capture","");
+				document.getElementById("RESULT").innerText='<br><span class="move_left "><span class="strong underline">"'+x+'"</span>'+expression+'</span>';
+				document.getElementById("RESULTHTML").innerHTML='<br><span class="move_left "><span class="strong underline">"'+x+'"</span>'+expression+'</span>';
+
+			}
+	
 			function SmallIcon()
 			{
 				
 				var expression = document.getElementById("text").value;
-				document.getElementById("RESULT").innerText='<div class="textWrap smallIcon">'+expression+'</div>';
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="textwrap smallIcon">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="textwrap smallIcon">'+expression+'</div>';
+
 			}
-                        function HotTip()
+            function Hot_Tip()
 			{
 				
 				var expression = document.getElementById("text").value;
-				document.getElementById("RESULT").innerText='<div class="border">'+
-          '<table class="elliptic">'+
-            '<tbody>'+
-              '<tr>'+
-                '<td class="hotTipLeft">'+
-                  '<h1>Hot<br>Tip</h1>'+
-                '</td>'+
-                '<td class="hotTipRight">'+
-                  '<span>'+expression+'</span>'+
-                '</td>'+
-              '</tr>'+
-            '</tbody>'+
-          '</table>'+
-          '<br class="cbt">'+
-        '</div>';
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<div class="HotTip">'+
+'<h1> Hot<br>Tip</h1>'+
+'</div>'+
+ '<div class="block">'+
+  '<span >'+expression+'</span>'+'</div>';
+
+			document.getElementById("RESULTHTML").innerHTML='<div class="HotTip">'+
+'<h1> Hot<br>Tip</h1>'+
+'</div>'+
+ '<div class="block">'+
+  '<span >'+expression+'</span>'+'</div>';
 			}
-                        
+            function Table()
+			{
+				
+				var expression = document.getElementById("text").value;
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULT").innerText='<table>'+
+				'<tbody>';
+				var x=prompt("Enter a count of rows","");
+				for(var i=1;i<x;i++){
+						document.getElementById("RESULT").innerText='<tr>';
+									
+				var y=prompt("Enter a count of columns","");
+						for(var j=1;j<y;j++){
+							document.getElementById("RESULT").innerText='<td>'+"expression*i*j"+'</td>';
+											}
+				document.getElementById("RESULT").innerText='</tr>'
+									}
+			document.getElementById("RESULT").innerText='</tbody>'+
+            '</table>';	
+			
+			document.getElementById("RESULTHTML").innerHTML='<table>'+
+				'<tbody>';
+				var x=prompt("Enter a count of rows","");
+				for(var i=1;i<x;i++){
+						document.getElementById("RESULT").innerText='<tr>';
+									
+				var y=prompt("Enter a count of columns","");
+						for(var j=1;j<y;j++){
+							document.getElementById("RESULT").innerText='<td>'+"expression*i*j"+'</td>';
+											}
+				document.getElementById("RESULT").innerText='</tr>'
+									}
+			document.getElementById("RESULT").innerText='</tbody>'+
+            '</table>';
+			}
+			
 		</script>
 	</body>
 </html>
