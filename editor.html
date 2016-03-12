@@ -48,6 +48,37 @@
 		</div>
 		<span id="RESULT">qwe</span>
 <script type="text/javascript">
+var uagent    = navigator.userAgent.toLowerCase();
+var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
+var is_ie     = ( (uagent.indexOf('msie') != -1) && (!is_opera) && (!is_safari) && (!is_webtv) );
+var is_ie4    = ( (is_ie) && (uagent.indexOf("msie 4.") != -1) );
+var is_moz    = (navigator.product == 'Gecko');
+var is_ns     = ( (uagent.indexOf('compatible') == -1) && (uagent.indexOf('mozilla') != -1) && (!is_opera) && (!is_webtv) && (!is_safari) );
+var is_ns4    = ( (is_ns) && (parseInt(navigator.appVersion) == 4) );
+var is_opera  = (uagent.indexOf('opera') != -1);  
+var is_kon    = (uagent.indexOf('konqueror') != -1);
+var is_webtv  = (uagent.indexOf('webtv') != -1);
+var is_win    =  ( (uagent.indexOf("win") != -1) || (uagent.indexOf("16bit") !=- 1) );
+var is_mac    = ( (uagent.indexOf("mac") != -1) || (navigator.vendor == "Apple Computer, Inc.") );
+var ua_vers   = parseInt(navigator.appVersion);
+
+function getSelection( textarea )
+{
+    var selection = null;
+    if ((ua_vers >= 4) && is_ie && is_win) {
+        if (textarea.isTextEdit) {
+            textarea.focus();
+            var sel = document.selection;
+            var rng = sel.createRange();
+            rng.collapse;
+            if((sel.type == "Text" || sel.type == "None") && rng != null)
+                selection = rng.text;
+        }
+    } else if (typeof(textarea.selectionEnd) != "undefined" ) { 
+        selection = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
+    }
+    return selection;
+}
 function CBT()
 			{
 				
@@ -60,7 +91,7 @@ function CBT()
 function Text()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
 				document.getElementById("text").focus();
                         document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("RESULT").innerText='<div class="move_left">'+expression+'</div>';
@@ -69,9 +100,9 @@ function Text()
 			function Link()
 			{
 				
-				var Link_Title= document.getElementById("text").value;
+				var Link_Title= getSelection( document.getElementById("text") );
 				document.getElementById("text").focus();
- 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+ 				document.getElementById("text").innerHTML = Link_Title.replace(/\n/g, '<br>');
 				var x=prompt("Enter a link","");
 				document.getElementById("RESULT").innerText='<a  href="'+x+'">'+Link_Title+'</a>';
 				document.getElementById("RESULTHTML").innerHTML='<a  href="'+x+'">'+Link_Title+'</a>';
@@ -79,7 +110,7 @@ function Text()
                   function Code()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="commands">'+expression+'</div>';
@@ -88,7 +119,7 @@ function Text()
 						function Main_List()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="top_page_list">'+expression+'</div>';
@@ -97,7 +128,7 @@ function Text()
 			function Square_List()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="square ">'+expression+'</div>';
@@ -106,7 +137,7 @@ function Text()
 			function Decimal_List()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="decimal">'+expression+'</div>';
@@ -115,7 +146,7 @@ function Text()
 			function Disc_List()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="disc">'+expression+'</div>';
@@ -124,7 +155,7 @@ function Text()
 			function Main_title()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="main_title">'+expression+'</div>';
@@ -134,7 +165,7 @@ function Text()
 			function Middle_Title()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="commands">'+expression+'</div>';
@@ -143,7 +174,7 @@ function Text()
 			function Down_title()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="down_title">'+expression+'</div>';
@@ -153,7 +184,7 @@ function Text()
 			function Small_title()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="move_left strong font_size">'+expression+'</div>';
@@ -163,7 +194,7 @@ function Text()
 					function Capture()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var x=prompt("Enter title of capture","");
@@ -175,7 +206,7 @@ function Text()
 			function SmallIcon()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="textwrap smallIcon">'+expression+'</div>';
@@ -185,7 +216,7 @@ function Text()
             function Hot_Tip()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<div class="HotTip">'+
@@ -203,7 +234,7 @@ function Text()
             function Table()
 			{
 				
-				var expression = document.getElementById("text").value;
+				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULT").innerText='<table>'+
