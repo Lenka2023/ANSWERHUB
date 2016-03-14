@@ -162,8 +162,9 @@ text-align:center;
 	border: 1px solid #000000;
 	text-align:left;
 	}
-.edit_cont {
-    min-height: 450px;
+	
+.edit_cont{
+	min-height:450px;
     margin: 0 auto;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
@@ -211,6 +212,7 @@ list-style-type:decimal;
 	float: left;
 	margin: 10px;
 }
+
 .smallicon {
 	width: 150px;
 }
