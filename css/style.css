@@ -104,6 +104,15 @@ top:50%;
 	vertical-align: top;
 	text-align: right;
 }
+.middle_title {
+    display: block;
+    font-size: 2em;
+    -webkit-margin-before: 0.67em;
+    -webkit-margin-after: 0.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
 .down_title {
 	font-size: 20pt;
 	text-align: right;
@@ -162,9 +171,8 @@ text-align:center;
 	border: 1px solid #000000;
 	text-align:left;
 	}
-	
-.edit_cont{
-	min-height:450px;
+.edit_cont {
+    min-height: 450px;
     margin: 0 auto;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
@@ -212,7 +220,6 @@ list-style-type:decimal;
 	float: left;
 	margin: 10px;
 }
-
 .smallicon {
 	width: 150px;
 }

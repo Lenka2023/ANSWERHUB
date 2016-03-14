@@ -15,7 +15,6 @@
 	<body>
 		<div class="page_cont one">
 			<br class="cbt">
-
 			<div class="edit_cont">
 				<div class="middle">
 					
@@ -38,17 +37,11 @@
 										<button onclick="Link()">Link</button>
 										<button onclick="Text()">Text</button>
 										<button onclick="CBT()">CBT</button>
-
 										<button onclick="Listing()">Listing</button>
-
-
-									<p><textarea id="text" rows="15" cols="135" name="text"></textarea></p>
+										<p><textarea id="text" rows="15" cols="135" name="text"></textarea></p>
 									<div class="area">
 									<span id="RESULTHTML">qwe</span>
 									</div>
-									
-							
-						
 				</div>
 			</div>
 		</div>
@@ -90,6 +83,7 @@ function CBT()
 				
 				
 				document.getElementById("RESULT").innerText='<br class="cbt">';
+
 				document.getElementById("RESULTHTML").innerHTML='<br class="cbt">';
 			}
 
@@ -175,8 +169,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="commands">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="commands">'+expression+'</div>';
+				document.getElementById("RESULT").innerText='<div class="middle_title">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="middle_title">'+expression+'</div>';
 			}
 			function Down_title()
 			{
@@ -208,7 +202,7 @@ function Text()
 				document.getElementById("RESULTHTML").innerHTML='<div class="move_left strong font_size">'+expression+'</div>';
 
 			}
-					function Capture()
+			function Capture()
 			{
 				
 				var expression = getSelection( document.getElementById("text") );
@@ -230,8 +224,6 @@ function Text()
 				document.getElementById("RESULTHTML").innerHTML='<br><span class="move_left "><span class="strong ">'+x+'</span>'+expression+'</span>';
 
 			}
-
-	
 			function Smallicon()
 			{
 				
