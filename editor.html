@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="css/style.css"type="text/css"/ 
+		<script src="js/script.js"></script>
 		<!--[if lt IE 9]>
 		<script>
 			var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
@@ -40,12 +41,46 @@
 										<button onclick="Listing()">Listing</button>
 										<p><textarea id="text" rows="15" cols="135" name="text"></textarea></p>
 									<div class="area">
-									<span id="RESULTHTML">qwe</span>
+									<span id="RESULTHTML1">qwe</span>
+									<span id="RESULTHTML2">qwe</span>
+									<span id="RESULTHTML3">qwe</span>
+									<span id="RESULTHTML4">qwe</span>
+									<span id="RESULTHTML5">qwe</span>
+									<span id="RESULTHTML6">qwe</span>
+									<span id="RESULTHTML7">qwe</span>
+									<span id="RESULTHTML8">qwe</span>
+									<span id="RESULTHTML9">qwe</span>
+									<span id="RESULTHTML10">qwe</span>
+									<span id="RESULTHTML11">qwe</span>
+									<span id="RESULTHTML12">qwe</span>
+									<span id="RESULTHTML13">qwe</span>
+									<span id="RESULTHTML14">qwe</span>
+									<span id="RESULTHTML15">qwe</span>
+									<span id="RESULTHTML16">qwe</span>
+									<span id="RESULTHTML17">qwe</span>
+									<span id="RESULTHTML18">qwe</span>
 									</div>
 				</div>
 			</div>
 		</div>
-		<span id="RESULT">qwe</span>
+		<span id="RESULT1">qwe</span>
+		<span id="RESULT2">qwe</span>
+		<span id="RESULT3">qwe</span>
+		<span id="RESULT4">qwe</span>
+		<span id="RESULT5">qwe</span>
+		<span id="RESULT6">qwe</span>
+		<span id="RESULT7">qwe</span>
+		<span id="RESULT8">qwe</span>
+		<span id="RESULT9">qwe</span>
+		<span id="RESULT10">qwe</span>
+		<span id="RESULT11">qwe</span>
+		<span id="RESULT12">qwe</span>
+		<span id="RESULT13">qwe</span>
+		<span id="RESULT14">qwe</span>
+		<span id="RESULT15">qwe</span>
+		<span id="RESULT16">qwe</span>
+		<span id="RESULT17">qwe</span>
+		<span id="RESULT18">qwe</span>
 <script type="text/javascript">
 var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
@@ -78,14 +113,7 @@ function getSelection( textarea )
     }
     return selection;
 }
-function CBT()
-			{
-				
-				
-				document.getElementById("RESULT").innerText='<br class="cbt">';
 
-				document.getElementById("RESULTHTML").innerHTML='<br class="cbt">';
-			}
 
 
 function Text()
@@ -94,8 +122,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
 				document.getElementById("text").focus();
                         document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-				document.getElementById("RESULT").innerText='<div class="move_left">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="move_left">'+expression+'</div>';
+				document.getElementById("RESULT1").innerText='<div class="move_left">'+expression+'</div>';
+				document.getElementById("RESULTHTML1").innerHTML='<div class="move_left">'+expression+'</div>';
 			}
 
 			function Link()
@@ -105,8 +133,8 @@ function Text()
 				document.getElementById("text").focus();
  				document.getElementById("text").innerHTML = Link_Title.replace(/\n/g, '<br>');
 				var x=prompt("Enter a link","");
-				document.getElementById("RESULT").innerText='<a  href="'+x+'">'+Link_Title+'</a>';
-				document.getElementById("RESULTHTML").innerHTML='<a  href="'+x+'">'+Link_Title+'</a>';
+				document.getElementById("RESULT2").innerText='<a  href="'+x+'">'+Link_Title+'</a>';
+				document.getElementById("RESULTHTML2").innerHTML='<a  href="'+x+'">'+Link_Title+'</a>';
 			}
                   function Code()
 			{
@@ -114,8 +142,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="commands">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="commands">'+expression+'</div>';
+				document.getElementById("RESULT3").innerText='<div class="commands">'+expression+'</div>';
+				document.getElementById("RESULTHTML3").innerHTML='<div class="commands">'+expression+'</div>';
 			}
 						function Main_List()
 			{
@@ -123,8 +151,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="top_page_list">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="top_page_list">'+expression+'</div>';
+				document.getElementById("RESULT4").innerText='<div class="top_page_list">'+expression+'</div>';
+				document.getElementById("RESULTHTML4").innerHTML='<div class="top_page_list">'+expression+'</div>';
 			}
 			function Square_List()
 			{
@@ -132,8 +160,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="square ">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="square">'+expression+'</div>';
+				document.getElementById("RESULT5").innerText='<div class="square ">'+expression+'</div>';
+				document.getElementById("RESULTHTML5").innerHTML='<div class="square">'+expression+'</div>';
 			}
 			function Decimal_List()
 			{
@@ -141,8 +169,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="decimal">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="decimal">'+expression+'</div>';
+				document.getElementById("RESULT6").innerText='<div class="decimal">'+expression+'</div>';
+				document.getElementById("RESULTHTML6").innerHTML='<div class="decimal">'+expression+'</div>';
 			}
 			function Disc_List()
 			{
@@ -150,8 +178,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="disc">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="disc">'+expression+'</div>';
+				document.getElementById("RESULT7").innerText='<div class="disc">'+expression+'</div>';
+				document.getElementById("RESULTHTML7").innerHTML='<div class="disc">'+expression+'</div>';
 			}
 			function Main_title()
 			{
@@ -159,8 +187,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="main_title">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="main_title">'+expression+'</div>';
+				document.getElementById("RESULT8").innerText='<div class="main_title">'+expression+'</div>';
+				document.getElementById("RESULTHTML8").innerHTML='<div class="main_title">'+expression+'</div>';
 
 			}
 			function Middle_Title()
@@ -169,8 +197,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="middle_title">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="middle_title">'+expression+'</div>';
+				document.getElementById("RESULT9").innerText='<div class="middle_title">'+expression+'</div>';
+				document.getElementById("RESULTHTML9").innerHTML='<div class="middle_title">'+expression+'</div>';
 			}
 			function Down_title()
 			{
@@ -178,8 +206,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="down_title">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="down_title">'+expression+'</div>';
+				document.getElementById("RESULT10").innerText='<div class="down_title">'+expression+'</div>';
+				document.getElementById("RESULTHTML10").innerHTML='<div class="down_title">'+expression+'</div>';
 
 			}
 			function Red_title()
@@ -188,8 +216,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
 				document.getElementById("text").focus();
                         document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-				document.getElementById("RESULT").innerText='<div class="title">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="title">'+expression+'</div>';
+				document.getElementById("RESULT11").innerText='<div class="title">'+expression+'</div>';
+				document.getElementById("RESULTHTML11").innerHTML='<div class="title">'+expression+'</div>';
 			}
 
 			function Small_title()
@@ -198,8 +226,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="move_left strong font_size">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="move_left strong font_size">'+expression+'</div>';
+				document.getElementById("RESULT12").innerText='<div class="move_left strong font_size">'+expression+'</div>';
+				document.getElementById("RESULTHTML12").innerHTML='<div class="move_left strong font_size">'+expression+'</div>';
 
 			}
 			function Capture()
@@ -209,8 +237,8 @@ function Text()
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var x=prompt("Enter title of capture","");
-				document.getElementById("RESULT").innerText='<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expression+'</span>';
-				document.getElementById("RESULTHTML").innerHTML='<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expression+'</span>';
+				document.getElementById("RESULT13").innerText='<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expression+'</span>';
+				document.getElementById("RESULTHTML13").innerHTML='<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expression+'</span>';
 
 			}
 			function Listing()
@@ -220,8 +248,8 @@ function Text()
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var x=prompt("Enter title of capture","");
-				document.getElementById("RESULT").innerText='<br><span class="move_left "><span class="strong ">'+x+'</span>'+expression+'</span>';
-				document.getElementById("RESULTHTML").innerHTML='<br><span class="move_left "><span class="strong ">'+x+'</span>'+expression+'</span>';
+				document.getElementById("RESULT14").innerText='<br><span class="move_left "><span class="strong ">'+x+'</span>'+expression+'</span>';
+				document.getElementById("RESULTHTML14").innerHTML='<br><span class="move_left "><span class="strong ">'+x+'</span>'+expression+'</span>';
 
 			}
 			function Smallicon()
@@ -230,8 +258,8 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="textwrap smallicon">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="textwrap smallicon">'+expression+'</div>';
+				document.getElementById("RESULT15").innerText='<div class="textwrap smallicon">'+expression+'</div>';
+				document.getElementById("RESULTHTML15").innerHTML='<div class="textwrap smallicon">'+expression+'</div>';
 
 			}
             function Hot_Tip()
@@ -240,13 +268,13 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<div class="HotTip">'+
+				document.getElementById("RESULT16").innerText='<div class="HotTip">'+
 '<h1> Hot<br>Tip</h1>'+
 '</div>'+
  '<div class="block">'+
   '<span >'+expression+'</span>'+'</div>';
 
-			document.getElementById("RESULTHTML").innerHTML='<div class="HotTip">'+
+			document.getElementById("RESULTHTML16").innerHTML='<div class="HotTip">'+
 '<h1> Hot<br>Tip</h1>'+
 '</div>'+
  '<div class="block">'+
@@ -258,35 +286,43 @@ function Text()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULT").innerText='<table>'+
+				document.getElementById("RESULT17").innerText='<table>'+
 				'<tbody>';
 				var x=prompt("Enter a count of rows","");
 				for(var i=1;i<x;i++){
-						document.getElementById("RESULT").innerText='<tr>';
+						document.getElementById("RESULT17").innerText='<tr>';
 									
 				var y=prompt("Enter a count of columns","");
 						for(var j=1;j<y;j++){
-							document.getElementById("RESULT").innerText='<td>'+"expression*i*j"+'</td>';
+							document.getElementById("RESULT17").innerText='<td>'+"expression*i*j"+'</td>';
 											}
-				document.getElementById("RESULT").innerText='</tr>'
+				document.getElementById("RESULT17").innerText='</tr>'
 									}
-			document.getElementById("RESULT").innerText='</tbody>'+
+			document.getElementById("RESULT17").innerText='</tbody>'+
             '</table>';	
 			
-			document.getElementById("RESULTHTML").innerHTML='<table>'+
+			document.getElementById("RESULTHTML17").innerHTML='<table>'+
 				'<tbody>';
 				var x=prompt("Enter a count of rows","");
 				for(var i=1;i<x;i++){
-						document.getElementById("RESULT").innerText='<tr>';
+						document.getElementById("RESULT17").innerText='<tr>';
 									
 				var y=prompt("Enter a count of columns","");
 						for(var j=1;j<y;j++){
-							document.getElementById("RESULT").innerText='<td>'+"expression*i*j"+'</td>';
+							document.getElementById("RESULT17").innerText='<td>'+"expression*i*j"+'</td>';
 											}
-				document.getElementById("RESULT").innerText='</tr>'
+				document.getElementById("RESULT17").innerText='</tr>'
 									}
-			document.getElementById("RESULT").innerText='</tbody>'+
+			document.getElementById("RESULT17").innerText='</tbody>'+
             '</table>';
+			}
+			function CBT()
+			{
+				
+				
+				document.getElementById("RESULT18").innerText='<br class="cbt">';
+
+				document.getElementById("RESULTHTML18").innerHTML='<br class="cbt">';
 			}
 			
 		</script>
