@@ -82,10 +82,10 @@ color:#FFFFFF;
     
 }
 .area{
-	width:100%;
+	width:80%;
 	margin:0 auto;
 	border: 1px solid #000000;
-	 padding: 15px;
+	min-height:200px;
 	}
 .middle{
 margin:0 auto;
@@ -141,10 +141,10 @@ table {
     border-collapse: collapse;
 }
 textarea{
-width:100%;
+width:80%;
 	margin:0 auto;
 	border: 1px solid #000000;
-	 padding: 15px;
+	 min-height:200px;
 }
 .down_page {
 	border: thin solid;
