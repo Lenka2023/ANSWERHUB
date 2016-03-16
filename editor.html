@@ -38,8 +38,9 @@
 										<button onclick="Link()">Link</button>
 										<button onclick="Text()">Text</button>
 										<button onclick="CBT()">CBT</button>
+										<button onclick="Image()">Image</button>
 										<button onclick="Listing()">Listing</button>
-										<p><textarea id="text" rows="15" cols="135" name="text"></textarea></p>
+										<p><textarea id="text"  name="text"></textarea></p>
 									<div class="area">
 									<span id="RESULTHTML1">qwe</span>
 									<span id="RESULTHTML2">qwe</span>
@@ -136,6 +137,17 @@ function Text()
 				document.getElementById("RESULT2").innerText='<a  href="'+x+'">'+Link_Title+'</a>';
 				document.getElementById("RESULTHTML2").innerHTML='<a  href="'+x+'">'+Link_Title+'</a>';
 			}
+function Image()
+			{
+				
+				var Link_Title= getSelection( document.getElementById("text") );
+				document.getElementById("text").focus();
+ 				document.getElementById("text").innerHTML = Link_Title.replace(/\n/g, '<br>');
+				var x=prompt("Enter a name of image","");
+				document.getElementById("RESULT2").innerText='<img src="img/'+x+'"alt="622">';
+				document.getElementById("RESULTHTML2").innerHTML='<img src="img/'+x+'"alt="622">';
+			}
+
                   function Code()
 			{
 				

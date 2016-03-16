@@ -143,6 +143,10 @@ table {
 }
 textarea{
 text-align:center;
+width:100%;
+	height:250px;
+	border: 1px solid #000000;
+
 }
 .down_page {
 	border: thin solid;
