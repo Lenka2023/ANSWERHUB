@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"type="text/css"/ 
+    <!--[if lt IE 9]>
+    <script>
+      var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
+      for (var i = 0; i < e.length; i++) {
+        document.createElement(e[i]);
+      }
+    </script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="page_cont one">
+      <br class="cbt">
+      <div class="content">
+        <table border=0>
+          <tbody>
+            <tr>
+              <td rowspan=2>
+                <ul class="top_page_list">
+                  <span class="strong">CONTENTS INCLUDE:</span>
+                  <a href="#towhy">
+                    <li>Chain of Responsibility</li>
+                  </a>
+                  <a href="#tocreate">
+                    <li><span>Command</span></li>
+                  </a>
+                  <a href="#totypcial">
+                    <li><span>Iterator</span></li>
+                  </a>
+                  <a href="#toviewing">
+                    <li><span>Mediator</span></li>
+                  </a>
+                  <a href="#tobranches">
+                    <li><span>Observer</span></li>
+                  </a>
+                  <a href="#tothe">
+                    <li><span>Template Method and more...</span></li>
+                  </a>
+                </ul>
+              </td>
+              <td class="main_title">
+                <span class="title_font">Design Patterns</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="down_title ">
+                <span class="strong">By: Jason McDonald</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+		<div class="title">ABOUT DESIGN PATTERNS</div>
+<div class="move_left">This Design Patterns refcard provides a quick reference to
+the original 23 Gang of Four design patterns, as listed in the
+book Design Patterns: Elements of Reusable Object-Oriented
+Software. Each pattern includes class diagrams, explanation,
+usage information, and a real world example.</div>
+
+<div class="move_left">This Design Patterns refcard provides a quick reference to
+the original 23 Gang of Four design patterns, as listed in the
+book Design Patterns: Elements of Reusable Object-Oriented
+Software. Each pattern includes class diagrams, explanation,
+usage information, and a real world example.</div>
+<br><span class="move_left "><span class="strong ">Object Scope:</span>Deals with object relationships that can be
+changed at runtime.</span>
+<br><span class="move_left "><span class="strong ">Class Scope:</span>Deals with class relationships that can be changed
+at compile time.</span>
+
+<div class="title">CHAIN OF RESPONSIBILITY</div>
+<img src="img/CHAIN.png"alt="622">
+<div class="move_left strong font_size">Purpose</div>
+<div class="move_left">Gives more than one object an opportunity to handle a request
+by linking receiving objects together.</div>
+<div class="move_left strong font_size">Example</div>
+
+<div class="move_left">Exception handling in some languages implements this pattern.
+When an exception is thrown in a method the runtime checks to
+see if the method has a mechanism to handle the exception or
+if it should be passed up the call stack. When passed up the call
+stack the process repeats until code to handle the exception is
+encountered or until there are no more parent objects to hand
+the request to.</div>
+<div class="title">COMMAND</div>
+<img src="img/COMMAND.png"alt="622">
+
+<div class="move_left strong font_size">Purpose</div>
+<div class="move_left">Encapsulates a request allowing it to be treated as an object.
+This allows the request to be handled in traditionally object
+based relationships such as queuing and callbacks.</div>
+<div class="move_left strong font_size">Example</div>
+
+<div class="move_left">Job queues are widely used to facilitate the asynchronous
+processing of algorithms. By utilizing the command pattern the
+functionality to be executed can be given to a job queue for
+processing without any need for the queue to have knowledge
+of the actual implementation it is invoking. The command object
+that is enqueued implements its particular algorithm within the
+confines of the interface the queue is expecting.</div>
+
+<div class="title">INTERPRETER</div>
+<img src="img/INTERPRETER.png"alt="622">
+<div class="move_left strong font_size">Purpose</div>
+<div class="move_left">Defines a representation for a grammar as well as a mechanism
+to understand and act upon the grammar.</div>
+
+<div class="move_left strong font_size">Example</div>
+
+<div class="move_left">Text based adventures, wildly popular in the 1980’s, provide
+a good example of this. Many had simple commands, such
+as “step down” that allowed traversal of the game. These
+commands could be nested such that it altered their meaning.
+For example, “go in” would result in a different outcome than
+“go up”. By creating a hierarchy of commands based upon
+the command and the qualifier (non-terminal and terminal
+expressions) the application could easily map many command
+variations to a relating tree of actions.</div>
+
+<div class="title">ITERATOR</div>
+<img src="img/ITERATOR.png"alt="622">
+<div class="move_left strong font_size">Purpose</div>
+
+<div class="move_left">Allows for access to the elements of an aggregate object
+without allowing access to its underlying representation.</div>
+
+<div class="move_left strong font_size">Example</div>
+
+<div class="move_left">The Java implementation of the iterator pattern allows users to
+traverse various types of data sets without worrying about the
+underlying implementation of the collection. Since clients simply
+interact with the iterator interface, collections are left to define
+the appropriate iterator for themselves. Some will allow full access
+to the underlying data set while others may restrict certain
+functionalities, such as removing items.</div>
+<div class="title">MEDIATOR</div>
+<img src="img/MEDIATOR.png"alt="622">
+
+<div class="move_left strong font_size">Purpose</div>
+
+<div class="move_left">Allows loose coupling by encapsulating the way disparate sets of
+objects interact and communicate with each other. Allows for the
+actions of each object set to vary independently of one another.</div>
+
+<div class="move_left">Allows loose coupling by encapsulating the way disparate sets of
+objects interact and communicate with each other. Allows for the
+actions of each object set to vary independently of one another.</div>
+
+<div class="move_left strong font_size">Example</div>
+
+<div class="move_left">Mailing list software keeps track of who is signed up to the
+mailing list and provides a single point of access through which
+any one person can communicate with the entire list. Without
+a mediator implementation a person wanting to send a message
+to the group would have to constantly keep track of who
+was signed up and who was not. By implementing the mediator
+pattern the system is able to receive messages from any point
+then determine which recipients to forward the message on to,
+without the sender of the message having to be concerned with
+the actual recipient list.</div>
+
+<div class="title">MEMENTO</div>
+
+<img src="img/MEMENTO.png"alt="622">
+<div class="move_left strong font_size">Purpose</div>
+<div class="move_left">Allows for capturing and externalizing an object’s internal
+state so that it can be restored later, all without violating
+encapsulation.</div>
+
+<div class="move_left strong font_size">Example</div>
+
+<div class="move_left">Undo functionality can nicely be implemented using the
+memento pattern. By serializing and deserializing the state of
+an object before the change occurs we can preserve a snapshot
+of it that can later be restored should the user choose to undo
+the operation.</div>
+<div class="title">OBSERVER</div>
+<img src="img/OBSERVER.png"alt="622">
+
+<div class="move_left strong font_size">Purpose</div>
+
+<div class="move_left">Lets one or more objects be notified of state changes in other
+objects within the system.</div>
+
+<div class="move_left strong font_size">Example</div>
+
+<div class="move_left">This pattern can be found in almost every GUI environment.
+When buttons, text, and other fields are placed in applications
+the application typically registers as a listener for those controls.
+When a user triggers an event, such as clicking a button, the
+control iterates through its registered observers and sends a
+notification to each.</div>
+
+<div class="title">STATE</div>
+
+<img src="img/STATE.png"alt="622">
+
+<div class="move_left strong font_size">Purpose</div>
+
+<div class="move_left">Ties object circumstances to its behavior, allowing the object
+to behave in different ways based upon its internal state.</div>
+
+<div class="move_left strong font_size">Example</div>
+
+<div class="move_left">An email object can have various states, all of which will
+change how the object handles different functions. If the state
+is “not sent” then the call to send() is going to send the message
+while a call to recallMessage() will either throw an error or do
+nothing. However, if the state is “sent” then the call to send()
+would either throw an error or do nothing while the call to
+recallMessage() would attempt to send a recall notification
+to recipients. To avoid conditional statements in most or all
+methods there would be multiple state objects that handle the
+implementation with respect to their particular state. The calls
+within the Email object would then be delegated down to the
+appropriate state object for handling.</div>
+
+<div class="title">STRATEGY</div>
+
+<img src="img/STRATEGY.png"alt="622">
+
+<div class="move_left strong font_size">Purpose</div>
+
+<div class="move_left">Defines a set of encapsulated algorithms that can be swapped
+to carry out a specific behavior.</div>
+
+<div class="move_left strong font_size">Example</div>
+
+<div class="move_left">When importing data into a new system different validation
+algorithms may be run based on the data set. By configuring the
+import to utilize strategies the conditional logic to determine
+what validation set to run can be removed and the import can be
+decoupled from the actual validation code. This will allow us to
+dynamically call one or more strategies during the import.</div>
+
+<div class="title">TEMPLATE METHOD</div>
+
+<img src="img/TEMPLATE.png"alt="622">
+
+<div class="move_left strong font_size">Purpose</div>
+
+<div class="move_left">Identifies the framework of an algorithm, allowing implementing
+classes to define the actual behavior.</div>
+
+<div class="move_left strong font_size">Example</div>
+
+<div class="move_left">A parent class, InstantMessage, will likely have all the methods
+required to handle sending a message. However, the actual
+serialization of the data to send may vary depending on the
+implementation. A video message and a plain text message
+will require different algorithms in order to serialize the data
+correctly. Subclasses of InstantMessage can provide their
+own implementation of the serialization method, allowing the
+parent class to work with them without understanding their
+implementation details.</div>

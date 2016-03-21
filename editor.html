@@ -132,9 +132,13 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
  				document.getElementById("text").innerHTML = Image_Title.replace(/\n/g, '<br>');
 				var x=prompt("Enter a name of image","");
 				document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
+				document.getElementById("RESULTHTML").innerHTML='<img src="img/'+x+'"alt="622">';
 				document.getElementById("RESULTTEXT").innerText='<img src="img/'+Image_Title+'"alt="622">';
 				document.getElementById("RESULTHTML").innerHTML='<img src="img/'+Image_Title+'"alt="622">';
-				document.getElementById("RESULTHTML").innerHTML='<img src="img/'+x+'"alt="622">';
+				document.getElementById("RESULTTEXT").id = "text_res";
+				document.getElementById("RESULTHTML").id = "html_res";
+				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
+				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 
 			}
 
