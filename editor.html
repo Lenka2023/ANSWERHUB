@@ -33,13 +33,14 @@
 										<button onclick="Capture()">Capture</button>
 										<button onclick="Hot_Tip()">Hot Tip</button>
 										<button onclick="Code()">Code</button>
-										<button onclick="SmallIcon()">SmallIcon</button>
+										<button onclick="Smallicon()">SmallIcon</button>
 										<button onclick="Table()">Table</button>
 										<button onclick="Link()">Link</button>
 										<button onclick="Text()">Text</button>
 										<button onclick="CBT()">CBT</button>
 										<button onclick="Image()">Image</button>
 										<button onclick="Listing()">Listing</button>
+										<button onclick="Bold()">Bold</button>
 										<p><textarea id="text"  name="text"></textarea></p>
 									<div id="area" class="area">
 									<span id="RESULTHTML">qwe</span>
@@ -141,7 +142,20 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 
 			}
+function Bold()
+			{
+				
+				var expression = getSelection( document.getElementById("text") );
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				document.getElementById("RESULTTEXT").innerText='<div class="strong">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="strong">'+expression+'</div>';
+				document.getElementById("RESULTTEXT").id = "text_res";
+				document.getElementById("RESULTHTML").id = "html_res";
+				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
+				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 
+			}
                   function Code()
 			{
 				
@@ -274,8 +288,8 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 				var expression = getSelection( document.getElementById("text") );
 				document.getElementById("text").focus();
                         document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-				document.getElementById("RESULTTEXT").innerText='<div class="title">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="title">'+expression+'</div>';
+				document.getElementById("RESULTTEXT").innerText='<div class="title strong"><span>'+expression+'</span></div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="title strong"><span>'+expression+'</span></div>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -337,8 +351,13 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<div class="textwrap smallicon">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="textwrap smallicon">'+expression+'</div>';
+				var x=prompt("Enter a name of image","");
+				document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
+				document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
+				document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
+				document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">';
+				document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">';
+
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
