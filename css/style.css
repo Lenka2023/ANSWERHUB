@@ -52,7 +52,6 @@ color:#FFFFFF;
 float:left;
 background:#FFFF33;
 width:15%;
-
 border-radius:5px 0 0 5px;
  text-align:center;
 padding: 10px;
@@ -196,6 +195,190 @@ width:80%;
     padding: 0 15px;
     box-sizing: content-box;
     position: relative;
+ }
+ .smallsquare_list{
+    list-style: none;
+	text-align: left;
+	vertical-align: top;
+ }
+ .smallsquare_list li:nth-child(1){
+ 	background: url(../img/Cblue.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(2){
+ 	background: url(../img/Sorange.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(3){
+ 	background: url(../img/Sorange.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(4){
+ 	background: url(../img/Cblue.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(5){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(6){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(7){
+ 	background: url(../img/Sorange.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(8){
+ 	background: url(../img/Sorange.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(9){
+ 	background: url(../img/Sorange.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(10){
+ 	background: url(../img/Cblue.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(11){
+ 	background: url(../img/Sorange.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(12){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px;  
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(13){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(14){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 20px 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(15){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(16){
+ 	background: url(../img/Cblue.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(17){
+ 	background: url(../img/Sorange.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(18){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(19){
+ 	background: url(../img/Cblue.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(20){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(21){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(22){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.smallsquare_list li:nth-child(23){
+ 	background: url(../img/Bgreen.png) left center no-repeat;
+ 	padding: 10px 20px 0px 70px; 
+	margin: 20px 20px 20px 20px; 
+
+ }
+.row1{
+width:30%;
+text-align:left;
+float:left;
+}
+.row2{
+width:30%;
+text-align:left;
+float:left;
+}
+.row3{
+width:30%;
+text-align:left;
+float:left;
+}
+.row{
+width:90%;
+text-align:left;
+float:left;
+}
+
+ .bigsquare_list{
+    list-style: none;
+	text-align: left;
+	vertical-align: top;
+ }
+ .bigsquare_list li:nth-child(1){
+ background: url(../img/blue.png) left center no-repeat;
+ 	padding: 40px 20px 20px 100px; 
+	margin: 20px 20px 20px -20px; 
+ }
+ .bigsquare_list li:nth-child(2){
+ background: url(../img/orange.png) left center no-repeat;
+ 	padding: 40px 20px 20px 100px;
+    margin: 20px 20px 20px -20px; 	
+ }
+ .bigsquare_list li:nth-child(3){
+ background: url(../img/green.png) left center no-repeat;
+ 	padding: 40px 20px 20px 100px; 
+	margin: 20px 20px 20px -20px;
  }
  .top_page_list {
 	list-style: none;

@@ -33,14 +33,13 @@
 										<button onclick="Capture()">Capture</button>
 										<button onclick="Hot_Tip()">Hot Tip</button>
 										<button onclick="Code()">Code</button>
-										<button onclick="Smallicon()">SmallIcon</button>
+										<button onclick="SmallIcon()">SmallIcon</button>
 										<button onclick="Table()">Table</button>
 										<button onclick="Link()">Link</button>
 										<button onclick="Text()">Text</button>
 										<button onclick="CBT()">CBT</button>
 										<button onclick="Image()">Image</button>
 										<button onclick="Listing()">Listing</button>
-										<button onclick="Bold()">Bold</button>
 										<p><textarea id="text"  name="text"></textarea></p>
 									<div id="area" class="area">
 									<span id="RESULTHTML">qwe</span>
@@ -54,7 +53,6 @@
 		</div id="endofresult">
 
 <script type="text/javascript">
-
 var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var is_ie     = ( (uagent.indexOf('msie') != -1) && (!is_opera) && (!is_safari) && (!is_webtv) );
@@ -87,26 +85,21 @@ function getSelection( textarea )
     return selection;
 }
 function Text(){
-	//var i=1;
+	var i=1;
 	var expression = getSelection( document.getElementById("text") );
 	document.getElementById("text").focus();
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
 	//var endofresult=document.getElementById("endofresult");
-	//while(true) 
-	//{
-		//var RESULTTEXTi=document.createElement('<span id="RESULTTEXTi">qwe</span>');
-		//result.insertBefore(RESULTTEXTi,childnodes[1]);
+	while(true) 
+	{
+		var RESULTTEXTi=document.createElement('<span id="RESULTTEXTi">qwe</span>');
+		result.insertBefore(RESULTTEXTi,childnodes[1]);
 		//result.appendChild(RESULTTEXTi);
-		//document.getElementById("RESULTTEXTi").innerText='<br><span class="move_left">'+expression+'</span>';
-		//i++;
-	//}
-document.getElementById("RESULTTEXT").innerText='<div class="move_left">'+expression+'</div>';
-document.getElementById("RESULTHTML").innerHTML='<div class="move_left">'+expression+'</div>';
-document.getElementById("RESULTTEXT").id = "text_res";
-document.getElementById("RESULTHTML").id = "html_res";
-document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
-document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+		document.getElementById("RESULTTEXTi").innerText='<div class="move_left">'+expression+'</div>';
+		i++;
+	}
+
 }
 //document.getElementById("RESULTHTML").innerHTML='<div class="move_left">'+expression+'</div>';
 
@@ -133,29 +126,12 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
  				document.getElementById("text").innerHTML = Image_Title.replace(/\n/g, '<br>');
 				var x=prompt("Enter a name of image","");
 				document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
-				document.getElementById("RESULTHTML").innerHTML='<img src="img/'+x+'"alt="622">';
 				document.getElementById("RESULTTEXT").innerText='<img src="img/'+Image_Title+'"alt="622">';
 				document.getElementById("RESULTHTML").innerHTML='<img src="img/'+Image_Title+'"alt="622">';
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("RESULTHTML").innerHTML='<img src="img/'+x+'"alt="622">';
 
 			}
-function Bold()
-			{
-				
-				var expression = getSelection( document.getElementById("text") );
- 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<div class="strong">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="strong">'+expression+'</div>';
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 
-			}
                   function Code()
 			{
 				
@@ -178,10 +154,11 @@ function Bold()
 				document.getElementById("text").focus();
 				var n=prompt("Enter a count of row","");
 				document.getElementById("RESULTTEXT").innerText='<ul class="top_page_list">'+expression+'</ul>';
-//for(i=1;i<n;i++){
-//document.createElement("<p><li></li></p>");
+for(i=1;i<n;i++){
+var a=document.createElement("<p><li></li></p>");
+result.insertBefore(a,childnodes[1]);
 //document.getElementById("top_page_list").innerHTML+= '<p><li></li></p>';
-//}
+}
 				document.getElementById("RESULTHTML").innerHTML='<ul class="top_page_list">'+expression+'</ul>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
@@ -288,8 +265,8 @@ function Bold()
 				var expression = getSelection( document.getElementById("text") );
 				document.getElementById("text").focus();
                         document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-				document.getElementById("RESULTTEXT").innerText='<div class="title strong"><span>'+expression+'</span></div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="title strong"><span>'+expression+'</span></div>';
+				document.getElementById("RESULTTEXT").innerText='<div class="title">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="title">'+expression+'</div>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -351,13 +328,8 @@ function Bold()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				var x=prompt("Enter a name of image","");
-				document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
-				document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
-				document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
-				document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">';
-				document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">';
-
+				document.getElementById("RESULTTEXT").innerText='<div class="textwrap smallicon">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="textwrap smallicon">'+expression+'</div>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
