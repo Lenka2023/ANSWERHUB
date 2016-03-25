@@ -101,8 +101,8 @@ function Text(){
 		//document.getElementById("RESULTTEXTi").innerText='<br><span class="move_left">'+expression+'</span>';
 		//i++;
 	//}
-document.getElementById("RESULTTEXT").innerText='<div class="move_left">'+expression+'</div>';
-document.getElementById("RESULTHTML").innerHTML='<div class="move_left">'+expression+'</div>';
+document.getElementById("RESULTTEXT").innerText='<br><span class="move_left">'+expression+'</span>';
+document.getElementById("RESULTHTML").innerHTML='<br><span class="move_left">'+expression+'</span>';
 document.getElementById("RESULTTEXT").id = "text_res";
 document.getElementById("RESULTHTML").id = "html_res";
 document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -142,14 +142,14 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 
 			}
-function Bold()
+			function Bold()
 			{
 				
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<div class="strong">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="strong">'+expression+'</div>';
+				document.getElementById("RESULTTEXT").innerText='<span class="strong">'+expression+'</span>';
+				document.getElementById("RESULTHTML").innerHTML='<span class="strong">'+expression+'</span>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -177,12 +177,19 @@ function Bold()
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var n=prompt("Enter a count of row","");
-				document.getElementById("RESULTTEXT").innerText='<ul class="top_page_list">'+expression+'</ul>';
-//for(i=1;i<n;i++){
-//document.createElement("<p><li></li></p>");
-//document.getElementById("top_page_list").innerHTML+= '<p><li></li></p>';
-//}
-				document.getElementById("RESULTHTML").innerHTML='<ul class="top_page_list">'+expression+'</ul>';
+				document.getElementById("RESULTTEXT").innerText='<ul class="top_page_list"><span class=" strong font_size">'+expression+'</span>';
+				document.getElementById("RESULTTEXT").innerText='<ul class="top_page_list"><span class=" strong font_size">'+expression+'</span>';
+
+for(i=1;i<n;i++){
+document.createElement("<li>");
+document.createElement("</li>");
+var xi=prompt("Enter a text for i <li>","");
+document.getElementById("top_page_list").innerText='<li>'xi'</li>';
+document.getElementById("top_page_list").innerHTML='<li>'xi'</li>';
+}
+document.getElementById("RESULTTEXT").innerText='<ul>';
+document.getElementById("RESULTTEXT").innerHTML='<ul>';
+
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -196,8 +203,8 @@ function Bold()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<ul class="square">'+expression+'</ul>';
-				document.getElementById("RESULTHTML").innerHTML='<ul class="square">'+expression+'</ul>';
+				document.getElementById("RESULTTEXT").innerText='<ul class="square"><span class=" strong font_size">'+expression+'</span>';
+				document.getElementById("RESULTHTML").innerHTML='<ul class="square"><span class=" strong font_size">'+expression+'</span>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -211,8 +218,8 @@ function Bold()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<ol class="decimal">'+expression+'</ol>';
-				document.getElementById("RESULTHTML").innerHTML='<ol class="decimal">'+expression+'</ol>';
+				document.getElementById("RESULTTEXT").innerText='<ol class="decimal"><span class=" strong font_size">'+expression+'</span>';
+				document.getElementById("RESULTHTML").innerHTML='<ol class="decimal"><span class=" strong font_size">'+expression+'</span>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -226,8 +233,8 @@ function Bold()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<ol class="disc">'+expression+'</ol>';
-				document.getElementById("RESULTHTML").innerHTML='<ol class="disc">'+expression+'</ol>';
+				document.getElementById("RESULTTEXT").innerText='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
+				document.getElementById("RESULTHTML").innerHTML='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -304,8 +311,8 @@ function Bold()
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<div class="move_left strong font_size">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="move_left strong font_size">'+expression+'</div>';
+				document.getElementById("RESULTTEXT").innerText='<br><span class="move_left strong font_size">'+expression+'</span>';
+				document.getElementById("RESULTHTML").innerHTML='<br><span class="move_left strong font_size">'+expression+'</span>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';

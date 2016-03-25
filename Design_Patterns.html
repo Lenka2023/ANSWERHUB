@@ -121,6 +121,7 @@ by linking receiving objects together.</span>
 <li> A request not being handled is an acceptable potential outcome. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Exception handling in some languages implements this pattern.
 When an exception is thrown in a method the runtime checks to
 see if the method has a mechanism to handle the exception or
@@ -131,6 +132,7 @@ the request to.</span>
 <div class="title strong" id="tocommand"><span>COMMAND</span></div>
 <img src="img/COMMAND.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Encapsulates a request allowing it to be treated as an object.
 This allows the request to be handled in traditionally object
 based relationships such as queuing and callbacks.</span>
@@ -141,6 +143,7 @@ based relationships such as queuing and callbacks.</span>
 <li> The invoker should be decoupled from the object handling the invocation. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Job queues are widely used to facilitate the asynchronous
 processing of algorithms. By utilizing the command pattern the
 functionality to be executed can be given to a job queue for
@@ -151,6 +154,7 @@ confines of the interface the queue is expecting.</span>
 <div class="title strong"><span>INTERPRETER</span></div>
 <img src="img/INTERPRETER.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Defines a representation for a grammar as well as a mechanism
 to understand and act upon the grammar.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -160,6 +164,7 @@ to understand and act upon the grammar.</span>
 <li>Decoupling grammar from underlying expressions is desired. </li>
 </ul> 
 <br><br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Text based adventures, wildly popular in the 1980's, provide
 a good example of this. Many had simple commands, such
 as "step down" that allowed traversal of the game. These
@@ -172,6 +177,7 @@ variations to a relating tree of actions.</span>
 <div class="title strong" id="toiterator"><span>ITERATOR</span></div>
 <img src="img/ITERATOR.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Allows for access to the elements of an aggregate object
 without allowing access to its underlying representation.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -181,6 +187,7 @@ without allowing access to its underlying representation.</span>
 <li>Subtle differences exist between the implementation details of various iterators. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">The Java implementation of the iterator pattern allows users to
 traverse various types of data sets without worrying about the
 underlying implementation of the collection. Since clients simply
@@ -192,6 +199,7 @@ functionalities, such as removing items.</span>
 <div class="title strong" id="tomediator"><span>MEDIATOR</span></div>
 <img src="img/MEDIATOR.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Allows loose coupling by encapsulating the way disparate sets of
 objects interact and communicate with each other. Allows for the
 actions of each object set to vary independently of one another.</span>
@@ -203,6 +211,7 @@ actions of each object set to vary independently of one another.</span>
 <li>Too many relationships exist and common point of control or communication is needed. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Mailing list software keeps track of who is signed up to the
 mailing list and provides a single point of access through which
 any one person can communicate with the entire list. Without
@@ -216,6 +225,7 @@ the actual recipient list.</span>
 <div class="title strong"><span>MEMENTO</span></div>
 <img src="img/MEMENTO.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Allows for capturing and externalizing an object's internal
 state so that it can be restored later, all without violating
 encapsulation.</span>
@@ -225,6 +235,7 @@ encapsulation.</span>
 <li>Encapsulation boundaries must be preserved. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Undo functionality can nicely be implemented using the
 memento pattern. By serializing and deserializing the state of
 an object before the change occurs we can preserve a snapshot
@@ -233,6 +244,7 @@ the operation.</span>
 <div class="title strong" id="toobserver"><span>OBSERVER</span></div>
 <img src="img/OBSERVER.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Lets one or more objects be notified of state changes in other
 objects within the system.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -241,6 +253,7 @@ objects within the system.</span>
 <li>An understanding exists that objects will be blind to the expense of notification. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">This pattern can be found in almost every GUI environment.
 When buttons, text, and other fields are placed in applications
 the application typically registers as a listener for those controls.
@@ -250,6 +263,7 @@ notification to each.</span>
 <div class="title strong"><span>STATE</span></div>
 <img src="img/STATE.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Ties object circumstances to its behavior, allowing the object
 to behave in different ways based upon its internal state.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -258,6 +272,7 @@ to behave in different ways based upon its internal state.</span>
 <li>Transitions between states need to be explicit. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">An email object can have various states, all of which will
 change how the object handles different functions. If the state
 is "not sent" then the call to send() is going to send the message
@@ -273,6 +288,7 @@ appropriate state object for handling.</span>
 <div class="title strong"><span>STRATEGY</span></div>
 <img src="img/STRATEGY.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Defines a set of encapsulated algorithms that can be swapped
 to carry out a specific behavior.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -283,6 +299,7 @@ to carry out a specific behavior.</span>
 <li>Conditional statements are complex and hard to maintain. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">When importing data into a new system different validation
 algorithms may be run based on the data set. By configuring the
 import to utilize strategies the conditional logic to determine
@@ -292,6 +309,7 @@ dynamically call one or more strategies during the import.</span>
 <div class="title strong" id="totemplate"><span>TEMPLATE METHOD</span></div>
 <img src="img/TEMPLATE.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Identifies the framework of an algorithm, allowing implementing
 classes to define the actual behavior.</span>
 <ul class="square "><span class="strong font_size">Use When</span>
@@ -301,6 +319,7 @@ classes to define the actual behavior.</span>
 <li>Most or all subclasses need to implement the behavior. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">A parent class, InstantMessage, will likely have all the methods
 required to handle sending a message. However, the actual
 serialization of the data to send may vary depending on the
@@ -313,6 +332,7 @@ implementation details.</span>
 <div class="title strong"><span>VISITOR</span></div>
 <img src="img/VISITOR.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Allows for one or more operations to be applied to a set of objects
 at runtime, decoupling the operations from the object structure.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -323,6 +343,7 @@ at runtime, decoupling the operations from the object structure.</span>
 <li>Operations should be able to operate on multiple object structures that implement the same interface sets. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Calculating taxes in different regions on sets of invoices would
 require many different variations of calculation logic. Implementing
 a visitor allows the logic to be decoupled from the invoices and
@@ -332,6 +353,7 @@ Changing regions is as simple as substituting a different visitor.</span>
 <div class="title strong"><span>ADAPTER</span></div>
 <img src="img/ADAPTER.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Permits classes with disparate interfaces to work together by
 creating a common object by which they may communicate
 and interact.</span>
@@ -341,6 +363,7 @@ and interact.</span>
 <li>Transitions between states need to be explicit. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">A billing application needs to interface with an HR application in
 order to exchange employee data, however each has its own interface
 and implementation for the Employee object. In addition, the
@@ -351,6 +374,7 @@ and is able to transform the SSN format in the process.</span>
 <div class="title strong"><span>BRIDGE</span></div>
 <img src="img/BRIDGE.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Defines an abstract object structure independently of the
 implementation object structure in order to limit coupling.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -360,6 +384,7 @@ implementation object structure in order to limit coupling.</span>
 <li>Implementation details should be hidden from the client. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">The Java Virtual Machine (JVM) has its own native set of functions
 that abstract the use of windowing, system logging, and byte
 code execution but the actual implementation of these functions
@@ -371,6 +396,7 @@ system in order to render the window.</span>
 <div class="title strong"><span>COMPOSITE</span></div>
 <img src="img/COMPOSITE.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Facilitates the creation of object hierarchies where each object
 can be treated independently or as a set of nested objects
 through the same interface.</span>
@@ -382,6 +408,7 @@ Hierarchical representations of objects are needed.. </li>
 Objects and compositions of objects should be treated uniformly. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Sometimes the information displayed in a shopping cart is the
 product of a single item while other times it is an aggregation
 of multiple items. By implementing items as composites we can
@@ -394,6 +421,7 @@ items or groups of items.</span>
 <div class="title strong"><span>DECORATOR</span></div>
 <img src="img/DECORATOR.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Allows for the dynamic wrapping of objects in order to modify
 their existing responsibilities and behaviors.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -404,6 +432,7 @@ their existing responsibilities and behaviors.</span>
 <li>A lot of little objects surrounding a concrete implementation is acceptable. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Many businesses set up their mail systems to take advantage of
 decorators. When messages are sent from someone in the company
 to an external address the mail server decorates the original
@@ -415,13 +444,15 @@ additional information.</span>
 <div class="title strong"><span>FACADE</span></div>
 <img src="img/FACADE.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
-<br><br><span class="move_left">Supplies a single interface to a set of interfaces within a system.</span>
+<br class="cbt">
+<br><span class="move_left">Supplies a single interface to a set of interfaces within a system.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
 <li>A simple interface is needed to provide access to a complex system. </li>
 <li>There are many dependencies between system implementations and clients. </li>
 <li>Systems and subsystems should be layered. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">By exposing a set of functionalities through a web service
 the client code needs to only worry about the simple interface
 being exposed to them and not the complex relationships that
@@ -433,6 +464,7 @@ fa?ade pattern.</span>
 <div class="title strong"><span>FLYWEIGHT</span></div>
 <img src="img/FLYWEIGHT.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Facilitates the reuse of many fine grained objects, making the
 utilization of large numbers of objects more efficient.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -442,6 +474,7 @@ utilization of large numbers of objects more efficient.</span>
 <li>The identity of each object does not matter. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Systems that allow users to define their own application flows
 and layouts often have a need to keep track of large numbers of
 fields, pages, and other items that are almost identical to each
@@ -455,6 +488,7 @@ react to a user click, and how to handle events.</span>
 <div class="title strong"><span>PROXY</span></div>
 <img src="img/PROXY.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Allows for object level access control by acting as a pass through
 entity or a placeholder object.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -464,6 +498,7 @@ entity or a placeholder object.</span>
 <li>Added functionality is required when an object is accessed. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Ledger applications often provide a way for users to reconcile
 their bank statements with their ledger data on demand, automating
 much of the process. The actual operation of communicating
@@ -476,6 +511,7 @@ calling code from the implementation details.</span>
 <div class="title strong"><span>ABSTRACT FACTORY</span></div>
 <img src="img/ABSTRACT.png "alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Provide an interface that delegates creation calls to one or
 more concrete classes in order to deliver specific objects.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -486,6 +522,7 @@ more concrete classes in order to deliver specific objects.</span>
 <li>Concrete classes should be decoupled from clients. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Email editors will allow for editing in multiple formats including
 plain text, rich text, and HTML. Depending on the format being
 used, different objects will need to be created. If the message
@@ -500,6 +537,7 @@ based upon the style of email that is being sent.</span>
 <div class="title strong"><span>BUILDER</span></div>
 <img src="img/BUILDER.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Allows for the dynamic creation of objects based upon easily
 interchangeable algorithms.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -509,6 +547,7 @@ interchangeable algorithms.</span>
 <li>Runtime control over the creation process is required. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">A file transfer application could possibly use many different
 protocols to send files and the actual transfer object that will be
 created will be directly dependent on the chosen protocol. Using
@@ -518,6 +557,7 @@ be used when creating the object.</span>
 <div class="title strong"><span>FACTORY METHOD</span></div>
 <img src="img/FACTORY_METHOD.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Exposes a method for creating objects, allowing subclasses to
 control the actual creation process.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -526,6 +566,7 @@ control the actual creation process.</span>
 <li>Parent classes wish to defer creation to their subclasses. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Many applications have some form of user and group structure
 for security. When the application needs to create a user it will
 typically delegate the creation of the user to multiple user
@@ -539,6 +580,7 @@ StandardUser may do the same to limit access.</span>
 <div class="title strong"><span>PROTOTYPE</span></div>
 <img src="img/PROTOTYPE.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Create objects based upon a template of an existing objects
 through cloning.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
@@ -549,6 +591,7 @@ through cloning.</span>
 <li>The initial creation of each object is an expensive operation. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Rates processing engines often require the lookup of many
 different configuration values, making the initialization of the
 engine a relatively expensive process. When multiple instances
@@ -562,12 +605,14 @@ to only include relevant data for their situation.</span>
 <div class="title strong"><span>SINGLETON</span></div>
 <img src="img/SINGLETON.png"alt="622">
 <br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
 <br><span class="move_left">Ensures that only one instance of a class is allowed within a system.</span>
 <ul class="square"><span class=" strong font_size">Use When</span>
 <li>Exactly one instance of a class is required. </li>
 <li>Controlled access to a single object is necessary. </li>
 </ul> 
 <br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
 <br><span class="move_left">Most languages provide some sort of system or environment
 object that allows the language to interact with the native operating
 system. Since the application is physically running on only one
