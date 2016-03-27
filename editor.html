@@ -166,30 +166,25 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 				document.getElementById("RESULTHTML").innerHTML='<div class="commands">'+expression+'</div>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("result").innerHTML+= '<p><span id="RESULTTEXT">qwe</span></p>';
+				document.getElementById("area").innerHTML+= '<p><span id="RESULTHTML">qwe</span></p>';
 
 			}
 			function Main_List()
 			{
-			var i=1;	
+			
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var n=prompt("Enter a count of row","");
-				document.getElementById("RESULTTEXT").innerText='<ul class="top_page_list"><span class=" strong font_size">'+expression+'</span>';
-				document.getElementById("RESULTTEXT").innerText='<ul class="top_page_list"><span class=" strong font_size">'+expression+'</span>';
+				 var main_list='<ul class="top_page_list"><span class=" strong font_size">'+expression+'</span>';
 
-for(i=1;i<n;i++){
-document.createElement("<li>");
-document.createElement("</li>");
-var xi=prompt("Enter a text for i <li>","");
-document.getElementById("top_page_list").innerText='<li>'xi'</li>';
-document.getElementById("top_page_list").innerHTML='<li>'xi'</li>';
+for(var i=0;i<n;i++){
+ main_list+='<li>"'+text+'"</li>';
+ var text=prompt("Enter a text for  <li>","");
 }
-document.getElementById("RESULTTEXT").innerText='<ul>';
-document.getElementById("RESULTTEXT").innerHTML='<ul>';
-
+ document.getElementById("RESULTTEXT").innerText= main_list + '</ul>';
+document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -203,8 +198,15 @@ document.getElementById("RESULTTEXT").innerHTML='<ul>';
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<ul class="square"><span class=" strong font_size">'+expression+'</span>';
-				document.getElementById("RESULTHTML").innerHTML='<ul class="square"><span class=" strong font_size">'+expression+'</span>';
+				var n=prompt("Enter a count of row","");
+				 var square_list='<ul class="square"><span class=" strong font_size">'+expression+'</span>';
+
+for(var i=0;i<n;i++){
+ square_list+='<li>"'+text+'"</li>';
+ var text=prompt("Enter a text for  <li>","");
+}
+ document.getElementById("RESULTTEXT").innerText= square_list + '</ul>';
+document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -217,9 +219,16 @@ document.getElementById("RESULTTEXT").innerHTML='<ul>';
 				
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<ol class="decimal"><span class=" strong font_size">'+expression+'</span>';
-				document.getElementById("RESULTHTML").innerHTML='<ol class="decimal"><span class=" strong font_size">'+expression+'</span>';
+				document.getElementById("text").focus
+				var n=prompt("Enter a count of row","");
+				 var decimal_list='<ol class="decimal"><span class=" strong font_size">'+expression+'</span>';
+
+for(var i=0;i<n;i++){
+ decimal_list+='<li>"'+text+'"</li>';
+ var text=prompt("Enter a text for  <li>","");
+}
+ document.getElementById("RESULTTEXT").innerText= decimal_list + '</ol>';
+document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -233,8 +242,15 @@ document.getElementById("RESULTTEXT").innerHTML='<ul>';
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
-				document.getElementById("RESULTHTML").innerHTML='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
+				var n=prompt("Enter a count of row","");
+				 var disc_list='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
+
+for(var i=0;i<n;i++){
+ disc_list+='<li>"'+text+'"</li>';
+ var text=prompt("Enter a text for  <li>","");
+}
+ document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
+document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
