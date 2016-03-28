@@ -51,7 +51,7 @@
 		</div>
 <div id="result">
 		<span id="RESULTTEXT">qwe</span>
-		</div id="endofresult">
+		</div>
 
 <script type="text/javascript">
 
@@ -432,41 +432,29 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 
 
 			}
+
             function Table()
 			{
 				
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<table>'+
-				'<tbody>';
-				var x=prompt("Enter a count of rows","");
-				for(var i=1;i<x;i++){
-						document.getElementById("RESULTTEXT").innerText='<tr>';
-									
-				var y=prompt("Enter a count of columns","");
-						for(var j=1;j<y;j++){
-							document.getElementById("RESULTTEXT").innerText='<td>'+"expression*i*j"+'</td>';
-											}
-				document.getElementById("RESULTTEXT").innerText='</tr>'
-									}
-			document.getElementById("RESULTTEXT").innerText='</tbody>'+
-            '</table>';	
-			
-			document.getElementById("RESULTHTML").innerHTML='<table>'+
-				'<tbody>';
-				var x=prompt("Enter a count of rows","");
-				for(var i=1;i<x;i++){
-						document.getElementById("RESULTTEXT").innerText='<tr>';
-									
-				var y=prompt("Enter a count of columns","");
-						for(var j=1;j<y;j++){
-							document.getElementById("RESULTTEXT").innerText='<td>'+"expression*i*j"+'</td>';
-											}
-				document.getElementById("RESULTTEXT").innerText='</tr>'
-									}
-			document.getElementById("RESULTTEXT").innerText='</tbody>'+
-            '</table>';
+				var x=prompt("Enter a count of row","");
+var y=prompt("Enter a count of columns","");
+var table='<table class="syntax_description"><tbody>';
+for(var i=1;i<x;i++){
+ table+='<tr>';
+for(var j=0;j<y;j++){
+table+='<td>"'+text+'"</td>';
+
+}
+
+table+='</tr>';
+}
+
+ var text=prompt("Enter text","");
+document.getElementById("RESULTTEXT").innerText= table + '</tbody></table>';
+document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -474,6 +462,13 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 
 
 			}
+
+
+
+				
+
+
+			
 			function CBT()
 			{
 				
