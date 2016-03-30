@@ -107,6 +107,7 @@ document.getElementById("RESULTTEXT").id = "text_res";
 document.getElementById("RESULTHTML").id = "html_res";
 document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+document.getElementById("text").value='';
 }
 //document.getElementById("RESULTHTML").innerHTML='<div class="move_left">'+expression+'</div>';
 
@@ -124,6 +125,7 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("text").value='';
 			}
 			function Image()
 			{
@@ -140,6 +142,7 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("text").value='';
 
 			}
 			function Bold()
@@ -154,6 +157,7 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("text").value='';
 
 			}
                   function Code()
@@ -168,6 +172,7 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML+= '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML+= '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("text").value='';
 
 			}
 			function Main_List()
@@ -178,9 +183,10 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 				document.getElementById("text").focus();
 				var n=prompt("Enter a count of row","");
 				 var main_list='<ul class="top_page_list"><span class=" strong font_size">'+expression+'</span>';
+				 document.getElementById("text").value='';
 
 for(var i=0;i<n;i++){
- main_list+='<li>"'+text+'"</li>';
+ main_list+='<li>'+text+'</li>';
  var text=prompt("Enter a text for  <li>","");
 }
  document.getElementById("RESULTTEXT").innerText= main_list + '</ul>';
@@ -189,6 +195,7 @@ document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("text").value='';
 
 
 			}
@@ -202,7 +209,7 @@ document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
 				 var square_list='<ul class="square"><span class=" strong font_size">'+expression+'</span>';
 
 for(var i=0;i<n;i++){
- square_list+='<li>"'+text+'"</li>';
+ square_list+='<li>'+text+'</li>';
  var text=prompt("Enter a text for  <li>","");
 }
  document.getElementById("RESULTTEXT").innerText= square_list + '</ul>';
@@ -211,7 +218,7 @@ document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
+				document.getElementById("text").value='';
 
 			}
 			function Decimal_List()
@@ -224,7 +231,7 @@ document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
 				 var decimal_list='<ol class="decimal"><span class=" strong font_size">'+expression+'</span>';
 
 for(var i=0;i<n;i++){
- decimal_list+='<li>"'+text+'"</li>';
+ decimal_list+='<li>'+text+'</li>';
  var text=prompt("Enter a text for  <li>","");
 }
  document.getElementById("RESULTTEXT").innerText= decimal_list + '</ol>';
@@ -233,7 +240,7 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
+				document.getElementById("text").value='';
 
 			}
 			function Disc_List()
@@ -246,7 +253,7 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 				 var disc_list='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
 
 for(var i=0;i<n;i++){
- disc_list+='<li>"'+text+'"</li>';
+ disc_list+='<li>'+text+'</li>';
  var text=prompt("Enter a text for  <li>","");
 }
  document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
@@ -255,7 +262,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
+				document.getElementById("text").value='';
 
 			}
 			function Main_title()
@@ -271,7 +278,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
+				document.getElementById("text").value='';
 
 
 			}
@@ -287,7 +294,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
+				document.getElementById("text").value='';
 
 			}
 			function Down_title()
@@ -302,7 +309,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
+				document.getElementById("text").value='';
 
 			}
 			function Red_title()
@@ -317,7 +324,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
+				document.getElementById("text").value='';document.getElementById("text").value='';
 
 			}
 
@@ -333,7 +340,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
+				document.getElementById("text").value='';
 
 			}
 			function Capture()
@@ -349,7 +356,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
+				document.getElementById("text").value='';
 
 			}
 			function Listing()
@@ -365,7 +372,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
+				document.getElementById("text").value='';
 
 			}
 			function Smallicon()
@@ -380,11 +387,11 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
 				document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">';
 				document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">';
-
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("text").value='';
 
 
 			}
@@ -429,38 +436,43 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
-
+				document.getElementById("text").value='';
 			}
 
             function Table()
 			{
 				
 				var expression = getSelection( document.getElementById("text") );
- 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var x=prompt("Enter a count of row","");
 var y=prompt("Enter a count of columns","");
 var table='<table class="syntax_description"><tbody>';
-for(var i=1;i<x;i++){
+for(var i=0;i<=x;i++){
  table+='<tr>';
-for(var j=0;j<y;j++){
-table+='<td>"'+text+'"</td>';
-
+if(i=0){
+for(var j=0;j<=y;j++){
+var text=prompt("Enter text","");
+table+='<th>'+text+'</th>';
 }
-
+}
+else{
+for(var j=0;j<=y;j++){
+var text=prompt("Enter text","");
+table+='<td>'+text+'</td>';
+}
+}
 table+='</tr>';
 }
 
- var text=prompt("Enter text","");
+ 
 document.getElementById("RESULTTEXT").innerText= table + '</tbody></table>';
 document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
-
+				document.getElementById("text").value='';
 			}
 
 
@@ -471,17 +483,14 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 			
 			function CBT()
 			{
-				
-				
+			
 				document.getElementById("RESULTTEXT").innerText='<br class="cbt">';
-
 				document.getElementById("RESULTHTML").innerHTML='<br class="cbt">';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-
-
+				document.getElementById("text").value='';
 			}
 			
 		</script>
