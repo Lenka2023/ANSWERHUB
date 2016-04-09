@@ -32,9 +32,16 @@ function getSelection( textarea )
     return selection;
 }
 function Delete(){
+var result=document.getElementById("result");
+var RESULTTEXT = document.getElementById("RESULTTEXT");
 
 var RESULTTEXT = getSelection(document.getElementById("RESULTTEXT"));
-RESULTTEXT.remove();
+//RESULTTEXT.parentNode.removeChild(RESULTTEXT);
+//$('#RESULTTEXT').remove();
+//RESULTTEXT.remove();
+//area.parentNode.removeChild(area);
+//$('#area').remove();
+//result.remove();
 var RESULTHTML = getSelection(document.getElementById("RESULTHTML"));
 RESULTHTML.remove();
 }
@@ -109,8 +116,8 @@ document.getElementById("text").value='';
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<div class="commands">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="commands">'+expression+'</div>';
+				document.getElementById("RESULTTEXT").innerText='<div class="commands"><pre>'+expression+'</pre></div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="commands"><pre>'+expression+'</<pre></div>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML+= '<p><span id="RESULTTEXT">qwe</span></p>';
