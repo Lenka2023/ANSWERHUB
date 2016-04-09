@@ -31,19 +31,27 @@ function getSelection( textarea )
     }
     return selection;
 }
+function Forward(){
+	window.history.forward();
+}	
+function Back(){
+	window.history.back();
+}
 function Delete(){
+
 var result=document.getElementById("result");
-var RESULTTEXT = document.getElementById("RESULTTEXT");
+//var RESULTTEXT = document.getElementById("RESULTTEXT");
 
 var RESULTTEXT = getSelection(document.getElementById("RESULTTEXT"));
 //RESULTTEXT.parentNode.removeChild(RESULTTEXT);
 //$('#RESULTTEXT').remove();
-//RESULTTEXT.remove();
+RESULTTEXT.remove();
 //area.parentNode.removeChild(area);
 //$('#area').remove();
 //result.remove();
 var RESULTHTML = getSelection(document.getElementById("RESULTHTML"));
 RESULTHTML.remove();
+
 }
 function Text(){
 	//var i=1;
@@ -116,8 +124,8 @@ document.getElementById("text").value='';
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<div class="commands"><pre>'+expression+'</pre></div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="commands"><pre>'+expression+'</<pre></div>';
+				document.getElementById("RESULTTEXT").innerText='<div class="commands">'+expression+'</div>';
+				document.getElementById("RESULTHTML").innerHTML='<div class="commands">'+expression+'</div>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML+= '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -436,4 +444,21 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 			}
-			
+			function Footer()
+			{
+				document.getElementById("RESULTTEXT").innerText='</div>'+
+ '<div class="footer">'+
+        '<span> DZone, Inc. | www.dzone.</span>'+
+      '</div>'+
+    '</div>'+	
+  '</body>'+
+'</html>';
+				document.getElementById("RESULTHTML").innerHTML='</div>'+
+ '<div class="footer">'+
+        '<span> DZone, Inc. | www.dzone.</span>'+
+      '</div>'+
+    '</div>'+	
+  '</body>'+
+'</html>';
+				
+			}
