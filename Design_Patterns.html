@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"type="text/css"/ 
+    <!--[if lt IE 9]>
+    <script>
+      var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
+      for (var i = 0; i < e.length; i++) {
+        document.createElement(e[i]);
+      }
+    </script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="page_cont one">
+      <br class="cbt">
+      <div class="content">
+        <table border=0>
+          <tbody>
+            <tr>
+              <td rowspan=2>
+                <ul class="top_page_list">
+                  <span class="strong">CONTENTS INCLUDE:</span>
+                  <a href="#tochain">
+                    <li>Chain of Responsibility</li>
+                  </a>
+                  <a href="#tocommand">
+                    <li><span>Command</span></li>
+                  </a>
+                  <a href="#toiterator">
+                    <li><span>Iterator</span></li>
+                  </a>
+                  <a href="#tomediator">
+                    <li><span>Mediator</span></li>
+                  </a>
+                  <a href="#toobserver">
+                    <li><span>Observer</span></li>
+                  </a>
+                  <a href="#totemplate">
+                    <li><span>Template Method and more...</span></li>
+                  </a>
+                </ul>
+              </td>
+              <td class="main_title">
+                <span class="title_font">Design Patterns</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="down_title ">
+                <span class="strong">By: Jason McDonald</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+		<div class="title strong"><span>ABOUT DESIGN PATTERNS</span></div>
+<br><span class="move_left">This Design Patterns refcard provides a quick reference to
+the original 23 Gang of Four design patterns, as listed in the
+book Design Patterns: Elements of Reusable Object-Oriented
+Software. Each pattern includes class diagrams, explanation,
+usage information, and a real world example.</span>
+<ul class="bigsquare_list ">
+<li><span class="strong ">Creational Patterns:</span>Used to construct objects such that 
+they can be decoupled from their implementing system.</span></li>
+<li><span class="strong ">Structural Patterns:</span>Used to form large object structures 
+between many disparate objects.</span></li>
+<li><span class="strong ">Behavioral Patterns:</span>Used to manage algorithms, 
+relationships, and responsibilities between objects.</span></li>
+</ul>
+<br><span class="move_left "><span class="strong ">Object Scope:</span>Deals with object relationships that can be
+changed at runtime.</span>
+<br><span class="move_left "><span class="strong ">Class Scope:</span>Deals with class relationships that can be changed
+at compile time.</span>
+<div class="row">
+<div class="row1">
+<ul class="smallsquare_list">
+<li> Abstract Factory </li>
+<li> Adapter </li>
+<li> Bridge </li>
+<li> Builder </li>
+<li> Chain of Responsibility </li>
+<li> Command </li>
+<li> Composite </li>
+</ul>
+</div>
+<div class="row2">
+<ul class="smallsquare_list">
+<li> Decorator </li>
+<li> Facade </li>
+<li> Factory Method </li>
+<li> Flyweight </li>
+<li> Interpreter </li>
+<li> Iterator </li>
+<li> Mediator </li>
+<li> Memento </li>
+</ul>
+</div>
+<div class="row3">
+<ul class="smallsquare_list">
+<li> Prototype </li>
+<li>Proxy </li>
+<li>Observer </li>
+<li>Singleton </li>
+<li>State </li>
+<li>Strategy </li>
+<li>Template Method </li>
+<li>Visitor </li>
+</ul>
+</div>
+</div>
+<br class="cbt">
+<div class="title strong"><span id="tochain">CHAIN OF RESPONSIBILITY</span></div>
+<img src="img/CHAIN.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Gives more than one object an opportunity to handle a request
+by linking receiving objects together.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li> Multiple objects may handle a request and the handler doesn't have to be a specific object. </li>
+<li> A set of objects should be able to handle a request with the handler determined at runtime. </li>
+<li> A request not being handled is an acceptable potential outcome. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Exception handling in some languages implements this pattern.
+When an exception is thrown in a method the runtime checks to
+see if the method has a mechanism to handle the exception or
+if it should be passed up the call stack. When passed up the call
+stack the process repeats until code to handle the exception is
+encountered or until there are no more parent objects to hand
+the request to.</span>
+<div class="title strong" id="tocommand"><span>COMMAND</span></div>
+<img src="img/COMMAND.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Encapsulates a request allowing it to be treated as an object.
+This allows the request to be handled in traditionally object
+based relationships such as queuing and callbacks.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li> You need callback functionality. </li>
+<li> Requests need to be handled at variant times or in variant orders. </li>
+<li> A history of requests is needed. </li>
+<li> The invoker should be decoupled from the object handling the invocation. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Job queues are widely used to facilitate the asynchronous
+processing of algorithms. By utilizing the command pattern the
+functionality to be executed can be given to a job queue for
+processing without any need for the queue to have knowledge
+of the actual implementation it is invoking. The command object
+that is enqueued implements its particular algorithm within the
+confines of the interface the queue is expecting.</span>
+<div class="title strong"><span>INTERPRETER</span></div>
+<img src="img/INTERPRETER.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Defines a representation for a grammar as well as a mechanism
+to understand and act upon the grammar.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>There is grammar to interpret that can be represented as large syntax trees. </li>
+<li>The grammar is simple. </li>
+<li>Efficiency is not important. </li>
+<li>Decoupling grammar from underlying expressions is desired. </li>
+</ul> 
+<br><br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Text based adventures, wildly popular in the 1980's, provide
+a good example of this. Many had simple commands, such
+as "step down" that allowed traversal of the game. These
+commands could be nested such that it altered their meaning.
+For example, "go in" would result in a different outcome than
+"go up". By creating a hierarchy of commands based upon
+the command and the qualifier (non-terminal and terminal
+expressions) the application could easily map many command
+variations to a relating tree of actions.</span>
+<div class="title strong" id="toiterator"><span>ITERATOR</span></div>
+<img src="img/ITERATOR.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Allows for access to the elements of an aggregate object
+without allowing access to its underlying representation.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>Access to elements is needed without access to the entire representation. </li>
+<li>Multiple or concurrent traversals of the elements are needed. </li>
+<li>A uniform interface for traversal is needed. </li>
+<li>Subtle differences exist between the implementation details of various iterators. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">The Java implementation of the iterator pattern allows users to
+traverse various types of data sets without worrying about the
+underlying implementation of the collection. Since clients simply
+interact with the iterator interface, collections are left to define
+the appropriate iterator for themselves. Some will allow full access
+to the underlying data set while others may restrict certain
+
+functionalities, such as removing items.</span>
+<div class="title strong" id="tomediator"><span>MEDIATOR</span></div>
+<img src="img/MEDIATOR.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Allows loose coupling by encapsulating the way disparate sets of
+objects interact and communicate with each other. Allows for the
+actions of each object set to vary independently of one another.</span>
+<br><span class="move_left">Allows loose coupling by encapsulating the way disparate sets of
+objects interact and communicate with each other. Allows for the
+actions of each object set to vary independently of one another.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>Communication between sets of objects is well defined and complex. </li>
+<li>Too many relationships exist and common point of control or communication is needed. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Mailing list software keeps track of who is signed up to the
+mailing list and provides a single point of access through which
+any one person can communicate with the entire list. Without
+a mediator implementation a person wanting to send a message
+to the group would have to constantly keep track of who
+was signed up and who was not. By implementing the mediator
+pattern the system is able to receive messages from any point
+then determine which recipients to forward the message on to,
+without the sender of the message having to be concerned with
+the actual recipient list.</span>
+<div class="title strong"><span>MEMENTO</span></div>
+<img src="img/MEMENTO.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Allows for capturing and externalizing an object's internal
+state so that it can be restored later, all without violating
+encapsulation.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>The internal state of an object must be saved and restored at a later time. </li>
+<li>Internal state cannot be exposed by interfaces without exposing implementation. </li>
+<li>Encapsulation boundaries must be preserved. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Undo functionality can nicely be implemented using the
+memento pattern. By serializing and deserializing the state of
+an object before the change occurs we can preserve a snapshot
+of it that can later be restored should the user choose to undo
+the operation.</span>
+<div class="title strong" id="toobserver"><span>OBSERVER</span></div>
+<img src="img/OBSERVER.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Lets one or more objects be notified of state changes in other
+objects within the system.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>State changes in one or more objects should trigger behavior in other objects </li>
+<li>Broadcasting capabilities are required. </li>
+<li>An understanding exists that objects will be blind to the expense of notification. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">This pattern can be found in almost every GUI environment.
+When buttons, text, and other fields are placed in applications
+the application typically registers as a listener for those controls.
+When a user triggers an event, such as clicking a button, the
+control iterates through its registered observers and sends a
+notification to each.</span>
+<div class="title strong"><span>STATE</span></div>
+<img src="img/STATE.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Ties object circumstances to its behavior, allowing the object
+to behave in different ways based upon its internal state.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>The behavior of an object should be influenced by its state. </li>
+<li>Complex conditions tie object behavior to its state. </li>
+<li>Transitions between states need to be explicit. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">An email object can have various states, all of which will
+change how the object handles different functions. If the state
+is "not sent" then the call to send() is going to send the message
+while a call to recallMessage() will either throw an error or do
+nothing. However, if the state is "sent" then the call to send()
+would either throw an error or do nothing while the call to
+recallMessage() would attempt to send a recall notification
+to recipients. To avoid conditional statements in most or all
+methods there would be multiple state objects that handle the
+implementation with respect to their particular state. The calls
+within the Email object would then be delegated down to the
+appropriate state object for handling.</span>
+<div class="title strong"><span>STRATEGY</span></div>
+<img src="img/STRATEGY.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Defines a set of encapsulated algorithms that can be swapped
+to carry out a specific behavior.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>The only difference between many related classes is their behavior.  </li>
+<li>Multiple versions or variations of an algorithm are required. </li>
+<li>Algorithms access or utilize data that calling code shouldn't be exposed to. </li>
+<li>The behavior of a class should be defined at runtime. </li>
+<li>Conditional statements are complex and hard to maintain. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">When importing data into a new system different validation
+algorithms may be run based on the data set. By configuring the
+import to utilize strategies the conditional logic to determine
+what validation set to run can be removed and the import can be
+decoupled from the actual validation code. This will allow us to
+dynamically call one or more strategies during the import.</span>
+<div class="title strong" id="totemplate"><span>TEMPLATE METHOD</span></div>
+<img src="img/TEMPLATE.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Identifies the framework of an algorithm, allowing implementing
+classes to define the actual behavior.</span>
+<ul class="square "><span class="strong font_size">Use When</span>
+<li>A single abstract implementation of an algorithm is needed. </li>
+<li>Common behavior among subclasses should be localized to a common class. </li>
+<li>Parent classes should be able to uniformly invoke behavior in their subclasses. </li>
+<li>Most or all subclasses need to implement the behavior. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">A parent class, InstantMessage, will likely have all the methods
+required to handle sending a message. However, the actual
+serialization of the data to send may vary depending on the
+implementation. A video message and a plain text message
+will require different algorithms in order to serialize the data
+correctly. Subclasses of InstantMessage can provide their
+own implementation of the serialization method, allowing the
+parent class to work with them without understanding their
+implementation details.</span>
+<div class="title strong"><span>VISITOR</span></div>
+<img src="img/VISITOR.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Allows for one or more operations to be applied to a set of objects
+at runtime, decoupling the operations from the object structure.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>An object structure must have many unrelated operations performed upon it. </li>
+<li>The object structure can't change but operations performed on it can. </li>
+<li>Operations must be performed on the concrete classes of an object structure. </li>
+<li>Exposing internal state or operations of the object structure is acceptable. </li>
+<li>Operations should be able to operate on multiple object structures that implement the same interface sets. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Calculating taxes in different regions on sets of invoices would
+require many different variations of calculation logic. Implementing
+a visitor allows the logic to be decoupled from the invoices and
+line items. This allows the hierarchy of items to be visited by calculation
+code that can then apply the proper rates for the region.
+Changing regions is as simple as substituting a different visitor.</span>
+<div class="title strong"><span>ADAPTER</span></div>
+<img src="img/ADAPTER.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Permits classes with disparate interfaces to work together by
+creating a common object by which they may communicate
+and interact.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>A class to be used doesn't meet interface requirements. </li>
+<li>Complex conditions tie object behavior to its state. </li>
+<li>Transitions between states need to be explicit. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">A billing application needs to interface with an HR application in
+order to exchange employee data, however each has its own interface
+and implementation for the Employee object. In addition, the
+SSN is stored in different formats by each system. By creating an
+adapter we can create a common interface between the two applications
+that allows them to communicate using their native objects
+and is able to transform the SSN format in the process.</span>
+<div class="title strong"><span>BRIDGE</span></div>
+<img src="img/BRIDGE.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Defines an abstract object structure independently of the
+implementation object structure in order to limit coupling.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>Abstractions and implementations should not be bound at compile time. </li>
+<li>Abstractions and implementations should be independently extensible. </li>
+<li>Changes in the implementation of an abstraction should have no impact on clients. </li>
+<li>Implementation details should be hidden from the client. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">The Java Virtual Machine (JVM) has its own native set of functions
+that abstract the use of windowing, system logging, and byte
+code execution but the actual implementation of these functions
+is delegated to the operating system the JVM is running on.
+When an application instructs the JVM to render a window it
+delegates the rendering call to the concrete implementation
+of the JVM that knows how to communicate with the operating
+system in order to render the window.</span>
+<div class="title strong"><span>COMPOSITE</span></div>
+<img src="img/COMPOSITE.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Facilitates the creation of object hierarchies where each object
+can be treated independently or as a set of nested objects
+through the same interface.</span>
+
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>
+Hierarchical representations of objects are needed.. </li>
+<li>
+Objects and compositions of objects should be treated uniformly. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Sometimes the information displayed in a shopping cart is the
+product of a single item while other times it is an aggregation
+of multiple items. By implementing items as composites we can
+treat the aggregates and the items in the same way, allowing us
+to simply iterate over the tree and invoke functionality on each
+item. By calling the getCost() method on any given node we
+would get the cost of that item plus the cost of all child items,
+allowing items to be uniformly treated whether they were single
+items or groups of items.</span>
+<div class="title strong"><span>DECORATOR</span></div>
+<img src="img/DECORATOR.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Allows for the dynamic wrapping of objects in order to modify
+their existing responsibilities and behaviors.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>Object responsibilities and behaviors should be dynamically modifiable. </li>
+<li>Concrete implementations should be decoupled from responsibilities and behaviors. </li>
+<li>Subclassing to achieve modification is impractical or impossible. </li>
+<li>Specific functionality should not reside high in the object hierarchy. </li>
+<li>A lot of little objects surrounding a concrete implementation is acceptable. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Many businesses set up their mail systems to take advantage of
+decorators. When messages are sent from someone in the company
+to an external address the mail server decorates the original
+message with copyright and confidentiality information. As long
+as the message remains internal the information is not attached.
+This decoration allows the message itself to remain unchanged
+until a runtime decision is made to wrap the message with
+additional information.</span>
+<div class="title strong"><span>FACADE</span></div>
+<img src="img/FACADE.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Supplies a single interface to a set of interfaces within a system.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>A simple interface is needed to provide access to a complex system. </li>
+<li>There are many dependencies between system implementations and clients. </li>
+<li>Systems and subsystems should be layered. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">By exposing a set of functionalities through a web service
+the client code needs to only worry about the simple interface
+being exposed to them and not the complex relationships that
+may or may not exist behind the web service layer. A single
+web service call to update a system with new data may actually
+involve communication with a number of databases and systems,
+however this detail is hidden due to the implementation of the
+fa?ade pattern.</span>
+<div class="title strong"><span>FLYWEIGHT</span></div>
+<img src="img/FLYWEIGHT.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Facilitates the reuse of many fine grained objects, making the
+utilization of large numbers of objects more efficient.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>Many like objects are used and storage cost is high. </li>
+<li>The majority of each object's state can be made extrinsic. </li>
+<li>A few shared objects can replace many unshared ones. </li>
+<li>The identity of each object does not matter. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Systems that allow users to define their own application flows
+and layouts often have a need to keep track of large numbers of
+fields, pages, and other items that are almost identical to each
+other. By making these items into flyweights all instances of each
+object can share the intrinsic state while keeping the extrinsic
+state separate. The intrinsic state would store the shared properties,
+such as how a textbox looks, how much data it can hold, and
+what events it exposes. The extrinsic state would store the
+unshared properties, such as where the item belongs, how to
+react to a user click, and how to handle events.</span>
+<div class="title strong"><span>PROXY</span></div>
+<img src="img/PROXY.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Allows for object level access control by acting as a pass through
+entity or a placeholder object.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>The object being represented is external to the system. </li>
+<li>Objects need to be created on demand. </li>
+<li>Access control for the original object is required. </li>
+<li>Added functionality is required when an object is accessed. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Ledger applications often provide a way for users to reconcile
+their bank statements with their ledger data on demand, automating
+much of the process. The actual operation of communicating
+with a third party is a relatively expensive operation that should be
+limited. By using a proxy to represent the communications object
+we can limit the number of times or the intervals the communication
+is invoked. In addition, we can wrap the complex instantiation
+of the communication object inside the proxy class, decoupling
+calling code from the implementation details.</span>
+<div class="title strong"><span>ABSTRACT FACTORY</span></div>
+<img src="img/ABSTRACT.png "alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Provide an interface that delegates creation calls to one or
+more concrete classes in order to deliver specific objects.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>The creation of objects should be independent of the system utilizing them. </li>
+<li>Systems should be capable of using multiple families of objects. </li>
+<li>Families of objects must be used together. </li>
+<li>Libraries must be published without exposing implementation details. </li>
+<li>Concrete classes should be decoupled from clients. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Email editors will allow for editing in multiple formats including
+plain text, rich text, and HTML. Depending on the format being
+used, different objects will need to be created. If the message
+is plain text then there could be a body object that represented
+just plain text and an attachment object that simply encrypted
+the attachment into Base64. If the message is HTML then the
+body object would represent HTML encoded text and the
+attachment object would allow for inline representation and a
+standard attachment. By utilizing an abstract factory for creation
+we can then ensure that the appropriate object sets are created
+based upon the style of email that is being sent.</span>
+<div class="title strong"><span>BUILDER</span></div>
+<img src="img/BUILDER.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Allows for the dynamic creation of objects based upon easily
+interchangeable algorithms.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>Object creation algorithms should be decoupled from the system. </li>
+<li>Multiple representations of creation algorithms are required. </li>
+<li>The addition of new creation functionality without changing the core code is necessary. </li>
+<li>Runtime control over the creation process is required. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">A file transfer application could possibly use many different
+protocols to send files and the actual transfer object that will be
+created will be directly dependent on the chosen protocol. Using
+a builder we can determine the right builder to use to instantiate
+the right object. If the setting is FTP then the FTP builder would
+be used when creating the object.</span>
+<div class="title strong"><span>FACTORY METHOD</span></div>
+<img src="img/FACTORY_METHOD.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Exposes a method for creating objects, allowing subclasses to
+control the actual creation process.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>A class will not know what classes it will be required to create. </li>
+<li>n Subclasses may specify what objects should be created. </li>
+<li>Parent classes wish to defer creation to their subclasses. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Many applications have some form of user and group structure
+for security. When the application needs to create a user it will
+typically delegate the creation of the user to multiple user
+implementations. The parent user object will handle most
+operations for each user but the subclasses will define the factory
+method that handles the distinctions in the creation of each type
+of user. A system may have AdminUser and StandardUser objects
+each of which extend the User object. The AdminUser object
+may perform some extra tasks to ensure access while the
+StandardUser may do the same to limit access.</span>
+<div class="title strong"><span>PROTOTYPE</span></div>
+<img src="img/PROTOTYPE.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Create objects based upon a template of an existing objects
+through cloning.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>Composition, creation, and representation of objects should be decoupled from a system. </li>
+<li>Classes to be created are specified at runtime. </li>
+<li>A limited number of state combinations exist in an object. </li>
+<li>Objects or object structures are required that are identical or closely resemble other existing objects or object structures. </li>
+<li>The initial creation of each object is an expensive operation. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Rates processing engines often require the lookup of many
+different configuration values, making the initialization of the
+engine a relatively expensive process. When multiple instances
+of the engine is needed, say for importing data in a multi-threaded
+manner, the expense of initializing many engines is high. By
+utilizing the prototype pattern we can ensure that only a single
+copy of the engine has to be initialized then simply clone the
+engine to create a duplicate of the already initialized object.
+The added benefit of this is that the clones can be streamlined
+to only include relevant data for their situation.</span>
+<div class="title strong"><span>SINGLETON</span></div>
+<img src="img/SINGLETON.png"alt="622">
+<br><span class="move_left strong font_size">Purpose</span>
+<br class="cbt">
+<br><span class="move_left">Ensures that only one instance of a class is allowed within a system.</span>
+<ul class="square"><span class=" strong font_size">Use When</span>
+<li>Exactly one instance of a class is required. </li>
+<li>Controlled access to a single object is necessary. </li>
+</ul> 
+<br><span class="move_left strong font_size">Example</span>
+<br class="cbt">
+<br><span class="move_left">Most languages provide some sort of system or environment
+object that allows the language to interact with the native operating
+system. Since the application is physically running on only one
+operating system there is only ever a need for a single instance of
+this system object. The singleton pattern would be implemented
+by the language runtime to ensure that only a single copy of the
+system object is created and to ensure only appropriate processes
+are allowed access to it.</span>
+</div>
+      <div class="down_page">
+        <table>
+          <tbody>
+            <tr>
+              <td class="align_left medium_padding align_top">
+                <br><span class="move_left strong">ABOUT THE AUTHORS</span><br>
+			<br class="cbt">
+
+			<span class="move_left strong">Jason McDonald</span>
+                <br><img src="img/jason_mcdonald.png" alt="622" class="textwrap smallicon" ><span  class="move_left ">The product of two computer programmers, Jason McDonald wrote his first application in BASIC 
+while still in elementary school and has been heavily involved in software ever since. He began his software career when he found himself automating large portions of one of his first jobs. Finding his true calling, he quit the position and began working as a software 
+engineer for various small companies where he was responsible for all aspects of applications, from initial design to support. He has roughly 11 years of experience in the software industry and many additional years of personal software experience during which he has 
+done everything from coding to architecture to leading and managing teams of engineers. Through his various positions he has been exposed to design patterns and other architectural concepts for years. Jason is the founder of the Charleston SC Java Users Group and is 
+currently working to help found a Charleston chapter of the International Association of Software Architects. </span>
+<br class="cbt">
+<br><span class="strong">Personal Blog: <a href="http://www.mcdonaldland.info/">http://www.mcdonaldland.info/</a></span>
+<br><span class="strong">Projects: Charleston SC Java Users Group </span>
+
+              </td>
+              <td  class="align_left medium_padding align_top">
+                <br><span class="move_left strong">RECOMMENDED BOOK</span><br>
+                <br><img src="img/recom_book.png" alt="612" class="textwrap smallicon"><span  class="move_left ">Capturing a wealth of experience about 
+the design of object-oriented software, four top-notch designers present a catalog of simple and succinct solutions to commonly occurring design problems. Previously undocumented, these 23 patterns allow 
+designers to create more flexible, elegant, and ultimately reusable designs without having to rediscover the design solutions themselves. </span>
+				</p><br><a href="Buy Here" class="buyhere" class="strong">BUY NOW </a>
+				<br class="cbt">
+<br><span class="strong"><a href="books.dzone.com/books/designpatterns">books.dzone.com/books/designpatterns</a></span>
+
+              </td>
+            </tr>
+          </tbody>
+        </table >
+      </div>
+            <div class="footer">
+        <span> DZone, Inc. | www.dzone.</span>
+      </div>
+    </div>	
+  </body>
+</html>

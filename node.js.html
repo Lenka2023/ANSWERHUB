@@ -41,7 +41,7 @@
               </td>
               <td class="main_title">
                 <span class="title_font">Node.js</span>
-                <h1>Server-Side JavaScript for Backends, API Servers, and Web Apps</h1>
+                <span class="middle_title ">Server-Side JavaScript for Backends, API Servers, and Web Apps</span>
               </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="titletop strong">
+        <div class="title strong">
           <span id="towhat">WHAT IS NODE?</span>
 				</div>
 				<br><span class="move_left ">First, a quick note: The terms "Node.js" and "Node" are used
@@ -83,7 +83,7 @@
 		packages of the next largest ecosystem, Maven. In addition
 		to Node.js libraries, npm also lists more and more front-end
 		packages, but that's a different topic!</span>
-		<div class="titletop strong">
+		<div class="title strong">
 				  <span id="towhat">NODE IS JAVASCRIPT ON THE SERVER</span>
 				</div>
 				<br><span class="move_left ">Node allows developers to write server-side applications in
@@ -96,7 +96,7 @@
 		to program server-side tasks, in theory, increases a developer's
 		productivity. In some cases it even allows the same code to be
 		shared between client and server.</span>
-		<div class="titletop strong">
+		<div class="title strong">
 				  <span id="tohow">HOW DOES NODE WORK?</span>
 				</div>
 		<br><span class="move_left strong font_size">Synchronous vs asynchronous programming</span>
@@ -118,7 +118,7 @@
 		common scenario: ordering food at a restaurant.</span>
 	<br class="cbt">
 		<br><span class="move_left ">A typical experience would be something like this:</span>
-		<ol>
+		<ol class="disc">
 			   <li><span>You sit at a table and the server takes your drink order.</span></li>
 			   <li><span>The server goes back to the bar and passes your order to a
 		bartender.</span></li> 
@@ -245,7 +245,7 @@
 		that results in an event being triggered, whereas in this example,
 		the events are triggered in response to external input (an
 		incoming HTTP request).</span>
-		<div class="titletop strong">
+		<div class="title strong">
 				  <span id="toArchitecture">ARCHITECTURE</span>
 				</div>
 				<br><span class="move_left ">There are four building blocks that constitute Node. First, Node
@@ -258,7 +258,7 @@
 		provide the glue connecting these technologies to each other and to
 		the operating system.</span>
 		<img src="img/node22.png" alt="322">
-		<div class="titletop strong">
+		<div class="title strong">
 				  <span id="toNode">NODE PERFORMANCE CHARACTERISTICS</span>
 				</div>
 				<br><span class="move_left ">Everyone knows benchmarks are a specific measurement and
@@ -271,12 +271,12 @@
 		levels of concurrency, you can't go about creating threads for every
 		connection. So, the whole code path needs to be non-blocking and async, not just the IO layer. This is where Node excels. Some
 		examples of Node performance benchmarks and related posts:</span>
-		<ol>
+		<ol class="disc">
 			<li><a href="https://strongloop.com/strongblog/node-js-is-faster-than-java/">Strongloop</a></li>
 			<li><a href="http://engineering.linkedin.com/nodejs/blazing-fast-nodejs-10-performance-tips-linkedin-mobile">LinkedIn</a></li>
 			<li><a href="https://dzone.com/articles/performance-comparison-between">DZone</a></li>
 		</ol>
-		<div class="titletop strong">
+		<div class="title strong">
 				  <span id="toGood">WHAT IS NODE GOOD FOR?</span>
 				</div>
 		<br><span class="move_left strong font_size">Web applications</span>
@@ -285,7 +285,7 @@
 		that put most rendering and UI concerns in the client code, calling
 		the server only to request or update data.</span>
 		<br><span class="move_left ">Reasons why:</span>
-		<ol>
+		<ol class="disc">
 				<li><span>Single page applications most frequently request and send
 			data (e.g. JSON) rather than rendered pages (html), thus
 			payloads are smaller but more frequent. Node's asynchronous
@@ -301,13 +301,13 @@
     
 		</ol>
 		<br><span class="move_left ">Examples of frameworks for Node:</span>
-		<ol>
+		<ol class="disc">
 			<li><a href="http://expressjs.com/">Express</a></li>
 			<li><a href="http://sailsjs.org/">Sails.js</a></li>
 			<li><a href="http://hapijs.com/">Hapi</a></li>
 			<li><a href="https://www.meteor.com/">Meteor</a></li>
 			<li><a href="http://meanjs.org/">MEAN.js</a></li>
-		</ol>
+		</ol class="disc">
 		<br><span class="move_left strong font_size">Api servers and mobile backends</span>
 	<br class="cbt">
 		<br><span class="move_left ">An I/O library at its heart, Node.js is a popular choice for APIs and
@@ -316,7 +316,7 @@
 		normalize existing data and services.</span>
 	<br class="cbt">
 		<br><span class="move_left ">Reasons why:</span>
-		<ol>
+		<ol class="disc">
 				<li><span>As the shift toward hybrid mobile applications becomes more
 			dominant in the enterprise, the re-use of code written in
 			JavaScript on the client side can be leveraged on the server</span></li>
@@ -331,13 +331,13 @@
 		</ol>
 	<br class="cbt">
 		<br><span class="move_left ">Examples of mobile backends built with Node:</span>
-		<ol>
+		<ol class="disc">
 		   <li><span><a href="http://loopback.io/">LoopBack</a>(Open-source framework)</span></li>
 		   <li><span><a href="https://parse.com/">Parse</a>(Proprietary)</span></li>
 		   <li><span><a href="http://www.feedhenry.com/">FeedHenry</a>(Proprietary)</span></li>
 		   <li><span><a href="http://www.appcelerator.com/product/">Appcelerator Cloud Services</a>(Proprietary)</span></li>
 		   <li><span><a href="http://restify.com/">Restify</a>(Open-source framework)</span></li>
-		</ol>
+		</ol class="disc">
 		<br><span class="move_left strong font_size">Iot servers</span>
 	<br class="cbt">
 		<br><span class="move_left ">As more and more objects in the workplace, the home, and beyond
@@ -345,7 +345,7 @@
 		the server technology of choice for many IoT platforms.</span>
 	<br class="cbt">
 		<br><span class="move_left ">Reasons why:</span>
-		<ol>
+		<ol class="disc">
 			<li><span>Sensors reporting temperature, vehicle speed, etc. can
 		generate lots of data points, each one as small as a single
 		number. Node.js is built to efficiently handle this sort of
@@ -355,14 +355,14 @@
 		there are many mature solutions that fit the IoT problem.</span></li>
 		</ol>
 		<br><span class="move_left ">Examples of open-source IoT servers built in Node:</span>
-		<ol>
+		<ol class="disc">
 			<li><a href="http://www.zettajs.org/">Zetta</a></li>
 			<li><a href="https://www.npmjs.com/package/mqtt-connection">mqtt-connection</a></li>
 			<li><a href="https://github.com/adafruit/adafruit-io-node">adafruit-io</a></li>
 			<li><a href="https://github.com/sparkfun/phant">phant</a></li>
 			
 		</ol>
-		<div class="titletop strong">
+		<div class="title strong">
           <span id="towhat">HOW DO I INSTALL NODE?</span>
         </div>
 
@@ -370,7 +370,7 @@
 		OS X, Linux, SunOS - and of course you can compile it yourself
 		from source. Official downloads are available from the nodejs.org
 		website:<a href="nodejs.org/en/download">nodejs.org/en/download</a> </span>
-		<div class="titletop strong">
+		<div class="title strong">
 				  <span id="towhat">HOW CAN I MAKE NODE USEFUL?</span>
 				</div>
 		<br><span class="move_left strong font_size">What is nmp?</span>
@@ -433,7 +433,7 @@
 		<br><span class="move_left ">A MongoDB object modeling tool designed to work in an asynchronous
 		environment. It includes built-in type casting, validation, query
 		building, business logic hooks and more, out of the box.</span>
-		<div class="titletop strong">
+		<div class="title strong">
 				  <span id="towhat">WHAT IS NEW IN NODE V4.X?</span>
 				</div>
 		<br><span class="move_left ">After Node v0.10 came v0.12. Naturally v0.12 was followed by
@@ -472,7 +472,7 @@
 		Semver versions are three numbers in the form "MAJOR.MINOR.
 		PATCH". For example, in 2.11.3, the major version is 2, the minor 11
 		and the patch 3. The meanings are as follows:</span>
-		<ol>
+		<ol class="disc">
 			   <li><span>MAJOR: incremented when releasing breaking API changes.</span></li>
 			   <li><span>MINOR: incremented when releasing new features or
 			enhancements that don't break backward compatibility</span></li>
@@ -656,7 +656,7 @@
 		here. For a more comprehensive overview, be sure to read the <a href="https://nodejs.org/en/docs/es6/">Node.
 		js docs on ES6</a>, and for a survey of all ES6 features (not just those in
 		Node 4.0) there is a great <a href="https://github.com/lukehoban/es6features">GitHub repo outlining the additions.</a></span>	
-		<div class="titletop strong">
+		<div class="title strong">
 				  <span id="towhat">NODE API GUIDE</span>
 				</div>
 				<br><span class="move_left ">Below is a list of the most commonly used Node APIs. For
@@ -863,7 +863,7 @@
 		one method: inherits. Constructor inheritance can be a bit
 		unwieldy in JavaScript; util.inherits makes such code a bit easier
 		to write (and read).</span>
-		<div class="titletop strong">
+		<div class="title strong">
 				  <span id="towhat">DEVELOPER TOOLS FOR NODE</span>
 				</div>
 		<br><span class="move_left ">Below are some key tools widely adopted in the enterprise and in
@@ -970,7 +970,7 @@
             <tr>
               <td class="align_left medium_padding align_top">
                 <br><span class="move_left strong">ABOUT THE AUTHORS</span><br>
-                <br><img src="img/author2n.png" alt="622" class="textWrap smallIcon" ><span  class="move_left ">Having been programming since he was a little kid, Bert
+                <br><img src="img/author2n.png" alt="622" class="textwrap smallicon" ><span  class="move_left ">Having been programming since he was a little kid, Bert
 		Belder got involved with open source when he started to
 		port Node.js to Windows. It got him the core contributor
 		badge, and he hasn't left the project since. In 2012, Bert
@@ -981,7 +981,7 @@
               </td>
               <td  class="align_left medium_padding align_top">
                 <br><span class="move_left strong">RESOURCES</span><br>
-        <ol>
+        <ol class="disc">
 					<li><a href="https://strongloop.com/">StrongLoop websiteStrongLoop website</a></li>
 					<li><a href="https://strongloop.com/strongblog/">StrongLoop technical blog</a></li>
 					<li><a href="https://nodejs.org/en/">Official Node website</a></li>
@@ -998,7 +998,7 @@
               </td>
             </tr>
           </tbody>
-         </table class="pow">
+         </table >
 			</div>
             <div class="footer">
         <span> DZone, Inc. | www.dzone.</span>
