@@ -89,7 +89,155 @@ React.render(React.createElement(Hello, {name:
 <table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>render</td><td>The render() function should be pure, meaning that it does not modify the component state. It should examine this. props and this.state and return a single child element.</td></tr><tr><td>getInitialState</td><td>Invoked once before the component is mounted. The return value will be used as the initial value of this.state.</td></tr><tr><td>getDefaultProps</td><td>Invoked once and cached when the class is created. Values in the mapping will be set on this.props.</td></tr><tr><td>propTypes</td><td>The propTypes object allows you to validate props being passed to your components.</td></tr><tr><td>mixins</td><td>The mixins array allows you to use mixins to share behavior among multiple components.</td></tr><tr><td>statics</td><td>The statics object allows you to define static methods that can be called on the component class.</td></tr><tr><td>displayName</td><td>The displayName string is used in debugging messages. JSX sets this value automatically.</td></tr></tbody></table>
  <br><span class="move_left strong font_size">COMPONENTS API</span>
 <table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>setState</td><td>Merges nextState with the current state.</td></tr><tr><td>replaceState</td><td>Like setState(), but deletes any pre-existing state keys that are not in nextState.</td></tr><tr><td>forceUpdate</td><td>Call render() on the component, skipping shouldComponentUpdate().</td></tr><tr><td>React.findDOMNode (0.13+)</td><td>Returns the corresponding native browser DOM element</td></tr><tr><td>isMounted</td><td>Returns true if the component is rendered into the DOM.</td></tr><tr><td>setProps</td><td>Changes the properties and triggers a rerender.</td></tr><tr><td>replaceProps</td><td>Like setProps(), but deletes any preexisting props instead of merging the two objects.</td></tr></tbody></table>
- </div>
+ <br><span class="move_left strong font_size">LIFECYCLE METHODS</span>
+<table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>componentWillMount</td><td>Invoked once, both on the client and server, immediately before the initial rendering occurs.</td></tr><tr><td>componentDidMount</td><td>Invoked on the client immediately after the initial rendering occurs.</td></tr><tr><td>componentWillReceiveProps</td><td>Invoked when a component is receiving new prop. Use setState() here.</td></tr><tr><td>shouldComponentUpdate</td><td>Invoked before rendering when new props or state are being received. Skips render() if it returns false.</td></tr><tr><td>componentWillUpdate</td><td>Invoked immediately before rendering when new props or state are being received. Can’t use setState() here.</td></tr><tr><td>componentDidUpdate</td><td>Invoked immediately after the component's updates are flushed to the DOM. Operate on the DOM here.</td></tr><tr><td>componentWillUnmount</td><td>Invoked immediately before a component is unmounted from the DOM.</td></tr></tbody></table>
+ qwe
+
+<br><span class="move_left strong font_size">STATES AND PROPERTIES</span>
+<br><span class="move_left">Props and states are both plain JS objects; a change within one
+of them will trigger a render. These objects are deterministic.</span>
+ <div class="commands"><pre><VideoComponent fullscreen={true} />
+// props
+this.props.fullscreen //=> true
+// state
+this.setState({ user: 'hemanth' });
+this.replaceState({ ... });
+this.state.username //=> 'hemanth'
+render: function () {
+return <div className={this.props.fullscreen ? 'full' :
+''}>
+Hello, {this.state.username}
+</div>;
+}</pre></div>
+<br><span class="move_left">Pre-populates states and props:</span>
+
+<div class="commands"><pre>React.createClass({
+getInitialState: function () {
+return { comments: [] };
+},
+getDefaultProps: function () {
+return { name: "Hello" };
+}
+);</pre></div>
+
+<br><span class="move_left">Deciding when to use props and went to use state might get
+tricky. The following table will help to simplify this decision:</span>
+
+<table class="syntax_description"><tbody><tr><th>DECIDING FACTOR</th><th>PROPS</th><th>STATE</th></tr><tr><td>Can get initial value from parent Component?</td><td>Yes</td><td>Yes</td></tr><tr><td>Can be changed by parent Component?</td><td>Yes</td><td>No</td></tr><tr><td>Can set default values inside Component?</td><td>Yes</td><td>Yes</td></tr><tr><td>Can change inside Component?</td><td>No</td><td>Yes</td></tr><tr><td>Can set initial value for child Components?</td><td>Yes</td><td>Yes</td></tr><tr><td>Can change in child Components?</td><td>Yes</td><td>No</td></tr></tbody></table>
+
+<div class="title strong"><span>AJAX REQUESTS</span></div>
+ <br><span class="move_left">React by default doesn’t provide a helper method to manage
+AJAX requests, but you can use any other third party
+JavaScript library—like jQuery or Zepto—to make necessary
+AJAX requests.</span>
+ <br class="cbt">
+<br><span class="move_left">Below is a sample code snippet that performs an AJAX
+request on props.url and on success sets the data state. In
+case of an error, it just uses console.error to report the error.</span>
+ <br><span class="move_left "><span class="strong ">NOTE:</span>Make sure that the execution context (this) is bound to
+the success and error callbacks.</span>
+ <div class="commands"><pre>componentDidMount: function() {
+$.ajax({
+url: this.props.url,
+dataType: 'json',
+cache: false,
+success: function(data) {
+this.setState({data: data});
+}.bind(this),
+error: function(xhr, status, err) {
+console.error(this.props.url, status, err.toString());
+}.bind(this)
+});
+}</pre></div>
+<div class="title strong"><span>STYLING YOUR COMPONENTS</span></div>
+ <br><span class="move_left">In React, styles are mentioned in line, but unlike the
+traditional way of inline CSS strings, here we specify each
+style as an object whose key is the camelCased version of
+the style name, and whose value is the style’s value (usually
+a string).</span>
+<div class="commands"><pre>var divStyle = {
+color: 'white',
+backgroundImage: 'url(' + imgUrl + ')',
+WebkitTransition: 'all', // note the capital 'W' here
+msTransition: 'all'
+// 'ms' is the only lowercase vendor prefix
+};
+React.render(<div style={divStyle}>Hello World!</div>,
+mountNode);</pre></div>
+
+<br><span class="move_left">Most numeric values at the end of a style prop receive an
+automatic “px” specification added to them (e.g., “width:
+10” is read as “width: 10px”). Here is a list of properties that
+won’t get the automatic “px” suffix:</span>
+
+<ol class="disc"><span class=" strong font_size"></span>
+<li>undefined</li>
+<li>boxFlex</li>
+<li>boxFlexGroup</li>
+<li>columnCount</li>
+<li>columnCount</li>
+<li>fillOpacity</li>
+<li>flex</li>
+<li>flexGrow</li>
+<li>flexPositive</li>
+<li>flexShrink</li>
+<li>flexNegative</li>
+<li>fontWeight</li>
+<li>lineClamp</li>
+<li>lineHeight</li>
+<li>opacity</li>
+<li>order</li>
+<li>orphans</li>
+<li>strokeOpacity</li>
+<li>widows</li>
+</ol>
+<div class="title strong"><span>DOM HELPERS</span></div>
+<br><span class="move_left "><span class="strong ">References:</span>Help to access the DOM nodes:</span>
+
+<div class="commands"><pre><input ref="firstName">
+this.refs.firstName
+React.findDOMNode(this.refs.firstName).focus()
+React.findDOMNode(this.refs.firstName).value</pre></div>
+
+<br><span class="move_left "><span class="strong ">DOM Events:</span>Help to handle DOM events:</span>
+
+<div class="commands"><pre><input type="text"
+value={this.state.value}
+onChange={this.handleChange} />
+handleChange: function(event) {
+this.setState({ value: event.target.value });
+}</pre></div>
+
+<br><span class="move_left strong font_size">Two-way data bindings with mixins:</span>
+
+<div class="commands"><pre>Email: <input type="text" valueLink={this.linkState('email')}
+/>
+React.createClass({
+mixins: [React.addons.LinkedStateMixin]
+});
+this.state.email</pre></div>
+
+<br><span class="move_left strong font_size">Validating properties:</span>
+
+<table class="syntax_description"><tbody><tr><th>NAME</th>
+<th>DESCRIPTION</th>
+</tr><tr><td>Primative Types</td>
+<td></td>
+</tr>
+<tr><td>Reactive Elements</td>
+<td></td>
+</tr>
+<tr><td>Enumerables</td>
+<td>
+</td>
+</tr>
+<tr><td>Arrays and Objects</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
  
 <div class="footer">
         <span> DZone, Inc. | www.dzone.</span>
