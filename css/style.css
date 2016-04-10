@@ -196,6 +196,10 @@ width:80%;
     box-sizing: content-box;
     position: relative;
  }
+ .none_list{
+     list-style: none;
+	text-align: left;
+ }
  .smallsquare_list{
     list-style: none;
 	text-align: left;

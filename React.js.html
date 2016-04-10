@@ -222,21 +222,40 @@ this.state.email</pre></div>
 <table class="syntax_description"><tbody><tr><th>NAME</th>
 <th>DESCRIPTION</th>
 </tr><tr><td>Primative Types</td>
-<td></td>
+<td><ul class="none_list"><span class=" strong font_size"></span><li>.string</li><li>.number</li><li>.func</li><li>.bool</li></ul>
 </tr>
 <tr><td>Reactive Elements</td>
-<td></td>
+<td><ul class="none_list"><span class=" strong font_size"></span><li>.element</li><li>.node</li></ul></td>
 </tr>
 <tr><td>Enumerables</td>
-<td>
-</td>
+<td><ul class="none_list"><span class=" strong font_size"></span><li>.oneOf</li><li>.oneOfType</li></ul></td>
 </tr>
 <tr><td>Arrays and Objects</td>
-<td>
-</td>
+<td><ul class="none_list"><span class=" strong font_size"></span><li>.array[Of]</li><li>.object[Of]</li><li>.instanceOf</li><li>.shape</li></ul></td>
 </tr>
 </tbody>
 </table>
+<br><span class="move_left strong font_size">Sample usage:</span>
+<div class="commands"><pre>React.createClass({
+propTypes: {
+email: React.PropTypes.string,
+firstName: React.PropTypes.string,
+age: React.PropTypes.number,
+gender: React.PropTypes.oneOf(['M','F','NA'])
+node: React.PropTypes.node,
+cb: React.PropTypes.func.isRequired,
+}
+});</pre></div>
+
+<br><span class="move_left strong font_size">Custom validation:</span>
+
+<div class="commands"><pre>propTypes: {
+customProp: function(props, propName, componentName) {
+if (!/matchme/.test(props[propName])) {
+return new Error('Validation failed!');
+}
+}
+}</pre></div>
 </div>
  
 <div class="footer">
