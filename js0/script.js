@@ -1,64 +1,6 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="css/style.css"type="text/css"/> 
-		
-		<script type="text/javascript" src="jquery/jquery.js"></script>
-		<!--<script src="js/script.js"></script>
-		[if lt IE 9]>
-		<script>
-			var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
-			for (var i = 0; i < e.length; i++) {
-			  document.createElement(e[i]);
-			}
-		</script>
-		<![endif]-->
-	</head>
-	<body>
-		<div class="page_cont one">
-			<br class="cbt">
-			<div class="edit_cont">
-				<div class="middle">
-					
-										<button onclick="Main_List()"> Main List</button>
-										<button onclick="Square_List()">Square List</button>
-										<button onclick="Decimal_List()">Decimal List</button>
-										<button onclick="Disc_List()">Disc List</button>
-										<button onclick="None_List()">None List</button>
-										<button onclick="Main_title()"> Main title</button>
-										<button onclick="Red_title()"> Red title</button>
-										<button onclick="Middle_Title()">Middle Title</button>
-										<button onclick="Down_title()">Down title</button>
-										<button onclick="Small_title()">Small title</button>
-										<button onclick="Capture()">Capture</button>
-										<button onclick="Hot_Tip()">Hot Tip</button>
-										<button onclick="Code()">Code</button>
-										<button onclick="Smallicon()">SmallIcon</button>
-										<button onclick="Table()">Table</button>
-										<button onclick="Link()">Link</button>
-										<button onclick="Text()">Text</button>
-										<button onclick="CBT()">CBT</button>
-										<button onclick="Image()">Image</button>
-										<button onclick="Listing()">Listing</button>
-										<button onclick="Bold()">Bold</button>
-										<button onclick="Delete()">Delete</button>
-										<button onclick="Back()">Back</button>
-										<button onclick="Forward()">Forward</button>
-										<button onclick="Footer()">Footer</button>
-										<p><textarea id="text"  name="text"></textarea></p>
-									<div id="area" class="area">
-									<span id="RESULTHTML">qwe</span>
-									
-									</div>
-				</div>
-			</div>
-		</div>
-<div id="result">
-		<span id="RESULTTEXT">qwe</span>
-		</div>
-	<script>
-	var uagent    = navigator.userAgent.toLowerCase();
+
+
+var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var is_ie     = ( (uagent.indexOf('msie') != -1) && (!is_opera) && (!is_safari) && (!is_webtv) );
 var is_ie4    = ( (is_ie) && (uagent.indexOf("msie 4.") != -1) );
@@ -96,26 +38,19 @@ function Back(){
 	window.history.back();
 }
 function Delete(){
-var del_element = getSelection( document.getElementById("result") );
 
 var result=document.getElementById("result");
 //var RESULTTEXT = document.getElementById("RESULTTEXT");
 
-var del_element = getSelection(document.getElementById("RESULTTEXT"));
+var RESULTTEXT = getSelection(document.getElementById("RESULTTEXT"));
 //RESULTTEXT.parentNode.removeChild(RESULTTEXT);
-//$("#del_element").remove();
-//window.onload = function {
-//del_element.remove();}()
-
-//del_element.remove(window.onload = function {
-//del_element.remove();}()
-//);
-//del_element.value='';
+//$('#RESULTTEXT').remove();
+RESULTTEXT.remove();
 //area.parentNode.removeChild(area);
 //$('#area').remove();
 //result.remove();
-//var RESULTHTML = getSelection(document.getElementById("RESULTHTML"));
-//RESULTHTML.remove();
+var RESULTHTML = getSelection(document.getElementById("RESULTHTML"));
+RESULTHTML.remove();
 
 }
 function Text(){
@@ -298,13 +233,12 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-var object= document.getElementById("result"); 
 				var n=prompt("Enter a count of row","");
 				 var disc_list='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
 
 for(var i=0;i<n;i++){
-//var text=prompt("Enter a text for  <li>","");
- disc_list+='<li>'+object+'</li>';
+var text=prompt("Enter a text for  <li>","");
+ disc_list+='<li>'+text+'</li>';
  
 }
  document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
@@ -504,7 +438,6 @@ for(var i = 0, text; i <= x;i++){
   table += '<tr>';
   if(i == 0){
 	for(var j = 0; j < y; j++){
-alert( "Enter text" );
 		//text = prompt("Enter text", "");
 		//table += '<th>' + text + '</th>';
 		table += '<th>' + expression + '</th>';
@@ -512,8 +445,6 @@ alert( "Enter text" );
   }
   else{
 	for(var j = 0; j < y; j++){
-alert( "Enter text" );
-
 		//text = prompt("Enter text", "");
 		//table += '<td>' + text + '</td>';
 		table += '<td>' + expression + '</td>';
@@ -560,6 +491,3 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 '</html>';
 				
 			}
-</script>	
-	</body>
-</html>

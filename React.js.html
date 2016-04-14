@@ -83,6 +83,7 @@ React.js rendering and the React Virtual DOM work:</span>
 <br><span class="move_left "><span class="strong ">FIGURE 1:</span>REACT.JS RENDERING</span>
 <img src="img/virtual_dom.png"alt="622">
 <br><span class="move_left "><span class="strong ">FIGURE 2:</span>THE REACT VIRTUAL DOM</span>
+<br class="cbt">
 <br><span class="move_left">React basically batches DOM updates and then applies 
 minimal diffs to the real DOM.</span>
 <br><span class="move_left">React components implement a 
@@ -114,6 +115,7 @@ React.render(React.createElement(Hello, {name:
  <br><span class="move_left strong font_size">Lifecycle methods</span>
 <table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>componentWillMount</td><td>Invoked once, both on the client and server, immediately before the initial rendering occurs.</td></tr><tr><td>componentDidMount</td><td>Invoked on the client immediately after the initial rendering occurs.</td></tr><tr><td>componentWillReceiveProps</td><td>Invoked when a component is receiving new prop. Use setState() here.</td></tr><tr><td>shouldComponentUpdate</td><td>Invoked before rendering when new props or state are being received. Skips render() if it returns false.</td></tr><tr><td>componentWillUpdate</td><td>Invoked immediately before rendering when new props or state are being received. Can't use setState() here.</td></tr><tr><td>componentDidUpdate</td><td>Invoked immediately after the component's updates are flushed to the DOM. Operate on the DOM here.</td></tr><tr><td>componentWillUnmount</td><td>Invoked immediately before a component is unmounted from the DOM.</td></tr></tbody></table>
  <br><span class="move_left strong font_size">States and properties</span>
+<br class="cbt">
 <br><span class="move_left">Props and states are both plain JS objects; a change within one
 of them will trigger a render. These objects are deterministic.</span>
  <div class="commands"><pre><VideoComponent fullscreen={true} />
@@ -264,6 +266,7 @@ return new Error('Validation failed!');
 }
 }</pre></div>
 <br><span class="move_left strong font_size">React addons</span>
+<br class="cbt">
 <br><span class="move_left">React.addons are useful utilities for building React apps. These
 are currently experimental, and not yet part of core React.</span>
 <ol class="disc"><span class=" strong font_size"></span><li>TransitionGroup and CSSTransitionGroup deal with animations and transitions</li><li>LinkedStateMixin helps in two-way data binding.</li><li>cloneWithProps makes shallow copies of React components and changes their props.</li><li>createFragment helps to create a set of externally-keyed children.</li><li>update helps to deal with immutable data.</li><li>PureRenderMixin is a performance booster in certain situations.</li></ol>
@@ -286,12 +289,14 @@ var TickTock = React.createClass({
 mixins: [TimeOutMixin]
 }</pre></div>
 <br><span class="move_left strong font_size">React on es2015/es6</span>
+<br class="cbt">
 <br><span class="move_left "><span class="strong ">NOTE:</span>The following are experimental, and you must use a
 transpiler for this to work.</span>
+<br class="cbt">
 <br><span class="move_left strong font_size">Classes</span>
 <div class="commands"><pre>class Animal extends React.Component {
 render() {
-return <img alt={this.props.name} src={this.props.src} />;
+return &ltimg alt={this.props.name} src={this.props.src} /&gt;
 }
 }</pre></div>
 <br><span class="move_left strong font_size">Property Initializers</span>
@@ -340,6 +345,7 @@ return <PostsGrid {...others} />
 }
 }</pre></div>
 <br><span class="move_left strong font_size">CoffeeScript and React</span>
+<br class="cbt">
 <br><span class="move_left">For React v0.13.0+</span>
 <div class="commands"><pre>div = React.createFactory 'div'
 class Counter extends React.Component
@@ -355,11 +361,13 @@ div onClick: @tick,
 'Clicks: '
 @state.count</pre></div>
 <div class="title strong"><span>CONVENTIONS FOR REACT DOM & JSX</span></div>
+<br class="cbt">
 <br><span class="move_left">A few patterns and best practices to get you started:</span>
 <ol class="disc"><span class=" strong font_size"></span><li>React DOM elements are expected to be in camelCase.</li><li>The camelCasing of DOM matches what you would write for custom components:</li></ol>
 <br><span class="move_left">&ltTypeahead onClick=../&gt and &ltdiv onClick=../&gt</span>
 <ol class="disc"><span class=" strong font_size"></span><li>These camelCased attributes are usually what you write when updating the DOM via JS (input.maxLength).</li><li>One current confusing exception is that class= is normalized automatically into className= at transform time.</li><li>Use the className attribute instead of class</li><li>Use the htmlFor attribute instead of for</li><li>Use &lttextarea value="something"&gt instead of &lttextarea&gtsomething&lt/textarea&gt</li><li>Custom HTML attributes may be data-attr and all lower case.</li><li>Make use of ternary operators, wherever required. For example: React.render(&ltdiv id={condition ? 'msg' : ' '}&gtHello World!&lt/div&gt, mountNode);</li></ol>
 <br><span class="move_left strong font_size">Anti-pattern</span>
+<br class="cbt">
 <br><span class="move_left">Using props in getInitialState is an anti-pattern. Instead of:</span>
 <div class="commands"><pre>var MessageBox = React.createClass({
 getInitialState: function() {
@@ -379,6 +387,7 @@ return &ltdiv&gt{'Mr. ' + this.props.name}&lt/div&gt;
 React.render(&ltMessageBox name="Rogers"/&gt, mountNode);</pre></div>
 <br><span class="move_left "><span class="strong ">NOTE:</span>This is not an anti-pattern if we make it clear that
 synchronization is not the goal.</span>
+<br class="cbt">
 <br><span class="move_left strong font_size">Spread operator in jsx</span>
 <div class="commands"><pre>var props = {};
 props.foo = x;
@@ -399,6 +408,7 @@ architecture. Flux is just a term to describe smart, unidirectional
 data flow.</span>
 <img src="img/overview.png"alt="622">
 <br><span class="move_left "><span class="strong underline">Figure 3.</span>An overview of flux architecture</span>
+<br class="cbt">
 <br><span class="move_left strong font_size">Keys ideas in the Flux architecture</span>
 <ol class="decimal"><span class=" strong font_size"></span><li>Views "Dispatch" "Actions".</li><li>"Store" Responds to Dispatched Events.</li><li>Store Emits a "Change" Event.</li><li>View Responds to the "Change" Event</li></ol>
 <br><span class="move_left strong font_size">Points to remember</span>

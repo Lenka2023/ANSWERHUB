@@ -478,7 +478,6 @@ list-style-type:decimal;
  	width: 55%;
  }
    .syntax_description td:nth-child(2n-1){
- 	width:15%;
  	background:#CCFFFF;
  }
  .syntax_description td:nth-child(2n){
