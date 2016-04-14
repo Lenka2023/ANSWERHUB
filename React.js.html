@@ -50,461 +50,464 @@
             </tr>
           </tbody>
         </table>
-<div class="title strong"><span>WHAT IS REACT.JS?</span></div>
-<br><span class="move_left">React (a.k.a. ReactJS or React.js) is a JavaScript library 
-for creating user interfaces, open sourced to the 
-world by Facebook and Instagram team in 2013. One 
-might think of it as the "View" in the "Model-View-
-Controller" pattern.</span>
-<br class="cbt">
-<br><span class="move_left">React's main goal is to make development of UI 
-components easy and modular. It is intended to ease 
-the process of building large applications using data 
-that changes over time.
-</span>
-<br class="cbt">
-<br><span class="move_left">React was created by Jordan Walke, a software engineer 
-at Facebook, with the influence of XHP, a PHP-based 
-component system that is still in use at Facebook, but 
-also by functional programming ideas. Pete Hunt wanted 
-to use React at Instagram, so he pushed to extract React 
-from Facebook-specific code and open source it.</span>
-<br><span class="move_left">React has gained a lot of popularity for its concept of 
-a "virtual-DOM", which allows it to determine which 
-parts of the DOM have changed by diffing the new 
-version with the stored virtual DOM, and using the 
-result to determine how to most efficiently update the 
-browser's DOM.</span>
-<div class="title strong"><span>HOW THE MAGIC HAPPENS</span></div>
-<br><span class="move_left">To get an idea of what's going on inside React, take 
-a look at the following diagrams demonstrating how 
-React.js rendering and the React Virtual DOM work:</span>
-<img src="img/rendering.png"alt="622">
-<br><span class="move_left "><span class="strong ">FIGURE 1:</span>REACT.JS RENDERING</span>
-<img src="img/virtual_dom.png"alt="622">
-<br><span class="move_left "><span class="strong ">FIGURE 2:</span>THE REACT VIRTUAL DOM</span>
-<br class="cbt">
-<br><span class="move_left">React basically batches DOM updates and then applies 
-minimal diffs to the real DOM.</span>
-<br><span class="move_left">React components implement a 
-render()
-method that 
-takes input data and returns what to display.</span>
-<br class="cbt">
-<br><span class="move_left">Here is an example of a simple "Hello" Component:</span>
-<div class="commands"><pre>var Hello = React.createClass({
-render: function () {
-return <div>Hello {this.props.name}</div>;
-}
-});
-React.render(<Hello name="World" />, document.body);</pre></div>
-<br><span class="move_left "><span class="strong ">NOTE:</span>The XML-like syntax shown is called JSX.</span>
-<br><span class="move_left">Here is the same component without JSX:</span>
-<div class="commands"><pre>var Hello = React.createClass({displayName: "Hello",
-render: function() {
-return React.createElement("div", null, "Hello ", this.
-props.name);
-}
-});
-React.render(React.createElement(Hello, {name:
-"World"}), mountNode);</pre></div>
-<div class="title strong"><span>COMPONENT SPECIFICATIONS</span></div>
-<table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>render</td><td>The render() function should be pure, meaning that it does not modify the component state. It should examine this. props and this.state and return a single child element.</td></tr><tr><td>getInitialState</td><td>Invoked once before the component is mounted. The return value will be used as the initial value of this.state.</td></tr><tr><td>getDefaultProps</td><td>Invoked once and cached when the class is created. Values in the mapping will be set on this.props.</td></tr><tr><td>propTypes</td><td>The propTypes object allows you to validate props being passed to your components.</td></tr><tr><td>mixins</td><td>The mixins array allows you to use mixins to share behavior among multiple components.</td></tr><tr><td>statics</td><td>The statics object allows you to define static methods that can be called on the component class.</td></tr><tr><td>displayName</td><td>The displayName string is used in debugging messages. JSX sets this value automatically.</td></tr></tbody></table>
- <br><span class="move_left strong font_size">Components api</span>
-<table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>setState</td><td>Merges nextState with the current state.</td></tr><tr><td>replaceState</td><td>Like setState(), but deletes any pre-existing state keys that are not in nextState.</td></tr><tr><td>forceUpdate</td><td>Call render() on the component, skipping shouldComponentUpdate().</td></tr><tr><td>React.findDOMNode (0.13+)</td><td>Returns the corresponding native browser DOM element</td></tr><tr><td>isMounted</td><td>Returns true if the component is rendered into the DOM.</td></tr><tr><td>setProps</td><td>Changes the properties and triggers a rerender.</td></tr><tr><td>replaceProps</td><td>Like setProps(), but deletes any preexisting props instead of merging the two objects.</td></tr></tbody></table>
- <br><span class="move_left strong font_size">Lifecycle methods</span>
-<table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>componentWillMount</td><td>Invoked once, both on the client and server, immediately before the initial rendering occurs.</td></tr><tr><td>componentDidMount</td><td>Invoked on the client immediately after the initial rendering occurs.</td></tr><tr><td>componentWillReceiveProps</td><td>Invoked when a component is receiving new prop. Use setState() here.</td></tr><tr><td>shouldComponentUpdate</td><td>Invoked before rendering when new props or state are being received. Skips render() if it returns false.</td></tr><tr><td>componentWillUpdate</td><td>Invoked immediately before rendering when new props or state are being received. Can't use setState() here.</td></tr><tr><td>componentDidUpdate</td><td>Invoked immediately after the component's updates are flushed to the DOM. Operate on the DOM here.</td></tr><tr><td>componentWillUnmount</td><td>Invoked immediately before a component is unmounted from the DOM.</td></tr></tbody></table>
- <br><span class="move_left strong font_size">States and properties</span>
-<br class="cbt">
-<br><span class="move_left">Props and states are both plain JS objects; a change within one
-of them will trigger a render. These objects are deterministic.</span>
- <div class="commands"><pre><VideoComponent fullscreen={true} />
-// props
-this.props.fullscreen //=> true
-// state
-this.setState({ user: 'hemanth' });
-this.replaceState({ ... });
-this.state.username //=> 'hemanth'
-render: function () {
-return <div className={this.props.fullscreen ? 'full' :
-''}>
-Hello, {this.state.username}
-</div>;
-}</pre></div>
-<br><span class="move_left">Pre-populates states and props:</span>
-<div class="commands"><pre>React.createClass({
-getInitialState: function () {
-return { comments: [] };
-},
-getDefaultProps: function () {
-return { name: "Hello" };
-}
-);</pre></div>
-<br><span class="move_left">Deciding when to use props and went to use state might get
-tricky. The following table will help to simplify this decision:</span>
-<table class="syntax_description"><tbody><tr><th>DECIDING FACTOR</th><th>PROPS</th><th>STATE</th></tr><tr><td>Can get initial value from parent Component?</td><td>Yes</td><td>Yes</td></tr><tr><td>Can be changed by parent Component?</td><td>Yes</td><td>No</td></tr><tr><td>Can set default values inside Component?</td><td>Yes</td><td>Yes</td></tr><tr><td>Can change inside Component?</td><td>No</td><td>Yes</td></tr><tr><td>Can set initial value for child Components?</td><td>Yes</td><td>Yes</td></tr><tr><td>Can change in child Components?</td><td>Yes</td><td>No</td></tr></tbody></table>
-<div class="title strong"><span>AJAX REQUESTS</span></div>
- <br><span class="move_left">React by default doesn't provide a helper method to manage
-AJAX requests, but you can use any other third party
-JavaScript library-like jQuery or Zepto-to make necessary
-AJAX requests.</span>
- <br class="cbt">
-<br><span class="move_left">Below is a sample code snippet that performs an AJAX
-request on props.url and on success sets the data state. In
-case of an error, it just uses console.error to report the error.</span>
- <br><span class="move_left "><span class="strong ">NOTE:</span>Make sure that the execution context (this) is bound to
-the success and error callbacks.</span>
- <div class="commands"><pre>componentDidMount: function() {
-$.ajax({
-url: this.props.url,
-dataType: 'json',
-cache: false,
-success: function(data) {
-this.setState({data: data});
-}.bind(this),
-error: function(xhr, status, err) {
-console.error(this.props.url, status, err.toString());
-}.bind(this)
-});
-}</pre></div>
-<div class="title strong"><span>STYLING YOUR COMPONENTS</span></div>
- <br><span class="move_left">In React, styles are mentioned in line, but unlike the
-traditional way of inline CSS strings, here we specify each
-style as an object whose key is the camelCased version of
-the style name, and whose value is the style's value (usually
-a string).</span>
-<div class="commands"><pre>var divStyle = {
-color: 'white',
-backgroundImage: 'url(' + imgUrl + ')',
-WebkitTransition: 'all', // note the capital 'W' here
-msTransition: 'all'
-// 'ms' is the only lowercase vendor prefix
-};
-React.render(<div style={divStyle}>Hello World!</div>,
-mountNode);</pre></div>
-<br><span class="move_left">Most numeric values at the end of a style prop receive an
-automatic "px" specification added to them (e.g., "width:
-10" is read as "width: 10px"). Here is a list of properties that
-won't get the automatic "px" suffix:</span>
-<ol class="disc"><span class=" strong font_size"></span>
-<li>boxFlex</li>
-<li>boxFlexGroup</li>
-<li>columnCount</li>
-<li>columnCount</li>
-<li>fillOpacity</li>
-<li>flex</li>
-<li>flexGrow</li>
-<li>flexPositive</li>
-<li>flexShrink</li>
-<li>flexNegative</li>
-<li>fontWeight</li>
-<li>lineClamp</li>
-<li>lineHeight</li>
-<li>opacity</li>
-<li>order</li>
-<li>orphans</li>
-<li>strokeOpacity</li>
-<li>widows</li>
-<li>zoom</li>
-</ol>
-<div class="title strong"><span>DOM HELPERS</span></div>
-<br><span class="move_left "><span class="strong ">References:</span>Help to access the DOM nodes:</span>
-<div class="commands"><pre>&ltinput ref="firstName"&gt
-this.refs.firstName
-React.findDOMNode(this.refs.firstName).focus()
-React.findDOMNode(this.refs.firstName).value</pre></div>
+		<div class="title strong"><span>WHAT IS REACT.JS?</span></div>
+		<br><span class="move_left">React (a.k.a. ReactJS or React.js) is a JavaScript library 
+		for creating user interfaces, open sourced to the 
+		world by Facebook and Instagram team in 2013. One 
+		might think of it as the "View" in the "Model-View-
+		Controller" pattern.</span>
+		<br class="cbt">
+		<br><span class="move_left">React's main goal is to make development of UI 
+		components easy and modular. It is intended to ease 
+		the process of building large applications using data 
+		that changes over time.
+		</span>
+		<br class="cbt">
+		<br><span class="move_left">React was created by Jordan Walke, a software engineer 
+		at Facebook, with the influence of XHP, a PHP-based 
+		component system that is still in use at Facebook, but 
+		also by functional programming ideas. Pete Hunt wanted 
+		to use React at Instagram, so he pushed to extract React 
+		from Facebook-specific code and open source it.</span>
+		<br><span class="move_left">React has gained a lot of popularity for its concept of 
+		a "virtual-DOM", which allows it to determine which 
+		parts of the DOM have changed by diffing the new 
+		version with the stored virtual DOM, and using the 
+		result to determine how to most efficiently update the 
+		browser's DOM.</span>
+		<div class="title strong"><span>HOW THE MAGIC HAPPENS</span></div>
+		<br><span class="move_left">To get an idea of what's going on inside React, take 
+		a look at the following diagrams demonstrating how 
+		React.js rendering and the React Virtual DOM work:</span>
+		<img src="img/rendering.png"alt="622">
+		<br><span class="move_left "><span class="strong ">FIGURE 1:</span>REACT.JS RENDERING</span>
+		<img src="img/virtual_dom.png"alt="622">
+		<br><span class="move_left "><span class="strong ">FIGURE 2:</span>THE REACT VIRTUAL DOM</span>
+		<br class="cbt">
+		<br><span class="move_left">React basically batches DOM updates and then applies 
+		minimal diffs to the real DOM.</span>
+		<br><span class="move_left">React components implement a 
+		render()
+		method that 
+		takes input data and returns what to display.</span>
+		<br class="cbt">
+		<br><span class="move_left">Here is an example of a simple "Hello" Component:</span>
+		<div class="commands"><pre>
+	var Hello = React.createClass({
+	render: function () {
+	return &ltdiv&gtHello {this.props.name}&lt/div&gt;
+	}
+	});
+	React.render(&gtHello name="World" /&gt, document.body);</pre></div>
+		<br><span class="move_left "><span class="strong ">NOTE:</span>The XML-like syntax shown is called JSX.</span>
+		<br><span class="move_left">Here is the same component without JSX:</span>
+		<div class="commands"><pre>
+		var Hello = React.createClass({displayName: "Hello",
+	render: function() {
+	return React.createElement("div", null, "Hello ", this.
+	props.name);
+	}
+	});
+	React.render(React.createElement(Hello, {name:
+	"World"}), mountNode);</pre></div>
+		<div class="title strong"><span>COMPONENT SPECIFICATIONS</span></div>
+		<table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>render</td><td>The render() function should be pure, meaning that it does not modify the component state. It should examine this. props and this.state and return a single child element.</td></tr><tr><td>getInitialState</td><td>Invoked once before the component is mounted. The return value will be used as the initial value of this.state.</td></tr><tr><td>getDefaultProps</td><td>Invoked once and cached when the class is created. Values in the mapping will be set on this.props.</td></tr><tr><td>propTypes</td><td>The propTypes object allows you to validate props being passed to your components.</td></tr><tr><td>mixins</td><td>The mixins array allows you to use mixins to share behavior among multiple components.</td></tr><tr><td>statics</td><td>The statics object allows you to define static methods that can be called on the component class.</td></tr><tr><td>displayName</td><td>The displayName string is used in debugging messages. JSX sets this value automatically.</td></tr></tbody></table>
+		 <br><span class="move_left strong font_size">Components api</span>
+		<table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>setState</td><td>Merges nextState with the current state.</td></tr><tr><td>replaceState</td><td>Like setState(), but deletes any pre-existing state keys that are not in nextState.</td></tr><tr><td>forceUpdate</td><td>Call render() on the component, skipping shouldComponentUpdate().</td></tr><tr><td>React.findDOMNode (0.13+)</td><td>Returns the corresponding native browser DOM element</td></tr><tr><td>isMounted</td><td>Returns true if the component is rendered into the DOM.</td></tr><tr><td>setProps</td><td>Changes the properties and triggers a rerender.</td></tr><tr><td>replaceProps</td><td>Like setProps(), but deletes any preexisting props instead of merging the two objects.</td></tr></tbody></table>
+		 <br><span class="move_left strong font_size">Lifecycle methods</span>
+		<table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>componentWillMount</td><td>Invoked once, both on the client and server, immediately before the initial rendering occurs.</td></tr><tr><td>componentDidMount</td><td>Invoked on the client immediately after the initial rendering occurs.</td></tr><tr><td>componentWillReceiveProps</td><td>Invoked when a component is receiving new prop. Use setState() here.</td></tr><tr><td>shouldComponentUpdate</td><td>Invoked before rendering when new props or state are being received. Skips render() if it returns false.</td></tr><tr><td>componentWillUpdate</td><td>Invoked immediately before rendering when new props or state are being received. Can't use setState() here.</td></tr><tr><td>componentDidUpdate</td><td>Invoked immediately after the component's updates are flushed to the DOM. Operate on the DOM here.</td></tr><tr><td>componentWillUnmount</td><td>Invoked immediately before a component is unmounted from the DOM.</td></tr></tbody></table>
+		 <br><span class="move_left strong font_size">States and properties</span>
+		<br class="cbt">
+		<br><span class="move_left">Props and states are both plain JS objects; a change within one
+		of them will trigger a render. These objects are deterministic.</span>
+	 <div class="commands"><pre>
+	 <VideoComponent fullscreen={true} /&gt
+	// props
+	this.props.fullscreen //=> true
+	// state
+	this.setState({ user: 'hemanth' });
+	this.replaceState({ ... });
+	this.state.username //=> 'hemanth'
+	render: function () {
+	return <div className={this.props.fullscreen ? 'full' :
+	''}&gt
+	Hello, {this.state.username}
+	</div>;
+	}</pre></div>
+	<br><span class="move_left">Pre-populates states and props:</span>
+	<div class="commands"><pre>React.createClass({
+	getInitialState: function () {
+	return { comments: [] };
+	},
+	getDefaultProps: function () {
+	return { name: "Hello" };
+	}
+	);</pre></div>
+	<br><span class="move_left">Deciding when to use props and went to use state might get
+	tricky. The following table will help to simplify this decision:</span>
+	<table class="syntax_description"><tbody><tr><th>DECIDING FACTOR</th><th>PROPS</th><th>STATE</th></tr><tr><td>Can get initial value from parent Component?</td><td>Yes</td><td>Yes</td></tr><tr><td>Can be changed by parent Component?</td><td>Yes</td><td>No</td></tr><tr><td>Can set default values inside Component?</td><td>Yes</td><td>Yes</td></tr><tr><td>Can change inside Component?</td><td>No</td><td>Yes</td></tr><tr><td>Can set initial value for child Components?</td><td>Yes</td><td>Yes</td></tr><tr><td>Can change in child Components?</td><td>Yes</td><td>No</td></tr></tbody></table>
+	<div class="title strong"><span>AJAX REQUESTS</span></div>
+	 <br><span class="move_left">React by default doesn't provide a helper method to manage
+	AJAX requests, but you can use any other third party
+	JavaScript library-like jQuery or Zepto-to make necessary
+	AJAX requests.</span>
+	 <br class="cbt">
+	<br><span class="move_left">Below is a sample code snippet that performs an AJAX
+	request on props.url and on success sets the data state. In
+	case of an error, it just uses console.error to report the error.</span>
+	 <br><span class="move_left "><span class="strong ">NOTE:</span>Make sure that the execution context (this) is bound to
+	the success and error callbacks.</span>
+	 <div class="commands"><pre>componentDidMount: function() {
+	$.ajax({
+	url: this.props.url,
+	dataType: 'json',
+	cache: false,
+	success: function(data) {
+	this.setState({data: data});
+	}.bind(this),
+	error: function(xhr, status, err) {
+	console.error(this.props.url, status, err.toString());
+	}.bind(this)
+	});
+	}</pre></div>
+	<div class="title strong"><span>STYLING YOUR COMPONENTS</span></div>
+	 <br><span class="move_left">In React, styles are mentioned in line, but unlike the
+	traditional way of inline CSS strings, here we specify each
+	style as an object whose key is the camelCased version of
+	the style name, and whose value is the style's value (usually
+	a string).</span>
+	<div class="commands"><pre>var divStyle = {
+	color: 'white',
+	backgroundImage: 'url(' + imgUrl + ')',
+	WebkitTransition: 'all', // note the capital 'W' here
+	msTransition: 'all'
+	// 'ms' is the only lowercase vendor prefix
+	};
+	React.render(<div style={divStyle}>Hello World!</div>,
+	mountNode);</pre></div>
+	<br><span class="move_left">Most numeric values at the end of a style prop receive an
+	automatic "px" specification added to them (e.g., "width:
+	10" is read as "width: 10px"). Here is a list of properties that
+	won't get the automatic "px" suffix:</span>
+	<ol class="disc"><span class=" strong font_size"></span>
+	<li>boxFlex</li>
+	<li>boxFlexGroup</li>
+	<li>columnCount</li>
+	<li>columnCount</li>
+	<li>fillOpacity</li>
+	<li>flex</li>
+	<li>flexGrow</li>
+	<li>flexPositive</li>
+	<li>flexShrink</li>
+	<li>flexNegative</li>
+	<li>fontWeight</li>
+	<li>lineClamp</li>
+	<li>lineHeight</li>
+	<li>opacity</li>
+	<li>order</li>
+	<li>orphans</li>
+	<li>strokeOpacity</li>
+	<li>widows</li>
+	<li>zoom</li>
+	</ol>
+	<div class="title strong"><span>DOM HELPERS</span></div>
+	<br><span class="move_left "><span class="strong ">References:</span>Help to access the DOM nodes:</span>
+	<div class="commands"><pre>&ltinput ref="firstName"&gt
+	this.refs.firstName
+	React.findDOMNode(this.refs.firstName).focus()
+	React.findDOMNode(this.refs.firstName).value</pre></div>
 
-<br><span class="move_left "><span class="strong ">DOM Events:</span>Help to handle DOM events:</span>
+	<br><span class="move_left "><span class="strong ">DOM Events:</span>Help to handle DOM events:</span>
 
-<div class="commands"><pre>&ltinput type="text"
-value={this.state.value}
-onChange={this.handleChange} /&gt
-handleChange: function(event) {
-this.setState({ value: event.target.value });
-}</pre></div>
-<br><span class="move_left strong font_size">Two-way data bindings with mixins:</span>
-<div class="commands"><pre>Email: &ltinput type="text" valueLink={this.linkState('email')}
-/&gt
-React.createClass({
-mixins: [React.addons.LinkedStateMixin]
-});
-this.state.email</pre></div>
-<br><span class="move_left strong font_size">Validating properties:</span>
-<table class="syntax_description"><tbody><tr><th>NAME</th>
-<th>DESCRIPTION</th>
-</tr><tr><td>Primative Types</td>
-<td><ul class="none_list"><span class=" strong font_size"></span><li>.string</li><li>.number</li><li>.func</li><li>.bool</li></ul>
-</tr>
-<tr><td>Reactive Elements</td>
-<td><ul class="none_list"><span class=" strong font_size"></span><li>.element</li><li>.node</li></ul></td>
-</tr>
-<tr><td>Enumerables</td>
-<td><ul class="none_list"><span class=" strong font_size"></span><li>.oneOf</li><li>.oneOfType</li></ul></td>
-</tr>
-<tr><td>Arrays and Objects</td>
-<td><ul class="none_list"><span class=" strong font_size"></span><li>.array[Of]</li><li>.object[Of]</li><li>.instanceOf</li><li>.shape</li></ul></td>
-</tr>
-</tbody>
-</table>
-<br><span class="move_left strong font_size">Sample usage:</span>
-<div class="commands"><pre>React.createClass({
-propTypes: {
-email: React.PropTypes.string,
-firstName: React.PropTypes.string,
-age: React.PropTypes.number,
-gender: React.PropTypes.oneOf(['M','F','NA'])
-node: React.PropTypes.node,
-cb: React.PropTypes.func.isRequired,
-}
-});</pre></div>
-<br><span class="move_left strong font_size">Custom validation:</span>
-<div class="commands"><pre>propTypes: {
-customProp: function(props, propName, componentName) {
-if (!/matchme/.test(props[propName])) {
-return new Error('Validation failed!');
-}
-}
-}</pre></div>
-<br><span class="move_left strong font_size">React addons</span>
-<br class="cbt">
-<br><span class="move_left">React.addons are useful utilities for building React apps. These
-are currently experimental, and not yet part of core React.</span>
-<ol class="disc"><span class=" strong font_size"></span><li>TransitionGroup and CSSTransitionGroup deal with animations and transitions</li><li>LinkedStateMixin helps in two-way data binding.</li><li>cloneWithProps makes shallow copies of React components and changes their props.</li><li>createFragment helps to create a set of externally-keyed children.</li><li>update helps to deal with immutable data.</li><li>PureRenderMixin is a performance booster in certain situations.</li></ol>
-<br><span class="move_left">Apart from these there are few addons that are available in
-the development (unminified) version of React only:</span>
-<ol class="disc"><span class=" strong font_size"></span><li>TestUtils, simple helpers for writing test cases</li><li>Perf, for measuring performance and giving you hints on where to optimize.</li></ol>
-<br><span class="move_left">To get these addons, use react-with-addons.js (and its minified
-counterpart), rather than the common react.js.</span>
-<br class="cbt">
-<br><span class="move_left">When using the react package from npm, simply use
-require('react/addons') instead of require('react') to get
-React with all of the addons.</span>
-<br><span class="move_left "><span class="strong ">NOTE:</span>Add-ons have moved to separate packages in React v0.14+:</span>
-<ol class="disc"><span class=" strong font_size"></span><li>react-addons-clone-with-props</li><li>react-addons-create-fragment</li><li>react-addons-css-transition-group</li><li>react-addons-linked-state-mixin</li><li>react-addons-perf</li><li>react-addons-pure-render-mixin</li><li>react-addons-shallow-compare</li><li>react-addons-test-utils</li><li>react-addons-transition-group</li><li>react-addons-update</li><li>ReactDOM.unstable_batchedUpdates in react-dom</li></ol>
-<br><span class="move_left strong font_size">Creating your own mixins</span>
-<div class="commands"><pre>var TimeOutMixin = {
-componentWillMount: function() { .. }
-}
-var TickTock = React.createClass({
-mixins: [TimeOutMixin]
-}</pre></div>
-<br><span class="move_left strong font_size">React on es2015/es6</span>
-<br class="cbt">
-<br><span class="move_left "><span class="strong ">NOTE:</span>The following are experimental, and you must use a
-transpiler for this to work.</span>
-<br class="cbt">
-<br><span class="move_left strong font_size">Classes</span>
-<div class="commands"><pre>class Animal extends React.Component {
-render() {
-return &ltimg alt={this.props.name} src={this.props.src} /&gt;
-}
-}</pre></div>
-<br><span class="move_left strong font_size">Property Initializers</span>
-<div class="commands"><pre>var Video = React.createClass({
-getDefaultProps() {
-return {
-autoPlay: false,
-maxLoops: 10,
-};
-},
-getInitialState: function() {
-return {
-loopsRemaining: this.props.maxLoops,
-};
-},
-propTypes: {
-autoPlay: React.PropTypes.bool.isRequired,
-maxLoops: React.PropTypes.number.isRequired,
-posterFrameSrc: React.PropTypes.string.isRequired,
-videoSrc: React.PropTypes.string.isRequired,
-},
-});</pre></div>
-<br><span class="move_left strong font_size">Arrow Functions</span>
-<div class="commands"><pre>class PostInfo extends React.Component {
-handleOptionsButtonClick = (e) => {
-this.setState({showOptionsModal: true});
-}
-}</pre></div>
-<br><span class="move_left strong font_size">Dynamic property names with template strings</span>
-<div class="commands"><pre>class Form extends React.Component {
-onChange(inputName, e) {
-this.setState({
-[`${inputName}Value`]: e.target.value,
-});
-}
-}</pre></div>
-<br><span class="move_left strong font_size">Destructuring & spread attributes</span>
-<div class="commands"><pre>class AutoloadingPostsGrid extends React.Component {
-render() {
-var {
-className,
-...others,
-// all properties of this.props except for className
-} = this.props;
-return <PostsGrid {...others} />
-}
-}</pre></div>
-<br><span class="move_left strong font_size">CoffeeScript and React</span>
-<br class="cbt">
-<br><span class="move_left">For React v0.13.0+</span>
-<div class="commands"><pre>div = React.createFactory 'div'
-class Counter extends React.Component
-@propTypes = initialCount: React.PropTypes.number
-@defaultProps = initialCount: 0
-constructor: (props) ->
-super props
-@state = count: props.initialCount
-tick: =>
-@setState count: @state.count + 1
-render: ->
-div onClick: @tick,
-'Clicks: '
-@state.count</pre></div>
-<div class="title strong"><span>CONVENTIONS FOR REACT DOM & JSX</span></div>
-<br class="cbt">
-<br><span class="move_left">A few patterns and best practices to get you started:</span>
-<ol class="disc"><span class=" strong font_size"></span><li>React DOM elements are expected to be in camelCase.</li><li>The camelCasing of DOM matches what you would write for custom components:</li></ol>
-<br><span class="move_left">&ltTypeahead onClick=../&gt and &ltdiv onClick=../&gt</span>
-<ol class="disc"><span class=" strong font_size"></span><li>These camelCased attributes are usually what you write when updating the DOM via JS (input.maxLength).</li><li>One current confusing exception is that class= is normalized automatically into className= at transform time.</li><li>Use the className attribute instead of class</li><li>Use the htmlFor attribute instead of for</li><li>Use &lttextarea value="something"&gt instead of &lttextarea&gtsomething&lt/textarea&gt</li><li>Custom HTML attributes may be data-attr and all lower case.</li><li>Make use of ternary operators, wherever required. For example: React.render(&ltdiv id={condition ? 'msg' : ' '}&gtHello World!&lt/div&gt, mountNode);</li></ol>
-<br><span class="move_left strong font_size">Anti-pattern</span>
-<br class="cbt">
-<br><span class="move_left">Using props in getInitialState is an anti-pattern. Instead of:</span>
-<div class="commands"><pre>var MessageBox = React.createClass({
-getInitialState: function() {
-return {nameWithQualifier: 'Mr. ' + this.props.name};
-};
-render: function() {
-return &gtdiv&gt{this.state.nameWithQualifier}&gt/div&gt;
-}
-});
-React.render(&ltMessageBox name="Rogers"/&gt, mountNode);</pre></div>
-<br><span class="move_left">Try the following:</span>
-<div class="commands"><pre>var MessageBox = React.createClass({
-render: function() {
-return &ltdiv&gt{'Mr. ' + this.props.name}&lt/div&gt;
-}
-});
-React.render(&ltMessageBox name="Rogers"/&gt, mountNode);</pre></div>
-<br><span class="move_left "><span class="strong ">NOTE:</span>This is not an anti-pattern if we make it clear that
-synchronization is not the goal.</span>
-<br class="cbt">
-<br><span class="move_left strong font_size">Spread operator in jsx</span>
-<div class="commands"><pre>var props = {};
-props.foo = x;
-props.bar = y;
-var component = <Component {...props} />;</pre></div>
-<br><span class="move_left">You can also use the spread operator (...) to override props:</span>
-<div class="commands"><pre>var props = { foo: 'default' };
-var component = <Component {...props} foo={'override'} />;
-console.log(component.props.foo); // 'override'</pre></div>
-<br><span class="move_left">The spread operator is already supported for arrays in ES6.
-There is also an ES7 proposal for Object Rest and Spread
-Properties.</span>
-<div class="title strong"><span>FLUX: THE APPLICATION ARCHITECTURE</span></div>
-<br><span class="move_left">Flux plays a key role if your application uses dynamic data.</span>
-<br class="cbt">
-<br><span class="move_left">Don't try to compare Flux to Model-View-Controller (MVC)
-architecture. Flux is just a term to describe smart, unidirectional
-data flow.</span>
-<img src="img/overview.png"alt="622">
-<br><span class="move_left "><span class="strong underline">Figure 3.</span>An overview of flux architecture</span>
-<br class="cbt">
-<br><span class="move_left strong font_size">Keys ideas in the Flux architecture</span>
-<ol class="decimal"><span class=" strong font_size"></span><li>Views "Dispatch" "Actions".</li><li>"Store" Responds to Dispatched Events.</li><li>Store Emits a "Change" Event.</li><li>View Responds to the "Change" Event</li></ol>
-<br><span class="move_left strong font_size">Points to remember</span>
-<ol class="decimal"><span class=" strong font_size"></span><li>A "dispatcher" is essentially an event system.</li><li>There is at most one global dispatcher.</li><li>"Store" is specific collection of logic and data.</li><li>A "Store" is a singleton.</li><li>A store is not a model. A store contains models.</li><li>A store is the only entity in the application that is aware of how to update data.</li><li>Only stores registers to dispatcher callbacks. store emits an event, but not using the dispatcher!</li><li>When store data changes, your views shouldn't care if things were added, deleted, or modified but just re-render.</li></ol>
-<div class="title strong"><span>CHANGES IN REACT V0.14</span></div>
-<br><span class="move_left">React version 0.14, released in fall of 2015, separated out all
-DOM related functionality into a separate dependency, which
-can be fetched from npm under the name "react-dom."</span>
-<br class="cbt">
-<br><span class="move_left">Every new change in 0.14-including the major changes-is
-introduced with a runtime warning and will work as before
-until version 0.15 is released.</span>
-<br><span class="move_left">The react package contains React.createElement,
-.createClass, .Component, .PropTypes, .Children, and the
-other helpers related to elements and component classes.</span>
-<br class="cbt">
-<br><span class="move_left">The react-dom package has ReactDOM.render,
-.unmountComponentAtNode, and .findDOMNode.</span>
-<br class="cbt">
-<br><span class="move_left">In react-dom/server there is server-side rendering
-support with ReactDOMServer.renderToString and
-.renderToStaticMarkup.</span>
-<br class="cbt">
-<br><span class="move_left">So, if you wanted to duplicate the example Hello component
-from earlier with react v0.14, it would look like this:</span>
-<div class="commands"><pre>var React = require('react');
-var ReactDOM = require('react-dom');
-var Hello = React.createClass({
-render: function() {
-return <div>Hello World</div>;
-}
-});
-ReactDOM.render(<Hello/>, node);</pre></div>
+	<div class="commands"><pre>&ltinput type="text"
+	value={this.state.value}
+	onChange={this.handleChange} /&gt
+	handleChange: function(event) {
+	this.setState({ value: event.target.value });
+	}</pre></div>
+	<br><span class="move_left strong font_size">Two-way data bindings with mixins:</span>
+	<div class="commands"><pre>Email: &ltinput type="text" valueLink={this.linkState('email')}
+	/&gt
+	React.createClass({
+	mixins: [React.addons.LinkedStateMixin]
+	});
+	this.state.email</pre></div>
+	<br><span class="move_left strong font_size">Validating properties:</span>
+	<table class="syntax_description"><tbody><tr><th>NAME</th>
+	<th>DESCRIPTION</th>
+	</tr><tr><td>Primative Types</td>
+	<td><ul class="none_list"><span class=" strong font_size"></span><li>.string</li><li>.number</li><li>.func</li><li>.bool</li></ul>
+	</tr>
+	<tr><td>Reactive Elements</td>
+	<td><ul class="none_list"><span class=" strong font_size"></span><li>.element</li><li>.node</li></ul></td>
+	</tr>
+	<tr><td>Enumerables</td>
+	<td><ul class="none_list"><span class=" strong font_size"></span><li>.oneOf</li><li>.oneOfType</li></ul></td>
+	</tr>
+	<tr><td>Arrays and Objects</td>
+	<td><ul class="none_list"><span class=" strong font_size"></span><li>.array[Of]</li><li>.object[Of]</li><li>.instanceOf</li><li>.shape</li></ul></td>
+	</tr>
+	</tbody>
+	</table>
+	<br><span class="move_left strong font_size">Sample usage:</span>
+	<div class="commands"><pre>React.createClass({
+	propTypes: {
+	email: React.PropTypes.string,
+	firstName: React.PropTypes.string,
+	age: React.PropTypes.number,
+	gender: React.PropTypes.oneOf(['M','F','NA'])
+	node: React.PropTypes.node,
+	cb: React.PropTypes.func.isRequired,
+	}
+	});</pre></div>
+	<br><span class="move_left strong font_size">Custom validation:</span>
+	<div class="commands"><pre>propTypes: {
+	customProp: function(props, propName, componentName) {
+	if (!/matchme/.test(props[propName])) {
+	return new Error('Validation failed!');
+	}
+	}
+	}</pre></div>
+	<br><span class="move_left strong font_size">React addons</span>
+	<br class="cbt">
+	<br><span class="move_left">React.addons are useful utilities for building React apps. These
+	are currently experimental, and not yet part of core React.</span>
+	<ol class="disc"><span class=" strong font_size"></span><li>TransitionGroup and CSSTransitionGroup deal with animations and transitions</li><li>LinkedStateMixin helps in two-way data binding.</li><li>cloneWithProps makes shallow copies of React components and changes their props.</li><li>createFragment helps to create a set of externally-keyed children.</li><li>update helps to deal with immutable data.</li><li>PureRenderMixin is a performance booster in certain situations.</li></ol>
+	<br><span class="move_left">Apart from these there are few addons that are available in
+	the development (unminified) version of React only:</span>
+	<ol class="disc"><span class=" strong font_size"></span><li>TestUtils, simple helpers for writing test cases</li><li>Perf, for measuring performance and giving you hints on where to optimize.</li></ol>
+	<br><span class="move_left">To get these addons, use react-with-addons.js (and its minified
+	counterpart), rather than the common react.js.</span>
+	<br class="cbt">
+	<br><span class="move_left">When using the react package from npm, simply use
+	require('react/addons') instead of require('react') to get
+	React with all of the addons.</span>
+	<br><span class="move_left "><span class="strong ">NOTE:</span>Add-ons have moved to separate packages in React v0.14+:</span>
+	<ol class="disc"><span class=" strong font_size"></span><li>react-addons-clone-with-props</li><li>react-addons-create-fragment</li><li>react-addons-css-transition-group</li><li>react-addons-linked-state-mixin</li><li>react-addons-perf</li><li>react-addons-pure-render-mixin</li><li>react-addons-shallow-compare</li><li>react-addons-test-utils</li><li>react-addons-transition-group</li><li>react-addons-update</li><li>ReactDOM.unstable_batchedUpdates in react-dom</li></ol>
+	<br><span class="move_left strong font_size">Creating your own mixins</span>
+	<div class="commands"><pre>var TimeOutMixin = {
+	componentWillMount: function() { .. }
+	}
+	var TickTock = React.createClass({
+	mixins: [TimeOutMixin]
+	}</pre></div>
+	<br><span class="move_left strong font_size">React on es2015/es6</span>
+	<br class="cbt">
+	<br><span class="move_left "><span class="strong ">NOTE:</span>The following are experimental, and you must use a
+	transpiler for this to work.</span>
+	<br class="cbt">
+	<br><span class="move_left strong font_size">Classes</span>
+	<div class="commands"><pre>class Animal extends React.Component {
+	render() {
+	return &ltimg alt={this.props.name} src={this.props.src} /&gt;
+	}
+	}</pre></div>
+	<br><span class="move_left strong font_size">Property Initializers</span>
+	<div class="commands"><pre>var Video = React.createClass({
+	getDefaultProps() {
+	return {
+	autoPlay: false,
+	maxLoops: 10,
+	};
+	},
+	getInitialState: function() {
+	return {
+	loopsRemaining: this.props.maxLoops,
+	};
+	},
+	propTypes: {
+	autoPlay: React.PropTypes.bool.isRequired,
+	maxLoops: React.PropTypes.number.isRequired,
+	posterFrameSrc: React.PropTypes.string.isRequired,
+	videoSrc: React.PropTypes.string.isRequired,
+	},
+	});</pre></div>
+	<br><span class="move_left strong font_size">Arrow Functions</span>
+	<div class="commands"><pre>class PostInfo extends React.Component {
+	handleOptionsButtonClick = (e) => {
+	this.setState({showOptionsModal: true});
+	}
+	}</pre></div>
+	<br><span class="move_left strong font_size">Dynamic property names with template strings</span>
+	<div class="commands"><pre>class Form extends React.Component {
+	onChange(inputName, e) {
+	this.setState({
+	[`${inputName}Value`]: e.target.value,
+	});
+	}
+	}</pre></div>
+	<br><span class="move_left strong font_size">Destructuring & spread attributes</span>
+	<div class="commands"><pre>class AutoloadingPostsGrid extends React.Component {
+	render() {
+	var {
+	className,
+	...others,
+	// all properties of this.props except for className
+	} = this.props;
+	return <PostsGrid {...others} />
+	}
+	}</pre></div>
+	<br><span class="move_left strong font_size">CoffeeScript and React</span>
+	<br class="cbt">
+	<br><span class="move_left">For React v0.13.0+</span>
+	<div class="commands"><pre>div = React.createFactory 'div'
+	class Counter extends React.Component
+	@propTypes = initialCount: React.PropTypes.number
+	@defaultProps = initialCount: 0
+	constructor: (props) ->
+	super props
+	@state = count: props.initialCount
+	tick: =>
+	@setState count: @state.count + 1
+	render: ->
+	div onClick: @tick,
+	'Clicks: '
+	@state.count</pre></div>
+	<div class="title strong"><span>CONVENTIONS FOR REACT DOM & JSX</span></div>
+	<br class="cbt">
+	<br><span class="move_left">A few patterns and best practices to get you started:</span>
+	<ol class="disc"><span class=" strong font_size"></span><li>React DOM elements are expected to be in camelCase.</li><li>The camelCasing of DOM matches what you would write for custom components:</li></ol>
+	<br><span class="move_left">&ltTypeahead onClick=../&gt and &ltdiv onClick=../&gt</span>
+	<ol class="disc"><span class=" strong font_size"></span><li>These camelCased attributes are usually what you write when updating the DOM via JS (input.maxLength).</li><li>One current confusing exception is that class= is normalized automatically into className= at transform time.</li><li>Use the className attribute instead of class</li><li>Use the htmlFor attribute instead of for</li><li>Use &lttextarea value="something"&gt instead of &lttextarea&gtsomething&lt/textarea&gt</li><li>Custom HTML attributes may be data-attr and all lower case.</li><li>Make use of ternary operators, wherever required. For example: React.render(&ltdiv id={condition ? 'msg' : ' '}&gtHello World!&lt/div&gt, mountNode);</li></ol>
+	<br><span class="move_left strong font_size">Anti-pattern</span>
+	<br class="cbt">
+	<br><span class="move_left">Using props in getInitialState is an anti-pattern. Instead of:</span>
+	<div class="commands"><pre>var MessageBox = React.createClass({
+	getInitialState: function() {
+	return {nameWithQualifier: 'Mr. ' + this.props.name};
+	};
+	render: function() {
+	return &gtdiv&gt{this.state.nameWithQualifier}&gt/div&gt;
+	}
+	});
+	React.render(&ltMessageBox name="Rogers"/&gt, mountNode);</pre></div>
+	<br><span class="move_left">Try the following:</span>
+	<div class="commands"><pre>var MessageBox = React.createClass({
+	render: function() {
+	return &ltdiv&gt{'Mr. ' + this.props.name}&lt/div&gt;
+	}
+	});
+	React.render(&ltMessageBox name="Rogers"/&gt, mountNode);</pre></div>
+	<br><span class="move_left "><span class="strong ">NOTE:</span>This is not an anti-pattern if we make it clear that
+	synchronization is not the goal.</span>
+	<br class="cbt">
+	<br><span class="move_left strong font_size">Spread operator in jsx</span>
+	<div class="commands"><pre>var props = {};
+	props.foo = x;
+	props.bar = y;
+	var component = <Component {...props} />;</pre></div>
+	<br><span class="move_left">You can also use the spread operator (...) to override props:</span>
+	<div class="commands"><pre>var props = { foo: 'default' };
+	var component = <Component {...props} foo={'override'} />;
+	console.log(component.props.foo); // 'override'</pre></div>
+	<br><span class="move_left">The spread operator is already supported for arrays in ES6.
+	There is also an ES7 proposal for Object Rest and Spread
+	Properties.</span>
+	<div class="title strong"><span>FLUX: THE APPLICATION ARCHITECTURE</span></div>
+	<br><span class="move_left">Flux plays a key role if your application uses dynamic data.</span>
+	<br class="cbt">
+	<br><span class="move_left">Don't try to compare Flux to Model-View-Controller (MVC)
+	architecture. Flux is just a term to describe smart, unidirectional
+	data flow.</span>
+	<img src="img/overview.png"alt="622">
+	<br><span class="move_left "><span class="strong underline">Figure 3.</span>An overview of flux architecture</span>
+	<br class="cbt">
+	<br><span class="move_left strong font_size">Keys ideas in the Flux architecture</span>
+	<ol class="decimal"><span class=" strong font_size"></span><li>Views "Dispatch" "Actions".</li><li>"Store" Responds to Dispatched Events.</li><li>Store Emits a "Change" Event.</li><li>View Responds to the "Change" Event</li></ol>
+	<br><span class="move_left strong font_size">Points to remember</span>
+	<ol class="decimal"><span class=" strong font_size"></span><li>A "dispatcher" is essentially an event system.</li><li>There is at most one global dispatcher.</li><li>"Store" is specific collection of logic and data.</li><li>A "Store" is a singleton.</li><li>A store is not a model. A store contains models.</li><li>A store is the only entity in the application that is aware of how to update data.</li><li>Only stores registers to dispatcher callbacks. store emits an event, but not using the dispatcher!</li><li>When store data changes, your views shouldn't care if things were added, deleted, or modified but just re-render.</li></ol>
+	<div class="title strong"><span>CHANGES IN REACT V0.14</span></div>
+	<br><span class="move_left">React version 0.14, released in fall of 2015, separated out all
+	DOM related functionality into a separate dependency, which
+	can be fetched from npm under the name "react-dom."</span>
+	<br class="cbt">
+	<br><span class="move_left">Every new change in 0.14-including the major changes-is
+	introduced with a runtime warning and will work as before
+	until version 0.15 is released.</span>
+	<br><span class="move_left">The react package contains React.createElement,
+	.createClass, .Component, .PropTypes, .Children, and the
+	other helpers related to elements and component classes.</span>
+	<br class="cbt">
+	<br><span class="move_left">The react-dom package has ReactDOM.render,
+	.unmountComponentAtNode, and .findDOMNode.</span>
+	<br class="cbt">
+	<br><span class="move_left">In react-dom/server there is server-side rendering
+	support with ReactDOMServer.renderToString and
+	.renderToStaticMarkup.</span>
+	<br class="cbt">
+	<br><span class="move_left">So, if you wanted to duplicate the example Hello component
+	from earlier with react v0.14, it would look like this:</span>
+	<div class="commands"><pre>var React = require('react');
+	var ReactDOM = require('react-dom');
+	var Hello = React.createClass({
+	render: function() {
+	return <div>Hello World</div>;
+	}
+	});
+	ReactDOM.render(<Hello/>, node);</pre></div>
 
-<div class="title strong"><span>TESTING YOUR APPLICATION WITH JEST</span></div>
-<br><span class="move_left">Jest allows for painless JavaScript Unit Testing. It is built on
-top of the Jasmine test framework.</span>
-<br class="cbt">
-<br><span class="move_left">Consider a scenario where you want to test the following
-div.js file:</span>
+	<div class="title strong"><span>TESTING YOUR APPLICATION WITH JEST</span></div>
+	<br><span class="move_left">Jest allows for painless JavaScript Unit Testing. It is built on
+	top of the Jasmine test framework.</span>
+	<br class="cbt">
+	<br><span class="move_left">Consider a scenario where you want to test the following
+	div.js file:</span>
 
-<div class="commands"><pre>// sum.js
-function div (value1, value2) {
-return value1 / value2;
-}
-module.exports = sum;</pre></div>
-<ol class="decimal"><span class=" strong font_size"></span><li>Create a directory __tests__/ with a file div-test.js</li><div class="commands"><pre>// __tests__/sum-test.js
-jest.dontMock('../sum');
-describe('sum', function() {
-it('divides 4 / 2 to equal 2', function() {
-var sum = require('../div');
-expect(div(4, 2)).toBe(2);
-});
-});</pre></div><li>Run npm install jest-cli --save-dev</li><li>Add the following to your package.json</li><div class="commands"><pre>{ ... "scripts": { "test": "jest" } ... }</pre></div><li>Run npm test</li><div class="commands"><pre>[PASS] __tests__/sum-test.js (0.015s)</pre></div></ol>
+	<div class="commands"><pre>// sum.js
+	function div (value1, value2) {
+	return value1 / value2;
+	}
+	module.exports = sum;</pre></div>
+	<ol class="decimal"><span class=" strong font_size"></span><li>Create a directory __tests__/ with a file div-test.js</li><div class="commands"><pre>// __tests__/sum-test.js
+	jest.dontMock('../sum');
+	describe('sum', function() {
+	it('divides 4 / 2 to equal 2', function() {
+	var sum = require('../div');
+	expect(div(4, 2)).toBe(2);
+	});
+	});</pre></div><li>Run npm install jest-cli --save-dev</li><li>Add the following to your package.json</li><div class="commands"><pre>{ ... "scripts": { "test": "jest" } ... }</pre></div><li>Run npm test</li><div class="commands"><pre>[PASS] __tests__/sum-test.js (0.015s)</pre></div></ol>
 
-<br><span class="move_left">Just follow the above steps, and you are ready to run with Jest!</span>
+	<br><span class="move_left">Just follow the above steps, and you are ready to run with Jest!</span>
 
-<br><span class="move_left "><span class="strong ">NOTE:</span>For a React component, we follow the same steps along
-with it, we will have to use React.addons.TestUtils.</span>
-</div>
- <div class="down_page">
-        <table>
-          <tbody>
-            <tr>
-              <td class="align_left medium_padding align_top">
-                <br><span class="move_left strong">ABOUT THE AUTHORS</span><br>
-                <br><img src="img/Hemanth.png"alt="622" class="textwrap smallicon"><span  class="move_left ">Hemanth H.M. has had exposure to major scripting languages throughout his career, and his 
-major focus in the last couple of years has been on frontend. He maintains strict discipline in 
-coding, likes to adopt TDD and Agile processes not only in his professional life, but also in all his 
-FOSS contributions. He is a core team member of the Google Yeoman project, and has published 
-many node modules and ruby gems and is a maintainer of many major projects. Currently he is 
-working heavily on Node.js, especially on expressjs and koajs. 
-<br class="cbt">
-His major area of interest and research is in ECMAScript, has delivered few talks with JSChannel (Partners with 
-JSConf US) and JSFoo. He also co-organises BangaloreJS meetups and helps people to get into FOSS on IRC 
-and a few slack groups. He writes technical articles on his blog (400+ articles so far) his <3 towards Node made 
-him start nmotw.in (Node module of the week), which talks about a new interesting node module every week, also 
-started jsfeatures.in, which covers all the JavaScript features in a SPA. </span>
-              </td>
-              <td  class="align_left medium_padding align_top">
-			   <br><span class="move_left strong">RESOURCES </span><br>
-               <ol class="disc"><span class=" strong font_size"></span>
-			   <li> <a href="https://facebook.github.io/react/">React.js Website</a></li>
-			   <li><a href="https://facebook.github.io/react/downloads.html">React.js Documentation</a></li>
-			   <li><a href="https://facebook.github.io/react/downloads.html">React.js Download</a></li>
-			   <li><a href="https://facebook.github.io/react/downloads.html">Why React?</a></li>
-			   </ol> 
-              </td>
-            </tr>
-          </tbody>
-        </table >
-      </div>
+	<br><span class="move_left "><span class="strong ">NOTE:</span>For a React component, we follow the same steps along
+	with it, we will have to use React.addons.TestUtils.</span>
+	</div>
+	 <div class="down_page">
+			<table>
+			  <tbody>
+				<tr>
+				  <td class="align_left medium_padding align_top">
+					<br><span class="move_left strong">ABOUT THE AUTHORS</span><br>
+					<br><img src="img/Hemanth.png"alt="622" class="textwrap smallicon"><span  class="move_left ">Hemanth H.M. has had exposure to major scripting languages throughout his career, and his 
+	major focus in the last couple of years has been on frontend. He maintains strict discipline in 
+	coding, likes to adopt TDD and Agile processes not only in his professional life, but also in all his 
+	FOSS contributions. He is a core team member of the Google Yeoman project, and has published 
+	many node modules and ruby gems and is a maintainer of many major projects. Currently he is 
+	working heavily on Node.js, especially on expressjs and koajs. 
+	<br class="cbt">
+	His major area of interest and research is in ECMAScript, has delivered few talks with JSChannel (Partners with 
+	JSConf US) and JSFoo. He also co-organises BangaloreJS meetups and helps people to get into FOSS on IRC 
+	and a few slack groups. He writes technical articles on his blog (400+ articles so far) his <3 towards Node made 
+	him start nmotw.in (Node module of the week), which talks about a new interesting node module every week, also 
+	started jsfeatures.in, which covers all the JavaScript features in a SPA. </span>
+				  </td>
+				  <td  class="align_left medium_padding align_top">
+				   <br><span class="move_left strong">RESOURCES </span><br>
+				   <ol class="disc"><span class=" strong font_size"></span>
+				   <li> <a href="https://facebook.github.io/react/">React.js Website</a></li>
+				   <li><a href="https://facebook.github.io/react/downloads.html">React.js Documentation</a></li>
+				   <li><a href="https://facebook.github.io/react/downloads.html">React.js Download</a></li>
+				   <li><a href="https://facebook.github.io/react/downloads.html">Why React?</a></li>
+				   </ol> 
+				  </td>
+				</tr>
+			  </tbody>
+			</table >
+		  </div>
 
-<div class="footer">
-        <span> DZone, Inc. | www.dzone.</span>
-      </div>
-    </div>	
-  </body>
-</html>
+	<div class="footer">
+			<span> DZone, Inc. | www.dzone.</span>
+		  </div>
+		</div>	
+	  </body>
+	</html>
