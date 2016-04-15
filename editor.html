@@ -37,7 +37,7 @@
 										<button onclick="Smallicon()">SmallIcon</button>
 										<button onclick="Table()">Table</button>
 										<button onclick="Link()">Link</button>
-										<button onclick="Text()">Text</button>
+										<button onclick="Txt()">Text</button>
 										<button onclick="CBT()">CBT</button>
 										<button onclick="Image()">Image</button>
 										<button onclick="Listing()">Listing</button>
@@ -97,11 +97,11 @@ function Back(){
 }
 function Delete(){
 var del_element = getSelection( document.getElementById("result") );
-
-var result=document.getElementById("result");
+del_element.value='';
+//var result=document.getElementById("result");
 //var RESULTTEXT = document.getElementById("RESULTTEXT");
 
-var del_element = getSelection(document.getElementById("RESULTTEXT"));
+//var del_element = getSelection(document.getElementById("RESULTTEXT"));
 //RESULTTEXT.parentNode.removeChild(RESULTTEXT);
 //$("#del_element").remove();
 //window.onload = function {
@@ -118,7 +118,7 @@ var del_element = getSelection(document.getElementById("RESULTTEXT"));
 //RESULTHTML.remove();
 
 }
-function Text(){
+function Txt(){
 	//var i=1;
 	var expression = getSelection( document.getElementById("text") );
 	document.getElementById("text").focus();
@@ -298,13 +298,18 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 				var expression = getSelection( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-var object= document.getElementById("result"); 
+//var object= document.getElementById("result"); 
 				var n=prompt("Enter a count of row","");
 				 var disc_list='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
 
 for(var i=0;i<n;i++){
-//var text=prompt("Enter a text for  <li>","");
- disc_list+='<li>'+object+'</li>';
+var worlds = getSelection( document.getElementById("text") );
+ 				document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
+				
+var text=prompt("Enter a text for  <li>","");
+//text.blur();
+document.getElementById("text").focus();
+ disc_list+='<li>'+worlds+'</li>';
  
 }
  document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
