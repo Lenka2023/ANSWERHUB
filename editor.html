@@ -46,6 +46,8 @@
 										<button onclick="Back()">Back</button>
 										<button onclick="Forward()">Forward</button>
 										<button onclick="Footer()">Footer</button>
+										<button onclick="Top()">TopPage</button>
+										<button onclick="Dovn()">DownPage</button>
 										<p><textarea id="text"  name="text"></textarea></p>
 									<div id="area" class="area">
 									<span id="RESULTHTML">qwe</span>
@@ -71,8 +73,24 @@ var is_webtv  = (uagent.indexOf('webtv') != -1);
 var is_win    =  ( (uagent.indexOf("win") != -1) || (uagent.indexOf("16bit") !=- 1) );
 var is_mac    = ( (uagent.indexOf("mac") != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var ua_vers   = parseInt(navigator.appVersion);
-
-function getSelection( textarea )
+function getSelectionresult( div)
+{
+    var selection = null;
+    if ((ua_vers >= 4) && is_ie && is_win) {
+        if (div.innerText) {
+            
+            var sel = document.selection;
+            var rng = sel.createRange();
+            rng.collapse;
+            if((sel.type == "Text" || sel.type == "None") && rng != null)
+                selection = rng.text;
+        }
+    } else if (typeof(div.selectionEnd) != "undefined" ) { 
+        selection = (div.value).substring(div.selectionStart, div.selectionEnd);
+    }
+    return selection;
+}
+function getSelectiontextarea( textarea )
 {
     var selection = null;
     if ((ua_vers >= 4) && is_ie && is_win) {
@@ -89,6 +107,72 @@ function getSelection( textarea )
     }
     return selection;
 }
+function Top(){
+var expression = getSelectiontextarea( document.getElementById("text") );
+	document.getElementById("text").focus();
+	var x=prompt("Enter a count of row","");
+var y=prompt("Enter a count of columns","");
+	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+	var result=document.getElementById("result");
+var table='<!DOCTYPE html>'+
+'<html>'+
+  '<head>'+
+    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
+    '<link rel="stylesheet" href="css/style.css"type="text/css"/ '+
+	'</head>'+
+  '<body>'+
+    '<div class="page_cont one">'+
+      '<br class="cbt">'+
+      '<div class="content">'+
+'<table border=0>'+
+          '<tbody>';
+		  for(var i = 0, text; i <= x;i++){
+  table += '<tr>';
+  for(var j = 0; j < y; j++){
+alert( "Enter text" );
+		//text = prompt("Enter text", "");
+		//table += '<td>' + text + '</td>';
+		table += '<td>' + expression + '</td>';
+		}
+	  table += '</tr>';
+}
+document.getElementById("RESULTTEXT").innerText= table + '</tbody></table>';
+document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
+				document.getElementById("RESULTTEXT").id = "text_res";
+				document.getElementById("RESULTHTML").id = "html_res";
+				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
+				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("text").value='';
+			}
+function Dovn(){
+var expression = getSelectiontextarea( document.getElementById("text") );
+	document.getElementById("text").focus();
+	var x=prompt("Enter a count of row","");
+var y=prompt("Enter a count of columns","");
+	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+	var result=document.getElementById("result");
+	
+var table='<div class="down_page">'+
+'<table border=0>'+
+          '<tbody>';
+		  for(var i = 0, text; i <= x;i++){
+  table += '<tr>';
+  	for(var j = 0; j < y; j++){
+alert( "Enter text" );
+		//text = prompt("Enter text", "");
+		//table += '<td>' + text + '</td>';
+		table += ' <td class="align_left medium_padding align_top">' + expression + '</td>';
+	}
+    table += '</tr>';
+}
+document.getElementById("RESULTTEXT").innerText= table + '</tbody></table></div>';
+document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table></div>';
+				document.getElementById("RESULTTEXT").id = "text_res";
+				document.getElementById("RESULTHTML").id = "html_res";
+				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
+				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("text").value='';
+			}
 function Forward(){
 	window.history.forward();
 }	
@@ -96,8 +180,10 @@ function Back(){
 	window.history.back();
 }
 function Delete(){
-var del_element = getSelection( document.getElementById("result") );
+var del_element = getSelectionresult( document.getElementById("result") );
 del_element.value='';
+var del_html = getSelectionarea( document.getElementById("area") );
+del_html.value='';
 //var result=document.getElementById("result");
 //var RESULTTEXT = document.getElementById("RESULTTEXT");
 
@@ -114,13 +200,13 @@ del_element.value='';
 //area.parentNode.removeChild(area);
 //$('#area').remove();
 //result.remove();
-//var RESULTHTML = getSelection(document.getElementById("RESULTHTML"));
+//var RESULTHTML = getSelectiontextarea(document.getElementById("RESULTHTML"));
 //RESULTHTML.remove();
 
 }
 function Txt(){
 	//var i=1;
-	var expression = getSelection( document.getElementById("text") );
+	var expression = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
@@ -137,7 +223,7 @@ document.getElementById("text").value='';
 			function Link()
 			{
 				
-				var Link_Title= getSelection( document.getElementById("text") );
+				var Link_Title= getSelectiontextarea( document.getElementById("text") );
 				alert(Link_Title);
 				document.getElementById("text").focus();
  				document.getElementById("text").innerHTML = Link_Title.replace(/\n/g, '<br>');
@@ -153,7 +239,7 @@ document.getElementById("text").value='';
 			function Image()
 			{
 				
-				var Image_Title= getSelection( document.getElementById("text") );
+				var Image_Title= getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").focus();
  				document.getElementById("text").innerHTML = Image_Title.replace(/\n/g, '<br>');
 				var x=prompt("Enter a name of image","");
@@ -171,7 +257,7 @@ document.getElementById("text").value='';
 			function Bold()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULTTEXT").innerText='<span class="strong">'+expression+'</span>';
@@ -186,7 +272,7 @@ document.getElementById("text").value='';
                   function Code()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULTTEXT").innerText='<div class="commands"><pre>'+expression+'</pre></div>';
@@ -201,7 +287,7 @@ document.getElementById("text").value='';
 			function Main_List()
 			{
 			
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var n=prompt("Enter a count of row","");
@@ -226,7 +312,7 @@ document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
 			function Square_List()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var n=prompt("Enter a count of row","");
@@ -249,7 +335,7 @@ document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
 			function None_List()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var n=prompt("Enter a count of row","");
@@ -272,7 +358,7 @@ document.getElementById("RESULTHTML").innerHTML= none_list + '</ul>';
 			function Decimal_List()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus
 				var n=prompt("Enter a count of row","");
@@ -295,7 +381,7 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 			function Disc_List()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 //var object= document.getElementById("result"); 
@@ -303,13 +389,13 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 				 var disc_list='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
 
 for(var i=0;i<n;i++){
-var worlds = getSelection( document.getElementById("text") );
+var worlds = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
 				
 var text=prompt("Enter a text for  <li>","");
 //text.blur();
 document.getElementById("text").focus();
- disc_list+='<li>'+worlds+'</li>';
+ disc_list+='<li>'+text+'</li>';
  
 }
  document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
@@ -324,7 +410,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 			function Main_title()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 
@@ -341,7 +427,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 			function Middle_Title()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULTTEXT").innerText='<div class="middle_title">'+expression+'</div>';
@@ -356,7 +442,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 			function Down_title()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULTTEXT").innerText='<div class="down_title">'+expression+'</div>';
@@ -371,7 +457,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 			function Red_title()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").focus();
                         document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText='<div class="title strong"><span>'+expression+'</span></div>';
@@ -387,7 +473,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 			function Small_title()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULTTEXT").innerText='<br><span class="move_left strong font_size">'+expression+'</span>';
@@ -402,7 +488,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 			function Capture()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var x=prompt("Enter title of capture","");
@@ -418,7 +504,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 			function Listing()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var x=prompt("Enter title of capture","");
@@ -434,7 +520,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 			function Smallicon()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var x=prompt("Enter a name of image","");
@@ -454,7 +540,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
             function Hot_Tip()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				document.getElementById("RESULTTEXT").innerText='<div class="border">'+
@@ -498,7 +584,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
             function Table()
 			{
 				
-				var expression = getSelection( document.getElementById("text") );
+				var expression = getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				var x=prompt("Enter a count of row","");
@@ -549,8 +635,7 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 			}
 			function Footer()
 			{
-				document.getElementById("RESULTTEXT").innerText='</div>'+
- '<div class="footer">'+
+				document.getElementById("RESULTTEXT").innerText= '<div class="footer">'+
         '<span> DZone, Inc. | www.dzone.</span>'+
       '</div>'+
     '</div>'+	
