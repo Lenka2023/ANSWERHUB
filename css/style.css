@@ -101,6 +101,8 @@ top:50%;
 .main_title {
 	vertical-align: top;
 	text-align: right;
+	width:40%;
+	right:10%;
 }
 .middle_title {
     display: block;
@@ -118,6 +120,9 @@ top:50%;
 }
 .float_left{
 float:left;
+}
+.float_right{
+float:right;
 }
 .cbt {
     clear: both;
@@ -468,7 +473,7 @@ list-style-type:decimal;
  
  .align_top {
  	vertical-align: top;
- 	width:50%;
+ 	width:45%;
  }
  
  .medium_padding {

@@ -47,7 +47,7 @@
 										<button onclick="Forward()">Forward</button>
 										<button onclick="Footer()">Footer</button>
 										<button onclick="Top()">TopPage</button>
-										<button onclick="Dovn()">DownPage</button>
+										<button onclick="Down()">DownPage</button>
 										<p><textarea id="text"  name="text"></textarea></p>
 									<div id="area" class="area">
 									<span id="RESULTHTML">qwe</span>
@@ -144,34 +144,43 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 			}
-function Dovn(){
+function Down(){
 var expression = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
-	var x=prompt("Enter a count of row","");
+	//var x=prompt("Enter a count of row","");
 var y=prompt("Enter a count of columns","");
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
 	
-var table='<div class="down_page">'+
-'<table border=0>'+
-          '<tbody>';
-		  for(var i = 0, text; i <= x;i++){
-  table += '<tr>';
-  	for(var j = 0; j < y; j++){
-alert( "Enter text" );
-		//text = prompt("Enter text", "");
-		//table += '<td>' + text + '</td>';
-		table += ' <td class="align_left medium_padding align_top">' + expression + '</td>';
-	}
-    table += '</tr>';
-}
-document.getElementById("RESULTTEXT").innerText= table + '</tbody></table></div>';
-document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table></div>';
+var table='<div class="down_page float_right">';
+if(y==1){
+var text=prompt("Enter text","");
+document.getElementById("RESULTTEXT").innerText='<div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
+document.getElementById("RESULTHTML").innerHTML='<div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
+				}
+					else{
+				var text=prompt("Enter text","");	
+				table +=' <div class="align_left medium_padding align_top float_left">'+text+'</div>';
+		  for(var i = 0; i < y;i++){
+		  var txt=prompt("Enter txt","");
+  table += '<div class="align_left medium_padding align_top float_right">';
+  document.getElementById("RESULTTEXT").innerText+= table +txt+ '</div>';
+  document.getElementById("RESULTTEXT").innerHTML += table +txt+ '</div>';
+  		}
+    table +='</div>';
+
+
+				document.getElementById("RESULTTEXT").id = "text_res";
+				document.getElementById("RESULTHTML").id = "html_res";
+				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
+				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("text").value='';
+							}
 			}
 function Forward(){
 	window.history.forward();
@@ -224,7 +233,6 @@ document.getElementById("text").value='';
 			{
 				
 				var Link_Title= getSelectiontextarea( document.getElementById("text") );
-				alert(Link_Title);
 				document.getElementById("text").focus();
  				document.getElementById("text").innerHTML = Link_Title.replace(/\n/g, '<br>');
 				var x=prompt("Enter a link","");
@@ -384,7 +392,6 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-//var object= document.getElementById("result"); 
 				var n=prompt("Enter a count of row","");
 				 var disc_list='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
 
@@ -393,7 +400,6 @@ var worlds = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
 				
 var text=prompt("Enter a text for  <li>","");
-//text.blur();
 document.getElementById("text").focus();
  disc_list+='<li>'+text+'</li>';
  
