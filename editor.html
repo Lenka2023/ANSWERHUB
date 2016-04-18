@@ -164,12 +164,12 @@ document.getElementById("RESULTHTML").innerHTML='<div class="down_page float_rig
 				document.getElementById("text").value='';
 				}
 					else{
-					var table='<div class="down_page  display_inline">';
+					var table='<div class="down_page float_right">';
 				var text=prompt("Enter text","");	
-				table +=' <div class="align_left medium_padding align_top  display_inline">'+text+'</div>';
+				table +=' <div class="align_left medium_padding align_top float_left">'+text+'</div>';
 		  for(var i = 0; i < y;i++){
 		  var txt=prompt("Enter txt","");
-  table += '<div class="align_left medium_padding align_top  display_inline">'+txt+ '</div>';
+  table += '<div class="align_left medium_padding align_top float_right">'+txt+ '</div>';
   }
   document.getElementById("RESULTTEXT").innerText= table + '</div>';
   document.getElementById("RESULTTEXT").innerHTML += table + '</div>';

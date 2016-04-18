@@ -150,11 +150,9 @@ width:80%;
 	border: 1px solid #000000;
 	 min-height:200px;
 }
-.display_inline{
-display:inline;
-}
+
 .down_page {
-display:inline;
+
 	border: thin solid;
 	background: #99CCFF; 
 	padding: 15px;
