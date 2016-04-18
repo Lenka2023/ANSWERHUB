@@ -152,7 +152,7 @@ var y=prompt("Enter a count of columns","");
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
 	
-var table='<div class="down_page float_right">';
+
 if(y==1){
 var text=prompt("Enter text","");
 document.getElementById("RESULTTEXT").innerText='<div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
@@ -164,18 +164,17 @@ document.getElementById("RESULTHTML").innerHTML='<div class="down_page float_rig
 				document.getElementById("text").value='';
 				}
 					else{
+					var table='<div class="down_page  display_inline">';
 				var text=prompt("Enter text","");	
-				table +=' <div class="align_left medium_padding align_top float_left">'+text+'</div>';
+				table +=' <div class="align_left medium_padding align_top  display_inline">'+text+'</div>';
 		  for(var i = 0; i < y;i++){
 		  var txt=prompt("Enter txt","");
-  table += '<div class="align_left medium_padding align_top float_right">';
-  document.getElementById("RESULTTEXT").innerText+= table +txt+ '</div>';
-  document.getElementById("RESULTTEXT").innerHTML += table +txt+ '</div>';
-  		}
-    table +='</div>';
-
-
-				document.getElementById("RESULTTEXT").id = "text_res";
+  table += '<div class="align_left medium_padding align_top  display_inline">'+txt+ '</div>';
+  }
+  document.getElementById("RESULTTEXT").innerText= table + '</div>';
+  document.getElementById("RESULTTEXT").innerHTML += table + '</div>';
+  		
+   				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
