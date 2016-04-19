@@ -108,13 +108,17 @@ function getSelectiontextarea( textarea )
     return selection;
 }
 function Top(){
+var top_page_list=prompt("Enter top_page_list","");
 var expression = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
-	var x=prompt("Enter a count of row","");
-var y=prompt("Enter a count of columns","");
+	var main_title=prompt("Enter main_title","");
+var middle_title=prompt("Enter middle_title","");
+var down_title=prompt("Enter down_title","");
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
-var table='<!DOCTYPE html>'+
+var table='';
+		  
+document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
 '<html>'+
   '<head>'+
     '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
@@ -124,20 +128,38 @@ var table='<!DOCTYPE html>'+
     '<div class="page_cont one">'+
       '<br class="cbt">'+
       '<div class="content">'+
-'<table border=0>'+
-          '<tbody>';
-		  for(var i = 0, text; i <= x;i++){
-  table += '<tr>';
-  for(var j = 0; j < y; j++){
-alert( "Enter text" );
-		//text = prompt("Enter text", "");
-		//table += '<td>' + text + '</td>';
-		table += '<td>' + expression + '</td>';
-		}
-	  table += '</tr>';
-}
-document.getElementById("RESULTTEXT").innerText= table + '</tbody></table>';
-document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
+'<div class="float_left">'+top_page_list+'</div>'+
+
+'<div class="main_title float_right">'+
+'<span class="title_font">'+main_title+'</span>'+
+'<span class="middle_title">'+middle_title+'</span>'+
+'</div>'+
+			'<div>'+
+              '<div class="down_title ">'+
+                '<span class="strong">'+down_title+'</span>'+
+              '</div>'+
+            '</div>';
+document.getElementById("RESULTHTML").innerHTML= table + '<!DOCTYPE html>'+
+'<html>'+
+  '<head>'+
+    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
+    '<link rel="stylesheet" href="css/style.css"type="text/css"/ '+
+	'</head>'+
+  '<body>'+
+    '<div class="page_cont one">'+
+      '<br class="cbt">'+
+      '<div class="content">'+
+'<div class="float_left">'+top_page_list+'</div>'+
+
+'<div class="main_title float_right">'+
+'<span class="title_font">'+main_title+'</span>'+
+'<span class="middle_title">'+middle_title+'</span>'+
+'</div>'+
+			'<div>'+
+              '<div class="down_title ">'+
+                '<span class="strong">'+down_title+'</span>'+
+              '</div>'+
+            '</div>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -435,8 +457,8 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<div class="middle_title">'+expression+'</div>';
-				document.getElementById("RESULTHTML").innerHTML='<div class="middle_title">'+expression+'</div>';
+				document.getElementById("RESULTTEXT").innerText='<span class="middle_title">'+expression+'</span>';
+				document.getElementById("RESULTHTML").innerHTML='<span class="middle_title">'+expression+'</span>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';

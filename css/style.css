@@ -99,6 +99,7 @@ left:50%;
 top:50%;
 }
 .main_title {
+display:inline;
 	vertical-align: top;
 	text-align: right;
 	width:40%;
