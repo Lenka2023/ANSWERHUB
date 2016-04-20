@@ -204,7 +204,7 @@ document.getElementById("RESULTHTML").innerHTML='<div class="down_page float_rig
 							}
 			}
 ---------------------------------------------------------------------------------------------------------------------------------------------------	
-var history = [Immutable.List([])];
+/*var history = [Immutable.List([])];
 var historyIndex = 0;
 function operation(fn) {
  history = history.slice(0, historyIndex + 1);
@@ -268,9 +268,72 @@ redo.addEventListener('click', function() {
 });
 
 draw();
+*/
+*var history = [Immutable.List([])];
+var historyIndex = 0;
+function operation(fn) {
+ history = history.slice(0, historyIndex + 1);
+ var newVersion = fn(history[historyIndex]);
+ history.push(newVersion);
+    historyIndex++;
+	WriteHTML();
+}
+function addHTML(x, y) {
+    operation(function(data) {
+        return data.push(Immutable.Map({
+            x: x, y: y, id: +new Date()
+        }));
+    });
+}
 
+function removeHTML(id) {
+    operation(function(data) {
+        return data.filter(function(dot) {
+            return dot.get('id') !== id;
+        });
+    });
+}
 
+function WriteHTML() {
+    dots.innerHTML = '';
+    history[historyIndex].forEach(function(dot) {
+        var elem = dots.appendChild(document.createElement('div'));
+        elem.className = 'dot';
+        elem.style.left = dot.get('x') + 'px';
+        elem.style.top = dot.get('y') + 'px';
+        
+        // clicking on a dot removes it.
+        elem.addEventListener('click', function(e) {
+            removeDot(dot.get('id'));
+            e.stopPropagation();
+        });
+        
+    });
+    undo.disabled = (historyIndex != 0) ? '' : 'disabled';
+    redo.disabled = (historyIndex !== history.length - 1) ? '' : 'disabled';
+}
 
+// clicking the background adds a dot
+dots.addEventListener('click', function(e) {
+    addDot(e.pageX, e.pageY);
+});
+
+// clicking undo goes back in time, unless
+// there is no history left.
+undo.addEventListener('click', function() {
+    if (historyIndex > 0) historyIndex--;
+   WriteHTML();
+});
+
+// clicking redo goes forward in time, unless
+// there is no future left.
+redo.addEventListener('click', function() {
+    if (historyIndex < history.length) historyIndex++;
+    WriteHTML();
+});
+
+WriteHTML();
+---------------------------------------------------------------------------------------------------------------------------------------------------
  
 function Forward(){
 	window.history.forward();
