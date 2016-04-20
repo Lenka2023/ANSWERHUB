@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"type="text/css"/ 
+    <!--[if lt IE 9]>
+    <script>
+      var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
+      for (var i = 0; i < e.length; i++) {
+        document.createElement(e[i]);
+      }
+    </script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="page_cont one">
+      <br class="cbt">
+      <div class="content">
+<div class="title strong"><span>WHAT IS REACT.JS?</span></div>
+<br><span class="move_left">React (a.k.a. ReactJS or React.js) is a JavaScript library 
+for creating user interfaces, open sourced to the 
+world by Facebook and Instagram team in 2013. One 
+might think of it as the “View” in the “Model-View-
+Controller” pattern.</span>
+
+<br class="cbt">
+
+<br><span class="move_left">React’s main goal is to make development of UI 
+components easy and modular. It is intended to ease 
+the process of building large applications using data 
+that changes over time.
+</span>
+
+<br class="cbt">
+
+<br><span class="move_left">React was created by Jordan Walke, a software engineer 
+at Facebook, with the influence of XHP, a PHP-based 
+component system that is still in use at Facebook, but 
+also by functional programming ideas. Pete Hunt wanted 
+to use React at Instagram, so he pushed to extract React 
+from Facebook-specific code and open source it.</span>
+
+<br><span class="move_left">React has gained a lot of popularity for its concept of 
+a “virtual-DOM,” which allows it to determine which 
+parts of the DOM have changed by diffing the new 
+version with the stored virtual DOM, and using the 
+result to determine how to most efficiently update the 
+browser’s DOM.</span>
+
+<div class="title strong"><span>HOW THE MAGIC HAPPENS</span></div>
+
+<br><span class="move_left">To get an idea of what’s going on inside React, take 
+a look at the following diagrams demonstrating how 
+React.js rendering and the React Virtual DOM work:</span>
+<br><span class="move_left "><span class="strong ">FIGURE 1:</span>REACT.JS RENDERING</span>
+<br><span class="move_left "><span class="strong ">FIGURE 2:</span>THE REACT VIRTUAL DOM</span>
+
+<br><span class="move_left">React basically batches DOM updates and then applies 
+minimal diffs to the real DOM.</span>
+
+<br><span class="move_left">React components implement a 
+render()
+method that 
+takes input data and returns what to display.</span>
+
+<br class="cbt">
+
+<br><span class="move_left">Here is an example of a simple “Hello” Component:</span>
+<div class="commands">var Hello = React.createClass({
+render: function () {
+return <div>Hello {this.props.name}</div>;
+}
+});
+React.render(<Hello name="World" />, document.body);</div>
+<br><span class="move_left "><span class="strong ">NOTE:</span>The XML-like syntax shown is called JSX.</span>
+
+<br><span class="move_left">Here is the same component without JSX:</span>
+
+<div class="commands">var Hello = React.createClass({displayName: "Hello",
+render: function() {
+return React.createElement("div", null, "Hello ", this.
+props.name);
+}
+});
+React.render(React.createElement(Hello, {name:
+"World"}), mountNode);</div>
+
+<div class="title strong"><span>COMPONENT SPECIFICATIONS</span></div>
+<table class="syntax_description"><tbody><tr><th>NAME</th><th>DESCRIPTION</th></tr><tr><td>render</td><td>The render() function should be pure, meaning that it does not modify the component state. It should examine this. props and this.state and return a single child element.</td></tr><tr><td>getInitialState</td><td>Invoked once before the component is mounted. The return value will be used as the initial value of this.state.</td></tr><tr><td>getDefaultProps</td><td>Invoked once and cached when the class is created. Values in the mapping will be set on this.props.</td></tr><tr><td>propTypes</td><td>The propTypes object allows you to validate props being passed to your components.</td></tr><tr><td>mixins</td><td>The mixins array allows you to use mixins to share behavior among multiple components.</td></tr><tr><td>statics</td><td>The statics object allows you to define static methods that can be called on the component class.</td></tr><tr><td>displayName</td><td>The displayName string is used in debugging messages. JSX sets this value automatically.</td></tr></tbody></table>
+ </div>
+<div class="footer">
+        <span> DZone, Inc. | www.dzone.</span>
+      </div>
+    </div>	
+  </body>
+</html>

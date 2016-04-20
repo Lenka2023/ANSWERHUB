@@ -194,7 +194,7 @@ document.getElementById("RESULTHTML").innerHTML='<div class="down_page float_rig
   table += '<div class="align_left medium_padding align_top float_right">'+txt+ '</div>';
   }
   document.getElementById("RESULTTEXT").innerText= table + '</div>';
-  document.getElementById("RESULTTEXT").innerHTML += table + '</div>';
+  document.getElementById("RESULTTEXT").innerHTML = table + '</div>';
   		
    				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
@@ -203,6 +203,75 @@ document.getElementById("RESULTHTML").innerHTML='<div class="down_page float_rig
 				document.getElementById("text").value='';
 							}
 			}
+---------------------------------------------------------------------------------------------------------------------------------------------------	
+var history = [Immutable.List([])];
+var historyIndex = 0;
+function operation(fn) {
+ history = history.slice(0, historyIndex + 1);
+ var newVersion = fn(history[historyIndex]);
+ history.push(newVersion);
+    historyIndex++;
+	  draw();
+}
+function addDot(x, y) {
+    operation(function(data) {
+        return data.push(Immutable.Map({
+            x: x, y: y, id: +new Date()
+        }));
+    });
+}
+
+function removeDot(id) {
+    operation(function(data) {
+        return data.filter(function(dot) {
+            return dot.get('id') !== id;
+        });
+    });
+}
+
+function draw() {
+    dots.innerHTML = '';
+    history[historyIndex].forEach(function(dot) {
+        var elem = dots.appendChild(document.createElement('div'));
+        elem.className = 'dot';
+        elem.style.left = dot.get('x') + 'px';
+        elem.style.top = dot.get('y') + 'px';
+        
+        // clicking on a dot removes it.
+        elem.addEventListener('click', function(e) {
+            removeDot(dot.get('id'));
+            e.stopPropagation();
+        });
+        
+    });
+    undo.disabled = (historyIndex != 0) ? '' : 'disabled';
+    redo.disabled = (historyIndex !== history.length - 1) ? '' : 'disabled';
+}
+
+// clicking the background adds a dot
+dots.addEventListener('click', function(e) {
+    addDot(e.pageX, e.pageY);
+});
+
+// clicking undo goes back in time, unless
+// there is no history left.
+undo.addEventListener('click', function() {
+    if (historyIndex > 0) historyIndex--;
+    draw();
+});
+
+// clicking redo goes forward in time, unless
+// there is no future left.
+redo.addEventListener('click', function() {
+    if (historyIndex < history.length) historyIndex++;
+    draw();
+});
+
+draw();
+
+
+
+ 
 function Forward(){
 	window.history.forward();
 }	
@@ -211,27 +280,11 @@ function Back(){
 }
 function Delete(){
 var del_element = getSelectionresult( document.getElementById("result") );
-del_element.value='';
-var del_html = getSelectionarea( document.getElementById("area") );
-del_html.value='';
-//var result=document.getElementById("result");
-//var RESULTTEXT = document.getElementById("RESULTTEXT");
 
-//var del_element = getSelection(document.getElementById("RESULTTEXT"));
-//RESULTTEXT.parentNode.removeChild(RESULTTEXT);
-//$("#del_element").remove();
-//window.onload = function {
-//del_element.remove();}()
-
-//del_element.remove(window.onload = function {
-//del_element.remove();}()
-//);
-//del_element.value='';
-//area.parentNode.removeChild(area);
-//$('#area').remove();
-//result.remove();
-//var RESULTHTML = getSelectiontextarea(document.getElementById("RESULTHTML"));
-//RESULTHTML.remove();
+document.getElementById("RESULTHTML").innerHTML = '';
+document.getElementById("RESULTTEXT").innerHTML = '';
+document.getElementById("result").innerHTML = '';
+document.getElementById("area").innerHTML = '';
 
 }
 function Txt(){
