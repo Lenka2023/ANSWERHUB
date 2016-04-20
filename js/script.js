@@ -144,8 +144,9 @@ document.getElementById("text").value='';
 				 document.getElementById("text").value='';
 
 for(var i=0;i<n;i++){
+var text=prompt("Enter a text for  <li>","");
  main_list+='<li>'+text+'</li>';
- var text=prompt("Enter a text for  <li>","");
+ 
 }
  document.getElementById("RESULTTEXT").innerText= main_list + '</ul>';
 document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
@@ -167,11 +168,35 @@ document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
 				 var square_list='<ul class="square"><span class=" strong font_size">'+expression+'</span>';
 
 for(var i=0;i<n;i++){
+var text=prompt("Enter a text for  <li>","");
  square_list+='<li>'+text+'</li>';
- var text=prompt("Enter a text for  <li>","");
+ 
 }
  document.getElementById("RESULTTEXT").innerText= square_list + '</ul>';
 document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
+				document.getElementById("RESULTTEXT").id = "text_res";
+				document.getElementById("RESULTHTML").id = "html_res";
+				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
+				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+				document.getElementById("text").value='';
+
+			}
+			function None_List()
+			{
+				
+				var expression = getSelection( document.getElementById("text") );
+ 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				document.getElementById("text").focus();
+				var n=prompt("Enter a count of row","");
+				 var none_list='<ul class="none_list"><span class=" strong font_size">'+expression+'</span>';
+
+for(var i=0;i<n;i++){
+var text=prompt("Enter a text for  <li>","");
+ none_list+='<li>'+text+'</li>';
+ 
+}
+ document.getElementById("RESULTTEXT").innerText= none_list + '</ul>';
+document.getElementById("RESULTHTML").innerHTML= none_list + '</ul>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -189,8 +214,9 @@ document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
 				 var decimal_list='<ol class="decimal"><span class=" strong font_size">'+expression+'</span>';
 
 for(var i=0;i<n;i++){
+var text=prompt("Enter a text for  <li>","");
  decimal_list+='<li>'+text+'</li>';
- var text=prompt("Enter a text for  <li>","");
+ 
 }
  document.getElementById("RESULTTEXT").innerText= decimal_list + '</ol>';
 document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
@@ -211,8 +237,9 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 				 var disc_list='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
 
 for(var i=0;i<n;i++){
+var text=prompt("Enter a text for  <li>","");
  disc_list+='<li>'+text+'</li>';
- var text=prompt("Enter a text for  <li>","");
+ 
 }
  document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
 document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
@@ -411,14 +438,16 @@ for(var i = 0, text; i <= x;i++){
   table += '<tr>';
   if(i == 0){
 	for(var j = 0; j < y; j++){
-		text = prompt("Enter text", "");
-		table += '<th>' + text + '</th>';
+		//text = prompt("Enter text", "");
+		//table += '<th>' + text + '</th>';
+		table += '<th>' + expression + '</th>';
 	}
   }
   else{
 	for(var j = 0; j < y; j++){
-		text = prompt("Enter text", "");
-		table += '<td>' + text + '</td>';
+		//text = prompt("Enter text", "");
+		//table += '<td>' + text + '</td>';
+		table += '<td>' + expression + '</td>';
 	}
   }
   table += '</tr>';

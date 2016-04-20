@@ -99,8 +99,11 @@ left:50%;
 top:50%;
 }
 .main_title {
+display:inline;
 	vertical-align: top;
 	text-align: right;
+	width:40%;
+	right:10%;
 }
 .middle_title {
     display: block;
@@ -118,6 +121,9 @@ top:50%;
 }
 .float_left{
 float:left;
+}
+.float_right{
+float:right;
 }
 .cbt {
     clear: both;
@@ -145,7 +151,9 @@ width:80%;
 	border: 1px solid #000000;
 	 min-height:200px;
 }
+
 .down_page {
+
 	border: thin solid;
 	background: #99CCFF; 
 	padding: 15px;
@@ -195,6 +203,10 @@ width:80%;
     padding: 0 15px;
     box-sizing: content-box;
     position: relative;
+ }
+ .none_list{
+     list-style: none;
+	text-align: left;
  }
  .smallsquare_list{
     list-style: none;
@@ -464,7 +476,7 @@ list-style-type:decimal;
  
  .align_top {
  	vertical-align: top;
- 	width:50%;
+ 	width:45%;
  }
  
  .medium_padding {
@@ -474,7 +486,6 @@ list-style-type:decimal;
  	width: 55%;
  }
    .syntax_description td:nth-child(2n-1){
- 	width:15%;
  	background:#CCFFFF;
  }
  .syntax_description td:nth-child(2n){
