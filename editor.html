@@ -48,6 +48,8 @@
 										<button onclick="Footer()">Footer</button>
 										<button onclick="Top()">TopPage</button>
 										<button onclick="Down()">DownPage</button>
+										<button onclick="Redo()">Redo</button>
+										<button onclick="Undo()">Undo</button>
 										<p><textarea id="text"  name="text"></textarea></p>
 									<div id="area" class="area">
 									<span id="RESULTHTML">qwe</span>
@@ -116,7 +118,7 @@ var middle_title=prompt("Enter middle_title","");
 var down_title=prompt("Enter down_title","");
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
-var table='';
+
 		  
 document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
 '<html>'+
@@ -139,7 +141,7 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
                 '<span class="strong">'+down_title+'</span>'+
               '</div>'+
             '</div>';
-document.getElementById("RESULTHTML").innerHTML= table + '<!DOCTYPE html>'+
+document.getElementById("RESULTHTML").innerHTML= '<!DOCTYPE html>'+
 '<html>'+
   '<head>'+
     '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
@@ -203,138 +205,8 @@ document.getElementById("RESULTHTML").innerHTML='<div class="down_page float_rig
 				document.getElementById("text").value='';
 							}
 			}
----------------------------------------------------------------------------------------------------------------------------------------------------	
-/*var history = [Immutable.List([])];
-var historyIndex = 0;
-function operation(fn) {
- history = history.slice(0, historyIndex + 1);
- var newVersion = fn(history[historyIndex]);
- history.push(newVersion);
-    historyIndex++;
-	  draw();
-}
-function addDot(x, y) {
-    operation(function(data) {
-        return data.push(Immutable.Map({
-            x: x, y: y, id: +new Date()
-        }));
-    });
-}
 
-function removeDot(id) {
-    operation(function(data) {
-        return data.filter(function(dot) {
-            return dot.get('id') !== id;
-        });
-    });
-}
 
-function draw() {
-    dots.innerHTML = '';
-    history[historyIndex].forEach(function(dot) {
-        var elem = dots.appendChild(document.createElement('div'));
-        elem.className = 'dot';
-        elem.style.left = dot.get('x') + 'px';
-        elem.style.top = dot.get('y') + 'px';
-        
-        // clicking on a dot removes it.
-        elem.addEventListener('click', function(e) {
-            removeDot(dot.get('id'));
-            e.stopPropagation();
-        });
-        
-    });
-    undo.disabled = (historyIndex != 0) ? '' : 'disabled';
-    redo.disabled = (historyIndex !== history.length - 1) ? '' : 'disabled';
-}
-
-// clicking the background adds a dot
-dots.addEventListener('click', function(e) {
-    addDot(e.pageX, e.pageY);
-});
-
-// clicking undo goes back in time, unless
-// there is no history left.
-undo.addEventListener('click', function() {
-    if (historyIndex > 0) historyIndex--;
-    draw();
-});
-
-// clicking redo goes forward in time, unless
-// there is no future left.
-redo.addEventListener('click', function() {
-    if (historyIndex < history.length) historyIndex++;
-    draw();
-});
-
-draw();
-*/
-*var history = [Immutable.List([])];
-var historyIndex = 0;
-function operation(fn) {
- history = history.slice(0, historyIndex + 1);
- var newVersion = fn(history[historyIndex]);
- history.push(newVersion);
-    historyIndex++;
-	WriteHTML();
-}
-function addHTML(x, y) {
-    operation(function(data) {
-        return data.push(Immutable.Map({
-            x: x, y: y, id: +new Date()
-        }));
-    });
-}
-
-function removeHTML(id) {
-    operation(function(data) {
-        return data.filter(function(dot) {
-            return dot.get('id') !== id;
-        });
-    });
-}
-
-function WriteHTML() {
-    dots.innerHTML = '';
-    history[historyIndex].forEach(function(dot) {
-        var elem = dots.appendChild(document.createElement('div'));
-        elem.className = 'dot';
-        elem.style.left = dot.get('x') + 'px';
-        elem.style.top = dot.get('y') + 'px';
-        
-        // clicking on a dot removes it.
-        elem.addEventListener('click', function(e) {
-            removeDot(dot.get('id'));
-            e.stopPropagation();
-        });
-        
-    });
-    undo.disabled = (historyIndex != 0) ? '' : 'disabled';
-    redo.disabled = (historyIndex !== history.length - 1) ? '' : 'disabled';
-}
-
-// clicking the background adds a dot
-dots.addEventListener('click', function(e) {
-    addDot(e.pageX, e.pageY);
-});
-
-// clicking undo goes back in time, unless
-// there is no history left.
-undo.addEventListener('click', function() {
-    if (historyIndex > 0) historyIndex--;
-   WriteHTML();
-});
-
-// clicking redo goes forward in time, unless
-// there is no future left.
-redo.addEventListener('click', function() {
-    if (historyIndex < history.length) historyIndex++;
-    WriteHTML();
-});
-
-WriteHTML();
----------------------------------------------------------------------------------------------------------------------------------------------------
- 
 function Forward(){
 	window.history.forward();
 }	
@@ -342,8 +214,6 @@ function Back(){
 	window.history.back();
 }
 function Delete(){
-var del_element = getSelectionresult( document.getElementById("result") );
-
 document.getElementById("RESULTHTML").innerHTML = '';
 document.getElementById("RESULTTEXT").innerHTML = '';
 document.getElementById("result").innerHTML = '';
@@ -609,7 +479,7 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
-				document.getElementById("text").value='';document.getElementById("text").value='';
+				document.getElementById("text").value='';
 
 			}
 
@@ -738,19 +608,15 @@ for(var i = 0, text; i <= x;i++){
   table += '<tr>';
   if(i == 0){
 	for(var j = 0; j < y; j++){
-alert( "Enter text" );
-		//text = prompt("Enter text", "");
-		//table += '<th>' + text + '</th>';
-		table += '<th>' + expression + '</th>';
-	}
+		text = prompt("Enter text", "");
+		table += '<th>' + text + '</th>';
+			}
   }
   else{
 	for(var j = 0; j < y; j++){
-alert( "Enter text" );
 
-		//text = prompt("Enter text", "");
-		//table += '<td>' + text + '</td>';
-		table += '<td>' + expression + '</td>';
+		text = prompt("Enter text", "");
+		table += '<td>' + text + '</td>';
 	}
   }
   table += '</tr>';
