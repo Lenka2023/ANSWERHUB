@@ -115,11 +115,13 @@ var top_page_list=prompt("Enter top_page_list","");
 var expression = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
 	var main_title=prompt("Enter main_title","");
-var middle_title=prompt("Enter middle_title","");
+
 var down_title=prompt("Enter down_title","");
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
-
+var x=prompt("is middle_title exist?(yes or no)","");
+if(x=="yes"){
+var middle_title=prompt("Enter middle_title","");
 		  
 document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
 '<html>'+
@@ -142,7 +144,7 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
                 '<span class="strong">'+down_title+'</span>'+
               '</div>'+
             '</div>';
-document.getElementById("RESULTHTML").innerHTML= '<!DOCTYPE html>'+
+			document.getElementById("RESULTHTML").innerHTML='<!DOCTYPE html>'+
 '<html>'+
   '<head>'+
     '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
@@ -162,7 +164,50 @@ document.getElementById("RESULTHTML").innerHTML= '<!DOCTYPE html>'+
               '<div class="down_title ">'+
                 '<span class="strong">'+down_title+'</span>'+
               '</div>'+
+            '</div>';}
+			else{
+			document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
+'<html>'+
+  '<head>'+
+    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
+    '<link rel="stylesheet" href="css/style.css"type="text/css"/ '+
+	'</head>'+
+  '<body>'+
+    '<div class="page_cont one">'+
+      '<br class="cbt">'+
+      '<div class="content">'+
+'<div class="float_left">'+top_page_list+'</div>'+
+
+'<div class="main_title float_right">'+
+'<span class="title_font">'+main_title+'</span>'+
+'</div>'+
+			'<div>'+
+              '<div class="down_title ">'+
+                '<span class="strong">'+down_title+'</span>'+
+              '</div>'+
             '</div>';
+	document.getElementById("RESULTHTML").innerHTML='<!DOCTYPE html>'+
+'<html>'+
+  '<head>'+
+    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
+    '<link rel="stylesheet" href="css/style.css"type="text/css"/> '+
+	'</head>'+
+  '<body>'+
+    '<div class="page_cont one">'+
+      '<br class="cbt">'+
+      '<div class="content">'+
+	  '<div>'+
+'<div class="float_left">'+top_page_list+'</div>'+
+
+'<div class="main_title float_right">'+
+'<span class="title_font">'+main_title+'</span>'+
+'</div>'+
+			'<div>'+
+              '<div class="down_title ">'+
+                '<span class="strong">'+down_title+'</span>'+
+              '</div>'+
+            '</div></div> <br class="cbt">';}		
+
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
