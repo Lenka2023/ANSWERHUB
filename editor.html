@@ -260,11 +260,14 @@ function Back(){
 	window.history.back();
 }
 function Delete(){
-document.getElementById("RESULTHTML").innerHTML = '';
-document.getElementById("RESULTTEXT").innerHTML = '';
-document.getElementById("result").innerHTML = '';
-document.getElementById("area").innerHTML = '';
-
+document.getElementById("text_res").innerHTML = '';
+document.getElementById("html_res").innerHTML = '';
+//document.getElementById("RESULTHTML").innerHTML = '';
+//document.getElementById("RESULTTEXT").innerHTML = '';
+//document.getElementById("result").innerHTML = '';
+//document.getElementById("area").innerHTML = '';
+document.getElementById("text_res").id = "res_text";
+document.getElementById("html_res").id = "res_html";
 }
 function Txt(){
 
