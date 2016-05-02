@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="css/style.css"type="text/css"/> 
 		
 		<script type="text/javascript" src="jquery/jquery.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>
 		<!--<script src="js/script.js"></script>
 		[if lt IE 9]>
 		<script>
@@ -44,13 +45,11 @@
 										<button onclick="Listing()">Listing</button>
 										<button onclick="Bold()">Bold</button>
 										<button onclick="Delete()">Delete</button>
-										<button onclick="Back()">Back</button>
-										<button onclick="Forward()">Forward</button>
 										<button onclick="Footer()">Footer</button>
 										<button onclick="Top()">TopPage</button>
 										<button onclick="Down()">DownPage</button>
-										<button onclick="Redo()">Redo</button>
-										<button onclick="Undo()">Undo</button>
+										<button onclick="Redo()" id='redo'>Redo</button>
+										<button onclick="Undo()" id='undo'>Undo</button>
 										<p><textarea id="text"  name="text"></textarea></p>
 									<div id="area" class="area">
 									<span id="RESULTHTML">qwe</span>
@@ -253,7 +252,7 @@ document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page flo
 			}
 
 
-function Forward(){
+
 	/*var history = [Immutable.List([])];
 var historyIndex = 0;
 function operation(fn) {
@@ -319,6 +318,9 @@ redo.addEventListener('click', function() {
 
 draw();*/
 //---------------------------------------------------------------------------------------------------------------------------
+var undo = document.getElementById('undo');
+var redo = document.getElementById('redo');
+
  var history = [Immutable.List([])];
 var historyIndex = 0;
 function operation(fn) {
@@ -339,10 +341,6 @@ function addHTML(expression, result) {
 function removeHTML(id) {
    document.getElementById("text_res").innerHTML = '';
 document.getElementById("html_res").innerHTML = '';
-//document.getElementById("RESULTHTML").innerHTML = '';
-//document.getElementById("RESULTTEXT").innerHTML = '';
-//document.getElementById("result").innerHTML = '';
-//document.getElementById("area").innerHTML = '';
 document.getElementById("text_res").id = "res_text";
 document.getElementById("html_res").id = "res_html";
     };
@@ -363,23 +361,23 @@ document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span
 document.getElementById("text").value='';
 }
         // clicking on a dot removes it.
-        elem.addEventListener('click', function(e) {
-           document.getElementById("RESULTHTML").innerHTML = '';
-document.getElementById("RESULTTEXT").innerHTML = '';
-document.getElementById("result").innerHTML = '';
-document.getElementById("area").innerHTML = '';
-            e.stopPropagation();
-        });
+        //elem.addEventListener('click', function(e) {
+           //document.getElementById("text_res").innerHTML = '';
+//document.getElementById("html_res").innerHTML = '';
+//document.getElementById("text_res").id = "res_text";
+//document.getElementById("html_res").id = "res_html";
+            //e.stopPropagation();
+        //});
         
     
-    undo.disabled = (historyIndex != 0) ? '' : 'disabled';
-    redo.disabled = (historyIndex !== history.length - 1) ? '' : 'disabled';
-}
+    //undo.disabled = (historyIndex != 0) ? '' : 'disabled';
+    //redo.disabled = (historyIndex !== history.length - 1) ? '' : 'disabled';
+
 
 // clicking the background adds a dot
-dots.addEventListener('click', function(e) {
-    addHTML(expression, result);
-});
+//dots.addEventListener('click', function(e) {
+    //addHTML(expression, result);
+//});
 
 // clicking undo goes back in time, unless
 // there is no history left.
@@ -396,17 +394,19 @@ redo.addEventListener('click', function Redo() {
 });
 
 Txt();
+function Redo() {
+    if (historyIndex < history.length) historyIndex++;
+    Txt();
+};	
+function Undo(){
 	
-function Back(){
-	
-}
+    if (historyIndex > 0) historyIndex--;
+    Txt();
+};
+
 function Delete(){
 document.getElementById("text_res").innerHTML = '';
 document.getElementById("html_res").innerHTML = '';
-//document.getElementById("RESULTHTML").innerHTML = '';
-//document.getElementById("RESULTTEXT").innerHTML = '';
-//document.getElementById("result").innerHTML = '';
-//document.getElementById("area").innerHTML = '';
 document.getElementById("text_res").id = "res_text";
 document.getElementById("html_res").id = "res_html";
 }
