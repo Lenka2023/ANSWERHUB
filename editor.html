@@ -5,9 +5,7 @@
 		<link rel="stylesheet" href="css/style.css"type="text/css"/> 
 		
 		<script type="text/javascript" src="jquery/jquery.js"></script>
-		<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>-->
 		<script src="js/script.js"></script>
-		<script src="js/immutable.js"></script>
 		<!--[if lt IE 9]>
 		<script>
 			var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
@@ -49,8 +47,8 @@
 										<button onclick="Footer()">Footer</button>
 										<button onclick="Top()">TopPage</button>
 										<button onclick="Down()">DownPage</button>
-										<button onclick="Redo()" id='redo'>Redo</button>
-										<button onclick="Undo()" id='undo'>Undo</button>
+										<button onclick="Redo()" id='redo' disabled>Redo</button>
+										<button onclick="Undo()" id='undo' disabled>Undo</button>
 										<p><textarea id="text"  name="text"></textarea></p>
 									<div id="area" class="area">
 									<span id="RESULTHTML">qwe</span>
@@ -254,71 +252,7 @@ document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page flo
 
 
 
-	/*var history = [Immutable.List([])];
-var historyIndex = 0;
-function operation(fn) {
- history = history.slice(0, historyIndex + 1);
- var newVersion = fn(history[historyIndex]);
- history.push(newVersion);
-    historyIndex++;
-	  draw();
-}
-function addDot(x, y) {
-    operation(function(data) {
-        return data.push(Immutable.Map({
-            x: x, y: y, id: +new Date()
-        }));
-    });
-}
 
-function removeDot(id) {
-    operation(function(data) {
-        return data.filter(function(dot) {
-            return dot.get('id') !== id;
-        });
-    });
-}
-
-function draw() {
-    dots.innerHTML = '';
-    history[historyIndex].forEach(function(dot) {
-        var elem = dots.appendChild(document.createElement('div'));
-        elem.className = 'dot';
-        elem.style.left = dot.get('x') + 'px';
-        elem.style.top = dot.get('y') + 'px';
-        
-        // clicking on a dot removes it.
-        elem.addEventListener('click', function(e) {
-            removeDot(dot.get('id'));
-            e.stopPropagation();
-        });
-        
-    });
-    undo.disabled = (historyIndex != 0) ? '' : 'disabled';
-    redo.disabled = (historyIndex !== history.length - 1) ? '' : 'disabled';
-}
-
-// clicking the background adds a dot
-dots.addEventListener('click', function(e) {
-    addDot(e.pageX, e.pageY);
-});
-
-// clicking undo goes back in time, unless
-// there is no history left.
-undo.addEventListener('click', function() {
-    if (historyIndex > 0) historyIndex--;
-    draw();
-});
-
-// clicking redo goes forward in time, unless
-// there is no future left.
-redo.addEventListener('click', function() {
-    if (historyIndex < history.length) historyIndex++;
-    draw();
-});
-
-draw();*/
-//---------------------------------------------------------------------------------------------------------------------------
 var undo = document.getElementById('undo');
 var redo = document.getElementById('redo');
 
@@ -327,72 +261,36 @@ var redo = document.getElementById('redo');
 var historyIndex = 0;
 
 function operation(area, result) {
+alert(" index == " + historyIndex + "; length == " + history_Area.length);	
  history_Area = history_Area.slice(0, historyIndex + 1);
  history_Area.push(area);
  history_Result = history_Result.slice(0, historyIndex + 1);
  history_Result.push(result);
     historyIndex++;
 	if (historyIndex > 0) {undo.disabled ='';} else {undo.disabled ='disabled';}
-	if (historyIndex == history.length) {redo.disabled ='disabled';} else {redo.disabled ='';}
-	alert('Op done!');
-	  //Txt();
-}
-/*function addHTML(expression, result) {
-    operation(function(data) {
-        return data.push(Immutable.Map({
-            expression: expression, result: result, id: +new Date()
-        }));
-    });
-}
-*/
-/*function removeHTML(id) {
-   document.getElementById("text_res").innerHTML = '';
-document.getElementById("html_res").innerHTML = '';
-document.getElementById("text_res").id = "res_text";
-document.getElementById("html_res").id = "res_html";
-    };*/
-
-
+	if (historyIndex == history_Area.length) {redo.disabled ='disabled';} else {redo.disabled ='';}
+	if ((historyIndex ==0)&& (history_Area.length==0)) {redo.disabled ='disabled';undo.disabled ='disabled';alert('Op done!');} 
+	
+	 };
 function Reundo() {
-if (history_Area.length == 0) return;
+
+if (history_Area.length == 0){ return;
 alert('Forced into reundo!');
-for (var i = 0; i < history_Area.length; i++)
+}
+for (var i = 0; i < history_Area.length; i++){
 alert(history_Area[i]);
 document.getElementById('area').innerHTML = history_Area[historyIndex];
 document.getElementById('result').innerHTML = history_Result[historyIndex];
+}
 };
-        // clicking on a dot removes it.
-        //elem.addEventListener('click', function(e) {
-           //document.getElementById("text_res").innerHTML = '';
-//document.getElementById("html_res").innerHTML = '';
-//document.getElementById("text_res").id = "res_text";
-//document.getElementById("html_res").id = "res_html";
-            //e.stopPropagation();
-        //});
-        
-    
-    //undo.disabled = (historyIndex != 0) ? '' : 'disabled';
-    //redo.disabled = (historyIndex !== history.length - 1) ? '' : 'disabled';
-
-
-// clicking the background adds a dot
-//dots.addEventListener('click', function(e) {
-    //addHTML(expression, result);
-//});
-
-// clicking undo goes back in time, unless
-// there is no history left.
+       
 undo.addEventListener('click', Undo () );
-
-// clicking redo goes forward in time, unless
-// there is no future left.
 redo.addEventListener('click', Redo() );
 
-//Txt();
 function Redo() {
-alert("REDO push? index == " + historyIndex + "; length == " + history_Area.length);
+
     if (historyIndex < history_Area.length)
-	{ historyIndex++; Reundo(); undo.disabled ='';}
+	{ historyIndex++; Reundo(); undo.disabled ='';alert("REDO push? index == " + historyIndex + "; length == " + history_Area.length);}
 	else
 	{redo.disabled ='disabled';}
 	
@@ -400,11 +298,13 @@ alert("REDO push? index == " + historyIndex + "; length == " + history_Area.leng
 	operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 };	
 function Undo(){
-alert("UNDO push? index == " + historyIndex + "; length == " + history_Area.length);
+
     if (historyIndex > 0)
-	{ historyIndex--; Reundo(); redo.disabled ='';}
+	{ historyIndex--; Reundo(); redo.disabled ='';alert("UNDO push? index == " + historyIndex + "; length == " + history_Area.length);}
 	else
 	{undo.disabled ='disabled';}
+	if (history_Area.length == 0)
+	operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 };
 //--------------------------------------------------------------------------------------------------------------------------------
 function Delete(){
