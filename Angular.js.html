@@ -23,6 +23,7 @@
  <span class="strong">By: Gil Fink</span></div>
  
  </div>
+ </div>
  <br class="cbt">
 <div class="title strong"><span id="towhat">What is AngularJS?</span></div>
 <br><span class="move_left">AngularJS is a very popular MVW (Model/View/Whatever)
@@ -66,25 +67,25 @@ to inject dependencies in a declarative way.</td></tr></tbody></table>
 together to build the AngularJS ecosystem:</span>
 <br><span class="move_left">Let’s explore how some of these parts relate to the MVC
 design pattern:</span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">The Model </span>
-
+<br class="cbt">
 <br><span class="move_left">The model is the data structure that holds some business data. It
 will usually reside from the server side using a REST API or from
 a service. The model is exposed to the AngularJS view using the
 $scope object. </span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">The View</span>
-
+<br class="cbt">
 <br><span class="move_left">The view is the HTML part that presents the data structure and
 enables user interactions. The view binds to a model using the
 $scope object. It can call controller functions through the $scope
 object as well. It uses filters to transform the model data to an
 appropriate representation. It also uses directives as reusable web
 components and for DOM manipulation.</span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">The Controller</span>
-
+<br class="cbt">
 <br><span class="move_left">The controller performs all the business logic and orchestrates
 operations. It is responsible for initializing the $scope, can
 interact with AngularJS services, and exposes functions to the
@@ -112,9 +113,9 @@ application. </span>
 
 <br><span class="move_left">Once AngularJS is installed in your web application, you can start
 working with it.</span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">The ng-app Directive</span>
-
+<br class="cbt">
 <br><span class="move_left">One of the most important AngularJS directives is the ng-app
 directive. ng-app bootstraps the application, and instructs
 AngularJS to load the main module that is given as the directive
@@ -132,17 +133,15 @@ angularjs/1.2.9/angular.min.js”></script>
 </div>
 </body>
 </html></pre></div>
-
 <div class="title strong"><span id="toBootstrap">A ngularJS Bootstrap</span></div>
-
 <br><span class="move_left">Once the browser loads a web page and it includes the
 AngularJS script along with the ng-app directive, AngularJS
 is bootstrapping. There are two options for bootstrapping:
 automatic bootstrap and manual bootstrap. Let’s explore both of
 these options</span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">Automatic Bootstrap</span>
-
+<br class="cbt">
 <br><span class="move_left">Three main things happen when AngularJS is automatically
 bootstrapping. First, AngularJS creates an injector object, which
 will be used later on for dependency injection. Then, AngularJS
@@ -151,13 +150,11 @@ application. Finally, AngularJS compiles the Document Object
 Model (DOM) starting from the ng-app directive, compiling
 and processing all the directives and bindings that it finds in the
 DOM.</span>
-
 <br class="cbt">
-
 <br><span class="move_left">The following diagram shows the process:</span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">Manual Bootstrap</span>
-
+<br class="cbt">
 <br><span class="move_left">Sometimes you want to perform operations before AngularJS
 starts. These operations can be configurations, retrieving relevant
 data or anything else you might think about. AngularJS enables
@@ -170,17 +167,16 @@ Now that we know about how to start an AngularJS application,
 let’s explore the first AngularJS building block – modules.</span>
 
 <div class="title strong"><span id="toModules">modules</span></div>
-
 <br><span class="move_left strong font_size">What is a Module?</span>
-
+<br class="cbt">
 <br><span class="move_left">AngularJS modules are logical containers for different parts of
 AngularJS objects. AngularJS applications are typically created
 with one or more modules. Modules can have dependencies on
 other modules. These dependencies are resolved automatically by
 AngularJS when a module is loaded into memory. </span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">Creating a Module</span>
-
+<br class="cbt">
 <br><span class="move_left">You create modules using the angular.module function. Each
 created module should have a unique name that is passed as
 the first argument to the angular.module function. The second
@@ -190,9 +186,8 @@ angular.module function to declare a myApp module, which is
 dependent on a storageService:</span>
 
 <div class="commands"><pre>angular.module(‘myApp’, [‘storageService’]);</pre></div>
-
 <br><span class="move_left strong font_size">Configuring a Module</span>
-
+<br class="cbt">
 <br><span class="move_left">You can add module configuration using the config function once
 you declare a module. The configuration will get executed when
 the module is loading. You can inject providers or constants
@@ -227,9 +222,9 @@ someInstance.doSomething();
 
 <br><span class="move_left">Now that we understand how to create and use modules, let’s
 explore the AngularJS dependency injection (DI) mechanism.</span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">AngularJS Dependency Injection</span>
-
+<br class="cbt">
 <br><span class="move_left">Each AngularJS application includes an $injector object. The
 $injector is responsible for dependency management and for
 dependency lookups. Here is a diagram that shows how DI works
@@ -265,9 +260,8 @@ This is the preferred way to use DI in AngularJS, and in the code
 example we use it to create a controller. Speaking of controllers,
 let’s explore what these AngularJS objects are.</span>
 <div class="title strong"><span id="toControllers">Controllers</span></div>
-
 <br><span class="move_left strong font_size">What is a Controller?</span>
-
+<br class="cbt">
 <br><span class="move_left">AngularJS controllers are just JavaScript constructor functions
 that are used to hold scopes and to expose behaviors that views
 can use. You can think about controllers as the logic behind the
@@ -275,9 +269,9 @@ view. Each controller has a new child scope that is available as the
 $scope argument in the constructor function. When a controller
 is created during runtime, the $injector will inject the $scope
 argument. Controllers add properties and functions to the $scope. </span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">Creating a Controller</span>
-
+<br class="cbt">
 <br><span class="move_left">In order to create a controller, all you need to do is to declare
 a constructor function. The following code shows a simple
 controller:</span>
@@ -300,23 +294,20 @@ using the ng-controller directive:</span>
 <br><span class="move_left">Now that you are familiar with controllers, let’s talk about scopes. </span>
 
 <div class="title strong"><span>scopes</span></div>
-
 <br><span class="move_left strong font_size">What is a scope?</span>
-
+<br class="cbt">
 <br><span class="move_left">Scopes are objects that include properties and the functions set by
 controllers that a view can later use. You can think about scopes
 as the glue between a controller and a single view.</span>
-
 <br class="cbt">
-
 <br><span class="move_left">Once a controller is attached to a view using the ng-controller
 directive, all the scope properties and functions are data bound
 to the view, and it can use them. Changes to scope properties
 are reflected in the bounded view and user interactions can also
 change the bound properties. </span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">What is the digest cycle?</span>
-
+<br class="cbt">
 <br><span class="move_left">The digest cycle in AngularJS is code that runs in intervals and
 its main idea is to enable data binding. Its purpose is to observe
 model mutations (using $watch API) and to propagate any model
@@ -326,14 +317,13 @@ changes (using $apply API).</span>
 
 <br><span class="move_left">The next diagram shows what the digest cycle in AngularJS looks
 like:</span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">Using Scopes in Code</span>
-
+<br class="cbt">
 <br><span class="move_left">AngularJS runtime injects a scope object into a controller, and
 then the controller can set the $scope with properties and
 behaviors. The following example shows how to add a property
 called message and a function called myFunc to a scope object:</span>
-
 <div class="commands"><pre>var myApp = angular.module(‘myApp’,[]);
 myApp.controller(‘MyController ‘, function($scope) {
 $scope.message = ‘hello’;
@@ -344,9 +334,9 @@ $scope.myFunc = function() {
 
 <br><span class="move_left">You can also put full model objects inside scope properties that
 can later be used by a view.</span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">The $rootScope</span>
-
+<br class="cbt">
 <br><span class="move_left">All AngularJS scopes inherit their functionality from the
 $rootScope. Every AngularJS application has a single $rootScope.
 The $rootScope includes several utility functions that you can use
@@ -362,9 +352,9 @@ ng-controller directive. Once a binding is set, you can use scope
 properties and functions in the view. In order to harness the full
 potential of views, you should understand two AngularJS concepts
 that relate to views: templates and expressions. </span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">templates</span>
-
+<br class="cbt">
 <br><span class="move_left">A template is a declarative specification that contains HTML
 parts. It also contains AngularJS specific elements and attributes
 that are called directives and AngularJS expressions. The
@@ -379,7 +369,7 @@ xt}}</button>
 </div></pre></div>
 
 <br><span class="move_left strong font_size">Expressions</span>
-
+<br class="cbt">
 <br><span class="move_left">In the previous template example you can see that we used curly
 brackets to wrap btnText. This is an example of an expression.
 Expressions are JavaScript code used for binding. Expressions
@@ -414,15 +404,15 @@ One-time binding: {{::message}}
 </div></pre></div>
 <div class="title strong"><span>Services</span></div>
 <br><span class="move_left strong font_size">What is a Service? </span>
-
+<br class="cbt">
 <br><span class="move_left">Services in AngularJS are singleton objects that are used to
 perform a specific task. Services are UI independent, meaning
 that they shouldn’t manipulate or use UI elements (this is the
 role of view and directives). You can inject services to modules,
 controllers, filters, directives, and more. </span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">Creating a Custom Service</span>
-
+<br class="cbt">
 <br><span class="move_left">There are four options for service creation in AngularJS:</span>
 
 <table class="syntax_description"><tbody><tr><th>Service Type</th><th>Description</th></tr><tr><td>value</td><td>Use the module’s value function with a given name and value. The injector will return the exact value.</td></tr><tr><td>factory</td><td>Use the module’s factory function with a given name and a factory function. The injector will invoke the given function.</td></tr><tr><td>service</td><td>Use the module’s service function with a given name and constructor function. The injector will use the new keyword to create the service single instance</td></tr><tr><td>provider</td><td>Use the module’s provider function with a given name and provider function. The injector will invoke the provider’s $get function.</td></tr></tbody></table>
@@ -449,7 +439,7 @@ $scope.greet = myFactory;
 }); </pre></div>
 
 <br><span class="move_left strong font_size">Built-in AngularJS Services </span>
-
+<br class="cbt">
 <br><span class="move_left">AngularJS comes with several built-in services. Here are the
 descriptions of some of them:</span>
 
@@ -461,7 +451,7 @@ services in the AngularJS documentation:<a href="https://docs.angularjs. org/api
 org/api/ng/service</a>.</span>
 <div class="title strong"><span>Filters</span></div>
 <br><span class="move_left strong font_size">What is a Filter?</span>
-
+<br class="cbt">
 <br><span class="move_left">Filters format an evaluated expression value to an appropriate
 representation in the view. When you want to use a filter you just
 “pipe” it using the “|” sign to the expression like in the following
@@ -481,9 +471,9 @@ value you just state the name of the filter:</span>
 <br><span class="move_left">Filters can have arguments using the semicolon sign, and they
 can be chainable. On the other hand, filters shouldn’t depend on
 global state and should be stateless. </span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">Creating a Custom Filter</span>
-
+<br class="cbt">
 <br><span class="move_left">You can create your custom filters in two ways: using
 the module’s filter function or registering a filter in the
 $filterProvider service. The first argument that a filter receives in
@@ -504,7 +494,7 @@ return (text || ‘’).toUpperCase();
 }</pre></div>
 
 <br><span class="move_left strong font_size">Built-in AngularJS Filters</span>
-
+<br class="cbt">
 <br><span class="move_left">AngularJS comes with a set of built-in filters that you can use.
 Here are their descriptions:</span>
 
@@ -513,7 +503,7 @@ Here are their descriptions:</span>
 <div class="title strong"><span>Directives</span></div>
 
 <br><span class="move_left strong font_size">What is a Directive?</span>
-
+<br class="cbt">
 <br><span class="move_left">Directives are one of the most powerful features in AngularJS.
 Directives are custom HTML elements and attributes that AngularJS
 recognizes as part of its ecosystem. Directives allow you to extend
@@ -529,9 +519,9 @@ according to directives. The process is done in two phases: compile
 and link. The compiler is traversing on the DOM and collects all
 the directives. The linker combines directives with their scope and
 produces a dynamic view. </span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">Creating a Custom Directive</span>
-
+<br class="cbt">
 <br><span class="move_left">Like controllers, services, and filters, directives are also
 registered to modules. In order to register a directive, you will
 use the module’s directive function, which receives a directive
@@ -580,7 +570,7 @@ scope.message = ‘hello’;
 <div class="commands"><pre><div my-dialog></div></pre></div>
 
 <br><span class="move_left strong font_size">Built-in Useful Directives</span>
-
+<br class="cbt">
 <br><span class="move_left">AngularJS includes many built-in and useful directives that you
 can use. </span>
 
@@ -616,9 +606,9 @@ the mechanisms. </span>
 them available as a property of the scope. The name of the
 property will be the name of the form. Each input type in the
 form will be a sub-property of the scope form property</span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">Form Validation Directives</span>
-
+<br class="cbt">
 <br><span class="move_left">AngularJS provides a few built-in validation directives which can
 set the form validation $error property. The available directives
 are:</span>
@@ -667,9 +657,9 @@ in the client and replace a shell element. This is how you move
 from one page to another in SPAs. AngularJS provides a routing
 feature that can be used to create this behavior to inject views
 into an ngView decorated element.</span>
-
+<br class="cbt">
 <br><span class="move_left strong font_size">The ngRoute Module</span>
-
+<br class="cbt">
 <br><span class="move_left">The ngRoute module is a router module for AngularJS (it isn’t
 built-in to AngularJS). There are other options (such as uirouter),
 which are also very commonly used. In order to use a

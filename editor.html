@@ -5,9 +5,10 @@
 		<link rel="stylesheet" href="css/style.css"type="text/css"/> 
 		
 		<script type="text/javascript" src="jquery/jquery.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>
-		<!--<script src="js/script.js"></script>
-		[if lt IE 9]>
+		<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>-->
+		<script src="js/script.js"></script>
+		<script src="js/immutable.js"></script>
+		<!--[if lt IE 9]>
 		<script>
 			var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
 			for (var i = 0; i < e.length; i++) {
@@ -347,7 +348,7 @@ document.getElementById("html_res").id = "res_html";
 
 
 function Txt() {
-   var expression = getSelectiontextarea( document.getElementById("text") );
+var expression = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
@@ -356,10 +357,10 @@ document.getElementById("RESULTTEXT").innerText='<br><span class="move_left">'+e
 document.getElementById("RESULTHTML").innerHTML='<br><span class="move_left">'+expression+'</span>';
 document.getElementById("RESULTTEXT").id = "text_res";
 document.getElementById("RESULTHTML").id = "html_res";
-document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
-document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
+document.getElementById("result").innerHTML.history[historyIndex] += '<p><span id="RESULTTEXT">qwe</span></p>';
+document.getElementById("area").innerHTML(history[historyIndex]) += '<p><span id="RESULTHTML">qwe</span></p>';
 document.getElementById("text").value='';
-}
+};
         // clicking on a dot removes it.
         //elem.addEventListener('click', function(e) {
            //document.getElementById("text_res").innerHTML = '';
@@ -381,29 +382,29 @@ document.getElementById("text").value='';
 
 // clicking undo goes back in time, unless
 // there is no history left.
-undo.addEventListener('click', function Undo() {
-    if (historyIndex > 0) historyIndex--;
-    Txt();
-});
+undo.addEventListener('click', Undo () );
 
 // clicking redo goes forward in time, unless
 // there is no future left.
-redo.addEventListener('click', function Redo() {
-    if (historyIndex < history.length) historyIndex++;
-    Txt();
-});
+redo.addEventListener('click', Redo() );
 
-Txt();
+//Txt();
 function Redo() {
-    if (historyIndex < history.length) historyIndex++;
-    Txt();
+    if (historyIndex < history.length){ historyIndex++;}
+    //Txt();
+	
+	else{
+	redo.disabled ='disabled';}
 };	
 function Undo(){
 	
-    if (historyIndex > 0) historyIndex--;
-    Txt();
+    if (historyIndex > 0){ historyIndex--;}
+	else{
+	undo.disabled ='disabled';
+	}
+    //Txt();
 };
-
+//--------------------------------------------------------------------------------------------------------------------------------
 function Delete(){
 document.getElementById("text_res").innerHTML = '';
 document.getElementById("html_res").innerHTML = '';
