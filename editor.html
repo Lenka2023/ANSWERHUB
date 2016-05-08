@@ -215,8 +215,7 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
 function Down(){
 var expression = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
-	//var x=prompt("Enter a count of row","");
-var y=prompt("Enter a count of columns","");
+	var y=prompt("Enter a count of columns","");
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
 	
@@ -250,7 +249,7 @@ document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page flo
 							}
 			}
 
-
+//------------------------------------------------------------------------------------
 
 
 var undo = document.getElementById('undo');
@@ -269,8 +268,8 @@ alert(" index == " + historyIndex + "; length == " + history_Area.length);
     historyIndex++;
 	if (historyIndex > 0) {undo.disabled ='';} else {undo.disabled ='disabled';}
 	if (historyIndex == history_Area.length) {redo.disabled ='disabled';} else {redo.disabled ='';}
-	if ((historyIndex ==0)&& (history_Area.length==0)) {redo.disabled ='disabled';undo.disabled ='disabled';alert('Op done!');} 
-	
+	if ((historyIndex ==0)&& (history_Area.length==0)) {redo.disabled ='disabled';undo.disabled ='disabled';} 
+	alert('Op done!');
 	 };
 function Reundo() {
 
@@ -284,27 +283,28 @@ document.getElementById('result').innerHTML = history_Result[historyIndex];
 }
 };
        
-undo.addEventListener('click', Undo () );
-redo.addEventListener('click', Redo() );
+//undo.addEventListener('click', Undo () );
+//redo.addEventListener('click', Redo() );
 
 function Redo() {
 
     if (historyIndex < history_Area.length)
-	{ historyIndex++; Reundo(); undo.disabled ='';alert("REDO push? index == " + historyIndex + "; length == " + history_Area.length);}
+	{ historyIndex++; Reundo(); redo.disabled ='';alert("REDO push? index == " + historyIndex + "; length == " + history_Area.length);}
 	else
 	{redo.disabled ='disabled';}
 	
 	if (history_Area.length == 0)
-	operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
+	{operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);}
+	//operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 };	
 function Undo(){
 
     if (historyIndex > 0)
-	{ historyIndex--; Reundo(); redo.disabled ='';alert("UNDO push? index == " + historyIndex + "; length == " + history_Area.length);}
+	{ historyIndex--; Reundo(); undo.disabled ='';alert("UNDO push? index == " + historyIndex + "; length == " + history_Area.length);}
 	else
 	{undo.disabled ='disabled';}
 	if (history_Area.length == 0)
-	operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
+	{operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);}
 };
 //--------------------------------------------------------------------------------------------------------------------------------
 function Delete(){
@@ -312,6 +312,7 @@ document.getElementById("text_res").innerHTML = '';
 document.getElementById("html_res").innerHTML = '';
 document.getElementById("text_res").id = "res_text";
 document.getElementById("html_res").id = "res_html";
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 }
 function Txt(){
 
@@ -327,6 +328,7 @@ document.getElementById("RESULTHTML").id = "html_res";
 document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 document.getElementById("text").value='';
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 }
 
 			function Link()
@@ -361,7 +363,7 @@ document.getElementById("text").value='';
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-
+				operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Bold()
 			{
@@ -592,7 +594,7 @@ operation(document.getElementById("area").innerHTML, document.getElementById("re
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 
 			function Small_title()
@@ -608,7 +610,7 @@ operation(document.getElementById("area").innerHTML, document.getElementById("re
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Capture()
 			{
@@ -624,7 +626,7 @@ operation(document.getElementById("area").innerHTML, document.getElementById("re
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Listing()
 			{
@@ -640,7 +642,7 @@ operation(document.getElementById("area").innerHTML, document.getElementById("re
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Smallicon()
 			{
@@ -659,7 +661,7 @@ operation(document.getElementById("area").innerHTML, document.getElementById("re
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 
 			}
             function Hot_Tip()
@@ -704,6 +706,7 @@ operation(document.getElementById("area").innerHTML, document.getElementById("re
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
+				operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 
             function Table()
@@ -741,6 +744,7 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
+				operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 
 			function CBT()
@@ -753,6 +757,7 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
+				operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Footer()
 			{
