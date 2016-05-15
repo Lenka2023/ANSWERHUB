@@ -372,6 +372,8 @@ function Undo(){
 	if (historyIndex < historyIndexMax) { redo.disabled=''; }
 };
 //--------------------------------------------------------------------------------------------------------------------------------
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 $(document).click(function (event) {
 	$(event.target).attr('contentEditable', 'true’');
 });
@@ -384,6 +386,8 @@ $(document).dblclick(function (event) {
      $(current).html('<pre class="prettyprint">' + str + '</pre>');
      //запускаем prettify парсер
      prettyPrint();
+	 });
+	 $(current).html( $( current ).text() );
 	 var content = “”;
 $('.prettyprint').children().each(function(i) {
      var nodeHtml = $(this).html();
@@ -396,6 +400,8 @@ $(current).html( content );
 
 });
 $(current).html( $( current ).text() );
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 function Delete(){
 PurgeRedoSequence();
 document.getElementById("text_res").innerHTML = '';
