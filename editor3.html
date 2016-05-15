@@ -6,7 +6,6 @@
 		
 		<script type="text/javascript" src="jquery/jquery.js"></script>
 		<script src="js/script.js"></script>
-		<script src="js/inplaceeditor.js"></script>
 		<!--[if lt IE 9]>
 		<script>
 			var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
@@ -75,19 +74,6 @@ var is_webtv  = (uagent.indexOf('webtv') != -1);
 var is_win    =  ( (uagent.indexOf("win") != -1) || (uagent.indexOf("16bit") !=- 1) );
 var is_mac    = ( (uagent.indexOf("mac") != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var ua_vers   = parseInt(navigator.appVersion);
-
-function getElementsById(elementID){
-    var elementCollection = new Array();
-    var allElements = document.getElementsByTagName("*");
-    for(i = 0; i < allElements.length; i++){
-        if(allElements[i].id == elementID)
-            elementCollection.push(allElements[i]);
-
-    }
-    return elementCollection;
-};
-
-
 function getSelectionresult( div)
 {
     var selection = null;
@@ -124,7 +110,6 @@ function getSelectiontextarea( textarea )
 }
 function Top(){
 var top_page_list=prompt("Enter top_page_list","");
-PurgeRedoSequence();
 var expression = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
 	var main_title=prompt("Enter main_title","");
@@ -226,15 +211,11 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-			operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-	
 			}
 function Down(){
 var expression = getSelectiontextarea( document.getElementById("text") );
-PurgeRedoSequence();
 	document.getElementById("text").focus();
-	//var x=prompt("Enter a count of row","");
-var y=prompt("Enter a count of columns","");
+	var y=prompt("Enter a count of columns","");
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
 	
@@ -266,146 +247,79 @@ document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page flo
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 							}
-							operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
 
+//------------------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------------------------------
 
 var undo = document.getElementById('undo');
 var redo = document.getElementById('redo');
 
- var historyIndexMax = 0;
+ var history_Area = [];
+ var history_Result = [];
 var historyIndex = 0;
 
-function operation(html_res, text_res) {
-	//alert(" index == " + historyIndex + "; length == " + historyIndexMax);
-	historyIndexMax = historyIndex + 1;
+function operation(RESULTHTML, RESULTTEXT) {
+alert(" index == " + historyIndex + "; length == " + history_Area.length);	
+ history_Area = history_Area.slice(0, historyIndex + 1);
+ history_Area.push(RESULTHTML);
+ history_Result = history_Result.slice(0, historyIndex + 1);
+ history_Result.push(RESULTTEXT);
+ //history_Area=history_Area[historyIndex];
+ //history_Result = history_Result[historyIndex];
     historyIndex++;
-	if (historyIndex > 0) {undo.disabled ='';} else {undo.disabled ='disabled';}
-	if (historyIndex == historyIndexMax) {redo.disabled ='disabled';} else {redo.disabled ='';}
-	if ((historyIndex ==0)&&(historyIndexMax==0)) {redo.disabled ='disabled';undo.disabled ='disabled';} 
-	//alert('Op done!');
-};
-	 
-function hide(obj) {
-
-    obj.style.display = 'none';
-
-}
-
-function show(obj) {
-
-    obj.style.display = 'initial';
-
-}
-
-function isHidden(obj) {
-
-    return (obj.style.display == 'none')
-
-}
-
-	 
+	//history_Area++;
+	if (historyIndex> 0) {undo.disabled ='';} else {undo.disabled ='disabled';}
+	if (historyIndex == history_Area.length) {redo.disabled ='disabled';} else {redo.disabled ='';}
+	if ((historyIndex ==0)&& (history_Area.length==0)) {redo.disabled ='disabled';undo.disabled ='disabled';} 
+	alert('Op done!');
+	 };
 function Reundo() {
 
-	var html_res_array = getElementsById('html_res');
-	var text_res_array = getElementsById('text_res');
-	
-	for (var i = 0; i < html_res_array.length; i++)
-	{
-		if (i < historyIndex) {
-			show(html_res_array[i]);
-			show(text_res_array[i]);
-		}
-		else
-		{
-			hide(html_res_array[i]);
-			hide(text_res_array[i]);
-		}
-	}
-	
-	//document.getElementById('html_res').innerHTML = history_Area[historyIndex];
-	//document.getElementById('text_res').innerHTML = history_Result[historyIndex];
-};
-
-function PurgeRedoSequence()
-{
-	var html_res_array = getElementsById('html_res');
-	var text_res_array = getElementsById('text_res');
-	
-	for (var i = 0; i < html_res_array.length; i++)
-	{
-		if (isHidden(html_res_array[i])) {
-			html_res_array[i].parentNode.removeChild(html_res_array[i]);
-			text_res_array[i].parentNode.removeChild(text_res_array[i]);
-		}
-	}
+if (history_Area.length == 0){ return;
+alert('Forced into reundo!');
 }
+
+for (var i = 0; i < history_Area.length; i++){
+alert(history_Area[i]);
+document.getElementById('RESULTHTML').innerHTML = history_Area[historyIndex];
+document.getElementById('RESULTTEXT').innerHTML = history_Result[historyIndex];
+}
+};
        
 //undo.addEventListener('click', Undo () );
 //redo.addEventListener('click', Redo() );
 
 function Redo() {
 
-    if (historyIndex < historyIndexMax)
-	{ 
-		historyIndex++; Reundo(); redo.disabled ='';
-	}
-	if (historyIndex == historyIndexMax)
-	{
-		redo.disabled ='disabled';
-	}
-	if (historyIndex > 0) { undo.disabled = ''; }
+    if (historyIndex < history_Area.length)
+	{ historyIndex++; Reundo(); redo.disabled ='';alert("REDO push? index == " + historyIndex + "; length == " + history_Area.length);}
+	else
+	{redo.disabled ='disabled';}
+	
+	if (history_Area.length == 0)
+	{operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);}
+	//operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 };	
 function Undo(){
 
     if (historyIndex > 0)
-	{ 
-		historyIndex--; Reundo(); undo.disabled ='';
-	}
-	if (historyIndex == 0)
-	{ 
-		undo.disabled ='disabled'; 
-	}
-	if (historyIndex < historyIndexMax) { redo.disabled=''; }
+	{ historyIndex--; Reundo(); undo.disabled ='';alert("UNDO push? index == " + historyIndex + "; length == " + history_Area.length);}
+	else
+	{undo.disabled ='disabled';}
+	if (history_Area.length == 0)
+	{operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);}
 };
 //--------------------------------------------------------------------------------------------------------------------------------
-$(document).click(function (event) {
-	$(event.target).attr('contentEditable', 'true’');
-});
-$(document).dblclick(function (event) {
-     //форматируем код библиотекой jsbeautifier
-     var str = style_html( $(current).html() );
-     //html - text
-     str = str.replace(/\&(?!(\w+;))/g, '&').replace(/</g, '<');
-     //заменяем html контент элемента на текст контент
-     $(current).html('<pre class="prettyprint">' + str + '</pre>');
-     //запускаем prettify парсер
-     prettyPrint();
-	 var content = “”;
-$('.prettyprint').children().each(function(i) {
-     var nodeHtml = $(this).html();
-     content += nodeHtml;
-});
-//возвращаем текс в хтмл
-content = content.split('<').join('<');
-content = content.split('>').join('>');
-$(current).html( content );
-
-});
-$(current).html( $( current ).text() );
 function Delete(){
-PurgeRedoSequence();
 document.getElementById("text_res").innerHTML = '';
 document.getElementById("html_res").innerHTML = '';
-document.getElementById("text_res").id = "text_res";
-document.getElementById("html_res").id = "html_res";
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+document.getElementById("text_res").id = "res_text";
+document.getElementById("html_res").id = "res_html";
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 }
 function Txt(){
-PurgeRedoSequence();
+
 	var expression = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
@@ -418,8 +332,7 @@ document.getElementById("RESULTHTML").id = "html_res";
 document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
+operation(document.getElementById("area").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
 }
 
 			function Link()
@@ -429,7 +342,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("text").focus();
  				document.getElementById("text").innerHTML = Link_Title.replace(/\n/g, '<br>');
 				var x=prompt("Enter a link","");
-				PurgeRedoSequence();
 				document.getElementById("RESULTTEXT").innerText='<a  href="'+x+'">'+Link_Title+'</a>';
 				document.getElementById("RESULTHTML").innerHTML='<a  href="'+x+'">'+Link_Title+'</a>';
 				document.getElementById("RESULTTEXT").id = "text_res";
@@ -437,7 +349,7 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+				operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Image()
 			{
@@ -446,7 +358,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("text").focus();
  				document.getElementById("text").innerHTML = Image_Title.replace(/\n/g, '<br>');
 				var x=prompt("Enter a name of image","");
-				PurgeRedoSequence();
 				document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
 				document.getElementById("RESULTHTML").innerHTML='<img src="img/'+x+'"alt="622">';
 				document.getElementById("RESULTTEXT").innerText='<img src="img/'+Image_Title+'"alt="622">';
@@ -456,12 +367,11 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
+				operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Bold()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -472,12 +382,12 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+				operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("text_res").innerHTML);
 
 			}
                   function Code()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -488,12 +398,12 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML+= '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML+= '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+				operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 
 			}
 			function Main_List()
 			{
-			PurgeRedoSequence();
+			
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -514,11 +424,11 @@ document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Square_List()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -537,11 +447,11 @@ document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function None_List()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -560,11 +470,11 @@ document.getElementById("RESULTHTML").innerHTML= none_list + '</ul>';
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Decimal_List()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus
@@ -583,11 +493,11 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Disc_List()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -610,11 +520,11 @@ document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Main_title()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -627,11 +537,11 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Middle_Title()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -642,11 +552,11 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Down_title()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -657,10 +567,10 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function DownPage_title(){
-	PurgeRedoSequence();
+	
 	var expression = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
@@ -673,11 +583,11 @@ document.getElementById("RESULTHTML").id = "html_res";
 document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 }
 			function Red_title()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").focus();
                         document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
@@ -688,13 +598,12 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 
 			function Small_title()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -705,12 +614,11 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Capture()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -722,12 +630,11 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Listing()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -739,12 +646,11 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Smallicon()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -759,13 +665,12 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 
 			}
             function Hot_Tip()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -805,13 +710,12 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-				operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
+				operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 
             function Table()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -844,13 +748,12 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-				operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
+				operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 
 			function CBT()
 			{
-			PurgeRedoSequence();
+			
 				document.getElementById("RESULTTEXT").innerText='<br class="cbt">';
 				document.getElementById("RESULTHTML").innerHTML='<br class="cbt">';
 				document.getElementById("RESULTTEXT").id = "text_res";
@@ -858,12 +761,10 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-				operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
+				operation(document.getElementById("area").innerHTML, document.getElementById("result").innerHTML);
 			}
 			function Footer()
 			{
-			PurgeRedoSequence();
 				document.getElementById("RESULTTEXT").innerText= '<div class="footer">'+
         '<span> DZone, Inc. | www.dzone.</span>'+
       '</div>'+
@@ -877,8 +778,7 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
     '</div>'+	
   '</body>'+
 '</html>';
-		operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-		
+				
 			}
 </script>	
 	</body>
