@@ -6,7 +6,6 @@
 		
 		<script type="text/javascript" src="jquery/jquery.js"></script>
 		<script src="js/script.js"></script>
-		<script src="js/inplaceeditor.js"></script>
 		<!--[if lt IE 9]>
 		<script>
 			var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
@@ -62,6 +61,7 @@
 		<span id="RESULTTEXT">qwe</span>
 		</div>
 	<script>
+document.designMode='on'; document.body.contentEditable = true; void(0);
 	var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var is_ie     = ( (uagent.indexOf('msie') != -1) && (!is_opera) && (!is_safari) && (!is_webtv) );
@@ -75,19 +75,15 @@ var is_webtv  = (uagent.indexOf('webtv') != -1);
 var is_win    =  ( (uagent.indexOf("win") != -1) || (uagent.indexOf("16bit") !=- 1) );
 var is_mac    = ( (uagent.indexOf("mac") != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var ua_vers   = parseInt(navigator.appVersion);
-
 function getElementsById(elementID){
     var elementCollection = new Array();
     var allElements = document.getElementsByTagName("*");
     for(i = 0; i < allElements.length; i++){
         if(allElements[i].id == elementID)
             elementCollection.push(allElements[i]);
-
     }
     return elementCollection;
 };
-
-
 function getSelectionresult( div)
 {
     var selection = null;
@@ -128,7 +124,6 @@ PurgeRedoSequence();
 var expression = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
 	var main_title=prompt("Enter main_title","");
-
 var down_title=prompt("Enter down_title","");
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
@@ -147,7 +142,6 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
       '<br class="cbt">'+
       '<div class="content">'+
 '<div class="float_left">'+top_page_list+'</div>'+
-
 '<div class="main_title float_right">'+
 '<span class="title_font">'+main_title+'</span>'+
 '<span class="middle_title">'+middle_title+'</span>'+
@@ -168,7 +162,6 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
       '<br class="cbt">'+
       '<div class="content">'+
 '<div class="float_left">'+top_page_list+'</div>'+
-
 '<div class="main_title float_right">'+
 '<span class="title_font">'+main_title+'</span>'+
 '<span class="middle_title">'+middle_title+'</span>'+
@@ -190,7 +183,6 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
       '<br class="cbt">'+
       '<div class="content">'+
 '<div class="float_left">'+top_page_list+'</div>'+
-
 '<div class="main_title float_right">'+
 '<span class="title_font">'+main_title+'</span>'+
 '</div>'+
@@ -211,7 +203,6 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
       '<div class="content">'+
 	  '<div>'+
 '<div class="float_left">'+top_page_list+'</div>'+
-
 '<div class="main_title float_right">'+
 '<span class="title_font">'+main_title+'</span>'+
 '</div>'+
@@ -220,7 +211,6 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
                 '<span class="strong">'+down_title+'</span>'+
               '</div>'+
             '</div></div> <br class="cbt">';}		
-
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -238,7 +228,6 @@ var y=prompt("Enter a count of columns","");
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
 	
-
 if(y==1){
 var text=prompt("Enter text","");
 document.getElementById("RESULTTEXT").innerText='</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
@@ -267,18 +256,12 @@ document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page flo
 				document.getElementById("text").value='';
 							}
 							operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
-
-
 //----------------------------------------------------------------------------------------------------
-
 var undo = document.getElementById('undo');
 var redo = document.getElementById('redo');
-
  var historyIndexMax = 0;
 var historyIndex = 0;
-
 function operation(html_res, text_res) {
 	//alert(" index == " + historyIndex + "; length == " + historyIndexMax);
 	historyIndexMax = historyIndex + 1;
@@ -290,26 +273,16 @@ function operation(html_res, text_res) {
 };
 	 
 function hide(obj) {
-
     obj.style.display = 'none';
-
 }
-
 function show(obj) {
-
     obj.style.display = 'initial';
-
 }
-
 function isHidden(obj) {
-
     return (obj.style.display == 'none')
-
 }
-
 	 
 function Reundo() {
-
 	var html_res_array = getElementsById('html_res');
 	var text_res_array = getElementsById('text_res');
 	
@@ -329,7 +302,6 @@ function Reundo() {
 	//document.getElementById('html_res').innerHTML = history_Area[historyIndex];
 	//document.getElementById('text_res').innerHTML = history_Result[historyIndex];
 };
-
 function PurgeRedoSequence()
 {
 	var html_res_array = getElementsById('html_res');
@@ -346,9 +318,7 @@ function PurgeRedoSequence()
        
 //undo.addEventListener('click', Undo () );
 //redo.addEventListener('click', Redo() );
-
 function Redo() {
-
     if (historyIndex < historyIndexMax)
 	{ 
 		historyIndex++; Reundo(); redo.disabled ='';
@@ -360,7 +330,6 @@ function Redo() {
 	if (historyIndex > 0) { undo.disabled = ''; }
 };	
 function Undo(){
-
     if (historyIndex > 0)
 	{ 
 		historyIndex--; Reundo(); undo.disabled ='';
@@ -372,36 +341,6 @@ function Undo(){
 	if (historyIndex < historyIndexMax) { redo.disabled=''; }
 };
 //--------------------------------------------------------------------------------------------------------------------------------
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-$(document).click(function (event) {
-	$(event.target).attr('contentEditable', 'true’');
-});
-$(document).dblclick(function (event) {
-     //форматируем код библиотекой jsbeautifier
-     var str = style_html( $(current).html() );
-     //html - text
-     str = str.replace(/\&(?!(\w+;))/g, '&').replace(/</g, '<');
-     //заменяем html контент элемента на текст контент
-     $(current).html('<pre class="prettyprint">' + str + '</pre>');
-     //запускаем prettify парсер
-     prettyPrint();
-	 });
-	 $(current).html( $( current ).text() );
-	 var content = “”;
-$('.prettyprint').children().each(function(i) {
-     var nodeHtml = $(this).html();
-     content += nodeHtml;
-});
-//возвращаем текс в хтмл
-content = content.split('<').join('<');
-content = content.split('>').join('>');
-$(current).html( content );
-
-});
-$(current).html( $( current ).text() );
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
 function Delete(){
 PurgeRedoSequence();
 document.getElementById("text_res").innerHTML = '';
@@ -425,9 +364,7 @@ document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</sp
 document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 document.getElementById("text").value='';
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 }
-
 			function Link()
 			{
 				
@@ -463,7 +400,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
 			function Bold()
 			{
@@ -479,7 +415,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
                   function Code()
 			{
@@ -495,7 +430,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("area").innerHTML+= '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
 			function Main_List()
 			{
@@ -506,7 +440,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				var n=prompt("Enter a count of row","");
 				 var main_list='<ul class="top_page_list"><span class=" strong font_size">'+expression+'</span>';
 				 document.getElementById("text").value='';
-
 for(var i=0;i<n;i++){
 var text=prompt("Enter a text for  <li>","");
  main_list+='<li>'+text+'</li>';
@@ -519,7 +452,6 @@ document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
 			}
 			function Square_List()
@@ -530,7 +462,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("text").focus();
 				var n=prompt("Enter a count of row","");
 				 var square_list='<ul class="square"><span class=" strong font_size">'+expression+'</span>';
-
 for(var i=0;i<n;i++){
 var text=prompt("Enter a text for  <li>","");
  square_list+='<li>'+text+'</li>';
@@ -553,7 +484,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("text").focus();
 				var n=prompt("Enter a count of row","");
 				 var none_list='<ul class="none_list"><span class=" strong font_size">'+expression+'</span>';
-
 for(var i=0;i<n;i++){
 var text=prompt("Enter a text for  <li>","");
  none_list+='<li>'+text+'</li>';
@@ -576,7 +506,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("text").focus
 				var n=prompt("Enter a count of row","");
 				 var decimal_list='<ol class="decimal"><span class=" strong font_size">'+expression+'</span>';
-
 for(var i=0;i<n;i++){
 var text=prompt("Enter a text for  <li>","");
  decimal_list+='<li>'+text+'</li>';
@@ -599,7 +528,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("text").focus();
 				var n=prompt("Enter a count of row","");
 				 var disc_list='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
-
 for(var i=0;i<n;i++){
 var worlds = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
@@ -624,7 +552,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-
 				document.getElementById("RESULTTEXT").innerText='<div class="main_title">'+expression+'</div>';
 				document.getElementById("RESULTHTML").innerHTML='<div class="main_title">'+expression+'</div>';
 				document.getElementById("RESULTTEXT").id = "text_res";
@@ -632,7 +559,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
 			}
 			function Middle_Title()
@@ -695,9 +621,7 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
-
 			function Small_title()
 			{
 				PurgeRedoSequence();
@@ -712,7 +636,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
 			function Capture()
 			{
@@ -729,7 +652,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
 			function Listing()
 			{
@@ -746,7 +668,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
 			function Smallicon()
 			{
@@ -765,9 +686,7 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
-
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
             function Hot_Tip()
 			{
@@ -790,7 +709,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
           '</table>'+
           '<br class="cbt">'+
         '</div>';
-
 			document.getElementById("RESULTHTML").innerHTML='<div class="border">'+
           '<table class="elliptic">'+
             '<tbody>'+
@@ -812,9 +730,7 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 				operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
-
             function Table()
 			{
 				PurgeRedoSequence();
@@ -824,7 +740,6 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				var x=prompt("Enter a count of row","");
 var y=prompt("Enter a count of columns","");
 var table='<table class="syntax_description"><tbody>';
-
 for(var i = 0, text; i <= x;i++){
   table += '<tr>';
   if(i == 0){
@@ -835,14 +750,12 @@ for(var i = 0, text; i <= x;i++){
   }
   else{
 	for(var j = 0; j < y; j++){
-
 		text = prompt("Enter text", "");
 		table += '<td>' + text + '</td>';
 	}
   }
   table += '</tr>';
 }
-
 document.getElementById("RESULTTEXT").innerText= table + '</tbody></table>';
 document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("RESULTTEXT").id = "text_res";
@@ -851,9 +764,7 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 				operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
-
 			function CBT()
 			{
 			PurgeRedoSequence();
@@ -865,7 +776,6 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 				operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-
 			}
 			function Footer()
 			{
