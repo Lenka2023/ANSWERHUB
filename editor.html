@@ -61,7 +61,7 @@
 		<span id="RESULTTEXT">qwe</span>
 		</div>
 	<script>
-document.designMode='on'; document.body.contentEditable = true; void(0);
+/*document.designMode='on';/* document.body.contentEditable = true; void(0);*/
 	var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var is_ie     = ( (uagent.indexOf('msie') != -1) && (!is_opera) && (!is_safari) && (!is_webtv) );
@@ -170,7 +170,9 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
               '<div class="down_title ">'+
                 '<span class="strong">'+down_title+'</span>'+
               '</div>'+
-            '</div>';}
+            '</div>';
+			
+			}
 			else{
 			document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
 '<html>'+
@@ -415,7 +417,11 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 				document.getElementById("text").value='';
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-			}
+document.getElementById("text_res").designMode='on';
+document.getElementById("html_res").designMode='on';
+document.getElementById("text_res").contentEditable = true; void(0);
+document.getElementById("html_res").contentEditable = true; void(0);			
+}
                   function Code()
 			{
 				PurgeRedoSequence();
@@ -780,7 +786,8 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 			function Footer()
 			{
 			PurgeRedoSequence();
-				document.getElementById("RESULTTEXT").innerText= '<div class="footer">'+
+				document.getElementById("RESULTTEXT").innerText= '</div>'+
+				'<div class="footer">'+
         '<span> DZone, Inc. | www.dzone.</span>'+
       '</div>'+
     '</div>'+	
@@ -793,6 +800,10 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
     '</div>'+	
   '</body>'+
 '</html>';
+document.getElementById("RESULTTEXT").id = "text_res";
+document.getElementById("RESULTHTML").id = "html_res";
+document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
+document.getElementById("area").innerHTML += '<p><span id="RESULTHTML">qwe</span></p>';
 		operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
 		
 			}
