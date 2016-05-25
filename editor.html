@@ -353,13 +353,16 @@ operation(document.getElementById("html_res").innerHTML, document.getElementById
 }
 function Txt(){
 PurgeRedoSequence();
-	var expression = getSelectiontextarea( document.getElementById("text") );
+	var expressionText = getSelectiontextarea( document.getElementById("text") );
+	var expressionHTML = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
-	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+	document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+	document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+
 	var result=document.getElementById("result");
 	
-document.getElementById("RESULTTEXT").innerText='<br><span class="move_left">'+expression+'</span>';
-document.getElementById("RESULTHTML").innerHTML='<br><span class="move_left">'+expression+'</span>';
+document.getElementById("RESULTTEXT").innerText='<br><span class="move_left">'+expressionText+'</span>';
+document.getElementById("RESULTHTML").innerHTML='<br><span class="move_left">'+expressionHTML+'</span>';
 document.getElementById("RESULTTEXT").id = "text_res";
 document.getElementById("RESULTHTML").id = "html_res";
 document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -370,6 +373,10 @@ document.getElementById("text_res").designMode='on';
 document.getElementById("html_res").designMode='on';
 document.getElementById("text_res").contentEditable = true; void(0);
 document.getElementById("html_res").contentEditable = true; void(0);	
+if (expressionHTML.onchange==change(){}){
+
+expressionHTML=expressionText;
+}
 }
 			function Link()
 			{
