@@ -61,7 +61,10 @@
 		<span id="RESULTTEXT">qwe</span>
 		</div>
 	<script>
-var expressionText = getSelectiontextarea( document.getElementById("text") );
+	var expressionStart=str.substring
+	var expressionEnd=str.substring
+    var expression = document.getElementById("text");
+	var expressionText = getSelectiontextarea( document.getElementById("text") );
 var expressionHTML = getSelectiontextarea( document.getElementById("text") );
 
 /*document.designMode='on';/* document.body.contentEditable = true; void(0);*/
@@ -439,11 +442,16 @@ document.getElementById("html_res").contentEditable = true; void(0);
 			function Bold()
 			{
 				PurgeRedoSequence();
+				expression = document.getElementById("text");
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				document.getElementById("RESULTTEXT").innerText='<span class="strong">'+expression+'</span>';
-				document.getElementById("RESULTHTML").innerHTML='<span class="strong">'+expression+'</span>';
+				expressionStart=str.substring
+	            expressionEnd=str.substring
+				expressionText = getSelectiontextarea( document.getElementById("text") );
+	            expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("RESULTTEXT").innerText=expressionStart+'<span class="strong">'+expressionText+'</span>'+expressionEnd;
+				document.getElementById("RESULTHTML").innerHTML='<span class="strong">'+expressionHTML+'</span>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
