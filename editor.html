@@ -51,7 +51,7 @@
 										<button onclick="Undo()" id='undo' disabled>Undo</button>
 										<p><textarea id="text"  name="text"></textarea></p>
 									<div id="area" class="area">
-									<span id="RESULTHTML">qwe</span>
+									<span id="RESULTHTML" onkeyup="myFunction()">qwe</span>
 									
 									</div>
 				</div>
@@ -61,6 +61,9 @@
 		<span id="RESULTTEXT">qwe</span>
 		</div>
 	<script>
+var expressionText = getSelectiontextarea( document.getElementById("text") );
+var expressionHTML = getSelectiontextarea( document.getElementById("text") );
+
 /*document.designMode='on';/* document.body.contentEditable = true; void(0);*/
 	var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
@@ -262,7 +265,7 @@ document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page flo
 //----------------------------------------------------------------------------------------------------
 var undo = document.getElementById('undo');
 var redo = document.getElementById('redo');
- var historyIndexMax = 0;
+var historyIndexMax = 0;
 var historyIndex = 0;
 function operation(html_res, text_res) {
 	//alert(" index == " + historyIndex + "; length == " + historyIndexMax);
@@ -351,8 +354,14 @@ document.getElementById("text_res").id = "text_res";
 document.getElementById("html_res").id = "html_res";
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
 }
+function myFunction() {
+    var x = document.getElementById("text_res");
+	var y=document.getElementById("html_res");
+    x.innerHTML=y.innerHTML;
+						}
 function Txt(){
 PurgeRedoSequence();
+    var expressionText = getSelectiontextarea( document.getElementById("text") );
 	var expressionText = getSelectiontextarea( document.getElementById("text") );
 	var expressionHTML = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
@@ -360,7 +369,9 @@ PurgeRedoSequence();
 	document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
 
 	var result=document.getElementById("result");
-	
+	 expressionText = getSelectiontextarea( document.getElementById("text") );
+	 expressionHTML = getSelectiontextarea( document.getElementById("text") );
+
 document.getElementById("RESULTTEXT").innerText='<br><span class="move_left">'+expressionText+'</span>';
 document.getElementById("RESULTHTML").innerHTML='<br><span class="move_left">'+expressionHTML+'</span>';
 document.getElementById("RESULTTEXT").id = "text_res";
@@ -373,10 +384,13 @@ document.getElementById("text_res").designMode='on';
 document.getElementById("html_res").designMode='on';
 document.getElementById("text_res").contentEditable = true; void(0);
 document.getElementById("html_res").contentEditable = true; void(0);	
-if (expressionHTML.onchange==change(){}){
-
+/*if ("onpropertychange" in expressionHTML) {
 expressionHTML=expressionText;
 }
+/*if (expressionHTML.onchange==change(){}){
+
+expressionHTML=expressionText;
+}*/
 }
 			function Link()
 			{
@@ -440,7 +454,7 @@ document.getElementById("text_res").designMode='on';
 document.getElementById("html_res").designMode='on';
 document.getElementById("text_res").contentEditable = true; void(0);
 document.getElementById("html_res").contentEditable = true; void(0);			
-}
+			}
                   function Code()
 			{
 				PurgeRedoSequence();
@@ -522,8 +536,8 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				var n=prompt("Enter a count of row","");
 				 var none_list='<ul class="none_list"><span class=" strong font_size">'+expression+'</span>';
 for(var i=0;i<n;i++){
-var text=prompt("Enter a text for  <li>","");
- none_list+='<li>'+text+'</li>';
+		var text=prompt("Enter a text for  <li>","");
+		none_list+='<li>'+text+'</li>';
  
 }
  document.getElementById("RESULTTEXT").innerText= none_list + '</ul>';
@@ -548,8 +562,8 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				var n=prompt("Enter a count of row","");
 				 var decimal_list='<ol class="decimal"><span class=" strong font_size">'+expression+'</span>';
 for(var i=0;i<n;i++){
-var text=prompt("Enter a text for  <li>","");
- decimal_list+='<li>'+text+'</li>';
+		var text=prompt("Enter a text for  <li>","");
+		 decimal_list+='<li>'+text+'</li>';
  
 }
  document.getElementById("RESULTTEXT").innerText= decimal_list + '</ol>';
@@ -574,16 +588,14 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				var n=prompt("Enter a count of row","");
 				 var disc_list='<ol class="disc"><span class=" strong font_size">'+expression+'</span>';
 for(var i=0;i<n;i++){
-var worlds = getSelectiontextarea( document.getElementById("text") );
- 				document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
-				
-var text=prompt("Enter a text for  <li>","");
-document.getElementById("text").focus();
- disc_list+='<li>'+text+'</li>';
- 
-}
- document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
-document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
+		var worlds = getSelectiontextarea( document.getElementById("text") );
+		document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
+		var text=prompt("Enter a text for  <li>","");
+		document.getElementById("text").focus();
+		 disc_list+='<li>'+text+'</li>';
+					}
+				 document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
+				document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
@@ -677,7 +689,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				PurgeRedoSequence();
 				var expression = getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").focus();
-                        document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+                document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText='<div class="title strong"><span>'+expression+'</span></div>';
 				document.getElementById("RESULTHTML").innerHTML='<div class="title strong"><span>'+expression+'</span></div>';
 				document.getElementById("RESULTTEXT").id = "text_res";
