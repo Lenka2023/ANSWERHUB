@@ -61,9 +61,9 @@
 		<span id="RESULTTEXT">qwe</span>
 		</div>
 	<script>
-	 var expression = document.getElementById("text");
-	var expressionStart=(expression.value).substring(0,expression.selectionStart);
-	var expressionEnd=(expression.value).substring(expression.selectionEnd);
+	 var expression = document.getElementById("text").value;
+	var expressionStart=expression.substring(0,expression.selectionStart);
+	var expressionEnd=expression.substring(expression.selectionEnd);
    
 	var expressionText = getSelectiontextarea( document.getElementById("text") );
 var expressionHTML = getSelectiontextarea( document.getElementById("text") );
@@ -436,12 +436,11 @@ document.getElementById("html_res").contentEditable = true; void(0);
 			function Bold()
 			{
 				PurgeRedoSequence();
-				expression = document.getElementById("text");
-				var expression = getSelectiontextarea( document.getElementById("text") );
+				expression = document.getElementById("text").value;
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				expressionStart=(expression.value).substring(0,expression.selectionStart);
-	            expressionEnd=(expression.value).substring(expression.selectionEnd);
+				expressionStart=expression.substring(0,expression.selectionStart);
+	            expressionEnd=expression.substring(expression.selectionEnd);
 				expressionText = getSelectiontextarea( document.getElementById("text") );
 	            expressionHTML = getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
