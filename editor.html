@@ -61,9 +61,10 @@
 		<span id="RESULTTEXT">qwe</span>
 		</div>
 	<script>
-	var expressionStart=str.substring
-	var expressionEnd=str.substring
-    var expression = document.getElementById("text");
+	 var expression = document.getElementById("text");
+	var expressionStart=(expression.value).substring(0,expression.selectionStart);
+	var expressionEnd=(expression.value).substring(expression.selectionEnd);
+   
 	var expressionText = getSelectiontextarea( document.getElementById("text") );
 var expressionHTML = getSelectiontextarea( document.getElementById("text") );
 
@@ -364,8 +365,7 @@ function myFunction() {
 						}
 function Txt(){
 PurgeRedoSequence();
-    var expressionText = getSelectiontextarea( document.getElementById("text") );
-	var expressionText = getSelectiontextarea( document.getElementById("text") );
+   	var expressionText = getSelectiontextarea( document.getElementById("text") );
 	var expressionHTML = getSelectiontextarea( document.getElementById("text") );
 	document.getElementById("text").focus();
 	document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -387,13 +387,7 @@ document.getElementById("text_res").designMode='on';
 document.getElementById("html_res").designMode='on';
 document.getElementById("text_res").contentEditable = true; void(0);
 document.getElementById("html_res").contentEditable = true; void(0);	
-/*if ("onpropertychange" in expressionHTML) {
-expressionHTML=expressionText;
-}
-/*if (expressionHTML.onchange==change(){}){
 
-expressionHTML=expressionText;
-}*/
 }
 			function Link()
 			{
@@ -446,10 +440,12 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
-				expressionStart=str.substring
-	            expressionEnd=str.substring
+				expressionStart=(expression.value).substring(0,expression.selectionStart);
+	            expressionEnd=(expression.value).substring(expression.selectionEnd);
 				expressionText = getSelectiontextarea( document.getElementById("text") );
 	            expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+	            document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<span class="strong">'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML='<span class="strong">'+expressionHTML+'</span>';
 				document.getElementById("RESULTTEXT").id = "text_res";
