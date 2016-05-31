@@ -62,8 +62,8 @@
 		</div>
 	<script>
 	 var expression = document.getElementById("text").value;
-	var expressionStart=expression.substring(0,expression.selectionStart);
-	var expressionEnd=expression.substring(expression.selectionEnd);
+	var expressionStart=expression.substring(0,expression.selectionStart).value;
+	var expressionEnd=expression.substring(expression.selectionEnd).value;
    
 	var expressionText = getSelectiontextarea( document.getElementById("text") );
 var expressionHTML = getSelectiontextarea( document.getElementById("text") );
@@ -440,13 +440,15 @@ document.getElementById("html_res").contentEditable = true; void(0);
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
 				expressionStart=expression.substring(0,expression.selectionStart);
+				expressionStart
+				expressionEnd
 	            expressionEnd=expression.substring(expression.selectionEnd);
 				expressionText = getSelectiontextarea( document.getElementById("text") );
 	            expressionHTML = getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 	            document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<span class="strong">'+expressionText+'</span>'+expressionEnd;
-				document.getElementById("RESULTHTML").innerHTML='<span class="strong">'+expressionHTML+'</span>';
+				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<span class="strong">'+expressionHTML+'</span>'+expressionEnd;
 				document.getElementById("RESULTTEXT").id = "text_res";
 				document.getElementById("RESULTHTML").id = "html_res";
 				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT">qwe</span></p>';
