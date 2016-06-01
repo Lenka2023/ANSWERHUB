@@ -67,11 +67,9 @@
 	 var expression = document.getElementById("text").value;
 	var expressionStart=expression.substring(0,expression.selectionStart).value;
 	var expressionEnd=expression.substring(expression.selectionEnd).value;
-   
-	var expressionText = getSelectiontextarea( document.getElementById("text") );
-var expressionHTML = getSelectiontextarea( document.getElementById("text") );
+   	var expressionText = getSelectiontextarea( document.getElementById("text") );
+    var expressionHTML = getSelectiontextarea( document.getElementById("text") );
 
-/*document.designMode='on';/* document.body.contentEditable = true; void(0);*/
 	var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var is_ie     = ( (uagent.indexOf('msie') != -1) && (!is_opera) && (!is_safari) && (!is_webtv) );
@@ -94,7 +92,7 @@ function getElementsById(elementID){
     }
     return elementCollection;
 };
-function getSelectionresult( div)
+/*function getSelectionresult( div)
 {
     var selection = null;
     if ((ua_vers >= 4) && is_ie && is_win) {
@@ -110,7 +108,9 @@ function getSelectionresult( div)
         selection = (div.value).substring(div.selectionStart, div.selectionEnd);
     }
     return selection;
-}
+}*/aza
+
+
 function getSelectiontextarea( textarea )
 {
     var selection = null;
@@ -381,9 +381,7 @@ PurgeRedoSequence();
 				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 				
 	var result=document.getElementById("result");
-	 expressionText = getSelectiontextarea( document.getElementById("text") );
-	 expressionHTML = getSelectiontextarea( document.getElementById("text") );
-
+	
 document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left">'+expressionText+'</span>'+expressionEnd;
 document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left">'+expressionHTML+'</span>'+expressionEnd;
 document.getElementById("RESULTTEXT").id = "text_res";
@@ -404,6 +402,11 @@ document.getElementById("html_res").contentEditable = true; void(0);
 	            textarea=document.getElementById("text");
 				var Link_Title= getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").focus();
+				expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
+				
  				document.getElementById("text").innerHTML = Link_Title.replace(/\n/g, '<br>');
 				var x=prompt("Enter a link","");
 				PurgeRedoSequence();
@@ -426,6 +429,11 @@ document.getElementById("html_res").contentEditable = true; void(0);
 	            textarea=document.getElementById("text");
 				var Image_Title= getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").focus();
+				expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
+				
  				document.getElementById("text").innerHTML = Image_Title.replace(/\n/g, '<br>');
 				var x=prompt("Enter a name of image","");
 				PurgeRedoSequence();
@@ -479,6 +487,15 @@ document.getElementById("html_res").contentEditable = true; void(0);
 	            textarea=document.getElementById("text");
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
+				expressionText = getSelectiontextarea( document.getElementById("text") );
+				expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+                expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
+				
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="commands"><pre>'+expressionText+'</pre></div>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="commands"><pre>'+expressionHTML+'</pre></div>'+expressionEnd;
 				document.getElementById("RESULTTEXT").id = "text_res";
@@ -632,6 +649,15 @@ document.getElementById("html_res").contentEditable = true; void(0);
 	            textarea=document.getElementById("text");
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
+				expressionText = getSelectiontextarea( document.getElementById("text") );
+				expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+                expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
+				
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="main_title">'+expressionText+'</div>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="main_title">'+expressionHTML+'</div>'+expressionEnd;
 				document.getElementById("RESULTTEXT").id = "text_res";
@@ -652,6 +678,15 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				textarea=document.getElementById("text");
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
+				expressionText = getSelectiontextarea( document.getElementById("text") );
+				expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+                expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
+				
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<span class="middle_title">'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<span class="middle_title">'+expressionHTML+'</span>'+expressionEnd;
 				document.getElementById("RESULTTEXT").id = "text_res";
@@ -672,6 +707,14 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				textarea=document.getElementById("text");
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
+				expressionText = getSelectiontextarea( document.getElementById("text") );
+				expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+                expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="down_title">'+expressionText+'</div>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="down_title">'+expressionHTML+'</div>'+expressionEnd;
 				document.getElementById("RESULTTEXT").id = "text_res";
@@ -688,7 +731,16 @@ document.getElementById("html_res").contentEditable = true; void(0);
 			function DownPage_title(){
 	PurgeRedoSequence();
 	expression = document.getElementById("text").value;
-	textarea=document.getElementById("text");	document.getElementById("text").focus();
+	textarea=document.getElementById("text");	
+	document.getElementById("text").focus();
+	expressionText = getSelectiontextarea( document.getElementById("text") );
+				expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+                expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 	document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 	var result=document.getElementById("result");
 	
@@ -709,7 +761,16 @@ document.getElementById("html_res").contentEditable = true; void(0);
 			{
 				PurgeRedoSequence();
 				expression = document.getElementById("text").value;
-				textarea=document.getElementById("text");				document.getElementById("text").focus();
+				textarea=document.getElementById("text");				
+				document.getElementById("text").focus();
+				expressionText = getSelectiontextarea( document.getElementById("text") );
+				expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+                expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
                 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="title strong"><span>'+expressionText+'</span></div>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="title strong"><span>'+expressionHTML+'</span></div>'+expressionEnd;
@@ -731,6 +792,14 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				textarea=document.getElementById("text"); 				
 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
+				expressionText = getSelectiontextarea( document.getElementById("text") );
+				expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+                expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left strong font_size">'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong font_size">'+expressionHTML+'</span>'+expressionEnd;
 				document.getElementById("RESULTTEXT").id = "text_res";
@@ -751,6 +820,14 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				textarea=document.getElementById("text");
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
+				expressionText = getSelectiontextarea( document.getElementById("text") );
+				expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+                expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 				var x=prompt("Enter title of capture","");
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expressionHTML+'</span>'+expressionEnd;
@@ -772,6 +849,10 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				textarea=document.getElementById("text");
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
+				expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 				var x=prompt("Enter title of capture","");
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left "><span class="strong ">'+x+'</span>'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left "><span class="strong ">'+x+'</span>'+expressionHTML+'</span>'+expressionEnd;
@@ -793,6 +874,14 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				textarea=document.getElementById("text");
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
+				expressionText = getSelectiontextarea( document.getElementById("text") );
+				expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+                expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 				var x=prompt("Enter a name of image","");
 				document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
 				document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
@@ -817,6 +906,14 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				textarea=document.getElementById("text");
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
+				expressionText = getSelectiontextarea( document.getElementById("text") );
+				expressionHTML = getSelectiontextarea( document.getElementById("text") );
+				document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+				document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
+                expressionStart=expression.substring(0,textarea.selectionStart);
+				expressionEnd=expression.substring(textarea.selectionEnd);
+				expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="border">'+
           '<table class="elliptic">'+
             '<tbody>'+
