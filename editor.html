@@ -61,10 +61,15 @@
 		<span id="RESULTTEXT"></span>
 		</div>
 	<script>
+	var textarea=document.getElementById("text");
+
+textarea.onpropertychange = function() {
+      document.getElementById('RESULTHTML').innerHTML = textarea.value;
+	  //document.getElementById("text").blur();
+	  };
 	var expressionText = getSelectiontextarea( document.getElementById("text") );
 	var expressionHTML = getSelectiontextarea( document.getElementById("text") );
-	var textarea=document.getElementById("text");
-	 var expression = document.getElementById("text").value;
+	var expression = document.getElementById("text").value;
 	var expressionStart=expression.substring(0,expression.selectionStart).value;
 	var expressionEnd=expression.substring(expression.selectionEnd).value;
    	var expressionText = getSelectiontextarea( document.getElementById("text") );
