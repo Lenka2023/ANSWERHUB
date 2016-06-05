@@ -74,7 +74,8 @@ textarea=document.getElementById("text");
 
   //if ("onpropertychange" in textarea) {
     // старый IE
-    textarea.onkeyup = function() {
+    textarea.oninput = function() {
+	textarea=document.getElementById("text");
 	document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
 
       document.getElementById('RESULTHTML').innerHTML = textarea.value;
