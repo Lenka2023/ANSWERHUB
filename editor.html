@@ -64,6 +64,9 @@
 	var textarea=document.getElementById("text");
 
 textarea.oninput = function() {
+textarea=document.getElementById("text");
+	document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
+
       document.getElementById('RESULTHTML').innerHTML = textarea.value;
 	  //document.getElementById("text").blur();
 	  };
@@ -357,7 +360,7 @@ function Undo(){
 	}
 	if (historyIndex < historyIndexMax) { redo.disabled=''; }
 };
-//-------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------
 function Delete(){
 PurgeRedoSequence();
 document.getElementById("text_res").innerHTML = '';
