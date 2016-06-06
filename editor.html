@@ -84,9 +84,8 @@ textarea=document.getElementById("text");
 	  };
 	var expressionText = getSelectiontextarea( document.getElementById("text") );
 	var expressionHTML = getSelectiontextarea( document.getElementById("text") );
-	var expression = document.getElementById("text").value;
-	var expressionStart=expression.substring(0,expression.selectionStart).value;
-	var expressionEnd=expression.substring(expression.selectionEnd).value;
+	var expressionStart=(textarea.value).substring(0,textarea.selectionStart).value;
+	var expressionEnd=(textarea.value).substring(textarea.selectionEnd).value;
    	var expressionText = getSelectiontextarea( document.getElementById("text") );
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
 
