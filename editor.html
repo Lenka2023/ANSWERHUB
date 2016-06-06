@@ -92,6 +92,7 @@
 				}
 	
 function Make(){
+	PurgeRedoSequence();
 document.getElementById("RESULTTEXT").id = "text_res";
 document.getElementById("RESULTHTML").id = "html_res";
 document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
@@ -367,7 +368,7 @@ function myFunction() {
     x.innerHTML=y.innerHTML;
 						}
 function Txt(){
-PurgeRedoSequence();
+
 	SomeVar();
 				
 	var result=document.getElementById("result");
@@ -414,7 +415,7 @@ Make();
 			}
 			function Bold()
 			{
-				PurgeRedoSequence();
+				
 				SomeVar();
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<span class="strong">'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<span class="strong">'+expressionHTML+'</span>'+expressionEnd;
@@ -422,7 +423,7 @@ Make();
 			}
                   function Code()
 			{
-				PurgeRedoSequence();
+				
 	            SomeVar();
 				
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="commands"><pre>'+expressionText+'</pre></div>'+expressionEnd;
@@ -431,7 +432,6 @@ Make();
 			}
 			function Main_List()
 			{
-			PurgeRedoSequence();
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -449,7 +449,6 @@ document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
 			}
 			function Square_List()
 			{
-				PurgeRedoSequence();
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -466,7 +465,6 @@ document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
 			}
 			function None_List()
 			{
-				PurgeRedoSequence();
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -483,7 +481,6 @@ document.getElementById("RESULTHTML").innerHTML= none_list + '</ul>';
 			}
 			function Decimal_List()
 			{
-				PurgeRedoSequence();
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus
@@ -500,7 +497,6 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
 			}
 			function Disc_List()
 			{
-				PurgeRedoSequence();
 				var expression = getSelectiontextarea( document.getElementById("text") );
  				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -519,7 +515,7 @@ for(var i=0;i<n;i++){
 			}
 			function Main_title()
 			{
-				PurgeRedoSequence();
+				
 	            SomeVar();
 				
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="main_title">'+expressionText+'</div>'+expressionEnd;
@@ -528,7 +524,7 @@ for(var i=0;i<n;i++){
 			}
 			function Middle_Title()
 			{
-				PurgeRedoSequence();
+				
 				SomeVar();
 				
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<span class="middle_title">'+expressionText+'</span>'+expressionEnd;
@@ -537,14 +533,14 @@ for(var i=0;i<n;i++){
 			}
 			function Down_title()
 			{
-				PurgeRedoSequence();
+				
 				SomeVar();
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="down_title">'+expressionText+'</div>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="down_title">'+expressionHTML+'</div>'+expressionEnd;
 				Make();	
 			}
 			function DownPage_title(){
-	PurgeRedoSequence();
+	
 	SomeVar();
 	var result=document.getElementById("result");
 	
@@ -554,7 +550,7 @@ Make();
 }
 			function Red_title()
 			{
-				PurgeRedoSequence();
+				
 				SomeVar();
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="title strong"><span>'+expressionText+'</span></div>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="title strong"><span>'+expressionHTML+'</span></div>'+expressionEnd;
@@ -562,7 +558,7 @@ Make();
 			}
 			function Small_title()
 			{
-				PurgeRedoSequence();
+				
 				SomeVar();
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left strong font_size">'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong font_size">'+expressionHTML+'</span>'+expressionEnd;
@@ -570,7 +566,7 @@ Make();
 			}
 			function Capture()
 			{
-				PurgeRedoSequence();
+				
 				SomeVar();
 				var x=prompt("Enter title of capture","");
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expressionText+'</span>'+expressionEnd;
@@ -579,7 +575,7 @@ Make();
 			}
 			function Listing()
 			{
-				PurgeRedoSequence();
+				
 				textarea=document.getElementById("text");
 				document.getElementById("text").focus();
 				expressionStart=(textarea.value).substring(0,textarea.selectionStart);
@@ -593,7 +589,7 @@ Make();
 			}
 			function Smallicon()
 			{
-				PurgeRedoSequence();
+				
 				textarea=document.getElementById("text");
 				document.getElementById("text").focus();
 				SomeVar();
@@ -607,7 +603,7 @@ Make();
 			}
             function Hot_Tip()
 			{
-				PurgeRedoSequence();
+				
 				SomeVar();
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="border">'+
           '<table class="elliptic">'+
@@ -643,7 +639,7 @@ Make();
 			}
             function Table()
 			{
-				PurgeRedoSequence();
+				
 				var expression = getSelectiontextarea( document.getElementById("text") );
 				document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
 				document.getElementById("text").focus();
@@ -668,27 +664,18 @@ for(var i = 0, text; i <= x;i++){
 }
 document.getElementById("RESULTTEXT").innerText= table + '</tbody></table>';
 document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-				operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-				document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function CBT()
 			{
-			PurgeRedoSequence();
+			
 				document.getElementById("RESULTTEXT").innerText='<br class="cbt">';
 				document.getElementById("RESULTHTML").innerHTML='<br class="cbt">';
 				Make();	
 			}
 			function Footer()
 			{
-			PurgeRedoSequence();
+			
 				document.getElementById("RESULTTEXT").innerText= '</div>'+
 				'<div class="footer">'+
         '<span> DZone, Inc. | www.dzone.</span>'+
