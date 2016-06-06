@@ -61,7 +61,39 @@
 		<span id="RESULTTEXT"></span>
 		</div>
 	<script>
+	//----------------------------------------------------------------------------------------------------------
 	var textarea=document.getElementById("text");
+	/*function Init () {
+textarea=document.getElementById("text");
+            if (textarea.addEventListener) {    // all browsers except IE before version 9
+                textarea.addEventListener ("input", OnInput, false);
+                    // Google Chrome and  Safari
+                textarea.addEventListener ("textInput", OnTextInput, false);
+                    // Internet Explorer from version 9
+                textarea.addEventListener ("textinput", OnTextInput, false);
+            }
+            
+            if (textarea.attachEvent) { // Internet Explorer and Opera
+                textarea.attachEvent ("onpropertychange", OnPropChanged);   // Internet Explorer
+            }
+        }
+
+            // Google Chrome, Safari and Internet Explorer from version 9
+        function OnTextInput (event) {
+            alert ("The following text has been entered: " + event.data);
+        }
+            // Firefox, Google Chrome, Opera, Safari from version 5, Internet Explorer from version 9
+        function OnInput (event) {
+            alert ("The new content: " + event.target.value);
+        }
+            // Internet Explorer
+        function OnPropChanged (event) {
+            if (event.propertyName.toLowerCase () == "value") {
+                alert ("The new content: " + event.srcElement.value);
+            }
+        }*/
+        //--------------------------------------------------------------------------------------------------
+	
 
 /*textarea.oninput = function() {
 textarea=document.getElementById("text");
@@ -88,7 +120,18 @@ textarea=document.getElementById("text");
 	var expressionEnd=(textarea.value).substring(textarea.selectionEnd).value;
    	var expressionText = getSelectiontextarea( document.getElementById("text") );
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
-
+/*function Make(){
+document.getElementById("RESULTTEXT").id = "text_res";
+document.getElementById("RESULTHTML").id = "html_res";
+document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
+document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
+document.getElementById("text").value='';
+operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+document.getElementById("text_res").designMode='on';
+document.getElementById("html_res").designMode='on';
+document.getElementById("text_res").contentEditable = true; void(0);
+document.getElementById("html_res").contentEditable = true; void(0);	
+}*/
 	var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var is_ie     = ( (uagent.indexOf('msie') != -1) && (!is_opera) && (!is_safari) && (!is_webtv) );
@@ -241,12 +284,7 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
                 '<span class="strong">'+down_title+'</span>'+
               '</div>'+
             '</div></div> <br class="cbt">';}		
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-			operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+				Make();
 	
 			}
 function Down(){
@@ -399,17 +437,7 @@ PurgeRedoSequence();
 	
 document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left">'+expressionText+'</span>'+expressionEnd;
 document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left">'+expressionHTML+'</span>'+expressionEnd;
-document.getElementById("RESULTTEXT").id = "text_res";
-document.getElementById("RESULTHTML").id = "html_res";
-document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
-
+Make();
 }
 			function Link()
 			{
@@ -426,16 +454,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				PurgeRedoSequence();
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<a  href="'+x+'">'+Link_Title+'</a>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<a  href="'+x+'">'+Link_Title+'</a>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Image()
 			{
@@ -454,16 +473,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				document.getElementById("RESULTHTML").innerHTML='<img src="img/'+x+'"alt="622">';
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<img src="img/'+Image_Title+'"alt="622">'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<img src="img/'+Image_Title+'"alt="622">'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				//document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Bold()
 			{
@@ -480,16 +490,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 	            document.getElementById("text").innerHTML = expressionHTML.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<span class="strong">'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<span class="strong">'+expressionHTML+'</span>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				///document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);			
+				Make();		
 			}
                   function Code()
 			{
@@ -507,16 +508,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="commands"><pre>'+expressionText+'</pre></div>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="commands"><pre>'+expressionHTML+'</pre></div>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML+= '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML+= '<p><span id="RESULTHTML"></span></p>';
-				//document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Main_List()
 			{
@@ -534,16 +526,7 @@ var text=prompt("Enter a text for  <li>","");
 }
  document.getElementById("RESULTTEXT").innerText= main_list + '</ul>';
 document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();
 			}
 			function Square_List()
 			{
@@ -560,16 +543,7 @@ var text=prompt("Enter a text for  <li>","");
 }
  document.getElementById("RESULTTEXT").innerText= square_list + '</ul>';
 document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function None_List()
 			{
@@ -586,16 +560,7 @@ for(var i=0;i<n;i++){
 }
  document.getElementById("RESULTTEXT").innerText= none_list + '</ul>';
 document.getElementById("RESULTHTML").innerHTML= none_list + '</ul>';
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();
 			}
 			function Decimal_List()
 			{
@@ -612,16 +577,7 @@ for(var i=0;i<n;i++){
 }
  document.getElementById("RESULTTEXT").innerText= decimal_list + '</ol>';
 document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Disc_List()
 			{
@@ -640,16 +596,7 @@ for(var i=0;i<n;i++){
 					}
 				 document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
 				document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Main_title()
 			{
@@ -667,16 +614,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="main_title">'+expressionText+'</div>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="main_title">'+expressionHTML+'</div>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				//document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Middle_Title()
 			{
@@ -694,16 +632,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<span class="middle_title">'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<span class="middle_title">'+expressionHTML+'</span>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				//document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Down_title()
 			{
@@ -720,16 +649,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="down_title">'+expressionText+'</div>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="down_title">'+expressionHTML+'</div>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				//document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function DownPage_title(){
 	PurgeRedoSequence();
@@ -747,16 +667,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 	
 document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left strong">'+expressionText+'</span><br>'+expressionEnd;
 document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong">'+expressionHTML+'</span><br>'+expressionEnd;
-document.getElementById("RESULTTEXT").id = "text_res";
-document.getElementById("RESULTHTML").id = "html_res";
-document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-//document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+Make();	
 }
 			function Red_title()
 			{
@@ -773,16 +684,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="title strong"><span>'+expressionText+'</span></div>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="title strong"><span>'+expressionHTML+'</span></div>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				//document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Small_title()
 			{
@@ -799,16 +701,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left strong font_size">'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong font_size">'+expressionHTML+'</span>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				//document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Capture()
 			{
@@ -826,16 +719,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				var x=prompt("Enter title of capture","");
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expressionHTML+'</span>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Listing()
 			{
@@ -849,16 +733,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				var x=prompt("Enter title of capture","");
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left "><span class="strong ">'+x+'</span>'+expressionText+'</span>'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left "><span class="strong ">'+x+'</span>'+expressionHTML+'</span>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Smallicon()
 			{
@@ -879,16 +754,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 				document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
 				document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><img src="img/'+expressionText+'"alt="622" class="textwrap smallicon">'+expressionEnd;
 				document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><img src="img/'+expressionHTML+'"alt="622" class="textwrap smallicon">'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
             function Hot_Tip()
 			{
@@ -933,16 +799,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
           '</table>'+
           '<br class="cbt">'+
         '</div>'+expressionEnd;
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				//document.getElementById("text").value='';
-				operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-				document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
             function Table()
 			{
@@ -987,16 +844,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
 			PurgeRedoSequence();
 				document.getElementById("RESULTTEXT").innerText='<br class="cbt">';
 				document.getElementById("RESULTHTML").innerHTML='<br class="cbt">';
-				document.getElementById("RESULTTEXT").id = "text_res";
-				document.getElementById("RESULTHTML").id = "html_res";
-				document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-				document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-				document.getElementById("text").value='';
-				operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-				document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+				Make();	
 			}
 			function Footer()
 			{
@@ -1015,15 +863,7 @@ document.getElementById("html_res").contentEditable = true; void(0);
     '</div>'+	
   '</body>'+
 '</html>';
-document.getElementById("RESULTTEXT").id = "text_res";
-document.getElementById("RESULTHTML").id = "html_res";
-document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
-		operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-		document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+Make();	
 			}
 </script>	
 	</body>
