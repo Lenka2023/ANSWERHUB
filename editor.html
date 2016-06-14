@@ -296,8 +296,8 @@ function isHidden(obj) {
 }
 	 
 function Reundo() {
-	var html_res_array = getElementsById('html_res');
-	var text_res_array = getElementsById('text_res');
+	var html_res_array = getElementsById('RESULTHTML');
+	var text_res_array = getElementsById('RESULTTEXT');
 	
 	for (var i = 0; i < html_res_array.length; i++)
 	{
@@ -317,8 +317,8 @@ function Reundo() {
 };
 function PurgeRedoSequence()
 {
-	var html_res_array = getElementsById('html_res');
-	var text_res_array = getElementsById('text_res');
+	var html_res_array = getElementsById('RESULTHTML');
+	var text_res_array = getElementsById('RESULTTEXT');
 	
 	for (var i = 0; i < html_res_array.length; i++)
 	{
@@ -356,15 +356,15 @@ function Undo(){
 //--------------------------------------------------------------------------------------------------------------------------------
 function Delete(){
 PurgeRedoSequence();
-document.getElementById("text_res").innerHTML = '';
-document.getElementById("html_res").innerHTML = '';
-document.getElementById("text_res").id = "text_res";
-document.getElementById("html_res").id = "html_res";
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+document.getElementById("RESULTTEXT").innerHTML = '';
+document.getElementById("RESULTHTML").innerHTML = '';
+document.getElementById("RESULTTEXT").id = "RESULTTEXT";
+document.getElementById("RESULTHTML").id = "RESULTHTML";
+operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
 }
 function myFunction() {
-    var x = document.getElementById("text_res");
-	var y=document.getElementById("html_res");
+    var x = document.getElementById("RESULTTEXT");
+	var y=document.getElementById("RESULTHTML");
     x.innerHTML=y.innerHTML;
 						}
 function Txt(){
