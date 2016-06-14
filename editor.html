@@ -95,8 +95,8 @@ function Make(){
 	PurgeRedoSequence();
 document.getElementById("RESULTTEXT").id = "text_res";
 document.getElementById("RESULTHTML").id = "html_res";
-document.getElementById("result").innerHTML += '<p><span id="RESULTTEXT"></span></p>';
-document.getElementById("area").innerHTML += '<p><span id="RESULTHTML"></span></p>';
+document.getElementById("result").innerHTML += '<span id="RESULTTEXT"></span>';
+document.getElementById("area").innerHTML += '<span id="RESULTHTML"></span>';
 //document.getElementById("text").value='';
 operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
 document.getElementById("text_res").designMode='on';
