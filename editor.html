@@ -93,16 +93,16 @@
 	
 function Make(){
 	PurgeRedoSequence();
-document.getElementById("RESULTTEXT").id = "text_res";
-document.getElementById("RESULTHTML").id = "html_res";
-document.getElementById("result").innerHTML += '<span id="RESULTTEXT"></span>';
-document.getElementById("area").innerHTML += '<span id="RESULTHTML"></span>';
+//document.getElementById("RESULTTEXT").id = "text_res";
+//document.getElementById("RESULTHTML").id = "html_res";
+//document.getElementById("result").innerHTML += '<span id="RESULTTEXT"></span>';
+//document.getElementById("area").innerHTML += '<span id="RESULTHTML"></span>';
 //document.getElementById("text").value='';
-operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
-document.getElementById("text_res").designMode='on';
-document.getElementById("html_res").designMode='on';
-document.getElementById("text_res").contentEditable = true; void(0);
-document.getElementById("html_res").contentEditable = true; void(0);	
+operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
+document.getElementById("RESULTTEXT").designMode='on';
+document.getElementById("RESULTHTML").designMode='on';
+document.getElementById("RESULTTEXT").contentEditable = true; void(0);
+document.getElementById("RESULTHTML").contentEditable = true; void(0);	
 }
 	var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
