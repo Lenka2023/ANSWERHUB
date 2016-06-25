@@ -49,14 +49,6 @@ color:#FFFFFF;
     margin-top: 20px;
 }
 .HotTip{
- width: 15%;
-    min-height: 150px;
-    background:#FFFF33;  
-    border-radius:5px 0 0 5px;
-	text-align:center;
-	float:left;
-}
-/*.HotTip{
 float:left;
 background:#FFFF33;
 width:15%;
@@ -75,17 +67,6 @@ text-align:left;
  	padding: 15px 30px 15px 35px;
 
 
-
-}
-*/
-.block{
-width:85%;
-    min-height: 150px;
-    background:#3333FF;
-    float: right;
-	border-radius:0 5px 5px 0;
-text-align:left;
-vertical-align:middle;
 
 }
 .block  span{
