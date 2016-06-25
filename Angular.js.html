@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="css/style.css"type="text/css"/> 
+</head><body><div class="page_cont one">
+<br class="cbt"><div class="content">
+<div class="toppage">
+<div class="float_left"><ul class="top_page_list">
+<span class=" strong font_size">CONTENTS INCLUDE:</span> 
+<a href="#towhat"> <li>What is AngularJS?</li> </a> <a href="#toBuilding"> 
+<li>AngularJS Building Blocks</li> </a> <a href="#toSetting"> <li>Setting up the Environment</li> 
+</a> <a href="#toBootstrap"> <li>AngularJS Bootstrap</li> </a> 
+<a href="#toModules"> <li>Modules</li> </a> <a href="#toControllers"> <li>Controllers...and more!</li>
+ </a>
+ </ul>
+ </div>
+ <div class="righttop">
+ <div class="main_title float_right">
+ 
+ <span class="title_font">AngularJS Essentials</span>
+ </div>
+ <div class="down_title ">
+ <span class="strong">By: Gil Fink</span></div>
+ 
+ </div>
+ </div>
+ <br class="cbt">
+<div class="title strong"><span id="towhat">What is AngularJS?</span></div>
+<br><span class="move_left">AngularJS is a very popular MVW (Model/View/Whatever)
+framework maintained by Google. AngularJS enables web
+developers to impose MVC structures on their client-side
+code and to build dynamic web applications more easily.</span>
+
+<br class="cbt">
+
+<br><span class="move_left">AngularJS introduces component-based architecture. It also
+includes a variety of conventions that developers should
+know and use, which will be presented in this Refcard.
+AngularJS includes a wide range of features that help to build
+Single Page Applications (SPAs) faster and is considered a
+“one-stop shop” for creating SPAs. Another good aspect of
+AngularJS is that it was written with testability in mind.</span>
+
+<br class="cbt">
+
+<br><span class="move_left">You will learn that AngularJS is expressive, readable,
+extensible, and quick to develop. All of these qualities
+make AngularJS one of the best JavaScript frameworks for
+application development</span>
+
+<br class="cbt">
+
+<br><span class="move_left">In this Refcard, you will get to know the essential parts of
+AngularJS. The Refcard will also try to help you speed up your
+development process when you use AngularJS. </span>
+
+<div class="title strong"><span id="toBuilding">A ngularJS Building Blocks</span></div>
+
+<br><span class="move_left">AngularJS includes a few building blocks that you should
+know and understand:</span>
+<table class="syntax_description"><tbody><tr><th>Version</th><th>Implementations</th></tr><tr><td>Modules</td><td>Logical containers for different parts of AngularJS objects</td></tr><tr><td>Controllers</td><td>A constructor functions that are used to hold scopes and expose behaviors that views can use</td></tr><tr><td>Scopes</td><td>Objects that reference the application model</td></tr><tr><td>Views</td><td>HTML that presents the models and interacts with the user</td></tr><tr><td>Templates</td><td>HTML that contains AngularJS-specific elements and attributes</td></tr><tr><td>Services</td><td>Objects that enable you to organize and share code in an AngularJS application</td></tr><tr><td>Filters</td><td>Transform the model data to an appropriate representation in the view</td></tr><tr><td>Directives</td><td>Reusable web components that tell the AngularJS HTML compiler how to render them and how the components behave. Can help you enrich the existing HTML elements or create your own custom ones</td></tr><tr><td>Routing</td><td>A module that maps URLs to application states / handles state and view switching</td></tr><tr><td>Dependency
+Injection</td><td>Design pattern that deals with how to
+inject dependencies to a dependent object.
+AngularJS uses this pattern and enables you
+to inject dependencies in a declarative way.</td></tr></tbody></table>
+<img src="img/module.png"alt="622">
+<br><span class="move_left">The following diagram shows how these building blocks work
+together to build the AngularJS ecosystem:</span>
+<br><span class="move_left">Let’s explore how some of these parts relate to the MVC
+design pattern:</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">The Model </span>
+<br class="cbt">
+<br><span class="move_left">The model is the data structure that holds some business data. It
+will usually reside from the server side using a REST API or from
+a service. The model is exposed to the AngularJS view using the
+$scope object. </span>
+<br class="cbt">
+<br><span class="move_left strong font_size">The View</span>
+<br class="cbt">
+<br><span class="move_left">The view is the HTML part that presents the data structure and
+enables user interactions. The view binds to a model using the
+$scope object. It can call controller functions through the $scope
+object as well. It uses filters to transform the model data to an
+appropriate representation. It also uses directives as reusable web
+components and for DOM manipulation.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">The Controller</span>
+<br class="cbt">
+<br><span class="move_left">The controller performs all the business logic and orchestrates
+operations. It is responsible for initializing the $scope, can
+interact with AngularJS services, and exposes functions to the
+view using the $scope object. The controller is also responsible
+for updating the model based on user’s view interactions. </span>
+
+<div class="title strong"><span id="toSetting">Setting up the Environment</span></div>
+
+<br><span class="move_left">The first thing that you will need to do is set up the environment.
+AngularJS can be downloaded from <a href="www.angularjs.org">www.angularjs.org</a> and
+included in your web page or it can be included directly from the
+Google Content Delivery Network (CDN):</span>
+<div class="commands"><pre><script src=”https://ajax.googleapis.com/ajax/libs/
+angularjs/1.2.9/angular.min.js”></script></pre></div>
+<br><span class="move_left">Another option is to install AngularJS using your favorite package
+manager and then include its script. For example, you can use
+Bower to install AngularJS using the following syntax:</span>
+<div class="commands"><pre>bower install angular</pre></div>
+
+<br><span class="move_left">A third option is to clone the GitHub angular-seed repository.
+Angular-seed is an application skeleton for the AngularJS web
+application. </span>
+
+<br class="cbt">
+
+<br><span class="move_left">Once AngularJS is installed in your web application, you can start
+working with it.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">The ng-app Directive</span>
+<br class="cbt">
+<br><span class="move_left">One of the most important AngularJS directives is the ng-app
+directive. ng-app bootstraps the application, and instructs
+AngularJS to load the main module that is given as the directive
+parameter. The next code example shows how to setup the ngapp
+directive to the myApp module:</span>
+
+<div class="commands"><pre><!doctype html>
+<html ng-app=”myApp”>
+<head>
+<script src=”https://ajax.googleapis.com/ajax/libs/
+angularjs/1.2.9/angular.min.js”></script>
+</head>
+<body>
+<div>
+</div>
+</body>
+</html></pre></div>
+<div class="title strong"><span id="toBootstrap">A ngularJS Bootstrap</span></div>
+<br><span class="move_left">Once the browser loads a web page and it includes the
+AngularJS script along with the ng-app directive, AngularJS
+is bootstrapping. There are two options for bootstrapping:
+automatic bootstrap and manual bootstrap. Let’s explore both of
+these options</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Automatic Bootstrap</span>
+<br class="cbt">
+<br><span class="move_left">Three main things happen when AngularJS is automatically
+bootstrapping. First, AngularJS creates an injector object, which
+will be used later on for dependency injection. Then, AngularJS
+creates the root scope, which is the root for all the scopes in the
+application. Finally, AngularJS compiles the Document Object
+Model (DOM) starting from the ng-app directive, compiling
+and processing all the directives and bindings that it finds in the
+DOM.</span>
+<br class="cbt">
+<br><span class="move_left">The following diagram shows the process:</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Manual Bootstrap</span>
+<br class="cbt">
+<br><span class="move_left">Sometimes you want to perform operations before AngularJS
+starts. These operations can be configurations, retrieving relevant
+data or anything else you might think about. AngularJS enables
+you to manual bootstrap the application. You will need to remove
+the ng-app directive from the HTML and use the angular.
+bootstrap function instead. Pay attention, as you will need to
+declare your modules before using them in the angular.bootstrap
+function. Manual AngularJS bootstrapping is not so common.
+Now that we know about how to start an AngularJS application,
+let’s explore the first AngularJS building block – modules.</span>
+
+<div class="title strong"><span id="toModules">modules</span></div>
+<br><span class="move_left strong font_size">What is a Module?</span>
+<br class="cbt">
+<br><span class="move_left">AngularJS modules are logical containers for different parts of
+AngularJS objects. AngularJS applications are typically created
+with one or more modules. Modules can have dependencies on
+other modules. These dependencies are resolved automatically by
+AngularJS when a module is loaded into memory. </span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Creating a Module</span>
+<br class="cbt">
+<br><span class="move_left">You create modules using the angular.module function. Each
+created module should have a unique name that is passed as
+the first argument to the angular.module function. The second
+angular.module argument is an array of dependencies, which can
+have zero to many dependencies. Here is an example of using the
+angular.module function to declare a myApp module, which is
+dependent on a storageService:</span>
+
+<div class="commands"><pre>angular.module(‘myApp’, [‘storageService’]);</pre></div>
+<br><span class="move_left strong font_size">Configuring a Module</span>
+<br class="cbt">
+<br><span class="move_left">You can add module configuration using the config function once
+you declare a module. The configuration will get executed when
+the module is loading. You can inject providers or constants
+(which will be discussed later in the Refcard) to the configuration
+block you are writing. Here is an example of a call for the config
+function:</span>
+
+<div class="commands"><pre>angular.module(‘myApp’, [‘storageService’])
+.config(function ($provide, $filterProvider) {
+$provide.value(‘myValue’, 1);
+$filterProvider.register(‘myFilter’, ...);
+});</pre></div>
+
+<br><span class="move_left">In the previous code, there are two injectable objects - $provide
+and $filterProvider. In the config function body, we create a
+constant value called myValue, which is set to 1. We also register
+a filter called myFilter into the $filterProvider. </span>
+
+<br class="cbt">
+
+<br><span class="move_left">Another option to interact with an AngularJS module execution
+is to use the run function. The run function runs after all the
+modules have been loaded. The function is used to literally run
+the AngularJS application. You can inject services and constants
+into the run function callback. The following code shows how to
+use the run function:</span>
+
+<div class="commands"><pre>angular.module(‘myApp’, [‘storageService’])
+.run(function (someInstance) {
+someInstance.doSomething();
+});</pre></div>
+
+<br><span class="move_left">Now that we understand how to create and use modules, let’s
+explore the AngularJS dependency injection (DI) mechanism.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">AngularJS Dependency Injection</span>
+<br class="cbt">
+<br><span class="move_left">Each AngularJS application includes an $injector object. The
+$injector is responsible for dependency management and for
+dependency lookups. Here is a diagram that shows how DI works
+in AngularJS:</span>
+
+<br><span class="move_left">Let’s analyze what is going on in the diagram. Once the root
+module is created, AngularJS will create a new $injector object.
+While the application is running, a lot of objects such as
+controllers, services, and filters are registered in the $injector
+container. Later on, if an object has a dependency, AngularJS
+will use the $injector object to search it. If an instance of the
+dependency is available, it is returned by the $injector. If there is
+no instance of the dependency, a new object is created using the
+$injector instance factory. The new object is returned and also
+stored in the instance cache.</span>
+
+<br class="cbt">
+
+<br><span class="move_left">Some of the main AngularJS objects such as modules, controllers,
+and services can declare that they need a dependency. In order to
+do that, you need to add function arguments with the exact name
+of the dependency. That means that if you have an object named
+obj and you want to inject it, you will have to have a function
+argument in the AngularJS object with the same name. Here is a
+controller example that declares it needs a $scope injected object:</span>
+
+<div class="commands"><pre>var myApp = angular.module(‘myApp’,[]);
+myApp.controller(‘MyController ‘, function($scope) {
+});</pre></div>
+<br><span class="move_left">You can see the use of explicit DI syntax [‘$scope’,
+function($scope) {}] which helps to avoid minification issues.
+This is the preferred way to use DI in AngularJS, and in the code
+example we use it to create a controller. Speaking of controllers,
+let’s explore what these AngularJS objects are.</span>
+<div class="title strong"><span id="toControllers">Controllers</span></div>
+<br><span class="move_left strong font_size">What is a Controller?</span>
+<br class="cbt">
+<br><span class="move_left">AngularJS controllers are just JavaScript constructor functions
+that are used to hold scopes and to expose behaviors that views
+can use. You can think about controllers as the logic behind the
+view. Each controller has a new child scope that is available as the
+$scope argument in the constructor function. When a controller
+is created during runtime, the $injector will inject the $scope
+argument. Controllers add properties and functions to the $scope. </span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Creating a Controller</span>
+<br class="cbt">
+<br><span class="move_left">In order to create a controller, all you need to do is to declare
+a constructor function. The following code shows a simple
+controller:</span>
+
+<div class="commands"><pre>var myApp = angular.module(‘myApp’,[]);
+myApp.controller(‘MyController’, [‘$scope’,
+function($scope) {
+}]);</pre></div>
+
+<br><span class="move_left">The way to wire a controller constructor function to a view is
+using the ng-controller directive:</span>
+
+<div class="commands"><pre><div ng-controller=”MyController”>
+</div></pre></div>
+
+<br><span class="move_left"> A few notes about controller best practices:</span>
+
+<ol class="disc"><span class=" strong font_size"></span><li>Controllers should contain only business logic that relates to the view that they are bound to.</li><li>Business logic that isn’t related to the controller bound view should be injected into controllers as services.</li><li>Don’t use controllers for DOM manipulation, formatting, or filtering. We will discuss the ways to do those operations later in the Refcard.</li></ol>
+
+<br><span class="move_left">Now that you are familiar with controllers, let’s talk about scopes. </span>
+
+<div class="title strong"><span>scopes</span></div>
+<br><span class="move_left strong font_size">What is a scope?</span>
+<br class="cbt">
+<br><span class="move_left">Scopes are objects that include properties and the functions set by
+controllers that a view can later use. You can think about scopes
+as the glue between a controller and a single view.</span>
+<br class="cbt">
+<br><span class="move_left">Once a controller is attached to a view using the ng-controller
+directive, all the scope properties and functions are data bound
+to the view, and it can use them. Changes to scope properties
+are reflected in the bounded view and user interactions can also
+change the bound properties. </span>
+<br class="cbt">
+<br><span class="move_left strong font_size">What is the digest cycle?</span>
+<br class="cbt">
+<br><span class="move_left">The digest cycle in AngularJS is code that runs in intervals and
+its main idea is to enable data binding. Its purpose is to observe
+model mutations (using $watch API) and to propagate any model
+changes (using $apply API).</span>
+
+<br class="cbt">
+
+<br><span class="move_left">The next diagram shows what the digest cycle in AngularJS looks
+like:</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Using Scopes in Code</span>
+<br class="cbt">
+<br><span class="move_left">AngularJS runtime injects a scope object into a controller, and
+then the controller can set the $scope with properties and
+behaviors. The following example shows how to add a property
+called message and a function called myFunc to a scope object:</span>
+<div class="commands"><pre>var myApp = angular.module(‘myApp’,[]);
+myApp.controller(‘MyController ‘, function($scope) {
+$scope.message = ‘hello’;
+$scope.myFunc = function() {
+// do something
+}
+});</pre></div>
+
+<br><span class="move_left">You can also put full model objects inside scope properties that
+can later be used by a view.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">The $rootScope</span>
+<br class="cbt">
+<br><span class="move_left">All AngularJS scopes inherit their functionality from the
+$rootScope. Every AngularJS application has a single $rootScope.
+The $rootScope includes several utility functions that you can use
+which are also available on its child scopes such as $new, $watch,
+and $destroy. You can find more details about these functions in
+the AngularJS documentation.</span>
+
+<div class="title strong"><span>View</span></div>
+
+<br><span class="move_left">A view is dynamic HTML that presents models and interacts with
+the user. AngularJS views can be bound to a controller using the
+ng-controller directive. Once a binding is set, you can use scope
+properties and functions in the view. In order to harness the full
+potential of views, you should understand two AngularJS concepts
+that relate to views: templates and expressions. </span>
+<br class="cbt">
+<br><span class="move_left strong font_size">templates</span>
+<br class="cbt">
+<br><span class="move_left">A template is a declarative specification that contains HTML
+parts. It also contains AngularJS specific elements and attributes
+that are called directives and AngularJS expressions. The
+directives “explain” to AngularJS how to transform the template
+into a dynamic view. The expressions are placeholders that are
+used for data binding. The following example shows a template:</span>
+
+<div class="commands"><pre><div ng-controller=”MyController”>
+<input ng-model=”message”>
+<button ng-click=”changeMessage()”>{{btnTe
+xt}}</button>
+</div></pre></div>
+
+<br><span class="move_left strong font_size">Expressions</span>
+<br class="cbt">
+<br><span class="move_left">In the previous template example you can see that we used curly
+brackets to wrap btnText. This is an example of an expression.
+Expressions are JavaScript code used for binding. Expressions
+are placed in double curly brackets. When AngularJS processes a
+template, it searches for expressions, then parses and evaluates
+them. The evaluation of expressions is being done against
+the controller scope object. If the scope doesn’t contain the
+expression value, AngularJS will not throw an exception. This
+behavior enables you to perform lazy binding.</span>
+
+<br class="cbt">
+
+<br><span class="move_left">The following code example shows a simple expression that
+evaluates to 5:</span>
+
+<div class="commands"><pre><div> 3+2={{3+2}} </div></pre></div>
+
+<br><span class="move_left">AngularJS expressions don’t have access to global variables and
+can only use scope-exposed functionality. Expressions can’t use
+control flow statements except from the ternary operator (a ? b :
+c). </span>
+
+<br class="cbt">
+
+<br><span class="move_left">In AngularJS 1.3 you can also use expressions for one-time
+binding. Any expression that starts with :: will evaluate only once.
+The following code example shows you how to use one-time
+binding on a message property:</span>
+
+<div class="commands"><pre><div>
+One-time binding: {{::message}}
+</div></pre></div>
+<div class="title strong"><span>Services</span></div>
+<br><span class="move_left strong font_size">What is a Service? </span>
+<br class="cbt">
+<br><span class="move_left">Services in AngularJS are singleton objects that are used to
+perform a specific task. Services are UI independent, meaning
+that they shouldn’t manipulate or use UI elements (this is the
+role of view and directives). You can inject services to modules,
+controllers, filters, directives, and more. </span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Creating a Custom Service</span>
+<br class="cbt">
+<br><span class="move_left">There are four options for service creation in AngularJS:</span>
+
+<table class="syntax_description"><tbody><tr><th>Service Type</th><th>Description</th></tr><tr><td>value</td><td>Use the module’s value function with a given name and value. The injector will return the exact value.</td></tr><tr><td>factory</td><td>Use the module’s factory function with a given name and a factory function. The injector will invoke the given function.</td></tr><tr><td>service</td><td>Use the module’s service function with a given name and constructor function. The injector will use the new keyword to create the service single instance</td></tr><tr><td>provider</td><td>Use the module’s provider function with a given name and provider function. The injector will invoke the provider’s $get function.</td></tr></tbody></table>
+
+<br><span class="move_left">Here are usage examples for the first three options:</span>
+
+<div class="commands"><pre>var myApp = angular.module(‘myApp’,[]);
+myApp.value(‘myValue’, ‘a constant value);
+myApp.factory(‘myFactory’, function(name) {
+return ‘Hi ‘ + name;
+}
+myApp.service(‘myFactory’, function(name) {
+return ‘Hi ‘ + name;
+}</pre></div>
+
+<br><span class="move_left">When you want to use the previous services you will inject them
+to a dependent object by their name and use them. For example,
+here is a controller that uses the previous services:</span>
+
+<div class="commands"><pre>myApp.controller(‘myController’, function($scope,
+myValue, myFactory) {
+$scope.value = myValue;
+$scope.greet = myFactory;
+}); </pre></div>
+
+<br><span class="move_left strong font_size">Built-in AngularJS Services </span>
+<br class="cbt">
+<br><span class="move_left">AngularJS comes with several built-in services. Here are the
+descriptions of some of them:</span>
+
+<table class="syntax_description"><tbody><tr><th>Built-in Service</th><th>Description</th></tr><tr><td>$http</td><td>Used for communicating over HTTP with remote servers. The service receives as argument a configuration object for configuring the HTTP request.</td></tr><tr><td>$resource</td><td>Abstraction on top of $http for interaction with REST services. Require a dependency on ngResource module. Exposes functions such as get, save and delete.</td></tr><tr><td>$q</td><td>Exposes the ability to create promises (deferred objects) for cleaner design of asynchronous code.</td></tr><tr><td>$log</td><td>Enable to log messages</td></tr><tr><td>$location</td><td>Includes the current parsed URL. Changes to $location are reflected to the browser address bar.</td></tr></tbody></table>
+
+<br><span class="move_left">There are many other services such as $animate, $window,
+$rootScope, $interval, and $document You can read about those
+services in the AngularJS documentation:<a href="https://docs.angularjs. org/api/ng/service">https://docs.angularjs.
+org/api/ng/service</a>.</span>
+<div class="title strong"><span>Filters</span></div>
+<br><span class="move_left strong font_size">What is a Filter?</span>
+<br class="cbt">
+<br><span class="move_left">Filters format an evaluated expression value to an appropriate
+representation in the view. When you want to use a filter you just
+“pipe” it using the “|” sign to the expression like in the following
+code example:</span>
+
+<div class="commands"><pre>{{ message | filter }}</pre></div>
+
+<br><span class="move_left">For example, if you want to use a currency filter with a number
+value you just state the name of the filter:</span>
+
+<div class="commands"><pre>{{ 5 | currency }}</pre></div>
+
+<br><span class="move_left">The output of the expression will be 5$. </span>
+
+<br class="cbt">
+
+<br><span class="move_left">Filters can have arguments using the semicolon sign, and they
+can be chainable. On the other hand, filters shouldn’t depend on
+global state and should be stateless. </span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Creating a Custom Filter</span>
+<br class="cbt">
+<br><span class="move_left">You can create your custom filters in two ways: using
+the module’s filter function or registering a filter in the
+$filterProvider service. The first argument that a filter receives in
+its callback function is the input value. All the other arguments
+are considered additional arguments, which can be used by the
+filter function.</span>
+
+<br class="cbt">
+
+<br><span class="move_left">The following example shows how to register a filter that turns
+any string to its upper case representation:</span>
+
+<div class="commands"><pre>var myApp = angular.module(‘myApp’,[]);
+myApp.filter(‘uppercase’, function() {
+return function(str) {
+return (text || ‘’).toUpperCase();
+};
+}</pre></div>
+
+<br><span class="move_left strong font_size">Built-in AngularJS Filters</span>
+<br class="cbt">
+<br><span class="move_left">AngularJS comes with a set of built-in filters that you can use.
+Here are their descriptions:</span>
+
+<br><span class="move_left"></span>
+<table class="syntax_description"><tbody><tr><th>Built-in Filter</th><th>Description</th></tr><tr><td>currency</td><td>Used to format numbers as currency</td></tr><tr><td>date</td><td>Used to format dates as string</td></tr><tr><td>number</td><td>Used to format numbers as string</td></tr><tr><td>json</td><td>Converts JavaScript object to its string representation</td></tr><tr><td>lowercase</td><td>Transforms the given string into its lowercase representation</td></tr><tr><td>uppercase</td><td>Transforms the given string into its uppercase representation</td></tr><tr><td>limitTo</td><td>Creates a new array or string according to the specified number of elements</td></tr><tr><td>orderBy</td><td>Orders a given array by a given expression predicate</td></tr><tr><td>filter</td><td>Selects a subset of items form the given array</td></tr></tbody></table>
+<div class="title strong"><span>Directives</span></div>
+
+<br><span class="move_left strong font_size">What is a Directive?</span>
+<br class="cbt">
+<br><span class="move_left">Directives are one of the most powerful features in AngularJS.
+Directives are custom HTML elements and attributes that AngularJS
+recognizes as part of its ecosystem. Directives allow you to extend
+the existing HTML with your own elements or attributes and to add
+behavior to existing elements or attributes. You already saw a few of
+the AngularJS built-in directives such as ng-app and ng-controller</span>
+
+<br class="cbt">
+
+<br><span class="move_left">When an AngularJS bootstrap runs, the AngularJS’s HTML compiler
+($compile) is attaching a specified behavior to DOM elements
+according to directives. The process is done in two phases: compile
+and link. The compiler is traversing on the DOM and collects all
+the directives. The linker combines directives with their scope and
+produces a dynamic view. </span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Creating a Custom Directive</span>
+<br class="cbt">
+<br><span class="move_left">Like controllers, services, and filters, directives are also
+registered to modules. In order to register a directive, you will
+use the module’s directive function, which receives a directive
+name and a factory function. The factory function should return
+a directive definition object. The following example will create a
+bare directive with the name myDirective:</span>
+
+<div class="commands"><pre>var myApp = angular.module(‘myApp’,[]);
+myApp.directive(‘myDirective’, function() {
+return {
+};
+});</pre></div>
+
+<br><span class="move_left">The returned directive definition object can include various
+configuration options.</span>
+
+<table class="syntax_description"><tbody>
+<tr><th>Directive Configuration</th><th>Description</th>
+</tr><tr><td>restrict</td><td>By default directives are restricted to attributes. Using restrict you can restrict the directive to A (attribute), E (element), C (class) and M (comment)</td>
+</tr><tr><td>template</td>
+<td>Appends a given HTML as the child element of the element</td>
+</tr><tr><td>replace</td><td>If set to true will replace the entire element with a given template (used with the template or templateUrl configurations)</td></tr><tr><td>templateUrl</td><td>A URL for a given template that would be
+loaded and appended to the element</td>
+</tr><tr><td>scope</td><td>By default, directive has the scope of its parent controller. If Scope is set to {}, an isolated scope is created for the directive, You can map and bind parent properties to an isolated scope using @ (one directional mapping), = (bidirectional mapping), and & (executes an expression in the parent scope)</td>
+</tr><tr><td>link</td>
+<td>If set to true, the directive can wrap content. In the template of the directive you need to use the ng-transclude directive in order to mark the place to wrap content</td>
+</tr></tbody></table>
+<br><span class="move_left">The following code example shows a simple directive declaration:</span>
+<div class="commands"><pre>myApp.directive(‘myDialog’, function() {
+return {
+restrict: ‘EA’,
+scope: {},
+template: ‘<div class=”dialog”>{{message}}</div>’,
+link: function(scope, element, attrs) {
+scope.message = ‘hello’;
+}
+};
+});</pre></div>
+
+<br><span class="move_left">When you want to use this directive you can write in your HTML:</span>
+
+<div class="commands"><pre><my-dialog></my-dialog></pre></div>
+
+<br><span class="move_left">or:</span>
+
+<div class="commands"><pre><div my-dialog></div></pre></div>
+
+<br><span class="move_left strong font_size">Built-in Useful Directives</span>
+<br class="cbt">
+<br><span class="move_left">AngularJS includes many built-in and useful directives that you
+can use. </span>
+
+<table class="syntax_description"><tbody><tr><th>Built-in Directive</th>
+<th>Description</th></tr><tr><td>ngModel</td><td>Binds an HTML element to a property in the scope</td></tr>
+<tr><td>ngEventName (replace EventName with any DOM event)</td>
+<td>These directives enable you to add custom behavior on the specified event</td></tr><tr><td>ngValue</td>
+<td>Binds a given expression to a value of an input. When the input changes the bound model (which is the ngModel) changes as well</td>
+</tr><tr><td>ngBind</td><td>Binds an expression to the text content of a HTML element. When the expression changes the text, content changes as well</td></tr><tr><td>ngClass</td>
+<td>Retrieves an external HTML fragments,
+compile it and add it to the DOM  </td></tr>
+<tr><td>ngInclude</td>
+<td>Dynamically sets CSS classes on HTML elements by evaluating the given expression</td></tr><tr><td>ngRepeat</td><td>Collection iterator. In each item in the
+collection, the template that is bound to the
+directive is instantiated with its own scope </td></tr>
+<tr><td>ngShow</td>
+<td>Shows or hides an HTML element according to the evaluated expression</td>
+</tr><tr><td>ngSwitch</td>
+<td>Enables to create DOM evaluation
+conditions like a switch case statement</td></tr></tbody></table>
+<br><span class="move_left">You can find more built-in directives in the following AngularJS
+documentation: <a href="https://docs.angularjs.org/api/ng/directive">https://docs.angularjs.org/api/ng/directive</a>.</span>
+<div class="title strong"><span>A ngularJS and Forms</span></div>
+
+<br><span class="move_left">AngularJS adds two way binding, state management, and
+validation to HTML forms. You can bind HTML input types to
+models using the ngModel directive and AngularJS will provide all
+the mechanisms. </span>
+
+<br class="cbt">
+
+<br><span class="move_left">When AngularJS locates form elements in the DOM, it will make
+them available as a property of the scope. The name of the
+property will be the name of the form. Each input type in the
+form will be a sub-property of the scope form property</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Form Validation Directives</span>
+<br class="cbt">
+<br><span class="move_left">AngularJS provides a few built-in validation directives which can
+set the form validation $error property. The available directives
+are:</span>
+
+<table class="syntax_description"><tbody><tr><th>Validation Directive</th><th>Description</th></tr><tr><td>required</td><td>A required field</td></tr><tr><td>min</td><td>Validates the value is greater than the minimum value</td></tr><tr><td>max</td><td>Validates the value is less than the maximum value</td></tr><tr><td>minlength</td><td>Validates the value has length bigger than the provided minimum</td></tr><tr><td>maxlength</td><td>Validates the value has length smaller than the provided maximum</td></tr><tr><td>pattern</td><td>Validates the value against a given regular expression</td></tr></tbody></table>
+
+<br><span class="move_left">Here is an example of using form validation with AngularJS:</span>
+
+<div class="commands"><pre><form name=”myForm”>
+<div>
+<input type=”text” name=”username” ngmodel=”user.name”
+required/>
+</div>
+<div>
+<input type=”password” name=”password” ngmodel=”user.password”
+required />
+</div>
+<button ng-click=”login(user)”>
+Login
+</button>
+</form></pre></div>
+
+<br><span class="move_left">In this form, the scope will have a property with the name
+myForm that will be bound to the form. The myForm property
+will include the username and password sub-properties, which
+will include references to the input types. If the user name and
+password isn’t supplied, the $error of the form will be set to an
+error and the form wouldn’t submit.</span>
+
+<br class="cbt">
+
+<br><span class="move_left">AngularJS also decorates form elements and input types with CSS
+classes. You can use those classes to change the presented style
+of an element according to its state. The CSS classes that you can
+use are:</span>
+
+<ol class="disc"><span class=" strong font_size"></span><li>ng-valid</li><li>ng-invalid</li><li>ng-invalid-[validation name]</li><li>ng-pristine</li><li>ng-dirty</li></ol>
+
+<div class="title strong"><span>Routing</span></div>
+
+<br><span class="move_left">One of the most important mechanisms in Single Page
+Applications (SPA) is client-side routing. Client-side routing
+enables developers to intercept route changes and instead of
+rendering a new page in the server, render a document fragment
+in the client and replace a shell element. This is how you move
+from one page to another in SPAs. AngularJS provides a routing
+feature that can be used to create this behavior to inject views
+into an ngView decorated element.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">The ngRoute Module</span>
+<br class="cbt">
+<br><span class="move_left">The ngRoute module is a router module for AngularJS (it isn’t
+built-in to AngularJS). There are other options (such as uirouter),
+which are also very commonly used. In order to use a
+module, you will have to reference the angular-route script and
+add ngRoute as a dependency of your ngApp module.</span>
+
+<div class="commands"><pre><script src=”angular-route.js”></script>
+var myApp = angular.module(‘myApp’, [‘ngRoute’]);</pre></div>
+
+<br><span class="move_left">In order to register routes, you use the $routeProvider service.
+The $routeProvider service provides a when function to register
+routes and a default route that is set using the otherwise function.
+Each registered route includes a path and a configuration object. </span>
+
+<br><span class="move_left">The configuration object includes the following main
+configurations:</span>
+
+<table class="syntax_description"><tbody><tr><th>Route Configuration Option</th><th>Description</th></tr><tr><td>template/ templateUrl</td><td>The path/template string that represents the template that is going to be attached to an ngView</td></tr><tr><td>controller</td><td>The controller that is bound to the template’s scope</td></tr><tr><td>redirectTo</td><td>Name of the route to redirect to when you want to redirect to a different route</td></tr></tbody></table>
+
+<br><span class="move_left">Here is an example:</span>
+
+<div class="commands"><pre>myApp.config(function($routeProvider) {
+$routeProvider
+.when(‘/about’, {
+templateUrl: ‘views/about.html’,
+controller: ‘myController’
+}).when(‘/cart’, {
+templateUrl: ‘views/cart.html’
+}).otherwise({
+templateUrl: ‘views/home.html’,
+controller: ‘myController’
+});
+});</pre></div>
+
+<br><span class="move_left">For further research about AngularJS, explore the following web
+sites:</span>
+
+<ol class="disc"><span class=" strong font_size"></span><li> AngularJS web site:<a href="https://angularjs.org/"> https://angularjs.org/</a></li>
+<li>AngularJS Developer Guide:<a href="https://docs.angularjs.org/guide"> https://docs.angularjs.org/guide</a></li>
+<li>PhoneCat Tutorial App: <a href="https://docs.angularjs.org/tutorial">https://docs.angularjs.org/tutorial</a>
+</li><li> AngularJS official forum:<a href="https://groups.google.com/ forum/#!forum/angular"> https://groups.google.com/ forum/#!forum/angular</a></li>
+<li>AngularJS official Twitter handle: <a href="https://twitter.com/ angularjs">https://twitter.com/ angularjs</a>
+</li></ol>
+</div>
+<div class="down_page float_right"> 
+<div class="align_left medium_padding align_top float_left">
+<br><span class="move_left strong">ABOUT THE AUTHOR</span><br> 
+<br><img src="img/Gil_Fink.png"alt="622" class="textwrap smallicon"> 
+<br><span class="move_left">Gil Fink is a web development expert, ASP.NET/IIS Microsoft MVP and the founder ofsparXys. 
+He is currently consulting for various enterprises and companies, where he helps to develop web and RIA-based solutions. 
+He conducts lectures and workshops for individuals and enterprises who want to specialize in infrastructure and web development. 
+He is also co-author of several Microsoft Official Courses (MOCs) and training kits,
+ co-author of “Pro Single Page Application Development” book (Apress), the founder of Front-End.
+ IL Meetup and co-organizer of GDG Rashlatz Meetup. You can read his publications in his blog:<a href="http://blogs.microsoft.co.il/gilf/"> http://blogs.microsoft.co.il/gilf/</a>
+.</span></div>
+ <div class="align_left medium_padding align_top float_right"><br><span class="move_left strong">RECOMMENDED BOOK</span><br> 
+ <br><img src="img/book_angular.png"alt="622" class="textwrap smallicon"> <br><span class="move_left">Pro Single Page Application Development walks 
+ you through building a SPA step-by-step. SPA development comes with its own particular challenges, including tracking history, user interface performance, 
+ and how to handle search engine optimization. This book will be your one-stop shop for creating fluid, modern applications on the web. 
+ Browse Our Collection of 250+ Free Resources, including: Research Guides: Unbiased insight from leading tech experts Refcardz: 
+ Library of 200+ reference cards covering the latest tech topics Communiti es: Share links, author articles, and engage with other tech experts 
+<P><a href="http://www.apress.com/9781430266730">BUY NOW</a></P>
+</span></div></div>
+ <div class="footer"><span> DZone, Inc. | www.dzone.</span></div></div></body></html>

@@ -114,11 +114,7 @@ display:inline;
     -webkit-margin-end: 0px;
     font-weight: bold;
 }
-.down_title {
-	font-size: 20pt;
-	text-align: right;
-	vertical-align: bottom;
-}
+
 .float_left{
 float:left;
 }
