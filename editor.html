@@ -86,12 +86,11 @@
         var indexesToRemove = new Set();
         for (var i = 0; i < sourceArray.length; i++){
         for (var j = 0; j < sourceArray.length; j++){
-            if (i==j) continue;
-            if (sourceArray[i].startPosition>=sourceArray[j].startPosition && sourceArray[i].startPosition<=sourceArray[j].startPosition+sourceArray[j].size+1){
-               
-               
-                var lastIndex1 = sourceArray[i].startPosition+sourceArray[i].size;
+            if (i==j || Array.from(indexesToRemove).indexOf(i)>-1 || Array.from(indexesToRemove).indexOf(j)>-1 ) continue;
+            var lastIndex1 = sourceArray[i].startPosition+sourceArray[i].size;
                 var lastIndex2 = sourceArray[j].startPosition+sourceArray[j].size;
+            if (sourceArray[i].startPosition>=sourceArray[j].startPosition && sourceArray[i].startPosition<=lastIndex2){
+
                 sourceArray[i].startPosition = sourceArray[j].startPosition;
                 var maxLastIndex = (lastIndex1 > lastIndex2) ? lastIndex1 : lastIndex2;
                 sourceArray[i].size = maxLastIndex - sourceArray[i].startPosition;
@@ -478,11 +477,11 @@ Make();
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
-               // AggregateBoldSelection(boldIndexes);
-                /*for (var i = 0; i < boldIndexes.length; i++){
+                AggregateBoldSelection(boldIndexes);
+                for (var i = 0; i < boldIndexes.length; i++){
                     var beginIndex = boldIndexes[i].startPosition;
                     var endIndex = boldIndexes[i].endPosition;
-                }*/
+                }
                 boldIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
                 });
