@@ -64,9 +64,7 @@
     //----------------------------------------------------------------------------------------------------------
     Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
     var textarea=document.getElementById("text");
-          //textarea.split('');
-    //textarea[k]=0;
-	
+   
     textarea.oninput = function() {
     textarea=document.getElementById("text");
     document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
@@ -84,7 +82,7 @@
         this.size = size;
  
       }
-     /* var AggregateBoldSelection = function(sourceArray){
+      var AggregateBoldSelection = function(sourceArray){
         var indexesToRemove = new Set();
         for (var i = 0; i < sourceArray.length; i++){
         for (var j = 0; j < sourceArray.length; j++){
@@ -107,10 +105,7 @@
       }
     });
        
-      }*/
-	  //BoldSelection.split('');
-	 // BoldSelection[m]=0;
-	 // k=m;
+      }
     var boldIndexes = [];
     var expressionText = getSelectiontextarea( document.getElementById("text") );
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
@@ -457,11 +452,11 @@ Make();
             function makeBoldStringHtml(sourceStr, boldIndexes){
             var currentSymbolIndex = 0;
             var resultStr = "";
-           //var currentEndSymbolIndex = boldIndexes[0].startPosition;
+            var currentEndSymbolIndex = boldIndexes[0].startPosition;
             var usedSymbols = 0;
             for (var i = 0; i < boldIndexes.length; i++){
                 if (currentSymbolIndex<boldIndexes[i].startPosition)
-                resultStr = sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
+                resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
             resultStr += '<span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span>';
             currentSymbolIndex = boldIndexes[i].startPosition+boldIndexes[i].size;
             }
@@ -488,9 +483,9 @@ Make();
                     var beginIndex = boldIndexes[i].startPosition;
                     var endIndex = boldIndexes[i].endPosition;
                 }*/
-               /* boldIndexes.sort(function(a,b) {
-                return a.beginIndex - b.beginIndex;
-                });*/
+                boldIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
                 console.log('aggregated array:');
         for (var i =0; i < boldIndexes.length; i++){   
             console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
