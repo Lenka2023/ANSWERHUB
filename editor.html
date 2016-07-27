@@ -51,7 +51,7 @@
                                         <button onclick="Undo()" id='undo' disabled>Undo</button>
                                         <p><textarea id="text"  name="text"></textarea></p>
                                     <div id="area" class="area">
-                                    <span id="RESULTHTML" onkeyup="myFunction()"></span>
+                                    <span id="RESULTHTML" onkeyup="myFunction()" onkeypress="onkeypressFunction()"></span>
                                    
                                     </div>
                 </div>
@@ -62,7 +62,18 @@
         </div>
     <script>
     //----------------------------------------------------------------------------------------------------------
-    Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
+ 
+ 
+  
+     
+    
+
+  // history[historyIndex]
+	//function ifChange(){
+	//historyIndex++;
+	//}
+  // text.onkeyup = text.oninput =ifChange();
+	Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
     var textarea=document.getElementById("text");
    
     textarea.oninput = function() {
@@ -90,7 +101,6 @@
             var lastIndex1 = sourceArray[i].startPosition+sourceArray[i].size;
                 var lastIndex2 = sourceArray[j].startPosition+sourceArray[j].size;
             if (sourceArray[i].startPosition>=sourceArray[j].startPosition && sourceArray[i].startPosition<=lastIndex2){
-
                 sourceArray[i].startPosition = sourceArray[j].startPosition;
                 var maxLastIndex = (lastIndex1 > lastIndex2) ? lastIndex1 : lastIndex2;
                 sourceArray[i].size = maxLastIndex - sourceArray[i].startPosition;
@@ -105,7 +115,7 @@
     });
        
       }
-    var boldIndexes = [];
+     var boldIndexes = [];
     var expressionText = getSelectiontextarea( document.getElementById("text") );
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
     var expressionStart=(textarea.value).substring(0,textarea.selectionStart).value;
@@ -463,6 +473,27 @@ Make();
                 resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
             return resultStr;
             }
+			function onkeypressFunction(){
+  var txt = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+		}
+		  var txtInstance=new txt(1,10);
+
+		var arr = [];
+		 arr[txtInstance] = []; 
+    //arr[txtInstance.startPosition, txtInstance.size] = txtInstance.startPosition*txtInstance.size;  
+		for(var i=0;i<txtInstance.size;i++){
+if(txtInstance.startPosition<boldIndexes.startPosition){
+txtInstance[i].startPosition=txtInstance.startPosition+txtInstance.size;
+       }
+	   if(txtInstance.startPosition>boldIndexes.startPosition){
+boldIndexes.length=boldIndexes.length+txtInstance.size;
+}
+       }
+	   
+ arr.push(new txt(startPosition,size));	
+  }
             function Bold()
             {
                
