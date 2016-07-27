@@ -485,9 +485,9 @@ Make();
     //arr[txtInstance.startPosition, txtInstance.size] = txtInstance.startPosition*txtInstance.size;  
 		for(var i=0;i<txtInstance.size;i++){
 if(txtInstance.startPosition<boldIndexes.startPosition){
-txtInstance[i].startPosition=txtInstance.startPosition+txtInstance.size;
+boldIndexes.startPosition=txtInstance.startPosition+txtInstance.size;
        }
-	   if(txtInstance.startPosition>boldIndexes.startPosition){
+	   if(txtInstance.startPosition>boldIndexes.startPosition)&&(txtInstance.startPosition<boldIndexes.startPosition+boldIndexes.lenght){
 boldIndexes.length=boldIndexes.length+txtInstance.size;
 }
        }
