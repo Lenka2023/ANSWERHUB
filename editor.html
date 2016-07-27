@@ -483,12 +483,13 @@ Make();
 		var arr = [];
 		 arr[txtInstance] = []; 
     //arr[txtInstance.startPosition, txtInstance.size] = txtInstance.startPosition*txtInstance.size;  
-		for(var i=0;i<txtInstance.size;i++){
-if(txtInstance.startPosition<boldIndexes.startPosition){
-boldIndexes.startPosition=boldIndexes.startPosition+txtInstance.size;
+		for(var i=0;i<txtInstance.lenght;i++){
+		for(var j=0;j<boldIndexes.lenght;i++)
+if(txtInstance[i].startPosition<boldIndexes[j].startPosition){
+boldIndexes[j].startPosition=boldIndexes[j].startPosition+txtInstance[i].size;
        }
-	   if((txtInstance.startPosition>boldIndexes.startPosition)&&(txtInstance.startPosition<boldIndexes.startPosition+boldIndexes.lenght)){
-boldIndexes.length=boldIndexes.length+txtInstance.size;
+	   if((txtInstance[i].startPosition>boldIndexes[j].startPosition)&&(txtInstance[i].startPosition<boldIndexes[j].startPosition+boldIndexes[j].size)){
+boldIndexes[j].size=boldIndexes[j].size+txtInstance[i].size;
 }
        }
 	   
@@ -525,7 +526,8 @@ boldIndexes.length=boldIndexes.length+txtInstance.size;
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
-                Make();    
+                Make();
+			onkeypressFunction();	
             }
                  function Code()
             {
