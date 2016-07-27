@@ -473,19 +473,41 @@ Make();
                 resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
             return resultStr;
             }
+			 function getCursorPosition( ctrl ) {
+        var CaretPos = 0;
+        if ( document.selection ) {
+            ctrl.focus ();
+            var Sel = document.selection.createRange();
+            Sel.moveStart ('character', -ctrl.value.length);
+            CaretPos = Sel.text.length;
+        } else if ( ctrl.selectionStart || ctrl.selectionStart == '0' ) {
+            CaretPos = ctrl.selectionStart;
+        }
+        return CaretPos;
+    }
+
 			function onkeypressFunction(){
   var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
 		}
-		  var txtInstance=new txt(1,10);
+		 // var txtInstance=new txt(1,10);
 
-		var arr = [];
-		 arr[txtInstance] = []; 
+		var arr = new Array();
+		 arr[] = []; 
+		// arr[txtInstance] = []; 
     //arr[txtInstance.startPosition, txtInstance.size] = txtInstance.startPosition*txtInstance.size;  
-		for(var i=0;i<txtInstance.lenght;i++){
+		//for(var i=0;i<txtInstance.lenght;i++){
 		for(var j=0;j<boldIndexes.lenght;i++)
-if(txtInstance[i].startPosition<boldIndexes[j].startPosition){
+		for(var k=0;k<n;k++){
+		if(arr[k].startPosition<boldIndexes[j].startPosition){
+boldIndexes[j].startPosition=boldIndexes[j+1].startPosition;
+       }
+	   if((arr[k].startPosition>boldIndexes[j].startPosition)&&(arr[k].startPosition<boldIndexes[j].startPosition+boldIndexes[j].size)){
+boldIndexes[j].size=boldIndexes[j].size+1;
+}
+       }
+/*if(txtInstance[i].startPosition<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+txtInstance[i].size;
        }
 	   if((txtInstance[i].startPosition>boldIndexes[j].startPosition)&&(txtInstance[i].startPosition<boldIndexes[j].startPosition+boldIndexes[j].size)){
@@ -493,7 +515,7 @@ boldIndexes[j].size=boldIndexes[j].size+txtInstance[i].size;
 }
        }
 	   
- arr.push(new txt(startPosition,size));	
+ arr.push(new txt(startPosition,size));	*/
   }
             function Bold()
             {
