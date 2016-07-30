@@ -66,7 +66,18 @@
  
   
      
-    
+   function getCursorPosition( ctrl ) {
+        var CaretPos = 0;
+        if ( document.selection ) {
+            ctrl.focus ();
+            var Sel = document.selection.createRange();
+            Sel.moveStart ('character', -ctrl.value.length);
+            CaretPos = Sel.text.length;
+        } else if ( ctrl.selectionStart || ctrl.selectionStart == '0' ) {
+            CaretPos = ctrl.selectionStart;
+        }
+        return CaretPos;
+    } 
 
   // history[historyIndex]
 	//function ifChange(){
@@ -115,6 +126,7 @@
     });
        
       }
+	  var addelements = [];
      var boldIndexes = [];
     var expressionText = getSelectiontextarea( document.getElementById("text") );
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
@@ -459,6 +471,30 @@ Make();
                 Make();
             }
             function makeBoldStringHtml(sourceStr, boldIndexes){
+			function onkeypressFunction( addelements, boldIndexes){
+  var txt = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+		}
+		 // var txtInstance=new txt(1,10);
+
+		//var arr = new Array();
+		 //arr[] = []; 
+		// arr[txtInstance] = []; 
+    //arr[txtInstance.startPosition, txtInstance.size] = txtInstance.startPosition*txtInstance.size;  
+		//for(var i=0;i<txtInstance.lenght;i++){
+		for(var j=0;j<boldIndexes.lenght;j++){
+		for(var i=0;i<addelements.lenght;i++){
+		//for(var k=0;k<n;k++){
+		if(CaretPos<boldIndexes[j].startPosition){
+boldIndexes[j].startPosition=boldIndexes[j].startPosition+1;
+       }
+	   if((CaretPos>boldIndexes[j].startPosition)&&(CaretPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
+boldIndexes[j].size=boldIndexes[j].size+1;
+}
+}
+}
+       }
             var currentSymbolIndex = 0;
             var resultStr = "";
             var currentEndSymbolIndex = boldIndexes[0].startPosition;
@@ -473,40 +509,9 @@ Make();
                 resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
             return resultStr;
             }
-			 function getCursorPosition( ctrl ) {
-        var CaretPos = 0;
-        if ( document.selection ) {
-            ctrl.focus ();
-            var Sel = document.selection.createRange();
-            Sel.moveStart ('character', -ctrl.value.length);
-            CaretPos = Sel.text.length;
-        } else if ( ctrl.selectionStart || ctrl.selectionStart == '0' ) {
-            CaretPos = ctrl.selectionStart;
-        }
-        return CaretPos;
-    }
+			 
 
-			function onkeypressFunction(){
-  var txt = function(startPos, size){
-        this.startPosition = startPos;
-        this.size = size;
-		}
-		 // var txtInstance=new txt(1,10);
-
-		var arr = new Array();
-		 arr[] = []; 
-		// arr[txtInstance] = []; 
-    //arr[txtInstance.startPosition, txtInstance.size] = txtInstance.startPosition*txtInstance.size;  
-		//for(var i=0;i<txtInstance.lenght;i++){
-		for(var j=0;j<boldIndexes.lenght;i++)
-		for(var k=0;k<n;k++){
-		if(arr[k].startPosition<boldIndexes[j].startPosition){
-boldIndexes[j].startPosition=boldIndexes[j+1].startPosition;
-       }
-	   if((arr[k].startPosition>boldIndexes[j].startPosition)&&(arr[k].startPosition<boldIndexes[j].startPosition+boldIndexes[j].size)){
-boldIndexes[j].size=boldIndexes[j].size+1;
-}
-       }
+			
 /*if(txtInstance[i].startPosition<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+txtInstance[i].size;
        }
@@ -516,7 +521,7 @@ boldIndexes[j].size=boldIndexes[j].size+txtInstance[i].size;
        }
 	   
  arr.push(new txt(startPosition,size));	*/
-  }
+  
             function Bold()
             {
                
@@ -549,8 +554,7 @@ boldIndexes[j].size=boldIndexes[j].size+txtInstance[i].size;
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-			onkeypressFunction();	
-            }
+			            }
                  function Code()
             {
                
