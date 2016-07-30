@@ -470,7 +470,6 @@ Make();
                 document.getElementById("RESULTHTML").innerHTML=expressionStart+'<img src="img/'+Image_Title+'"alt="622">'+expressionEnd;
                 Make();
             }
-            function makeBoldStringHtml(sourceStr, boldIndexes){
 			function onkeypressFunction( addelements, boldIndexes){
   var txt = function(startPos, size){
         this.startPosition = startPos;
@@ -484,17 +483,19 @@ Make();
     //arr[txtInstance.startPosition, txtInstance.size] = txtInstance.startPosition*txtInstance.size;  
 		//for(var i=0;i<txtInstance.lenght;i++){
 		for(var j=0;j<boldIndexes.lenght;j++){
-		for(var i=0;i<addelements.lenght;i++){
+		
 		//for(var k=0;k<n;k++){
 		if(CaretPos<boldIndexes[j].startPosition){
-boldIndexes[j].startPosition=boldIndexes[j].startPosition+1;
+boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
        }
 	   if((CaretPos>boldIndexes[j].startPosition)&&(CaretPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
-boldIndexes[j].size=boldIndexes[j].size+1;
-}
+boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
+
 }
 }
        }
+            function makeBoldStringHtml(sourceStr, boldIndexes){
+			
             var currentSymbolIndex = 0;
             var resultStr = "";
             var currentEndSymbolIndex = boldIndexes[0].startPosition;
