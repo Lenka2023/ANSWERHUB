@@ -475,17 +475,9 @@ Make();
         this.startPosition = startPos;
         this.size = size;
 		}
-		 // var txtInstance=new txt(1,10);
-
-		//var arr = new Array();
-		 //arr[] = []; 
-		// arr[txtInstance] = []; 
-    //arr[txtInstance.startPosition, txtInstance.size] = txtInstance.startPosition*txtInstance.size;  
-		//for(var i=0;i<txtInstance.lenght;i++){
-		for(var j=0;j<boldIndexes.lenght;j++){
 		
-		//for(var k=0;k<n;k++){
-		if(CaretPos<boldIndexes[j].startPosition){
+		for(var j=0;j<boldIndexes.lenght;j++){
+			if(CaretPos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
        }
 	   if((CaretPos>boldIndexes[j].startPosition)&&(CaretPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
@@ -510,19 +502,7 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
                 resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
             return resultStr;
             }
-			 
-
-			
-/*if(txtInstance[i].startPosition<boldIndexes[j].startPosition){
-boldIndexes[j].startPosition=boldIndexes[j].startPosition+txtInstance[i].size;
-       }
-	   if((txtInstance[i].startPosition>boldIndexes[j].startPosition)&&(txtInstance[i].startPosition<boldIndexes[j].startPosition+boldIndexes[j].size)){
-boldIndexes[j].size=boldIndexes[j].size+txtInstance[i].size;
-}
-       }
-	   
- arr.push(new txt(startPosition,size));	*/
-  
+			   
             function Bold()
             {
                
