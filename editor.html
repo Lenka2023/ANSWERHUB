@@ -51,7 +51,7 @@
                                         <button onclick="Undo()" id='undo' disabled>Undo</button>
                                         <p><textarea id="text"  name="text"></textarea></p>
                                     <div id="area" class="area">
-                                    <span id="RESULTHTML" onkeyup="myFunction()" onkeypress="onkeypressFunction()"></span>
+                                    <span id="RESULTHTML" onkeyup="myFunction();onkeypressFunction();onkeypressFunction();onkeydowngetCursorPosition()"></span>
                                    
                                     </div>
                 </div>
@@ -66,7 +66,7 @@
  
   
      
-   function getCursorPosition( ctrl ) {
+   function onkeydowngetCursorPosition( ctrl ) {
         var CaretPos = 0;
         if ( document.selection ) {
             ctrl.focus ();
