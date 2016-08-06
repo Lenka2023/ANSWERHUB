@@ -51,7 +51,7 @@
                                         <button onclick="Undo()" id='undo' disabled>Undo</button>
                                         <p><textarea id="text"  name="text"></textarea></p>
                                     <div id="area" class="area">
-                                    <span id="RESULTHTML" onkeyup="myFunction();onkeypressFunction();onkeypressFunction();onkeydowngetCursorPosition()"></span>
+                                    <span id="RESULTHTML" onkeyup="myFunction();onkeypressFunction();getCaretPosition()" onclick="getCaretPosition()"></span>
                                    
                                     </div>
                 </div>
@@ -62,11 +62,9 @@
         </div>
     <script>
     //----------------------------------------------------------------------------------------------------------
- 
- 
-  
+  var textarea=document.getElementById("text");
      
-   function onkeydowngetCursorPosition( ctrl ) {
+  /* function getCursorPosition( ctrl ) {
         var CaretPos = 0;
         if ( document.selection ) {
             ctrl.focus ();
@@ -77,7 +75,7 @@
             CaretPos = ctrl.selectionStart;
         }
         return CaretPos;
-    } 
+    }*/ 
 
   // history[historyIndex]
 	//function ifChange(){
@@ -85,7 +83,7 @@
 	//}
   // text.onkeyup = text.oninput =ifChange();
 	Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
-    var textarea=document.getElementById("text");
+   
    
     textarea.oninput = function() {
     textarea=document.getElementById("text");
@@ -477,10 +475,10 @@ Make();
 		}
 		
 		for(var j=0;j<boldIndexes.lenght;j++){
-			if(CaretPos<boldIndexes[j].startPosition){
+			if(cursorPos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
        }
-	   if((CaretPos>boldIndexes[j].startPosition)&&(CaretPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
+	   if((cursorPos>boldIndexes[j].startPosition)&&(cursorPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 
 }
@@ -502,7 +500,20 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
                 resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
             return resultStr;
             }
-			   
+			
+ function getCaretPosition(textarea){
+    var cursorPos = null;
+    if (document.selection){
+        var range = document.selection.createRange();
+        range.moveStart('textedit', -1);
+        cursorPos = range.text.length;
+    }
+    else 
+    {
+        cursorPos = textarea.selectionStart;
+    }
+ }
+     
             function Bold()
             {
                
