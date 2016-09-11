@@ -21,13 +21,12 @@ var textarea=document.getElementById("text");
 	Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
    
    $(document).ready(function() {
-   $('# textarea').oninput = function() {
+   $('# textarea').oninput( function() {
     textarea=document.getElementById("text");
     document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
- 
-      document.getElementById('RESULTHTML').innerHTML = textarea.value;
+    document.getElementById('RESULTHTML').innerHTML = textarea.value;
    
-      }
+      })
 	   });
   
       var SelectionPosition = function(startPos,endPos){
