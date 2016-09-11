@@ -1,4 +1,4 @@
-$(document).ready(function() {
+
 var textarea=document.getElementById("text");
      
   /* function getCursorPosition( ctrl ) {
@@ -20,14 +20,16 @@ var textarea=document.getElementById("text");
   // text.onkeyup = text.oninput =ifChange();
 	Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
    
-   
-    textarea.oninput = function() {
+   $(document).ready(function() {
+   $('# textarea').oninput = function() {
     textarea=document.getElementById("text");
     document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
  
       document.getElementById('RESULTHTML').innerHTML = textarea.value;
    
-      };
+      }
+	   });
+  
       var SelectionPosition = function(startPos,endPos){
         this.startPosition = startPos;
         this.endPosition = endPos;
@@ -801,4 +803,3 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 '</html>';
 Make();
             }
-})
