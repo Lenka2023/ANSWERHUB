@@ -51,7 +51,7 @@
                                         <button onclick="Undo()" id='undo' disabled>Undo</button>
                                         <p><textarea id="text"  name="text"></textarea></p>
                                     <div id="area" class="area">
-                                    <span id="RESULTHTML" onkeyup="myFunction();getCaretPosition()" onclick="getCaretPosition()" onkeypress="onkeypressFunction()></span>
+                                    <span id="RESULTHTML" onkeyup="myFunction();getCaretPosition()" onclick="getCaretPosition()" onkeypress="onkeypressFunction()"></span>
                                    
                                     </div>
                 </div>
@@ -153,11 +153,11 @@ function Make(){
 //document.getElementById("result").innerHTML += '<span id="RESULTTEXT"></span>';
 //document.getElementById("area").innerHTML += '<span id="RESULTHTML"></span>';
 //document.getElementById("text").value='';
-operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
-document.getElementById("RESULTTEXT").designMode='on';
-document.getElementById("RESULTHTML").designMode='on';
-document.getElementById("RESULTTEXT").contentEditable = true; void(0);
-document.getElementById("RESULTHTML").contentEditable = true; void(0); 
+operation(document.getElementById("html_res").innerHTML, document.getElementById("text_res").innerHTML);
+document.getElementById("text_res").designMode='on';
+document.getElementById("html_res").designMode='on';
+document.getElementById("text_res").contentEditable = true; void(0);
+document.getElementById("html_res").contentEditable = true; void(0); 
 }
     var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
@@ -481,23 +481,29 @@ Make();
         cursorPos = textarea.selectionStart;
     }
  }
-     
-			function onkeypressFunction( selectiontxt , boldIndexes){
+  textarea.oninput = function() {
+    textarea=document.getElementById("text");
+    document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
+ 
+      document.getElementById('RESULTHTML').innerHTML = textarea.value;
+   
+      };
+  function onkeypressFunction( selectiontxt , boldIndexes){
   var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
 		}
-		}
-		//selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
+		
+		selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
 		for(var i=0;i<boldIndexes.lenght;i++){
 			if(selectiontxt.startPosition+selectiontxt.size<boldIndexes[i].startPosition){
-boldIndexes[i].startPosition=boldIndexes[i].startPosition+addelements.lenght;
+boldIndexes[i].startPosition=boldIndexes[i].startPosition+addelements.lenght;//а всі інші і-шки?????????????????????????
        }
 	   if((selectiontxt.startPosition+selectiontxt.size>boldIndexes[i].startPosition)&&(selectiontxt.startPosition+selectiontxt.size<boldIndexes[i].startPosition+boldIndexes[i].size)){
 boldIndexes[i].size=boldIndexes[i].size+addelements.lenght;
 }
 /*if((selectiontxt.startPosition<boldIndexes[i].startPosition)&&(selectiontxt.startPosition+selectiontxt.size<boldIndexes[i].startPosition+boldIndexes[i].size)){
-boldIndexes[i].size=boldIndexes[i].size+addelements.lenght;
+boldIndexes[i].size=boldIndexes[i].size+addelements.lenght;//
 }*/
 }		
 
@@ -530,11 +536,12 @@ boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
 	   if((cursorPos>boldIndexes[j].startPosition)&&(cursorPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 }
-}
+}//це для чого???
        }
-            function makeBoldStringHtml(sourceStr, boldIndexes){
+	   }   
 			
-            var currentSymbolIndex = 0;
+            function makeBoldStringHtml(sourceStr, boldIndexes){
+			var currentSymbolIndex = 0;
             var resultStr = "";
             var currentEndSymbolIndex = boldIndexes[0].startPosition;
             var usedSymbols = 0;
@@ -576,11 +583,14 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
         for (var i =0; i < boldIndexes.length; i++){   
             console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
         }
-                var resultStr = makeBoldStringHtml(expressionText,boldIndexes);
+		        var resultStr ="";
+                 resultStr = makeBoldStringHtml(expressionText,boldIndexes);
                 console.log('result str:'+resultStr);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
+				document.getElementById("RESULTTEXT").id = "text_res";
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
+				document.getElementById("RESULTHTML").id = "html_res";
                 Make();
 			            }
                  function Code()
