@@ -30,6 +30,7 @@ var SelectionPosition = function(startPos, endPos) {
     });
 
   }
+   var resultStr = "";
   var clickelements = [];
   var addelements = [];
   var boldIndexes = [];
@@ -404,7 +405,7 @@ function getCaretPosition(textarea) {
 
 function makeBoldStringHtml(sourceStr, boldIndexes) {
   var currentSymbolIndex = 0;
-  var resultStr = "";
+  //var resultStr = "";
   var currentEndSymbolIndex = boldIndexes[0].startPosition;
   var usedSymbols = 0;
   for (var i = 0; i < boldIndexes.length; i++) {
@@ -444,7 +445,7 @@ function Bold() {
   for (var i = 0; i < boldIndexes.length; i++) {
     console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
   }
-  var resultStr = "";
+  //var resultStr = "";
   resultStr = makeBoldStringHtml(expressionText, boldIndexes);
   console.log('result str:' + resultStr);
 
