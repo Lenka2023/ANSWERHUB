@@ -30,6 +30,12 @@ var SelectionPosition = function(startPos, endPos) {
     });
 
   }
+  var clickBold = [];
+  var clicksBold=onclick="Bold()";
+  for (i = 0; i < clicksBold.length; i++) {
+   clickBold.push(clicksBold[i]);
+  }
+  
    var resultStr = "";
   var clickelements = [];
   var addelements = [];
@@ -420,41 +426,7 @@ function makeBoldStringHtml(sourceStr, boldIndexes) {
 }
 
 
-function Bold() {
 
-  SomeVar();
-  var textarea = document.getElementById("text");
-  document.getElementById("text").focus();
-  expressionText = document.getElementById("text").value;
-  expressionHTML = document.getElementById("text").value;
-
-  expressionStart = (textarea.value).substring(0, textarea.selectionStart);
-  expressionEnd = (textarea.value).substring(textarea.selectionEnd);
-  var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
-  var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-  boldIndexes.push(new BoldSelection(selectionBegin, selectionEnd - selectionBegin));
-  AggregateBoldSelection(boldIndexes);
-  for (var i = 0; i < boldIndexes.length; i++) {
-    var beginIndex = boldIndexes[i].startPosition;
-    var endIndex = boldIndexes[i].endPosition;
-  }
-  boldIndexes.sort(function(a, b) {
-    return a.startPosition - b.startPosition;
-  });
-  console.log('aggregated array:');
-  for (var i = 0; i < boldIndexes.length; i++) {
-    console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
-  }
-  //var resultStr = "";
-  resultStr = makeBoldStringHtml(expressionText, boldIndexes);
-  console.log('result str:' + resultStr);
-
-  document.getElementById("RESULTTEXT").innerText = resultStr;
-  document.getElementById("RESULTTEXT").id = "text_res";
-  document.getElementById("RESULTHTML").innerHTML = resultStr;
-  document.getElementById("RESULTHTML").id = "html_res";
-  Make();
-}
 
 function Code() {
 
@@ -843,3 +815,40 @@ $(document).ready(function() {
   var redo = document.getElementById('redo');
 
 });
+function Bold() {
+
+  SomeVar();
+  var textarea = document.getElementById("text");
+  document.getElementById("text").focus();
+  expressionText = document.getElementById("text").value;
+  expressionHTML = document.getElementById("text").value;
+
+  expressionStart = (textarea.value).substring(0, textarea.selectionStart);
+  expressionEnd = (textarea.value).substring(textarea.selectionEnd);
+  var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+  var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+  boldIndexes.push(new BoldSelection(selectionBegin, selectionEnd - selectionBegin));
+  AggregateBoldSelection(boldIndexes);
+  for (var i = 0; i < boldIndexes.length; i++) {
+    var beginIndex = boldIndexes[i].startPosition;
+    var endIndex = boldIndexes[i].endPosition;
+  }
+  boldIndexes.sort(function(a, b) {
+    return a.startPosition - b.startPosition;
+  });
+  console.log('aggregated array:');
+  for (var i = 0; i < boldIndexes.length; i++) {
+    console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
+  }
+  
+  resultStr = makeBoldStringHtml(expressionText, boldIndexes);
+  console.log('result str:' + resultStr);
+
+	  document.getElementById("RESULTTEXT").innerText = resultStr;
+  document.getElementById("RESULTTEXT").id = "text_res";
+  document.getElementById("RESULTHTML").innerHTML = resultStr;
+  document.getElementById("RESULTHTML").id = "html_res";
+	 	
+  Make();
+	
+};
