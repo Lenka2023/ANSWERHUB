@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="css/style.css"type="text/css"/>
         <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
+        <script src="js/script.js"></script>
         <!--[if lt IE 9]>
         <script>
             var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
@@ -16,7 +16,6 @@
         <![endif]-->
     </head>
     <body>
-	 
         <div class="page_cont one">
             <br class="cbt">
             <div class="edit_cont">
@@ -52,7 +51,7 @@
                                         <button onclick="Undo()" id='undo' disabled>Undo</button>
                                         <p><textarea id="text"  name="text"></textarea></p>
                                     <div id="area" class="area">
-                                    <span id="RESULTHTML" onkeyup="myFunction();getCaretPosition()" onclick="getCaretPosition()" onkeypress="onkeypressFunction()"></span>
+                                    <span id="RESULTHTML" onkeyup="myFunction();onkeypressFunction();getCaretPosition()" onclick="getCaretPosition()" onkeypress="ChangeSelection"></span>
                                    
                                     </div>
                 </div>
@@ -61,7 +60,7 @@
 <div id="result">
         <span id="RESULTTEXT"></span>
         </div>
-    <script></script> 
-	
+    <script>
+   </script>  
     </body>
 </html>
