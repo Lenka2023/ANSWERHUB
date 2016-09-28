@@ -42,6 +42,10 @@ function SomeVar(){
                 expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
                 }
 				 var boldIndexes = [];
+				 var txt = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+		}
 				  var BoldSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -175,7 +179,19 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-			            }    					
+			            } 
+function getCaretPosition(textarea){
+    var cursorPos = null;
+    if (document.selection){
+        var range = document.selection.createRange();
+        range.moveStart('textedit', -1);
+        cursorPos = range.text.length;
+    }
+    else 
+    {
+        cursorPos = textarea.selectionStart;
+    }
+ }						
 	$( document ).ready(function() {
 
   var textarea=document.getElementById("text");
@@ -477,18 +493,7 @@ var redo = document.getElementById('redo');
 }
 			
 			
- function getCaretPosition(textarea){
-    var cursorPos = null;
-    if (document.selection){
-        var range = document.selection.createRange();
-        range.moveStart('textedit', -1);
-        cursorPos = range.text.length;
-    }
-    else 
-    {
-        cursorPos = textarea.selectionStart;
-    }
- }
+ 
  var expressionText = getSelectiontextarea( document.getElementById("text") );
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
     var expressionStart=(textarea.value).substring(0,textarea.selectionStart).value;
@@ -503,10 +508,10 @@ var redo = document.getElementById('redo');
    
                                };
 							   function ChangeSelection(sourceStr, addelements){
-			var txt = function(startPos, size){
+			/*var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
-		}
+		}*/
 				 selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
 				
 
@@ -519,23 +524,22 @@ sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght+addelements.lenght;
 	if((e.keyCode == 8)||(e.keyCode == 46)){
 	sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght;
 			}
+			
 			}
-			function onkeypressFunction( addelements, boldIndexes){
-  var txt = function(startPos, size){
-        this.startPosition = startPos;
-        this.size = size;
-		}
-		}
-		for(var j=0;j<boldIndexes.lenght;j++){
+			addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
+
+       }
+          function onkeypressFunction( addelements, boldIndexes){
+  for(var j=0;j<boldIndexes.lenght;j++){
 			if(cursorPos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
        }
 	   if((cursorPos>boldIndexes[j].startPosition)&&(cursorPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
+		}
+		
 }
 }
-       }
-           
    
            
                  function Code()
