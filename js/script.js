@@ -1,4 +1,5 @@
 //----------------------------------------------------------------------------------------------------------
+   var textarea=document.getElementById("text");
   var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var is_ie     = ( (uagent.indexOf('msie') != -1) && (!is_opera) && (!is_safari) && (!is_webtv) );
@@ -64,6 +65,9 @@ function SomeVar(){
                 sourceArray[i].size = maxLastIndex - sourceArray[i].startPosition;
                 indexesToRemove.add(j);
             }
+			if (sourceArray[i].startPosition>=sourceArray[j].startPosition && sourceArray[i].startPosition>=lastIndex2){
+				sourceArray[i].size = lastIndex1 - sourceArray[i].startPosition;
+				sourceArray[j].size = lastIndex2 - sourceArray[j].startPosition;
         }
         }
         sourceArray.forEach(function (item, index) {
