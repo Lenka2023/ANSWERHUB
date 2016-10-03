@@ -41,7 +41,6 @@ function SomeVar(){
                 expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
                 expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
                 }
-				 var addelements = [];
 				 var boldIndexes = [];
 				 var txt = function(startPos, size){
         this.startPosition = startPos;
@@ -162,7 +161,6 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
-				addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
                 AggregateBoldSelection(boldIndexes);
                 for (var i = 0; i < boldIndexes.length; i++){
                     var beginIndex = boldIndexes[i].startPosition;
@@ -226,8 +224,8 @@ function getCaretPosition(textarea){
       }
      
      
-	 
-	 
+	  //var clickelements = [];
+	  var addelements = [];
     
    
    

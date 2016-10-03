@@ -50,8 +50,8 @@
                                         <button onclick="Redo()" id='redo' disabled>Redo</button>
                                         <button onclick="Undo()" id='undo' disabled>Undo</button>
                                         <p><textarea id="text"  name="text"></textarea></p>
-                                    <div id="area" class="area">
-                                    <span id="RESULTHTML" onkeyup="myFunction();onkeypressFunction();getCaretPosition()" onclick="getCaretPosition()" onkeypress="ChangeSelection"></span>
+                                    <div id="area" class="area"  onkeyup="myFunction();onkeypressFunction(addelements, boldIndexes);getCaretPosition()" onclick="getCaretPosition()" onkeypress="ChangeSelection">
+                                    <span id="RESULTHTML"></span>
                                    
                                     </div>
                 </div>
