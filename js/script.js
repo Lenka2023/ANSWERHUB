@@ -70,6 +70,7 @@ function SomeVar(){
 				sourceArray[j].size = lastIndex2 - sourceArray[j].startPosition;
         }
         }
+		}
         sourceArray.forEach(function (item, index) {
     if (Array.from(indexesToRemove).indexOf(index)>-1) {
         sourceArray.splice(index, 1);
@@ -198,7 +199,7 @@ function getCaretPosition(textarea){
  }						
 	$( document ).ready(function() {
 
-  var textarea=document.getElementById("text");
+ 
      
   /* function getCursorPosition( ctrl ) {
         var CaretPos = 0;
@@ -497,7 +498,7 @@ var redo = document.getElementById('redo');
 }
 			
 			
- 
+  textarea=document.getElementById("text");
  var expressionText = getSelectiontextarea( document.getElementById("text") );
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
     var expressionStart=(textarea.value).substring(0,textarea.selectionStart).value;
@@ -534,17 +535,23 @@ sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght+addelements.lenght;
 
        }
           function onkeypressFunction( addelements, boldIndexes){
-  for(var j=0;j<boldIndexes.lenght;j++){
-			if(cursorPos<boldIndexes[j].startPosition){
+   for (var i = 0; i < boldIndexes[i].length; i++){
+        for (var j = 0; j <boldIndexes[j].length; j++){
+ 			if(cursorPos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
        }
+	   if(cursorPos<boldIndexes[i].startPosition){
+boldIndexes[i].startPosition=boldIndexes[i].startPosition+addelements.lenght;
+	   }
 	   if((cursorPos>boldIndexes[j].startPosition)&&(cursorPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 		}
-		
+		if((cursorPos>boldIndexes[j].startPosition)&&(cursorPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
+boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
+		}
 }
 }
-   
+		                                                            }  
            
                  function Code()
             {
@@ -818,6 +825,6 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 Make();
             }
 			
-	})
+	});
 			 
  
