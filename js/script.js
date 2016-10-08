@@ -534,8 +534,8 @@ sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght+addelements.lenght;
 			//addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
 
        }
-          function onkeypressFunction( addelements, boldIndexes){
-   for (var i = 0; i < boldIndexes[i].length; i++){
+	   $('#RESULTHTML').keypress(function onkeypressFunction(addelements, boldIndexes){
+            for (var i = 0; i < boldIndexes[i].length; i++){
         for (var j = 0; j <boldIndexes[j].length; j++){
  			if(cursorPos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
@@ -551,7 +551,9 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 		}
 }
 }
-		                                                            }  
+		                                                            });  
+	$('#foo').keypress();	
+	 $('#RESULTHTML').keypress();
            
                  function Code()
             {
