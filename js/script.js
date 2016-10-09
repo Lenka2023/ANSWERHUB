@@ -231,7 +231,7 @@ function getCaretPosition(textarea){
      
 	  //var clickelements = [];
 	  var addelements = [];
-    
+     var boldIndexes = [];
    
    
     
@@ -507,9 +507,10 @@ var redo = document.getElementById('redo');
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
 			 textarea.oninput=function(){
    textarea=document.getElementById("text");
+    var resultStr = makeBoldStringHtml(expressionText,boldIndexes);
     document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
  
-      document.getElementById('RESULTHTML').innerHTML = textarea.value;
+      document.getElementById('RESULTHTML').innerHTML =textarea.value;
    
                                };
 							   function ChangeSelection(sourceStr, addelements){
@@ -534,15 +535,18 @@ sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght+addelements.lenght;
 			//addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
 
        }
-	   $('#RESULTHTML').keypress(function onkeypressFunction(addelements, boldIndexes){
-            for (var i = 0; i < boldIndexes[i].length; i++){
+	   $('#RESULTHTML').keypress(function onkeypressFunction(addelements){
+		  		   if(typeof(boldIndexes[i])!=="undefined"){
+            for (var i = 0;i < boldIndexes[i].length; i++){
+				 if(cursorPos<boldIndexes[i].startPosition){
+boldIndexes[i].startPosition=boldIndexes[i].startPosition+addelements.lenght;
+	   }
+			}
         for (var j = 0; j <boldIndexes[j].length; j++){
  			if(cursorPos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
        }
-	   if(cursorPos<boldIndexes[i].startPosition){
-boldIndexes[i].startPosition=boldIndexes[i].startPosition+addelements.lenght;
-	   }
+	  
 	   if((cursorPos>boldIndexes[j].startPosition)&&(cursorPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 		}
@@ -550,8 +554,9 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 		}
 }
-}
-		                                                            });  
+				   }
+
+		   		                                                            });  
 	$('#foo').keypress();	
 	 $('#RESULTHTML').keypress();
            
