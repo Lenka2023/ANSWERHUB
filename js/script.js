@@ -201,7 +201,7 @@ function getCaretPosition(textarea){
     var y=document.getElementById("RESULTHTML");
    x.innerHTML=y.innerHTML;
                         }	
-	  $('#RESULTHTML').keypress(function onkeypressFunction(addelements){
+	 $('#RESULTHTML').keypress(function onkeypressFunction(addelements){
 		  		   if(typeof(boldIndexes[i])!=="undefined"){
             for (var i = 0;i < boldIndexes[i].length; i++){
 				 if(cursorPos<boldIndexes[i].startPosition){
@@ -222,7 +222,8 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 }
 				   }
 
-		   		                                                            }); 					
+		   		                                                            });  
+		 $('#RESULTHTML').keypress();					
 	$( document ).ready(function() {
 
  
@@ -558,8 +559,6 @@ sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght+addelements.lenght;
 
        }
 	  
-	$('#foo').keypress();	
-	 $('#RESULTHTML').keypress();
            
                  function Code()
             {
