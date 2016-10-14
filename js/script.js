@@ -93,6 +93,7 @@ function SomeVar(){
     }
  }	
 	   function makeBoldStringHtml(sourceStr, boldIndexes){
+		   cursorPos = textarea.selectionStart;
 			var currentSymbolIndex = 0;
             var resultStr = "";
            // var currentEndSymbolIndex = boldIndexes[0].startPosition;
@@ -103,8 +104,14 @@ function SomeVar(){
                 resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
             resultStr += '<span>'+addelements[k].startPosition+addelements.lenght+'</span>'+'<span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span>';
             currentSymbolIndex = boldIndexes[i].startPosition+boldIndexes[i].size;
-			cursorPos = boldIndexes[i].startPosition+boldIndexes[i].size;
+			//cursorPos = boldIndexes[i].startPosition+boldIndexes[i].size;
+				}
+			if ((currentSymbolIndex>boldIndexes[i].startPosition)&&(cursorPos>boldIndexes[i].startPosition)){
+                resultStr += sourceStr.substring(boldIndexes[i].startPosition,currentSymbolIndex);
+            resultStr += '<span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span>'+'<span>'+addelements[k].startPosition+addelements.lenght+'</span>';
+            currentSymbolIndex = boldIndexes[i].startPosition+boldIndexes[i].size;
             }
+			
             if (currentSymbolIndex<sourceStr.length)
                 resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
             return resultStr;
