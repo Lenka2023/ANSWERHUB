@@ -42,7 +42,6 @@ function SomeVar(){
                 expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
                 expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
                 }
-				 var addelements = [];
 				 var boldIndexes = [];
 				 var txt = function(startPos, size){
         this.startPosition = startPos;
@@ -75,14 +74,13 @@ function SomeVar(){
 	for (var i = sourceArray.length; i-- ; i >0 )
     if (Array.from(indexesToRemove).indexOf(i)>-1) {
         sourceArray.splice(i, 1);
-		alert(2);
-		 console.log('sourceArray:');
       }
 
        
       }
 	   function makeBoldStringHtml(sourceStr, boldIndexes){
-		    var currentSymbolIndex = 0;
+		//alert(1);	
+            var currentSymbolIndex = 0;
             var resultStr = "";
             //var currentEndSymbolIndex = boldIndexes[0].startPosition;
             var usedSymbols = 0;
@@ -168,22 +166,14 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
-				//addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
                 AggregateBoldSelection(boldIndexes);
                 for (var i = 0; i < boldIndexes.length; i++){
                     var beginIndex = boldIndexes[i].startPosition;
                     var endIndex = boldIndexes[i].endPosition;
                 }
-				 /*for (var j = 0; j < addelements.length; j++){
-                    var beginIndex = addelements[j].startPosition;
-                    var endIndex = addelements[j].endPosition;
-                }*/
                 boldIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
                 });
-				/* addelements.sort(function(a,b) {
-                return a.startPosition - b.startPosition;
-                });*/
                 console.log('aggregated array:');
         for (var i =0; i < boldIndexes.length; i++){   
             console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
@@ -211,7 +201,14 @@ function getCaretPosition(textarea){
     var y=document.getElementById("RESULTHTML");
    x.innerHTML=y.innerHTML;
                         }	
-	 $('#RESULTHTML').keypress(function onkeypressFunction(addelements){
+	$( document ).ready(function() {
+	 var addelements = [];
+     var boldIndexes = [];
+   					
+	 $('#text').keypress(function onkeypressFunction(addelements){
+		 alert(5);
+		 var addelements = [];
+     var boldIndexes = [];
 		  		   if(typeof(boldIndexes[i])!=="undefined"){
             for (var i = 0;i < boldIndexes[i].length; i++){
 				 if(cursorPos<boldIndexes[i].startPosition){
@@ -233,8 +230,8 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 				   }
 
 		   		                                                            });  
-		 $('#RESULTHTML').keypress();					
-	$( document ).ready(function() {
+		// $('#text').keypress();					
+	
 
  
      
@@ -266,10 +263,8 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
       }
      
      
-	  
+	  //var clickelements = [];
 	 
-     var boldIndexes = [];
-   
    
     
    
@@ -540,19 +535,17 @@ var redo = document.getElementById('redo');
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
 			 textarea.oninput=function(){
    textarea=document.getElementById("text");
-  //textarea= ChangeSelection(expressionText,addelements);
-   // var resultStr = makeBoldStringHtml(expressionText,boldIndexes);
+    var resultStr = makeBoldStringHtml(expressionText,boldIndexes);
     document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
  
       document.getElementById('RESULTHTML').innerHTML =textarea.value;
    
                                };
 							   function ChangeSelection(sourceStr, addelements){
-								   alert(3);
-			var txt = function(startPos, size){
+			/*var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
-		}
+		}*/
 				 selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
 				
 
