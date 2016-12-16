@@ -185,7 +185,19 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			            } 
-function getCaretPosition(textarea){
+						/*function getCursorPosition( ctrl ) {
+        var CaretPos = 0;
+        if ( document.selection ) {
+            ctrl.focus ();
+            var Sel = document.selection.createRange();
+            Sel.moveStart ('character', -ctrl.value.length);
+            CaretPos = Sel.text.length;
+        } else if ( ctrl.selectionStart || ctrl.selectionStart == '0' ) {
+            CaretPos = ctrl.selectionStart;
+        }
+        return CaretPos;
+    }
+/*function getCaretPosition(textarea){
     var cursorPos = null;
     if (document.selection){
         var range = document.selection.createRange();
@@ -195,7 +207,7 @@ function getCaretPosition(textarea){
     else 
     {
         cursorPos = textarea.selectionStart;
-    }
+    }*/
  }	function myFunction() {
    var x = document.getElementById("RESULTTEXT");
     var y=document.getElementById("RESULTHTML");
@@ -234,21 +246,29 @@ i++;
        }			
 	 $('#text').keypress(function onkeypressFunction(){
 		 alert(5);
+		 var CaretPos = 0;
+        if ( document.selection ) {
+            ctrl.focus ();
+            var Sel = document.selection.createRange();
+            Sel.moveStart ('character', -ctrl.value.length);
+            CaretPos = Sel.text.length;
+        } else if ( ctrl.selectionStart || ctrl.selectionStart == '0' ) {
+            CaretPos = ctrl.selectionStart;
 		 expressionText =  document.getElementById("text").value;
 				  		 if(typeof(boldIndexes[i])!=="undefined"){
             for (var i = 0;i < boldIndexes.length; i++){
-				 if(cursorPos<boldIndexes[i].startPosition){
+				 if(CaretPos<boldIndexes[i].startPosition){
 boldIndexes[i].startPosition=boldIndexes[i].startPosition+1;
 	   }
-	   if((cursorPos>boldIndexes[i].startPosition)&&(cursorPos<boldIndexes[i].startPosition+boldIndexes[i].size)){
+	   if((CaretPos>boldIndexes[i].startPosition)&&(CaretPos<boldIndexes[i].startPosition+boldIndexes[i].size)){
 boldIndexes[i].size=boldIndexes[i].size+addelements.lenght;
 		}
 			}
         for (var j = 0; j <boldIndexes.length; j++){
- 			if(cursorPos<boldIndexes[j].startPosition){
+ 			if(CaretPos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
        }
-	  	if((cursorPos>boldIndexes[j].startPosition)&&(cursorPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
+	  	if((CaretPos>boldIndexes[j].startPosition)&&(CaretPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 		}
 	
@@ -267,18 +287,7 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 
  
      
-  /* function getCursorPosition( ctrl ) {
-        var CaretPos = 0;
-        if ( document.selection ) {
-            ctrl.focus ();
-            var Sel = document.selection.createRange();
-            Sel.moveStart ('character', -ctrl.value.length);
-            CaretPos = Sel.text.length;
-        } else if ( ctrl.selectionStart || ctrl.selectionStart == '0' ) {
-            CaretPos = ctrl.selectionStart;
-        }
-        return CaretPos;
-    }*/ 
+   
   // history[historyIndex]
 	//function ifChange(){
 	//historyIndex++;
