@@ -203,30 +203,62 @@ function getCaretPosition(textarea){
                         }	
 	$( document ).ready(function() {
 	 var addelements = [];
-     var boldIndexes = [];
-   					
-	 $('#text').keypress(function onkeypressFunction(addelements){
-		 alert(5);
-		 var addelements = [];
-     var boldIndexes = [];
-		  		   if(typeof(boldIndexes[i])!=="undefined"){
-            for (var i = 0;i < boldIndexes[i].length; i++){
-				 if(cursorPos<boldIndexes[i].startPosition){
-boldIndexes[i].startPosition=boldIndexes[i].startPosition+addelements.lenght;
-	   }
+     //var boldIndexes = [];
+   		 function ChangeSelection(sourceStr, addelements){
+			/*var txt = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+		}*/
+				 alert(6);
+
+				 selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
+				
+for(var i = 0;i < addelements.length; i++){
+			document.onkeypress = function(e) {
+    if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){   
+i++;
+	
+	sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght+addelements.lenght;
+ // event.type ?????? ???? keypress
+
+	}
+	if((e.keyCode == 8)||(e.keyCode == 46)){
+		i++;
+	sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght-addelements.lenght;
 			}
-        for (var j = 0; j <boldIndexes[j].length; j++){
+			
+			}
+}
+			//addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
+
+       }			
+	 $('#text').keypress(function onkeypressFunction(){
+		 alert(5);
+		 expressionText =  document.getElementById("text").value;
+				  		 if(typeof(boldIndexes[i])!=="undefined"){
+            for (var i = 0;i < boldIndexes.length; i++){
+				 if(cursorPos<boldIndexes[i].startPosition){
+boldIndexes[i].startPosition=boldIndexes[i].startPosition+1;
+	   }
+	   if((cursorPos>boldIndexes[i].startPosition)&&(cursorPos<boldIndexes[i].startPosition+boldIndexes[i].size)){
+boldIndexes[i].size=boldIndexes[i].size+addelements.lenght;
+		}
+			}
+        for (var j = 0; j <boldIndexes.length; j++){
  			if(cursorPos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
        }
-	  
-	   if((cursorPos>boldIndexes[j].startPosition)&&(cursorPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
+	  	if((cursorPos>boldIndexes[j].startPosition)&&(cursorPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 		}
-		if((cursorPos>boldIndexes[j].startPosition)&&(cursorPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
-boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
-		}
+	
 }
+ resultStr = makeBoldStringHtml(expressionText,boldIndexes);
+               // console.log('result str:'+resultStr);
+               
+               // document.getElementById("RESULTTEXT").innerText=resultStr;
+                //document.getElementById("RESULTHTML").innerHTML=resultStr;
+                //Make();
 				   }
 
 		   		                                                            });  
@@ -505,7 +537,7 @@ Make();
                 document.getElementById("RESULTHTML").innerHTML=expressionStart+'<img src="img/'+Image_Title+'"alt="622">'+expressionEnd;
                 Make();
             }
-			//-----------------------------------ChangeSelection----------------------------------------------------------------------
+			
 	
 var undo = document.getElementById('undo');
 var redo = document.getElementById('redo');
@@ -541,28 +573,7 @@ var redo = document.getElementById('redo');
       document.getElementById('RESULTHTML').innerHTML =textarea.value;
    
                                };
-							   function ChangeSelection(sourceStr, addelements){
-			/*var txt = function(startPos, size){
-        this.startPosition = startPos;
-        this.size = size;
-		}*/
-				 selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
-				
-
-			document.onkeypress = function(e) {
-    if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){   
-sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght+addelements.lenght;
- // event.type ?????? ???? keypress
-
-	}
-	if((e.keyCode == 8)||(e.keyCode == 46)){
-	sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght;
-			}
-			
-			}
-			//addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
-
-       }
+							  
 	  
            
                  function Code()
