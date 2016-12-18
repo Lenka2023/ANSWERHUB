@@ -232,21 +232,21 @@ i++;
 			//addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
 
        }	
-	function caretPos(el)
+	function caretPos(textarea)
 {
     var pos = 0;
     // IE Support
     if (document.selection) 
     {
-        el.focus ();
+       textarea.focus ();
         var Sel = document.selection.createRange();
         var SelLength = document.selection.createRange().text.length;
-        Sel.moveStart ('character', -el.value.length);
+        Sel.moveStart ('character', -textarea.value.length);
         pos = Sel.text.length - SelLength;
     }
     // Firefox support
-    else if (el.selectionStart || el.selectionStart == '0')
-        pos = el.selectionStart;
+    else if (textarea.selectionStart || textarea.selectionStart == '0')
+        pos = textarea.selectionStart;
 
     return pos;
 
@@ -254,23 +254,23 @@ i++;
    
 	 $('#text').keypress(function onkeypressFunction(){
 		// alert(5);
-		var CaretPos=getCursorPosition( textarea ); 
+		var pos=caretPos( textarea ); 
 		 //var cursorPos=getCaretPosition(textarea);
 		 expressionText =  document.getElementById("text").value;
 				  		 if(typeof(boldIndexes[i])!=="undefined"){
             for (var i = 0;i < boldIndexes.length; i++){
-				 if(CaretPos<boldIndexes[i].startPosition){
+				 if(pos<boldIndexes[i].startPosition){
 boldIndexes[i].startPosition=boldIndexes[i].startPosition+1;
 	   }
-	   if((CaretPos>boldIndexes[i].startPosition)&&(CaretPos<boldIndexes[i].startPosition+boldIndexes[i].size)){
+	   if((pos>boldIndexes[i].startPosition)&&(pos<boldIndexes[i].startPosition+boldIndexes[i].size)){
 boldIndexes[i].size=boldIndexes[i].size+addelements.lenght;
 		}
 			}
         for (var j = 0; j <boldIndexes.length; j++){
- 			if(CaretPos<boldIndexes[j].startPosition){
+ 			if(pos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
        }
-	  	if((CaretPos>boldIndexes[j].startPosition)&&(CaretPos<boldIndexes[j].startPosition+boldIndexes[j].size)){
+	  	if((pos>boldIndexes[j].startPosition)&&(pos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 		}
 	
@@ -299,8 +299,8 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
         } else if ( textarea.selectionStart || textarea.selectionStart == '0' ) {
             CaretPos = textarea.selectionStart;
         }
-        return CaretPos;*/
-    } 
+        return CaretPos;
+    } */
   // history[historyIndex]
 	//function ifChange(){
 	//historyIndex++;
