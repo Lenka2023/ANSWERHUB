@@ -234,7 +234,8 @@ i++;
        }	
 	function caretPos(textarea)
 {
-    var pos = 0;
+	  textarea=document.getElementById("text");
+	    var pos = 0;
     // IE Support
     if (document.selection) 
     {
@@ -253,8 +254,8 @@ i++;
 }
    
 	 $('#text').keypress(function onkeypressFunction(){
-		// alert(5);
-		var pos=caretPos( textarea ); 
+		 alert(5);
+		var pos=caretPos(); 
 		 //var cursorPos=getCaretPosition(textarea);
 		 expressionText =  document.getElementById("text").value;
 				  		 if(typeof(boldIndexes[i])!=="undefined"){
