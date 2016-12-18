@@ -231,7 +231,27 @@ i++;
 }
 			//addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
 
-       }			
+       }	
+	function caretPos(el)
+{
+    var pos = 0;
+    // IE Support
+    if (document.selection) 
+    {
+        el.focus ();
+        var Sel = document.selection.createRange();
+        var SelLength = document.selection.createRange().text.length;
+        Sel.moveStart ('character', -el.value.length);
+        pos = Sel.text.length - SelLength;
+    }
+    // Firefox support
+    else if (el.selectionStart || el.selectionStart == '0')
+        pos = el.selectionStart;
+
+    return pos;
+
+}
+   
 	 $('#text').keypress(function onkeypressFunction(){
 		// alert(5);
 		var CaretPos=getCursorPosition( textarea ); 
@@ -269,7 +289,7 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 
  
      
-   function getCursorPosition( textarea ) {
+  /* function getCursorPosition( textarea ) {
         var CaretPos = 0;
         if ( document.selection ) {
             textarea.focus ();
@@ -279,7 +299,7 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
         } else if ( textarea.selectionStart || textarea.selectionStart == '0' ) {
             CaretPos = textarea.selectionStart;
         }
-        return CaretPos;
+        return CaretPos;*/
     } 
   // history[historyIndex]
 	//function ifChange(){
