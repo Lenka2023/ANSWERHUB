@@ -277,7 +277,8 @@ i++;
             for (var i = 0;i < boldIndexes.length; i++){
 				 if(typeof(boldIndexes[i])!=="undefined"){
 				 if(pos<boldIndexes[i].startPosition){
-boldIndexes[i].startPosition=boldIndexes[i].startPosition+1;
+boldIndexes[i].startPosition=boldIndexes[i+addelements.lenght].startPosition;
+boldIndexes[i]=boldIndexes[i+addelements.lenght];
 	   }
 	   if((pos>boldIndexes[i].startPosition)&&(pos<boldIndexes[i].startPosition+boldIndexes[i].size)){
 boldIndexes[i].size=boldIndexes[i].size+addelements.lenght;
@@ -287,7 +288,8 @@ boldIndexes[i].size=boldIndexes[i].size+addelements.lenght;
         for (var j = 0; j <boldIndexes.length; j++){
 			if(typeof(boldIndexes[j])!=="undefined"){
  			if(pos<boldIndexes[j].startPosition){
-boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
+boldIndexes[j].startPosition=boldIndexes[j+addelements.lenght].startPosition;
+boldIndexes[j]=boldIndexes[j+addelements.lenght];
        }
 	  	if((pos>boldIndexes[j].startPosition)&&(pos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
