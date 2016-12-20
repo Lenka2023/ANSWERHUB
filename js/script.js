@@ -185,7 +185,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			            } 
-function getCaretPosition(textarea){
+/*function getCaretPosition(textarea){
     var cursorPos = null;
     if (document.selection){
         var range = document.selection.createRange();
@@ -195,8 +195,8 @@ function getCaretPosition(textarea){
     else 
     {
         cursorPos = textarea.selectionStart;
-    }
- }	function myFunction() {
+    }*/
+ 	function myFunction() {
    var x = document.getElementById("RESULTTEXT");
     var y=document.getElementById("RESULTHTML");
    x.innerHTML=y.innerHTML;
@@ -255,7 +255,22 @@ i++;
    
 	 $('#text').keypress(function onkeypressFunction(){
 		 alert(5);
-		var pos=caretPos(); 
+		  textarea=document.getElementById("text");
+		  /*var pos = 0;
+    // IE Support
+    if (document.selection) 
+    {
+       textarea.focus ();
+        var Sel = document.selection.createRange();
+        var SelLength = document.selection.createRange().text.length;
+        Sel.moveStart ('character', -textarea.value.length);
+        pos = Sel.text.length - SelLength;
+    }
+    // Firefox support
+    else if (textarea.selectionStart || textarea.selectionStart == '0')
+        pos = textarea.selectionStart;*/
+
+		var pos=caretPos(expressionText); 
 		 //var cursorPos=getCaretPosition(textarea);
 		 expressionText =  document.getElementById("text").value;
 				  		 if(typeof(boldIndexes[i])!=="undefined"){
@@ -579,7 +594,15 @@ var redo = document.getElementById('redo');
 
   return null; // ????. ??????
 }
-			
+	/*function getElementsById(elementID){
+    var elementCollection = new Array();
+    var allElements = document.getElementsByTagName("*");
+    for(i = 0; i < allElements.length; i++){
+       if(allElements[i].id == elementID)
+           elementCollection.push(allElements[i]);
+   }
+   return elementCollection;
+};	*/	
 			
   textarea=document.getElementById("text");
  var expressionText = getSelectiontextarea( document.getElementById("text") );
