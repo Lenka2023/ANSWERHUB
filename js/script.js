@@ -273,23 +273,26 @@ i++;
 		var pos=caretPos(expressionText); 
 		 //var cursorPos=getCaretPosition(textarea);
 		 expressionText =  document.getElementById("text").value;
-				  		 if(typeof(boldIndexes[i])!=="undefined"){
+				  		
             for (var i = 0;i < boldIndexes.length; i++){
+				 if(typeof(boldIndexes[i])!=="undefined"){
 				 if(pos<boldIndexes[i].startPosition){
 boldIndexes[i].startPosition=boldIndexes[i].startPosition+1;
 	   }
 	   if((pos>boldIndexes[i].startPosition)&&(pos<boldIndexes[i].startPosition+boldIndexes[i].size)){
 boldIndexes[i].size=boldIndexes[i].size+addelements.lenght;
 		}
+				 }
 			}
         for (var j = 0; j <boldIndexes.length; j++){
+			if(typeof(boldIndexes[j])!=="undefined"){
  			if(pos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j].startPosition+addelements.lenght;
        }
 	  	if((pos>boldIndexes[j].startPosition)&&(pos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
 		}
-	
+			}
 }
  resultStr = makeBoldStringHtml(expressionText,boldIndexes);
                // console.log('result str:'+resultStr);
@@ -297,7 +300,7 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
                // document.getElementById("RESULTTEXT").innerText=resultStr;
                 //document.getElementById("RESULTHTML").innerHTML=resultStr;
                 //Make();
-				   }
+				   
 
 		   		                                                            });  
 		// $('#text').keypress();					
