@@ -218,13 +218,13 @@ for(var i = 0;i < addelements.length; i++){
     if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){   
 i++;
 	
-	sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght+addelements.lenght;
+	sourceStr.length=sourceStr.length-selectiontxt.length+addelements.length;
  // event.type ?????? ???? keypress
 
 	}
 	if((e.keyCode == 8)||(e.keyCode == 46)){
 		i++;
-	sourceStr.lenght=sourceStr.lenght-selectiontxt.lenght-addelements.lenght;
+	sourceStr.length=sourceStr.length-selectiontxt.length-addelements.length;
 			}
 			
 			}
@@ -277,22 +277,22 @@ i++;
             for (var i = 0;i < boldIndexes.length; i++){
 				 if(typeof(boldIndexes[i])!=="undefined"){
 				 if(pos<boldIndexes[i].startPosition){
-boldIndexes[i].startPosition=boldIndexes[i+addelements.lenght].startPosition;
-boldIndexes[i]=boldIndexes[i+addelements.lenght];
+boldIndexes[i].startPosition=boldIndexes[i+addelements.length].startPosition;
+boldIndexes[i]=boldIndexes[i+addelements.length];
 	   }
 	   if((pos>boldIndexes[i].startPosition)&&(pos<boldIndexes[i].startPosition+boldIndexes[i].size)){
-boldIndexes[i].size=boldIndexes[i].size+addelements.lenght;
+boldIndexes[i].size=boldIndexes[i].size+addelements.length;
 		}
 				 }
 			}
         for (var j = 0; j <boldIndexes.length; j++){
 			if(typeof(boldIndexes[j])!=="undefined"){
  			if(pos<boldIndexes[j].startPosition){
-boldIndexes[j].startPosition=boldIndexes[j+addelements.lenght].startPosition;
-boldIndexes[j]=boldIndexes[j+addelements.lenght];
+boldIndexes[j].startPosition=boldIndexes[j+addelements.length].startPosition;
+boldIndexes[j]=boldIndexes[j+addelements.length];
        }
 	  	if((pos>boldIndexes[j].startPosition)&&(pos<boldIndexes[j].startPosition+boldIndexes[j].size)){
-boldIndexes[j].size=boldIndexes[j].size+addelements.lenght;
+boldIndexes[j].size=boldIndexes[j].size+addelements.length;
 		}
 			}
 }
