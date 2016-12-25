@@ -282,8 +282,8 @@ i++;
 					var n = expressionText.indexOf("boldIndexes[i]");
 					var nstart = expressionText.indexOf("boldIndexes[i].startPosition");
     				 if(pos<nstart){
-nstart=nstart+1;
-n=n+1;
+nstart=nstart+addelements.length;
+n=n+addelements.length;
 	   }
 	   if((pos>nstart)&&(pos<nstart+boldIndexes[i].size)){
 boldIndexes[i].size=boldIndexes[i].size+addelements.length;
