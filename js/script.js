@@ -287,8 +287,16 @@ n=n+addelements.length;
 	   }
 	   if((pos>nstart)&&(pos<nstart+boldIndexes[i].size)){
 boldIndexes[i].size=boldIndexes[i].size+addelements.length;
-		}
+	if((pos<n)&&(pos<nstart)){
+			i=k;
+							}
+		nk=	expressionText.indexOf("boldIndexes[k]");
+		var nkstart = expressionText.indexOf("boldIndexes[k].startPosition");
+		nkstart=nstart+addelements.length;
+nk=n+addelements.length;
+
 				 }
+			}
 			}
        /* for (var j = 0; j <boldIndexes.length; j++){
 			if(typeof(boldIndexes[j])!=="undefined"){
