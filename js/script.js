@@ -254,7 +254,7 @@ i++;
 }
    
 	 $('#text').keypress(function onkeypressFunction(){
-		 alert(5);
+		 //alert(5);
 		  textarea=document.getElementById("text");
 		  /*var pos = 0;
     // IE Support
@@ -272,28 +272,29 @@ i++;
 
 		var pos=caretPos(expressionText); 
 		 //var cursorPos=getCaretPosition(textarea);
+		 textarea=document.getElementById("text");
 		 expressionText =  document.getElementById("text").value;
 				  		
-            for (var i = 0;i < boldIndexes.length; i++){
+            for (var i = 0;i <= boldIndexes.length; i++){
 				 if(typeof(boldIndexes[i])!=="undefined"){
-					if(i==0){
+					/*if(i==0){
 				 boldIndexes[i]=boldIndexes[i].startPosition;		
-				 	} 
-					var n = expressionText.indexOf("boldIndexes[i]");
-					var nstart = expressionText.indexOf("boldIndexes[i].startPosition");
+				 	} */
+					var n = expressionText.indexOf(boldIndexes[i]);
+					var nstart = expressionText.indexOf(boldIndexes[i].startPosition);
     				 if(pos<nstart){
 nstart=nstart+addelements.length;
 n=n+addelements.length;
 	   }
 	   if((pos>nstart)&&(pos<nstart+boldIndexes[i].size)){
 boldIndexes[i].size=boldIndexes[i].size+addelements.length;
-	if((pos<n)&&(pos<nstart)){
+	/*if((pos<n)&&(pos<nstart)){
 			i=k;
 							}
 		nk=	expressionText.indexOf("boldIndexes[k]");
 		var nkstart = expressionText.indexOf("boldIndexes[k].startPosition");
 		nkstart=nstart+addelements.length;
-nk=n+addelements.length;
+nk=n+addelements.length;*/
 
 				 }
 			}
