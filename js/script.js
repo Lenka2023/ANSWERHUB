@@ -203,7 +203,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                         }	
 	$( document ).ready(function() {
 	 var addelements = [];
-     //var boldIndexes = [];
+     
    		 function ChangeSelection(sourceStr, addelements){
 			/*var txt = function(startPos, size){
         this.startPosition = startPos;
@@ -282,7 +282,7 @@ i++;
 				 	} */
 					var n = expressionText.indexOf(boldIndexes[i]);
 					var nstart = expressionText.indexOf(boldIndexes[i].startPosition);
-    				 if(pos<nstart){
+    				 if((pos<nstart)&&(pos<n)){
 nstart=nstart+addelements.length;
 n=n+addelements.length;
 	   }
