@@ -184,17 +184,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
-/*function getCaretPosition(textarea){
-    var cursorPos = null;
-    if (document.selection){
-        var range = document.selection.createRange();
-        range.moveStart('textedit', -1);
-        cursorPos = range.text.length;
-    }
-    else
-    {
-        cursorPos = textarea.selectionStart;
-    }*/
+
     function myFunction() {
    var x = document.getElementById("RESULTTEXT");
     var y=document.getElementById("RESULTHTML");
@@ -202,7 +192,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                         }  
     $( document ).ready(function() {
      var addelements = [];
-     //var boldIndexes = [];
+    
          function ChangeSelection(sourceStr, addelements){
             /*var txt = function(startPos, size){
         this.startPosition = startPos;
@@ -228,9 +218,7 @@ i++;
            
             }
 }
-            //addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
- 
-       }   
+                }   
     function caretPos(textarea)
 {
       textarea=document.getElementById("text");
@@ -254,36 +242,19 @@ i++;
    
      $('#text').keypress(function onkeypressFunction(){
          //alert(5);
-          textarea=document.getElementById("text");
-          /*var pos = 0;
-    // IE Support
-    if (document.selection)
-    {
-       textarea.focus ();
-        var Sel = document.selection.createRange();
-        var SelLength = document.selection.createRange().text.length;
-        Sel.moveStart ('character', -textarea.value.length);
-        pos = Sel.text.length - SelLength;
-    }
-    // Firefox support
-    else if (textarea.selectionStart || textarea.selectionStart == '0')
-        pos = textarea.selectionStart;*/
- 
-        var pos=caretPos(expressionText);
-         //var cursorPos=getCaretPosition(textarea);
-        // expressionText =  document.getElementById("text").value;
-                       
+         var pos=caretPos(expressionText);
+                            
             for (var i = 0;i <= boldIndexes.length; i++){
                  if(typeof boldIndexes[i] != "undefined"){
                     var startPos = boldIndexes[i].startPosition;
                     var size = boldIndexes[i].size;
-//               boldIndexes[i]=boldIndexes[i].startPosition;      
+//                  
                      if(pos<startPos){
         startPos=startPos+1;
        }
        else
        if((pos>startPos)&&(pos<startPos+size)){
-       size += 1;// Make();
+       size += 1;
  
                  }
        boldIndexes[i].startPosition = startPos;
@@ -292,72 +263,22 @@ i++;
             }
              console.log('Bold indexes:'+JSON.stringify(boldIndexes));
  
-       /* for (var j = 0; j <boldIndexes.length; j++){
-            if(typeof(boldIndexes[j])!=="undefined"){
-                if(j==0){
-                 boldIndexes[j]=boldIndexes[j].startPosition;      
-                    }
-            if(pos<boldIndexes[j].startPosition){
-boldIndexes[j].startPosition=boldIndexes[j+addelements.length].startPosition;
-boldIndexes[j]=boldIndexes[j+addelements.length];
-       }
-        if((pos>boldIndexes[j].startPosition)&&(pos<boldIndexes[j].startPosition+boldIndexes[j].size)){
-boldIndexes[j].size=boldIndexes[j].size+addelements.length;
-        }
-            }
-}*/
+      
  resultStr = makeBoldStringHtml(expressionText,boldIndexes);
                
-               // document.getElementById("RESULTTEXT").innerText=resultStr;
-                //document.getElementById("RESULTHTML").innerHTML=resultStr;
-                //Make();
-                   
- 
+              
                                                                             });  
-        // $('#text').keypress();                  
-   
- 
- 
-     
-  /* function getCursorPosition( textarea ) {
-        var CaretPos = 0;
-        if ( document.selection ) {
-            textarea.focus ();
-            var Sel = document.selection.createRange();
-            Sel.moveStart ('character', -textarea.value.length);
-            CaretPos = Sel.text.length;
-        } else if ( textarea.selectionStart || textarea.selectionStart == '0' ) {
-            CaretPos = textarea.selectionStart;
-        }
-        return CaretPos;
-    } */
-  // history[historyIndex]
-    //function ifChange(){
-    //historyIndex++;
-    //}
-  // text.onkeyup = text.oninput =ifChange();
+       
     Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
    
-//$(document).ready(function(){
-                              //});
+
       var SelectionPosition = function(startPos,endPos){
         this.startPosition = startPos;
         this.endPosition = endPos;
-        //if (this.startPosition > this.endPosition) this.swap('startPosition','endPosition');
-      }
+             }
      
      
-      //var clickelements = [];
      
-   
-   
-   
- 
-   
- 
- 
- 
- 
  
 function Top(){
 var top_page_list=prompt("Enter top_page_list","");
