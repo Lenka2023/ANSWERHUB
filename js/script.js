@@ -12,8 +12,8 @@ var is_kon    = (uagent.indexOf('konqueror') != -1);
 var is_webtv  = (uagent.indexOf('webtv') != -1);
 var is_win    =  ( (uagent.indexOf("win") != -1) || (uagent.indexOf("16bit") !=- 1) );
 var is_mac    = ( (uagent.indexOf("mac") != -1) || (navigator.vendor == "Apple Computer, Inc.") );
-var ua_vers   = parseInt(navigator.appVersion);	
-	function getSelectiontextarea(textarea)
+var ua_vers   = parseInt(navigator.appVersion);
+    function getSelectiontextarea(textarea)
 {
    var selection = null;
    if ((ua_vers >= 4) && is_ie && is_win) {
@@ -29,7 +29,7 @@ var ua_vers   = parseInt(navigator.appVersion);
         selection = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
     }
     return selection;
-}; 
+};
 function SomeVar(){
     textarea=document.getElementById("text");
     document.getElementById("text").focus();
@@ -42,17 +42,17 @@ function SomeVar(){
                 expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
                 expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
                 }
-				 var boldIndexes = [];
-				 var txt = function(startPos, size){
+                 var boldIndexes = [];
+                 var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
-		}
-				  var BoldSelection = function(startPos, size){
+        }
+                  var BoldSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
  
       }
-	   var AggregateBoldSelection = function(sourceArray){
+       var AggregateBoldSelection = function(sourceArray){
         var indexesToRemove = new Set();
         for (var i = 0; i < sourceArray.length; i++){
         for (var j = 0; j < sourceArray.length; j++){
@@ -65,21 +65,21 @@ function SomeVar(){
                 sourceArray[i].size = maxLastIndex - sourceArray[i].startPosition;
                 indexesToRemove.add(j);
             }
-			if (sourceArray[i].startPosition>=sourceArray[j].startPosition && sourceArray[i].startPosition>=lastIndex2){
-				sourceArray[i].size = lastIndex1 - sourceArray[i].startPosition;
-				sourceArray[j].size = lastIndex2 - sourceArray[j].startPosition;
+            if (sourceArray[i].startPosition>=sourceArray[j].startPosition && sourceArray[i].startPosition>=lastIndex2){
+                sourceArray[i].size = lastIndex1 - sourceArray[i].startPosition;
+                sourceArray[j].size = lastIndex2 - sourceArray[j].startPosition;
         }
         }
-		}
-	for (var i = sourceArray.length; i-- ; i >0 )
+        }
+    for (var i = sourceArray.length; i-- ; i >0 )
     if (Array.from(indexesToRemove).indexOf(i)>-1) {
         sourceArray.splice(i, 1);
       }
-
+ 
        
       }
-	   function makeBoldStringHtml(sourceStr, boldIndexes){
-		//alert(1);	
+       function makeBoldStringHtml(sourceStr, boldIndexes){
+        //alert(1);
             var currentSymbolIndex = 0;
             var resultStr = "";
             //var currentEndSymbolIndex = boldIndexes[0].startPosition;
@@ -94,7 +94,7 @@ function SomeVar(){
                 resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
             return resultStr;
             }
-			function getElementsById(elementID){
+            function getElementsById(elementID){
     var elementCollection = new Array();
     var allElements = document.getElementsByTagName("*");
     for(i = 0; i < allElements.length; i++){
@@ -113,9 +113,9 @@ function isHidden(obj) {
     return (obj.style.display == 'none')
 }
      
-			var html_res_array = getElementsById('RESULTHTML');
+            var html_res_array = getElementsById('RESULTHTML');
             var text_res_array = getElementsById('RESULTTEXT');
-			function PurgeRedoSequence()
+            function PurgeRedoSequence()
 {
      html_res_array = getElementsById('RESULTHTML');
      text_res_array = getElementsById('RESULTTEXT');
@@ -139,7 +139,7 @@ function operation(RESULTTEXT, RESULTTEXT) {
     if ((historyIndex ==0)&&(historyIndexMax==0)) {(document.getElementById('redo')).disabled ='disabled';(document.getElementById('undo')).disabled ='disabled';}
     //alert('Op done!');
 };
-			function Make(){
+            function Make(){
     PurgeRedoSequence();
 //document.getElementById("RESULTTEXT").id = "text_res";
 //document.getElementById("RESULTHTML").id = "html_res";
@@ -150,7 +150,7 @@ operation(document.getElementById("RESULTHTML").innerHTML, document.getElementBy
 document.getElementById("RESULTTEXT").designMode='on';
 document.getElementById("RESULTHTML").designMode='on';
 document.getElementById("RESULTTEXT").contentEditable = true; void(0);
-document.getElementById("RESULTHTML").contentEditable = true; void(0); 
+document.getElementById("RESULTHTML").contentEditable = true; void(0);
 }
  function Bold()
             {
@@ -175,16 +175,15 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 return a.startPosition - b.startPosition;
                 });
                 console.log('aggregated array:');
-        for (var i =0; i < boldIndexes.length; i++){   
+        for (var i =0; i < boldIndexes.length; i++){  
             console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
         }
                 var resultStr = makeBoldStringHtml(expressionText,boldIndexes);
-                console.log('result str:'+resultStr);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-			            } 
+                        }
 /*function getCaretPosition(textarea){
     var cursorPos = null;
     if (document.selection){
@@ -192,52 +191,52 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         range.moveStart('textedit', -1);
         cursorPos = range.text.length;
     }
-    else 
+    else
     {
         cursorPos = textarea.selectionStart;
     }*/
- 	function myFunction() {
+    function myFunction() {
    var x = document.getElementById("RESULTTEXT");
     var y=document.getElementById("RESULTHTML");
    x.innerHTML=y.innerHTML;
-                        }	
-	$( document ).ready(function() {
-	 var addelements = [];
-     
-   		 function ChangeSelection(sourceStr, addelements){
-			/*var txt = function(startPos, size){
+                        }  
+    $( document ).ready(function() {
+     var addelements = [];
+     //var boldIndexes = [];
+         function ChangeSelection(sourceStr, addelements){
+            /*var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
-		}*/
-				 alert(6);
-
-				 selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
-				
+        }*/
+                 alert(6);
+ 
+                 selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
+               
 for(var i = 0;i < addelements.length; i++){
-			document.onkeypress = function(e) {
-    if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){   
+            document.onkeypress = function(e) {
+    if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){  
 i++;
-	
-	sourceStr.length=sourceStr.length-selectiontxt.length+addelements.length;
+   
+    sourceStr.length=sourceStr.length-selectiontxt.length+addelements.length;
  // event.type ?????? ???? keypress
-
-	}
-	if((e.keyCode == 8)||(e.keyCode == 46)){
-		i++;
-	sourceStr.length=sourceStr.length-selectiontxt.length-addelements.length;
-			}
-			
-			}
+ 
+    }
+    if((e.keyCode == 8)||(e.keyCode == 46)){
+        i++;
+    sourceStr.length=sourceStr.length-selectiontxt.length-addelements.length;
+            }
+           
+            }
 }
-			//addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
-
-       }	
-	function caretPos(textarea)
+            //addelements.push(new txt(selectionBegin,selectionEnd-selectionBegin));
+ 
+       }   
+    function caretPos(textarea)
 {
-	  textarea=document.getElementById("text");
-	    var pos = 0;
+      textarea=document.getElementById("text");
+        var pos = 0;
     // IE Support
-    if (document.selection) 
+    if (document.selection)
     {
        textarea.focus ();
         var Sel = document.selection.createRange();
@@ -248,17 +247,17 @@ i++;
     // Firefox support
     else if (textarea.selectionStart || textarea.selectionStart == '0')
         pos = textarea.selectionStart;
-
+ 
     return pos;
-
+ 
 }
    
-	 $('#text').keypress(function onkeypressFunction(){
-		 //alert(5);
-		  textarea=document.getElementById("text");
-		  /*var pos = 0;
+     $('#text').keypress(function onkeypressFunction(){
+         //alert(5);
+          textarea=document.getElementById("text");
+          /*var pos = 0;
     // IE Support
-    if (document.selection) 
+    if (document.selection)
     {
        textarea.focus ();
         var Sel = document.selection.createRange();
@@ -269,62 +268,55 @@ i++;
     // Firefox support
     else if (textarea.selectionStart || textarea.selectionStart == '0')
         pos = textarea.selectionStart;*/
-
-		var pos=caretPos(expressionText); 
-		 //var cursorPos=getCaretPosition(textarea);
-		 textarea=document.getElementById("text");
-		 expressionText =  document.getElementById("text").value;
-				  		
+ 
+        var pos=caretPos(expressionText);
+         //var cursorPos=getCaretPosition(textarea);
+        // expressionText =  document.getElementById("text").value;
+                       
             for (var i = 0;i <= boldIndexes.length; i++){
-				 if(typeof(boldIndexes[i])!=="undefined"){
-					/*if(i==0){
-				 boldIndexes[i]=boldIndexes[i].startPosition;		
-				 	} */
-					var n = expressionText.indexOf(boldIndexes[i]);
-					var nstart = expressionText.indexOf(boldIndexes[i].startPosition);
-    				 if((pos<nstart)&&(pos<n)){
-nstart=nstart+addelements.length;
-n=n+addelements.length;
-	   }
-	   if((pos>nstart)&&(pos<nstart+boldIndexes[i].size)){
-boldIndexes[i].size=boldIndexes[i].size+addelements.length;
-	/*if((pos<n)&&(pos<nstart)){
-			i=k;
-							}
-		nk=	expressionText.indexOf("boldIndexes[k]");
-		var nkstart = expressionText.indexOf("boldIndexes[k].startPosition");
-		nkstart=nstart+addelements.length;
-nk=n+addelements.length;*/
-
-				 }
-			}
-			}
+                 if(typeof boldIndexes[i] != "undefined"){
+                    var startPos = boldIndexes[i].startPosition;
+                    var size = boldIndexes[i].size;
+//               boldIndexes[i]=boldIndexes[i].startPosition;      
+                     if(pos<startPos){
+        startPos=startPos+1;
+       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;// Make();
+ 
+                 }
+       boldIndexes[i].startPosition = startPos;
+       boldIndexes[i].size = size;
+            }
+            }
+             console.log('Bold indexes:'+JSON.stringify(boldIndexes));
+ 
        /* for (var j = 0; j <boldIndexes.length; j++){
-			if(typeof(boldIndexes[j])!=="undefined"){
-				if(j==0){
-				 boldIndexes[j]=boldIndexes[j].startPosition;		
-				 	} 
- 			if(pos<boldIndexes[j].startPosition){
+            if(typeof(boldIndexes[j])!=="undefined"){
+                if(j==0){
+                 boldIndexes[j]=boldIndexes[j].startPosition;      
+                    }
+            if(pos<boldIndexes[j].startPosition){
 boldIndexes[j].startPosition=boldIndexes[j+addelements.length].startPosition;
 boldIndexes[j]=boldIndexes[j+addelements.length];
        }
-	  	if((pos>boldIndexes[j].startPosition)&&(pos<boldIndexes[j].startPosition+boldIndexes[j].size)){
+        if((pos>boldIndexes[j].startPosition)&&(pos<boldIndexes[j].startPosition+boldIndexes[j].size)){
 boldIndexes[j].size=boldIndexes[j].size+addelements.length;
-		}
-			}
+        }
+            }
 }*/
  resultStr = makeBoldStringHtml(expressionText,boldIndexes);
-               // console.log('result str:'+resultStr);
                
                // document.getElementById("RESULTTEXT").innerText=resultStr;
                 //document.getElementById("RESULTHTML").innerHTML=resultStr;
                 //Make();
-				   
-
-		   		                                                            });  
-		// $('#text').keypress();					
-	
-
+                   
+ 
+                                                                            });  
+        // $('#text').keypress();                  
+   
+ 
  
      
   /* function getCursorPosition( textarea ) {
@@ -340,11 +332,11 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.length;
         return CaretPos;
     } */
   // history[historyIndex]
-	//function ifChange(){
-	//historyIndex++;
-	//}
+    //function ifChange(){
+    //historyIndex++;
+    //}
   // text.onkeyup = text.oninput =ifChange();
-	Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
+    Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
    
 //$(document).ready(function(){
                               //});
@@ -355,18 +347,18 @@ boldIndexes[j].size=boldIndexes[j].size+addelements.length;
       }
      
      
-	  //var clickelements = [];
-	 
+      //var clickelements = [];
+     
    
-    
    
-
-    
-
+   
+ 
+   
  
  
  
-
+ 
+ 
 function Top(){
 var top_page_list=prompt("Enter top_page_list","");
 PurgeRedoSequence();
@@ -492,8 +484,8 @@ document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page flo
                             }
             }
 //----------------------------------------------------------------------------------------------------
-
-
+ 
+ 
 function Reundo() {
     var html_res_array = getElementsById('RESULTHTML');
     var text_res_array = getElementsById('RESULTTEXT');
@@ -514,7 +506,7 @@ function Reundo() {
     //document.getElementById('html_res').innerHTML = history_Area[historyIndex];
     //document.getElementById('text_res').innerHTML = history_Result[historyIndex];
 };
-
+ 
      
 //undo.addEventListener('click', Undo () );
 //redo.addEventListener('click', Redo() );
@@ -528,7 +520,7 @@ function Redo() {
         redo.disabled ='disabled';
     }
     if (historyIndex > 0) { undo.disabled = ''; }
-}; 
+};
 function Undo(){
     if (historyIndex > 0)
     {
@@ -549,8 +541,8 @@ document.getElementById("RESULTTEXT").id = "RESULTTEXT";
 document.getElementById("RESULTHTML").id = "RESULTHTML";
 operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
 }
-
-						
+ 
+                       
 function Txt(){
  
     SomeVar();
@@ -597,26 +589,26 @@ Make();
                 document.getElementById("RESULTHTML").innerHTML=expressionStart+'<img src="img/'+Image_Title+'"alt="622">'+expressionEnd;
                 Make();
             }
-			
-	
+           
+   
 var undo = document.getElementById('undo');
 var redo = document.getElementById('redo');
-
-
-			addelements=function getChar(event) {
+ 
+ 
+            addelements=function getChar(event) {
   if (event.which == null) { // IE
     if (event.keyCode < 32) return null; // ????. ??????
     return String.fromCharCode(event.keyCode)
   }
-
+ 
   if (event.which != 0 && event.charCode != 0) { // ??? ????? IE
     if (event.which < 32) return null; // ????. ??????
     return String.fromCharCode(event.which); // ?????????
   }
-
+ 
   return null; // ????. ??????
 }
-				
+               
   textarea=document.getElementById("text");
  var expressionText = getSelectiontextarea( document.getElementById("text") );
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
@@ -624,19 +616,19 @@ var redo = document.getElementById('redo');
     var expressionEnd=(textarea.value).substring(textarea.selectionEnd).value;
     var expressionText = getSelectiontextarea( document.getElementById("text") );
     var expressionHTML = getSelectiontextarea( document.getElementById("text") );
-	
-			 textarea.oninput=function(){
+   
+             textarea.oninput=function(){
    textarea=document.getElementById("text");
    //var resultstrCollection = new Array();
     var resultStr = makeBoldStringHtml(expressionText,boldIndexes);
-	/*for(i = 0; i < resultStr.length; i++){
+    /*for(i = 0; i < resultStr.length; i++){
                  resultstrCollection.push(resultStr[i]);
    }*/
       document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
        document.getElementById('RESULTHTML').innerHTML =textarea.value;
                                   };
-							  
-	  
+                             
+     
            
                  function Code()
             {
@@ -909,7 +901,5 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 '</html>';
 Make();
             }
-			
-	});
-			 
- 
+           
+    });
