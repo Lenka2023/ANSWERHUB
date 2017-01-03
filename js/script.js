@@ -244,7 +244,7 @@ i++;
          //alert(5);
          var pos=caretPos(expressionText);
                             
-            for (var i = 0;i <= boldIndexes.length; i++){
+            for (var i = 0;i < boldIndexes.length; i++){
                  if(typeof boldIndexes[i] != "undefined"){
                     var startPos = boldIndexes[i].startPosition;
                     var size = boldIndexes[i].size;
