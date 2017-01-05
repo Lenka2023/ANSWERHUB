@@ -42,6 +42,7 @@ function SomeVar(){
                 expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
                 expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
                 }
+				 var addelements = [];
                  var boldIndexes = [];
                  var txt = function(startPos, size){
         this.startPosition = startPos;
@@ -92,6 +93,9 @@ function SomeVar(){
             }
             if (currentSymbolIndex<sourceStr.length)
                 resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
+			else{
+				resultStr ='<span>'+textarea.value+'</span>';
+			}
             return resultStr;
             }
             function getElementsById(elementID){
@@ -191,7 +195,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
    x.innerHTML=y.innerHTML;
                         }  
     $( document ).ready(function() {
-     var addelements = [];
+    
     
          function ChangeSelection(sourceStr, addelements){
             /*var txt = function(startPos, size){
@@ -272,6 +276,8 @@ resultStr = makeBoldStringHtml(expressionText);
  
   
  resultStr = makeBoldStringHtml(expressionText);
+ document.getElementById("RESULTTEXT").innerText=resultStr;
+ document.getElementById("RESULTHTML").innerHTML=resultStr;
  console.log('resultStr:'+makeBoldStringHtml(expressionText));              
               
                                                                             });  
