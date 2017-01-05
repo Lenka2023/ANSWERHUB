@@ -78,7 +78,7 @@ function SomeVar(){
  
        
       }
-       function makeBoldStringHtml(sourceStr, boldIndexes){
+       function makeBoldStringHtml(sourceStr){
         //alert(1);
             var currentSymbolIndex = 0;
             var resultStr = "";
@@ -178,7 +178,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         for (var i =0; i < boldIndexes.length; i++){  
             console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
         }
-                var resultStr = makeBoldStringHtml(expressionText,boldIndexes);
+                var resultStr = makeBoldStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -218,6 +218,8 @@ i++;
            
             }
 }
+resultStr = makeBoldStringHtml(expressionText);
+ console.log('resultStr:'+makeBoldStringHtml(expressionText));   
                 }   
     function caretPos(textarea)
 {
@@ -248,24 +250,29 @@ i++;
                  if(typeof boldIndexes[i] != "undefined"){
                     var startPos = boldIndexes[i].startPosition;
                     var size = boldIndexes[i].size;
-//                  
-                     if(pos<startPos){
+                  
+                     if(pos<=startPos){
         startPos=startPos+1;
+		/*resultStr = makeBoldStringHtml(expressionText);
+		console.log('resultStr:'+makeBoldStringHtml(expressionText));*/
        }
        else
        if((pos>startPos)&&(pos<startPos+size)){
        size += 1;
- 
+ //resultStr = makeBoldStringHtml(expressionText);
+  //console.log('resultStr:'+makeBoldStringHtml(expressionText));        
                  }
        boldIndexes[i].startPosition = startPos;
        boldIndexes[i].size = size;
+	   /*resultStr = makeBoldStringHtml(expressionText);
+	    console.log('resultStr:'+makeBoldStringHtml(expressionText));     */   
             }
             }
              console.log('Bold indexes:'+JSON.stringify(boldIndexes));
  
-      
- resultStr = makeBoldStringHtml(expressionText,boldIndexes);
-               
+  
+ resultStr = makeBoldStringHtml(expressionText);
+ console.log('resultStr:'+makeBoldStringHtml(expressionText));              
               
                                                                             });  
        
@@ -541,7 +548,7 @@ var redo = document.getElementById('redo');
              textarea.oninput=function(){
    textarea=document.getElementById("text");
    //var resultstrCollection = new Array();
-    var resultStr = makeBoldStringHtml(expressionText,boldIndexes);
+    var resultStr = makeBoldStringHtml(expressionText);
     /*for(i = 0; i < resultStr.length; i++){
                  resultstrCollection.push(resultStr[i]);
    }*/
