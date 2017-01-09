@@ -80,22 +80,26 @@ function SomeVar(){
        
       }
        function makeBoldStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
         //alert(1);
             var currentSymbolIndex = 0;
-            var resultStr = "";
+            var resultStr ='<span>'+expressionText+'</span>';
             //var currentEndSymbolIndex = boldIndexes[0].startPosition;
             var usedSymbols = 0;
             for (var i = 0; i < boldIndexes.length; i++){
-                if (currentSymbolIndex<boldIndexes[i].startPosition)
+                if (currentSymbolIndex<boldIndexes[i].startPosition){
                 resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
             resultStr += '<span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span>';
             currentSymbolIndex = boldIndexes[i].startPosition+boldIndexes[i].size;
             }
-            if (currentSymbolIndex<sourceStr.length)
-                resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
-			else{
-				resultStr ='<span>'+textarea.value+'</span>';
 			}
+            if (currentSymbolIndex<sourceStr.length){
+                resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
+			}
+			/*else{
+				resultStr +='<span>'+expressionText+'</span>';
+			}*/
             return resultStr;
             }
             function getElementsById(elementID){
@@ -197,7 +201,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
     $( document ).ready(function() {
     
     
-         function ChangeSelection(sourceStr, addelements){
+         function ChangeSelection(sourceStr){
             /*var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -277,7 +281,7 @@ resultStr = makeBoldStringHtml(expressionText);
   
  resultStr = makeBoldStringHtml(expressionText);
  document.getElementById("RESULTTEXT").innerText=resultStr;
- document.getElementById("RESULTHTML").innerHTML=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
  console.log('resultStr:'+makeBoldStringHtml(expressionText));              
               
                                                                             });  
