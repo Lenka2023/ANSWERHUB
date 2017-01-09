@@ -201,7 +201,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
     $( document ).ready(function() {
     
     
-         function ChangeSelection(sourceStr){
+         function ChangeSelection(sourceStr, addelements){
             /*var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -250,7 +250,7 @@ resultStr = makeBoldStringHtml(expressionText);
  
 }
    
-     $('#text').keypress(function onkeypressFunction(){
+     $('#text').keyup(function onkeypressFunction(){
          //alert(5);
          var pos=caretPos(expressionText);
                             
