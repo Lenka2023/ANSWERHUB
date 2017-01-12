@@ -84,22 +84,22 @@ function SomeVar(){
 		    var expressionText =  document.getElementById("text").value;
         //alert(1);
             var currentSymbolIndex = 0;
-            var resultStr ='<span>'+expressionText+'</span>';
-            //var currentEndSymbolIndex = boldIndexes[0].startPosition;
+			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < boldIndexes.length; i++){
                 if (currentSymbolIndex<boldIndexes[i].startPosition){
                 resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
-            resultStr += '<span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span>';
-            currentSymbolIndex = boldIndexes[i].startPosition+boldIndexes[i].size;
+            resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
+            //currentSymbolIndex = boldIndexes[i].startPosition+boldIndexes[i].size;
             }
 			}
-            if (currentSymbolIndex<sourceStr.length){
+            /*if (currentSymbolIndex<sourceStr.length){
                 resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
-			}
-			/*else{
-				resultStr +='<span>'+expressionText+'</span>';
+				
 			}*/
+			if(boldIndexes.length==0){
+				resultStr +='<span>'+expressionText+'</span>';
+			}
             return resultStr;
             }
             function getElementsById(elementID){
@@ -240,11 +240,11 @@ resultStr = makeBoldStringHtml(expressionText);
         var Sel = document.selection.createRange();
         var SelLength = document.selection.createRange().text.length;
         Sel.moveStart ('character', -textarea.value.length);
-        pos = Sel.text.length - SelLength;
+        pos = Sel.text.length - SelLength-1;
     }
     // Firefox support
     else if (textarea.selectionStart || textarea.selectionStart == '0')
-        pos = textarea.selectionStart;
+        pos = textarea.selectionStart-1;
  
     return pos;
  
