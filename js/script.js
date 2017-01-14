@@ -201,7 +201,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
     $( document ).ready(function() {
     
     
-         function ChangeSelection(sourceStr, addelements){
+         function ChangeSelection(sourceStr){
             /*var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -209,7 +209,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                  alert(6);
  
                  selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
-               
+               expressionText =( document.getElementById("text").value );
 for(var i = 0;i < addelements.length; i++){
             document.onkeypress = function(e) {
     if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){  
@@ -252,6 +252,7 @@ resultStr = makeBoldStringHtml(expressionText);
    
      $('#text').keyup(function onkeypressFunction(){
          //alert(5);
+		 expressionText =( document.getElementById("text").value );
          var pos=caretPos(expressionText);
                             
             for (var i = 0;i < boldIndexes.length; i++){
@@ -279,7 +280,7 @@ resultStr = makeBoldStringHtml(expressionText);
              console.log('Bold indexes:'+JSON.stringify(boldIndexes));
  
   
- resultStr = makeBoldStringHtml(expressionText);
+ var resultStr = makeBoldStringHtml(expressionText);
  document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
  console.log('resultStr:'+makeBoldStringHtml(expressionText));              
