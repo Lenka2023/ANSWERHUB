@@ -43,7 +43,7 @@ function SomeVar(){
                 expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
                 }
 				 var addelements = [];
-                 var boldIndexes = [];
+                 var usedIndexes = [];
                  var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -86,18 +86,15 @@ function SomeVar(){
             var currentSymbolIndex = 0;
 			var resultStr =" ";
             var usedSymbols = 0;
-            for (var i = 0; i < boldIndexes.length; i++){
-                if (currentSymbolIndex<boldIndexes[i].startPosition){
-                resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
-            resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
-            //currentSymbolIndex = boldIndexes[i].startPosition+boldIndexes[i].size;
+            for (var i = 0; i < usedIndexes.length; i++){
+                if (currentSymbolIndex<usedIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,usedIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(usedIndexes[i].startPosition,usedIndexes[i].startPosition+usedIndexes[i].size)+'</span><span>'+sourceStr.substring(usedIndexes[i].startPosition+usedIndexes[i].size,sourceStr.length)+'</span>';
+            currentSymbolIndex = usedIndexes[i].startPosition+usedIndexes[i].size;
             }
 			}
-            /*if (currentSymbolIndex<sourceStr.length){
-                resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
-				
-			}*/
-			if(boldIndexes.length==0){
+           
+			if(usedIndexes.length==0){
 				resultStr +='<span>'+expressionText+'</span>';
 			}
             return resultStr;
@@ -173,18 +170,18 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateBoldSelection(boldIndexes);
-                for (var i = 0; i < boldIndexes.length; i++){
-                    var beginIndex = boldIndexes[i].startPosition;
-                    var endIndex = boldIndexes[i].endPosition;
+                usedIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateBoldSelection(usedIndexes);
+                for (var i = 0; i < usedIndexes.length; i++){
+                    var beginIndex = usedIndexes[i].startPosition;
+                    var endIndex = usedIndexes[i].endPosition;
                 }
-                boldIndexes.sort(function(a,b) {
+                usedIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
                 });
                 console.log('aggregated array:');
-        for (var i =0; i < boldIndexes.length; i++){  
-            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
+        for (var i =0; i < usedIndexes.length; i++){  
+            console.log(usedIndexes[i].startPosition + " " + usedIndexes[i].size);
         }
                 var resultStr = makeBoldStringHtml(expressionText);
                
@@ -255,10 +252,10 @@ resultStr = makeBoldStringHtml(expressionText);
 		 expressionText =( document.getElementById("text").value );
          var pos=caretPos(expressionText);
                             
-            for (var i = 0;i < boldIndexes.length; i++){
-                 if(typeof boldIndexes[i] != "undefined"){
-                    var startPos = boldIndexes[i].startPosition;
-                    var size = boldIndexes[i].size;
+            for (var i = 0;i < usedIndexes.length; i++){
+                 if(typeof usedIndexes[i] != "undefined"){
+                    var startPos = usedIndexes[i].startPosition;
+                    var size = usedIndexes[i].size;
                   
                      if(pos<=startPos){
         startPos=startPos+1;
@@ -271,13 +268,13 @@ resultStr = makeBoldStringHtml(expressionText);
  //resultStr = makeBoldStringHtml(expressionText);
   //console.log('resultStr:'+makeBoldStringHtml(expressionText));        
                  }
-       boldIndexes[i].startPosition = startPos;
-       boldIndexes[i].size = size;
+       usedIndexes[i].startPosition = startPos;
+       usedIndexes[i].size = size;
 	   /*resultStr = makeBoldStringHtml(expressionText);
 	    console.log('resultStr:'+makeBoldStringHtml(expressionText));     */   
             }
             }
-             console.log('Bold indexes:'+JSON.stringify(boldIndexes));
+             console.log('Bold indexes:'+JSON.stringify(usedIndexes));
  
   
  var resultStr = makeBoldStringHtml(expressionText);
