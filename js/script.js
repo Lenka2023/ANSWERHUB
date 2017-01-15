@@ -48,7 +48,7 @@ function SomeVar(){
         this.startPosition = startPos;
         this.size = size;
         }
-                  var BoldSelection = function(startPos, size){
+                  var UsedSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
  
@@ -170,7 +170,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                usedIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
+                usedIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateUsedSelection(usedIndexes);
                 for (var i = 0; i < usedIndexes.length; i++){
                     var beginIndex = usedIndexes[i].startPosition;
