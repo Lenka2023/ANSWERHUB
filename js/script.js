@@ -53,7 +53,7 @@ function SomeVar(){
         this.size = size;
  
       }
-       var AggregateBoldSelection = function(sourceArray){
+       var AggregateUsedSelection = function(sourceArray){
         var indexesToRemove = new Set();
         for (var i = 0; i < sourceArray.length; i++){
         for (var j = 0; j < sourceArray.length; j++){
@@ -171,7 +171,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 usedIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateBoldSelection(usedIndexes);
+                AggregateUsedSelection(usedIndexes);
                 for (var i = 0; i < usedIndexes.length; i++){
                     var beginIndex = usedIndexes[i].startPosition;
                     var endIndex = usedIndexes[i].endPosition;
