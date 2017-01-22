@@ -84,7 +84,7 @@ function SomeVar(){
  
        
       }
-	  
+
 	  function makeTxtStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -272,13 +272,12 @@ Make();*/
                         }  
     $( document ).ready(function() {
     
-    
-         function ChangeSelection(sourceStr){
+    function ChangeSelectionTxt(sourceStr){
             /*var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
         }*/
-                 alert("ChangeSelection");
+                 alert("ChangeSelectionTxt");
  
                  selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
                expressionText =( document.getElementById("text").value );
@@ -299,9 +298,39 @@ i++;
             }
 }
  resultTxtStr=makeTxtStringHtml(expressionText);
+//resultStr = makeBoldStringHtml(expressionText);
+ //console.log('resultStr:'+makeBoldStringHtml(expressionText));  
+ console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
+                }   
+         function ChangeSelectionBold(sourceStr){
+            /*var txt = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+        }*/
+                 alert("ChangeSelectionBold");
+ 
+                 selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
+               expressionText =( document.getElementById("text").value );
+for(var i = 0;i < addelements.length; i++){
+            document.onkeypress = function(e) {
+    if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){  
+i++;
+   
+    sourceStr.length=sourceStr.length-selectiontxt.length+addelements.length;
+ // event.type ?????? ???? keypress
+ 
+    }
+    if((e.keyCode == 8)||(e.keyCode == 46)){
+        i++;
+    sourceStr.length=sourceStr.length-selectiontxt.length-addelements.length;
+            }
+           
+            }
+}
+ //resultTxtStr=makeTxtStringHtml(expressionText);
 resultStr = makeBoldStringHtml(expressionText);
  console.log('resultStr:'+makeBoldStringHtml(expressionText));  
- console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
+ //console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
                 }   
     function caretPos(textarea)
 {
@@ -329,17 +358,17 @@ resultStr = makeBoldStringHtml(expressionText);
 		 expressionText =( document.getElementById("text").value );
          var pos=caretPos(expressionText);
                             
-            for (var i = 0;i < txtIndexesIndexes.length; i++){
+            for (var i = 0;i < txtIndexes.length; i++){
                  if(typeof txtIndexes[i] != "undefined"){
                     var startPosTxt = txtIndexes[i].startPosition;
                     var sizeTxt = txtIndexes[i].size;
                   
                      if(pos<=startPosTxt){
-        startPos=startPosTxt+1;
+        startPosTxt=startPosTxt+1;
 		       }
        else
        if((pos>startPosTxt)&&(pos<startPosTxt+sizeTxt)){
-       size += 1;
+       sizeTxt += 1;
                    }
        txtIndexes[i].startPosition = startPosTxt;
        txtIndexes[i].size = sizeTxt;
@@ -353,14 +382,18 @@ resultStr = makeBoldStringHtml(expressionText);
 document.getElementById("RESULTHTML").innerHTML=resultTxtStr;
   console.log('resultTxtStr:'+makeTxtStringHtml(expressionText));          
                                                                             });  
+var SelectionPosition = function(startPosTxt,endPos){
+        this.startPosition = startPos;
+        this.endPosition = endPos;
+             }																			
        
-   /* Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
+    Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
    
 
       var SelectionPosition = function(startPos,endPos){
         this.startPosition = startPos;
         this.endPosition = endPos;
-             }*/
+             }
      $('#text').keyup(function onkeypressFunctionBold(){
          alert("onkeypressFunctionBold");
 		 expressionText =( document.getElementById("text").value );
