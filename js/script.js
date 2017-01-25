@@ -1,5 +1,6 @@
 //----------------------------------------------------------------------------------------------------------
    var textarea=document.getElementById("text");
+    
   var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var is_ie     = ( (uagent.indexOf('msie') != -1) && (!is_opera) && (!is_safari) && (!is_webtv) );
@@ -53,11 +54,11 @@ function SomeVar(){
         this.startPosition = startPosTxt;
         this.size =  sizeTxt;
 		}
-                  var BoldSelection = function(startPos, size){
+                  /*var BoldSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
  
-      }
+      }*/
        var AggregateBoldSelection = function(sourceArray){
         var indexesToRemove = new Set();
         for (var i = 0; i < sourceArray.length; i++){
@@ -84,8 +85,30 @@ function SomeVar(){
  
        
       }
-
-	  function makeTxtStringHtml(sourceStr){
+      /* function makeBoldStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        //alert(1);
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < boldIndexes.length; i++){
+                if (currentSymbolIndex<boldIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
+            //currentSymbolIndex = boldIndexes[i].startPosition+boldIndexes[i].size;
+            }
+			}
+            /*if (currentSymbolIndex<sourceStr.length){
+                resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
+				
+			}*/
+			/*if(boldIndexes.length==0){
+				resultStr +='<span>'+expressionText+'</span>';
+			}
+            return resultStr;
+            }*/
+			function makeTxtStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
         alert("makeTxtStringHtml");
@@ -108,31 +131,7 @@ function SomeVar(){
 			}
             return resultTxtStr;
             }
-       function makeBoldStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-        alert("makeBoldStringHtml");
-            var currentSymbolIndex = 0;
-			var resultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < boldIndexes.length; i++){
-                if (currentSymbolIndex<boldIndexes[i].startPosition){
-                resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
-            resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
-            //currentSymbolIndex = boldIndexes[i].startPosition+boldIndexes[i].size;
-            }
-			}
-            /*if (currentSymbolIndex<sourceStr.length){
-                resultStr += sourceStr.substring(currentSymbolIndex,sourceStr.length);
-				
-			}*/
-			if(boldIndexes.length==0){
-				resultStr +='<span>'+expressionText+'</span>';
-			}
 			
-            return resultStr;
-			console.log('resultStr:'+makeBoldStringHtml(expressionText)); 
-            }
             function getElementsById(elementID){
     var elementCollection = new Array();
     var allElements = document.getElementsByTagName("*");
@@ -191,7 +190,39 @@ document.getElementById("RESULTHTML").designMode='on';
 document.getElementById("RESULTTEXT").contentEditable = true; void(0);
 document.getElementById("RESULTHTML").contentEditable = true; void(0);
 }
-function Txt(){
+ /*function Bold()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateBoldSelection(boldIndexes);
+                for (var i = 0; i < boldIndexes.length; i++){
+                    var beginIndex = boldIndexes[i].startPosition;
+                    var endIndex = boldIndexes[i].endPosition;
+                }
+                boldIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < boldIndexes.length; i++){  
+            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
+        }
+                var resultStr = makeBoldStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }*/
+						function Txt(){
  alert("Txt");
   SomeVar();
             var textarea=document.getElementById("text");
@@ -222,48 +253,6 @@ function Txt(){
                 document.getElementById("RESULTHTML").innerHTML=resultTxtStr;
                 Make();
  }
- //function Txt(){
- //alert(0);
-   /* SomeVar();
-               
-    var result=document.getElementById("result");
-   
-document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left">'+expressionText+'</span>'+expressionEnd;
-document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left">'+expressionHTML+'</span>'+expressionEnd;
-Make();*/
-//}
- function Bold()
-            {
-               alert("Bold");
-            SomeVar();
-            var textarea=document.getElementById("text");
-            document.getElementById("text").focus();
-            expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
-                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
-                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateBoldSelection(boldIndexes);
-                for (var i = 0; i < boldIndexes.length; i++){
-                    var beginIndex = boldIndexes[i].startPosition;
-                    var endIndex = boldIndexes[i].endPosition;
-                }
-                boldIndexes.sort(function(a,b) {
-                return a.startPosition - b.startPosition;
-                });
-                console.log('aggregated array:');
-        for (var i =0; i < boldIndexes.length; i++){  
-            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
-        }
-                var resultStr = makeBoldStringHtml(expressionText);
-               
-                document.getElementById("RESULTTEXT").innerText=resultStr;
-                document.getElementById("RESULTHTML").innerHTML=resultStr;
-                Make();
-                        }
 
     function myFunction() {
    var x = document.getElementById("RESULTTEXT");
@@ -272,7 +261,36 @@ Make();*/
                         }  
     $( document ).ready(function() {
     
-    function ChangeSelectionTxt(sourceStr){
+    
+        /* function ChangeSelection(sourceStr){
+            /*var txt = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+        }*/
+                /* alert(6);
+ 
+                 selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
+               expressionText =( document.getElementById("text").value );
+for(var i = 0;i < addelements.length; i++){
+            document.onkeypress = function(e) {
+    if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){  
+i++;
+   
+    sourceStr.length=sourceStr.length-selectiontxt.length+addelements.length;
+ // event.type ?????? ???? keypress
+ 
+    }
+    if((e.keyCode == 8)||(e.keyCode == 46)){
+        i++;
+    sourceStr.length=sourceStr.length-selectiontxt.length-addelements.length;
+            }
+           
+            }
+}
+resultStr = makeBoldStringHtml(expressionText);
+ console.log('resultStr:'+makeBoldStringHtml(expressionText));   
+                }  */
+	 function ChangeSelectionTxt(sourceStr){
             /*var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -302,36 +320,7 @@ i++;
  //console.log('resultStr:'+makeBoldStringHtml(expressionText));  
  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
                 }   
-         function ChangeSelectionBold(sourceStr){
-            /*var txt = function(startPos, size){
-        this.startPosition = startPos;
-        this.size = size;
-        }*/
-                 alert("ChangeSelectionBold");
- 
-                 selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
-               expressionText =( document.getElementById("text").value );
-for(var i = 0;i < addelements.length; i++){
-            document.onkeypress = function(e) {
-    if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){  
-i++;
-   
-    sourceStr.length=sourceStr.length-selectiontxt.length+addelements.length;
- // event.type ?????? ???? keypress
- 
-    }
-    if((e.keyCode == 8)||(e.keyCode == 46)){
-        i++;
-    sourceStr.length=sourceStr.length-selectiontxt.length-addelements.length;
-            }
-           
-            }
-}
- //resultTxtStr=makeTxtStringHtml(expressionText);
-resultStr = makeBoldStringHtml(expressionText);
- console.log('resultStr:'+makeBoldStringHtml(expressionText));  
- //console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
-                }   
+				
     function caretPos(textarea)
 {
       textarea=document.getElementById("text");
@@ -353,7 +342,51 @@ resultStr = makeBoldStringHtml(expressionText);
  
 }
    
-     $('#text').keyup(function onkeypressFunctionTxt(){
+    /* $('#text').keyup(function onkeypressFunction(){
+         //alert(5);
+		 expressionText =( document.getElementById("text").value );
+         var pos=caretPos(expressionText);
+                            
+            for (var i = 0;i < boldIndexes.length; i++){
+                 if(typeof boldIndexes[i] != "undefined"){
+                    var startPos = boldIndexes[i].startPosition;
+                    var size = boldIndexes[i].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		/*resultStr = makeBoldStringHtml(expressionText);
+		console.log('resultStr:'+makeBoldStringHtml(expressionText));*/
+      /* }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+ //resultStr = makeBoldStringHtml(expressionText);
+  //console.log('resultStr:'+makeBoldStringHtml(expressionText));        
+                 }
+       boldIndexes[i].startPosition = startPos;
+       boldIndexes[i].size = size;
+	   /*resultStr = makeBoldStringHtml(expressionText);
+	    console.log('resultStr:'+makeBoldStringHtml(expressionText));     */   
+          /*  }
+            }
+             console.log('Bold indexes:'+JSON.stringify(boldIndexes));
+ 
+  
+ var resultStr = makeBoldStringHtml(expressionText);
+ document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+ console.log('resultStr:'+makeBoldStringHtml(expressionText));              
+              
+                                                                            });  
+       
+    Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
+   
+
+      var SelectionPosition = function(startPos,endPos){
+        this.startPosition = startPos;
+        this.endPosition = endPos;
+             }*/
+   $('#text').keyup(function onkeypressFunctionTxt(){
          alert("onkeypressFunctionTxt");
 		 expressionText =( document.getElementById("text").value );
          var pos=caretPos(expressionText);
@@ -382,10 +415,6 @@ resultStr = makeBoldStringHtml(expressionText);
 document.getElementById("RESULTHTML").innerHTML=resultTxtStr;
   console.log('resultTxtStr:'+makeTxtStringHtml(expressionText));          
                                                                             });  
-var SelectionPosition = function(startPosTxt,endPos){
-        this.startPosition = startPos;
-        this.endPosition = endPos;
-             }																			
        
     Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
    
@@ -393,45 +422,7 @@ var SelectionPosition = function(startPosTxt,endPos){
       var SelectionPosition = function(startPos,endPos){
         this.startPosition = startPos;
         this.endPosition = endPos;
-             }
-     $('#text').keyup(function onkeypressFunctionBold(){
-         alert("onkeypressFunctionBold");
-		 expressionText =( document.getElementById("text").value );
-         var pos=caretPos(expressionText);
-                            
-            for (var i = 0;i < boldIndexes.length; i++){
-                 if(typeof boldIndexes[i] != "undefined"){
-                    var startPos = boldIndexes[i].startPosition;
-                    var size = boldIndexes[i].size;
-                  
-                     if(pos<=startPos){
-        startPos=startPos+1;
-		       }
-       else
-       if((pos>startPos)&&(pos<startPos+size)){
-       size += 1;
-                   }
-       boldIndexes[i].startPosition = startPos;
-       boldIndexes[i].size = size;
-	               }
-            }
-             console.log('Bold indexes:'+JSON.stringify(boldIndexes));
- 
-  
- resultStr = makeBoldStringHtml(expressionText);
- document.getElementById("RESULTTEXT").innerText=resultStr;
-document.getElementById("RESULTHTML").innerHTML=resultStr;
- console.log('resultStr:'+makeBoldStringHtml(expressionText));              
-                                                                            });  
-       
-    Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
-   
-
-      var SelectionPosition = function(startPos,endPos){
-        this.startPosition = startPos;
-        this.endPosition = endPos;
-             }
-     
+             }   
      
      
  
@@ -617,8 +608,18 @@ document.getElementById("RESULTTEXT").id = "RESULTTEXT";
 document.getElementById("RESULTHTML").id = "RESULTHTML";
 operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
 }
-        
-
+ 
+                       
+function Txt(){
+ 
+    SomeVar();
+               
+    var result=document.getElementById("result");
+   
+document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left">'+expressionText+'</span>'+expressionEnd;
+document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left">'+expressionHTML+'</span>'+expressionEnd;
+Make();
+}
             function Link()
             {
                 textarea=document.getElementById("text");
@@ -686,8 +687,7 @@ var redo = document.getElementById('redo');
              textarea.oninput=function(){
    textarea=document.getElementById("text");
    //var resultstrCollection = new Array();
-   var resultStr = makeTxtStringHtml(expressionText);
-    var resultTxtStr = makeBoldStringHtml(expressionText);
+   // var resultStr = makeBoldStringHtml(expressionText);
     /*for(i = 0; i < resultStr.length; i++){
                  resultstrCollection.push(resultStr[i]);
    }*/
@@ -968,6 +968,5 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
 '</html>';
 Make();
             }
-			
            
     });
