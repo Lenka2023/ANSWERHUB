@@ -88,7 +88,7 @@ function SomeVar(){
        function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
-        //alert(1);
+        alert(" makeBoldStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
             var usedSymbols = 0;
@@ -273,15 +273,17 @@ i++;
            
             }
 }
+ resultTxtStr=makeTxtStringHtml(expressionText);
+ console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
 resultStr = makeBoldStringHtml(expressionText);
  console.log('resultStr:'+makeBoldStringHtml(expressionText));   
                 }  
-	 function ChangeSelectionTxt(sourceStr){
+	 /*function ChangeSelectionTxt(sourceStr){
             /*var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
         }*/
-                 alert("ChangeSelectionTxt");
+                /* alert("ChangeSelectionTxt");
  
                  selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
                expressionText =( document.getElementById("text").value );
@@ -303,7 +305,7 @@ i++;
 }
  resultTxtStr=makeTxtStringHtml(expressionText);
  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
-                }   
+                }  */ 
 				
     function caretPos(textarea)
 {
@@ -326,7 +328,7 @@ i++;
  
 }
    
-     $('#text').keyup(function onkeypressFunctionBold(){
+   /*  $('#text').keyup(function onkeypressFunctionBold(){
          //alert(5);
 		 expressionText =( document.getElementById("text").value );
          var pos=caretPos(expressionText);
@@ -367,7 +369,7 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
       var SelectionPosition = function(startPos,endPos){
         this.startPosition = startPos;
         this.endPosition = endPos;
-             }
+             }*/
    $('#text').keyup(function onkeypressFunctionTxt(){
          alert("onkeypressFunctionTxt");
 		 expressionText =( document.getElementById("text").value );
@@ -392,10 +394,37 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
              console.log('Bold indexes:'+JSON.stringify(txtIndexes));
  
   
- var resultTxtStr=makeTxtStringHtml(expressionText); 
+  resultTxtStr=makeTxtStringHtml(expressionText); 
  document.getElementById("RESULTTEXT").innerText=resultTxtStr;
 document.getElementById("RESULTHTML").innerHTML=resultTxtStr;
-  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText));          
+  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText));    
+   for (var j = 0;j < boldIndexes.length; j++){
+                 if(typeof boldIndexes[i] != "undefined"){
+                    var startPos = boldIndexes[i].startPosition;
+                    var size = boldIndexes[i].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		resultStr = makeBoldStringHtml(expressionText);
+		console.log('resultStr:'+makeBoldStringHtml(expressionText));
+       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       boldIndexes[i].startPosition = startPos;
+       boldIndexes[i].size = size;
+	   resultStr = makeBoldStringHtml(expressionText);
+	    console.log('resultStr:'+makeBoldStringHtml(expressionText));      
+            }
+            }
+             console.log('Bold indexes:'+JSON.stringify(boldIndexes));
+ 
+  
+  resultStr = makeBoldStringHtml(expressionText);
+ document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+ console.log('resultStr:'+makeBoldStringHtml(expressionText)); 
                                                                             });  
        
     Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
