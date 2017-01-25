@@ -390,14 +390,16 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        txtIndexes[i].startPosition = startPosTxt;
        txtIndexes[i].size = sizeTxt;
 	               }
+				   resultTxtStr=makeTxtStringHtml(expressionText)
+				   console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
+			document.getElementById("RESULTTEXT").innerText=resultTxtStr;
+document.getElementById("RESULTHTML").innerHTML=resultTxtStr;	   
             }
-             console.log('Bold indexes:'+JSON.stringify(txtIndexes));
- 
-  
-  resultTxtStr=makeTxtStringHtml(expressionText); 
+              
+  /*resultTxtStr=makeTxtStringHtml(expressionText); 
  document.getElementById("RESULTTEXT").innerText=resultTxtStr;
 document.getElementById("RESULTHTML").innerHTML=resultTxtStr;
-  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText));    
+  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText));    */
    for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[i] != "undefined"){
                     var startPos = boldIndexes[i].startPosition;
@@ -415,16 +417,19 @@ document.getElementById("RESULTHTML").innerHTML=resultTxtStr;
        boldIndexes[i].startPosition = startPos;
        boldIndexes[i].size = size;
 	   resultStr = makeBoldStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeBoldStringHtml(expressionText));      
             }
+			 console.log('resultStr:'+makeBoldStringHtml(expressionText)); 
             }
              console.log('Bold indexes:'+JSON.stringify(boldIndexes));
  
   
-  resultStr = makeBoldStringHtml(expressionText);
+  /*resultStr = makeBoldStringHtml(expressionText);
  document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
- console.log('resultStr:'+makeBoldStringHtml(expressionText)); 
+ console.log('resultStr:'+makeBoldStringHtml(expressionText)); */
                                                                             });  
        
     Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
