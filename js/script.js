@@ -278,34 +278,7 @@ i++;
 resultStr = makeBoldStringHtml(expressionText);
  console.log('resultStr:'+makeBoldStringHtml(expressionText));   
                 }  
-	 /*function ChangeSelectionTxt(sourceStr){
-            /*var txt = function(startPos, size){
-        this.startPosition = startPos;
-        this.size = size;
-        }*/
-                /* alert("ChangeSelectionTxt");
- 
-                 selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
-               expressionText =( document.getElementById("text").value );
-for(var i = 0;i < addelements.length; i++){
-            document.onkeypress = function(e) {
-    if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){  
-i++;
-   
-    sourceStr.length=sourceStr.length-selectiontxt.length+addelements.length;
- // event.type ?????? ???? keypress
- 
-    }
-    if((e.keyCode == 8)||(e.keyCode == 46)){
-        i++;
-    sourceStr.length=sourceStr.length-selectiontxt.length-addelements.length;
-            }
-           
-            }
-}
- resultTxtStr=makeTxtStringHtml(expressionText);
- console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
-                }  */ 
+	
 				
     function caretPos(textarea)
 {
@@ -328,49 +301,8 @@ i++;
  
 }
    
-   /*  $('#text').keyup(function onkeypressFunctionBold(){
-         //alert(5);
-		 expressionText =( document.getElementById("text").value );
-         var pos=caretPos(expressionText);
-                            
-            for (var i = 0;i < boldIndexes.length; i++){
-                 if(typeof boldIndexes[i] != "undefined"){
-                    var startPos = boldIndexes[i].startPosition;
-                    var size = boldIndexes[i].size;
-                  
-                     if(pos<=startPos){
-        startPos=startPos+1;
-		resultStr = makeBoldStringHtml(expressionText);
-		console.log('resultStr:'+makeBoldStringHtml(expressionText));
-       }
-       else
-       if((pos>startPos)&&(pos<startPos+size)){
-       size += 1;
-                 }
-       boldIndexes[i].startPosition = startPos;
-       boldIndexes[i].size = size;
-	   resultStr = makeBoldStringHtml(expressionText);
-	    console.log('resultStr:'+makeBoldStringHtml(expressionText));      
-            }
-            }
-             console.log('Bold indexes:'+JSON.stringify(boldIndexes));
- 
   
- var resultStr = makeBoldStringHtml(expressionText);
- document.getElementById("RESULTTEXT").innerText=resultStr;
-document.getElementById("RESULTHTML").innerHTML=resultStr;
- console.log('resultStr:'+makeBoldStringHtml(expressionText));              
-              
-                                                                            });  
-       
-    Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
-   
-
-      var SelectionPosition = function(startPos,endPos){
-        this.startPosition = startPos;
-        this.endPosition = endPos;
-             }*/
-   $('#text').keyup(function onkeypressFunctionTxt(){
+   $('#text').keyup(function onkeypressFunction(){
          alert("onkeypressFunctionTxt");
 		 expressionText =( document.getElementById("text").value );
          var pos=caretPos(expressionText);
@@ -395,11 +327,8 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 			document.getElementById("RESULTTEXT").innerText=resultTxtStr;
 document.getElementById("RESULTHTML").innerHTML=resultTxtStr;	   
             }
-              
-  /*resultTxtStr=makeTxtStringHtml(expressionText); 
- document.getElementById("RESULTTEXT").innerText=resultTxtStr;
-document.getElementById("RESULTHTML").innerHTML=resultTxtStr;
-  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText));    */
+       
+ 
    for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[i] != "undefined"){
                     var startPos = boldIndexes[i].startPosition;
@@ -426,11 +355,7 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
              console.log('Bold indexes:'+JSON.stringify(boldIndexes));
  
   
-  /*resultStr = makeBoldStringHtml(expressionText);
- document.getElementById("RESULTTEXT").innerText=resultStr;
-document.getElementById("RESULTHTML").innerHTML=resultStr;
- console.log('resultStr:'+makeBoldStringHtml(expressionText)); */
-                                                                            });  
+                                                                              });  
        
     Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
    
