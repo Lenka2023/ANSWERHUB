@@ -47,6 +47,7 @@ function SomeVar(){
                  var boldIndexes = [];
 				  var txtIndexes = [];
 				   var codeIndexes = [];
+				    var captureIndexes = [];
                  var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -60,6 +61,11 @@ function SomeVar(){
         this.size = size;
 				  }
 		var CodeSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+ 
+      }
+	  var CaptureSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
  
@@ -116,7 +122,7 @@ function SomeVar(){
             for (var i = 0; i < codeIndexes.length; i++){
                 if (currentSymbolIndex<codeIndexes[i].startPosition){
                 resultStr += sourceStr.substring(currentSymbolIndex,codeIndexes[i].startPosition);
-            resultStr = '<span>'+ resultStr+'<div class="commands"><pre>'+sourceStr.substring(codeIndexes[i].startPosition,codeIndexes[i].startPosition+codeIndexes[i].size)+'</pre></div>'+sourceStr.substring(codeIndexes[i].startPosition+codeIndexes[i].size,sourceStr.length)+'</span>';
+            resultStr = '<span>'+ resultStr+'</span><div class="commands"><pre>'+sourceStr.substring(codeIndexes[i].startPosition,codeIndexes[i].startPosition+codeIndexes[i].size)+'</pre></div><span>'+sourceStr.substring(codeIndexes[i].startPosition+codeIndexes[i].size,sourceStr.length)+'</span>';
                       }
 			}
            	return resultStr;
@@ -131,7 +137,23 @@ function SomeVar(){
             for (var i = 0; i < txtIndexes.length; i++){
                 if (currentSymbolIndex<txtIndexes[i].startPosition){
                 resultStr += sourceStr.substring(currentSymbolIndex,txtIndexes[i].startPosition);
-            resultStr = '<span>'+ resultStr+'<br><span class="move_left">'+sourceStr.substring(txtIndexes[i].startPosition,txtIndexes[i].startPosition+txtIndexes[i].size)+'</span><span>'+sourceStr.substring(txtIndexes[i].startPosition+txtIndexes[i].size,sourceStr.length)+'</span>';
+            resultStr = '<span>'+ resultStr+'</span><br><span class="move_left">'+sourceStr.substring(txtIndexes[i].startPosition,txtIndexes[i].startPosition+txtIndexes[i].size)+'</span><span>'+sourceStr.substring(txtIndexes[i].startPosition+txtIndexes[i].size,sourceStr.length)+'</span>';
+                     }
+			}
+           
+			return resultStr;
+            }
+			function makeCaptureStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert("makeTxtStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < captureIndexes.length; i++){
+                if (currentSymbolIndex<captureIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,captureIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><br><span class="move_left "><span class="strong underline">'+sourceStr.substring(captureIndexes[i].startPosition,captureIndexes[i].startPosition+captureIndexes[i].size)+'</span><span><span>'+sourceStr.substring(captureIndexes[i].startPosition+captureIndexes[i].size,sourceStr.length)+'</span>';
                      }
 			}
            
@@ -219,6 +241,53 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             console.log(codeIndexes[i].startPosition + " " + codeIndexes[i].size);
         }
                 var resultStr = makeCodeStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
+						
+            function Listing()
+            {
+               
+                textarea=document.getElementById("text");
+                document.getElementById("text").focus();
+                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+                expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
+                var x=prompt("Enter title of capture","");
+                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left "><span class="strong ">'+x+'</span>'+expressionText+'</span>'+expressionEnd;
+                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left "><span class="strong ">'+x+'</span>'+expressionHTML+'</span>'+expressionEnd;
+                Make();
+            }
+			function Capture()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                captureIndexes.push(new CaptureSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(captureIndexes);
+                for (var i = 0; i < captureIndexes.length; i++){
+                    var beginIndex = captureIndexes[i].startPosition;
+                    var endIndex = captureIndexes[i].endPosition;
+                }
+                captureIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < captureIndexes.length; i++){  
+            console.log(captureIndexes[i].startPosition + " " + captureIndexes[i].size);
+        }
+                var resultStr = makeCaptureStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -374,9 +443,9 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        
  
    for (var j = 0;j < boldIndexes.length; j++){
-                 if(typeof boldIndexes[i] != "undefined"){
-                    var startPos = boldIndexes[i].startPosition;
-                    var size = boldIndexes[i].size;
+                 if(typeof boldIndexes[j] != "undefined"){
+                    var startPos = boldIndexes[j].startPosition;
+                    var size = boldIndexes[j].size;
                   
                      if(pos<=startPos){
         startPos=startPos+1;
@@ -385,8 +454,8 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        if((pos>startPos)&&(pos<startPos+size)){
        size += 1;
                  }
-       boldIndexes[i].startPosition = startPos;
-       boldIndexes[i].size = size;
+       boldIndexes[j].startPosition = startPos;
+       boldIndexes[j].size = size;
 	               }
 			resultStr = makeBoldStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -395,9 +464,9 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 			            }
              console.log('Bold indexes:'+JSON.stringify(boldIndexes));
  for (var k = 0;k < codeIndexes.length; k++){
-                 if(typeof codeIndexes[i] != "undefined"){
-                    var startPos = codeIndexes[i].startPosition;
-                    var size = codeIndexes[i].size;
+                 if(typeof codeIndexes[k] != "undefined"){
+                    var startPos = codeIndexes[k].startPosition;
+                    var size = codeIndexes[k].size;
                   
                      if(pos<=startPos){
         startPos=startPos+1;
@@ -406,8 +475,8 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        if((pos>startPos)&&(pos<startPos+size)){
        size += 1;
                  }
-       codeIndexes[i].startPosition = startPos;
-       codeIndexes[i].size = size;
+       codeIndexes[k].startPosition = startPos;
+       codeIndexes[k].size = size;
 	               }
 			resultStr = makeCodeStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -415,6 +484,27 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeCodeStringHtml(expressionText));
 			            }
              console.log('Code indexes:'+JSON.stringify(codeIndexes));
+			 for (var l = 0;l < captureIndexes.length; l++){
+                 if(typeof captureIndexes[l] != "undefined"){
+                    var startPos = captureIndexes[l].startPosition;
+                    var size = captureIndexes[l].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       captureIndexes[i].startPosition = startPos;
+       captureIndexes[i].size = size;
+	               }
+			resultStr = makeCaptureStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeCaptureStringHtml(expressionText));
+			            }
+             console.log('Bold indexes:'+JSON.stringify(captureIndexes));
   
                                                                               });  
        
@@ -610,18 +700,8 @@ document.getElementById("RESULTTEXT").id = "RESULTTEXT";
 document.getElementById("RESULTHTML").id = "RESULTHTML";
 operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
 }
- 
                        
-function Txt(){
- 
-    SomeVar();
-               
-    var result=document.getElementById("result");
-   
-document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left">'+expressionText+'</span>'+expressionEnd;
-document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left">'+expressionHTML+'</span>'+expressionEnd;
-Make();
-}
+
             function Link()
             {
                 textarea=document.getElementById("text");
@@ -835,29 +915,7 @@ Make();
                 document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong font_size">'+expressionHTML+'</span>'+expressionEnd;
                 Make();
             }
-            function Capture()
-            {
-               
-                SomeVar();
-                var x=prompt("Enter title of capture","");
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expressionText+'</span>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left "><span class="strong underline">'+x+'</span>'+expressionHTML+'</span>'+expressionEnd;
-                Make();
-            }
-            function Listing()
-            {
-               
-                textarea=document.getElementById("text");
-                document.getElementById("text").focus();
-                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
-                expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
-                expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
-                var x=prompt("Enter title of capture","");
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left "><span class="strong ">'+x+'</span>'+expressionText+'</span>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left "><span class="strong ">'+x+'</span>'+expressionHTML+'</span>'+expressionEnd;
-                Make();
-            }
+            
             function Smallicon()
             {
                
