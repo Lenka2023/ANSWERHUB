@@ -46,20 +46,25 @@ function SomeVar(){
 				 var addelements = [];
                  var boldIndexes = [];
 				  var txtIndexes = [];
+				   var codeIndexes = [];
                  var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
         }
-		var TxtSelection = function(startPosTxt, sizeTxt){
-        this.startPosition = startPosTxt;
-        this.size =  sizeTxt;
+		var TxtSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size =  size;
 		}
                   var BoldSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
+				  }
+		var CodeSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
  
       }
-       var AggregateBoldSelection = function(sourceArray){
+       var AggregateSelection = function(sourceArray){
         var indexesToRemove = new Set();
         for (var i = 0; i < sourceArray.length; i++){
         for (var j = 0; j < sourceArray.length; j++){
@@ -85,7 +90,7 @@ function SomeVar(){
  
        
       }
-       function makeBoldStringHtml(sourceStr){
+	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
         alert(" makeBoldStringHtml");
@@ -98,29 +103,39 @@ function SomeVar(){
             resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
                       }
 			}
-           			/*if(boldIndexes.length==0){
-				resultStr +='<span>'+expressionText+'</span>';
-			}*/
+           			
             return resultStr;
+            }
+       function makeCodeStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeBoldStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < codeIndexes.length; i++){
+                if (currentSymbolIndex<codeIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,codeIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'<div class="commands"><pre>'+sourceStr.substring(codeIndexes[i].startPosition,codeIndexes[i].startPosition+codeIndexes[i].size)+'</pre></div>'+sourceStr.substring(codeIndexes[i].startPosition+codeIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           	return resultStr;
             }
 			function makeTxtStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
         alert("makeTxtStringHtml");
             var currentSymbolIndex = 0;
-			var resultTxtStr =" ";
+			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < txtIndexes.length; i++){
                 if (currentSymbolIndex<txtIndexes[i].startPosition){
-                resultTxtStr += sourceStr.substring(currentSymbolIndex,txtIndexes[i].startPosition);
-            resultTxtStr = '<span>'+ resultTxtStr+'<br><span class="move_left">'+sourceStr.substring(txtIndexes[i].startPosition,txtIndexes[i].startPosition+txtIndexes[i].size)+'</span><span>'+sourceStr.substring(txtIndexes[i].startPosition+txtIndexes[i].size,sourceStr.length)+'</span>';
+                resultStr += sourceStr.substring(currentSymbolIndex,txtIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'<br><span class="move_left">'+sourceStr.substring(txtIndexes[i].startPosition,txtIndexes[i].startPosition+txtIndexes[i].size)+'</span><span>'+sourceStr.substring(txtIndexes[i].startPosition+txtIndexes[i].size,sourceStr.length)+'</span>';
                      }
 			}
            
-			/*if(txtIndexes.length==0){
-				resultTxtStr +='<span>'+expressionText+'</span>';
-			}*/
-            return resultTxtStr;
+			return resultStr;
             }
 			
             function getElementsById(elementID){
@@ -176,6 +191,39 @@ document.getElementById("RESULTHTML").designMode='on';
 document.getElementById("RESULTTEXT").contentEditable = true; void(0);
 document.getElementById("RESULTHTML").contentEditable = true; void(0);
 }
+
+			function Code()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                codeIndexes.push(new CodeSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(codeIndexes);
+                for (var i = 0; i < codeIndexes.length; i++){
+                    var beginIndex = codeIndexes[i].startPosition;
+                    var endIndex = codeIndexes[i].endPosition;
+                }
+                codeIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < codeIndexes.length; i++){  
+            console.log(codeIndexes[i].startPosition + " " + codeIndexes[i].size);
+        }
+                var resultStr = makeCodeStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
  function Bold()
             {
                
@@ -190,7 +238,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateBoldSelection(boldIndexes);
+                AggregateSelection(boldIndexes);
                 for (var i = 0; i < boldIndexes.length; i++){
                     var beginIndex = boldIndexes[i].startPosition;
                     var endIndex = boldIndexes[i].endPosition;
@@ -221,7 +269,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 txtIndexes.push(new TxtSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateBoldSelection(txtIndexes);
+                AggregateSelection(txtIndexes);
                 for (var i = 0; i < txtIndexes.length; i++){
                     var beginIndex = txtIndexes[i].startPosition;
                     var endIndex = txtIndexes[i].endPosition;
@@ -233,10 +281,10 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         for (var i =0; i < txtIndexes.length; i++){  
             console.log(txtIndexes[i].startPosition + " " + txtIndexes[i].size);
         }
-                var resultTxtStr = makeTxtStringHtml(expressionText);
+                var resultStr = makeTxtStringHtml(expressionText);
                
-                document.getElementById("RESULTTEXT").innerText=resultTxtStr;
-                document.getElementById("RESULTHTML").innerHTML=resultTxtStr;
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
  }
 
@@ -249,11 +297,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
     
     
          function ChangeSelection(sourceStr){
-            /*var txt = function(startPos, size){
-        this.startPosition = startPos;
-        this.size = size;
-        }*/
-                 alert(6);
+                            alert("ChangeSelection");
  
                  selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
                expressionText =( document.getElementById("text").value );
@@ -273,7 +317,7 @@ i++;
            
             }
 }
- resultTxtStr=makeTxtStringHtml(expressionText);
+ resultStr=makeTxtStringHtml(expressionText);
  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
 resultStr = makeBoldStringHtml(expressionText);
  console.log('resultStr:'+makeBoldStringHtml(expressionText));   
@@ -309,23 +353,23 @@ resultStr = makeBoldStringHtml(expressionText);
                             
             for (var i = 0;i < txtIndexes.length; i++){
                  if(typeof txtIndexes[i] != "undefined"){
-                    var startPosTxt = txtIndexes[i].startPosition;
-                    var sizeTxt = txtIndexes[i].size;
+                    var startPos = txtIndexes[i].startPosition;
+                    var size = txtIndexes[i].size;
                   
-                     if(pos<=startPosTxt){
-        startPosTxt=startPosTxt+1;
+                     if(pos<=startPos){
+        startPos=startPos+1;
 		       }
        else
-       if((pos>startPosTxt)&&(pos<startPosTxt+sizeTxt)){
-       sizeTxt += 1;
+       if((pos>startPos)&&(pos<startPosTxt+size)){
+       size += 1;
                    }
-       txtIndexes[i].startPosition = startPosTxt;
-       txtIndexes[i].size = sizeTxt;
+       txtIndexes[i].startPosition = startPos;
+       txtIndexes[i].size = size;
 	               }
-				   resultTxtStr=makeTxtStringHtml(expressionText)
-				   console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
-			document.getElementById("RESULTTEXT").innerText=resultTxtStr;
-document.getElementById("RESULTHTML").innerHTML=resultTxtStr;	   
+				   resultStr=makeTxtStringHtml(expressionText)
+				   console.log('resultStr:'+makeTxtStringHtml(expressionText)); 
+			document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;	   
             }
        
  
@@ -336,24 +380,41 @@ document.getElementById("RESULTHTML").innerHTML=resultTxtStr;
                   
                      if(pos<=startPos){
         startPos=startPos+1;
-		resultStr = makeBoldStringHtml(expressionText);
-		console.log('resultStr:'+makeBoldStringHtml(expressionText));
-       }
+		       }
        else
        if((pos>startPos)&&(pos<startPos+size)){
        size += 1;
                  }
        boldIndexes[i].startPosition = startPos;
        boldIndexes[i].size = size;
-	   resultStr = makeBoldStringHtml(expressionText);
+	               }
+			resultStr = makeBoldStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeBoldStringHtml(expressionText));      
-            }
-			 console.log('resultStr:'+makeBoldStringHtml(expressionText)); 
-            }
+	    console.log('resultStr:'+makeBoldStringHtml(expressionText));
+			            }
              console.log('Bold indexes:'+JSON.stringify(boldIndexes));
- 
+ for (var k = 0;k < codeIndexes.length; k++){
+                 if(typeof codeIndexes[i] != "undefined"){
+                    var startPos = codeIndexes[i].startPosition;
+                    var size = codeIndexes[i].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       codeIndexes[i].startPosition = startPos;
+       codeIndexes[i].size = size;
+	               }
+			resultStr = makeCodeStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeCodeStringHtml(expressionText));
+			            }
+             console.log('Code indexes:'+JSON.stringify(codeIndexes));
   
                                                                               });  
        
@@ -639,15 +700,7 @@ var redo = document.getElementById('redo');
                              
      
            
-                 function Code()
-            {
-               
-                SomeVar();
-               
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="commands"><pre>'+expressionText+'</pre></div>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="commands"><pre>'+expressionHTML+'</pre></div>'+expressionEnd;
-                Make();
-            }
+                 
             function Main_List()
             {
                 var expression = getSelectiontextarea( document.getElementById("text") );
