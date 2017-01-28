@@ -45,6 +45,8 @@ function SomeVar(){
                 }
 				 var addelements = [];
                  var boldIndexes = [];
+				  var boldIndexes = [];
+				  var listingIndexes = [];
 				  var txtIndexes = [];
 				   var codeIndexes = [];
 				    var captureIndexes = [];
@@ -63,13 +65,16 @@ function SomeVar(){
 		var CodeSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
- 
-      }
+       }
+	 
+	  var  ListingSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+       }
 	  var CaptureSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
- 
-      }
+       }
        var AggregateSelection = function(sourceArray){
         var indexesToRemove = new Set();
         for (var i = 0; i < sourceArray.length; i++){
@@ -96,6 +101,22 @@ function SomeVar(){
  
        
       }
+	  function makeListingStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeBoldStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < listingIndexes.length; i++){
+                if (currentSymbolIndex<listingIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,listingIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><br><span class="move_left "><span class="strong ">'+sourceStr.substring(listingIndexes[i].startPosition,listingIndexes[i].startPosition+listingIndexes[i].size)+'</span></span><span>'+sourceStr.substring(listingIndexes[i].startPosition+listingIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           			
+            return resultStr;
+            }
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -247,20 +268,40 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 Make();
                         }
 						
-            function Listing()
+           
+			
+			 function Listing()
             {
                
-                textarea=document.getElementById("text");
-                document.getElementById("text").focus();
-                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
-                expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
-                expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
-                var x=prompt("Enter title of capture","");
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left "><span class="strong ">'+x+'</span>'+expressionText+'</span>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left "><span class="strong ">'+x+'</span>'+expressionHTML+'</span>'+expressionEnd;
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                listingIndexes.push(new ListingSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(listingIndexes);
+                for (var i = 0; i < listingIndexes.length; i++){
+                    var beginIndex = listingIndexes[i].startPosition;
+                    var endIndex = listingIndexes[i].endPosition;
+                }
+                listingIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < listingIndexes.length; i++){  
+            console.log(listingIndexes[i].startPosition + " " + listingIndexes[i].size);
+        }
+                var resultStr = makeListingStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-            }
+                        }
 			function Capture()
             {
                
@@ -440,7 +481,29 @@ resultStr = makeBoldStringHtml(expressionText);
 			document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;	   
             }
-       
+			console.log('Txt indexes:'+JSON.stringify(listingIndexes));   
+ 
+    for (var n = 0;n < listingIndexes.length; n++){
+                 if(typeof listingIndexes[n] != "undefined"){
+                    var startPos = listingIndexes[n].startPosition;
+                    var size = listingIndexes[n].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       listingIndexes[n].startPosition = startPos;
+       listingIndexes[n].size = size;
+	               }
+			resultStr = makeListingStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeListingStringHtml(expressionText));
+			            }
+             console.log('Listing indexes:'+JSON.stringify(listingIndexes));   
  
    for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[j] != "undefined"){
@@ -504,7 +567,7 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeCaptureStringHtml(expressionText));
 			            }
-             console.log('Bold indexes:'+JSON.stringify(captureIndexes));
+             console.log('Capture indexes:'+JSON.stringify(captureIndexes));
   
                                                                               });  
        
