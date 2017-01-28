@@ -45,6 +45,8 @@ function SomeVar(){
                 }
 				 var addelements = [];
                  var boldIndexes = [];
+				  var linkIndexes = [];
+				 var cbtIndexes = [];
 				  var boldIndexes = [];
 				  var listingIndexes = [];
 				  var txtIndexes = [];
@@ -58,6 +60,16 @@ function SomeVar(){
         this.startPosition = startPos;
         this.size =  size;
 		}
+		
+		var CBTSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+				  }
+				 
+				  var  LinkSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+				  }
                   var BoldSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -114,7 +126,41 @@ function SomeVar(){
             resultStr = '<span>'+ resultStr+'</span><br><span class="move_left "><span class="strong ">'+sourceStr.substring(listingIndexes[i].startPosition,listingIndexes[i].startPosition+listingIndexes[i].size)+'</span></span><span>'+sourceStr.substring(listingIndexes[i].startPosition+listingIndexes[i].size,sourceStr.length)+'</span>';
                       }
 			}
+           	/* function Link()
+            {
+                textarea=document.getElementById("text");
+                var Link_Title= getSelectiontextarea( document.getElementById("text") );
+                document.getElementById("text").focus();
+                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
+                expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
+               
+                document.getElementById("text").innerHTML = Link_Title.replace(/\n/g, '<br>');
+                var x=prompt("Enter a link","");
+                PurgeRedoSequence();
+                document.getElementById("RESULTTEXT").innerText=expressionStart+'<a  href="'+x+'">'+Link_Title+'</a>'+expressionEnd;
+                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<a  href="'+x+'">'+Link_Title+'</a>'+expressionEnd;
+                Make();
+            }	*/	
+			/*return resultStr;
+            }
+	  function makeLinkStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeBoldStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < linkIndexes.length; i++){
+                if (currentSymbolIndex<linkIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,linkIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><a  href="'+x+'">'+sourceStr.substring(linkIndexes[i].startPosition,linkIndexes[i].startPosition+linkIndexes[i].size)+'</a><span>'+sourceStr.substring(linkIndexes[i].startPosition+linkIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
            			
+            return resultStr;
+            }*/
             return resultStr;
             }
 	  function makeBoldStringHtml(sourceStr){
@@ -128,6 +174,23 @@ function SomeVar(){
                 if (currentSymbolIndex<boldIndexes[i].startPosition){
                 resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
             resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           			
+            return resultStr;
+            }
+			function makeCBTStringHtml(sourceStr){
+				alert(" makeCBTStringHtml");
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeBoldStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < cbtIndexes.length; i++){
+                if (currentSymbolIndex<cbtIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,cbtIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><br class="cbt">'+sourceStr.substring(cbtIndexes[i].startPosition,cbtIndexes[i].startPosition+cbtIndexes[i].size)+'<span>'+sourceStr.substring(cbtIndexes[i].startPosition+cbtIndexes[i].size,sourceStr.length)+'</span>';
                       }
 			}
            			
@@ -334,6 +397,71 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
+
+	function CBT()
+            {
+             alert("CBT")  
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                cbtIndexes.push(new CBTSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(cbtIndexes);
+                for (var i = 0; i < cbtIndexes.length; i++){
+                    var beginIndex = cbtIndexes[i].startPosition;
+                    var endIndex = cbtIndexes[i].endPosition;
+                }
+                cbtIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < cbtIndexes.length; i++){  
+            console.log(cbtIndexes[i].startPosition + " " + cbtIndexes[i].size);
+        }
+                var resultStr = makeCBTStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }	
+	function Link()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                linkIndexes.push(new LinkSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(linkIndexes);
+                for (var i = 0; i < linkIndexes.length; i++){
+                    var beginIndex = linkIndexes[i].startPosition;
+                    var endIndex = linkIndexes[i].endPosition;
+                }
+                linkIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < linkIndexes.length; i++){  
+            console.log(linkIndexes[i].startPosition + " " + linkIndexes[i].size);
+        }
+                var resultStr =makeLinkStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }					
  function Bold()
             {
                
@@ -504,7 +632,48 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeListingStringHtml(expressionText));
 			            }
              console.log('Listing indexes:'+JSON.stringify(listingIndexes));   
- 
+ for (var m = 0;m < cbtIndexes.length; m++){
+                 if(typeof cbtIndexes[m] != "undefined"){
+                    var startPos = cbtIndexes[m].startPosition;
+                    var size = cbtIndexes[m].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       cbtIndexes[m].startPosition = startPos;
+       cbtIndexes[m].size = size;
+	               }
+			resultStr = makeCBTStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeCBTStringHtml(expressionText));
+			            }
+             console.log('CBT indexes:'+JSON.stringify(cbtIndexes));
+			  /*for (var j = 0;j < linkIndexes.length; j++){
+                 if(typeof linkIndexes[j] != "undefined"){
+                    var startPos = linkIndexes[j].startPosition;
+                    var size = linkIndexes[j].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       linkIndexes[j].startPosition = startPos;
+       linkIndexes[j].size = size;
+	               }
+			resultStr = makeLinkStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeLinkStringHtml(expressionText));
+			            }
+             console.log('Bold indexes:'+JSON.stringify(linkIndexes));*/
    for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[j] != "undefined"){
                     var startPos = boldIndexes[j].startPosition;
@@ -765,23 +934,7 @@ operation(document.getElementById("RESULTHTML").innerHTML, document.getElementBy
 }
                        
 
-            function Link()
-            {
-                textarea=document.getElementById("text");
-                var Link_Title= getSelectiontextarea( document.getElementById("text") );
-                document.getElementById("text").focus();
-                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
-                expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
-                expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
-               
-                document.getElementById("text").innerHTML = Link_Title.replace(/\n/g, '<br>');
-                var x=prompt("Enter a link","");
-                PurgeRedoSequence();
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<a  href="'+x+'">'+Link_Title+'</a>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<a  href="'+x+'">'+Link_Title+'</a>'+expressionEnd;
-                Make();
-            }
+           
             function Image()
             {
                 textarea=document.getElementById("text");
@@ -1058,13 +1211,7 @@ document.getElementById("RESULTTEXT").innerText= table + '</tbody></table>';
 document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
                 Make();
             }
-            function CBT()
-            {
            
-                document.getElementById("RESULTTEXT").innerText='<br class="cbt">';
-                document.getElementById("RESULTHTML").innerHTML='<br class="cbt">';
-                Make();
-            }
             function Footer()
             {
            
