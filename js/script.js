@@ -44,7 +44,8 @@ function SomeVar(){
                 expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
                 }
 				 var addelements = [];
-                 var boldIndexes = [];
+                 var main_titleIndexes = [];
+				  var boldIndexes = [];
 				  var linkIndexes = [];
 				 var cbtIndexes = [];
 				  var boldIndexes = [];
@@ -56,11 +57,14 @@ function SomeVar(){
         this.startPosition = startPos;
         this.size = size;
         }
+		var Main_titleSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size =  size;
+		}
 		var TxtSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size =  size;
 		}
-		
 		var CBTSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -128,24 +132,7 @@ function SomeVar(){
 			}
 			return resultStr;
             }
-           	/* function Link()
-            {
-                textarea=document.getElementById("text");
-                var Link_Title= getSelectiontextarea( document.getElementById("text") );
-                document.getElementById("text").focus();
-                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
-                expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
-                expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
-               
-                document.getElementById("text").innerHTML = Link_Title.replace(/\n/g, '<br>');
-                var x=prompt("Enter a link","");
-                PurgeRedoSequence();
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<a  href="'+x+'">'+Link_Title+'</a>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<a  href="'+x+'">'+Link_Title+'</a>'+expressionEnd;
-                Make();
-            }	*/	
-		
+           	
 	  function makeLinkStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var x=prompt("Enter a link","");
@@ -175,6 +162,31 @@ function SomeVar(){
                 if (currentSymbolIndex<boldIndexes[i].startPosition){
                 resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
             resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           			
+            return resultStr;
+            }
+			function Main_title()
+            {
+               
+                SomeVar();
+               
+                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="main_title">'+expressionText+'</div>'+expressionEnd;
+                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="main_title">'+expressionHTML+'</div>'+expressionEnd;
+                Make();
+            }
+			function makeMain_titleStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeBoldStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < main_titleIndexes.length; i++){
+                if (currentSymbolIndex<main_titleIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,main_titleIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><div class="main_title">'+sourceStr.substring(main_titleIndexes[i].startPosition,main_titleIndexes[i].startPosition+main_titleIndexes[i].size)+'</div><span>'+sourceStr.substring(main_titleIndexes[i].startPosition+main_titleIndexes[i].size,sourceStr.length)+'</span>';
                       }
 			}
            			
@@ -463,6 +475,38 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }					
+ function  Main_title()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                main_titleIndexes.push(new Main_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(main_titleIndexes);
+                for (var i = 0; i < main_titleIndexes.length; i++){
+                    var beginIndex = main_titleIndexes[i].startPosition;
+                    var endIndex = main_titleIndexes[i].endPosition;
+                }
+                main_titleIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < main_titleIndexes.length; i++){  
+            console.log(main_titleIndexes[i].startPosition + " " + main_titleIndexes[i].size);
+        }
+                var resultStr = makeMain_titleStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
  function Bold()
             {
                
@@ -675,6 +719,27 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeLinkStringHtml(expressionText));
 			            }
              console.log('Link indexes:'+JSON.stringify(linkIndexes));
+   for (var p = 0;p < main_titleIndexes.length; p++){
+                 if(typeof main_titleIndexes[p] != "undefined"){
+                    var startPos = main_titleIndexes[p].startPosition;
+                    var size = main_titleIndexes[p].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       main_titleIndexes[p].startPosition = startPos;
+       main_titleIndexes[p].size = size;
+	               }
+			resultStr = makeMain_titleStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeMain_titleStringHtml(expressionText));
+			            }
+             console.log(' Main_title indexes:'+JSON.stringify(main_titleIndexes));
    for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[j] != "undefined"){
                     var startPos = boldIndexes[j].startPosition;
@@ -1081,15 +1146,7 @@ for(var i=0;i<n;i++){
                 document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
                 Make();
             }
-            function Main_title()
-            {
-               
-                SomeVar();
-               
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="main_title">'+expressionText+'</div>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="main_title">'+expressionHTML+'</div>'+expressionEnd;
-                Make();
-            }
+            
             function Middle_Title()
             {
                
