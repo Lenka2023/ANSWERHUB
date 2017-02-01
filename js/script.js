@@ -50,6 +50,7 @@ function SomeVar(){
 				 var cbtIndexes = [];
 				  var down_titleIndexes = [];
 				  var boldIndexes = [];
+				   var downpage_titleIndexes = [];
 				  var listingIndexes = [];
 				  var txtIndexes = [];
 				   var codeIndexes = [];
@@ -80,6 +81,10 @@ function SomeVar(){
 				  }
 				 
 				  var  LinkSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+				  }
+				  var DownPage_titleSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
 				  }
@@ -129,7 +134,7 @@ function SomeVar(){
 	  function makeListingStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
-        alert(" makeBoldStringHtml");
+        alert("makeListingStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
             var usedSymbols = 0;
@@ -159,7 +164,30 @@ function SomeVar(){
            			
             return resultStr;
             }
-            
+            function DownPage_title(){
+   
+    SomeVar();
+    var result=document.getElementById("result");
+   
+document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left strong">'+expressionText+'</span><br>'+expressionEnd;
+document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong">'+expressionHTML+'</span><br>'+expressionEnd;
+Make();
+}
+function makeDownPage_titleStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeDownPage_titleStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < downpage_titleIndexes.length; i++){
+                if (currentSymbolIndex<downpage_titleIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,downpage_titleIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><br><span class="move_left strong">'+sourceStr.substring(downpage_titleIndexes[i].startPosition,downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size)+'</span><br><span>'+sourceStr.substring(downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           	return resultStr;
+            }
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -235,7 +263,6 @@ function SomeVar(){
 				alert(" makeCBTStringHtml");
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
-        alert(" makeBoldStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
             var usedSymbols = 0;
@@ -251,7 +278,7 @@ function SomeVar(){
        function makeCodeStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
-        alert(" makeBoldStringHtml");
+        alert(" makeCodeStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
             var usedSymbols = 0;
@@ -642,6 +669,38 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
+						function DownPage_title()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                downpage_titleIndexes.push(new DownPage_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(downpage_titleIndexes);
+                for (var i = 0; i < downpage_titleIndexes.length; i++){
+                    var beginIndex = downpage_titleIndexes[i].startPosition;
+                    var endIndex = downpage_titleIndexes[i].endPosition;
+                }
+                downpage_titleIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < downpage_titleIndexes.length; i++){  
+            console.log(downpage_titleIndexes[i].startPosition + " " + downpage_titleIndexes[i].size);
+        }
+                var resultStr = makeDownPage_titleStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
 						function Txt(){
  alert("Txt");
   SomeVar();
@@ -885,7 +944,28 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeDown_titleStringHtml(expressionText));
 			            }
              console.log('Down_title indexes:'+JSON.stringify(down_titleIndexes));  
-  for (var j = 0;j < boldIndexes.length; j++){
+ for (var g = 0;g < downpage_titleIndexes.length; g++){
+                 if(typeof downpage_titleIndexes[g] != "undefined"){
+                    var startPos = downpage_titleIndexes[g].startPosition;
+                    var size = downpage_titleIndexes[g].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       downpage_titleIndexes[g].startPosition = startPos;
+       downpage_titleIndexes[g].size = size;
+	               }
+			resultStr = makeDownPage_titleStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeDownPage_titleStringHtml(expressionText));
+			            }
+             console.log('DownPage_title indexes:'+JSON.stringify(downpage_titleIndexes));
+ for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[j] != "undefined"){
                     var startPos = boldIndexes[j].startPosition;
                     var size = boldIndexes[j].size;
@@ -1294,15 +1374,7 @@ for(var i=0;i<n;i++){
             
             
             
-            function DownPage_title(){
-   
-    SomeVar();
-    var result=document.getElementById("result");
-   
-document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left strong">'+expressionText+'</span><br>'+expressionEnd;
-document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong">'+expressionHTML+'</span><br>'+expressionEnd;
-Make();
-}
+            
             function Red_title()
             {
                
