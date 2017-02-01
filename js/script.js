@@ -126,6 +126,8 @@ function SomeVar(){
             resultStr = '<span>'+ resultStr+'</span><br><span class="move_left "><span class="strong ">'+sourceStr.substring(listingIndexes[i].startPosition,listingIndexes[i].startPosition+listingIndexes[i].size)+'</span></span><span>'+sourceStr.substring(listingIndexes[i].startPosition+listingIndexes[i].size,sourceStr.length)+'</span>';
                       }
 			}
+			return resultStr;
+            }
            	/* function Link()
             {
                 textarea=document.getElementById("text");
@@ -143,12 +145,12 @@ function SomeVar(){
                 document.getElementById("RESULTHTML").innerHTML=expressionStart+'<a  href="'+x+'">'+Link_Title+'</a>'+expressionEnd;
                 Make();
             }	*/	
-			/*return resultStr;
-            }
+		
 	  function makeLinkStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
+		    var x=prompt("Enter a link","");
 		    var expressionText =  document.getElementById("text").value;
-        alert(" makeBoldStringHtml");
+        alert(" makeLinkStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
             var usedSymbols = 0;
@@ -160,9 +162,8 @@ function SomeVar(){
 			}
            			
             return resultStr;
-            }*/
-            return resultStr;
             }
+            
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -456,7 +457,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         for (var i =0; i < linkIndexes.length; i++){  
             console.log(linkIndexes[i].startPosition + " " + linkIndexes[i].size);
         }
-                var resultStr =makeLinkStringHtml(expressionText);
+                var resultStr = makeLinkStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -585,7 +586,7 @@ resultStr = makeBoldStringHtml(expressionText);
    
   
    $('#text').keyup(function onkeypressFunction(){
-         alert("onkeypressFunctionTxt");
+         alert("onkeypressFunction");
 		 expressionText =( document.getElementById("text").value );
          var pos=caretPos(expressionText);
                             
@@ -653,10 +654,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeCBTStringHtml(expressionText));
 			            }
              console.log('CBT indexes:'+JSON.stringify(cbtIndexes));
-			  /*for (var j = 0;j < linkIndexes.length; j++){
-                 if(typeof linkIndexes[j] != "undefined"){
-                    var startPos = linkIndexes[j].startPosition;
-                    var size = linkIndexes[j].size;
+			  for (var s = 0;s < linkIndexes.length; s++){
+                 if(typeof linkIndexes[s] != "undefined"){
+                    var startPos = linkIndexes[s].startPosition;
+                    var size = linkIndexes[s].size;
                   
                      if(pos<=startPos){
         startPos=startPos+1;
@@ -665,15 +666,15 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        if((pos>startPos)&&(pos<startPos+size)){
        size += 1;
                  }
-       linkIndexes[j].startPosition = startPos;
-       linkIndexes[j].size = size;
+       linkIndexes[s].startPosition = startPos;
+       linkIndexes[s].size = size;
 	               }
 			resultStr = makeLinkStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeLinkStringHtml(expressionText));
 			            }
-             console.log('Bold indexes:'+JSON.stringify(linkIndexes));*/
+             console.log('Link indexes:'+JSON.stringify(linkIndexes));
    for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[j] != "undefined"){
                     var startPos = boldIndexes[j].startPosition;
