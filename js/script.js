@@ -50,6 +50,7 @@ function SomeVar(){
 				 var cbtIndexes = [];
 				  var down_titleIndexes = [];
 				  var red_titleIndexes = [];
+				  var small_titleIndexes = [];
 				  var boldIndexes = [];
 				   var downpage_titleIndexes = [];
 				  var listingIndexes = [];
@@ -92,7 +93,11 @@ function SomeVar(){
         this.startPosition = startPos;
         this.size = size;
 				  }
-                  var BoldSelection = function(startPos, size){
+				  var BoldSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+				  }
+                  var Small_titleSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
 				  }
@@ -207,13 +212,28 @@ function makeDownPage_titleStringHtml(sourceStr){
 			}
            	return resultStr;
             }
-			function Red_title()
+			function Small_title()
             {
                
                 SomeVar();
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="title strong"><span>'+expressionText+'</span></div>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="title strong"><span>'+expressionHTML+'</span></div>'+expressionEnd;
+                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left strong font_size">'+expressionText+'</span>'+expressionEnd;
+                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong font_size">'+expressionHTML+'</span>'+expressionEnd;
                 Make();
+            }
+			function makeSmall_titleStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeSmall_titleStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < small_titleIndexes.length; i++){
+                if (currentSymbolIndex<small_titleIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,small_titleIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><br><span class="move_left strong font_size">'+sourceStr.substring(small_titleIndexes[i].startPosition,small_titleIndexes[i].startPosition+small_titleIndexes[i].size)+'</span><span>'+sourceStr.substring(small_titleIndexes[i].startPosition+small_titleIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           	return resultStr;
             }
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -696,6 +716,38 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
+						function Small_title()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                small_titleIndexes.push(new Small_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(small_titleIndexes);
+                for (var i = 0; i < small_titleIndexes.length; i++){
+                    var beginIndex = small_titleIndexes[i].startPosition;
+                    var endIndex = small_titleIndexes[i].endPosition;
+                }
+                small_titleIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < small_titleIndexes.length; i++){  
+            console.log(small_titleIndexes[i].startPosition + " " + small_titleIndexes[i].size);
+        }
+                var resultStr = makeSmall_titleStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
 			function Bold()
             {
                
@@ -1045,6 +1097,27 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeRed_titleStringHtml(expressionText));
 			            }
              console.log('Red_title indexes:'+JSON.stringify(red_titleIndexes));
+ for (var f = 0;f < small_titleIndexes.length; f++){
+                 if(typeof small_titleIndexes[f] != "undefined"){
+                    var startPos = small_titleIndexes[f].startPosition;
+                    var size = small_titleIndexes[f].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       small_titleIndexes[f].startPosition = startPos;
+       small_titleIndexes[f].size = size;
+	               }
+			resultStr = makeSmall_titleStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeSmall_titleStringHtml(expressionText));
+			            }
+             console.log('Small_title indexes:'+JSON.stringify(small_titleIndexes));
  for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[j] != "undefined"){
                     var startPos = boldIndexes[j].startPosition;
@@ -1451,27 +1524,7 @@ for(var i=0;i<n;i++){
                 document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
                 Make();
             }
-            
-            
-            
-            
-            function Red_title()
-            {
-               
-                SomeVar();
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="title strong"><span>'+expressionText+'</span></div>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="title strong"><span>'+expressionHTML+'</span></div>'+expressionEnd;
-                Make();
-            }
-            function Small_title()
-            {
-               
-                SomeVar();
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left strong font_size">'+expressionText+'</span>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong font_size">'+expressionHTML+'</span>'+expressionEnd;
-                Make();
-            }
-            
+             
             function Smallicon()
             {
                
