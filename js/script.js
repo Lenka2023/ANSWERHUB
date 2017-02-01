@@ -45,9 +45,10 @@ function SomeVar(){
                 }
 				 var addelements = [];
                  var main_titleIndexes = [];
-				  var boldIndexes = [];
-				  var linkIndexes = [];
+				  var middle_titleIndexes = [];
+				 var linkIndexes = [];
 				 var cbtIndexes = [];
+				  var down_titleIndexes = [];
 				  var boldIndexes = [];
 				  var listingIndexes = [];
 				  var txtIndexes = [];
@@ -58,6 +59,14 @@ function SomeVar(){
         this.size = size;
         }
 		var Main_titleSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size =  size;
+		}
+		var Middle_TitleSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size =  size;
+		}
+		var Down_titleSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size =  size;
 		}
@@ -164,22 +173,52 @@ function SomeVar(){
             resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
                       }
 			}
-           			
-            return resultStr;
+           	return resultStr;
             }
-			function Main_title()
+			function Down_title()
             {
                
                 SomeVar();
-               
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="main_title">'+expressionText+'</div>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="main_title">'+expressionHTML+'</div>'+expressionEnd;
+                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="down_title">'+expressionText+'</div>'+expressionEnd;
+                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="down_title">'+expressionHTML+'</div>'+expressionEnd;
                 Make();
             }
+			function makeDown_titleStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeDown_titleStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < down_titleIndexes.length; i++){
+                if (currentSymbolIndex<down_titleIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,down_titleIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><div class="down_title">'+sourceStr.substring(down_titleIndexes[i].startPosition,down_titleIndexes[i].startPosition+down_titleIndexes[i].size)+'</div><span>'+sourceStr.substring(down_titleIndexes[i].startPosition+down_titleIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           	return resultStr;
+            }
+			function makeMiddle_TitleStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert("makeMiddle_TitleStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < middle_titleIndexes.length; i++){
+                if (currentSymbolIndex<middle_titleIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,middle_titleIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><span class="middle_title">'+sourceStr.substring(middle_titleIndexes[i].startPosition,middle_titleIndexes[i].startPosition+middle_titleIndexes[i].size)+'</span><span>'+sourceStr.substring(middle_titleIndexes[i].startPosition+middle_titleIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           			
+            return resultStr;
+            }
+			
 			function makeMain_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
-        alert(" makeBoldStringHtml");
+        alert("makeMain_titleStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
             var usedSymbols = 0;
@@ -507,7 +546,71 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
- function Bold()
+function Middle_Title()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                middle_titleIndexes.push(new Middle_TitleSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(middle_titleIndexes );
+                for (var i = 0; i < middle_titleIndexes.length; i++){
+                    var beginIndex = middle_titleIndexes[i].startPosition;
+                    var endIndex = middle_titleIndexes[i].endPosition;
+                }
+                middle_titleIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < middle_titleIndexes.length; i++){  
+            console.log(middle_titleIndexes[i].startPosition + " " + middle_titleIndexes[i].size);
+        }
+                var resultStr = makeMiddle_TitleStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
+		function Down_title()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                down_titleIndexes.push(new Down_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(down_titleIndexes);
+                for (var i = 0; i < down_titleIndexes.length; i++){
+                    var beginIndex = down_titleIndexes[i].startPosition;
+                    var endIndex = down_titleIndexes[i].endPosition;
+                }
+                down_titleIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < down_titleIndexes.length; i++){  
+            console.log(down_titleIndexes[i].startPosition + " " + down_titleIndexes[i].size);
+        }
+                var resultStr = makeDown_titleStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
+			function Bold()
             {
                
             SomeVar();
@@ -740,7 +843,49 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeMain_titleStringHtml(expressionText));
 			            }
              console.log(' Main_title indexes:'+JSON.stringify(main_titleIndexes));
-   for (var j = 0;j < boldIndexes.length; j++){
+			  for (var d = 0;d < middle_titleIndexes.length; d++){
+                 if(typeof middle_titleIndexes[d] != "undefined"){
+                    var startPos = middle_titleIndexes[d].startPosition;
+                    var size = middle_titleIndexes[d].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       middle_titleIndexes[d].startPosition = startPos;
+       middle_titleIndexes[d].size = size;
+	               }
+			resultStr = makeMiddle_TitleStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeMiddle_TitleStringHtml(expressionText));
+			            }
+             console.log('Middle_Title indexes:'+JSON.stringify(middle_titleIndexes ));
+for (var h = 0;h < down_titleIndexes.length; h++){
+                 if(typeof down_titleIndexes[h] != "undefined"){
+                    var startPos = down_titleIndexes[h].startPosition;
+                    var size = down_titleIndexes[h].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       down_titleIndexes[h].startPosition = startPos;
+       down_titleIndexes[h].size = size;
+	               }
+			resultStr = makeDown_titleStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeDown_titleStringHtml(expressionText));
+			            }
+             console.log('Down_title indexes:'+JSON.stringify(down_titleIndexes));  
+  for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[j] != "undefined"){
                     var startPos = boldIndexes[j].startPosition;
                     var size = boldIndexes[j].size;
@@ -794,8 +939,8 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        if((pos>startPos)&&(pos<startPos+size)){
        size += 1;
                  }
-       captureIndexes[i].startPosition = startPos;
-       captureIndexes[i].size = size;
+       captureIndexes[l].startPosition = startPos;
+       captureIndexes[l].size = size;
 	               }
 			resultStr = makeCaptureStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -1147,23 +1292,8 @@ for(var i=0;i<n;i++){
                 Make();
             }
             
-            function Middle_Title()
-            {
-               
-                SomeVar();
-               
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<span class="middle_title">'+expressionText+'</span>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<span class="middle_title">'+expressionHTML+'</span>'+expressionEnd;
-                Make();
-            }
-            function Down_title()
-            {
-               
-                SomeVar();
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="down_title">'+expressionText+'</div>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="down_title">'+expressionHTML+'</div>'+expressionEnd;
-                Make();
-            }
+            
+            
             function DownPage_title(){
    
     SomeVar();
