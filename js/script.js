@@ -51,6 +51,7 @@ function SomeVar(){
 				  var down_titleIndexes = [];
 				  var red_titleIndexes = [];
 				  var small_titleIndexes = [];
+				  var hot_tipIndexes = [];
 				  var boldIndexes = [];
 				   var downpage_titleIndexes = [];
 				  var listingIndexes = [];
@@ -90,6 +91,10 @@ function SomeVar(){
         this.size = size;
 				  }
 				  var DownPage_titleSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+				  }
+				   var Hot_TipSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
 				  }
@@ -246,6 +251,71 @@ function makeDownPage_titleStringHtml(sourceStr){
                 if (currentSymbolIndex<boldIndexes[i].startPosition){
                 resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
             resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           	return resultStr;
+            }
+			/* function Hot_Tip()
+            {
+               
+                SomeVar();
+                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="border">'+
+          '<table class="elliptic">'+
+            '<tbody>'+
+              '<tr>'+
+                '<td class="hotTipLeft">'+
+                  '<h1>Hot<br>Tip</h1>'+
+                '</td>'+
+                '<td class="hotTipRight">'+
+                  '<span>'+expressionText+'</span>'+
+                '</td>'+
+              '</tr>'+
+            '</tbody>'+
+          '</table>'+
+          '<br class="cbt">'+
+        '</div>'+expressionEnd;
+            document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="border">'+
+          '<table class="elliptic">'+
+            '<tbody>'+
+              '<tr>'+
+                '<td class="hotTipLeft">'+
+                  '<h1>Hot<br>Tip</h1>'+
+                '</td>'+
+                '<td class="hotTipRight">'+
+                  '<span>'+expressionHTML+'</span>'+
+                '</td>'+
+              '</tr>'+
+            '</tbody>'+
+          '</table>'+
+          '<br class="cbt">'+
+        '</div>'+expressionEnd;
+                Make();
+            }*/
+			function makeHot_TipStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeHot_TipStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < hot_tipIndexes.length; i++){
+                if (currentSymbolIndex<hot_tipIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,hot_tipIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><div class="border">'+
+          '<table class="elliptic">'+
+            '<tbody>'+
+              '<tr>'+
+                '<td class="hotTipLeft">'+
+                  '<h1>Hot<br>Tip</h1>'+
+                '</td>'+
+                '<td class="hotTipRight">'+
+                  '<span>'+sourceStr.substring(hot_tipIndexes[i].startPosition,hot_tipIndexes[i].startPosition+hot_tipIndexes[i].size)+'</span>'+
+                '</td>'+
+              '</tr>'+
+            '</tbody>'+
+          '</table>'+
+          '<br class="cbt">'+
+        '</div><span>'+sourceStr.substring(hot_tipIndexes[i].startPosition+hot_tipIndexes[i].size,sourceStr.length)+'</span>';
                       }
 			}
            	return resultStr;
@@ -748,6 +818,38 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
+						function Hot_Tip()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                hot_tipIndexes.push(new Hot_TipSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(hot_tipIndexes);
+                for (var i = 0; i < hot_tipIndexes.length; i++){
+                    var beginIndex = hot_tipIndexes[i].startPosition;
+                    var endIndex = hot_tipIndexes[i].endPosition;
+                }
+                hot_tipIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < hot_tipIndexes.length; i++){  
+            console.log(hot_tipIndexes[i].startPosition + " " + hot_tipIndexes[i].size);
+        }
+                var resultStr = makeHot_TipStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
 			function Bold()
             {
                
@@ -1076,10 +1178,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeDownPage_titleStringHtml(expressionText));
 			            }
              console.log('DownPage_title indexes:'+JSON.stringify(downpage_titleIndexes));
- for (var j = 0;j < red_titleIndexes.length; j++){
-                 if(typeof red_titleIndexes[j] != "undefined"){
-                    var startPos = red_titleIndexes[j].startPosition;
-                    var size = red_titleIndexes[j].size;
+			 for (var j = 0;j < hot_tipIndexes.length; j++){
+                 if(typeof hot_tipIndexes[j] != "undefined"){
+                    var startPos = hot_tipIndexes[j].startPosition;
+                    var size = hot_tipIndexes[j].size;
                   
                      if(pos<=startPos){
         startPos=startPos+1;
@@ -1088,8 +1190,29 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        if((pos>startPos)&&(pos<startPos+size)){
        size += 1;
                  }
-       red_titleIndexes[j].startPosition = startPos;
-       red_titleIndexes[j].size = size;
+       hot_tipIndexes[j].startPosition = startPos;
+       hot_tipIndexes[j].size = size;
+	               }
+			resultStr = makeHot_TipStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeHot_TipStringHtml(expressionText));
+			            }
+             console.log('Hot_Tip indexes:'+JSON.stringify(hot_tipIndexes));
+ for (var r = 0;r < red_titleIndexes.length; r++){
+                 if(typeof red_titleIndexes[r] != "undefined"){
+                    var startPos = red_titleIndexes[r].startPosition;
+                    var size = red_titleIndexes[r].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       red_titleIndexes[r].startPosition = startPos;
+       red_titleIndexes[r].size = size;
 	               }
 			resultStr = makeRed_titleStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -1539,42 +1662,7 @@ for(var i=0;i<n;i++){
                 document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><img src="img/'+expressionHTML+'"alt="622" class="textwrap smallicon">'+expressionEnd;
                 Make();
             }
-            function Hot_Tip()
-            {
-               
-                SomeVar();
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="border">'+
-          '<table class="elliptic">'+
-            '<tbody>'+
-              '<tr>'+
-                '<td class="hotTipLeft">'+
-                  '<h1>Hot<br>Tip</h1>'+
-                '</td>'+
-                '<td class="hotTipRight">'+
-                  '<span>'+expressionText+'</span>'+
-                '</td>'+
-              '</tr>'+
-            '</tbody>'+
-          '</table>'+
-          '<br class="cbt">'+
-        '</div>'+expressionEnd;
-            document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="border">'+
-          '<table class="elliptic">'+
-            '<tbody>'+
-              '<tr>'+
-                '<td class="hotTipLeft">'+
-                  '<h1>Hot<br>Tip</h1>'+
-                '</td>'+
-                '<td class="hotTipRight">'+
-                  '<span>'+expressionHTML+'</span>'+
-                '</td>'+
-              '</tr>'+
-            '</tbody>'+
-          '</table>'+
-          '<br class="cbt">'+
-        '</div>'+expressionEnd;
-                Make();
-            }
+           
             function Table()
             {
                
