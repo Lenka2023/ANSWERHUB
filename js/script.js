@@ -49,6 +49,7 @@ function SomeVar(){
 				 var linkIndexes = [];
 				 var cbtIndexes = [];
 				  var down_titleIndexes = [];
+				  var red_titleIndexes = [];
 				  var boldIndexes = [];
 				   var downpage_titleIndexes = [];
 				  var listingIndexes = [];
@@ -79,7 +80,10 @@ function SomeVar(){
         this.startPosition = startPos;
         this.size = size;
 				  }
-				 
+				 var Red_titleSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+				  }
 				  var  LinkSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -187,6 +191,29 @@ function makeDownPage_titleStringHtml(sourceStr){
                       }
 			}
            	return resultStr;
+            }
+			function makeRed_titleStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeRed_titleStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < red_titleIndexes.length; i++){
+                if (currentSymbolIndex<red_titleIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,red_titleIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><div class="title strong"><span>'+sourceStr.substring(red_titleIndexes[i].startPosition,red_titleIndexes[i].startPosition+red_titleIndexes[i].size)+'</span></div><span>'+sourceStr.substring(red_titleIndexes[i].startPosition+red_titleIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           	return resultStr;
+            }
+			function Red_title()
+            {
+               
+                SomeVar();
+                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="title strong"><span>'+expressionText+'</span></div>'+expressionEnd;
+                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="title strong"><span>'+expressionHTML+'</span></div>'+expressionEnd;
+                Make();
             }
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -637,6 +664,38 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
+						function Red_title()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                red_titleIndexes.push(new Red_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(red_titleIndexes);
+                for (var i = 0; i < red_titleIndexes.length; i++){
+                    var beginIndex = red_titleIndexes[i].startPosition;
+                    var endIndex = red_titleIndexes[i].endPosition;
+                }
+                red_titleIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < red_titleIndexes.length; i++){  
+            console.log(red_titleIndexes[i].startPosition + " " + red_titleIndexes[i].size);
+        }
+                var resultStr = makeRed_titleStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
 			function Bold()
             {
                
@@ -669,7 +728,7 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
-						function DownPage_title()
+			function DownPage_title()
             {
                
             SomeVar();
@@ -965,6 +1024,27 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeDownPage_titleStringHtml(expressionText));
 			            }
              console.log('DownPage_title indexes:'+JSON.stringify(downpage_titleIndexes));
+ for (var j = 0;j < red_titleIndexes.length; j++){
+                 if(typeof red_titleIndexes[j] != "undefined"){
+                    var startPos = red_titleIndexes[j].startPosition;
+                    var size = red_titleIndexes[j].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       red_titleIndexes[j].startPosition = startPos;
+       red_titleIndexes[j].size = size;
+	               }
+			resultStr = makeRed_titleStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeRed_titleStringHtml(expressionText));
+			            }
+             console.log('Red_title indexes:'+JSON.stringify(red_titleIndexes));
  for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[j] != "undefined"){
                     var startPos = boldIndexes[j].startPosition;
@@ -1277,7 +1357,7 @@ var redo = document.getElementById('redo');
    textarea=document.getElementById("text");
    //var resultstrCollection = new Array();
   // var resultTxtStr = makeTxtStringHtml(expressionText);
-   // var resultStr = makeBoldStringHtml(expressionText);
+   // var resultStr = makeRed_titleStringHtml(expressionText);
     /*for(i = 0; i < resultStr.length; i++){
                  resultstrCollection.push(resultStr[i]);
    }*/
