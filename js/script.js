@@ -53,6 +53,7 @@ function SomeVar(){
 				  var small_titleIndexes = [];
 				  var hot_tipIndexes = [];
 				  var boldIndexes = [];
+				  var footerIndexes = [];
 				   var downpage_titleIndexes = [];
 				  var listingIndexes = [];
 				  var txtIndexes = [];
@@ -95,6 +96,10 @@ function SomeVar(){
         this.size = size;
 				  }
 				   var Hot_TipSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+				  }
+				   var FooterSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
 				  }
@@ -240,6 +245,46 @@ function makeDownPage_titleStringHtml(sourceStr){
 			}
            	return resultStr;
             }
+			 function Footer()
+            {
+           
+                document.getElementById("RESULTTEXT").innerText= '<div>'+
+                '<div class="footer">'+
+        '<span> DZone, Inc. | www.dzone.</span>'+
+      '</div>'+
+    '</div>'+  
+  '</body>'+
+'</html>';
+                document.getElementById("RESULTHTML").innerHTML='</div>'+
+ '<div class="footer">'+
+        '<span> DZone, Inc. | www.dzone.</span>'+
+      '</div>'+
+    '</div>'+  
+  '</body>'+
+'</html>';
+Make();
+            }
+			function makeFooterStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeFooterStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            for (var i = 0; i < footerIndexes.length; i++){
+                if (currentSymbolIndex<footerIndexes[i].startPosition){
+                resultStr += sourceStr.substring(currentSymbolIndex,footerIndexes[i].startPosition);
+            resultStr = '<span>'+ resultStr+'</span><div>'+
+                '<div class="footer">'+
+        '<span> DZone, Inc. | www.dzone.</span>'+
+      '</div>'+
+    '</div>'+  
+  '</body>'+
+'</html><span>'+sourceStr.substring(footerIndexes[i].startPosition+footerIndexes[i].size,sourceStr.length)+'</span>';
+                      }
+			}
+           	return resultStr;
+            }
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -255,42 +300,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 			}
            	return resultStr;
             }
-			/* function Hot_Tip()
-            {
-               
-                SomeVar();
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="border">'+
-          '<table class="elliptic">'+
-            '<tbody>'+
-              '<tr>'+
-                '<td class="hotTipLeft">'+
-                  '<h1>Hot<br>Tip</h1>'+
-                '</td>'+
-                '<td class="hotTipRight">'+
-                  '<span>'+expressionText+'</span>'+
-                '</td>'+
-              '</tr>'+
-            '</tbody>'+
-          '</table>'+
-          '<br class="cbt">'+
-        '</div>'+expressionEnd;
-            document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="border">'+
-          '<table class="elliptic">'+
-            '<tbody>'+
-              '<tr>'+
-                '<td class="hotTipLeft">'+
-                  '<h1>Hot<br>Tip</h1>'+
-                '</td>'+
-                '<td class="hotTipRight">'+
-                  '<span>'+expressionHTML+'</span>'+
-                '</td>'+
-              '</tr>'+
-            '</tbody>'+
-          '</table>'+
-          '<br class="cbt">'+
-        '</div>'+expressionEnd;
-                Make();
-            }*/
+			
 			function makeHot_TipStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -850,6 +860,38 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
+						function Footer()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                footerIndexes.push(new FooterSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(footerIndexes);
+                for (var i = 0; i < footerIndexes.length; i++){
+                    var beginIndex = footerIndexes[i].startPosition;
+                    var endIndex = footerIndexes[i].endPosition;
+                }
+                footerIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < footerIndexes.length; i++){  
+            console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
+        }
+                var resultStr = makeFooterStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
 			function Bold()
             {
                
@@ -1178,10 +1220,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeDownPage_titleStringHtml(expressionText));
 			            }
              console.log('DownPage_title indexes:'+JSON.stringify(downpage_titleIndexes));
-			 for (var j = 0;j < hot_tipIndexes.length; j++){
-                 if(typeof hot_tipIndexes[j] != "undefined"){
-                    var startPos = hot_tipIndexes[j].startPosition;
-                    var size = hot_tipIndexes[j].size;
+			 for (var t = 0;t < footerIndexes.length; t++){
+                 if(typeof footerIndexes[t] != "undefined"){
+                    var startPos = footerIndexes[t].startPosition;
+                    var size = footerIndexes[t].size;
                   
                      if(pos<=startPos){
         startPos=startPos+1;
@@ -1190,8 +1232,29 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        if((pos>startPos)&&(pos<startPos+size)){
        size += 1;
                  }
-       hot_tipIndexes[j].startPosition = startPos;
-       hot_tipIndexes[j].size = size;
+       footerIndexes[t].startPosition = startPos;
+       footerIndexes[t].size = size;
+	               }
+			resultStr = makeFooterStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeFooterStringHtml(expressionText));
+			            }
+             console.log('Footer indexes:'+JSON.stringify(footerIndexes));
+			 for (var x = 0;x < hot_tipIndexes.length; x++){
+                 if(typeof hot_tipIndexes[x] != "undefined"){
+                    var startPos = hot_tipIndexes[x].startPosition;
+                    var size = hot_tipIndexes[x].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       hot_tipIndexes[x].startPosition = startPos;
+       hot_tipIndexes[x].size = size;
 	               }
 			resultStr = makeHot_TipStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -1693,24 +1756,6 @@ document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
                 Make();
             }
            
-            function Footer()
-            {
            
-                document.getElementById("RESULTTEXT").innerText= '</div>'+
-                '<div class="footer">'+
-        '<span> DZone, Inc. | www.dzone.</span>'+
-      '</div>'+
-    '</div>'+  
-  '</body>'+
-'</html>';
-                document.getElementById("RESULTHTML").innerHTML='</div>'+
- '<div class="footer">'+
-        '<span> DZone, Inc. | www.dzone.</span>'+
-      '</div>'+
-    '</div>'+  
-  '</body>'+
-'</html>';
-Make();
-            }
            
     });
