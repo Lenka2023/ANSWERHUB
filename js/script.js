@@ -427,7 +427,65 @@ for(var i=0;i<n;i++){
                 resultStr = disc_list + '</ol>';
             
            	return resultStr;
-            }														
+            }	
+	  function Table()
+            {
+               
+                var expression = getSelectiontextarea( document.getElementById("text") );
+                document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+                document.getElementById("text").focus();
+                var x=prompt("Enter a count of row","");
+var y=prompt("Enter a count of columns","");
+var table='<table class="syntax_description"><tbody>';
+for(var i = 0, text; i <= x;i++){
+ table += '<tr>';
+  if(i == 0){
+    for(var j = 0; j < y; j++){
+        text = prompt("Enter text", "");
+        table += '<th>' + text + '</th>';
+            }
+  }
+  else{
+    for(var j = 0; j < y; j++){
+        text = prompt("Enter text", "");
+        table += '<td>' + text + '</td>';
+    }
+  }
+  table += '</tr>';
+}
+document.getElementById("RESULTTEXT").innerText= table + '</tbody></table>';
+document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
+                Make();
+            }	
+	function makeTableStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeTableStringHtml");
+           var x=prompt("Enter a count of row","");
+var y=prompt("Enter a count of columns","");
+var table='<table class="syntax_description"><tbody>';
+for(var i = 0, text; i <= x;i++){
+ table += '<tr>';
+  if(i == 0){
+    for(var j = 0; j < y; j++){
+        text = prompt("Enter text", "");
+        table += '<th>' + text + '</th>';
+            }
+  }
+  else{
+    for(var j = 0; j < y; j++){
+        text = prompt("Enter text", "");
+        table += '<td>' + text + '</td>';
+    }
+  }
+  table += '</tr>';
+} 
+			var resultStr =" ";
+            
+            resultStr = table + '</tbody></table>';
+                    
+           	return resultStr;
+            }	
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -1278,7 +1336,26 @@ function None_List()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }				
+                        }	
+/*function Table()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text");
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+               
+                var resultStr = makeTableStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }*/						
 			function Bold()
             {
                
@@ -1883,35 +1960,7 @@ var redo = document.getElementById('redo');
                 Make();
             }
            
-            function Table()
-            {
-               
-                var expression = getSelectiontextarea( document.getElementById("text") );
-                document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-                document.getElementById("text").focus();
-                var x=prompt("Enter a count of row","");
-var y=prompt("Enter a count of columns","");
-var table='<table class="syntax_description"><tbody>';
-for(var i = 0, text; i <= x;i++){
- table += '<tr>';
-  if(i == 0){
-    for(var j = 0; j < y; j++){
-        text = prompt("Enter text", "");
-        table += '<th>' + text + '</th>';
-            }
-  }
-  else{
-    for(var j = 0; j < y; j++){
-        text = prompt("Enter text", "");
-        table += '<td>' + text + '</td>';
-    }
-  }
-  table += '</tr>';
-}
-document.getElementById("RESULTTEXT").innerText= table + '</tbody></table>';
-document.getElementById("RESULTHTML").innerHTML= table + '</tbody></table>';
-                Make();
-            }
+          
            
            
            
