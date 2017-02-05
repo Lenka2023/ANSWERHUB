@@ -392,21 +392,42 @@ for(var i=0;i<n;i++){
                 resultStr = decimal_list + '</ol>';
                         	return resultStr;
 															}
-/*	function makeBoldStringHtml(sourceStr){
+	 function Disc_List()
+            {
+                var expression = getSelectiontextarea( document.getElementById("text") );
+                document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+                document.getElementById("text").focus();
+                var n=prompt("Enter a count of row","");
+                 var disc_list='<span class=" strong font_size">'+expression+'</span><ol class="disc">';
+for(var i=0;i<n;i++){
+        var worlds = getSelectiontextarea( document.getElementById("text") );
+        document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
+        var text=prompt("Enter a text for  <li>","");
+        document.getElementById("text").focus();
+         disc_list+='<li>'+text+'</li>';
+                    }
+                 document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
+                document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
+                Make();
+            }														
+function makeDisc_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
-        alert(" makeBoldStringHtml");
-            var currentSymbolIndex = 0;
+        alert(" makeDisc_ListStringHtml");
+           var n=prompt("Enter a count of row","");
+                 var disc_list='<span class=" strong font_size">'+expressionText+'</span><ol class="disc">';
+for(var i=0;i<n;i++){
+        var worlds = getSelectiontextarea( document.getElementById("text") );
+        document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
+        var text=prompt("Enter a text for  <li>","");
+        document.getElementById("text").focus();
+         disc_list+='<li>'+text+'</li>';
+                    }
 			var resultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < boldIndexes.length; i++){
-                if (currentSymbolIndex<boldIndexes[i].startPosition){
-               resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
-            resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
-                      }
-			}
+                resultStr = disc_list + '</ol>';
+            
            	return resultStr;
-            }*/														
+            }														
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -1238,7 +1259,26 @@ function None_List()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }					
+                        }	
+	function Disc_List()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text");
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+               
+                var resultStr = makeDisc_ListStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }				
 			function Bold()
             {
                
@@ -1827,35 +1867,7 @@ var redo = document.getElementById('redo');
                              
  //--------------------------------------------------------------------------------------------------------------------------------FUNCTIONS--------------------------------------------------------------------------------------------------------------------------
     
-  
-           
-          
-           
-            
-                 
-           
-           
-           
-            
-            function Disc_List()
-            {
-                var expression = getSelectiontextarea( document.getElementById("text") );
-                document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-                document.getElementById("text").focus();
-                var n=prompt("Enter a count of row","");
-                 var disc_list='<span class=" strong font_size">'+expression+'</span><ol class="disc">';
-for(var i=0;i<n;i++){
-        var worlds = getSelectiontextarea( document.getElementById("text") );
-        document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
-        var text=prompt("Enter a text for  <li>","");
-        document.getElementById("text").focus();
-         disc_list+='<li>'+text+'</li>';
-                    }
-                 document.getElementById("RESULTTEXT").innerText= disc_list + '</ol>';
-                document.getElementById("RESULTHTML").innerHTML= disc_list + '</ol>';
-                Make();
-            }
-             
+    
             function Smallicon()
             {
                
