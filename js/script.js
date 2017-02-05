@@ -53,6 +53,7 @@ function SomeVar(){
 				  var small_titleIndexes = [];
 				  var hot_tipIndexes = [];
 				  var boldIndexes = [];
+				   var downIndexes = [];
 				  var footerIndexes = [];
 				   var downpage_titleIndexes = [];
 				  var listingIndexes = [];
@@ -104,6 +105,10 @@ function SomeVar(){
         this.size = size;
 				  }
 				  var BoldSelection = function(startPos, size){
+        this.startPosition = startPos;
+        this.size = size;
+				  }
+				  var DownSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
 				  }
@@ -285,6 +290,62 @@ Make();
 			}
            	return resultStr;
             }
+			/*function Down(){
+PurgeRedoSequence();
+    document.getElementById("text").focus();
+    //var x=prompt("Enter a count of row","");
+var y=prompt("Enter a count of columns","");
+    var result=document.getElementById("result");
+   
+if(y==1){
+var text=prompt("Enter text","");
+document.getElementById("RESULTTEXT").innerText='</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
+document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
+                Make();
+                }
+                    else{
+                    var table='<div class="down_page float_right">';
+                var text=prompt("Enter text","");  
+                table +=' <div class="align_left medium_padding align_top float_left">'+text+'</div>';
+          for(var i = 0; i < y-1;i++){
+          var txt=prompt("Enter txt","");
+ table += '<div class="align_left medium_padding align_top float_right">'+txt+ '</div>';
+  }
+  document.getElementById("RESULTTEXT").innerText= table + '</div>';
+  document.getElementById("RESULTHTML").innerHTML = table + '</div>';
+       
+                Make();
+                            }
+            }   */                
+			 function makeDownStringHtml(sourceStr){
+			var y=prompt("Enter a count of columns","");
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeDownStringHtml");
+            var currentSymbolIndex = 0;
+			var resultStr =" ";
+            var usedSymbols = 0;
+            //for (var i = 0; i < downIndexes.length; i++){
+                //if (currentSymbolIndex<downIndexes[i].startPosition){
+					if(y==1){
+var text=prompt("Enter text","");
+               // resultStr += sourceStr.substring(currentSymbolIndex,downIndexes[i].startPosition);
+            resultStr = /*'<span>'+ resultStr+'</span>*/'</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
+                      }
+					 else{
+                    var table='<div class="down_page float_right">';
+                var text=prompt("Enter text","");  
+                table +=' <div class="align_left medium_padding align_top float_left">'+text+'</div>';
+          for(var i = 0; i < y-1;i++){
+          var txt=prompt("Enter txt","");
+ table += '<div class="align_left medium_padding align_top float_right">'+txt+ '</div>';
+  } 
+ //resultStr += sourceStr.substring(currentSymbolIndex,downIndexes[i].startPosition);
+   resultStr =/*'<span>'+ resultStr+*/table + '</div>';
+				}
+			//}
+           	return resultStr;
+            }
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -294,7 +355,7 @@ Make();
             var usedSymbols = 0;
             for (var i = 0; i < boldIndexes.length; i++){
                 if (currentSymbolIndex<boldIndexes[i].startPosition){
-                resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
+               resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
             resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
                       }
 			}
@@ -892,6 +953,39 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
+						function Down()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text").value;
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                downIndexes.push(new DownSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(downIndexes);
+                for (var i = 0; i < downIndexes.length; i++){
+                    var beginIndex = downIndexes[i].startPosition;
+                    var endIndex = downIndexes[i].endPosition;
+                }
+                downIndexes.sort(function(a,b) {
+                return a.startPosition - b.startPosition;
+                });
+                console.log('aggregated array:');
+        for (var i =0; i < downIndexes.length; i++){  
+            console.log(downIndexes[i].startPosition + " " + downIndexes[i].size);
+        }
+                var resultStr = makeDownStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }
+						
 			function Bold()
             {
                
@@ -1304,6 +1398,27 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeSmall_titleStringHtml(expressionText));
 			            }
              console.log('Small_title indexes:'+JSON.stringify(small_titleIndexes));
+			 /*for (var k = 0;k < downIndexes.length; k++){
+                 if(typeof downIndexes[k] != "undefined"){
+                    var startPos = downIndexes[k].startPosition;
+                    var size = downIndexes[k].size;
+                  
+                     if(pos<=startPos){
+        startPos=startPos+1;
+		       }
+       else
+       if((pos>startPos)&&(pos<startPos+size)){
+       size += 1;
+                 }
+       downIndexes[k].startPosition = startPos;
+       downIndexes[k].size = size;
+	               }
+			resultStr = makeDownStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeDownStringHtml(expressionText));
+			            }
+             console.log('Down indexes:'+JSON.stringify(downIndexes));*/
  for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[j] != "undefined"){
                     var startPos = boldIndexes[j].startPosition;
@@ -1380,7 +1495,106 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
      
      
  
-function Top(){
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ 
+function Reundo() {
+    var html_res_array = getElementsById('RESULTHTML');
+    var text_res_array = getElementsById('RESULTTEXT');
+   
+    for (var i = 0; i < html_res_array.length; i++)
+    {
+        if (i < historyIndex) {
+            show(html_res_array[i]);
+            show(text_res_array[i]);
+        }
+        else
+        {
+            hide(html_res_array[i]);
+            hide(text_res_array[i]);
+        }
+    }
+   
+    //document.getElementById('html_res').innerHTML = history_Area[historyIndex];
+    //document.getElementById('text_res').innerHTML = history_Result[historyIndex];
+};
+ 
+     
+//undo.addEventListener('click', Undo () );
+//redo.addEventListener('click', Redo() );
+function Redo() {
+   if (historyIndex < historyIndexMax)
+    {
+        historyIndex++; Reundo(); redo.disabled ='';
+    }
+    if (historyIndex == historyIndexMax)
+    {
+        redo.disabled ='disabled';
+    }
+    if (historyIndex > 0) { undo.disabled = ''; }
+};
+function Undo(){
+    if (historyIndex > 0)
+    {
+        historyIndex--; Reundo(); undo.disabled ='';
+    }
+    if (historyIndex == 0)
+    {
+        undo.disabled ='disabled';
+    }
+    if (historyIndex < historyIndexMax) { redo.disabled=''; }
+};
+function Delete(){
+PurgeRedoSequence();
+document.getElementById("RESULTTEXT").innerHTML = '';
+document.getElementById("RESULTHTML").innerHTML = '';
+document.getElementById("RESULTTEXT").id = "RESULTTEXT";
+document.getElementById("RESULTHTML").id = "RESULTHTML";
+operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
+}
+ 
+var undo = document.getElementById('undo');
+var redo = document.getElementById('redo');
+ 
+ 
+            addelements=function getChar(event) {
+  if (event.which == null) { // IE
+    if (event.keyCode < 32) return null; // ????. ??????
+    return String.fromCharCode(event.keyCode)
+  }
+ 
+  if (event.which != 0 && event.charCode != 0) { // ??? ????? IE
+    if (event.which < 32) return null; // ????. ??????
+    return String.fromCharCode(event.which); // ?????????
+  }
+ 
+  return null; // ????. ??????
+}
+               
+  textarea=document.getElementById("text");
+ var expressionText = getSelectiontextarea( document.getElementById("text") );
+    var expressionHTML = getSelectiontextarea( document.getElementById("text") );
+    var expressionStart=(textarea.value).substring(0,textarea.selectionStart).value;
+    var expressionEnd=(textarea.value).substring(textarea.selectionEnd).value;
+    var expressionText = getSelectiontextarea( document.getElementById("text") );
+    var expressionHTML = getSelectiontextarea( document.getElementById("text") );
+   
+             textarea.oninput=function(){
+   textarea=document.getElementById("text");
+   //var resultstrCollection = new Array();
+  // var resultTxtStr = makeTxtStringHtml(expressionText);
+   // var resultStr = makeRed_titleStringHtml(expressionText);
+    /*for(i = 0; i < resultStr.length; i++){
+                 resultstrCollection.push(resultStr[i]);
+   }*/
+      document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
+       document.getElementById('RESULTHTML').innerHTML =textarea.value;
+                                  };
+                             
+ //--------------------------------------------------------------------------------------------------------------------------------FUNCTIONS--------------------------------------------------------------------------------------------------------------------------
+    
+  function Top(){
 var top_page_list=prompt("Enter top_page_list","");
 PurgeRedoSequence();
 textarea=document.getElementById("text");
@@ -1477,155 +1691,12 @@ document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
                 Make();
    
             }
-function Down(){
-PurgeRedoSequence();
-    document.getElementById("text").focus();
-    //var x=prompt("Enter a count of row","");
-var y=prompt("Enter a count of columns","");
-    var result=document.getElementById("result");
    
-if(y==1){
-var text=prompt("Enter text","");
-document.getElementById("RESULTTEXT").innerText='</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
-document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
-                Make();
-                }
-                    else{
-                    var table='<div class="down_page float_right">';
-                var text=prompt("Enter text","");  
-                table +=' <div class="align_left medium_padding align_top float_left">'+text+'</div>';
-          for(var i = 0; i < y-1;i++){
-          var txt=prompt("Enter txt","");
- table += '<div class="align_left medium_padding align_top float_right">'+txt+ '</div>';
-  }
-  document.getElementById("RESULTTEXT").innerText= table + '</div>';
-  document.getElementById("RESULTHTML").innerHTML = table + '</div>';
-       
-                Make();
-                            }
-            }
-//----------------------------------------------------------------------------------------------------
- 
- 
-function Reundo() {
-    var html_res_array = getElementsById('RESULTHTML');
-    var text_res_array = getElementsById('RESULTTEXT');
-   
-    for (var i = 0; i < html_res_array.length; i++)
-    {
-        if (i < historyIndex) {
-            show(html_res_array[i]);
-            show(text_res_array[i]);
-        }
-        else
-        {
-            hide(html_res_array[i]);
-            hide(text_res_array[i]);
-        }
-    }
-   
-    //document.getElementById('html_res').innerHTML = history_Area[historyIndex];
-    //document.getElementById('text_res').innerHTML = history_Result[historyIndex];
-};
- 
-     
-//undo.addEventListener('click', Undo () );
-//redo.addEventListener('click', Redo() );
-function Redo() {
-   if (historyIndex < historyIndexMax)
-    {
-        historyIndex++; Reundo(); redo.disabled ='';
-    }
-    if (historyIndex == historyIndexMax)
-    {
-        redo.disabled ='disabled';
-    }
-    if (historyIndex > 0) { undo.disabled = ''; }
-};
-function Undo(){
-    if (historyIndex > 0)
-    {
-        historyIndex--; Reundo(); undo.disabled ='';
-    }
-    if (historyIndex == 0)
-    {
-        undo.disabled ='disabled';
-    }
-    if (historyIndex < historyIndexMax) { redo.disabled=''; }
-};
-//--------------------------------------------------------------------------------------------------------------------------------
-function Delete(){
-PurgeRedoSequence();
-document.getElementById("RESULTTEXT").innerHTML = '';
-document.getElementById("RESULTHTML").innerHTML = '';
-document.getElementById("RESULTTEXT").id = "RESULTTEXT";
-document.getElementById("RESULTHTML").id = "RESULTHTML";
-operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
-}
-                       
 
            
-            function Image()
-            {
-                textarea=document.getElementById("text");
-                var Image_Title= getSelectiontextarea( document.getElementById("text") );
-                document.getElementById("text").focus();
-                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
-                expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
-                expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
-               
-                document.getElementById("text").innerHTML = Image_Title.replace(/\n/g, '<br>');
-                var x=prompt("Enter a name of image","");
-                PurgeRedoSequence();
-                document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
-                document.getElementById("RESULTHTML").innerHTML='<img src="img/'+x+'"alt="622">';
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<img src="img/'+Image_Title+'"alt="622">'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<img src="img/'+Image_Title+'"alt="622">'+expressionEnd;
-                Make();
-            }
+          
            
-   
-var undo = document.getElementById('undo');
-var redo = document.getElementById('redo');
- 
- 
-            addelements=function getChar(event) {
-  if (event.which == null) { // IE
-    if (event.keyCode < 32) return null; // ????. ??????
-    return String.fromCharCode(event.keyCode)
-  }
- 
-  if (event.which != 0 && event.charCode != 0) { // ??? ????? IE
-    if (event.which < 32) return null; // ????. ??????
-    return String.fromCharCode(event.which); // ?????????
-  }
- 
-  return null; // ????. ??????
-}
-               
-  textarea=document.getElementById("text");
- var expressionText = getSelectiontextarea( document.getElementById("text") );
-    var expressionHTML = getSelectiontextarea( document.getElementById("text") );
-    var expressionStart=(textarea.value).substring(0,textarea.selectionStart).value;
-    var expressionEnd=(textarea.value).substring(textarea.selectionEnd).value;
-    var expressionText = getSelectiontextarea( document.getElementById("text") );
-    var expressionHTML = getSelectiontextarea( document.getElementById("text") );
-   
-             textarea.oninput=function(){
-   textarea=document.getElementById("text");
-   //var resultstrCollection = new Array();
-  // var resultTxtStr = makeTxtStringHtml(expressionText);
-   // var resultStr = makeRed_titleStringHtml(expressionText);
-    /*for(i = 0; i < resultStr.length; i++){
-                 resultstrCollection.push(resultStr[i]);
-   }*/
-      document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
-       document.getElementById('RESULTHTML').innerHTML =textarea.value;
-                                  };
-                             
-     
-           
+            
                  
             function Main_List()
             {
