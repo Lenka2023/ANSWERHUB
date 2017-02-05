@@ -53,8 +53,7 @@ function SomeVar(){
 				  var small_titleIndexes = [];
 				  var hot_tipIndexes = [];
 				  var boldIndexes = [];
-				   var downIndexes = [];
-				  var footerIndexes = [];
+				   var footerIndexes = [];
 				   var downpage_titleIndexes = [];
 				  var listingIndexes = [];
 				  var txtIndexes = [];
@@ -108,10 +107,7 @@ function SomeVar(){
         this.startPosition = startPos;
         this.size = size;
 				  }
-				  var DownSelection = function(startPos, size){
-        this.startPosition = startPos;
-        this.size = size;
-				  }
+				 
                   var Small_titleSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -290,33 +286,7 @@ Make();
 			}
            	return resultStr;
             }
-			/*function Down(){
-PurgeRedoSequence();
-    document.getElementById("text").focus();
-    //var x=prompt("Enter a count of row","");
-var y=prompt("Enter a count of columns","");
-    var result=document.getElementById("result");
-   
-if(y==1){
-var text=prompt("Enter text","");
-document.getElementById("RESULTTEXT").innerText='</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
-document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
-                Make();
-                }
-                    else{
-                    var table='<div class="down_page float_right">';
-                var text=prompt("Enter text","");  
-                table +=' <div class="align_left medium_padding align_top float_left">'+text+'</div>';
-          for(var i = 0; i < y-1;i++){
-          var txt=prompt("Enter txt","");
- table += '<div class="align_left medium_padding align_top float_right">'+txt+ '</div>';
-  }
-  document.getElementById("RESULTTEXT").innerText= table + '</div>';
-  document.getElementById("RESULTHTML").innerHTML = table + '</div>';
-       
-                Make();
-                            }
-            }   */                
+			
 			 function makeDownStringHtml(sourceStr){
 			var y=prompt("Enter a count of columns","");
 		   textarea=document.getElementById("text");
@@ -325,12 +295,11 @@ document.getElementById("RESULTHTML").innerHTML='</div><div class="down_page flo
             var currentSymbolIndex = 0;
 			var resultStr =" ";
             var usedSymbols = 0;
-            //for (var i = 0; i < downIndexes.length; i++){
-                //if (currentSymbolIndex<downIndexes[i].startPosition){
+           
 					if(y==1){
 var text=prompt("Enter text","");
-               // resultStr += sourceStr.substring(currentSymbolIndex,downIndexes[i].startPosition);
-            resultStr = /*'<span>'+ resultStr+'</span>*/'</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
+              
+            resultStr = '</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
                       }
 					 else{
                     var table='<div class="down_page float_right">';
@@ -340,8 +309,7 @@ var text=prompt("Enter text","");
           var txt=prompt("Enter txt","");
  table += '<div class="align_left medium_padding align_top float_right">'+txt+ '</div>';
   } 
- //resultStr += sourceStr.substring(currentSymbolIndex,downIndexes[i].startPosition);
-   resultStr =/*'<span>'+ resultStr+*/table + '</div>';
+   resultStr =table + '</div>';
 				}
 			//}
            	return resultStr;
@@ -966,20 +934,7 @@ function Middle_Title()
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                downIndexes.push(new DownSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateSelection(downIndexes);
-                for (var i = 0; i < downIndexes.length; i++){
-                    var beginIndex = downIndexes[i].startPosition;
-                    var endIndex = downIndexes[i].endPosition;
-                }
-                downIndexes.sort(function(a,b) {
-                return a.startPosition - b.startPosition;
-                });
-                console.log('aggregated array:');
-        for (var i =0; i < downIndexes.length; i++){  
-            console.log(downIndexes[i].startPosition + " " + downIndexes[i].size);
-        }
-                var resultStr = makeDownStringHtml(expressionText);
+               var resultStr = makeDownStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -992,7 +947,7 @@ function Middle_Title()
             SomeVar();
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text").value;
+            expressionText =  document.getElementById("text");
             expressionHTML = document.getElementById("text").value ;
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
@@ -1398,27 +1353,7 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeSmall_titleStringHtml(expressionText));
 			            }
              console.log('Small_title indexes:'+JSON.stringify(small_titleIndexes));
-			 /*for (var k = 0;k < downIndexes.length; k++){
-                 if(typeof downIndexes[k] != "undefined"){
-                    var startPos = downIndexes[k].startPosition;
-                    var size = downIndexes[k].size;
-                  
-                     if(pos<=startPos){
-        startPos=startPos+1;
-		       }
-       else
-       if((pos>startPos)&&(pos<startPos+size)){
-       size += 1;
-                 }
-       downIndexes[k].startPosition = startPos;
-       downIndexes[k].size = size;
-	               }
-			resultStr = makeDownStringHtml(expressionText);
-	   document.getElementById("RESULTTEXT").innerText=resultStr;
-document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeDownStringHtml(expressionText));
-			            }
-             console.log('Down indexes:'+JSON.stringify(downIndexes));*/
+			 
  for (var j = 0;j < boldIndexes.length; j++){
                  if(typeof boldIndexes[j] != "undefined"){
                     var startPos = boldIndexes[j].startPosition;
