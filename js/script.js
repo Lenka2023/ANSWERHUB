@@ -292,9 +292,8 @@ Make();
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
         alert(" makeDownStringHtml");
-            var currentSymbolIndex = 0;
-			var resultStr =" ";
-            var usedSymbols = 0;
+        var resultStr =" ";
+           
            
 					if(y==1){
 var text=prompt("Enter text","");
@@ -311,8 +310,7 @@ var text=prompt("Enter text","");
   } 
    resultStr =table + '</div>';
 				}
-			//}
-           	return resultStr;
+			return resultStr;
             }
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -329,7 +327,87 @@ var text=prompt("Enter text","");
 			}
            	return resultStr;
             }
+			 
+
+			function makeTopStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+        alert(" makeTopStringHtml");
+           var top_page_list=prompt("Enter top_page_list","");
+PurgeRedoSequence();
+textarea=document.getElementById("text");
+    document.getElementById("text").focus();
+    var main_title=prompt("Enter main_title","");
+var down_title=prompt("Enter down_title","");
+    var result=document.getElementById("result");
+var x=prompt("is middle_title exist?(yes or no)","");
+if(x=="yes"){
+var middle_title=prompt("Enter middle_title","");
+                          resultStr = '<!DOCTYPE html>'+
+'<html>'+
+  '<head>'+
+    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
+    '<link rel="stylesheet" href="css/style.css"type="text/css"/ '+
+    '</head>'+
+  '<body>'+
+    '<div class="page_cont one">'+
+      '<br class="cbt">'+
+      '<div class="content">'+
+'<div class="float_left">'+top_page_list+'</div>'+
+'<div class="main_title float_right">'+
+'<span class="title_font">'+main_title+'</span>'+
+'<span class="middle_title">'+middle_title+'</span>'+
+'</div>'+
+            '<div>'+
+              '<div class="down_title ">'+
+                '<span class="strong">'+down_title+'</span>'+
+              '</div>'+
+            '</div>';
+}
+else{
+	 resultStr ='<!DOCTYPE html>'+
+'<html>'+
+  '<head>'+
+    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
+    '<link rel="stylesheet" href="css/style.css"type="text/css"/ '+
+    '</head>'+
+  '<body>'+
+    '<div class="page_cont one">'+
+      '<br class="cbt">'+
+      '<div class="content">'+
+'<div class="float_left">'+top_page_list+'</div>'+
+'<div class="main_title float_right">'+
+'<span class="title_font">'+main_title+'</span>'+
+'</div>'+
+            '<div>'+
+              '<div class="down_title ">'+
+                '<span class="strong">'+down_title+'</span>'+
+              '</div>'+
+            '</div>';
+    document.getElementById("RESULTHTML").innerHTML='<!DOCTYPE html>'+
+'<html>'+
+  '<head>'+
+    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
+    '<link rel="stylesheet" href="css/style.css"type="text/css"/> '+
+    '</head>'+
+  '<body>'+
+    '<div class="page_cont one">'+
+      '<br class="cbt">'+
+      '<div class="content">'+
+      '<div>'+
+'<div class="float_left">'+top_page_list+'</div>'+
+'<div class="main_title float_right">'+
+'<span class="title_font">'+main_title+'</span>'+
+'</div>'+
+            '<div>'+
+              '<div class="down_title ">'+
+                '<span class="strong">'+down_title+'</span>'+
+              '</div>'+
+            '</div></div> <br class="cbt">';
+                      }
 			
+           	return resultStr;
+            }
 			function makeHot_TipStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -940,7 +1018,25 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
-						
+				function Top()
+            {
+               
+            SomeVar();
+            var textarea=document.getElementById("text");
+            document.getElementById("text").focus();
+            expressionText =  document.getElementById("text");
+            expressionHTML = document.getElementById("text").value ;
+           
+               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                var resultStr = makeTopStringHtml(expressionText);
+               
+                document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                Make();
+                        }		
 			function Bold()
             {
                
@@ -1529,105 +1625,7 @@ var redo = document.getElementById('redo');
                              
  //--------------------------------------------------------------------------------------------------------------------------------FUNCTIONS--------------------------------------------------------------------------------------------------------------------------
     
-  function Top(){
-var top_page_list=prompt("Enter top_page_list","");
-PurgeRedoSequence();
-textarea=document.getElementById("text");
-    document.getElementById("text").focus();
-    var main_title=prompt("Enter main_title","");
-var down_title=prompt("Enter down_title","");
-    var result=document.getElementById("result");
-var x=prompt("is middle_title exist?(yes or no)","");
-if(x=="yes"){
-var middle_title=prompt("Enter middle_title","");
-         
-document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
-'<html>'+
-  '<head>'+
-    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
-    '<link rel="stylesheet" href="css/style.css"type="text/css"/ '+
-    '</head>'+
-  '<body>'+
-    '<div class="page_cont one">'+
-      '<br class="cbt">'+
-      '<div class="content">'+
-'<div class="float_left">'+top_page_list+'</div>'+
-'<div class="main_title float_right">'+
-'<span class="title_font">'+main_title+'</span>'+
-'<span class="middle_title">'+middle_title+'</span>'+
-'</div>'+
-            '<div>'+
-              '<div class="down_title ">'+
-                '<span class="strong">'+down_title+'</span>'+
-              '</div>'+
-            '</div>';
-            document.getElementById("RESULTHTML").innerHTML='<!DOCTYPE html>'+
-'<html>'+
-  '<head>'+
-    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
-    '<link rel="stylesheet" href="css/style.css"type="text/css"/ '+
-    '</head>'+
-  '<body>'+
-    '<div class="page_cont one">'+
-      '<br class="cbt">'+
-      '<div class="content">'+
-'<div class="float_left">'+top_page_list+'</div>'+
-'<div class="main_title float_right">'+
-'<span class="title_font">'+main_title+'</span>'+
-'<span class="middle_title">'+middle_title+'</span>'+
-'</div>'+
-            '<div>'+
-              '<div class="down_title ">'+
-                '<span class="strong">'+down_title+'</span>'+
-              '</div>'+
-            '</div>';
-           
-            }
-            else{
-            document.getElementById("RESULTTEXT").innerText='<!DOCTYPE html>'+
-'<html>'+
-  '<head>'+
-    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
-    '<link rel="stylesheet" href="css/style.css"type="text/css"/ '+
-    '</head>'+
-  '<body>'+
-    '<div class="page_cont one">'+
-      '<br class="cbt">'+
-      '<div class="content">'+
-'<div class="float_left">'+top_page_list+'</div>'+
-'<div class="main_title float_right">'+
-'<span class="title_font">'+main_title+'</span>'+
-'</div>'+
-            '<div>'+
-              '<div class="down_title ">'+
-                '<span class="strong">'+down_title+'</span>'+
-              '</div>'+
-            '</div>';
-    document.getElementById("RESULTHTML").innerHTML='<!DOCTYPE html>'+
-'<html>'+
-  '<head>'+
-    '<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
-    '<link rel="stylesheet" href="css/style.css"type="text/css"/> '+
-    '</head>'+
-  '<body>'+
-    '<div class="page_cont one">'+
-      '<br class="cbt">'+
-      '<div class="content">'+
-      '<div>'+
-'<div class="float_left">'+top_page_list+'</div>'+
-'<div class="main_title float_right">'+
-'<span class="title_font">'+main_title+'</span>'+
-'</div>'+
-            '<div>'+
-              '<div class="down_title ">'+
-                '<span class="strong">'+down_title+'</span>'+
-              '</div>'+
-            '</div></div> <br class="cbt">';}      
-                Make();
-   
-            }
-   
-
+  
            
           
            
