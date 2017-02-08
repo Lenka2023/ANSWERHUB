@@ -281,7 +281,7 @@ var text=prompt("Enter text","");
 			 function Square_List()
             {
                 var expression = getSelectiontextarea( document.getElementById("text") );
-                document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+				  document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
                 document.getElementById("text").focus();
                 var n=prompt("Enter a count of row","");
                  var square_list='<span class=" strong font_size">'+expression+'</span><ul class="square">';
@@ -297,6 +297,7 @@ document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
 			 function makeSquare_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		   var expression = getSelectiontextarea( document.getElementById("text") );
+		    document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
         alert(" makeSquare_ListStringHtml");
            var n=prompt("Enter a count of row","");
                  var square_list='<span class=" strong font_size">'+expression+'</span><ul class="square">';
@@ -314,6 +315,7 @@ square_list+='<li>'+text+'</li>';
 			function makeNone_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expression = getSelectiontextarea( document.getElementById("text") );
+			 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
         alert(" makeNone_ListStringHtml");
           var n=prompt("Enter a count of row","");
                  var none_list='<span class=" strong font_size">'+expression+'</span><ul class="none_list">';
@@ -379,6 +381,7 @@ for(var i=0;i<n;i++){
 function makeDisc_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		   var expression = getSelectiontextarea( document.getElementById("text") );
+		    document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
         alert(" makeDisc_ListStringHtml");
            var n=prompt("Enter a count of row","");
                  var disc_list='<span class=" strong font_size">'+expression+'</span><ol class="disc">';
@@ -430,6 +433,7 @@ for(var i = 0, text; i <= x;i++){
                 textarea=document.getElementById("text");
                 document.getElementById("text").focus();
 				var expression = getSelectiontextarea( document.getElementById("text") );
+				 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
                 SomeVar();
                 var x=prompt("Enter a name of image","");
                 document.getElementById("RESULTHTML").innerText='<img src="img/'+x+'"alt="622">';
@@ -443,6 +447,7 @@ for(var i = 0, text; i <= x;i++){
 			function makeSmalliconStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expression = getSelectiontextarea( document.getElementById("text") );
+			 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
         alert(" makeSmalliconStringHtml");
            var x=prompt("Enter a name of image","");
 			var resultStr =" ";
@@ -453,6 +458,7 @@ for(var i = 0, text; i <= x;i++){
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeBoldStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -484,6 +490,7 @@ document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
 function makeMain_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		   var expression = getSelectiontextarea( document.getElementById("text") );
+		    document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
         alert(" makeMain_ListStringHtml");
            var n=prompt("Enter a count of row","");
                  var main_list='<span class=" strong font_size">'+expression+'</span><ul class="top_page_list">';
@@ -1225,7 +1232,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
-            
+             document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1281,7 +1288,7 @@ function None_List()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
-           
+            document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
@@ -1319,6 +1326,7 @@ function Table()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
+			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
             expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
@@ -1368,7 +1376,7 @@ function Table()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+           
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1399,7 +1407,7 @@ function Table()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
