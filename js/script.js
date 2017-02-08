@@ -223,14 +223,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 			}
            	return resultStr;
             }
-			function Small_title()
-            {
-               
-                SomeVar();
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left strong font_size">'+expressionText+'</span>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong font_size">'+expressionHTML+'</span>'+expressionEnd;
-                Make();
-            }
+			
 			function makeSmall_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
