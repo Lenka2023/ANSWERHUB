@@ -43,22 +43,22 @@ function SomeVar(){
                 expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
                 expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
                 }
-				 var addelements = [];
-                 var main_titleIndexes = [];
-				  var middle_titleIndexes = [];
-				 var linkIndexes = [];
-				 var cbtIndexes = [];
-				  var down_titleIndexes = [];
-				  var red_titleIndexes = [];
-				  var small_titleIndexes = [];
-				  var hot_tipIndexes = [];
-				  var boldIndexes = [];
-				   var footerIndexes = [];
-				   var downpage_titleIndexes = [];
-				  var listingIndexes = [];
-				  var txtIndexes = [];
-				   var codeIndexes = [];
-				    var captureIndexes = [];
+	 var addelements = [];
+	 var main_titleIndexes = [];
+	  var middle_titleIndexes = [];
+	 var linkIndexes = [];
+	 var cbtIndexes = [];
+	  var down_titleIndexes = [];
+	  var red_titleIndexes = [];
+	  var small_titleIndexes = [];
+	  var hot_tipIndexes = [];
+	  var boldIndexes = [];
+	   var footerIndexes = [];
+	   var downpage_titleIndexes = [];
+	  var listingIndexes = [];
+	  var txtIndexes = [];
+	   var codeIndexes = [];
+		var captureIndexes = [];
                  var txt = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
@@ -83,11 +83,11 @@ function SomeVar(){
         this.startPosition = startPos;
         this.size = size;
 				  }
-				 var Red_titleSelection = function(startPos, size){
+		var Red_titleSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
 				  }
-				  var  LinkSelection = function(startPos, size){
+		var  LinkSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
 				  }
@@ -108,7 +108,7 @@ function SomeVar(){
         this.size = size;
 				  }
 				 
-                  var Small_titleSelection = function(startPos, size){
+        var Small_titleSelection = function(startPos, size){
         this.startPosition = startPos;
         this.size = size;
 				  }
@@ -162,10 +162,10 @@ function SomeVar(){
                 if (currentSymbolIndex<listingIndexes[i].startPosition){
                 resultStr += sourceStr.substring(currentSymbolIndex,listingIndexes[i].startPosition);
             resultStr = '<span>'+ resultStr+'</span><br><span class="move_left "><span class="strong ">'+sourceStr.substring(listingIndexes[i].startPosition,listingIndexes[i].startPosition+listingIndexes[i].size)+'</span></span><span>'+sourceStr.substring(listingIndexes[i].startPosition+listingIndexes[i].size,sourceStr.length)+'</span>';
-                      }
-			}
+																		}
+															}
 			return resultStr;
-            }
+												}
            	
 	  function makeLinkStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -183,7 +183,7 @@ function SomeVar(){
 			}
            			
             return resultStr;
-            }
+												}
            
 function makeDownPage_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -199,7 +199,7 @@ function makeDownPage_titleStringHtml(sourceStr){
                       }
 			}
            	return resultStr;
-            }
+													}
 			function makeRed_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -214,7 +214,7 @@ function makeDownPage_titleStringHtml(sourceStr){
                       }
 			}
            	return resultStr;
-            }
+																}
 			
 			function makeSmall_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -230,7 +230,7 @@ function makeDownPage_titleStringHtml(sourceStr){
                       }
 			}
            	return resultStr;
-            }
+															}
 			
 			function makeFooterStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -251,7 +251,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 '</html>';
                      
            	return resultStr;
-            }
+														}
 			
 			 function makeDownStringHtml(sourceStr){
 			var y=prompt("Enter a count of columns","");
@@ -277,7 +277,7 @@ var text=prompt("Enter text","");
    resultStr =table + '</div>';
 				}
 			return resultStr;
-            }
+														}
 			 function Square_List()
             {
                 var expression = getSelectiontextarea( document.getElementById("text") );
@@ -287,7 +287,7 @@ var text=prompt("Enter text","");
                  var square_list='<span class=" strong font_size">'+expression+'</span><ul class="square">';
 for(var i=0;i<n;i++){
 var text=prompt("Enter a text for  <li>","");
- square_list+='<li>'+text+'</li>';
+square_list+='<li>'+text+'</li>';
  
 }
  document.getElementById("RESULTTEXT").innerText= square_list + '</ul>';
@@ -296,13 +296,13 @@ document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
             }
 			 function makeSquare_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
+		   var expression = getSelectiontextarea( document.getElementById("text") );
         alert(" makeSquare_ListStringHtml");
            var n=prompt("Enter a count of row","");
-                 var square_list='<span class=" strong font_size">'+expressionText+'</span><ul class="square">';
+                 var square_list='<span class=" strong font_size">'+expression+'</span><ul class="square">';
 for(var i=0;i<n;i++){
 var text=prompt("Enter a text for  <li>","");
- square_list+='<li>'+text+'</li>';
+square_list+='<li>'+text+'</li>';
  
 }
 			var resultStr =" ";
@@ -313,10 +313,10 @@ var text=prompt("Enter a text for  <li>","");
 			           
 			function makeNone_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
+		    var expression = getSelectiontextarea( document.getElementById("text") );
         alert(" makeNone_ListStringHtml");
           var n=prompt("Enter a count of row","");
-                 var none_list='<span class=" strong font_size">'+expressionText+'</span><ul class="none_list">';
+                 var none_list='<span class=" strong font_size">'+expression+'</span><ul class="none_list">';
 for(var i=0;i<n;i++){
         var text=prompt("Enter a text for  <li>","");
         none_list+='<li>'+text+'</li>';
@@ -333,7 +333,7 @@ for(var i=0;i<n;i++){
                 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
                 document.getElementById("text").focus
                 var n=prompt("Enter a count of row","");
-                 var decimal_list='<span class=" strong font_size">'+expressionText+'</span><ol class="decimal">';
+                 var decimal_list='<span class=" strong font_size">'+expression+'</span><ol class="decimal">';
 for(var i=0;i<n;i++){
         var text=prompt("Enter a text for  <li>","");
          decimal_list+='<li>'+text+'</li>';
@@ -345,10 +345,10 @@ document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
             }												
 			 function makeDecimal_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
+		     var expression = getSelectiontextarea( document.getElementById("text") );
         alert(" makeDecimal_ListStringHtml");
              var n=prompt("Enter a count of row","");
-                 var decimal_list='<span class=" strong font_size">'+expressionText+'</span><ol class="decimal">';
+                 var decimal_list='<span class=" strong font_size">'+expression+'</span><ol class="decimal">';
 for(var i=0;i<n;i++){
         var text=prompt("Enter a text for  <li>","");
          decimal_list+='<li>'+text+'</li>';
@@ -378,10 +378,10 @@ for(var i=0;i<n;i++){
             }														
 function makeDisc_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
+		   var expression = getSelectiontextarea( document.getElementById("text") );
         alert(" makeDisc_ListStringHtml");
            var n=prompt("Enter a count of row","");
-                 var disc_list='<span class=" strong font_size">'+expressionText+'</span><ol class="disc">';
+                 var disc_list='<span class=" strong font_size">'+expression+'</span><ol class="disc">';
 for(var i=0;i<n;i++){
         var worlds = getSelectiontextarea( document.getElementById("text") );
         document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
@@ -429,19 +429,20 @@ for(var i = 0, text; i <= x;i++){
                
                 textarea=document.getElementById("text");
                 document.getElementById("text").focus();
+				var expression = getSelectiontextarea( document.getElementById("text") );
                 SomeVar();
                 var x=prompt("Enter a name of image","");
                 document.getElementById("RESULTHTML").innerText='<img src="img/'+x+'"alt="622">';
 				 document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
                 document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
                 document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><img src="img/'+expressionText+'"alt="622" class="textwrap smallicon">'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><img src="img/'+expressionHTML+'"alt="622" class="textwrap smallicon">'+expressionEnd;
+                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">'+expressionEnd;
+                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">'+expressionEnd;
                 Make();
             }	*/	
 			function makeSmalliconStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
+		    var expression = getSelectiontextarea( document.getElementById("text") );
         alert(" makeSmalliconStringHtml");
            var x=prompt("Enter a name of image","");
 			var resultStr =" ";
@@ -466,7 +467,7 @@ for(var i = 0, text; i <= x;i++){
             }
 		 function Main_List()
             {
-                var expressionText =  document.getElementById("text").value;
+                var expression = getSelectiontextarea( document.getElementById("text") );
                 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
                 document.getElementById("text").focus();
                 var n=prompt("Enter a count of row","");
@@ -475,18 +476,17 @@ for(var i = 0, text; i <= x;i++){
 for(var i=0;i<n;i++){
 var text=prompt("Enter a text for  <li>","");
  main_list+='<li>'+text+'</li>';
- 
-}
+ }
  document.getElementById("RESULTTEXT").innerText= main_list + '</ul>';
 document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
                 Make();
             }	 
 function makeMain_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
+		   var expression = getSelectiontextarea( document.getElementById("text") );
         alert(" makeMain_ListStringHtml");
            var n=prompt("Enter a count of row","");
-                 var main_list='<span class=" strong font_size">'+expressionText+'</span><ul class="top_page_list">';
+                 var main_list='<span class=" strong font_size">'+expression+'</span><ul class="top_page_list">';
                  document.getElementById("text").value='';
 for(var i=0;i<n;i++){
 var text=prompt("Enter a text for  <li>","");
@@ -778,7 +778,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -813,7 +813,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -845,7 +845,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+           
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -878,7 +878,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+           
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -910,7 +910,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -942,7 +942,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -974,7 +974,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1006,7 +1006,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1038,7 +1038,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1070,7 +1070,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1102,7 +1102,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1134,7 +1134,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1166,7 +1166,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1185,7 +1185,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text");
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1204,7 +1204,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text");
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1224,8 +1224,8 @@ function Middle_Title()
             SomeVar();
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text");
-            expressionHTML = document.getElementById("text").value ;
+            var expression = getSelectiontextarea( document.getElementById("text") );
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1243,7 +1243,7 @@ function None_List()
             SomeVar();
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text");
+            var expression = getSelectiontextarea( document.getElementById("text") );
             expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
@@ -1261,7 +1261,7 @@ function None_List()
             SomeVar();
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text");
+            var expression = getSelectiontextarea( document.getElementById("text") );
             
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
@@ -1280,7 +1280,7 @@ function None_List()
             SomeVar();
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text");
+            var expression = getSelectiontextarea( document.getElementById("text") );
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1318,7 +1318,7 @@ function Table()
             SomeVar();
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text");
+            var expression = getSelectiontextarea( document.getElementById("text") );
             expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
@@ -1336,7 +1336,7 @@ function Table()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text");
-            expressionHTML = document.getElementById("text").value ;
+            
            
                expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
@@ -1394,8 +1394,8 @@ function Table()
                 Make();
                         }
 						function Txt(){
- alert("Txt");
-  SomeVar();
+			alert("Txt");
+			SomeVar();
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
