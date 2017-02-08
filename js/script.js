@@ -184,15 +184,7 @@ function SomeVar(){
            			
             return resultStr;
             }
-            function DownPage_title(){
-   
-    SomeVar();
-    var result=document.getElementById("result");
-   
-document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><span class="move_left strong">'+expressionText+'</span><br>'+expressionEnd;
-document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><span class="move_left strong">'+expressionHTML+'</span><br>'+expressionEnd;
-Make();
-}
+           
 function makeDownPage_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -239,44 +231,25 @@ function makeDownPage_titleStringHtml(sourceStr){
 			}
            	return resultStr;
             }
-			 function Footer()
-            {
-           
-                document.getElementById("RESULTTEXT").innerText= '<div>'+
-                '<div class="footer">'+
-        '<span> DZone, Inc. | www.dzone.</span>'+
-      '</div>'+
-    '</div>'+  
-  '</body>'+
-'</html>';
-                document.getElementById("RESULTHTML").innerHTML='</div>'+
- '<div class="footer">'+
-        '<span> DZone, Inc. | www.dzone.</span>'+
-      '</div>'+
-    '</div>'+  
-  '</body>'+
-'</html>';
-Make();
-            }
+			
 			function makeFooterStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
         alert(" makeFooterStringHtml");
-            var currentSymbolIndex = 0;
+            //var currentSymbolIndex = 0;
 			var resultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < footerIndexes.length; i++){
-                if (currentSymbolIndex<footerIndexes[i].startPosition){
-                resultStr += sourceStr.substring(currentSymbolIndex,footerIndexes[i].startPosition);
-            resultStr = '<span>'+ resultStr+'</span><div>'+
+            //var usedSymbols = 0;
+           // for (var i = 0; i < footerIndexes.length; i++){
+               // if (currentSymbolIndex<footerIndexes[i].startPosition){
+               // resultStr += sourceStr.substring(currentSymbolIndex,footerIndexes[i].startPosition);
+            resultStr = /*'<span>'+ resultStr+'</span>*/'<div>'+
                 '<div class="footer">'+
         '<span> DZone, Inc. | www.dzone.</span>'+
       '</div>'+
     '</div>'+  
   '</body>'+
-'</html><span>'+sourceStr.substring(footerIndexes[i].startPosition+footerIndexes[i].size,sourceStr.length)+'</span>';
-                      }
-			}
+'</html>';
+                     
            	return resultStr;
             }
 			
@@ -631,14 +604,7 @@ else{
 			}
            	return resultStr;
             }
-			function Down_title()
-            {
-               
-                SomeVar();
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<div class="down_title">'+expressionText+'</div>'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<div class="down_title">'+expressionHTML+'</div>'+expressionEnd;
-                Make();
-            }
+			
 			function makeDown_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -1931,11 +1897,9 @@ var redo = document.getElementById('redo');
                
   textarea=document.getElementById("text");
  var expressionText = getSelectiontextarea( document.getElementById("text") );
-    var expressionHTML = getSelectiontextarea( document.getElementById("text") );
-    var expressionStart=(textarea.value).substring(0,textarea.selectionStart).value;
+ var expressionStart=(textarea.value).substring(0,textarea.selectionStart).value;
     var expressionEnd=(textarea.value).substring(textarea.selectionEnd).value;
-    var expressionText = getSelectiontextarea( document.getElementById("text") );
-    var expressionHTML = getSelectiontextarea( document.getElementById("text") );
+   
    
              textarea.oninput=function(){
    textarea=document.getElementById("text");
