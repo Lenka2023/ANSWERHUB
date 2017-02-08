@@ -428,20 +428,7 @@ for(var i=0;i<n;i++){
             
            	return resultStr;
             }	
-	 /*  function Smallicon()
-            {
-               
-                textarea=document.getElementById("text");
-                document.getElementById("text").focus();
-                SomeVar();
-                var x=prompt("Enter a name of image","");
-                document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
-                document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
-                document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><img src="img/'+expressionText+'"alt="622" class="textwrap smallicon">'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><img src="img/'+expressionHTML+'"alt="622" class="textwrap smallicon">'+expressionEnd;
-                Make();
-            }	*/
+	  
 	function makeTableStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -470,22 +457,32 @@ for(var i = 0, text; i <= x;i++){
             resultStr = table + '</tbody></table>';
                     
            	return resultStr;
-            }	
-			/*function makeBoldStringHtml(sourceStr){
+            }
+		/* function Smallicon()
+            {
+               
+                textarea=document.getElementById("text");
+                document.getElementById("text").focus();
+                SomeVar();
+                var x=prompt("Enter a name of image","");
+                document.getElementById("RESULTHTML").innerText='<img src="img/'+x+'"alt="622">';
+				 document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
+                document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
+                document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
+                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><img src="img/'+expressionText+'"alt="622" class="textwrap smallicon">'+expressionEnd;
+                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><img src="img/'+expressionHTML+'"alt="622" class="textwrap smallicon">'+expressionEnd;
+                Make();
+            }	*/	
+			function makeSmalliconStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
-        alert(" makeBoldStringHtml");
-            var currentSymbolIndex = 0;
+        alert(" makeSmalliconStringHtml");
+           var x=prompt("Enter a name of image","");
 			var resultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < boldIndexes.length; i++){
-                if (currentSymbolIndex<boldIndexes[i].startPosition){
-               resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
-            resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
-                      }
-			}
+                resultStr = '<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
+                     
            	return resultStr;
-            }*/
+            }
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -1356,38 +1353,23 @@ function Table()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
                         }
-/*function Bold()
+	 function Smallicon()
             {
                
             SomeVar();
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text");
-            expressionHTML = document.getElementById("text").value ;
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
+            expressionStart=(textarea.value).substring(0,textarea.selectionStart);
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateSelection(boldIndexes);
-                for (var i = 0; i < boldIndexes.length; i++){
-                    var beginIndex = boldIndexes[i].startPosition;
-                    var endIndex = boldIndexes[i].endPosition;
-                }
-                boldIndexes.sort(function(a,b) {
-                return a.startPosition - b.startPosition;
-                });
-                console.log('aggregated array:');
-        for (var i =0; i < boldIndexes.length; i++){  
-            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
-        }
-                var resultStr = makeBoldStringHtml(expressionText);
+                 var resultStr = makeSmalliconStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }*/						
+                        }      
 			function Bold()
             {
                
@@ -1490,7 +1472,7 @@ function Table()
    x.innerHTML=y.innerHTML;
                         }  
     $( document ).ready(function() {
-    
+    					
     
          function ChangeSelection(sourceStr){
                             alert("ChangeSelection");
@@ -1977,7 +1959,7 @@ var redo = document.getElementById('redo');
  //--------------------------------------------------------------------------------------------------------------------------------FUNCTIONS--------------------------------------------------------------------------------------------------------------------------
     
     
-           
+    
            
           
            
