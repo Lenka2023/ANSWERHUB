@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------------------------
    var textarea=document.getElementById("text");
-    
+     
   var uagent    = navigator.userAgent.toLowerCase();
 var is_safari = ( (uagent.indexOf('safari') != -1) || (navigator.vendor == "Apple Computer, Inc.") );
 var is_ie     = ( (uagent.indexOf('msie') != -1) && (!is_opera) && (!is_safari) && (!is_webtv) );
@@ -31,7 +31,8 @@ var ua_vers   = parseInt(navigator.appVersion);
     }
     return selection;
 };
-function SomeVar(){
+
+/*function SomeVar(){
     textarea=document.getElementById("text");
     document.getElementById("text").focus();
     expressionText = getSelectiontextarea( document.getElementById("text") );
@@ -42,7 +43,7 @@ function SomeVar(){
                 expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 expressionStart.innerHTML = expressionStart.replace(/\n/g, '<br>');
                 expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
-                }
+                }*/
 					var addelements = [];
 					var main_titleIndexes = [];
 					var middle_titleIndexes = [];
@@ -141,16 +142,16 @@ var AggregateSelection = function(sourceArray){
         if (sourceArray[i].startPosition>=sourceArray[j].startPosition && sourceArray[i].startPosition>=lastIndex2){
                 sourceArray[i].size = lastIndex1 - sourceArray[i].startPosition;
                 sourceArray[j].size = lastIndex2 - sourceArray[j].startPosition;
-        }
-        }
-        }
+																													}		
+													}
+													}
 		for (var i = sourceArray.length; i-- ; i >0 )
 			if (Array.from(indexesToRemove).indexOf(i)>-1) {
 				sourceArray.splice(i, 1);
-			  }
+															}
 	 
 		   
-		  }
+												}	
 	  function makeListingStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -162,7 +163,7 @@ var AggregateSelection = function(sourceArray){
                 if (currentSymbolIndex<listingIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,listingIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br><span class="move_left "><span class="strong ">'+sourceStr.substring(listingIndexes[i].startPosition,listingIndexes[i].startPosition+listingIndexes[i].size)+'</span></span><span>'+sourceStr.substring(listingIndexes[i].startPosition+listingIndexes[i].size,sourceStr.length)+'</span>';
-																				}
+																		}
 															}
 			return resultStr;
 												}
@@ -179,8 +180,8 @@ var AggregateSelection = function(sourceArray){
                 if (currentSymbolIndex<linkIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,linkIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><a  href="'+x+'">'+sourceStr.substring(linkIndexes[i].startPosition,linkIndexes[i].startPosition+linkIndexes[i].size)+'</a><span>'+sourceStr.substring(linkIndexes[i].startPosition+linkIndexes[i].size,sourceStr.length)+'</span>';
-							  }
-			}
+																	}	
+														}
            			
             return resultStr;
 												}
@@ -196,8 +197,8 @@ function makeDownPage_titleStringHtml(sourceStr){
                 if (currentSymbolIndex<downpage_titleIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,downpage_titleIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br><span class="move_left strong">'+sourceStr.substring(downpage_titleIndexes[i].startPosition,downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size)+'</span><br><span>'+sourceStr.substring(downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size,sourceStr.length)+'</span>';
-							  }
-			}
+																				}
+																	}
            	return resultStr;
 													}
 			function makeRed_titleStringHtml(sourceStr){
@@ -211,10 +212,10 @@ function makeDownPage_titleStringHtml(sourceStr){
                 if (currentSymbolIndex<red_titleIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,red_titleIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><div class="title strong"><span>'+sourceStr.substring(red_titleIndexes[i].startPosition,red_titleIndexes[i].startPosition+red_titleIndexes[i].size)+'</span></div><span>'+sourceStr.substring(red_titleIndexes[i].startPosition+red_titleIndexes[i].size,sourceStr.length)+'</span>';
-							  }
-			}
-           	return resultStr;
+																		}
 																}
+           	return resultStr;
+														}
 			
 			function makeSmall_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -227,8 +228,8 @@ function makeDownPage_titleStringHtml(sourceStr){
                 if (currentSymbolIndex<small_titleIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,small_titleIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br><span class="move_left strong font_size">'+sourceStr.substring(small_titleIndexes[i].startPosition,small_titleIndexes[i].startPosition+small_titleIndexes[i].size)+'</span><span>'+sourceStr.substring(small_titleIndexes[i].startPosition+small_titleIndexes[i].size,sourceStr.length)+'</span>';
-							  }
-			}
+																			}																
+																}
            	return resultStr;
 															}
 			
@@ -265,7 +266,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 var text=prompt("Enter text","");
               
             resultStr = '</div><div class="down_page float_right"><div class="align_left medium_padding align_top float_left>' +text+'</div></div>';
-                      }
+							}
 					 else{
                     var table='<div class="down_page float_right">';
                 var text=prompt("Enter text","");  
@@ -275,7 +276,7 @@ var text=prompt("Enter text","");
  table += '<div class="align_left medium_padding align_top float_right">'+txt+ '</div>';
   } 
    resultStr =table + '</div>';
-				}
+							}
 			return resultStr;
 														}
 			 function Square_List()
@@ -289,7 +290,7 @@ for(var i=0;i<n;i++){
 var text=prompt("Enter a text for  <li>","");
 square_list+='<li>'+text+'</li>';
  
-}
+					}
  document.getElementById("RESULTTEXT").innerText= square_list + '</ul>';
 document.getElementById("RESULTHTML").innerHTML= square_list + '</ul>';
                 Make();
@@ -305,12 +306,12 @@ for(var i=0;i<n;i++){
 var text=prompt("Enter a text for  <li>","");
 square_list+='<li>'+text+'</li>';
  
-}
+					}
 			var resultStr =" ";
                 resultStr = square_list + '</ul>';
                       	
            	return resultStr;
-            }
+															}
 			           
 			function makeNone_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -323,7 +324,7 @@ for(var i=0;i<n;i++){
         var text=prompt("Enter a text for  <li>","");
         none_list+='<li>'+text+'</li>';
  
-}
+					}
 			var resultStr =" ";
                 resultStr = none_list + '</ul>';
                       
@@ -340,11 +341,11 @@ for(var i=0;i<n;i++){
         var text=prompt("Enter a text for  <li>","");
          decimal_list+='<li>'+text+'</li>';
  
-}
+					}
  document.getElementById("RESULTTEXT").innerText= decimal_list + '</ol>';
 document.getElementById("RESULTHTML").innerHTML= decimal_list + '</ol>';
                 Make();
-            }												
+			}												
 			 function makeDecimal_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		     var expression = getSelectiontextarea( document.getElementById("text") );
@@ -355,7 +356,7 @@ for(var i=0;i<n;i++){
         var text=prompt("Enter a text for  <li>","");
          decimal_list+='<li>'+text+'</li>';
  
-}
+					}
 			var resultStr =" ";
                 resultStr = decimal_list + '</ol>';
                         	return resultStr;
@@ -396,7 +397,7 @@ for(var i=0;i<n;i++){
                 resultStr = disc_list + '</ol>';
             
            	return resultStr;
-            }	
+											}	
 	  
 	function makeTableStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -417,16 +418,16 @@ for(var i = 0, text; i <= x;i++){
     for(var j = 0; j < y; j++){
         text = prompt("Enter text", "");
         table += '<td>' + text + '</td>';
-    }
-  }
+								}
+		}
   table += '</tr>';
-} 
+								} 
 			var resultStr =" ";
             
             resultStr = table + '</tbody></table>';
                     
            	return resultStr;
-            }
+												}
 		/* function Smallicon()
             {
                
@@ -454,7 +455,7 @@ for(var i = 0, text; i <= x;i++){
                 resultStr = '<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
                      
            	return resultStr;
-            }
+														}
 	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -467,10 +468,10 @@ for(var i = 0, text; i <= x;i++){
                 if (currentSymbolIndex<boldIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
-							  }
-			}
+																	}
+														}
            	return resultStr;
-            }
+											}
 		 function Main_List()
             {
                 var expression = getSelectiontextarea( document.getElementById("text") );
@@ -482,7 +483,7 @@ for(var i = 0, text; i <= x;i++){
 for(var i=0;i<n;i++){
 		var text=prompt("Enter a text for  <li>","");
 		 main_list+='<li>'+text+'</li>';
-		 }
+					}
 		 document.getElementById("RESULTTEXT").innerText= main_list + '</ul>';
 		document.getElementById("RESULTHTML").innerHTML= main_list + '</ul>';
 						Make();
@@ -498,11 +499,11 @@ function makeMain_ListStringHtml(sourceStr){
 for(var i=0;i<n;i++){
 		var text=prompt("Enter a text for  <li>","");
 		 main_list+='<li>'+text+'</li>';
- }
+					}
 			var resultStr =" ";
             resultStr = main_list + '</ul>';
              	return resultStr;
-            }
+											}
 			function makeTopStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -537,7 +538,7 @@ if(x=="yes"){
 						'<span class="strong">'+down_title+'</span>'+
 					  '</div>'+
 					'</div>';
-}
+			}
 else{
 		 resultStr ='<!DOCTYPE html>'+
 	'<html>'+
@@ -578,10 +579,10 @@ else{
 					'<span class="strong">'+down_title+'</span>'+
 				  '</div>'+
 				'</div></div> <br class="cbt">';
-                      }
+    }
 			
            	return resultStr;
-            }
+										}
 			function makeHot_TipStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -607,10 +608,10 @@ else{
 					  '</table>'+
 					  '<br class="cbt">'+
 					'</div><span>'+sourceStr.substring(hot_tipIndexes[i].startPosition+hot_tipIndexes[i].size,sourceStr.length)+'</span>';
-                      }
-			}
+																			}
+																}
            	return resultStr;
-            }
+															}
 			
 			function makeDown_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -623,10 +624,10 @@ else{
                 if (currentSymbolIndex<down_titleIndexes[i].startPosition){
 						resultStr += sourceStr.substring(currentSymbolIndex,down_titleIndexes[i].startPosition);
 						resultStr = '<span>'+ resultStr+'</span><div class="down_title">'+sourceStr.substring(down_titleIndexes[i].startPosition,down_titleIndexes[i].startPosition+down_titleIndexes[i].size)+'</div><span>'+sourceStr.substring(down_titleIndexes[i].startPosition+down_titleIndexes[i].size,sourceStr.length)+'</span>';
-								  }
-			}
+																			}
+																}
            	return resultStr;
-            }
+															}
 			function makeMiddle_TitleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -638,11 +639,11 @@ else{
                 if (currentSymbolIndex<middle_titleIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,middle_titleIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><span class="middle_title">'+sourceStr.substring(middle_titleIndexes[i].startPosition,middle_titleIndexes[i].startPosition+middle_titleIndexes[i].size)+'</span><span>'+sourceStr.substring(middle_titleIndexes[i].startPosition+middle_titleIndexes[i].size,sourceStr.length)+'</span>';
-							  }
-			}
+																			}
+																}
            			
             return resultStr;
-            }
+																}
 			
 			function makeMain_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -655,11 +656,11 @@ else{
                 if (currentSymbolIndex<main_titleIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,main_titleIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><div class="main_title">'+sourceStr.substring(main_titleIndexes[i].startPosition,main_titleIndexes[i].startPosition+main_titleIndexes[i].size)+'</div><span>'+sourceStr.substring(main_titleIndexes[i].startPosition+main_titleIndexes[i].size,sourceStr.length)+'</span>';
-							  }
-			}
+																			}
+																}
            			
             return resultStr;
-            }
+															}
 			function makeCBTStringHtml(sourceStr){
 				alert(" makeCBTStringHtml");
 		   textarea=document.getElementById("text");
@@ -671,11 +672,11 @@ else{
                 if (currentSymbolIndex<cbtIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,cbtIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br class="cbt">'+sourceStr.substring(cbtIndexes[i].startPosition,cbtIndexes[i].startPosition+cbtIndexes[i].size)+'<span>'+sourceStr.substring(cbtIndexes[i].startPosition+cbtIndexes[i].size,sourceStr.length)+'</span>';
-							  }
-			}
+																	}
+														}
            			
             return resultStr;
-            }
+													}
        function makeCodeStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -687,10 +688,10 @@ else{
                 if (currentSymbolIndex<codeIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,codeIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><div class="commands"><pre>'+sourceStr.substring(codeIndexes[i].startPosition,codeIndexes[i].startPosition+codeIndexes[i].size)+'</pre></div><span>'+sourceStr.substring(codeIndexes[i].startPosition+codeIndexes[i].size,sourceStr.length)+'</span>';
-							  }
-			}
+																	}
+														}
            	return resultStr;
-            }
+												}
 			function makeTxtStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -702,11 +703,11 @@ else{
                 if (currentSymbolIndex<txtIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,txtIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br><span class="move_left">'+sourceStr.substring(txtIndexes[i].startPosition,txtIndexes[i].startPosition+txtIndexes[i].size)+'</span><span>'+sourceStr.substring(txtIndexes[i].startPosition+txtIndexes[i].size,sourceStr.length)+'</span>';
-							 }
-			}
+																	}
+														}
            
 			return resultStr;
-            }
+													}
 			function makeCaptureStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -718,11 +719,11 @@ else{
                 if (currentSymbolIndex<captureIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,captureIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br><span class="move_left "><span class="strong underline">'+sourceStr.substring(captureIndexes[i].startPosition,captureIndexes[i].startPosition+captureIndexes[i].size)+'</span><span><span>'+sourceStr.substring(captureIndexes[i].startPosition+captureIndexes[i].size,sourceStr.length)+'</span>';
-							 }
-			}
+																		}
+															}
            
 			return resultStr;
-            }
+															}
 			
             function getElementsById(elementID){
     var elementCollection = new Array();
@@ -730,18 +731,18 @@ else{
     for(i = 0; i < allElements.length; i++){
        if(allElements[i].id == elementID)
            elementCollection.push(allElements[i]);
-   }
+											}
    return elementCollection;
-};
+												};
 function hide(obj) {
     obj.style.display = 'none';
-}
+					}
 function show(obj) {
     obj.style.display = 'initial';
-}
+					}
 function isHidden(obj) {
     return (obj.style.display == 'none')
-}
+						}
      
             var html_res_array = getElementsById('RESULTHTML');
             var text_res_array = getElementsById('RESULTTEXT');
@@ -755,7 +756,7 @@ function isHidden(obj) {
         if (isHidden(html_res_array[i])) {
             html_res_array[i].parentNode.removeChild(html_res_array[i]);
             text_res_array[i].parentNode.removeChild(text_res_array[i]);
-        }
+										}
     }
 }
 var historyIndexMax = 0;
@@ -776,12 +777,12 @@ document.getElementById("RESULTTEXT").designMode='on';
 document.getElementById("RESULTHTML").designMode='on';
 document.getElementById("RESULTTEXT").contentEditable = true; void(0);
 document.getElementById("RESULTHTML").contentEditable = true; void(0);
-}
+							}
 
 			function Code()
             {
                
-            SomeVar();
+            //SomeVar();
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
@@ -796,20 +797,20 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 for (var i = 0; i < codeIndexes.length; i++){
                     var beginIndex = codeIndexes[i].startPosition;
                     var endIndex = codeIndexes[i].endPosition;
-                }
+															}
                 codeIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+												});
                 console.log('aggregated array:');
         for (var i =0; i < codeIndexes.length; i++){  
             console.log(codeIndexes[i].startPosition + " " + codeIndexes[i].size);
-        }
+													}
                 var resultStr = makeCodeStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 						
            
 			
@@ -831,20 +832,20 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 for (var i = 0; i < listingIndexes.length; i++){
                     var beginIndex = listingIndexes[i].startPosition;
                     var endIndex = listingIndexes[i].endPosition;
-                }
+																}
                 listingIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+													});
                 console.log('aggregated array:');
         for (var i =0; i < listingIndexes.length; i++){  
             console.log(listingIndexes[i].startPosition + " " + listingIndexes[i].size);
-        }
+														}
                 var resultStr = makeListingStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 			function Capture()
             {
                
@@ -863,20 +864,20 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 for (var i = 0; i < captureIndexes.length; i++){
                     var beginIndex = captureIndexes[i].startPosition;
                     var endIndex = captureIndexes[i].endPosition;
-                }
+																}
                 captureIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+													});
                 console.log('aggregated array:');
         for (var i =0; i < captureIndexes.length; i++){  
             console.log(captureIndexes[i].startPosition + " " + captureIndexes[i].size);
-        }
+														}
                 var resultStr = makeCaptureStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 
 	function CBT()
             {
@@ -896,20 +897,20 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 for (var i = 0; i < cbtIndexes.length; i++){
                     var beginIndex = cbtIndexes[i].startPosition;
                     var endIndex = cbtIndexes[i].endPosition;
-                }
+															}
                 cbtIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+												});
                 console.log('aggregated array:');
         for (var i =0; i < cbtIndexes.length; i++){  
             console.log(cbtIndexes[i].startPosition + " " + cbtIndexes[i].size);
-        }
+													}
                 var resultStr = makeCBTStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }	
+			}	
 	function Link()
             {
                
@@ -928,20 +929,20 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 for (var i = 0; i < linkIndexes.length; i++){
                     var beginIndex = linkIndexes[i].startPosition;
                     var endIndex = linkIndexes[i].endPosition;
-                }
+															}
                 linkIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+												});
                 console.log('aggregated array:');
         for (var i =0; i < linkIndexes.length; i++){  
             console.log(linkIndexes[i].startPosition + " " + linkIndexes[i].size);
-        }
+													}
                 var resultStr = makeLinkStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }					
+			}					
  function  Main_title()
             {
                
@@ -960,20 +961,20 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 for (var i = 0; i < main_titleIndexes.length; i++){
                     var beginIndex = main_titleIndexes[i].startPosition;
                     var endIndex = main_titleIndexes[i].endPosition;
-                }
+																	}
                 main_titleIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+													});
                 console.log('aggregated array:');
         for (var i =0; i < main_titleIndexes.length; i++){  
             console.log(main_titleIndexes[i].startPosition + " " + main_titleIndexes[i].size);
-        }
+														}
                 var resultStr = makeMain_titleStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 function Middle_Title()
             {
                
@@ -992,20 +993,20 @@ function Middle_Title()
                 for (var i = 0; i < middle_titleIndexes.length; i++){
                     var beginIndex = middle_titleIndexes[i].startPosition;
                     var endIndex = middle_titleIndexes[i].endPosition;
-                }
+																	}
                 middle_titleIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+														});
                 console.log('aggregated array:');
         for (var i =0; i < middle_titleIndexes.length; i++){  
             console.log(middle_titleIndexes[i].startPosition + " " + middle_titleIndexes[i].size);
-        }
+															}
                 var resultStr = makeMiddle_TitleStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 		function Down_title()
             {
                
@@ -1024,20 +1025,20 @@ function Middle_Title()
                 for (var i = 0; i < down_titleIndexes.length; i++){
                     var beginIndex = down_titleIndexes[i].startPosition;
                     var endIndex = down_titleIndexes[i].endPosition;
-                }
+																	}
                 down_titleIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+													});
                 console.log('aggregated array:');
         for (var i =0; i < down_titleIndexes.length; i++){  
             console.log(down_titleIndexes[i].startPosition + " " + down_titleIndexes[i].size);
-        }
+															}
                 var resultStr = makeDown_titleStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 						function Red_title()
             {
                
@@ -1056,20 +1057,20 @@ function Middle_Title()
                 for (var i = 0; i < red_titleIndexes.length; i++){
                     var beginIndex = red_titleIndexes[i].startPosition;
                     var endIndex = red_titleIndexes[i].endPosition;
-                }
+																}
                 red_titleIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+													});
                 console.log('aggregated array:');
         for (var i =0; i < red_titleIndexes.length; i++){  
             console.log(red_titleIndexes[i].startPosition + " " + red_titleIndexes[i].size);
-        }
+														}
                 var resultStr = makeRed_titleStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 						function Small_title()
             {
                
@@ -1088,20 +1089,20 @@ function Middle_Title()
                 for (var i = 0; i < small_titleIndexes.length; i++){
                     var beginIndex = small_titleIndexes[i].startPosition;
                     var endIndex = small_titleIndexes[i].endPosition;
-                }
+																	}
                 small_titleIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+														});
                 console.log('aggregated array:');
         for (var i =0; i < small_titleIndexes.length; i++){  
             console.log(small_titleIndexes[i].startPosition + " " + small_titleIndexes[i].size);
-        }
+															}
                 var resultStr = makeSmall_titleStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 						function Hot_Tip()
             {
                
@@ -1120,20 +1121,20 @@ function Middle_Title()
                 for (var i = 0; i < hot_tipIndexes.length; i++){
                     var beginIndex = hot_tipIndexes[i].startPosition;
                     var endIndex = hot_tipIndexes[i].endPosition;
-                }
+																}
                 hot_tipIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+													});
                 console.log('aggregated array:');
         for (var i =0; i < hot_tipIndexes.length; i++){  
             console.log(hot_tipIndexes[i].startPosition + " " + hot_tipIndexes[i].size);
-        }
+														}
                 var resultStr = makeHot_TipStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 						function Footer()
             {
                
@@ -1152,20 +1153,20 @@ function Middle_Title()
                 for (var i = 0; i < footerIndexes.length; i++){
                     var beginIndex = footerIndexes[i].startPosition;
                     var endIndex = footerIndexes[i].endPosition;
-                }
+																}
                 footerIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+												});
                 console.log('aggregated array:');
         for (var i =0; i < footerIndexes.length; i++){  
             console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
-        }
+													}
                 var resultStr = makeFooterStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 						function Down()
             {
                
@@ -1184,7 +1185,7 @@ function Middle_Title()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 				function Top()
             {
                
@@ -1203,7 +1204,7 @@ function Middle_Title()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }	
+			}	
 	function Main_List()
             {
                
@@ -1224,7 +1225,7 @@ function Middle_Title()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }	
+			}	
 		function Square_List()
             {
                
@@ -1243,7 +1244,7 @@ function Middle_Title()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 function None_List()
             {
                
@@ -1261,7 +1262,7 @@ function None_List()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 	function Decimal_List()
             {
                
@@ -1280,7 +1281,7 @@ function None_List()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }	
+			}	
 	function Disc_List()
             {
                
@@ -1299,7 +1300,7 @@ function None_List()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }	
+			}	
 function Table()
             {
                
@@ -1318,7 +1319,7 @@ function Table()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 	 function Smallicon()
             {
                
@@ -1336,7 +1337,7 @@ function Table()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }      
+			}      
 			function Bold()
             {
                
@@ -1355,20 +1356,20 @@ function Table()
                 for (var i = 0; i < boldIndexes.length; i++){
                     var beginIndex = boldIndexes[i].startPosition;
                     var endIndex = boldIndexes[i].endPosition;
-                }
+															}
                 boldIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+												});
                 console.log('aggregated array:');
         for (var i =0; i < boldIndexes.length; i++){  
             console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
-        }
+													}
                 var resultStr = makeBoldStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
+			}
 			function DownPage_title()
             {
                
@@ -1387,21 +1388,22 @@ function Table()
                 for (var i = 0; i < downpage_titleIndexes.length; i++){
                     var beginIndex = downpage_titleIndexes[i].startPosition;
                     var endIndex = downpage_titleIndexes[i].endPosition;
-                }
+																		}
                 downpage_titleIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+														});
                 console.log('aggregated array:');
         for (var i =0; i < downpage_titleIndexes.length; i++){  
             console.log(downpage_titleIndexes[i].startPosition + " " + downpage_titleIndexes[i].size);
-        }
+																}
                 var resultStr = makeDownPage_titleStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-                        }
-						function Txt(){
+			}
+						function Txt()
+  {
 			alert("Txt");
 			SomeVar();
             var textarea=document.getElementById("text");
@@ -1418,14 +1420,14 @@ function Table()
                 for (var i = 0; i < txtIndexes.length; i++){
                     var beginIndex = txtIndexes[i].startPosition;
                     var endIndex = txtIndexes[i].endPosition;
-                }
+															}
                 txtIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
-                });
+												});
                 console.log('aggregated array:');
         for (var i =0; i < txtIndexes.length; i++){  
             console.log(txtIndexes[i].startPosition + " " + txtIndexes[i].size);
-        }
+													}
                 var resultStr = makeTxtStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -1458,15 +1460,15 @@ i++;
     if((e.keyCode == 8)||(e.keyCode == 46)){
         i++;
     sourceStr.length=sourceStr.length-selectiontxt.length-addelements.length;
-            }
+											}
            
-            }
-}
+											}
+										}
  resultStr=makeTxtStringHtml(expressionText);
  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
 resultStr = makeBoldStringHtml(expressionText);
  console.log('resultStr:'+makeBoldStringHtml(expressionText));   
-                }  
+													}  
 	
 				
     function caretPos(textarea)
@@ -1491,7 +1493,8 @@ resultStr = makeBoldStringHtml(expressionText);
 }
    
   
-   $('#text').keyup(function onkeypressFunction(){
+   $('#text').keyup(function onkeypressFunction()
+   {
          alert("onkeypressFunction");
 		 expressionText =( document.getElementById("text").value );
          var pos=caretPos(expressionText);
@@ -1503,19 +1506,19 @@ resultStr = makeBoldStringHtml(expressionText);
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
        else
 			if((pos>startPos)&&(pos<startPosTxt+size)){
 				size += 1;
-                   }
+														}
        txtIndexes[i].startPosition = startPos;
        txtIndexes[i].size = size;
-	               }
+																}
 				   resultStr=makeTxtStringHtml(expressionText)
 				   console.log('resultStr:'+makeTxtStringHtml(expressionText)); 
 			document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;	   
-            }
+															}
 			console.log('Txt indexes:'+JSON.stringify(listingIndexes));   
  
     for (var n = 0;n < listingIndexes.length; n++){
@@ -1525,19 +1528,19 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
        else
 			if((pos>startPos)&&(pos<startPos+size)){
 				size += 1;
-                 }
+													}
        listingIndexes[n].startPosition = startPos;
        listingIndexes[n].size = size;
-	               }
+															}
 			resultStr = makeListingStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeListingStringHtml(expressionText));
-			            }
+														}
              console.log('Listing indexes:'+JSON.stringify(listingIndexes));   
  for (var m = 0;m < cbtIndexes.length; m++){
                  if(typeof cbtIndexes[m] != "undefined"){
@@ -1546,19 +1549,19 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        cbtIndexes[m].startPosition = startPos;
        cbtIndexes[m].size = size;
-	               }
+														}
 			resultStr = makeCBTStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeCBTStringHtml(expressionText));
-			            }
+													}
              console.log('CBT indexes:'+JSON.stringify(cbtIndexes));
 			  for (var s = 0;s < linkIndexes.length; s++){
                  if(typeof linkIndexes[s] != "undefined"){
@@ -1567,19 +1570,19 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        linkIndexes[s].startPosition = startPos;
        linkIndexes[s].size = size;
-	               }
+															}
 			resultStr = makeLinkStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeLinkStringHtml(expressionText));
-			            }
+															}
              console.log('Link indexes:'+JSON.stringify(linkIndexes));
    for (var p = 0;p < main_titleIndexes.length; p++){
                  if(typeof main_titleIndexes[p] != "undefined"){
@@ -1588,19 +1591,19 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        main_titleIndexes[p].startPosition = startPos;
        main_titleIndexes[p].size = size;
-	               }
+															}
 			resultStr = makeMain_titleStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeMain_titleStringHtml(expressionText));
-			            }
+														}
              console.log(' Main_title indexes:'+JSON.stringify(main_titleIndexes));
 			  for (var d = 0;d < middle_titleIndexes.length; d++){
                  if(typeof middle_titleIndexes[d] != "undefined"){
@@ -1609,19 +1612,19 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        middle_titleIndexes[d].startPosition = startPos;
        middle_titleIndexes[d].size = size;
-	               }
+																		}
 			resultStr = makeMiddle_TitleStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeMiddle_TitleStringHtml(expressionText));
-			            }
+																		}
              console.log('Middle_Title indexes:'+JSON.stringify(middle_titleIndexes ));
 for (var h = 0;h < down_titleIndexes.length; h++){
                  if(typeof down_titleIndexes[h] != "undefined"){
@@ -1630,19 +1633,19 @@ for (var h = 0;h < down_titleIndexes.length; h++){
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        down_titleIndexes[h].startPosition = startPos;
        down_titleIndexes[h].size = size;
-	               }
+														}
 			resultStr = makeDown_titleStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeDown_titleStringHtml(expressionText));
-			            }
+													}
              console.log('Down_title indexes:'+JSON.stringify(down_titleIndexes));  
  for (var g = 0;g < downpage_titleIndexes.length; g++){
                  if(typeof downpage_titleIndexes[g] != "undefined"){
@@ -1665,27 +1668,27 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeDownPage_titleStringHtml(expressionText));
 			            }
              console.log('DownPage_title indexes:'+JSON.stringify(downpage_titleIndexes));
-			 for (var t = 0;t < footerIndexes.length; t++){
+			 /*for (var t = 0;t < footerIndexes.length; t++){
                  if(typeof footerIndexes[t] != "undefined"){
                     var startPos = footerIndexes[t].startPosition;
                     var size = footerIndexes[t].size;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        footerIndexes[t].startPosition = startPos;
        footerIndexes[t].size = size;
-	               }
+															}
 			resultStr = makeFooterStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeFooterStringHtml(expressionText));
-			            }
-             console.log('Footer indexes:'+JSON.stringify(footerIndexes));
+																	}
+             console.log('Footer indexes:'+JSON.stringify(footerIndexes));*/
 			 for (var x = 0;x < hot_tipIndexes.length; x++){
                  if(typeof hot_tipIndexes[x] != "undefined"){
                     var startPos = hot_tipIndexes[x].startPosition;
@@ -1693,19 +1696,19 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        hot_tipIndexes[x].startPosition = startPos;
        hot_tipIndexes[x].size = size;
-	               }
+																}
 			resultStr = makeHot_TipStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeHot_TipStringHtml(expressionText));
-			            }
+																}
              console.log('Hot_Tip indexes:'+JSON.stringify(hot_tipIndexes));
  for (var r = 0;r < red_titleIndexes.length; r++){
                  if(typeof red_titleIndexes[r] != "undefined"){
@@ -1714,19 +1717,19 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        red_titleIndexes[r].startPosition = startPos;
        red_titleIndexes[r].size = size;
-	               }
+															}
 			resultStr = makeRed_titleStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeRed_titleStringHtml(expressionText));
-			            }
+														}
              console.log('Red_title indexes:'+JSON.stringify(red_titleIndexes));
  for (var f = 0;f < small_titleIndexes.length; f++){
                  if(typeof small_titleIndexes[f] != "undefined"){
@@ -1735,19 +1738,19 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        small_titleIndexes[f].startPosition = startPos;
        small_titleIndexes[f].size = size;
-	               }
+																}
 			resultStr = makeSmall_titleStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeSmall_titleStringHtml(expressionText));
-			            }
+															}
              console.log('Small_title indexes:'+JSON.stringify(small_titleIndexes));
 			 
  for (var j = 0;j < boldIndexes.length; j++){
@@ -1757,19 +1760,19 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        boldIndexes[j].startPosition = startPos;
        boldIndexes[j].size = size;
-	               }
+															}
 			resultStr = makeBoldStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeBoldStringHtml(expressionText));
-			            }
+											}
              console.log('Bold indexes:'+JSON.stringify(boldIndexes));
  for (var k = 0;k < codeIndexes.length; k++){
                  if(typeof codeIndexes[k] != "undefined"){
@@ -1778,19 +1781,19 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        codeIndexes[k].startPosition = startPos;
        codeIndexes[k].size = size;
-	               }
+														}
 			resultStr = makeCodeStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeCodeStringHtml(expressionText));
-			            }
+													}
              console.log('Code indexes:'+JSON.stringify(codeIndexes));
 			 for (var l = 0;l < captureIndexes.length; l++){
                  if(typeof captureIndexes[l] != "undefined"){
@@ -1799,22 +1802,22 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
                   
                      if(pos<=startPos){
 							startPos=startPos+1;
-		       }
+										}
 					else
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
-                 }
+																}
        captureIndexes[l].startPosition = startPos;
        captureIndexes[l].size = size;
-	               }
+																	}
 			resultStr = makeCaptureStringHtml(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeCaptureStringHtml(expressionText));
-			            }
+																}
              console.log('Capture indexes:'+JSON.stringify(captureIndexes));
   
-                                                                              });  
+  });  
        
     Object.prototype.swap = function(a,b) { var tmp = this[a]; this[a] = this[b]; this[b] = tmp; }
    
@@ -1822,7 +1825,7 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
       var SelectionPosition = function(startPos,endPos){
         this.startPosition = startPos;
         this.endPosition = endPos;
-             }   
+														}   
      
      
  
@@ -1839,7 +1842,7 @@ function Reundo() {
         if (i < historyIndex) {
             show(html_res_array[i]);
             show(text_res_array[i]);
-        }
+								}
         else
         {
             hide(html_res_array[i]);
@@ -1849,7 +1852,7 @@ function Reundo() {
    
     //document.getElementById('html_res').innerHTML = history_Area[historyIndex];
     //document.getElementById('text_res').innerHTML = history_Result[historyIndex];
-};
+						};
  
      
 //undo.addEventListener('click', Undo () );
@@ -1864,7 +1867,7 @@ function Redo() {
         redo.disabled ='disabled';
     }
     if (historyIndex > 0) { undo.disabled = ''; }
-};
+					};
 function Undo(){
     if (historyIndex > 0)
     {
@@ -1875,7 +1878,7 @@ function Undo(){
         undo.disabled ='disabled';
     }
     if (historyIndex < historyIndexMax) { redo.disabled=''; }
-};
+					};
 function Delete(){
 PurgeRedoSequence();
 document.getElementById("RESULTTEXT").innerHTML = '';
@@ -1883,7 +1886,7 @@ document.getElementById("RESULTHTML").innerHTML = '';
 document.getElementById("RESULTTEXT").id = "RESULTTEXT";
 document.getElementById("RESULTHTML").id = "RESULTHTML";
 operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
-}
+					}
  
 var undo = document.getElementById('undo');
 var redo = document.getElementById('redo');
@@ -1893,15 +1896,15 @@ var redo = document.getElementById('redo');
   if (event.which == null) { // IE
     if (event.keyCode < 32) return null; // ????. ??????
     return String.fromCharCode(event.keyCode)
-  }
+							}
  
   if (event.which != 0 && event.charCode != 0) { // ??? ????? IE
     if (event.which < 32) return null; // ????. ??????
     return String.fromCharCode(event.which); // ?????????
-  }
+												}
  
   return null; // ????. ??????
-}
+													}
                
   textarea=document.getElementById("text");
  var expressionText = getSelectiontextarea( document.getElementById("text") );
@@ -1919,7 +1922,7 @@ var redo = document.getElementById('redo');
    }*/
       document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
        document.getElementById('RESULTHTML').innerHTML =textarea.value;
-                                  };
+											};
                              
  //--------------------------------------------------------------------------------------------------------------------------------FUNCTIONS--------------------------------------------------------------------------------------------------------------------------
     
