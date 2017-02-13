@@ -155,6 +155,7 @@ var AggregateSelection = function(sourceArray){
 	  function makeListingStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert("makeListingStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -172,6 +173,7 @@ var AggregateSelection = function(sourceArray){
 		   textarea=document.getElementById("text");
 		    var x=prompt("Enter a link","");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeLinkStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -189,6 +191,7 @@ var AggregateSelection = function(sourceArray){
 function makeDownPage_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeDownPage_titleStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -204,6 +207,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 			function makeRed_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeRed_titleStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -220,6 +224,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 			function makeSmall_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeSmall_titleStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -236,6 +241,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 			function makeFooterStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeFooterStringHtml");
             //var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -258,6 +264,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 			var y=prompt("Enter a count of columns","");
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeDownStringHtml");
         var resultStr =" ";
            
@@ -402,6 +409,7 @@ for(var i=0;i<n;i++){
 	function makeTableStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeTableStringHtml");
            var x=prompt("Enter a count of row","");
 var y=prompt("Enter a count of columns","");
@@ -446,8 +454,8 @@ for(var i = 0, text; i <= x;i++){
             }	*/	
 			function makeSmalliconStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
-		    var expression = getSelectiontextarea( document.getElementById("text") );
-			 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
+		     var expressionText = getSelectiontextarea( document.getElementById("text") );
+			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeSmalliconStringHtml");
            var x=prompt("Enter a name of image","");
 			var resultStr =" ";
@@ -488,6 +496,8 @@ for(var i=0;i<n;i++){
 						Make();
             }	 
 function makeMain_ListStringHtml(sourceStr){
+	PurgeRedoSequence();
+
 		   textarea=document.getElementById("text");
 		   var expression = getSelectiontextarea( document.getElementById("text") );
 		    document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
@@ -504,8 +514,10 @@ for(var i=0;i<n;i++){
              	return resultStr;
 											}
 			function makeTopStringHtml(sourceStr){
+				 document.getElementById("text").focus();
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeTopStringHtml");
            var top_page_list=prompt("Enter top_page_list","");
 PurgeRedoSequence();
@@ -585,6 +597,7 @@ else{
 			function makeHot_TipStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeHot_TipStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -615,6 +628,7 @@ else{
 			function makeDown_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeDown_titleStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -630,6 +644,7 @@ else{
 			function makeMiddle_TitleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert("makeMiddle_TitleStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -646,7 +661,9 @@ else{
 			
 			function makeMain_titleStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
+		    var expressionText =  document.getElementById("text").value;    
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+
         alert("makeMain_titleStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -663,7 +680,9 @@ else{
 			function makeCBTStringHtml(sourceStr){
 				alert(" makeCBTStringHtml");
 		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
+		    var expressionText =  document.getElementById("text").value; 
+            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+
             var currentSymbolIndex = 0;
 			var resultStr =" ";
             var usedSymbols = 0;
@@ -679,6 +698,7 @@ else{
        function makeCodeStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeCodeStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -694,6 +714,7 @@ else{
 			function makeTxtStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert("makeTxtStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -710,6 +731,7 @@ else{
 			function makeCaptureStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
+			             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert("makeTxtStringHtml");
             var currentSymbolIndex = 0;
 			var resultStr =" ";
@@ -784,7 +806,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 codeIndexes.push(new CodeSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -814,7 +836,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-             
+              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 listingIndexes.push(new ListingSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -842,7 +864,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-           
+            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 captureIndexes.push(new CaptureSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -872,7 +894,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-           
+            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 cbtIndexes.push(new CBTSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -900,7 +922,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 linkIndexes.push(new LinkSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -928,7 +950,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 main_titleIndexes.push(new Main_titleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -956,7 +978,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 middle_titleIndexes.push(new Middle_TitleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -984,7 +1006,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 down_titleIndexes.push(new Down_titleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1012,7 +1034,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 red_titleIndexes.push(new Red_titleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1040,7 +1062,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 small_titleIndexes.push(new Small_titleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1068,7 +1090,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 hot_tipIndexes.push(new Hot_TipSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1096,7 +1118,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 footerIndexes.push(new FooterSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1124,7 +1146,7 @@ function Middle_Title()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                var resultStr = makeDownStringHtml(expressionText);
@@ -1138,8 +1160,8 @@ function Middle_Title()
             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text");
-            
+            expressionText =  document.getElementById("text").value;
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 var resultStr = makeTopStringHtml(expressionText);
@@ -1153,8 +1175,8 @@ function Middle_Title()
              
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text");
-            
+            expressionText =  document.getElementById("text").value;
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                
@@ -1171,7 +1193,7 @@ function Middle_Title()
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
              document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-           
+            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 var resultStr = makeSquare_ListStringHtml(expressionText);
@@ -1186,6 +1208,7 @@ function None_List()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
+			document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
             var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 
@@ -1201,7 +1224,7 @@ function None_List()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
-            
+            document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 var resultStr = makeDecimal_ListStringHtml(expressionText);
@@ -1232,8 +1255,8 @@ function Table()
             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text");
-           
+             expressionText =  document.getElementById("text").value;
+            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                
@@ -1248,7 +1271,7 @@ function Table()
             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            var expression = getSelectiontextarea( document.getElementById("text") );
+            var expressionText = getSelectiontextarea( document.getElementById("text") );
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
             
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
@@ -1258,14 +1281,72 @@ function Table()
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
-			}      
+			}  
+			function Reundo() {
+    var html_res_array = getElementsById('RESULTHTML');
+    var text_res_array = getElementsById('RESULTTEXT');
+   
+    for (var i = 0; i < html_res_array.length; i++)
+    {
+        if (i < historyIndex) {
+            show(html_res_array[i]);
+            show(text_res_array[i]);
+								}
+        else
+        {
+            hide(html_res_array[i]);
+            hide(text_res_array[i]);
+        }
+    }
+   
+    //document.getElementById('html_res').innerHTML = history_Area[historyIndex];
+    //document.getElementById('text_res').innerHTML = history_Result[historyIndex];
+						};
+ 
+     
+//undo.addEventListener('click', Undo () );
+//redo.addEventListener('click', Redo() );
+function Delete(){
+PurgeRedoSequence();
+document.getElementById("RESULTTEXT").innerHTML = '';
+document.getElementById("RESULTHTML").innerHTML = '';
+document.getElementById("RESULTTEXT").id = "RESULTTEXT";
+document.getElementById("RESULTHTML").id = "RESULTHTML";
+operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
+					}
+ 
+var undo = document.getElementById('undo');
+var redo = document.getElementById('redo');
+ 
+function Redo() {
+   if (historyIndex < historyIndexMax)
+    {
+        historyIndex++; Reundo(); redo.disabled ='';
+    }
+    if (historyIndex == historyIndexMax)
+    {
+        redo.disabled ='disabled';
+    }
+    if (historyIndex > 0) { undo.disabled = ''; }
+					};
+function Undo(){
+    if (historyIndex > 0)
+    {
+        historyIndex--; Reundo(); undo.disabled ='';
+    }
+    if (historyIndex == 0)
+    {
+        undo.disabled ='disabled';
+    }
+    if (historyIndex < historyIndexMax) { redo.disabled=''; }
+					};
 			function Bold()
             {
              
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text");
-            
+             expressionText =  document.getElementById("text").value;
+            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1293,7 +1374,7 @@ function Table()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-           
+            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 downpage_titleIndexes.push(new DownPage_titleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1322,7 +1403,7 @@ function Table()
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
+             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 txtIndexes.push(new TxtSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1358,6 +1439,7 @@ function Table()
  
                  selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
                expressionText =( document.getElementById("text").value );
+			    document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 for(var i = 0;i < addelements.length; i++){
             document.onkeypress = function(e) {
     if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){  
@@ -1407,6 +1489,7 @@ resultStr = makeBoldStringHtml(expressionText);
    {
          alert("onkeypressFunction");
 		 expressionText =( document.getElementById("text").value );
+		  document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
          var pos=caretPos(expressionText);
                             
             for (var i = 0;i < txtIndexes.length; i++){
@@ -1743,64 +1826,8 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
  
-function Reundo() {
-    var html_res_array = getElementsById('RESULTHTML');
-    var text_res_array = getElementsById('RESULTTEXT');
-   
-    for (var i = 0; i < html_res_array.length; i++)
-    {
-        if (i < historyIndex) {
-            show(html_res_array[i]);
-            show(text_res_array[i]);
-								}
-        else
-        {
-            hide(html_res_array[i]);
-            hide(text_res_array[i]);
-        }
-    }
-   
-    //document.getElementById('html_res').innerHTML = history_Area[historyIndex];
-    //document.getElementById('text_res').innerHTML = history_Result[historyIndex];
-						};
- 
-     
-//undo.addEventListener('click', Undo () );
-//redo.addEventListener('click', Redo() );
-function Redo() {
-   if (historyIndex < historyIndexMax)
-    {
-        historyIndex++; Reundo(); redo.disabled ='';
-    }
-    if (historyIndex == historyIndexMax)
-    {
-        redo.disabled ='disabled';
-    }
-    if (historyIndex > 0) { undo.disabled = ''; }
-					};
-function Undo(){
-    if (historyIndex > 0)
-    {
-        historyIndex--; Reundo(); undo.disabled ='';
-    }
-    if (historyIndex == 0)
-    {
-        undo.disabled ='disabled';
-    }
-    if (historyIndex < historyIndexMax) { redo.disabled=''; }
-					};
-function Delete(){
-PurgeRedoSequence();
-document.getElementById("RESULTTEXT").innerHTML = '';
-document.getElementById("RESULTHTML").innerHTML = '';
-document.getElementById("RESULTTEXT").id = "RESULTTEXT";
-document.getElementById("RESULTHTML").id = "RESULTHTML";
-operation(document.getElementById("RESULTHTML").innerHTML, document.getElementById("RESULTTEXT").innerHTML);
-					}
- 
-var undo = document.getElementById('undo');
-var redo = document.getElementById('redo');
- 
+
+
  
             addelements=function getChar(event) {
   if (event.which == null) { // IE
@@ -1818,8 +1845,7 @@ var redo = document.getElementById('redo');
                
   textarea=document.getElementById("text");
  var expressionText = getSelectiontextarea( document.getElementById("text") );
- var expressionStart=(textarea.value).substring(0,textarea.selectionStart).value;
-    var expressionEnd=(textarea.value).substring(textarea.selectionEnd).value;
+ 
    
    
              textarea.oninput=function(){
@@ -1835,12 +1861,5 @@ var redo = document.getElementById('redo');
 											};
                              
  //--------------------------------------------------------------------------------------------------------------------------------FUNCTIONS--------------------------------------------------------------------------------------------------------------------------
-    
-    
-    
-           
-          
-           
-           
-           
+       
     });
