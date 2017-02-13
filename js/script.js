@@ -435,8 +435,7 @@ for(var i = 0, text; i <= x;i++){
                 document.getElementById("text").focus();
 				var expression = getSelectiontextarea( document.getElementById("text") );
 				 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-                SomeVar();
-                var x=prompt("Enter a name of image","");
+                 var x=prompt("Enter a name of image","");
                 document.getElementById("RESULTHTML").innerText='<img src="img/'+x+'"alt="622">';
 				 document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
                 document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
@@ -781,15 +780,11 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 
 			function Code()
             {
-               
-            //SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 codeIndexes.push(new CodeSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -816,15 +811,10 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			
 			 function Listing()
             {
-               
-            SomeVar();
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
-            
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+             
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 listingIndexes.push(new ListingSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -848,15 +838,11 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			}
 			function Capture()
             {
-               
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
            
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 captureIndexes.push(new CaptureSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -882,14 +868,11 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 	function CBT()
             {
              alert("CBT")  
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
            
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 cbtIndexes.push(new CBTSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -913,15 +896,11 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			}	
 	function Link()
             {
-               
-            SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 linkIndexes.push(new LinkSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -945,15 +924,11 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			}					
  function  Main_title()
             {
-               
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 main_titleIndexes.push(new Main_titleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -977,15 +952,11 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			}
 function Middle_Title()
             {
-               
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 middle_titleIndexes.push(new Middle_TitleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1009,15 +980,11 @@ function Middle_Title()
 			}
 		function Down_title()
             {
-               
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 down_titleIndexes.push(new Down_titleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1041,15 +1008,11 @@ function Middle_Title()
 			}
 						function Red_title()
             {
-               
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 red_titleIndexes.push(new Red_titleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1073,15 +1036,11 @@ function Middle_Title()
 			}
 						function Small_title()
             {
-               
-            SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 small_titleIndexes.push(new Small_titleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1105,15 +1064,11 @@ function Middle_Title()
 			}
 						function Hot_Tip()
             {
-               
-            SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 hot_tipIndexes.push(new Hot_TipSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1137,15 +1092,11 @@ function Middle_Title()
 			}
 						function Footer()
             {
-               
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 footerIndexes.push(new FooterSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1169,15 +1120,11 @@ function Middle_Title()
 			}
 						function Down()
             {
-               
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                var resultStr = makeDownStringHtml(expressionText);
@@ -1188,15 +1135,11 @@ function Middle_Title()
 			}
 				function Top()
             {
-               
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text");
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 var resultStr = makeTopStringHtml(expressionText);
@@ -1207,19 +1150,14 @@ function Middle_Title()
 			}	
 	function Main_List()
             {
-               
-            SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text");
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                
-        
+               
                 var resultStr = makeMain_ListStringHtml(expressionText);
                
                 document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -1228,15 +1166,12 @@ function Middle_Title()
 			}	
 		function Square_List()
             {
-               
-            SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
              document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
            
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 var resultStr = makeSquare_ListStringHtml(expressionText);
@@ -1247,14 +1182,11 @@ function Middle_Title()
 			}
 function None_List()
             {
-               
-            SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
-            expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
-                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+            var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 
                 var resultStr = makeNone_ListStringHtml(expressionText);
@@ -1265,15 +1197,11 @@ function None_List()
 			}
 	function Decimal_List()
             {
-               
-            SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 var resultStr = makeDecimal_ListStringHtml(expressionText);
@@ -1284,14 +1212,12 @@ function None_List()
 			}	
 	function Disc_List()
             {
-               
-            SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
             document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+               
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                
@@ -1303,14 +1229,11 @@ function None_List()
 			}	
 function Table()
             {
-               
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text");
            
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                
@@ -1322,14 +1245,12 @@ function Table()
 			}
 	 function Smallicon()
             {
-               
-            SomeVar();
+            
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-            expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
+            
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                  var resultStr = makeSmalliconStringHtml(expressionText);
@@ -1340,15 +1261,11 @@ function Table()
 			}      
 			function Bold()
             {
-               
-            SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text");
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1372,15 +1289,11 @@ function Table()
 			}
 			function DownPage_title()
             {
-               
-            SomeVar();
+             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
            
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 downpage_titleIndexes.push(new DownPage_titleSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1405,14 +1318,11 @@ function Table()
 						function Txt()
   {
 			alert("Txt");
-			SomeVar();
+			
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
             
-           
-               expressionStart=(textarea.value).substring(0,textarea.selectionStart);
-                expressionEnd=(textarea.value).substring(textarea.selectionEnd);
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 txtIndexes.push(new TxtSelection(selectionBegin,selectionEnd-selectionBegin));
