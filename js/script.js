@@ -161,7 +161,7 @@ var AggregateSelection = function(sourceArray){
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < listingIndexes.length; i++){
-                if (currentSymbolIndex<listingIndexes[i].startPosition){
+                if (currentSymbolIndex<=listingIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,listingIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br><span class="move_left "><span class="strong ">'+sourceStr.substring(listingIndexes[i].startPosition,listingIndexes[i].startPosition+listingIndexes[i].size)+'</span></span><span>'+sourceStr.substring(listingIndexes[i].startPosition+listingIndexes[i].size,sourceStr.length)+'</span>';
 																		}
@@ -197,7 +197,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < downpage_titleIndexes.length; i++){
-                if (currentSymbolIndex<downpage_titleIndexes[i].startPosition){
+                if (currentSymbolIndex<=downpage_titleIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,downpage_titleIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br><span class="move_left strong">'+sourceStr.substring(downpage_titleIndexes[i].startPosition,downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size)+'</span><br><span>'+sourceStr.substring(downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size,sourceStr.length)+'</span>';
 																				}
@@ -213,7 +213,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < red_titleIndexes.length; i++){
-                if (currentSymbolIndex<red_titleIndexes[i].startPosition){
+                if (currentSymbolIndex<=red_titleIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,red_titleIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><div class="title strong"><span>'+sourceStr.substring(red_titleIndexes[i].startPosition,red_titleIndexes[i].startPosition+red_titleIndexes[i].size)+'</span></div><span>'+sourceStr.substring(red_titleIndexes[i].startPosition+red_titleIndexes[i].size,sourceStr.length)+'</span>';
 																		}
@@ -230,7 +230,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < small_titleIndexes.length; i++){
-                if (currentSymbolIndex<small_titleIndexes[i].startPosition){
+                if (currentSymbolIndex<=small_titleIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,small_titleIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br><span class="move_left strong font_size">'+sourceStr.substring(small_titleIndexes[i].startPosition,small_titleIndexes[i].startPosition+small_titleIndexes[i].size)+'</span><span>'+sourceStr.substring(small_titleIndexes[i].startPosition+small_titleIndexes[i].size,sourceStr.length)+'</span>';
 																			}																
@@ -247,7 +247,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 			var resultStr =" ";
             //var usedSymbols = 0;
            // for (var i = 0; i < footerIndexes.length; i++){
-               // if (currentSymbolIndex<footerIndexes[i].startPosition){
+               // if (currentSymbolIndex<=footerIndexes[i].startPosition){
                // resultStr += sourceStr.substring(currentSymbolIndex,footerIndexes[i].startPosition);
             resultStr = /*'<span>'+ resultStr+'</span>*/'<div>'+
                 '<div class="footer">'+
@@ -472,7 +472,7 @@ for(var i = 0, text; i <= x;i++){
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < boldIndexes.length; i++){
-                if (currentSymbolIndex<boldIndexes[i].startPosition){
+                if (currentSymbolIndex<=boldIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
 																	}
@@ -603,7 +603,7 @@ else{
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < hot_tipIndexes.length; i++){
-                if (currentSymbolIndex<hot_tipIndexes[i].startPosition){
+                if (currentSymbolIndex<=hot_tipIndexes[i].startPosition){
 						resultStr += sourceStr.substring(currentSymbolIndex,hot_tipIndexes[i].startPosition);
 						resultStr = '<span>'+ resultStr+'</span><div class="border">'+
 					  '<table class="elliptic">'+
@@ -634,7 +634,7 @@ else{
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < down_titleIndexes.length; i++){
-                if (currentSymbolIndex<down_titleIndexes[i].startPosition){
+                if (currentSymbolIndex<=down_titleIndexes[i].startPosition){
 						resultStr += sourceStr.substring(currentSymbolIndex,down_titleIndexes[i].startPosition);
 						resultStr = '<span>'+ resultStr+'</span><div class="down_title">'+sourceStr.substring(down_titleIndexes[i].startPosition,down_titleIndexes[i].startPosition+down_titleIndexes[i].size)+'</div><span>'+sourceStr.substring(down_titleIndexes[i].startPosition+down_titleIndexes[i].size,sourceStr.length)+'</span>';
 																			}
@@ -650,7 +650,7 @@ else{
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < middle_titleIndexes.length; i++){
-                if (currentSymbolIndex<middle_titleIndexes[i].startPosition){
+                if (currentSymbolIndex<=middle_titleIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,middle_titleIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><span class="middle_title">'+sourceStr.substring(middle_titleIndexes[i].startPosition,middle_titleIndexes[i].startPosition+middle_titleIndexes[i].size)+'</span><span>'+sourceStr.substring(middle_titleIndexes[i].startPosition+middle_titleIndexes[i].size,sourceStr.length)+'</span>';
 																			}
@@ -687,7 +687,7 @@ else{
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < cbtIndexes.length; i++){
-                if (currentSymbolIndex<cbtIndexes[i].startPosition){
+                if (currentSymbolIndex<=cbtIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,cbtIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br class="cbt">'+sourceStr.substring(cbtIndexes[i].startPosition,cbtIndexes[i].startPosition+cbtIndexes[i].size)+'<span>'+sourceStr.substring(cbtIndexes[i].startPosition+cbtIndexes[i].size,sourceStr.length)+'</span>';
 																	}
@@ -704,7 +704,7 @@ else{
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < codeIndexes.length; i++){
-                if (currentSymbolIndex<codeIndexes[i].startPosition){
+                if (currentSymbolIndex<=codeIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,codeIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><div class="commands"><pre>'+sourceStr.substring(codeIndexes[i].startPosition,codeIndexes[i].startPosition+codeIndexes[i].size)+'</pre></div><span>'+sourceStr.substring(codeIndexes[i].startPosition+codeIndexes[i].size,sourceStr.length)+'</span>';
 																	}
@@ -720,7 +720,7 @@ else{
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < txtIndexes.length; i++){
-                if (currentSymbolIndex<txtIndexes[i].startPosition){
+                if (currentSymbolIndex<=txtIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,txtIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br><span class="move_left">'+sourceStr.substring(txtIndexes[i].startPosition,txtIndexes[i].startPosition+txtIndexes[i].size)+'</span><span>'+sourceStr.substring(txtIndexes[i].startPosition+txtIndexes[i].size,sourceStr.length)+'</span>';
 																	}
@@ -737,7 +737,7 @@ else{
 			var resultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < captureIndexes.length; i++){
-                if (currentSymbolIndex<captureIndexes[i].startPosition){
+                if (currentSymbolIndex<=captureIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,captureIndexes[i].startPosition);
 					resultStr = '<span>'+ resultStr+'</span><br><span class="move_left "><span class="strong underline">'+sourceStr.substring(captureIndexes[i].startPosition,captureIndexes[i].startPosition+captureIndexes[i].size)+'</span><span><span>'+sourceStr.substring(captureIndexes[i].startPosition+captureIndexes[i].size,sourceStr.length)+'</span>';
 																		}
@@ -1319,6 +1319,8 @@ var undo = document.getElementById('undo');
 var redo = document.getElementById('redo');
  
 function Redo() {
+undo = document.getElementById('undo');
+redo = document.getElementById('redo');
    if (historyIndex < historyIndexMax)
     {
         historyIndex++; Reundo(); redo.disabled ='';
@@ -1330,6 +1332,8 @@ function Redo() {
     if (historyIndex > 0) { undo.disabled = ''; }
 					};
 function Undo(){
+undo = document.getElementById('undo');
+redo = document.getElementById('redo');
     if (historyIndex > 0)
     {
         historyIndex--; Reundo(); undo.disabled ='';
