@@ -126,6 +126,24 @@ var ua_vers   = parseInt(navigator.appVersion);
 			this.startPosition = startPos;
 			this.size = size;
        }
+	    var resultstrCollection = new Array();
+  
+resultstrCollection.push(Main_titleSelection);
+resultstrCollection.push(Middle_TitleSelection);
+resultstrCollection.push(Down_titleSelection);
+resultstrCollection.push(TxtSelection);
+resultstrCollection.push(CBTSelection);
+resultstrCollection.push(Red_titleSelection );
+resultstrCollection.push(LinkSelection );
+resultstrCollection.push(DownPage_titleSelection);
+resultstrCollection.push(Hot_TipSelection);
+resultstrCollection.push(FooterSelection);
+resultstrCollection.push(Small_titleSelection);
+resultstrCollection.push(CodeSelection);
+resultstrCollection.push(ListingSelection);
+resultstrCollection.push(CaptureSelection);
+
+   
 var AggregateSelection = function(sourceArray){
 		var indexesToRemove = new Set();
 		for (var i = 0; i < sourceArray.length; i++){
