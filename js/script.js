@@ -60,6 +60,10 @@ var ua_vers   = parseInt(navigator.appVersion);
 					var txtIndexes = [];
 					var codeIndexes = [];
 					var captureIndexes = [];
+					var UsedSelection = function(startPos, size){
+			this.startPosition = startPos;
+			this.size = size;
+				  }
                     var txt = function(startPos, size){
 						this.startPosition = startPos;
 						this.size = size;
@@ -73,6 +77,10 @@ var ua_vers   = parseInt(navigator.appVersion);
 			this.size =  size;
 		}
 		var Down_titleSelection = function(startPos, size){
+			this.startPosition = startPos;
+			this.size =  size;
+		}
+		var UsedSelection = function(startPos, size){
 			this.startPosition = startPos;
 			this.size =  size;
 		}
@@ -104,8 +112,8 @@ var ua_vers   = parseInt(navigator.appVersion);
 			this.startPosition = startPos;
 			this.size = size;
 				  }
-		var BoldSelection = function(startPos, size){
-			this.startPosition = startPos;
+		var BoldSelection = function(BoldstartPos, size){
+			this.startPosition = BoldstartPos;
 			this.size = size;
 				  }
 				 
@@ -113,8 +121,8 @@ var ua_vers   = parseInt(navigator.appVersion);
 			this.startPosition = startPos;
 			this.size = size;
 				  }
-		var CodeSelection = function(startPos, size){
-			this.startPosition = startPos;
+		var CodeSelection = function(CodestartPos, size){
+			this.startPosition = CodestartPos;
 			this.size = size;
        }
 	 
@@ -487,15 +495,15 @@ for(var i = 0, text; i <= x;i++){
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeBoldStringHtml");
             var currentSymbolIndex = 0;
-			var resultStr =" ";
+			var BoldresultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < boldIndexes.length; i++){
                 if (currentSymbolIndex<=boldIndexes[i].startPosition){
-					resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
-					resultStr = '<span>'+ resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
+					BoldresultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
+					BoldresultStr = '<span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span>';
 																	}
 														}
-           	return resultStr;
+           	return BoldresultStr;
 											}
 		 function Main_List()
             {
@@ -719,15 +727,15 @@ else{
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeCodeStringHtml");
             var currentSymbolIndex = 0;
-			var resultStr =" ";
+			var CoderesultStr =" ";
             var usedSymbols = 0;
             for (var i = 0; i < codeIndexes.length; i++){
                 if (currentSymbolIndex<=codeIndexes[i].startPosition){
-					resultStr += sourceStr.substring(currentSymbolIndex,codeIndexes[i].startPosition);
-					resultStr = '<span>'+ resultStr+'</span><div class="commands"><pre>'+sourceStr.substring(codeIndexes[i].startPosition,codeIndexes[i].startPosition+codeIndexes[i].size)+'</pre></div><span>'+sourceStr.substring(codeIndexes[i].startPosition+codeIndexes[i].size,sourceStr.length)+'</span>';
+					CoderesultStr += sourceStr.substring(currentSymbolIndex,codeIndexes[i].startPosition);
+					CoderesultStr = '<div class="commands"><pre>'+sourceStr.substring(codeIndexes[i].startPosition,codeIndexes[i].startPosition+codeIndexes[i].size)+'</pre></div>';
 																	}
 														}
-           	return resultStr;
+           	return CoderesultStr;
 												}
 			function makeTxtStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
@@ -827,7 +835,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                codeIndexes.push(new CodeSelection(selectionBegin,selectionEnd-selectionBegin));
+                codeIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(codeIndexes);
                 for (var i = 0; i < codeIndexes.length; i++){
                     var beginIndex = codeIndexes[i].startPosition;
@@ -840,10 +848,10 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         for (var i =0; i < codeIndexes.length; i++){  
             console.log(codeIndexes[i].startPosition + " " + codeIndexes[i].size);
 													}
-                var resultStr = makeCodeStringHtml(expressionText);
+                var CoderesultStr = makeCodeStringHtml(expressionText);
                
-                document.getElementById("RESULTTEXT").innerText=resultStr;
-                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                document.getElementById("RESULTTEXT").innerText=CoderesultStr;
+                document.getElementById("RESULTHTML").innerHTML=CoderesultStr;
                 Make();
 			}
 						
@@ -1371,7 +1379,7 @@ redo = document.getElementById('redo');
             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                boldIndexes.push(new BoldSelection(selectionBegin,selectionEnd-selectionBegin));
+                boldIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(boldIndexes);
                 for (var i = 0; i < boldIndexes.length; i++){
                     var beginIndex = boldIndexes[i].startPosition;
@@ -1384,10 +1392,10 @@ redo = document.getElementById('redo');
         for (var i =0; i < boldIndexes.length; i++){  
             console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
 													}
-                var resultStr = makeBoldStringHtml(expressionText);
-               
-                document.getElementById("RESULTTEXT").innerText=resultStr;
-                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                var BoldresultStr = makeBoldStringHtml(expressionText);
+              var CoderesultStr=makeCodeStringHtml(expressionText);
+                document.getElementById("RESULTTEXT").innerText=BoldresultStr+CoderesultStr;
+                document.getElementById("RESULTHTML").innerHTML=BoldresultStr+CoderesultStr;
                 Make();
 			}
 			function DownPage_title()
@@ -1780,12 +1788,12 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 						if((pos>startPos)&&(pos<startPos+size)){
 							size += 1;
 																}
-       boldIndexes[j].startPosition = startPos;
+       boldIndexes[j].startPosition =startPos;
        boldIndexes[j].size = size;
 															}
-			resultStr = makeBoldStringHtml(expressionText);
-	   document.getElementById("RESULTTEXT").innerText=resultStr;
-document.getElementById("RESULTHTML").innerHTML=resultStr;
+			BoldresultStr = makeBoldStringHtml(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=BoldresultStr;
+document.getElementById("RESULTHTML").innerHTML=BoldresultStr;
 	    console.log('resultStr:'+makeBoldStringHtml(expressionText));
 											}
              console.log('Bold indexes:'+JSON.stringify(boldIndexes));
@@ -1804,10 +1812,13 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        codeIndexes[k].startPosition = startPos;
        codeIndexes[k].size = size;
 														}
-			resultStr = makeCodeStringHtml(expressionText);
-	   document.getElementById("RESULTTEXT").innerText=resultStr;
-document.getElementById("RESULTHTML").innerHTML=resultStr;
+			CoderesultStr = makeCodeStringHtml(expressionText);
+			BoldresultStr = makeBoldStringHtml(expressionText);
+			if(codeIndexes.startPosition>boldIndexes.startPosition){
+	   document.getElementById("RESULTTEXT").innerText=CoderesultStr+BoldresultStr;
+document.getElementById("RESULTHTML").innerHTML=CoderesultStr+BoldresultStr;
 	    console.log('resultStr:'+makeCodeStringHtml(expressionText));
+			}
 													}
              console.log('Code indexes:'+JSON.stringify(codeIndexes));
 			 for (var l = 0;l < captureIndexes.length; l++){
