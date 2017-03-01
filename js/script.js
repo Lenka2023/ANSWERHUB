@@ -230,7 +230,7 @@ function makeDownPage_titleStringHtml(sourceStr){
             for (var i = 0; i < downpage_titleIndexes.length; i++){
                 if (currentSymbolIndex<=downpage_titleIndexes[i].startPosition){
 					DownPage_titleresultStr += sourceStr.substring(currentSymbolIndex,downpage_titleIndexes[i].startPosition);
-					DownPage_titleresultStr = '<span>'+DownPage_titleresultStr'</span><br><span class="move_left strong">'+sourceStr.substring(downpage_titleIndexes[i].startPosition,downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size)+'</span><br><span>'+sourceStr.substring(downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size,sourceStr.length)+'</span>';
+					DownPage_titleresultStr = '<span>'+DownPage_titleresultStr+'</span><br><span class="move_left strong">'+sourceStr.substring(downpage_titleIndexes[i].startPosition,downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size)+'</span><br><span>'+sourceStr.substring(downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size,sourceStr.length)+'</span>';
 
 																				}
 																	}
@@ -901,7 +901,6 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -913,8 +912,8 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 						
@@ -960,7 +959,6 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -972,8 +970,8 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 			function Capture()
@@ -1017,7 +1015,6 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -1029,8 +1026,8 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 
@@ -1061,8 +1058,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var Square_ListresultStr = makeSquare_ListStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
-			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
+			var var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
 			var Main_ListresultStr = makeMain_ListStringHtml(expressionText);
@@ -1072,12 +1068,12 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var Decimal_ListresultStr = makeDecimal_ListStringHtml(expressionText);
 			var None_ListresultStr = makeNone_ListStringHtml(expressionText);
 			var DownresultStr = makeDownStringHtml(expressionText);
-			var FooterresultStr = makeFooterStringHtml(expressionText);*/
+			var FooterresultStr = makeFooterStringHtml(expressionText);
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
-			var TxtresultStr = makeTxtStringHtml(expressionText);
+			var TxtresultStr = makeTxtStringHtml(expressionText);*/
 			var CBTresultStr = makeCBTStringHtml(expressionText);
-			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
+			/*var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
 			var Small_titleresultStr = makeSmall_titleStringHtml(expressionText);	
@@ -1086,10 +1082,10 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var LinkresultStr = makeLinkStringHtml(expressionText);
 			var ListingresultStr = makeListingStringHtml(expressionText);										
 			var BoldresultStr = makeBoldStringHtml(expressionText);
-			var CoderesultStr=makeCodeStringHtml(expressionText);
+			var CoderesultStr=makeCodeStringHtml(expressionText);*/
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=/*Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+*/CBTresultStr/*+TxtresultStr+CaptureresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=/*Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+*/CBTresultStr/*+TxtresultStr+CaptureresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}	
 	function Link()
@@ -1132,7 +1128,6 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -1144,8 +1139,8 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr++TxtresultStr+CaptureresultStr/*CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}					
  function  Main_title()
@@ -1189,8 +1184,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
-			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
+			var  Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
 			var Small_titleresultStr = makeSmall_titleStringHtml(expressionText);	
@@ -1201,8 +1195,8 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 function Middle_Title()
@@ -1246,7 +1240,6 @@ function Middle_Title()
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -1258,8 +1251,8 @@ function Middle_Title()
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultSt+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 		function Down_title()
@@ -1303,7 +1296,6 @@ function Middle_Title()
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -1315,8 +1307,8 @@ function Middle_Title()
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 						function Red_title()
@@ -1360,7 +1352,6 @@ function Middle_Title()
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -1372,8 +1363,8 @@ function Middle_Title()
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 						function Small_title()
@@ -1417,7 +1408,6 @@ function Middle_Title()
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -1429,8 +1419,8 @@ function Middle_Title()
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 						function Hot_Tip()
@@ -1474,7 +1464,6 @@ function Middle_Title()
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -1486,8 +1475,8 @@ function Middle_Title()
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 						function Footer()
@@ -1915,7 +1904,6 @@ redo = document.getElementById('redo');
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -1927,8 +1915,8 @@ redo = document.getElementById('redo');
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 			function Image()
@@ -2011,7 +1999,6 @@ redo = document.getElementById('redo');
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -2023,8 +2010,8 @@ redo = document.getElementById('redo');
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 						function Txt()
@@ -2069,7 +2056,6 @@ redo = document.getElementById('redo');
 			var Hot_TipresultStr = makeHot_TipStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
-			var CBTresultStr = makeCBTStringHtml(expressionText);
 			var Main_titleresultStr = makeMain_titleStringHtml(expressionText);
 			var Middle_TitleresultStr = makeMiddle_TitleStringHtml(expressionText);									
 			var Down_titleresultStr = makeDown_titleStringHtml(expressionText);
@@ -2081,8 +2067,8 @@ redo = document.getElementById('redo');
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr/*+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
  }
 
