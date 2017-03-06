@@ -532,27 +532,29 @@ for(var i = 0, text; i <= x;i++){
            	return SmalliconresultStr;
 														}
 														
-		function makeBoldStringHtml(sourceStr){
+		/*function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
+		    expressionText =( document.getElementById("text").value ); 
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeBoldStringHtml");
+		//this.sourceStr=expressionText;
             var currentSymbolIndex = 0;
 			var resultStr =" ";
             var usedSymbols = 0;
 			for (var j = 0; j < sourceStr.length; j++){
             for (var i = 0; i < boldIndexes.length; i++){
 				if(i==j){
+					
                 if (currentSymbolIndex<=boldIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
 					resultStr = '<span>'+resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
 
 																		}					
 						}
-			}									
+			}
 			for (var p = 0; p < captureIndexes.length; p++){											
-           	if(j==p){
-                
+           	if((j==p)&&(i!=j)){
+              
                 if (currentSymbolIndex<=captureIndexes[p].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,captureIndexes[p].startPosition);
 					resultStr ='<span>'+resultStr+'</span><br><span class="move_left "><span class="strong underline">'+sourceStr.substring(captureIndexes[p].startPosition,captureIndexes[p].startPosition+captureIndexes[p].size)+'</span><span><span>'+sourceStr.substring(captureIndexes[p].startPosition+captureIndexes[p].size,sourceStr.length)+'</span>';
@@ -562,11 +564,11 @@ for(var i = 0, text; i <= x;i++){
 			}
 			
 			return resultStr;
-														}
+														}*/
 		
-	 /* function makeBoldStringHtml(sourceStr){
+	  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
+		    expressionText =( document.getElementById("text").value );
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeBoldStringHtml");
             var currentSymbolIndex = 0;
@@ -580,7 +582,7 @@ for(var i = 0, text; i <= x;i++){
 																	}
 														}
            	return BoldresultStr;
-											}*/
+											}
 		 
 function makeMain_ListStringHtml(sourceStr){
 	PurgeRedoSequence();
@@ -1012,8 +1014,9 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            expressionText =  document.getElementById("text").value;
-            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+			expressionText =( document.getElementById("text").value ); 
+            //expressionText =  document.getElementById("text").value;
+           document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                 captureIndexes.push(new CaptureSelection(selectionBegin,selectionEnd-selectionBegin));
@@ -1904,7 +1907,8 @@ redo = document.getElementById('redo');
              
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-             expressionText =  document.getElementById("text").value;
+			expressionText =( document.getElementById("text").value ); 
+             //expressionText =  document.getElementById("text").value;
             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
@@ -1949,10 +1953,11 @@ redo = document.getElementById('redo');
 			var LinkresultStr = makeLinkStringHtml(expressionText);
 			var ListingresultStr = makeListingStringHtml(expressionText);										
 			var BoldresultStr = makeBoldStringHtml(expressionText);
-			var CoderesultStr=makeCodeStringHtml(expressionText);*/
-			var resultStr = makeBoldStringHtml(expressionText);
-			document.getElementById("RESULTTEXT").innerText=resultStr;
-			document.getElementById("RESULTHTML").innerHTML=resultStr;
+			var CoderesultStr=makeCodeStringHtml(expressionText);
+			var resultStr = makeBoldStringHtml(expressionText);*/
+			var BoldresultStr = makeBoldStringHtml(expressionText);
+			document.getElementById("RESULTTEXT").innerText= BoldresultStr;
+			document.getElementById("RESULTHTML").innerHTML= BoldresultStr;
              //document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                // document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                
@@ -2117,20 +2122,52 @@ redo = document.getElementById('redo');
     var y=document.getElementById("RESULTHTML");
    x.innerHTML=y.innerHTML;
                         }  
+						/*var AggregateSelection = function(sourceArray){
+		var indexesToRemove = new Set();
+		for (var i = 0; i < sourceArray.length; i++){
+		for (var j = 0; j < sourceArray.length; j++){
+		if (i==j || Array.from(indexesToRemove).indexOf(i)>-1 || Array.from(indexesToRemove).indexOf(j)>-1 ) continue;
+		var lastIndex1 = sourceArray[i].startPosition+sourceArray[i].size;
+		var lastIndex2 = sourceArray[j].startPosition+sourceArray[j].size;
+		if (sourceArray[i].startPosition>=sourceArray[j].startPosition && sourceArray[i].startPosition<=lastIndex2){
+				sourceArray[i].startPosition = sourceArray[j].startPosition;
+				var maxLastIndex = (lastIndex1 > lastIndex2) ? lastIndex1 : lastIndex2;
+				sourceArray[i].size = maxLastIndex - sourceArray[i].startPosition;
+				indexesToRemove.add(j);
+		}
+        if (sourceArray[i].startPosition>=sourceArray[j].startPosition && sourceArray[i].startPosition>=lastIndex2){
+                sourceArray[i].size = lastIndex1 - sourceArray[i].startPosition;
+                sourceArray[j].size = lastIndex2 - sourceArray[j].startPosition;
+																													}		
+													}
+													}
+		for (var i = sourceArray.length; i-- ; i >0 )
+			if (Array.from(indexesToRemove).indexOf(i)>-1) {
+				sourceArray.splice(i, 1);
+															}
+	 
+		   
+												}*/
     $( document ).ready(function() {
     					
-    
+ //  11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 
          function ChangeSelection(sourceStr){
                             alert("ChangeSelection");
- 
+		
                  selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
                expressionText =( document.getElementById("text").value );
 			    document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 for(var i = 0;i < addelements.length; i++){
+	for(var j = 0;j < sourceStr.length; j++){
+		lastIndex=sourceStr.startPosition+sourceStr.length;
+		
             document.onkeypress = function(e) {
     if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){  
 i++;
-   
+if(addelements[i].startPosition<lastIndex){
+	lastIndex=lastIndex+addelements.length;
+	lastIndex1=addelements[i].startPosition;
+}
     sourceStr.length=sourceStr.length-selectiontxt.length+addelements.length;
  // event.type ?????? ???? keypress
  
@@ -2141,13 +2178,14 @@ i++;
 											}
            
 											}
-										}
+										
  resultStr=makeTxtStringHtml(expressionText);
  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
 resultStr = makeBoldStringHtml(expressionText);
  console.log('resultStr:'+makeBoldStringHtml(expressionText));   
 													}  
-	
+													}
+													}
 				
     function caretPos(textarea)
 {
