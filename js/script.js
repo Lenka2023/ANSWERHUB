@@ -2191,6 +2191,7 @@ resultStr = makeBoldStringHtml(expressionText);
 													}  
 													}
 													}
+														}
 				
     function caretPos(textarea)
 {
