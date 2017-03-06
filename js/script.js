@@ -2151,7 +2151,7 @@ redo = document.getElementById('redo');
     $( document ).ready(function() {
     					
  //  11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 
-         function ChangeSelection(sourceStr){
+         function ChangeSelection(sourceStr,sourceArray ){
                             alert("ChangeSelection");
 		
                  selectiontxt = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
@@ -2159,14 +2159,18 @@ redo = document.getElementById('redo');
 			    document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 for(var i = 0;i < addelements.length; i++){
 	for(var j = 0;j < sourceStr.length; j++){
-		lastIndex=sourceStr.startPosition+sourceStr.length;
+		for (var i = 0; i < sourceArray.length; k++){
+		for (var j = 0; j < sourceArray.length; j++){
+		var lastIndex1 = sourceArray[k].startPosition+sourceArray[k].size;
+		var lastIndex2 = sourceArray[j].startPosition+sourceArray[j].size;
 		
             document.onkeypress = function(e) {
     if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){  
 i++;
-if(addelements[i].startPosition<lastIndex){
-	lastIndex=lastIndex+addelements.length;
-	lastIndex1=addelements[i].startPosition;
+if(addelements[i].startPosition<lastIndex1){
+	lastIndex1=lastIndex1+addelements[i].size;
+	lastIndex2=addelements[i].startPosition;
+	sourceArray[j].startPosition=lastIndex2+addelements[i].size;
 }
     sourceStr.length=sourceStr.length-selectiontxt.length+addelements.length;
  // event.type ?????? ???? keypress
@@ -2182,7 +2186,8 @@ if(addelements[i].startPosition<lastIndex){
  resultStr=makeTxtStringHtml(expressionText);
  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
 resultStr = makeBoldStringHtml(expressionText);
- console.log('resultStr:'+makeBoldStringHtml(expressionText));   
+ console.log('resultStr:'+makeBoldStringHtml(expressionText));  
+													}
 													}  
 													}
 													}
