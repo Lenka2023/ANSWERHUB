@@ -581,7 +581,7 @@ for(var i = 0, text; i <= x;i++){
 			return resultStr;
 														}*/
 		
-	  function makeBoldStringHtml(sourceStr){
+	/*  function makeBoldStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    expressionText =( document.getElementById("text").value );
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -599,7 +599,38 @@ for(var i = 0, text; i <= x;i++){
 					//currentSymbolIndex=	sourceArray;											
 														}
            	return BoldresultStr;
-											}
+											}*/
+	function makeBoldStringHtml(sourceStr){
+     textarea=document.getElementById("text");
+      expressionText =( document.getElementById("text").value );
+    document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+        alert(" makeBoldStringHtml");
+            var currentSymbolIndex = 0;
+   var BoldresultStr =" ";
+            var usedSymbols = 0;
+     for (var i = 0; i < sourceStr.length; i++){
+            for (var k = 0; k < boldIndexes.length; k++){
+     expressionText =( document.getElementById("text").value );
+			
+	  /*if (sourceStr[i]<boldIndexes[k]){
+     BoldresultStr += sourceStr[i];
+	  }*/
+                if (this.sourceStr[i]==boldIndexes[k]){
+     // sourceStr[i]='<span class="strong">'+sourceStr[i]+'</span>';
+	 BoldresultStr +='<span class="strong">'+boldIndexes[k]+'</span>';
+    }
+	/*if (i>k){
+     // sourceStr[i]='<span class="strong">'+sourceStr[i]+'</span>';
+	 BoldresultStr +=sourceStr[i];
+    }*/
+	//BoldresultStr +=sourceStr[i]+'<span class="strong">'+sourceStr[k]+'</span>'+sourceStr[i+k];
+	
+         
+                 }
+              }
+	
+            return BoldresultStr;
+           }
 		 
 function makeMain_ListStringHtml(sourceStr){
 	PurgeRedoSequence();
