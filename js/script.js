@@ -616,11 +616,9 @@ for(var i = 0, text; i <= x;i++){
 		expressionText =( document.getElementById("text").value );	 
 
 				if ((i>=boldIndexes[k].startPosition)&&(i<boldIndexes[k].startPosition+boldIndexes[k].size)){
-		//expressionText[i]='<span class="strong">'+expressionText[i]+'</span>';
-		/*BoldresultStr += '<span class="strong">';*/
+		
 		BoldresultStr+='<span class="strong">'+sourceStr[i]+'</span>';
-		//BoldresultStr +='</span>';
-				}
+						}
 		for (var j = 0; j < boldIndexes[k].startPosition; j++){																									
 				if(i<boldIndexes[k].startPosition){
 
@@ -634,18 +632,18 @@ for (var l = boldIndexes[k].startPosition+boldIndexes[k].size; l <sourceStr.leng
 				if (i>=boldIndexes[k].startPosition+boldIndexes[k].size){
 		BoldresultStr+=sourceStr[l];
 																		}
+																						}
 
-
-if(sourceStr[l]==sourceStr[j]){
+/*if(sourceStr[l]==sourceStr[j]){
 	//for (var j = sourceStr.length; j-- ; j >=boldIndexes[k].startPosition+boldIndexes[k].size ){
 			delete sourceStr[l];
 				//sourceStr.splice(j, 1);
 																								//}
-								}
+								}*/
 
 																}  
 																}
-																}
+																
 																
 																
 		
