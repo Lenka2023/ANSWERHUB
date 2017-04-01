@@ -611,8 +611,8 @@ for(var i = 0, text; i <= x;i++){
 			for (var i = 0; i < sourceStr.length; i++){
 			
 			for (var k = 0; k < boldIndexes.length; k++){
-				for (var j = 0; j < boldIndexes[k].startPosition; j++){
-					for (var l = (boldIndexes[k].startPosition+boldIndexes[k].size)+1; l < sourceStr.length; l++){
+				
+					
 		expressionText =( document.getElementById("text").value );	 
 
 				if ((i>=boldIndexes[k].startPosition)&&(i<boldIndexes[k].startPosition+boldIndexes[k].size)){
@@ -620,24 +620,25 @@ for(var i = 0, text; i <= x;i++){
 		/*BoldresultStr += '<span class="strong">';*/
 		BoldresultStr+='<span class="strong">'+sourceStr[i]+'</span>';
 		//BoldresultStr +='</span>';
-																											}
-				/*if(i<boldIndexes[k].startPosition){
+				}
+		for (var j = 0; j < boldIndexes[k].startPosition; j++){																									
+				if(i<boldIndexes[k].startPosition){
 
 		BoldresultStr+= sourceStr[j];
-													}*/
+													}
+				}
 
 
 
-
-
+for (var l = boldIndexes[k].startPosition+boldIndexes[k].size; l <sourceStr.length; l++){
 				if (i>=boldIndexes[k].startPosition+boldIndexes[k].size){
 		BoldresultStr+=sourceStr[l];
 																		}
 
 
-//if(sourceStr[l]==sourceStr[j]){
+if(sourceStr[l]==sourceStr[j]){
 	//for (var j = sourceStr.length; j-- ; j >=boldIndexes[k].startPosition+boldIndexes[k].size ){
-			//delete sourceStr[l];
+			delete sourceStr[l];
 				//sourceStr.splice(j, 1);
 																								//}
 								}
@@ -645,6 +646,7 @@ for(var i = 0, text; i <= x;i++){
 																}  
 																}
 																}
+																
 																
 		
 		return BoldresultStr;
