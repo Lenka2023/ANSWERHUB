@@ -605,45 +605,39 @@ for(var i = 0, text; i <= x;i++){
 		expressionText =( document.getElementById("text").value );
 		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 		alert(" makeBoldStringHtml");
+		var flag;
 		var currentSymbolIndex = 0;
 		var BoldresultStr =" ";
 		var usedSymbols = 0;
 			for (var i = 0; i < sourceStr.length; i++){
-			
+			flag=false;
 			for (var k = 0; k < boldIndexes.length; k++){
 				
 					
 		expressionText =( document.getElementById("text").value );	 
+		while((i>=boldIndexes[k].startPosition)&&(i<boldIndexes[k].startPosition+boldIndexes[k].size)){
+				 flag=true;	
+				 break;
+				  /*console.log('BoldIndexes:');
+        for (var i =0; i < boldIndexes.length; i++){  
+            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
+			
+						}*/
+						//i++;
+															}
+																										}	
+																																		
+				if(flag==true){
 
-				if ((i>=boldIndexes[k].startPosition)&&(i<boldIndexes[k].startPosition+boldIndexes[k].size)){
-		
-		BoldresultStr+='<span class="strong">'+sourceStr[i]+'</span>';
-						}
-		for (var j = 0; j < boldIndexes[k].startPosition; j++){																									
-				if(i<boldIndexes[k].startPosition){
-
-		BoldresultStr+= sourceStr[j];
+					BoldresultStr+= '<span class="strong">'+sourceStr[i]+'</span>';
 													}
-				}
+													else{
+														BoldresultStr+='<span>'+sourceStr[i]+'</span>';
+														}
 
 
-
-for (var l = boldIndexes[k].startPosition+boldIndexes[k].size; l <sourceStr.length; l++){
-				if (i>=boldIndexes[k].startPosition+boldIndexes[k].size){
-		BoldresultStr+=sourceStr[l];
-																		}
-																						}
-
-/*if(sourceStr[l]==sourceStr[j]){
-	//for (var j = sourceStr.length; j-- ; j >=boldIndexes[k].startPosition+boldIndexes[k].size ){
-			delete sourceStr[l];
-				//sourceStr.splice(j, 1);
-																								//}
-								}*/
-
-																}  
+																 
 																}
-																
 																
 																
 		
