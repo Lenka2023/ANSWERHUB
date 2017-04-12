@@ -468,7 +468,34 @@ for(var i=0;i<n;i++){
                 document.getElementById("RESULTTEXT").innerText=/*BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+*/Disc_ListresultStr/*+TableresultStr+SmalliconresultStr+Main_ListresultStr+Hot_TipresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr+Square_ListresultStr+ImageresultStr*/;
                 document.getElementById("RESULTHTML").innerHTML=/*BoldresultStr+CoderesultStr+ListingresultStrLinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+*/Disc_ListresultStr/*+TableresultStr+SmalliconresultStr+Main_ListresultStr+Hot_TipresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
-            }														
+            }	
+/*	function makeDisc_ListStringHtml(sourceStr){
+		textarea=document.getElementById("text");
+		expressionText =( document.getElementById("text").value );
+		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+		alert(" makeDisc_ListStringHtml");
+		var flag;
+		var BoldresultStr =" ";
+					for (var i = 0; i < sourceStr.length; i++){
+			flag=false;
+			for (var k = 0; k < boldIndexes.length; k++){
+				
+					
+		expressionText =( document.getElementById("text").value );	 
+		while((i>=boldIndexes[k].startPosition)&&(i<boldIndexes[k].startPosition+boldIndexes[k].size)){
+				 flag=true;	
+				 break;
+																										}
+															}	
+							if(flag==true){
+					BoldresultStr+= '<span class="strong">'+sourceStr[i]+'</span>';
+													}
+													else{
+														BoldresultStr+='<span>'+sourceStr[i]+'</span>';
+														}
+															}
+		return BoldresultStr;
+												}*/		
 function makeDisc_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		   var expression = getSelectiontextarea( document.getElementById("text") );
@@ -552,13 +579,10 @@ for(var i = 0, text; i <= x;i++){
 		    expressionText =( document.getElementById("text").value ); 
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeBoldStringHtml");
-		//this.sourceStr=expressionText;
-            var currentSymbolIndex = 0;
-			var resultStr =" ";
-            var usedSymbols = 0;
-			for (var j = 0; j < sourceStr.length; j++){
-            for (var i = 0; i < boldIndexes.length; i++){
-				if(i==j){
+		   	var resultStr =" ";
+           	for (var j = 0; j < sourceStr.length; j++){
+				for (var i = 0; i < boldIndexes.length; i++){
+					if(i==j){
 					
                 if (currentSymbolIndex<=boldIndexes[i].startPosition){
 					resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
@@ -600,13 +624,78 @@ for(var i = 0, text; i <= x;i++){
 														}
            	return BoldresultStr;
 											}*/
+											
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------											
+					var Stack= []; 
+					symbolIndex=[];
+					function getSymbolTypes(symbolIndex){
+						for (var i = 0; i < symbolIndex.length; i++){
+							for (var k = 0; k < boldIndexes.length; k++){
+								for (var c = 0; c < codeIndexes.length; c++){
+								if(i==k){
+									symbolIndex[i]=boldIndexes[k];
+										}
+																		}
+								if(i==c){
+									symbolIndex[i]=codeIndexes[c];
+										}
+																			}
+																	}
+return symbolIndex;
+														}
+for(s=0; s<Stack.length;s++){					
+if((s!==boldIndexes)&&(s!==codeIndexes)){					
+switch (symbolIndex){
+	 case boldIndexes:
+	 BoldresultStr +='<span class="strong">'+symbolIndex[i];
+	 break;
+	 case codeIndexes:
+	 CoderesultStr+='</span><div class="commands"><pre>'+symbolIndex[i];
+	 break;
+	 default:
+    alert( 'Я таких значений не знаю' );
+}
+}
+}
+Stack.push(symbolIndex);
+Stack.push(boldIndexes);
+Stack.push(codeIndexes);
+for (var i = 0; i < symbolIndex.length; i++){
+if(i!==k){
+	for(s=0; s<Stack.length;s++){
+		if(s==boldIndexes){
+			BoldresultStr +='</span>'
+			delete s;
+		}
+	}
+} 
+if(i!==c){
+	for(s=0; s<Stack.length;s++){
+		if(s==codeIndexes){
+		  CoderesultStr+='</pre></div>';
+			delete s;
+		}
+	}
+}
+	switch (i){
+	 case boldIndexes.length:
+	 BoldresultStr +='</span>';	
+	 break;
+	 case codeIndexes.length:
+	 CoderesultStr+='</pre></div>';
+	 break;
+	 default:
+    alert( 'Я таких значений не знаю' );
+}
+}
+getSymbolTypes(symbolIndex)
+
 		function makeBoldStringHtml(sourceStr){
 		textarea=document.getElementById("text");
 		expressionText =( document.getElementById("text").value );
 		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 		alert(" makeBoldStringHtml");
 		var flag;
-		var currentSymbolIndex = 0;
 		var BoldresultStr =" ";
 		var usedSymbols = 0;
 			for (var i = 0; i < sourceStr.length; i++){
@@ -615,32 +704,18 @@ for(var i = 0, text; i <= x;i++){
 				
 					
 		expressionText =( document.getElementById("text").value );	 
-		while((i>=boldIndexes[k].startPosition)&&(i<boldIndexes[k].startPosition+boldIndexes[k].size)){
+			while((i>=boldIndexes[k].startPosition)&&(i<boldIndexes[k].startPosition+boldIndexes[k].size)){
 				 flag=true;	
 				 break;
-				  /*console.log('BoldIndexes:');
-        for (var i =0; i < boldIndexes.length; i++){  
-            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
-			
-						}*/
-						//i++;
-															}
-																										}	
-																																		
-				if(flag==true){
-
-					BoldresultStr+= '<span class="strong">'+sourceStr[i]+'</span>';
-													}
+																											}
+															}	
+							if(flag==true){
+								BoldresultStr+= '<span class="strong">'+sourceStr[i]+'</span>';
+											}
 													else{
 														BoldresultStr+='<span>'+sourceStr[i]+'</span>';
 														}
-
-
-																 
-																}
-																
-																
-		
+															}
 		return BoldresultStr;
 												}
 				 
@@ -839,7 +914,37 @@ else{
 
             return CBTresultStr;
 													}
-       function makeCodeStringHtml(sourceStr){
+	
+	function makeCodeStringHtml(sourceStr){
+		textarea=document.getElementById("text");
+		expressionText =( document.getElementById("text").value );
+		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+		alert(" makeCodeStringHtml");
+		var flag;
+		var CoderesultStr =" ";
+					for (var i = 0; i < sourceStr.length; i++){
+			flag=false;
+			for (var k = 0; k < codeIndexes.length; k++){
+				for (var b = 0; b < boldIndexes.length; b++){
+				
+					
+		expressionText =( document.getElementById("text").value );	 
+			while((i>=codeIndexes[k].startPosition)&&(i<codeIndexes[k].startPosition+codeIndexes[k].size)){
+				 flag=true;	
+				 break;
+																											}
+															}	
+							if(flag==true){
+								CoderesultStr+='</span><div class="commands"><pre>'+sourceStr[i]+'</pre></div>';
+											}
+													else if(i==b){
+														CoderesultStr+='<span class="strong">'+sourceStr[i]+'</span>';
+														}
+															}
+															}
+		return CoderesultStr;
+												}
+       /*function makeCodeStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -854,7 +959,7 @@ else{
 																	}
 														}
            	return CoderesultStr;
-												}
+												}*/
 			function makeTxtStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
