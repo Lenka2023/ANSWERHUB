@@ -629,37 +629,52 @@ for(var i = 0, text; i <= x;i++){
 					var Stack= []; 
 					symbolIndex=[];
 					function getSymbolTypes(symbolIndex){
+						alert("getSymbolTypes")
 						for (var i = 0; i < symbolIndex.length; i++){
-							for (var k = 0; k < boldIndexes.length; k++){
-								for (var c = 0; c < codeIndexes.length; c++){
+							
+								
+									for (var k = 0; k < boldIndexes.length; k++){
 								if(i==k){
 									symbolIndex[i]=boldIndexes[k];
 										}
-																		}
+								for (var c = 0; c < codeIndexes.length; c++){										
 								if(i==c){
 									symbolIndex[i]=codeIndexes[c];
 										}
+										if((i!==k)&&(i!==c)){
+										symbolIndex[i]=symbolIndex[i];	
 																			}
 																	}
+						}
+						}
 return symbolIndex;
-														}
-for(s=0; s<Stack.length;s++){					
+					}
+for (var i = 0; i < symbolIndex.length; i++){														
+for(var s=0; s<Stack.length;s++){					
 if((s!==boldIndexes)&&(s!==codeIndexes)){					
 switch (symbolIndex){
 	 case boldIndexes:
 	 BoldresultStr +='<span class="strong">'+symbolIndex[i];
+	 Stack.push(boldIndexes);
 	 break;
 	 case codeIndexes:
 	 CoderesultStr+='</span><div class="commands"><pre>'+symbolIndex[i];
+	 Stack.push(codeIndexes);
+	 break;
+	  case symbolIndex:
+	 BoldresultStr +='<span>'+symbolIndex[i]+'<span>';
+	 CoderesultStr +='<span>'+symbolIndex[i]+'<span>';
 	 break;
 	 default:
+	  //BoldresultStr +='<span>'
     alert( 'Я таких значений не знаю' );
 }
 }
 }
-Stack.push(symbolIndex);
-Stack.push(boldIndexes);
-Stack.push(codeIndexes);
+}
+//Stack.push(symbolIndex);
+//Stack.push(boldIndexes);
+//Stack.push(codeIndexes);
 for (var i = 0; i < symbolIndex.length; i++){
 if(i!==k){
 	for(s=0; s<Stack.length;s++){
@@ -688,9 +703,10 @@ if(i!==c){
     alert( 'Я таких значений не знаю' );
 }
 }
-getSymbolTypes(symbolIndex)
+//getSymbolTypes(symbolIndex)
 
 		function makeBoldStringHtml(sourceStr){
+			 getSymbolTypes(symbolIndex);
 		textarea=document.getElementById("text");
 		expressionText =( document.getElementById("text").value );
 		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -914,8 +930,37 @@ else{
 
             return CBTresultStr;
 													}
-	
 	function makeCodeStringHtml(sourceStr){
+		 getSymbolTypes(symbolIndex);
+		textarea=document.getElementById("text");
+		expressionText =( document.getElementById("text").value );
+		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+		alert(" makeCodeStringHtml");
+		var flag;
+		var CoderesultStr =" ";
+		var usedSymbols = 0;
+			for (var i = 0; i < sourceStr.length; i++){
+			flag=false;
+			for (var c = 0; c < codeIndexes.length; c++){
+				
+					
+		expressionText =( document.getElementById("text").value );	 
+while((i>=codeIndexes[c].startPosition)&&(i<codeIndexes[c].startPosition+codeIndexes[c].size)){				
+			flag=true;	
+				 break;
+																											}
+															}	
+							if(flag==true){
+								CoderesultStr+='</span><div class="commands"><pre>'+sourceStr[i]+'</pre></div>';
+											}
+												else{
+														CoderesultStr+='<span>'+sourceStr[i]+'</span>';
+														}
+															}
+		return CoderesultStr;
+												}
+				 
+	/*function makeCodeStringHtml(sourceStr){
 		textarea=document.getElementById("text");
 		expressionText =( document.getElementById("text").value );
 		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -943,7 +988,7 @@ else{
 															}
 															}
 		return CoderesultStr;
-												}
+												}*/
        /*function makeCodeStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
