@@ -636,6 +636,7 @@ for(var i = 0, text; i <= x;i++){
 									for (var k = 0; k < boldIndexes.length; k++){
 								if(i==k){
 									symbolIndex[i]=boldIndexes[k];
+									console.log( ' boldIndexes:' +  boldIndexes[k] );
 										}
 								for (var c = 0; c < codeIndexes.length; c++){										
 								if(i==c){
@@ -649,21 +650,30 @@ for(var i = 0, text; i <= x;i++){
 						}
 return symbolIndex;
 					}
-for (var i = 0; i < symbolIndex.length; i++){														
+
+//getSymbolTypes(symbolIndex)
+
+		function makeBoldStringHtml(sourceStr){
+			 getSymbolTypes(symbolIndex);
+		textarea=document.getElementById("text");
+		expressionText =( document.getElementById("text").value );
+		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+		alert(" makeBoldStringHtml");
+		for (var i = 0; i < symbolIndex.length; i++){														
 for(var s=0; s<Stack.length;s++){					
 if((s!==boldIndexes)&&(s!==codeIndexes)){					
 switch (symbolIndex){
 	 case boldIndexes:
-	 BoldresultStr +='<span class="strong">'+symbolIndex[i];
+	 resultStr +='<span class="strong">'+symbolIndex[i];
 	 Stack.push(boldIndexes);
 	 break;
 	 case codeIndexes:
-	 CoderesultStr+='</span><div class="commands"><pre>'+symbolIndex[i];
+	 resultStr+='</span><div class="commands"><pre>'+symbolIndex[i];
 	 Stack.push(codeIndexes);
 	 break;
 	  case symbolIndex:
-	 BoldresultStr +='<span>'+symbolIndex[i]+'<span>';
-	 CoderesultStr +='<span>'+symbolIndex[i]+'<span>';
+	 resultStr +='<span>'+symbolIndex[i]+'<span>';
+	 resultStr +='<span>'+symbolIndex[i]+'<span>';
 	 break;
 	 default:
 	  //BoldresultStr +='<span>'
@@ -679,39 +689,37 @@ for (var i = 0; i < symbolIndex.length; i++){
 if(i!==k){
 	for(s=0; s<Stack.length;s++){
 		if(s==boldIndexes){
-			BoldresultStr +='</span>'
-			delete s;
-		}
+			resultStr +='</span>';
+			var indexboldIndexes = Stack.indexOf(boldIndexes);
+			if (indexboldIndexes > -1) {
+    Stack.splice(indexboldIndexes, 1);
+}
+			}
 	}
 } 
 if(i!==c){
 	for(s=0; s<Stack.length;s++){
 		if(s==codeIndexes){
-		  CoderesultStr+='</pre></div>';
-			delete s;
+		  resultStr+='</pre></div>';
+			var indexcodeIndexes = Stack.indexOf(codeIndexes);
+			if (indexcodeIndexes > -1) {
+    Stack.splice(indexcodeIndexes, 1);
+}
 		}
 	}
 }
 	switch (i){
 	 case boldIndexes.length:
-	 BoldresultStr +='</span>';	
+	 resultStr +='</span>';	
 	 break;
 	 case codeIndexes.length:
-	 CoderesultStr+='</pre></div>';
+	 resultStr+='</pre></div>';
 	 break;
 	 default:
     alert( 'Я таких значений не знаю' );
 }
 }
-//getSymbolTypes(symbolIndex)
-
-		function makeBoldStringHtml(sourceStr){
-			 getSymbolTypes(symbolIndex);
-		textarea=document.getElementById("text");
-		expressionText =( document.getElementById("text").value );
-		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		alert(" makeBoldStringHtml");
-		var flag;
+		/*var flag;
 		var BoldresultStr =" ";
 		var usedSymbols = 0;
 			for (var i = 0; i < sourceStr.length; i++){
@@ -732,7 +740,7 @@ if(i!==c){
 														BoldresultStr+='<span>'+sourceStr[i]+'</span>';
 														}
 															}
-		return BoldresultStr;
+		return BoldresultStr;*/
 												}
 				 
 function makeMain_ListStringHtml(sourceStr){
@@ -936,7 +944,117 @@ else{
 		expressionText =( document.getElementById("text").value );
 		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 		alert(" makeCodeStringHtml");
-		var flag;
+		for (var i = 0; i < sourceStr.length; i++){														
+	//for(var s=0; s<Stack.length;s++){					
+	//if((s!==boldIndexes)&&(s!==codeIndexes)&&(s!==symbolIndex)){					
+	switch(sourceStr){
+	 case boldIndexes:
+	 for (var k = 0; k < boldIndexes.length; k++){
+	 resultStr +='<span class="strong">'+ boldIndexes[k];
+	 
+	  Stack.push(boldIndexes[k]);
+	  }
+	  for(var s=0; s<Stack.length;s++){
+ console.log( 'Stack:' + Stack[s] );
+}
+	  console.log( 'resultStr:' + resultStr );
+	  break;
+	 case codeIndexes:
+	 for (var c= 0; c < codeIndexes.length; c++){
+	 resultStr+='</span><div class="commands"><pre>'+codeIndexes[c];
+	  console.log( 'resultStr:' + resultStr );
+	 }
+	 Stack.push(codeIndexes);
+	 for(var s=0; s<Stack.length;s++){
+ console.log( 'Stack:' + Stack[s] );
+}
+	 break;
+	  case symbolIndex:
+	  for (var n = 0; n < symbolIndex.length; n++){
+	 resultStr +='<span>'+symbolIndex[n];
+	  console.log( 'resultStr:' + resultStr );
+	  }
+	 Stack.push(symbolIndex);
+	 for(var s=0; s<Stack.length;s++){
+ console.log( 'Stack:' + Stack[s] );
+}
+	 break;
+	 default:
+	  //BoldresultStr +='<span>'
+    alert( 'Я таких значений не знаю' );
+//}
+//}
+}
+}
+for(var s=0; s<Stack.length;s++){
+ console.log( 'Stack:' + Stack[s] );
+}
+//Stack.push(symbolIndex);
+//Stack.push(boldIndexes);
+//Stack.push(codeIndexes);
+for (var i = 0; i < sourceStr.length; i++){
+	for (var k = 0; k < boldIndexes.length; k++){
+if(i!==k){
+	for(s=0; s<Stack.length;s++){
+		if(s==boldIndexes){
+			resultStr +='</span>'
+			var indexboldIndexes = Stack.indexOf(boldIndexes);
+			if (indexboldIndexes > -1) {
+    Stack.splice(indexboldIndexes, 1);
+}
+		
+		}
+	}
+} 
+	}
+}
+for (var i = 0; i < sourceStr.length; i++){
+	for (var n = 0; n < symbolIndex.length; n++){
+if(i!==n){
+	for(s=0; s<Stack.length;s++){
+		if(s==boldIndexes){
+			resultStr +='</span>'
+			var indexsymbolIndex= Stack.indexOf(symbolIndex);
+			if (indexsymbolIndex > -1) {
+    Stack.splice(indexsymbolIndex, 1);
+}
+		
+		}
+	}
+} 
+	}
+}
+	for (var i = 0; i < sourceStr.length; i++){
+	for (var c= 0; c < codeIndexes.length; c++){
+if(i!==c){
+	for(s=0; s<Stack.length;s++){
+		if(s==codeIndexes){
+		  resultStr+='</pre></div>';
+			var indexcodeIndexes = Stack.indexOf(codeIndexes);
+			if (indexcodeIndexes > -1) {
+    Stack.splice(indexcodeIndexes, 1);
+}
+		}
+	}
+}
+	}
+	switch(i){
+		case symbolIndex.length:
+	 resultStr +='</span>';	
+	  console.log( 'resultStr:' + resultStr );
+	 break;
+	 case boldIndexes.length:
+	 resultStr +='</span>';	
+	  console.log( 'resultStr:' + resultStr );
+	 break;
+	 case codeIndexes.length:
+	 resultStr+='</pre></div>';
+	 break;
+	 default:
+    alert( 'Я таких значений не знаю' );
+}
+}
+		/*var flag;
 		var CoderesultStr =" ";
 		var usedSymbols = 0;
 			for (var i = 0; i < sourceStr.length; i++){
@@ -956,8 +1074,8 @@ while((i>=codeIndexes[c].startPosition)&&(i<codeIndexes[c].startPosition+codeInd
 												else{
 														CoderesultStr+='<span>'+sourceStr[i]+'</span>';
 														}
-															}
-		return CoderesultStr;
+															}*/
+		return resultStr;
 												}
 				 
 	/*function makeCodeStringHtml(sourceStr){
@@ -1155,10 +1273,10 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			var LinkresultStr = makeLinkStringHtml(expressionText);
 			var ListingresultStr = makeListingStringHtml(expressionText);										
 			var BoldresultStr = makeBoldStringHtml(expressionText);*/
-			var CoderesultStr=makeCodeStringHtml(expressionText);
+			var resultStr=makeCodeStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=CoderesultStr/*Hot_TipresultStr+BoldresultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                document.getElementById("RESULTHTML").innerHTML=CoderesultStr/*Hot_TipresultStr+BoldresultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTTEXT").innerText=resultStr/*Hot_TipresultStr+BoldresultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+                document.getElementById("RESULTHTML").innerHTML=resultStr/*Hot_TipresultStr+BoldresultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                 Make();
 			}
 						
@@ -2165,9 +2283,9 @@ redo = document.getElementById('redo');
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeCodeStringHtml(expressionText);
 			var resultStr = makeBoldStringHtml(expressionText);*/
-			var BoldresultStr = makeBoldStringHtml(expressionText);
-			document.getElementById("RESULTTEXT").innerText= BoldresultStr;
-			document.getElementById("RESULTHTML").innerHTML= BoldresultStr;
+			var resultStr=makeCodeStringHtml(expressionText);
+			document.getElementById("RESULTTEXT").innerText= resultStr;
+			document.getElementById("RESULTHTML").innerHTML= resultStr;
              //document.getElementById("RESULTTEXT").innerText=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                // document.getElementById("RESULTHTML").innerHTML=Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
                
