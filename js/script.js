@@ -626,32 +626,27 @@ for(var i = 0, text; i <= x;i++){
 											}*/
 											
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------											
-					var Stack= []; 
-					symbolIndex=[];
+					
 					function getSymbolTypes(symbolIndex){
 						alert("getSymbolTypes")
-						for (var i = 0; i < symbolIndex.length; i++){
-							
-								
-									for (var k = 0; k < boldIndexes.length; k++){
-								if(i==k){
-									symbolIndex[i]=boldIndexes[k];
-									console.log( ' boldIndexes:' +  boldIndexes[k] );
-										}
-								for (var c = 0; c < codeIndexes.length; c++){										
-								if(i==c){
-									symbolIndex[i]=codeIndexes[c];
-										}
-										if((i!==k)&&(i!==c)){
-										symbolIndex[i]=symbolIndex[i];	
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
 																			}
-																	}
 						}
+								for (var c = 0; c < codeIndexes.length; c++){										
+								if((symbolIndex>=codeIndexes[c].startPosition)&&(symbolIndex<codeIndexes[c].startPosition+codeIndexes[c].size)){
+									symbolIndex='Code';
+										}
+								
+										
 						}
-return symbolIndex;
+						 if((symbolIndex!='Bold')&&(symbolIndex!='Code')){
+											symbolIndex='Str';
+																											}
+	 console.log( 'symbolIndex:' +symbolIndex );					
+return null;
 					}
-
-//getSymbolTypes(symbolIndex)
 
 		function makeBoldStringHtml(sourceStr){
 			 getSymbolTypes(symbolIndex);
@@ -939,109 +934,110 @@ else{
             return CBTresultStr;
 													}
 	function makeCodeStringHtml(sourceStr){
-		 getSymbolTypes(symbolIndex);
+		var Stack= []; 
+		for (var i = 0; i < sourceStr.length; i++){														
+	
+		 getSymbolTypes(i);
 		textarea=document.getElementById("text");
 		expressionText =( document.getElementById("text").value );
 		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 		alert(" makeCodeStringHtml");
-		for (var i = 0; i < sourceStr.length; i++){														
-	//for(var s=0; s<Stack.length;s++){					
-	//if((s!==boldIndexes)&&(s!==codeIndexes)&&(s!==symbolIndex)){					
-	switch(sourceStr){
-	 case boldIndexes:
-	 for (var k = 0; k < boldIndexes.length; k++){
-	 resultStr +='<span class="strong">'+ boldIndexes[k];
-	 
-	  Stack.push(boldIndexes[k]);
-	  }
-	  for(var s=0; s<Stack.length;s++){
- console.log( 'Stack:' + Stack[s] );
-}
-	  console.log( 'resultStr:' + resultStr );
+		
+		 //console.log( 'top:' +top );
+	for(var s=0; s<Stack.length;s++){						
+	if(((Stack[s]!='Bold'))||(Stack[s]!='Code')||(Stack[s]!='Str')){
+		alert("1");
+	switch(i){
+		
+		
+	 case 'Bold':
+		 resultStr +='<span class="strong">'+ sourceStr[i];
+		  console.log( 'resultStr:' + resultStr );
+	 	  Stack.push( 'Bold');
+	  	  console.log( 'Stack:' + Stack[s] );
+	  
 	  break;
-	 case codeIndexes:
-	 for (var c= 0; c < codeIndexes.length; c++){
-	 resultStr+='</span><div class="commands"><pre>'+codeIndexes[c];
+	 case 'Code':
+	 	 resultStr+='</span><div class="commands"><pre>'+sourceStr[i];
 	  console.log( 'resultStr:' + resultStr );
-	 }
-	 Stack.push(codeIndexes);
-	 for(var s=0; s<Stack.length;s++){
- console.log( 'Stack:' + Stack[s] );
-}
+	  
+	 	 Stack.push('Code');
+	  console.log( 'Stack:' + Stack[s] );
+
 	 break;
-	  case symbolIndex:
-	  for (var n = 0; n < symbolIndex.length; n++){
-	 resultStr +='<span>'+symbolIndex[n];
+	 	  
+	 	 default:
+	  resultStr +='<span>'+sourceStr[i];
 	  console.log( 'resultStr:' + resultStr );
-	  }
-	 Stack.push(symbolIndex);
-	 for(var s=0; s<Stack.length;s++){
+	 
+	  Stack.push('Str');
+	  console.log( 'Stack:' + Stack[s] );
+}
+}
+	
+
+
  console.log( 'Stack:' + Stack[s] );
-}
-	 break;
-	 default:
-	  //BoldresultStr +='<span>'
-    alert( 'Я таких значений не знаю' );
-//}
-//}
-}
-}
-for(var s=0; s<Stack.length;s++){
- console.log( 'Stack:' + Stack[s] );
-}
-//Stack.push(symbolIndex);
-//Stack.push(boldIndexes);
-//Stack.push(codeIndexes);
-for (var i = 0; i < sourceStr.length; i++){
-	for (var k = 0; k < boldIndexes.length; k++){
-if(i!==k){
-	for(s=0; s<Stack.length;s++){
-		if(s==boldIndexes){
-			resultStr +='</span>'
-			var indexboldIndexes = Stack.indexOf(boldIndexes);
+
+
+	//for (var k = 0; k < boldIndexes.length; k++){
+if(i!=='Bold'){
+	//for(s=0; s<Stack.length;s++){
+		if(top=='Bold'){
+			resultStr +='</span>';
+			Stack.pop();
+			/*var indexboldIndexes = Stack.indexOf('Bold');
 			if (indexboldIndexes > -1) {
     Stack.splice(indexboldIndexes, 1);
-}
+}*/
 		
 		}
 	}
-} 
-	}
-}
-for (var i = 0; i < sourceStr.length; i++){
-	for (var n = 0; n < symbolIndex.length; n++){
-if(i!==n){
-	for(s=0; s<Stack.length;s++){
-		if(s==boldIndexes){
+ 
+	//}
+//}
+//for (var i = 0; i < sourceStr.length; i++){
+	//for (var n = 0; n < symbolIndex.length; n++){
+if(i!=='Str'){
+	
+		if(top=='Str'){
 			resultStr +='</span>'
-			var indexsymbolIndex= Stack.indexOf(symbolIndex);
+			Stack.pop();
+			/*var indexsymbolIndex= Stack.indexOf('Str');
 			if (indexsymbolIndex > -1) {
     Stack.splice(indexsymbolIndex, 1);
-}
+}*/
 		
 		}
-	}
+	
 } 
-	}
-}
-	for (var i = 0; i < sourceStr.length; i++){
-	for (var c= 0; c < codeIndexes.length; c++){
-if(i!==c){
-	for(s=0; s<Stack.length;s++){
-		if(s==codeIndexes){
+	//}
+//}
+var top=Stack[Stack.length-1];	
+	//for (var c= 0; c < codeIndexes.length; c++){
+if(i!=='Code'){
+	
+		if(top=='Code'){
 		  resultStr+='</pre></div>';
-			var indexcodeIndexes = Stack.indexOf(codeIndexes);
+		  Stack.pop();
+			/*var indexcodeIndexes = Stack.indexOf('Code');
 			if (indexcodeIndexes > -1) {
     Stack.splice(indexcodeIndexes, 1);
-}
+}*/
 		}
-	}
+	
 }
 	}
-	switch(i){
+		}
+	//}
+	/*switch(i){
 		case symbolIndex.length:
 	 resultStr +='</span>';	
 	  console.log( 'resultStr:' + resultStr );
+	  var indexsymbolIndex= Stack.indexOf(symbolIndex);
+			if (indexsymbolIndex > -1) {
+    Stack.splice(indexsymbolIndex, 1);
+}
 	 break;
 	 case boldIndexes.length:
 	 resultStr +='</span>';	
@@ -1049,11 +1045,15 @@ if(i!==c){
 	 break;
 	 case codeIndexes.length:
 	 resultStr+='</pre></div>';
+	 var indexcodeIndexes = Stack.indexOf(codeIndexes);
+			if (indexcodeIndexes > -1) {
+    Stack.splice(indexcodeIndexes, 1);
+}
 	 break;
 	 default:
     alert( 'Я таких значений не знаю' );
-}
-}
+}*/
+
 		/*var flag;
 		var CoderesultStr =" ";
 		var usedSymbols = 0;
