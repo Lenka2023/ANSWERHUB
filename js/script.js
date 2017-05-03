@@ -348,7 +348,7 @@ var text=prompt("Enter a text for  <li>","");
 square_list+='<li>'+text+'</li>';
  
 					}
-var resultStr=makeStringHtml(expressionText);
+var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -419,7 +419,7 @@ for(var i=0;i<n;i++){
         document.getElementById("text").focus();
          disc_list+='<li>'+text+'</li>';
                     }
-                 var resultStr=makeStringHtml(expressionText);
+                 var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -826,7 +826,7 @@ else{
 
             return CBTresultStr;
 													}
-	function makeStringHtml(sourceStr){
+	function makeString(sourceStr){
 		var Stack= []; 
 		for(var s=0; s<Stack.length;s++){	
 		Stack.push(s);
@@ -837,7 +837,7 @@ else{
 	/*		textarea=document.getElementById("text");
 		expressionText =( document.getElementById("text").value );
 		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		//alert(" makeStringHtml");*/
+		//alert(" makeString");*/
 		
 		 					
 	if((Stack[s]!='Bold')&&((Stack[s]!='Code')&&(Stack[s]!='Str'))){
@@ -993,11 +993,11 @@ while((i>=codeIndexes[c].startPosition)&&(i<codeIndexes[c].startPosition+codeInd
 		return resultStr;
 												}
 				 
-	/*function makeStringHtml(sourceStr){
+	/*function makeString(sourceStr){
 		textarea=document.getElementById("text");
 		expressionText =( document.getElementById("text").value );
 		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		alert(" makeStringHtml");
+		alert(" makeString");
 		var flag;
 		var CoderesultStr =" ";
 					for (var i = 0; i < sourceStr.length; i++){
@@ -1022,11 +1022,11 @@ while((i>=codeIndexes[c].startPosition)&&(i<codeIndexes[c].startPosition+codeInd
 															}
 		return CoderesultStr;
 												}*/
-       /*function makeStringHtml(sourceStr){
+       /*function makeString(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeStringHtml");
+        alert(" makeString");
             var currentSymbolIndex = 0;
 			var CoderesultStr =" ";
             var usedSymbols = 0;
@@ -1161,7 +1161,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             console.log(codeIndexes[i].startPosition + " " + codeIndexes[i].size);
 													}
                
-			var resultStr=makeStringHtml(expressionText);
+			var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1192,7 +1192,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             console.log(listingIndexes[i].startPosition + " " + listingIndexes[i].size);
 														}
                 
-			var resultStr=makeStringHtml(expressionText);
+			var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1222,7 +1222,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             console.log(captureIndexes[i].startPosition + " " + captureIndexes[i].size);
 														}
                
-			var resultStr=makeStringHtml(expressionText);
+			var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1252,7 +1252,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         for (var i =0; i < cbtIndexes.length; i++){  
             console.log(cbtIndexes[i].startPosition + " " + cbtIndexes[i].size);
 													}
-               var resultStr=makeStringHtml(expressionText);
+               var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1279,7 +1279,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         for (var i =0; i < linkIndexes.length; i++){  
             console.log(linkIndexes[i].startPosition + " " + linkIndexes[i].size);
 													}
-             var resultStr=makeStringHtml(expressionText);
+             var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1307,7 +1307,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         for (var i =0; i < main_titleIndexes.length; i++){  
             console.log(main_titleIndexes[i].startPosition + " " + main_titleIndexes[i].size);
 														}
-                 var resultStr=makeStringHtml(expressionText);
+                 var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1335,7 +1335,7 @@ function Middle_Title()
         for (var i =0; i < middle_titleIndexes.length; i++){  
             console.log(middle_titleIndexes[i].startPosition + " " + middle_titleIndexes[i].size);
 															}
-                  var resultStr=makeStringHtml(expressionText);
+                  var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1363,7 +1363,7 @@ function Middle_Title()
         for (var i =0; i < down_titleIndexes.length; i++){  
             console.log(down_titleIndexes[i].startPosition + " " + down_titleIndexes[i].size);
 															}
-                  var resultStr=makeStringHtml(expressionText);
+                  var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1391,7 +1391,7 @@ function Middle_Title()
         for (var i =0; i < red_titleIndexes.length; i++){  
             console.log(red_titleIndexes[i].startPosition + " " + red_titleIndexes[i].size);
 														}
-                  var resultStr=makeStringHtml(expressionText);
+                  var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1420,7 +1420,7 @@ function Middle_Title()
         for (var i =0; i < small_titleIndexes.length; i++){  
             console.log(small_titleIndexes[i].startPosition + " " + small_titleIndexes[i].size);
 															}
-                  var resultStr=makeStringHtml(expressionText);
+                  var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1448,7 +1448,7 @@ function Middle_Title()
         for (var i =0; i < hot_tipIndexes.length; i++){  
             console.log(hot_tipIndexes[i].startPosition + " " + hot_tipIndexes[i].size);
 														}
-                 var resultStr=makeStringHtml(expressionText);
+                 var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1476,7 +1476,7 @@ function Middle_Title()
         for (var i =0; i < footerIndexes.length; i++){  
             console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
 													}
-                var resultStr=makeStringHtml(expressionText);
+                var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1491,7 +1491,7 @@ function Middle_Title()
              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 /*var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;*/
-               var resultStr=makeStringHtml(expressionText);
+               var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1506,7 +1506,7 @@ function Middle_Title()
              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                var resultStr=makeStringHtml(expressionText);
+                var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1522,7 +1522,7 @@ function Middle_Title()
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
                
-                var resultStr=makeStringHtml(expressionText);
+                var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1538,7 +1538,7 @@ function None_List()
 			document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
             var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                var resultStr=makeStringHtml(expressionText);
+                var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1553,7 +1553,7 @@ function None_List()
             document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-               var resultStr=makeStringHtml(expressionText);
+               var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1569,7 +1569,7 @@ function Table()
             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-               var resultStr=makeStringHtml(expressionText);
+               var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1585,7 +1585,7 @@ function Table()
             
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                 var resultStr=makeStringHtml(expressionText);
+                 var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1676,7 +1676,7 @@ redo = document.getElementById('redo');
         for (var i =0; i < boldIndexes.length; i++){  
             console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
 													}
-			 var resultStr=makeStringHtml(expressionText);
+			 var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1715,7 +1715,7 @@ redo = document.getElementById('redo');
 			var LinkresultStr = makeLinkStringHtml(expressionText);
 			var ListingresultStr = makeListingStringHtml(expressionText);										
 			var BoldresultStr = makeBoldStringHtml(expressionText);
-			var CoderesultStr=makeStringHtml(expressionText);*/
+			var CoderesultStr=makeString(expressionText);*/
                 document.getElementById("RESULTTEXT").innerText=/*BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Hot_TipresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr+Square_ListresultStr+*/ImageresultStr;
                 document.getElementById("RESULTHTML").innerHTML=/*BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Hot_TipresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr+Square_ListresultStr+*/ImageresultStr;
 
@@ -1743,7 +1743,7 @@ redo = document.getElementById('redo');
         for (var i =0; i < downpage_titleIndexes.length; i++){  
             console.log(downpage_titleIndexes[i].startPosition + " " + downpage_titleIndexes[i].size);
 																}
-                   var resultStr=makeStringHtml(expressionText);
+                   var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1772,7 +1772,7 @@ redo = document.getElementById('redo');
         for (var i =0; i < txtIndexes.length; i++){  
             console.log(txtIndexes[i].startPosition + " " + txtIndexes[i].size);
 													}
-                 var resultStr=makeStringHtml(expressionText);
+                 var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -2162,12 +2162,12 @@ document.getElementById("RESULTHTML").innerHTML=BoldresultStr;
        codeIndexes[k].startPosition = startPos;
        codeIndexes[k].size = size;
 														}
-			CoderesultStr = makeStringHtml(expressionText);
+			CoderesultStr = makeString(expressionText);
 			BoldresultStr = makeBoldStringHtml(expressionText);
 			if(codeIndexes.startPosition>boldIndexes.startPosition){
 	   document.getElementById("RESULTTEXT").innerText=CoderesultStr+BoldresultStr;
 document.getElementById("RESULTHTML").innerHTML=CoderesultStr+BoldresultStr;
-	    console.log('resultStr:'+makeStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 			}
 													}
              console.log('Code indexes:'+JSON.stringify(codeIndexes));
