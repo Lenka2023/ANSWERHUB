@@ -604,10 +604,10 @@ for(var i = 0, text; i <= x;i++){
 return symbolIndex;
 					}
 
-		function makeBoldStringHtml(sourceStr){
+		/*function makeBoldStringHtml(sourceStr){
 			 
 }
-		/*var flag;
+		var flag;
 		var BoldresultStr =" ";
 		var usedSymbols = 0;
 			for (var i = 0; i < sourceStr.length; i++){
@@ -1680,7 +1680,7 @@ redo = document.getElementById('redo');
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
-                Make();;
+                Make();
 			}
 			function Image()
             {
@@ -1838,8 +1838,8 @@ i++;
 										}
  resultStr=makeTxtStringHtml(expressionText);
  console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
-resultStr = makeBoldStringHtml(expressionText);
- console.log('resultStr:'+makeBoldStringHtml(expressionText));   
+resultStr = makeString(expressionText);
+ console.log('resultStr:'+makeString(expressionText));   
 													}  
 	
 				
@@ -2141,10 +2141,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        boldIndexes[j].startPosition =startPos;
        boldIndexes[j].size = size;
 															}
-			BoldresultStr = makeBoldStringHtml(expressionText);
-	   document.getElementById("RESULTTEXT").innerText=BoldresultStr;
-document.getElementById("RESULTHTML").innerHTML=BoldresultStr;
-	    console.log('resultStr:'+makeBoldStringHtml(expressionText));
+			resultStr = makeString(expressionText);
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
+	    console.log('resultStr:'+makeString(expressionText));
 											}
              console.log('Bold indexes:'+JSON.stringify(boldIndexes));
  for (var k = 0;k < codeIndexes.length; k++){
@@ -2163,10 +2163,10 @@ document.getElementById("RESULTHTML").innerHTML=BoldresultStr;
        codeIndexes[k].size = size;
 														}
 			CoderesultStr = makeString(expressionText);
-			BoldresultStr = makeBoldStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 			if(codeIndexes.startPosition>boldIndexes.startPosition){
-	   document.getElementById("RESULTTEXT").innerText=CoderesultStr+BoldresultStr;
-document.getElementById("RESULTHTML").innerHTML=CoderesultStr+BoldresultStr;
+	   document.getElementById("RESULTTEXT").innerText=CoderesultStr+resultStr;
+document.getElementById("RESULTHTML").innerHTML=CoderesultStr+resultStr;
 	    console.log('resultStr:'+makeString(expressionText));
 			}
 													}
