@@ -827,188 +827,97 @@ else{
             return CBTresultStr;
 													}
 //-----------------------------------------------------------------------------------------------------------------
+	var stack=[];
 	function makeString(sourceStr){
-		var Stack= []; 
-		for(var s=0; s<Stack.length;s++){	
-			Stack.push(s);
-			
-										}
-		textarea=document.getElementById("text");
-		  expressionText = getSelectiontextarea( document.getElementById("text").value );
-		for (var i = 0; i < sourceStr.length; i++){														
-	/*		textarea=document.getElementById("text");
-		expressionText =( document.getElementById("text").value );
-		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		//alert(" makeString");*/
 		
-	/*for (var b = 0; b < boldIndexes.length; b++){
-								if((i>=boldIndexes[b].startPosition)&&(i<boldIndexes[b].startPosition+boldIndexes[b].size)){
-									i++;
-																			}
-						}
-								for (var c = 0; c < codeIndexes.length; c++){										
-								if((i>=codeIndexes[c].startPosition)&&(i<codeIndexes[c].startPosition+codeIndexes[c].size)){
-									i++;
-										}
-								}*/
-			if((Stack[s]!='Bold')&&((Stack[s]!='Code')/*&&(Stack[s]!='Str')*/)){
-				
+		textarea=document.getElementById("text");
+		  expressionText =  document.getElementById("text").value ;
+		for (var i = 0; i < sourceStr.length; i++){														
+				 
 				switch(getSymbolTypes(i)){
 					 case 'Bold':
-					// alert("1");
-						 resultStr +='<span class="strong">'+ sourceStr[i];
-						  console.log( 'resultStr:' + resultStr );
-						  Stack.push( 'Bold');
-						  console.log( 'Stack:' + Stack[s] );
-					  
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
+							resultStr +='<span class="strong">'+ sourceStr[i];
+							 stack.push( 'Bold');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+																		
+					if((stack.length !== 0)&&(top== 'Bold')){
+
+					}					
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
 					  break;
 					  case 'Code':
-						 resultStr+='</span><div class="commands"><pre>'+sourceStr[i];
-						 console.log( 'resultStr:' + resultStr );
-					  
-						 Stack.push('Code');
-					     console.log( 'Stack:' + Stack[s] );
-
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top !== 'Code'))){
+						  resultStr+='<div class="commands"><pre>'+sourceStr[i];
+						  stack.push('Code');
+						 console.log( 'resultStr:' + resultStr );	
+																		}
+					  	 
+						resultStr = closeTag(resultStr,stack[stack.length-1]);															
+						stack.pop();														
+							
 					 break;
-						/*case 'Str':
-						resultStr +='<span>'+sourceStr[i];
-					  console.log( 'resultStr:' + resultStr );
-					  
-						Stack.push('Str');
-					  console.log( 'Stack:' + Stack[s] ); */
+						
 					 default:
 					  resultStr +=sourceStr[i];
 					  console.log( 'resultStr:' + resultStr );
 					 
-					  Stack.push('Str');
-					  console.log( 'Stack:' + Stack[s] );
-				 
 											}
-																					}
-			
-
-
-		 console.log( 'Stack:' + Stack[s] );
-		var top=Stack[Stack.length-1];
+													}							
+				return resultStr;
+				
+														
+								}
+			function closeTag(resultStr,top){
+			textarea=document.getElementById("text");
+		  expressionText =  document.getElementById("text").value ;		
+		//var top=stack[stack.length-1];
 				console.log( 'top:' +top );
 		k=i+1;
 		n=getSymbolTypes(k);
 		 console.log( 'n:' + n );
-				if(k>sourceStr.length){
+
+				if(k>resultStr.length){
 					n='noSymbolTypes';
 										}
 				if((top=='Bold')&&((n!='Bold')||(k==boldIndexes.length))){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
-					 console.log( 'Stack:' + Stack[s] );
-					 var indexboldIndexes = Stack.indexOf('Bold');
+					
+					 /*var indexboldIndexes = stack.indexOf('Bold');
 					if (indexboldIndexes > -1) {
-			Stack.splice(indexboldIndexes, 1);
-					}
-					//Stack.pop();
-					console.log( 'Stack:' + Stack[s] );
-						/*var indexboldIndexes = Stack.indexOf('Bold');
+			stack.splice(indexboldIndexes, 1);
+					}*/
+					stack.pop();
+				console.log( 'top:' +top );
+						/*var indexboldIndexes = stack.indexOf('Bold');
 					if (indexboldIndexes > -1) {
-			Stack.splice(indexboldIndexes, 1);*/
+			stack.splice(indexboldIndexes, 1);*/
 			console.log( 'top:' +top );
 				} else 	if((top=='Bold')&&(n=='Bold')){
-		resultStr +=sourceStr[k];
+		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}	
-													}	
+														
 			
-		 /*if((top=='Str')&&((n!='Str')||(k==sourceStr.length))){
-			resultStr +='</span>';
-			console.log( 'resultStr:' + resultStr );
-						Stack.pop();
-				
-					/*var indexsymbolIndex= Stack.indexOf('Str');
-					if (indexsymbolIndex > -1) {
-			Stack.splice(indexsymbolIndex, 1);
-		}
-
-			if((top=='Str')&&(n=='Str')&&(k!=sourceStr.length)){
-		resultStr +=sourceStr[k];
-		console.log( 'resultStr:' + resultStr );
-			}}*/ 
-		/*if((top=='Str')&&(n=='Str')&&(k==sourceStr.length)){
-		resultStr +=sourceStr[k]+'</span>';	
-		}*/
-			
-			
+		
 		if((top=='Code')&&((n!='Code')||(k==codeIndexes.length))){
 			resultStr+='</pre></div>';
 			console.log( 'resultStr:' + resultStr );
-					  Stack.pop();
+					  stack.pop();
 																	} 
-		if((top=='Code')&&(n=='Code')){
-		resultStr +=sourceStr[k];
+		else if((top=='Code')&&(n=='Code')){
+		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
-										}	
-					/*var indexcodeIndexes = Stack.indexOf('Code');
-					if (indexcodeIndexes > -1) {
-			Stack.splice(indexcodeIndexes, 1);
-		}*/
-
-				
-			
-				/*
-				for(var s=0; s<Stack.length;s++){	
-				Stack.push(s);
-					
-				}*/
-			//}
-			/*switch(i){
-				case symbolIndex.length:
-			 resultStr +='</span>';	
-			  console.log( 'resultStr:' + resultStr );
-			  var indexsymbolIndex= Stack.indexOf(symbolIndex);
-					if (indexsymbolIndex > -1) {
-			Stack.splice(indexsymbolIndex, 1);
+										
+				}
+													
+	return 	resultStr;								
 		}
-			 break;
-			 case boldIndexes.length:
-			 resultStr +='</span>';	
-			  console.log( 'resultStr:' + resultStr );
-			 break;
-			 case codeIndexes.length:
-			 resultStr+='</pre></div>';
-			 var indexcodeIndexes = Stack.indexOf(codeIndexes);
-					if (indexcodeIndexes > -1) {
-			Stack.splice(indexcodeIndexes, 1);
-		}
-			 break;
-			 default:
-			alert( 'Я таких значений не знаю' );
-		}*/
-
-				/*var flag;
-				var CoderesultStr =" ";
-				var usedSymbols = 0;
-					for (var i = 0; i < sourceStr.length; i++){
-					flag=false;
-					for (var c = 0; c < codeIndexes.length; c++){
-						
-							
-				expressionText =( document.getElementById("text").value );	 
-		while((i>=codeIndexes[c].startPosition)&&(i<codeIndexes[c].startPosition+codeIndexes[c].size)){				
-					flag=true;	
-						 break;
-																													}
-																	}	
-									if(flag==true){
-										CoderesultStr+='</span><div class="commands"><pre>'+sourceStr[i]+'</pre></div>';
-													}
-														else{
-																CoderesultStr+='<span>'+sourceStr[i]+'</span>';
-																}
-																	}*/
-				console.log( 'Stack:' + Stack[s] );													
-				return resultStr;
-				console.log( 'Stack:' + Stack[s] );
-														}
 				 
 	/*function makeString(sourceStr){
 		textarea=document.getElementById("text");
