@@ -827,9 +827,10 @@ else{
             return CBTresultStr;
 													}
 //-----------------------------------------------------------------------------------------------------------------
+var resultstr=[];
 	var stack=[];
 	function makeString(sourceStr){
-		
+		resultstr.pop();
 		textarea=document.getElementById("text");
 		  expressionText =  document.getElementById("text").value ;
 		for (var i = 0; i < sourceStr.length; i++){														
@@ -837,7 +838,7 @@ else{
 				switch(getSymbolTypes(i)){
 					 case 'Bold':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
-							resultStr +='<span class="strong">'+ sourceStr[i];
+							resultStr ='<span class="strong">'+ sourceStr[i];
 							 stack.push( 'Bold');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -865,11 +866,19 @@ else{
 					  console.log( 'resultStr:' + resultStr );
 					 
 											}
-													}							
+													}
+					/*if(resultstr.length!=0){
+						resultstr.pop();}
+					resultstr.push(resultStr);
+					console.log( 'resultstr:' + resultstr );*/	
+					resultstr.push(resultStr);
+					resultStr=resultstr[resultstr.length-1];
+					console.log( 'resultStr:' + resultStr );
 				return resultStr;
 				
 														
 								}
+								
 			function closeTag(resultStr,top){
 			textarea=document.getElementById("text");
 		  expressionText =  document.getElementById("text").value ;		
