@@ -136,27 +136,7 @@ var ua_vers   = parseInt(navigator.appVersion);
 			this.size = size;
        }
 	    var resultstrCollection = new Array();
-  
-/*resultstrCollection.push(Main_titleSelection);
-resultstrCollection.push(Middle_TitleSelection);
-resultstrCollection.push(Down_titleSelection);
-resultstrCollection.push(TxtSelection);
-resultstrCollection.push(CBTSelection);
-resultstrCollection.push(Red_titleSelection );
-resultstrCollection.push(LinkSelection );
-resultstrCollection.push(DownPage_titleSelection);
-resultstrCollection.push(Hot_TipSelection);
-resultstrCollection.push(FooterSelection);
-resultstrCollection.push(Small_titleSelection);
-resultstrCollection.push(CodeSelection);
-resultstrCollection.push(ListingSelection);
-resultstrCollection.push(CaptureSelection);*/
-/*resultstr.push(new resultstrCollection)
- for (var i = resultstr.length; i-- ; i >0 )
-			if (Array.from(resultstr).indexOf(i)>-1) {
-				sourceArray.splice(i, 1); 
-															}	*/			
- 														
+  			
 	 
 	var AggregateSelection = function(sourceArray){
 		var indexesToRemove = new Set();
@@ -174,18 +154,10 @@ resultstrCollection.push(CaptureSelection);*/
         if (sourceArray[i].startPosition>=sourceArray[j].startPosition && sourceArray[i].startPosition>=lastIndex2){
                 sourceArray[i].size = lastIndex1 - sourceArray[i].startPosition;
                 sourceArray[j].size = lastIndex2 - sourceArray[j].startPosition;
-					//for(var k = 0;k < addelements.length; k++){
-           // document.onkeypress = function(e) {
-    //if((e.keyCode == 65)||(e.keyCode == 66)||(e.keyCode == 67)||(e.keyCode == 68)||(e.keyCode == 69)||(e.keyCode == 70)||(e.keyCode == 71)||(e.keyCode == 72)||(e.keyCode == 73)||(e.keyCode == 74)||(e.keyCode == 75)||(e.keyCode == 76)||(e.keyCode == 77)||(e.keyCode == 78)||(e.keyCode == 79)||(e.keyCode == 80)||(e.keyCode == 81)||(e.keyCode == 82)||(e.keyCode == 83)||(e.keyCode == 84)||(e.keyCode == 85)||(e.keyCode == 86)||(e.keyCode == 87)||(e.keyCode == 88)||(e.keyCode == 89)||(e.keyCode == 90)||(e.keyCode == 48)||(e.keyCode == 49)||(e.keyCode == 50)||(e.keyCode == 51)||(e.keyCode == 52)||(e.keyCode == 53)||(e.keyCode == 54)||(e.keyCode == 55)||(e.keyCode == 56)||(e.keyCode == 57)){  
-//k++;
-/*if(pos<=sourceArray[i].startPosition && pos>=lastIndex2){
-	sourceArray[i].startPosition=sourceArray[i].startPosition+addelements.length;
-									}
-									
-	}*/
+					
+           
 																								}
-													//}																								
-													//}																								
+																																					
 													}
 													}
 		for (var i = sourceArray.length; i-- ; i >0 )
@@ -597,39 +569,593 @@ for(var i = 0, text; i <= x;i++){
 								
 										
 						}
+						for (var k = 0; k < txtIndexes.length; k++){
+								if((symbolIndex>=txtIndexes[k].startPosition)&&(symbolIndex<txtIndexes[k].startPosition+txtIndexes[k].size)){
+									symbolIndex='Text';
+																			}
+						}
+						for (var k = 0; k < listingIndexes.length; k++){
+								if((symbolIndex>=listingIndexes[k].startPosition)&&(symbolIndex<listingIndexes[k].startPosition+listingIndexes[k].size)){
+									symbolIndex='Listing';
+																			}
+						}
+						for (var k = 0; k < cbtIndexes.length; k++){
+								if((symbolIndex>=cbtIndexes[k].startPosition)&&(symbolIndex<cbtIndexes[k].startPosition+cbtIndexes[k].size)){
+									symbolIndex='CBT';
+																			}
+						}
+						for (var k = 0; k < linkIndexes.length; k++){
+								if((symbolIndex>=linkIndexes[k].startPosition)&&(symbolIndex<linkIndexes[k].startPosition+linkIndexes[k].size)){
+									symbolIndex='Link';
+																			}
+						}
+						for (var k = 0; k < main_titleIndexes.length; k++){
+								if((symbolIndex>=main_titleIndexes[k].startPosition)&&(symbolIndex<main_titleIndexes[k].startPosition+main_titleIndexes[k].size)){
+									symbolIndex='Main_title';
+																			}
+						}
+						for (var k = 0; k < middle_titleIndexes.length; k++){
+								if((symbolIndex>=middle_titleIndexes[k].startPosition)&&(symbolIndex<middle_titleIndexes[k].startPosition+middle_titleIndexes[k].size)){
+									symbolIndex='Middle_title';
+																			}
+						}
+						for (var k = 0; k < down_titleIndexes.length; k++){
+								if((symbolIndex>=down_titleIndexes[k].startPosition)&&(downpage_titleymbolIndex<down_titleIndexes[k].startPosition+down_titleIndexes[k].size)){
+									symbolIndex='Down_title';
+																			}
+						}
+						for (var k = 0; k < downpage_titleIndexes.length; k++){
+								if((symbolIndex>=downpage_titleIndexes[k].startPosition)&&(symbolIndex<downpage_titleIndexes[k].startPosition+downpage_titleIndexes[k].size)){
+									symbolIndex='Downpage_title';
+																			}
+						}
+						for (var k = 0; k < hot_tipIndexes.length; k++){
+								if((symbolIndex>=hot_tipIndexes[k].startPosition)&&(symbolIndex<hot_tipIndexes[k].startPosition+hot_tipIndexes[k].size)){
+									symbolIndex='Hot_tip';
+																			}
+						}
+						for (var k = 0; k < red_titleIndexes.length; k++){
+								if((symbolIndex>=red_titleIndexes[k].startPosition)&&(symbolIndex<red_titleIndexes[k].startPosition+red_titleIndexes[k].size)){
+									symbolIndex='Red_title';
+																			}
+						}
+						for (var k = 0; k < small_titleIndexes.length; k++){
+								if((symbolIndex>=small_titleIndexes[k].startPosition)&&(symbolIndex<small_titleIndexes[k].startPosition+small_titleIndexes[k].size)){
+									symbolIndex='Small_title';
+																			}
+						}
+						for (var k = 0; k < captureIndexes.length; k++){
+								if((symbolIndex>=captureIndexes[k].startPosition)&&(symbolIndex<captureIndexes[k].startPosition+captureIndexes[k].size)){
+									symbolIndex='Capture';
+																			}
+						}
+						/*for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}
+						for (var k = 0; k < boldIndexes.length; k++){
+								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
+									symbolIndex='Bold';
+																			}
+						}*/
+						
 						 /*if((symbolIndex!='Bold')&&(symbolIndex!='Code')){
 											symbolIndex='Str';
 																											}*/
 	 console.log( 'symbolIndex:' +symbolIndex );					
 return symbolIndex;
 					}
-
-		/*function makeBoldStringHtml(sourceStr){
-			 
-}
-		var flag;
-		var BoldresultStr =" ";
-		var usedSymbols = 0;
-			for (var i = 0; i < sourceStr.length; i++){
-			flag=false;
-			for (var k = 0; k < boldIndexes.length; k++){
-				
-					
-		expressionText =( document.getElementById("text").value );	 
-			while((i>=boldIndexes[k].startPosition)&&(i<boldIndexes[k].startPosition+boldIndexes[k].size)){
-				 flag=true;	
-				 break;
-																											}
-															}	 
-							if(flag==true){
-								BoldresultStr+= '<span class="strong">'+sourceStr[i]+'</span>';
+//-----------------------------------------------------------------------------------------------------------------
+var resultstr=[];
+	var stack=[];
+	function makeString(sourceStr){
+		resultstr.pop();
+		textarea=document.getElementById("text");
+		 var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+		for (var i = 0; i < sourceStr.length; i++){														
+				 
+				switch(getSymbolTypes(i)){
+					 case 'Bold':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
+							resultStr ='<span class="strong">'+ sourceStr[i];
+							 stack.push( 'Bold');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  case 'Code':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top !== 'Code'))){
+						  resultStr+='<div class="commands"><pre>'+sourceStr[i];
+						  stack.push('Code');
+						 console.log( 'resultStr:' + resultStr );	
+																		}
+					  	 
+						resultStr = closeTag(resultStr,stack[stack.length-1]);															
+						stack.pop();														
+							
+					 break;
+					  case 'Text':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Text'))){
+							resultStr ='</span><br><span class="move_left">'+ sourceStr[i];
+							 stack.push( 'Text');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  case 'Listing':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Listing'))){
+							resultStr ='</span><br><span class="move_left "><span class="strong ">'+ sourceStr[i];
+							 stack.push( 'Listing');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  case 'CBT':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='CBT'))){
+							resultStr ='<span class="strong">'+ sourceStr[i];
+							 stack.push('CBT');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  case 'Link':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Link'))){
+							var x=prompt("Enter a link","");
+							resultStr ='</span><a  href="'+x+'">'+ sourceStr[i];
+							 stack.push('Link');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  case 'Main_title':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Main_title'))){
+							resultStr ='</span><div class="main_title">'+ sourceStr[i];
+							 stack.push('Main_title');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  case 'Middle_title':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Middle_title'))){
+							resultStr ='</span><span class="middle_title">'+ sourceStr[i];
+							 stack.push('Middle_title');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  case 'Down_title':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Down_title'))){
+							resultStr ='</span><div class="down_title">'+ sourceStr[i];
+							 stack.push('Down_title');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  case 'Downpage_title':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Downpage_title'))){
+							resultStr ='</span><br><span class="move_left strong">'+ sourceStr[i];
+							 stack.push('Downpage_title');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  case 'Hot_tip':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Hot_tip'))){
+							resultStr ='</span><div class="border">'+
+					  '<table class="elliptic">'+
+						'<tbody>'+
+						  '<tr>'+
+							'<td class="hotTipLeft">'+
+							  '<h1>Hot<br>Tip</h1>'+
+							'</td>'+
+							'<td class="hotTipRight">'+
+							  '<span>'+ sourceStr[i];
+							 stack.push('Hot_tip');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					 
+					 case 'Red_title':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Red_title'))){
+							resultStr ='</span><div class="title strong"><span>'+ sourceStr[i];
+							 stack.push('Red_title');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  
+					 case 'Small_title':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Small_title'))){
+							resultStr ='</span><br><span class="move_left strong font_size">'+ sourceStr[i];
+							 stack.push('Small_title');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  
+					 case 'Capture':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Capture'))){
+							resultStr ='</span><br><span class="move_left "><span class="strong underline">'+ sourceStr[i];
+							 stack.push('Capture');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  
+					 /*case 'Bold':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
+							resultStr ='<span class="strong">'+ sourceStr[i];
+							 stack.push( 'Bold');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  
+					 case 'Bold':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
+							resultStr ='<span class="strong">'+ sourceStr[i];
+							 stack.push( 'Bold');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  
+					 case 'Bold':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
+							resultStr ='<span class="strong">'+ sourceStr[i];
+							 stack.push( 'Bold');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  
+					 case 'Bold':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
+							resultStr ='<span class="strong">'+ sourceStr[i];
+							 stack.push( 'Bold');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;*/
+					  
+						
+					 default:
+					  resultStr +=sourceStr[i];
+					  console.log( 'resultStr:' + resultStr );
+					 
 											}
-													else{
-														BoldresultStr+='<span>'+sourceStr[i]+'</span>';
+													}
+						
+					resultstr.push(resultStr);
+					resultStr=resultstr[resultstr.length-1];
+					console.log( 'resultStr:' + resultStr );
+				return resultStr;
+																
+								}
+								
+			function closeTag(resultStr,top){
+			textarea=document.getElementById("text");
+		  expressionText =  document.getElementById("text").value ;		
+		//var top=stack[stack.length-1];
+				console.log( 'top:' +top );
+		k=i+1;
+		n=getSymbolTypes(k);
+		 console.log( 'n:' + n );
+
+				if(k>resultStr.length){
+					n='noSymbolTypes';
+										}
+				if((top=='Bold')&&((n!='Bold')||(k==boldIndexes.length))){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Bold')&&(n=='Bold')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}	
+														
+			
+		
+		if((top=='Code')&&((n!='Code')||(k==codeIndexes.length))){
+			resultStr+='</pre></div>';
+			console.log( 'resultStr:' + resultStr );
+					  stack.pop();
+																	} 
+		else if((top=='Code')&&(n=='Code')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+										
+				}
+				if((top=='Text')&&((n!='Text')||(k==boldIndexes.length))){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Text')&&(n=='Text')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
 														}
-															}
-		return BoldresultStr;*/
-												
+				if((top=='Listing')&&((n!='Listing')||(k==boldIndexes.length))){
+					resultStr +='</span></span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Listing')&&(n=='Listing')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+				if((top=='Link')&&((n!='Link')||(k==boldIndexes.length))){
+					resultStr +='</a><span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Link')&&(n=='Link')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+				if((top=='Main_title')&&((n!='Main_title')||(k==boldIndexes.length))){
+					resultStr +='</div>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Main_title')&&(n=='Main_title')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+				if((top=='Middle_title')&&((n!='Middle_title')||(k==boldIndexes.length))){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Middle_title')&&(n=='Middle_title')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+				if((top=='Down_title')&&((n!='Down_title')||(k==boldIndexes.length))){
+					resultStr +='</div>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Bold')&&(n=='Bold')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+				if((top=='Downpage_title')&&((n!='Downpage_title')||(k==boldIndexes.length))){
+					resultStr +='</span><br>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Downpage_title')&&(n=='Downpage_title')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+				if((top=='Hot_tip')&&((n!='Hot_tip')||(k==boldIndexes.length))){
+					resultStr +='</span>'+
+							'</td>'+
+						  '</tr>'+
+						'</tbody>'+
+					  '</table>'+
+					  '<br class="cbt">'+
+					'</div>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Bold')&&(n=='Bold')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+				if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
+					resultStr +='</span></div>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Red_title')&&(n=='Red_title')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+				if((top=='Small_title')&&((n!='Small_title')||(k==boldIndexes.length))){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Small_title')&&(n=='Small_title')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+				if((top=='Capture')&&((n!='Capture')||(k==boldIndexes.length))){
+					resultStr +='</span></span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Capture')&&(n=='Capture')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+														/*if((top=='Bold')&&((n!='Bold')||(k==boldIndexes.length))){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Bold')&&(n=='Bold')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+														if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Bold')&&(n=='Bold')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+														if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Bold')&&(n=='Bold')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+														if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Bold')&&(n=='Bold')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+														if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Bold')&&(n=='Bold')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}
+														if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Bold')&&(n=='Bold')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}*/
+														
+													
+	return 	resultStr;								
+		}
+				 
+	//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 				 
 function makeMain_ListStringHtml(sourceStr){
 	PurgeRedoSequence();
@@ -826,154 +1352,8 @@ else{
 
             return CBTresultStr;
 													}
-//-----------------------------------------------------------------------------------------------------------------
-var resultstr=[];
-	var stack=[];
-	function makeString(sourceStr){
-		resultstr.pop();
-		textarea=document.getElementById("text");
-		  expressionText =  document.getElementById("text").value ;
-		for (var i = 0; i < sourceStr.length; i++){														
-				 
-				switch(getSymbolTypes(i)){
-					 case 'Bold':
-						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
-							resultStr ='<span class="strong">'+ sourceStr[i];
-							 stack.push( 'Bold');
-							  console.log( 'resultStr:' + resultStr );	
-																		}
-																		
-					if((stack.length !== 0)&&(top== 'Bold')){
 
-					}					
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
-																				
-					  break;
-					  case 'Code':
-						if ((stack.length == 0) || ((stack.length !== 0)&&(top !== 'Code'))){
-						  resultStr+='<div class="commands"><pre>'+sourceStr[i];
-						  stack.push('Code');
-						 console.log( 'resultStr:' + resultStr );	
-																		}
-					  	 
-						resultStr = closeTag(resultStr,stack[stack.length-1]);															
-						stack.pop();														
-							
-					 break;
-						
-					 default:
-					  resultStr +=sourceStr[i];
-					  console.log( 'resultStr:' + resultStr );
-					 
-											}
-													}
-					/*if(resultstr.length!=0){
-						resultstr.pop();}
-					resultstr.push(resultStr);
-					console.log( 'resultstr:' + resultstr );*/	
-					resultstr.push(resultStr);
-					resultStr=resultstr[resultstr.length-1];
-					console.log( 'resultStr:' + resultStr );
-				return resultStr;
-				
-														
-								}
-								
-			function closeTag(resultStr,top){
-			textarea=document.getElementById("text");
-		  expressionText =  document.getElementById("text").value ;		
-		//var top=stack[stack.length-1];
-				console.log( 'top:' +top );
-		k=i+1;
-		n=getSymbolTypes(k);
-		 console.log( 'n:' + n );
-
-				if(k>resultStr.length){
-					n='noSymbolTypes';
-										}
-				if((top=='Bold')&&((n!='Bold')||(k==boldIndexes.length))){
-					resultStr +='</span>';
-					 console.log( 'resultStr:' + resultStr );
-					
-					 /*var indexboldIndexes = stack.indexOf('Bold');
-					if (indexboldIndexes > -1) {
-			stack.splice(indexboldIndexes, 1);
-					}*/
-					stack.pop();
-				console.log( 'top:' +top );
-						/*var indexboldIndexes = stack.indexOf('Bold');
-					if (indexboldIndexes > -1) {
-			stack.splice(indexboldIndexes, 1);*/
-			console.log( 'top:' +top );
-				} else 	if((top=='Bold')&&(n=='Bold')){
-		resultStr +=resultStr[k];
-		console.log( 'resultStr:' + resultStr );
-
-														}	
-														
-			
-		
-		if((top=='Code')&&((n!='Code')||(k==codeIndexes.length))){
-			resultStr+='</pre></div>';
-			console.log( 'resultStr:' + resultStr );
-					  stack.pop();
-																	} 
-		else if((top=='Code')&&(n=='Code')){
-		resultStr +=resultStr[k];
-		console.log( 'resultStr:' + resultStr );
-
-										
-				}
-													
-	return 	resultStr;								
-		}
-				 
-	/*function makeString(sourceStr){
-		textarea=document.getElementById("text");
-		expressionText =( document.getElementById("text").value );
-		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		alert(" makeString");
-		var flag;
-		var CoderesultStr =" ";
-					for (var i = 0; i < sourceStr.length; i++){
-			flag=false;
-			for (var k = 0; k < codeIndexes.length; k++){
-				for (var b = 0; b < boldIndexes.length; b++){
-				
-					
-		expressionText =( document.getElementById("text").value );	 
-			while((i>=codeIndexes[k].startPosition)&&(i<codeIndexes[k].startPosition+codeIndexes[k].size)){
-				 flag=true;	
-				 break;
-																											}
-															}	
-							if(flag==true){
-								CoderesultStr+='</span><div class="commands"><pre>'+sourceStr[i]+'</pre></div>';
-											}
-													else if(i==b){
-														CoderesultStr+='<span class="strong">'+sourceStr[i]+'</span>';
-														}
-															}
-															}
-		return CoderesultStr;
-												}*/
-       /*function makeString(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeString");
-            var currentSymbolIndex = 0;
-			var CoderesultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < codeIndexes.length; i++){
-                if (currentSymbolIndex<=codeIndexes[i].startPosition){
-					CoderesultStr += sourceStr.substring(currentSymbolIndex,codeIndexes[i].startPosition);
-					CoderesultStr = '<span>'+CoderesultStr+'</span><div class="commands"><pre>'+sourceStr.substring(codeIndexes[i].startPosition,codeIndexes[i].startPosition+codeIndexes[i].size)+'</pre></div><span>'+sourceStr.substring(codeIndexes[i].startPosition+codeIndexes[i].size,sourceStr.length)+'</span>';
-																	}
-														}
-           	return CoderesultStr;
-												}*/
-			function makeTxtStringHtml(sourceStr){
+			/*function makeTxtStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -989,7 +1369,7 @@ var resultstr=[];
 														}
            
 			return TxtresultStr;
-													}
+													}*/
 			function makeImageStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		     var expressionText = getSelectiontextarea( document.getElementById("text") );
@@ -1102,8 +1482,6 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}
-						
-           
 			
 			 function Listing()
             {
@@ -1164,7 +1542,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 Make();
 			}
 
-	function CBT()
+			function CBT()
             {
              alert("CBT");  
             
@@ -1193,7 +1571,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}	
-	function Link()
+			function Link()
             {
              var textarea=document.getElementById("text");
             document.getElementById("text").focus();
@@ -1220,35 +1598,35 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}					
- function  Main_title()
-            {
-            
-            var textarea=document.getElementById("text");
-            document.getElementById("text").focus();
-            expressionText =  document.getElementById("text").value;
-             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
-                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                main_titleIndexes.push(new Main_titleSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateSelection(main_titleIndexes);
-                for (var i = 0; i < main_titleIndexes.length; i++){
-                    var beginIndex = main_titleIndexes[i].startPosition;
-                    var endIndex = main_titleIndexes[i].endPosition;
+			 function  Main_title()
+						{
+						
+						var textarea=document.getElementById("text");
+						document.getElementById("text").focus();
+						expressionText =  document.getElementById("text").value;
+						 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+							var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+							var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+							main_titleIndexes.push(new Main_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+							AggregateSelection(main_titleIndexes);
+							for (var i = 0; i < main_titleIndexes.length; i++){
+								var beginIndex = main_titleIndexes[i].startPosition;
+								var endIndex = main_titleIndexes[i].endPosition;
+																				}
+							main_titleIndexes.sort(function(a,b) {
+							return a.startPosition - b.startPosition;
+																});
+							console.log('aggregated array:');
+					for (var i =0; i < main_titleIndexes.length; i++){  
+						console.log(main_titleIndexes[i].startPosition + " " + main_titleIndexes[i].size);
 																	}
-                main_titleIndexes.sort(function(a,b) {
-                return a.startPosition - b.startPosition;
-													});
-                console.log('aggregated array:');
-        for (var i =0; i < main_titleIndexes.length; i++){  
-            console.log(main_titleIndexes[i].startPosition + " " + main_titleIndexes[i].size);
-														}
-                 var resultStr=makeString(expressionText);
+							 var resultStr=makeString(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=resultStr;
-                document.getElementById("RESULTHTML").innerHTML=resultStr;
-                Make();
-			}
-function Middle_Title()
+							document.getElementById("RESULTTEXT").innerText=resultStr;
+							document.getElementById("RESULTHTML").innerHTML=resultStr;
+							Make();
+						}
+			function Middle_Title()
             {
             
             var textarea=document.getElementById("text");
@@ -1276,7 +1654,7 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}
-		function Down_title()
+			function Down_title()
             {
             
             var textarea=document.getElementById("text");
@@ -1304,121 +1682,121 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}
-						function Red_title()
-            {
-            
-            var textarea=document.getElementById("text");
-            document.getElementById("text").focus();
-            expressionText =  document.getElementById("text").value;
-             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
-                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                red_titleIndexes.push(new Red_titleSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateSelection(red_titleIndexes);
-                for (var i = 0; i < red_titleIndexes.length; i++){
-                    var beginIndex = red_titleIndexes[i].startPosition;
-                    var endIndex = red_titleIndexes[i].endPosition;
-																}
-                red_titleIndexes.sort(function(a,b) {
-                return a.startPosition - b.startPosition;
-													});
-                console.log('aggregated array:');
-        for (var i =0; i < red_titleIndexes.length; i++){  
-            console.log(red_titleIndexes[i].startPosition + " " + red_titleIndexes[i].size);
-														}
-                  var resultStr=makeString(expressionText);
+			function Red_title()
+			{
 
-                document.getElementById("RESULTTEXT").innerText=resultStr;
-                document.getElementById("RESULTHTML").innerHTML=resultStr;
-                Make();t.getElementById("RESULTHTML").innerHTML=Red_titleresultStr/*Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
-                Make();
-			}
-						function Small_title()
-            {
-             
-            var textarea=document.getElementById("text");
-            document.getElementById("text").focus();
-            expressionText =  document.getElementById("text").value;
-             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
-                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                small_titleIndexes.push(new Small_titleSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateSelection(small_titleIndexes);
-                for (var i = 0; i < small_titleIndexes.length; i++){
-                    var beginIndex = small_titleIndexes[i].startPosition;
-                    var endIndex = small_titleIndexes[i].endPosition;
-																	}
-                small_titleIndexes.sort(function(a,b) {
-                return a.startPosition - b.startPosition;
-														});
-                console.log('aggregated array:');
-        for (var i =0; i < small_titleIndexes.length; i++){  
-            console.log(small_titleIndexes[i].startPosition + " " + small_titleIndexes[i].size);
-															}
-                  var resultStr=makeString(expressionText);
-
-                document.getElementById("RESULTTEXT").innerText=resultStr;
-                document.getElementById("RESULTHTML").innerHTML=resultStr;
-                Make();
-			}
-						function Hot_Tip()
-            {
-             
-            var textarea=document.getElementById("text");
-            document.getElementById("text").focus();
-            expressionText =  document.getElementById("text").value;
-             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
-                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                hot_tipIndexes.push(new Hot_TipSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateSelection(hot_tipIndexes);
-                for (var i = 0; i < hot_tipIndexes.length; i++){
-                    var beginIndex = hot_tipIndexes[i].startPosition;
-                    var endIndex = hot_tipIndexes[i].endPosition;
-																}
-                hot_tipIndexes.sort(function(a,b) {
-                return a.startPosition - b.startPosition;
-													});
-                console.log('aggregated array:');
-        for (var i =0; i < hot_tipIndexes.length; i++){  
-            console.log(hot_tipIndexes[i].startPosition + " " + hot_tipIndexes[i].size);
-														}
-                 var resultStr=makeString(expressionText);
-
-                document.getElementById("RESULTTEXT").innerText=resultStr;
-                document.getElementById("RESULTHTML").innerHTML=resultStr;
-                Make();
-			}
-						function Footer()
-            {
-            
-            var textarea=document.getElementById("text");
-            document.getElementById("text").focus();
-            expressionText =  document.getElementById("text").value;
-             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
-                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                footerIndexes.push(new FooterSelection(selectionBegin,selectionEnd-selectionBegin));
-                AggregateSelection(footerIndexes);
-                for (var i = 0; i < footerIndexes.length; i++){
-                    var beginIndex = footerIndexes[i].startPosition;
-                    var endIndex = footerIndexes[i].endPosition;
-																}
-                footerIndexes.sort(function(a,b) {
-                return a.startPosition - b.startPosition;
-												});
-                console.log('aggregated array:');
-        for (var i =0; i < footerIndexes.length; i++){  
-            console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
+var textarea=document.getElementById("text");
+document.getElementById("text").focus();
+expressionText =  document.getElementById("text").value;
+ document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+	var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+	var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+	red_titleIndexes.push(new Red_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+	AggregateSelection(red_titleIndexes);
+	for (var i = 0; i < red_titleIndexes.length; i++){
+		var beginIndex = red_titleIndexes[i].startPosition;
+		var endIndex = red_titleIndexes[i].endPosition;
 													}
-                var resultStr=makeString(expressionText);
+	red_titleIndexes.sort(function(a,b) {
+	return a.startPosition - b.startPosition;
+										});
+	console.log('aggregated array:');
+for (var i =0; i < red_titleIndexes.length; i++){  
+console.log(red_titleIndexes[i].startPosition + " " + red_titleIndexes[i].size);
+											}
+	  var resultStr=makeString(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=resultStr;
-                document.getElementById("RESULTHTML").innerHTML=resultStr;
-                Make();
-			}
-						function Down()
-            {
+	document.getElementById("RESULTTEXT").innerText=resultStr;
+	document.getElementById("RESULTHTML").innerHTML=resultStr;
+	Make();t.getElementById("RESULTHTML").innerHTML=Red_titleresultStr/*Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
+	Make();
+}
+			function Small_title()
+			{
+ 
+var textarea=document.getElementById("text");
+document.getElementById("text").focus();
+expressionText =  document.getElementById("text").value;
+ document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+	var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+	var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+	small_titleIndexes.push(new Small_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+	AggregateSelection(small_titleIndexes);
+	for (var i = 0; i < small_titleIndexes.length; i++){
+		var beginIndex = small_titleIndexes[i].startPosition;
+		var endIndex = small_titleIndexes[i].endPosition;
+														}
+	small_titleIndexes.sort(function(a,b) {
+	return a.startPosition - b.startPosition;
+											});
+	console.log('aggregated array:');
+for (var i =0; i < small_titleIndexes.length; i++){  
+console.log(small_titleIndexes[i].startPosition + " " + small_titleIndexes[i].size);
+												}
+	  var resultStr=makeString(expressionText);
+
+	document.getElementById("RESULTTEXT").innerText=resultStr;
+	document.getElementById("RESULTHTML").innerHTML=resultStr;
+	Make();
+}
+			function Hot_Tip()
+			{
+ 
+var textarea=document.getElementById("text");
+document.getElementById("text").focus();
+expressionText =  document.getElementById("text").value;
+ document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+	var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+	var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+	hot_tipIndexes.push(new Hot_TipSelection(selectionBegin,selectionEnd-selectionBegin));
+	AggregateSelection(hot_tipIndexes);
+	for (var i = 0; i < hot_tipIndexes.length; i++){
+		var beginIndex = hot_tipIndexes[i].startPosition;
+		var endIndex = hot_tipIndexes[i].endPosition;
+													}
+	hot_tipIndexes.sort(function(a,b) {
+	return a.startPosition - b.startPosition;
+										});
+	console.log('aggregated array:');
+for (var i =0; i < hot_tipIndexes.length; i++){  
+console.log(hot_tipIndexes[i].startPosition + " " + hot_tipIndexes[i].size);
+											}
+	 var resultStr=makeString(expressionText);
+
+	document.getElementById("RESULTTEXT").innerText=resultStr;
+	document.getElementById("RESULTHTML").innerHTML=resultStr;
+	Make();
+}
+			function Footer()
+			{
+
+var textarea=document.getElementById("text");
+document.getElementById("text").focus();
+expressionText =  document.getElementById("text").value;
+ document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+	var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+	var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+	footerIndexes.push(new FooterSelection(selectionBegin,selectionEnd-selectionBegin));
+	AggregateSelection(footerIndexes);
+	for (var i = 0; i < footerIndexes.length; i++){
+		var beginIndex = footerIndexes[i].startPosition;
+		var endIndex = footerIndexes[i].endPosition;
+													}
+	footerIndexes.sort(function(a,b) {
+	return a.startPosition - b.startPosition;
+									});
+	console.log('aggregated array:');
+for (var i =0; i < footerIndexes.length; i++){  
+console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
+										}
+	var resultStr=makeString(expressionText);
+
+	document.getElementById("RESULTTEXT").innerText=resultStr;
+	document.getElementById("RESULTHTML").innerHTML=resultStr;
+	Make();
+}
+			function Down()
+			{
             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
@@ -1432,7 +1810,7 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}
-				function Top()
+			function Top()
             {
             
             var textarea=document.getElementById("text");
@@ -1447,7 +1825,7 @@ function Middle_Title()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}	
-	function Main_List()
+			function Main_List()
             {
              
             var textarea=document.getElementById("text");
@@ -1464,7 +1842,7 @@ function Middle_Title()
                 Make();
 			}	
 		
-function None_List()
+			function None_List()
             {
              
             var textarea=document.getElementById("text");
@@ -1479,7 +1857,7 @@ function None_List()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();;
 			}
-	function Decimal_List()
+			function Decimal_List()
             {
              
             var textarea=document.getElementById("text");
@@ -1495,7 +1873,7 @@ function None_List()
                 Make();
 			}	
 	
-function Table()
+			function Table()
             {
             
             var textarea=document.getElementById("text");
@@ -1510,7 +1888,7 @@ function Table()
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}
-	 function Smallicon()
+			function Smallicon()
             {
             
             var textarea=document.getElementById("text");
@@ -1684,8 +2062,8 @@ redo = document.getElementById('redo');
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}
-						function Txt()
-  {
+			function Txt()
+			{
 			alert("Txt");
 			
             var textarea=document.getElementById("text");
@@ -1771,8 +2149,8 @@ i++;
            
 											}
 										}
- resultStr=makeTxtStringHtml(expressionText);
- console.log('resultTxtStr:'+makeTxtStringHtml(expressionText)); 
+ resultStr=makeString(expressionText);
+ console.log('resultStr:'+makeString(expressionText)); 
 resultStr = makeString(expressionText);
  console.log('resultStr:'+makeString(expressionText));   
 													}  
@@ -1822,8 +2200,8 @@ resultStr = makeString(expressionText);
        txtIndexes[i].startPosition = startPos;
        txtIndexes[i].size = size;
 																}
-				   resultStr=makeTxtStringHtml(expressionText)
-				   console.log('resultStr:'+makeTxtStringHtml(expressionText)); 
+				   resultStr=makeString(expressionText)
+				   console.log('resultStr:'+makeString(expressionText)); 
 			document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;	   
 															}
@@ -1844,10 +2222,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        listingIndexes[n].startPosition = startPos;
        listingIndexes[n].size = size;
 															}
-			resultStr = makeListingStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeListingStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 														}
              console.log('Listing indexes:'+JSON.stringify(listingIndexes));   
  for (var m = 0;m < cbtIndexes.length; m++){
@@ -1865,10 +2243,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        cbtIndexes[m].startPosition = startPos;
        cbtIndexes[m].size = size;
 														}
-			resultStr = makeCBTStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeCBTStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 													}
              console.log('CBT indexes:'+JSON.stringify(cbtIndexes));
 			  for (var s = 0;s < linkIndexes.length; s++){
@@ -1886,10 +2264,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        linkIndexes[s].startPosition = startPos;
        linkIndexes[s].size = size;
 															}
-			resultStr = makeLinkStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeLinkStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 															}
              console.log('Link indexes:'+JSON.stringify(linkIndexes));
    for (var p = 0;p < main_titleIndexes.length; p++){
@@ -1907,10 +2285,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        main_titleIndexes[p].startPosition = startPos;
        main_titleIndexes[p].size = size;
 															}
-			resultStr = makeMain_titleStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeMain_titleStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 														}
              console.log(' Main_title indexes:'+JSON.stringify(main_titleIndexes));
 			  for (var d = 0;d < middle_titleIndexes.length; d++){
@@ -1928,10 +2306,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        middle_titleIndexes[d].startPosition = startPos;
        middle_titleIndexes[d].size = size;
 																		}
-			resultStr = makeMiddle_TitleStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeMiddle_TitleStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 																		}
              console.log('Middle_Title indexes:'+JSON.stringify(middle_titleIndexes ));
 for (var h = 0;h < down_titleIndexes.length; h++){
@@ -1949,10 +2327,10 @@ for (var h = 0;h < down_titleIndexes.length; h++){
        down_titleIndexes[h].startPosition = startPos;
        down_titleIndexes[h].size = size;
 														}
-			resultStr = makeDown_titleStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeDown_titleStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 													}
              console.log('Down_title indexes:'+JSON.stringify(down_titleIndexes));  
  for (var g = 0;g < downpage_titleIndexes.length; g++){
@@ -1970,10 +2348,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        downpage_titleIndexes[g].startPosition = startPos;
        downpage_titleIndexes[g].size = size;
 	               }
-			resultStr = makeDownPage_titleStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeDownPage_titleStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 			            }
              console.log('DownPage_title indexes:'+JSON.stringify(downpage_titleIndexes));
 			 /*for (var t = 0;t < footerIndexes.length; t++){
@@ -2012,10 +2390,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        hot_tipIndexes[x].startPosition = startPos;
        hot_tipIndexes[x].size = size;
 																}
-			resultStr = makeHot_TipStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeHot_TipStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 																}
              console.log('Hot_Tip indexes:'+JSON.stringify(hot_tipIndexes));
  for (var r = 0;r < red_titleIndexes.length; r++){
@@ -2033,10 +2411,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        red_titleIndexes[r].startPosition = startPos;
        red_titleIndexes[r].size = size;
 															}
-			resultStr = makeRed_titleStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeRed_titleStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 														}
              console.log('Red_title indexes:'+JSON.stringify(red_titleIndexes));
  for (var f = 0;f < small_titleIndexes.length; f++){
@@ -2054,10 +2432,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        small_titleIndexes[f].startPosition = startPos;
        small_titleIndexes[f].size = size;
 																}
-			resultStr = makeSmall_titleStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeSmall_titleStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 															}
              console.log('Small_title indexes:'+JSON.stringify(small_titleIndexes));
 			 
@@ -2121,10 +2499,10 @@ document.getElementById("RESULTHTML").innerHTML=CoderesultStr+resultStr;
        captureIndexes[l].startPosition = startPos;
        captureIndexes[l].size = size;
 																	}
-			resultStr = makeCaptureStringHtml(expressionText);
+			resultStr = makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeCaptureStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 																}
              console.log('Capture indexes:'+JSON.stringify(captureIndexes));
   
