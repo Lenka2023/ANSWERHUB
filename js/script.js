@@ -700,16 +700,21 @@ return symbolIndex;
 var resultstr=[];
 	var stack=[];
 	function makeString(sourceStr){
-		resultstr.pop();
+		
 		textarea=document.getElementById("text");
 		 var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+			resultstr.pop();
 		for (var i = 0; i < sourceStr.length; i++){														
 				 
 				switch(getSymbolTypes(i)){
 					 case 'Bold':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
+							if(i==0){
 							resultStr ='<span class="strong">'+ sourceStr[i];
+									} else{
+								resultStr +='<span class="strong">'+ sourceStr[i];
+											}
 							 stack.push( 'Bold');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -719,18 +724,28 @@ var resultstr=[];
 					  break;
 					  case 'Code':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top !== 'Code'))){
-						  resultStr+='<div class="commands"><pre>'+sourceStr[i];
+							if(i==0){
+							resultStr='<div class="commands"><pre>'+sourceStr[i];
+									} else{
+								resultStr+='<div class="commands"><pre>'+sourceStr[i];
+											}
+						  
 						  stack.push('Code');
 						 console.log( 'resultStr:' + resultStr );	
 																		}
 					  	 
 						resultStr = closeTag(resultStr,stack[stack.length-1]);															
-						stack.pop();														
+																				
 							
 					 break;
 					  case 'Text':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Text'))){
+							if(i==0){
 							resultStr ='</span><br><span class="move_left">'+ sourceStr[i];
+									} else{
+								resultStr +='</span><br><span class="move_left">'+ sourceStr[i];
+											}
+							
 							 stack.push( 'Text');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -740,7 +755,12 @@ var resultstr=[];
 					  break;
 					  case 'Listing':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Listing'))){
+							if(i==0){
 							resultStr ='</span><br><span class="move_left "><span class="strong ">'+ sourceStr[i];
+									} else{
+								resultStr +='</span><br><span class="move_left "><span class="strong ">'+ sourceStr[i];
+											}
+							
 							 stack.push( 'Listing');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -750,7 +770,12 @@ var resultstr=[];
 					  break;
 					  case 'CBT':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='CBT'))){
-							resultStr ='<span class="strong">'+ sourceStr[i];
+							if(i==0){
+							resultStr ='<span class="strong">'+ sourceStr[i]
+									} else{
+								resultStr +='<span class="strong">'+ sourceStr[i]
+											}
+							;
 							 stack.push('CBT');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -761,7 +786,13 @@ var resultstr=[];
 					  case 'Link':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Link'))){
 							var x=prompt("Enter a link","");
+							if(i==0){
 							resultStr ='</span><a  href="'+x+'">'+ sourceStr[i];
+									} else{
+								resultStr +='</span><a  href="'+x+'">'+ sourceStr[i];
+											}
+							
+							
 							 stack.push('Link');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -771,7 +802,12 @@ var resultstr=[];
 					  break;
 					  case 'Main_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Main_title'))){
+							if(i==0){
 							resultStr ='</span><div class="main_title">'+ sourceStr[i];
+									} else{
+								resultStr +='</span><div class="main_title">'+ sourceStr[i];
+											}
+							
 							 stack.push('Main_title');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -781,7 +817,12 @@ var resultstr=[];
 					  break;
 					  case 'Middle_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Middle_title'))){
+							if(i==0){
 							resultStr ='</span><span class="middle_title">'+ sourceStr[i];
+									} else{
+								resultStr +='</span><span class="middle_title">'+ sourceStr[i];
+											}
+							
 							 stack.push('Middle_title');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -791,6 +832,11 @@ var resultstr=[];
 					  break;
 					  case 'Down_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Down_title'))){
+							if(i==0){
+							resultStr ='<span class="strong">'+ sourceStr[i];
+									} else{
+								resultStr +='<span class="strong">'+ sourceStr[i];
+											}
 							resultStr ='</span><div class="down_title">'+ sourceStr[i];
 							 stack.push('Down_title');
 							  console.log( 'resultStr:' + resultStr );	
@@ -801,7 +847,12 @@ var resultstr=[];
 					  break;
 					  case 'Downpage_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Downpage_title'))){
+							if(i==0){
 							resultStr ='</span><br><span class="move_left strong">'+ sourceStr[i];
+									} else{
+								resultStr +='</span><br><span class="move_left strong">'+ sourceStr[i];
+											}
+							
 							 stack.push('Downpage_title');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -811,6 +862,7 @@ var resultstr=[];
 					  break;
 					  case 'Hot_tip':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Hot_tip'))){
+							if(i==0){
 							resultStr ='</span><div class="border">'+
 					  '<table class="elliptic">'+
 						'<tbody>'+
@@ -820,7 +872,18 @@ var resultstr=[];
 							'</td>'+
 							'<td class="hotTipRight">'+
 							  '<span>'+ sourceStr[i];
-							 stack.push('Hot_tip');
+									} else{
+								resultStr +='</span><div class="border">'+
+					  '<table class="elliptic">'+
+						'<tbody>'+
+						  '<tr>'+
+							'<td class="hotTipLeft">'+
+							  '<h1>Hot<br>Tip</h1>'+
+							'</td>'+
+							'<td class="hotTipRight">'+
+							  '<span>'+ sourceStr[i];
+											}
+								 stack.push('Hot_tip');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
@@ -830,7 +893,11 @@ var resultstr=[];
 					 
 					 case 'Red_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Red_title'))){
+							if(i==0){
 							resultStr ='</span><div class="title strong"><span>'+ sourceStr[i];
+									} else{
+								resultStr +='</span><div class="title strong"><span>'+ sourceStr[i];
+											}
 							 stack.push('Red_title');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -841,7 +908,11 @@ var resultstr=[];
 					  
 					 case 'Small_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Small_title'))){
+							if(i==0){
 							resultStr ='</span><br><span class="move_left strong font_size">'+ sourceStr[i];
+									} else{
+								resultStr +='</span><br><span class="move_left strong font_size">'+ sourceStr[i];
+											}
 							 stack.push('Small_title');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -852,7 +923,11 @@ var resultstr=[];
 					  
 					 case 'Capture':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Capture'))){
+							if(i==0){
 							resultStr ='</span><br><span class="move_left "><span class="strong underline">'+ sourceStr[i];
+									} else{
+								resultStr +='</span><br><span class="move_left "><span class="strong underline">'+ sourceStr[i];
+											}
 							 stack.push('Capture');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
@@ -957,7 +1032,7 @@ var resultstr=[];
 
 										
 				}
-				if((top=='Text')&&((n!='Text')||(k==boldIndexes.length))){
+				if((top=='Text')&&((n!='Text')||(k==txtIndexes.length))){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -968,7 +1043,7 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Listing')&&((n!='Listing')||(k==boldIndexes.length))){
+				if((top=='Listing')&&((n!='Listing')||(k==listingIndexes.length))){
 					resultStr +='</span></span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -979,7 +1054,7 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Link')&&((n!='Link')||(k==boldIndexes.length))){
+				if((top=='Link')&&((n!='Link')||(k==linkIndexes.length))){
 					resultStr +='</a><span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -990,7 +1065,7 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Main_title')&&((n!='Main_title')||(k==boldIndexes.length))){
+				if((top=='Main_title')&&((n!='Main_title')||(k==main_titleIndexes.length))){
 					resultStr +='</div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1001,7 +1076,7 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Middle_title')&&((n!='Middle_title')||(k==boldIndexes.length))){
+				if((top=='Middle_title')&&((n!='Middle_title')||(k==middle_titleIndexes.length))){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1012,7 +1087,7 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Down_title')&&((n!='Down_title')||(k==boldIndexes.length))){
+				if((top=='Down_title')&&((n!='Down_title')||(k==down_titleIndexes.length))){
 					resultStr +='</div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1023,7 +1098,7 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Downpage_title')&&((n!='Downpage_title')||(k==boldIndexes.length))){
+				if((top=='Downpage_title')&&((n!='Downpage_title')||(k==downpage_titleIndexes.length))){
 					resultStr +='</span><br>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1034,7 +1109,7 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Hot_tip')&&((n!='Hot_tip')||(k==boldIndexes.length))){
+				if((top=='Hot_tip')&&((n!='Hot_tip')||(k==hot_tipIndexes.length))){
 					resultStr +='</span>'+
 							'</td>'+
 						  '</tr>'+
@@ -1051,7 +1126,7 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
+				if((top=='Red_title')&&((n!='Red_title')||(k==red_titleIndexess.length))){
 					resultStr +='</span></div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1062,7 +1137,7 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Small_title')&&((n!='Small_title')||(k==boldIndexes.length))){
+				if((top=='Small_title')&&((n!='Small_title')||(k==small_titleIndexes.length))){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1073,7 +1148,7 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Capture')&&((n!='Capture')||(k==boldIndexes.length))){
+				if((top=='Capture')&&((n!='Capture')||(k==captureIndexes.length))){
 					resultStr +='</span></span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -2180,7 +2255,7 @@ resultStr = makeString(expressionText);
   
    $('#text').keyup(function onkeypressFunction()
    {
-         alert("onkeypressFunction");
+         //alert("onkeypressFunction");
 		 expressionText =( document.getElementById("text").value );
 		  document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
          var pos=caretPos(expressionText);
