@@ -61,6 +61,12 @@ var ua_vers   = parseInt(navigator.appVersion);
 					var txtIndexes = [];
 					var codeIndexes = [];
 					var captureIndexes = [];
+					var smalliconIndexes = [];
+					var square_listIndexes = [];
+					var disc_listIndexes = [];
+					var main_listIndexes = [];
+					var none_listIndexes = [];
+					var decimal_listIndexes = [];
 					var UsedSelection = function(startPos, size){
 			this.startPosition = startPos;
 			this.size = size;
@@ -310,16 +316,19 @@ var text=prompt("Enter text","");
 														}
 			 function Square_List()
             {
+				 var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var expression = getSelectiontextarea( document.getElementById("text") );
 				  document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
                 document.getElementById("text").focus();
-                var n=prompt("Enter a count of row","");
-                 var square_list='<span class=" strong font_size">'+expression+'</span><ul class="square">';
-for(var i=0;i<n;i++){
-var text=prompt("Enter a text for  <li>","");
-square_list+='<li>'+text+'</li>';
- 
-					}
+				var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                square_listIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(square_listIndexes);
+                for (var i = 0; i <square_listIndexes.length; i++){
+                    var beginIndex =square_listIndexes[i].startPosition;
+                    var endIndex =square_listIndexes[i].endPosition;
+															}
 var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -327,6 +336,8 @@ var resultStr=makeString(expressionText);
                 Make();
             }
 			 function makeSquare_ListStringHtml(sourceStr){
+				  var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 		   textarea=document.getElementById("text");
 		   var expression = getSelectiontextarea( document.getElementById("text") );
 		    document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
@@ -345,6 +356,8 @@ square_list+='<li>'+text+'</li>';
 															}
 			           
 			function makeNone_ListStringHtml(sourceStr){
+				 var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 		   textarea=document.getElementById("text");
 		    var expression = getSelectiontextarea( document.getElementById("text") );
 			 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
@@ -363,6 +376,8 @@ for(var i=0;i<n;i++){
 														}
 					
 			 function makeDecimal_ListStringHtml(sourceStr){
+				  var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 		   textarea=document.getElementById("text");
 		     var expression = getSelectiontextarea( document.getElementById("text") );
         alert(" makeDecimal_ListStringHtml");
@@ -379,18 +394,21 @@ for(var i=0;i<n;i++){
 															}
 	 function Disc_List()
             {
+				 var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var expression = getSelectiontextarea( document.getElementById("text") );
                 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
                 document.getElementById("text").focus();
-                var n=prompt("Enter a count of row","");
-                 var disc_list='<span class=" strong font_size">'+expression+'</span><ol class="disc">';
-for(var i=0;i<n;i++){
-        var worlds = getSelectiontextarea( document.getElementById("text") );
-        document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
-        var text=prompt("Enter a text for  <li>","");
-        document.getElementById("text").focus();
-         disc_list+='<li>'+text+'</li>';
-                    }
+               
+                
+					var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+                var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                disc_listIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(disc_listIndexes);
+                for (var i = 0; i <disc_listIndexes.length; i++){
+                    var beginIndex =disc_listIndexes[i].startPosition;
+                    var endIndex =disc_listIndexes[i].endPosition;
+															}
                  var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -426,6 +444,8 @@ for(var i=0;i<n;i++){
 												}*/		
 function makeDisc_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
+		    var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 		   var expression = getSelectiontextarea( document.getElementById("text") );
 		    document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
         alert(" makeDisc_ListStringHtml");
@@ -629,37 +649,37 @@ for(var i = 0, text; i <= x;i++){
 									symbolIndex='Capture';
 																			}
 						}
+						for (var k = 0; k < smalliconIndexes.length; k++){
+								if((symbolIndex>=smalliconIndexes[k].startPosition)&&(symbolIndex<smalliconIndexes[k].startPosition+smalliconIndexes[k].size)){
+									symbolIndex='Smallicon';
+																			}
+						}
+						for (var k = 0; k < square_listIndexes.length; k++){
+								if((symbolIndex>=square_listIndexes[k].startPosition)&&(symbolIndex<square_listIndexes[k].startPosition+square_listIndexes[k].size)){
+									symbolIndex='Square_List';
+																			}
+						}
+						for (var k = 0; k < disc_listIndexes.length; k++){
+								if((symbolIndex>=disc_listIndexes[k].startPosition)&&(symbolIndex<disc_listIndexes[k].startPosition+disc_listIndexes[k].size)){
+									symbolIndex='Disc_List';
+																			}
+						}
+						for (var k = 0; k <  main_listIndexes.length; k++){
+								if((symbolIndex>= main_listIndexes[k].startPosition)&&(symbolIndex< main_listIndexes[k].startPosition+ main_listIndexes[k].size)){
+									symbolIndex='Main_List';
+																			}
+						}
+						for (var k = 0; k <  none_listIndexes.length; k++){
+								if((symbolIndex>= none_listIndexes[k].startPosition)&&(symbolIndex< none_listIndexes[k].startPosition+ none_listIndexes[k].size)){
+									symbolIndex='None_List';
+																			}
+						}
+						for (var k = 0; k < decimal_listIndexes.length; k++){
+								if((symbolIndex>=decimal_listIndexes[k].startPosition)&&(symbolIndex<decimal_listIndexes[k].startPosition+decimal_listIndexes[k].size)){
+									symbolIndex='Decimal_List';
+																			}
+						}
 						/*for (var k = 0; k < boldIndexes.length; k++){
-								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
-									symbolIndex='Bold';
-																			}
-						}
-						for (var k = 0; k < boldIndexes.length; k++){
-								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
-									symbolIndex='Bold';
-																			}
-						}
-						for (var k = 0; k < boldIndexes.length; k++){
-								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
-									symbolIndex='Bold';
-																			}
-						}
-						for (var k = 0; k < boldIndexes.length; k++){
-								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
-									symbolIndex='Bold';
-																			}
-						}
-						for (var k = 0; k < boldIndexes.length; k++){
-								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
-									symbolIndex='Bold';
-																			}
-						}
-						for (var k = 0; k < boldIndexes.length; k++){
-								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
-									symbolIndex='Bold';
-																			}
-						}
-						for (var k = 0; k < boldIndexes.length; k++){
 								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
 									symbolIndex='Bold';
 																			}
@@ -697,6 +717,17 @@ for(var i = 0, text; i <= x;i++){
 return symbolIndex;
 					}
 //-----------------------------------------------------------------------------------------------------------------
+function makeSmalliconStringHtml(sourceStr){
+		   textarea=document.getElementById("text");
+		     var expressionText = getSelectiontextarea( document.getElementById("text") );
+			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
+        alert(" makeSmalliconStringHtml");
+           var x=prompt("Enter a name of image","");
+			var SmalliconresultStr =" ";
+                SmalliconresultStr = '<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
+                     
+           	return SmalliconresultStr;
+														}
 var resultstr=[];
 	var stack=[];
 	function makeString(sourceStr){
@@ -936,10 +967,18 @@ var resultstr=[];
 																				
 					  break;
 					  
-					 /*case 'Bold':
-						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
-							resultStr ='<span class="strong">'+ sourceStr[i];
-							 stack.push( 'Bold');
+					 case 'Smallicon':
+					 
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Smallicon'))){
+							alert("Enter a name of image");
+           
+							if(i==0){
+							resultStr ='<br><img src="img/'+sourceStr[i];
+									} else{
+								resultStr +='<br><img src="img/'+sourceStr[i];
+											}
+							
+							 stack.push( 'Smallicon');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
@@ -947,10 +986,16 @@ var resultstr=[];
 																				
 					  break;
 					  
-					 case 'Bold':
-						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
-							resultStr ='<span class="strong">'+ sourceStr[i];
-							 stack.push( 'Bold');
+					 case 'Square_List':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Square_List'))){
+							
+                 
+				 if(i==0){
+							resultStr='<span class=" strong font_size">'+ sourceStr[i];
+									} else{
+								resultStr+='<span class=" strong font_size">'+ sourceStr[i];
+											}
+							stack.push('Square_List');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
@@ -958,27 +1003,70 @@ var resultstr=[];
 																				
 					  break;
 					  
-					 case 'Bold':
-						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
-							resultStr ='<span class="strong">'+ sourceStr[i];
-							 stack.push( 'Bold');
+					 case 'Disc_List':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Disc_List'))){
+							
+                 
+				 if(i==0){
+							resultStr='<span class=" strong font_size">'+ sourceStr[i];
+									} else{
+								resultStr+='<span class=" strong font_size">'+ sourceStr[i];
+											}
+							stack.push('Disc_List');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
 					  break;
-					  
-					 case 'Bold':
-						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
-							resultStr ='<span class="strong">'+ sourceStr[i];
-							 stack.push( 'Bold');
+					  case 'Main_List':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Main_List'))){
+							
+                 
+				 if(i==0){
+							resultStr='<span class=" strong font_size">'+ sourceStr[i];
+									} else{
+								resultStr+='<span class=" strong font_size">'+ sourceStr[i];
+											}
+							stack.push('Main_List');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
-					  break;*/
+					  break;
+					  case 'None_List':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='None_List'))){
+							
+                 
+				 if(i==0){
+							resultStr='<span class=" strong font_size">'+ sourceStr[i];
+									} else{
+								resultStr+='<span class=" strong font_size">'+ sourceStr[i];
+											}
+							stack.push('None_List');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
+					  case 'Decimal_List':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Decimal_List'))){
+							
+                 
+				 if(i==0){
+							resultStr='<span class=" strong font_size">'+ sourceStr[i];
+									} else{
+								resultStr+='<span class=" strong font_size">'+ sourceStr[i];
+											}
+							stack.push('Decimal_List');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
 					  
 						
 					 default:
@@ -1025,12 +1113,10 @@ var resultstr=[];
 			resultStr+='</pre></div>';
 			console.log( 'resultStr:' + resultStr );
 					  stack.pop();
-																	} 
-		else if((top=='Code')&&(n=='Code')){
+																	 
+		}else if((top=='Code')&&(n=='Code')){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
-
-										
 				}
 				if((top=='Text')&&((n!='Text')||(k==txtIndexes.length))){
 					resultStr +='</span>';
@@ -1159,72 +1245,109 @@ var resultstr=[];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-														/*if((top=='Bold')&&((n!='Bold')||(k==boldIndexes.length))){
-					resultStr +='</span>';
+				if((top=='Smallicon')&&((n!='Smallicon')||(k==smalliconIndexes.length))){
+					resultStr +='"alt="622" class="textwrap smallicon">';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Bold')&&(n=='Bold')){
+				} else 	if((top=='Smallicon')&&(n=='Smallicon')){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-														if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
-					resultStr +='</span>';
+				if((top=='Square_List')&&((n!='Square_List')||(k==square_listIndexes.length))){
+					resultStr +='</span><ul class="square">';
+					var l=prompt("Enter a count of row","");
+for(var i=0;i<l;i++){
+var text=prompt("Enter a text for  <li>","");
+resultStr+='<li>'+text+'</li>';
+ 
+					}
+			resultStr+='</ul>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Bold')&&(n=='Bold')){
+				} else 	if((top=='Square_List')&&(n=='Square_List')){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-														if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
-					resultStr +='</span>';
+				if((top=='Disc_List')&&((n!='Disc_List')||(k==disc_listIndexes.length))){
+					resultStr +='</span><ol class="disc">';
+					var l=prompt("Enter a count of row","");
+for(var i=0;i<l;i++){
+      
+        var text=prompt("Enter a text for  <li>","");
+        document.getElementById("text").focus();
+         resultStr+='<li>'+text+'</li>';
+                    }
+			
+               resultStr = disc_list + '</ol>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Bold')&&(n=='Bold')){
+				} else 	if((top=='Disc_List')&&(n=='Disc_List')){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-														if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
-					resultStr +='</span>';
+				if((top=='Main_List')&&((n!='Main_List')||(k== main_listIndexes.length))){
+					resultStr +='</span><ul class="top_page_list">';
+                    var l=prompt("Enter a count of row","");
+for(var i=0;i<l;i++){
+		var text=prompt("Enter a text for  <li>","");
+		 resultStr+='<li>'+text+'</li>';
+					}
+			
+            resultStr+='</ul>';
+             	
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Bold')&&(n=='Bold')){
+				} else 	if((top=='Main_List')&&(n=='Main_List')){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-														if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
-					resultStr +='</span>';
+				if((top=='None_List')&&((n!='None_List')||(k== none_listIndexes.length))){
+					resultStr +='</span><ul class="none_list">';
+					var l=prompt("Enter a count of row","");
+for(var i=0;i<l;i++){
+        var text=prompt("Enter a text for  <li>","");
+        resultStr+='<li>'+text+'</li>';
+ 					}
+			resultStr+= '</ul>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Bold')&&(n=='Bold')){
+				} else 	if((top=='None_List')&&(n=='None_List')){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-														if((top=='Red_title')&&((n!='Red_title')||(k==boldIndexes.length))){
-					resultStr +='</span>';
+					if((top=='Decimal_List')&&((n!='Decimal_List')||(k==decimal_listIndexes.length))){
+					resultStr +='</span><ol class="decimal">';
+					var l=prompt("Enter a count of row","");
+for(var i=0;i<l;i++){
+        var text=prompt("Enter a text for  <li>","");
+         resultStr+='<li>'+text+'</li>';
+ 
+					}
+			resultStr+='</ol>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Bold')&&(n=='Bold')){
+				} else 	if((top=='Decimal_List')&&(n=='Decimal_List')){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
-														}*/
+														}
 														
 													
 	return 	resultStr;								
@@ -1234,7 +1357,8 @@ var resultstr=[];
 				 
 function makeMain_ListStringHtml(sourceStr){
 	PurgeRedoSequence();
-
+ var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 		   textarea=document.getElementById("text");
 		   var expression = getSelectiontextarea( document.getElementById("text") );
 		    document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
@@ -1907,8 +2031,14 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
             document.getElementById("text").focus();
             expressionText =  document.getElementById("text").value;
              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+               var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                 main_listIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection( main_listIndexes);
+                for (var i = 0; i < main_listIndexes.length; i++){
+                    var beginIndex = main_listIndexes[i].startPosition;
+                    var endIndex = main_listIndexes[i].endPosition;
+															}
                
                 var resultStr=makeString(expressionText);
 
@@ -1919,13 +2049,20 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
 		
 			function None_List()
             {
-             
+              var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
 			document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
             var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                 none_listIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection( none_listIndexes);
+                for (var i = 0; i < none_listIndexes.length; i++){
+                    var beginIndex = none_listIndexes[i].startPosition;
+                    var endIndex = none_listIndexes[i].endPosition;
+															}
                 var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -1934,13 +2071,20 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
 			}
 			function Decimal_List()
             {
-             
+              var expressionText =  document.getElementById("text").value;
+			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expression = getSelectiontextarea( document.getElementById("text") );
             document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+               var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+                 decimal_listIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection( decimal_listIndexes);
+                for (var i = 0; i < decimal_listIndexes.length; i++){
+                    var beginIndex = decimal_listIndexes[i].startPosition;
+                    var endIndex = decimal_listIndexes[i].endPosition;
+															}
                var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -2280,7 +2424,7 @@ resultStr = makeString(expressionText);
 			document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;	   
 															}
-			console.log('Txt indexes:'+JSON.stringify(listingIndexes));   
+			console.log('Txt indexes:'+JSON.stringify(txtIndexes));   
  
     for (var n = 0;n < listingIndexes.length; n++){
                  if(typeof listingIndexes[n] != "undefined"){
@@ -2580,6 +2724,111 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeString(expressionText));
 																}
              console.log('Capture indexes:'+JSON.stringify(captureIndexes));
+			for (var i = 0;i < square_listIndexes.length; i++){
+                 if(typeof square_listIndexes[i] != "undefined"){
+                    var startPos = square_listIndexes[i].startPosition;
+                    var size = square_listIndexes[i].size;
+                  
+                     if(pos<=startPos){
+						startPos=startPos+1;
+										}
+       else
+			if((pos>startPos)&&(pos<startPos+size)){
+				size += 1;
+														}
+       square_listIndexes[i].startPosition = startPos;
+       square_listIndexes[i].size = size;
+																}
+				   resultStr=makeString(expressionText)
+				   console.log('resultStr:'+makeString(expressionText)); 
+			document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;	   
+															}
+			console.log('square_indexes:'+JSON.stringify(square_listIndexes));  
+			for(var i = 0;i < disc_listIndexes.length; i++){
+                 if(typeof disc_listIndexes[i] != "undefined"){
+                    var startPos = disc_listIndexes[i].startPosition;
+                    var size = disc_listIndexes[i].size;
+                  
+                     if(pos<=startPos){
+						startPos=startPos+1;
+										}
+       else
+			if((pos>startPos)&&(pos<startPos+size)){
+				size += 1;
+														}
+       disc_listIndexes[i].startPosition = startPos;
+       disc_listIndexes[i].size = size;
+																}
+				   resultStr=makeString(expressionText)
+				   console.log('resultStr:'+makeString(expressionText)); 
+			document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;	   
+															}
+			console.log('disc_listindexes:'+JSON.stringify(disc_listIndexes));  
+			for(var i = 0;i <  main_listIndexes.length; i++){
+                 if(typeof  main_listIndexes[i] != "undefined"){
+                    var startPos =  main_listIndexes[i].startPosition;
+                    var size =  main_listIndexes[i].size;
+                  
+                     if(pos<=startPos){
+						startPos=startPos+1;
+										}
+       else
+			if((pos>startPos)&&(pos<startPos+size)){
+				size += 1;
+														}
+        main_listIndexes[i].startPosition = startPos;
+        main_listIndexes[i].size = size;
+																}
+				   resultStr=makeString(expressionText)
+				   console.log('resultStr:'+makeString(expressionText)); 
+			document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;	   
+															}
+			console.log('main_listindexes:'+JSON.stringify( main_listIndexes));  
+			for(var i = 0;i <  none_listIndexes.length; i++){
+                 if(typeof  none_listIndexes[i] != "undefined"){
+                    var startPos =  none_listIndexes[i].startPosition;
+                    var size =  none_listIndexes[i].size;
+                  
+                     if(pos<=startPos){
+						startPos=startPos+1;
+										}
+       else
+			if((pos>startPos)&&(pos<startPos+size)){
+				size += 1;
+														}
+        none_listIndexes[i].startPosition = startPos;
+        none_listIndexes[i].size = size;
+																}
+				   resultStr=makeString(expressionText)
+				   console.log('resultStr:'+makeString(expressionText)); 
+			document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;	   
+															}
+			console.log('none_listindexes:'+JSON.stringify( none_listIndexes));  
+			for(var i = 0;i < decimal_listIndexes.length; i++){
+                 if(typeof decimal_listIndexes[i] != "undefined"){
+                    var startPos = decimal_listIndexes[i].startPosition;
+                    var size = decimal_listIndexes[i].size;
+                  
+                     if(pos<=startPos){
+						startPos=startPos+1;
+										}
+       else
+			if((pos>startPos)&&(pos<startPos+size)){
+				size += 1;
+														}
+       decimal_listIndexes[i].startPosition = startPos;
+       decimal_listIndexes[i].size = size;
+																}
+				   resultStr=makeString(expressionText)
+				   console.log('resultStr:'+makeString(expressionText)); 
+			document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;	   
+															}
+			console.log('decimal_listindexes:'+JSON.stringify(decimal_listIndexes));  
   
   });  
        
