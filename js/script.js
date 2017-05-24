@@ -314,7 +314,7 @@ var text=prompt("Enter text","");
 							}
 			return DownresultStr;
 														}
-			 function Square_List()
+			 function Square_List(x)
             {
 				 var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -329,7 +329,9 @@ var text=prompt("Enter text","");
                     var beginIndex =square_listIndexes[i].startPosition;
                     var endIndex =square_listIndexes[i].endPosition;
 															}
-var resultStr=makeString(expressionText);
+var l=prompt("Enter a count of row","");
+//var text=prompt("Enter a text for  <li>","");															
+var resultStr=makeString(expressionText,l,text);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -730,8 +732,8 @@ function makeSmalliconStringHtml(sourceStr){
 														}
 var resultstr=[];
 	var stack=[];
-	function makeString(sourceStr){
-		
+	function makeString(sourceStr,x){
+		x=x;
 		textarea=document.getElementById("text");
 		 var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -999,7 +1001,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(resultStr,stack[stack.length-1],x);															
 																				
 					  break;
 					  
@@ -1083,7 +1085,9 @@ var resultstr=[];
 																
 								}
 								
-			function closeTag(resultStr,top){
+			function closeTag(resultStr,top, m){
+				 console.log( 'm:' + m );
+				
 			textarea=document.getElementById("text");
 		  expressionText =  document.getElementById("text").value ;		
 		//var top=stack[stack.length-1];
@@ -1179,7 +1183,7 @@ var resultstr=[];
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Bold')&&(n=='Bold')){
+				} else 	if((top=='Down_title')&&(n=='Down_title')){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
@@ -1207,7 +1211,7 @@ var resultstr=[];
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Bold')&&(n=='Bold')){
+				} else 	if((top=='Hot_tip')&&(n=='Hot_tip')){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
@@ -1258,8 +1262,8 @@ var resultstr=[];
 														}
 				if((top=='Square_List')&&((n!='Square_List')||(k==square_listIndexes.length))){
 					resultStr +='</span><ul class="square">';
-					var l=prompt("Enter a count of row","");
-for(var i=0;i<l;i++){
+					//var l=prompt("Enter a count of row","");
+for(var i=0;i<m;i++){
 var text=prompt("Enter a text for  <li>","");
 resultStr+='<li>'+text+'</li>';
  
