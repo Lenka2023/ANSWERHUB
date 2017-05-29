@@ -314,6 +314,10 @@ var text=prompt("Enter text","");
 							}
 			return DownresultStr;
 														}
+			 var l=0;
+			 var text=0;
+			 var number=0;
+			// var expression=[];
 			 function Square_List(x)
             {
 				 var expressionText =  document.getElementById("text").value;
@@ -329,14 +333,35 @@ var text=prompt("Enter text","");
                     var beginIndex =square_listIndexes[i].startPosition;
                     var endIndex =square_listIndexes[i].endPosition;
 															}
-var l=prompt("Enter a count of row","");
-//var text=prompt("Enter a text for  <li>","");															
+					
+					
+					if(l!=null){
+						l=prompt("Enter a count of row","");	
+					number=l;
+					 console.log( 'l:' + l );
+								}
+					/*if(l===null){	
+					number=l;
+					console.log( 'l:' + l );
+					}*/	
+for(var i=0;i<number;i++){
+	 console.log( 'number:' +number );
+ //text=prompt("Enter a text for  <li>","");
+ 
+							}					
+														
 var resultStr=makeString(expressionText,l,text);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
+				
             }
+			number=l;
+			/*for(var i=0;i<number;i++){
+			expression.push(text);
+										}*/
+			 console.log( 'l:' + l );
 			 function makeSquare_ListStringHtml(sourceStr){
 				  var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -734,6 +759,7 @@ var resultstr=[];
 	var stack=[];
 	function makeString(sourceStr,x){
 		x=x;
+		
 		textarea=document.getElementById("text");
 		 var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -1262,12 +1288,21 @@ var resultstr=[];
 														}
 				if((top=='Square_List')&&((n!='Square_List')||(k==square_listIndexes.length))){
 					resultStr +='</span><ul class="square">';
-					//var l=prompt("Enter a count of row","");
+					
 for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
 var text=prompt("Enter a text for  <li>","");
 resultStr+='<li>'+text+'</li>';
- 
-					}
+
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	 console.log( 'l:' + l );
+var text=prompt("Enter a text for  <li>","");
+resultStr+='<li>'+text+'</li>';
+
+ 					}
+									}
 			resultStr+='</ul>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
