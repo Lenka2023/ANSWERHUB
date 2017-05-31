@@ -337,18 +337,18 @@ var text=prompt("Enter text","");
 					
 					if(l!=null){
 						l=prompt("Enter a count of row","");	
-					number=l;
-					 console.log( 'l:' + l );
+						number=l;
+						console.log( 'l:' + l );
 								}
 					
-for(var i=0;i<number;i++){
-	 console.log( 'number:' +number );
- text=prompt("Enter a text for  <li>","");
- arr.push(text);
- console.log( 'arr:' +arr );
-							}					
+					for(var i=0;i<number;i++){
+						console.log( 'number:' +number );
+						text=prompt("Enter a text for  <li>","");
+						arr.push(text);
+						console.log( 'arr:' +arr );
+											}					
 														
-var resultStr=makeString(expressionText,l,arr);
+					var resultStr=makeString(expressionText,l,arr);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -418,7 +418,7 @@ for(var i=0;i<n;i++){
                 Decimal_ListresultStr = decimal_list + '</ol>';
                         	return Decimal_ListresultStr;
 															}
-	 function Disc_List()
+	 function Disc_List(x,y)
             {
 				 var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -435,7 +435,20 @@ for(var i=0;i<n;i++){
                     var beginIndex =disc_listIndexes[i].startPosition;
                     var endIndex =disc_listIndexes[i].endPosition;
 															}
-                 var resultStr=makeString(expressionText);
+                 if(l!=null){
+						l=prompt("Enter a count of row","");	
+						number=l;
+						console.log( 'l:' + l );
+								}
+					
+					for(var i=0;i<number;i++){
+						console.log( 'number:' +number );
+						text=prompt("Enter a text for  <li>","");
+						arr.push(text);
+						console.log( 'arr:' +arr );
+											}					
+														
+					var resultStr=makeString(expressionText,l,arr);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1043,7 +1056,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
 					  break;
 					  case 'Main_List':
@@ -1059,7 +1072,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
 					  break;
 					  case 'None_List':
@@ -1075,7 +1088,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
 					  break;
 					  case 'Decimal_List':
@@ -1091,7 +1104,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
 					  break;
 					  
@@ -1290,14 +1303,12 @@ var resultstr=[];
 					
 for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
-//var text=prompt("Enter a text for  <li>","");
 resultStr+='<li>'+g[i]+'</li>';
 console.log( 'g[i]:' + g[i] );
  					}
 					if(m==undefined){
 					for(var i=0;i<number;i++){
-	//var text=prompt("Enter a text for  <li>","");
-resultStr+='<li>'+arr[i]+'</li>';
+	resultStr+='<li>'+arr[i]+'</li>';
 console.log( 'arr[i]:' +arr[i] );
  					}
 									}
@@ -1313,15 +1324,18 @@ console.log( 'arr[i]:' +arr[i] );
 														}
 				if((top=='Disc_List')&&((n!='Disc_List')||(k==disc_listIndexes.length))){
 					resultStr +='</span><ol class="disc">';
-					var l=prompt("Enter a count of row","");
-for(var i=0;i<l;i++){
-      
-        var text=prompt("Enter a text for  <li>","");
-        document.getElementById("text").focus();
-         resultStr+='<li>'+text+'</li>';
-                    }
-			
-               resultStr = disc_list + '</ol>';
+					for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+               resultStr += '</ol>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
@@ -1333,12 +1347,17 @@ for(var i=0;i<l;i++){
 														}
 				if((top=='Main_List')&&((n!='Main_List')||(k== main_listIndexes.length))){
 					resultStr +='</span><ul class="top_page_list">';
-                    var l=prompt("Enter a count of row","");
-for(var i=0;i<l;i++){
-		var text=prompt("Enter a text for  <li>","");
-		 resultStr+='<li>'+text+'</li>';
-					}
-			
+                    for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
             resultStr+='</ul>';
              	
 					 console.log( 'resultStr:' + resultStr );
@@ -1352,11 +1371,17 @@ for(var i=0;i<l;i++){
 														}
 				if((top=='None_List')&&((n!='None_List')||(k== none_listIndexes.length))){
 					resultStr +='</span><ul class="none_list">';
-					var l=prompt("Enter a count of row","");
-for(var i=0;i<l;i++){
-        var text=prompt("Enter a text for  <li>","");
-        resultStr+='<li>'+text+'</li>';
+					for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
  					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
 			resultStr+= '</ul>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1369,12 +1394,17 @@ for(var i=0;i<l;i++){
 														}
 					if((top=='Decimal_List')&&((n!='Decimal_List')||(k==decimal_listIndexes.length))){
 					resultStr +='</span><ol class="decimal">';
-					var l=prompt("Enter a count of row","");
-for(var i=0;i<l;i++){
-        var text=prompt("Enter a text for  <li>","");
-         resultStr+='<li>'+text+'</li>';
- 
-					}
+					for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
 			resultStr+='</ol>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -2061,7 +2091,7 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}	
-			function Main_List()
+			function Main_List(x,y)
             {
              
             var textarea=document.getElementById("text");
@@ -2077,14 +2107,27 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
                     var endIndex = main_listIndexes[i].endPosition;
 															}
                
-                var resultStr=makeString(expressionText);
+                if(l!=null){
+						l=prompt("Enter a count of row","");	
+						number=l;
+						console.log( 'l:' + l );
+								}
+					
+					for(var i=0;i<number;i++){
+						console.log( 'number:' +number );
+						text=prompt("Enter a text for  <li>","");
+						arr.push(text);
+						console.log( 'arr:' +arr );
+											}					
+														
+					var resultStr=makeString(expressionText,l,arr);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}	
 		
-			function None_List()
+			function None_List(x,y)
             {
               var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -2100,13 +2143,26 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
                     var beginIndex = none_listIndexes[i].startPosition;
                     var endIndex = none_listIndexes[i].endPosition;
 															}
-                var resultStr=makeString(expressionText);
+                if(l!=null){
+						l=prompt("Enter a count of row","");	
+						number=l;
+						console.log( 'l:' + l );
+								}
+					
+					for(var i=0;i<number;i++){
+						console.log( 'number:' +number );
+						text=prompt("Enter a text for  <li>","");
+						arr.push(text);
+						console.log( 'arr:' +arr );
+											}					
+														
+					var resultStr=makeString(expressionText,l,arr);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();;
 			}
-			function Decimal_List()
+			function Decimal_List(x,y)
             {
               var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -2122,7 +2178,20 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
                     var beginIndex = decimal_listIndexes[i].startPosition;
                     var endIndex = decimal_listIndexes[i].endPosition;
 															}
-               var resultStr=makeString(expressionText);
+               if(l!=null){
+						l=prompt("Enter a count of row","");	
+						number=l;
+						console.log( 'l:' + l );
+								}
+					
+					for(var i=0;i<number;i++){
+						console.log( 'number:' +number );
+						text=prompt("Enter a text for  <li>","");
+						arr.push(text);
+						console.log( 'arr:' +arr );
+											}					
+														
+					var resultStr=makeString(expressionText,l,arr);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
