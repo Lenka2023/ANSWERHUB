@@ -317,8 +317,8 @@ var text=prompt("Enter text","");
 			 var l=0;
 			 var text=0;
 			 var number=0;
-			// var expression=[];
-			 function Square_List(x)
+			var arr=[];
+			 function Square_List(x,y)
             {
 				 var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -340,28 +340,27 @@ var text=prompt("Enter text","");
 					number=l;
 					 console.log( 'l:' + l );
 								}
-					/*if(l===null){	
-					number=l;
-					console.log( 'l:' + l );
-					}*/	
+					
 for(var i=0;i<number;i++){
 	 console.log( 'number:' +number );
- //text=prompt("Enter a text for  <li>","");
- 
+ text=prompt("Enter a text for  <li>","");
+ arr.push(text);
+ console.log( 'arr:' +arr );
 							}					
 														
-var resultStr=makeString(expressionText,l,text);
+var resultStr=makeString(expressionText,l,arr);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 				
             }
+			
+			console.log( 'arr:' +arr );
+										
 			number=l;
-			/*for(var i=0;i<number;i++){
-			expression.push(text);
-										}*/
-			 console.log( 'l:' + l );
+			
+				
 			 function makeSquare_ListStringHtml(sourceStr){
 				  var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -757,9 +756,9 @@ function makeSmalliconStringHtml(sourceStr){
 														}
 var resultstr=[];
 	var stack=[];
-	function makeString(sourceStr,x){
+	function makeString(sourceStr,x,y){
 		x=x;
-		
+		y=y;
 		textarea=document.getElementById("text");
 		 var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -1027,7 +1026,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1],x);															
+							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
 					  break;
 					  
@@ -1111,9 +1110,9 @@ var resultstr=[];
 																
 								}
 								
-			function closeTag(resultStr,top, m){
+			function closeTag(resultStr,top, m,g){
 				 console.log( 'm:' + m );
-				
+				console.log( 'g:' + g );
 			textarea=document.getElementById("text");
 		  expressionText =  document.getElementById("text").value ;		
 		//var top=stack[stack.length-1];
@@ -1291,16 +1290,15 @@ var resultstr=[];
 					
 for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
-var text=prompt("Enter a text for  <li>","");
-resultStr+='<li>'+text+'</li>';
-
+//var text=prompt("Enter a text for  <li>","");
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
  					}
 					if(m==undefined){
 					for(var i=0;i<number;i++){
-	 console.log( 'l:' + l );
-var text=prompt("Enter a text for  <li>","");
-resultStr+='<li>'+text+'</li>';
-
+	//var text=prompt("Enter a text for  <li>","");
+resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
  					}
 									}
 			resultStr+='</ul>';
