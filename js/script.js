@@ -45,6 +45,7 @@ var ua_vers   = parseInt(navigator.appVersion);
                 expressionEnd.innerHTML = expressionEnd.replace(/\n/g, '<br>');
                 }*/
 				var resultStr=[];
+				var tableIndexes = [];
 					var addelements = [];
 					var main_titleIndexes = [];
 					var middle_titleIndexes = [];
@@ -625,8 +626,7 @@ for(var i = 0, text; i <= x;i++){
 								if((symbolIndex>=codeIndexes[c].startPosition)&&(symbolIndex<codeIndexes[c].startPosition+codeIndexes[c].size)){
 									symbolIndex='Code';
 										}
-								
-										
+				
 						}
 						for (var k = 0; k < txtIndexes.length; k++){
 								if((symbolIndex>=txtIndexes[k].startPosition)&&(symbolIndex<txtIndexes[k].startPosition+txtIndexes[k].size)){
@@ -718,17 +718,17 @@ for(var i = 0, text; i <= x;i++){
 									symbolIndex='Decimal_List';
 																			}
 						}
+						for (var k = 0; k <tableIndexes.length; k++){
+								if((symbolIndex>=tableIndexes[k].startPosition)&&(symbolIndex<tableIndexes[k].startPosition+tableIndexesk].size)){
+									symbolIndex='Table';
+																			}
+						}
+						for (var k = 0; k <footerIndexes.length; k++){
+								if((symbolIndex>=footerIndexes[k].startPosition)&&(symbolIndex<footerIndexes[k].startPosition+footerIndexes[k].size)){
+									symbolIndex='Footer';
+																			}
+						}
 						/*for (var k = 0; k < boldIndexes.length; k++){
-								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
-									symbolIndex='Bold';
-																			}
-						}
-						for (var k = 0; k < boldIndexes.length; k++){
-								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
-									symbolIndex='Bold';
-																			}
-						}
-						for (var k = 0; k < boldIndexes.length; k++){
 								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
 									symbolIndex='Bold';
 																			}
@@ -769,9 +769,11 @@ function makeSmalliconStringHtml(sourceStr){
 														}
 var resultstr=[];
 	var stack=[];
-	function makeString(sourceStr,x,y){
+	function makeString(sourceStr,x,y,j){
 		x=x;
 		y=y;
+		j=j;
+		
 		textarea=document.getElementById("text");
 		 var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -779,6 +781,22 @@ var resultstr=[];
 		for (var i = 0; i < sourceStr.length; i++){														
 				 
 				switch(getSymbolTypes(i)){
+					case 'Footer':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Footer'))){
+							if(i==0){
+							resultStr ='<div class="footer">'+
+        '<span>'+ sourceStr[i];
+									} else{
+								resultStr +='<div class="footer">'+
+        '<span>'+ sourceStr[i];
+											}
+							 stack.push('Footer');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+																				
+					  break;
 					 case 'Bold':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
 							if(i==0){
@@ -1013,16 +1031,16 @@ var resultstr=[];
 							alert("Enter a name of image");
            
 							if(i==0){
-							resultStr ='<br><img src="img/'+sourceStr[i];
+							resultStr ='<br><span class="move_left strong">'+sourceStr[i];
 									} else{
-								resultStr +='<br><img src="img/'+sourceStr[i];
+								resultStr +='<br><span class="move_left strong">'+sourceStr[i];
 											}
 							
 							 stack.push( 'Smallicon');
 							  console.log( 'resultStr:' + resultStr );	
 																		}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(resultStr,stack[stack.length-1,x]);															
 																				
 					  break;
 					  
@@ -1107,7 +1125,22 @@ var resultstr=[];
 							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
 					  break;
-					  
+					   case 'Table':
+						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Table'))){
+							
+                 
+				 if(i==0){
+							resultStr='<br><span class="move_left strong font_size">'+ sourceStr[i];
+									} else{
+								resultStr+='<br><span class="move_left strong font_size">'+ sourceStr[i];
+											}
+							stack.push('Table');
+							  console.log( 'resultStr:' + resultStr );	
+																		}
+								
+							resultStr = closeTag(resultStr,stack[stack.length-1],x,y,j);															
+																				
+					  break;
 						
 					 default:
 					  resultStr +=sourceStr[i];
@@ -1123,9 +1156,11 @@ var resultstr=[];
 																
 								}
 								
-			function closeTag(resultStr,top, m,g){
+			function closeTag(resultStr,top,f, m,g){
 				 console.log( 'm:' + m );
 				console.log( 'g:' + g );
+				console.log( 'f:' + f );
+				console.log( 'h:' + h );
 			textarea=document.getElementById("text");
 		  expressionText =  document.getElementById("text").value ;		
 		//var top=stack[stack.length-1];
@@ -1137,7 +1172,22 @@ var resultstr=[];
 				if(k>resultStr.length){
 					n='noSymbolTypes';
 										}
-				if((top=='Bold')&&((n!='Bold')||(k==boldIndexes.length))){
+				if((top=='Footer')&&((n!='Footer')||(k==boldIndexes.length))){
+					resultStr +='</span>'+
+      '</div>'+
+    '</div>'+  
+  '</body>'+
+'</html>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Footer')&&(n=='Footer')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}	
+			if((top=='Bold')&&((n!='Bold')||(k==boldIndexes.length))){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1147,8 +1197,7 @@ var resultstr=[];
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
-														}	
-														
+														}											
 			
 		
 		if((top=='Code')&&((n!='Code')||(k==codeIndexes.length))){
@@ -1288,7 +1337,9 @@ var resultstr=[];
 
 														}
 				if((top=='Smallicon')&&((n!='Smallicon')||(k==smalliconIndexes.length))){
-					resultStr +='"alt="622" class="textwrap smallicon">';
+					resultStr +='</span><br><br><img src="img/'+m+'"alt="622" class="textwrap smallicon">';
+					if(m==undefined){
+						resultStr +='</span><br><br><img src="img/'+image_name+'"alt="622" class="textwrap smallicon">';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
@@ -1392,7 +1443,7 @@ console.log( 'arr[i]:' +arr[i] );
 		console.log( 'resultStr:' + resultStr );
 
 														}
-					if((top=='Decimal_List')&&((n!='Decimal_List')||(k==decimal_listIndexes.length))){
+				if((top=='Decimal_List')&&((n!='Decimal_List')||(k==decimal_listIndexes.length))){
 					resultStr +='</span><ol class="decimal">';
 					for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
@@ -1415,7 +1466,53 @@ console.log( 'arr[i]:' +arr[i] );
 		console.log( 'resultStr:' + resultStr );
 
 														}
-														
+				if((top=='Table')&&((n!='Table')||(k==decimal_listIndexes.length))){
+					resultStr +='</span><table class="syntax_description"><tbody>';
+					for(var j = 0, text; j <=m;j++){
+						resultStr+='<tr>';
+						if(j == 0){
+					for(var i=0;i<f;i++){
+	 console.log( 'f:' + f );
+resultStr+='<th>'+g[i]+'</th>';
+console.log( 'g[i]:' + g[i] );
+ 					 }
+  }
+  else{
+	  for(var i=0;i<f;i++){
+	 console.log( 'f:' + f );
+resultStr+='<td>'+g[i]+'</td>';
+							}
+		}
+		resultStr+='</tr>';
+														}
+					if(m==undefined){
+					for(var j = 0, text; j <=number;j++){
+						resultStr+='<tr>';
+						if(j == 0){
+					for(var i=0;i<numbercol;i++){
+	 console.log( 'numbercol:' +numbercol );
+resultStr+='<th>'+arr[i]+'</th>';
+console.log( 'g[i]:' +arr[i] );
+ 					 }
+  }
+  else{
+	  for(var i=0;i<numbercol;i++){
+	 console.log( 'numbercol:' +numbercol );
+resultStr+='<td>'+arr[i]+'</td>';
+							}
+									}
+			resultStr+='</tr>';
+															}
+			resultStr+='</tbody></table>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				
+				} else 	if((top=='Table')&&(n=='Table')){
+		resultStr +=resultStr[k];
+		console.log( 'resultStr:' + resultStr );
+
+														}													
 													
 	return 	resultStr;								
 		}
@@ -2197,8 +2294,11 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}	
+	var col=0;
 	
-			function Table()
+			 var number=0;
+			var arr=[];
+			function Table(x,y,z)
             {
             
             var textarea=document.getElementById("text");
@@ -2207,22 +2307,62 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-               var resultStr=makeString(expressionText);
-
+				var x=prompt("Enter a count of row","");
+				var y=prompt("Enter a count of columns","");
+				text = prompt("Enter text", "");
+				tableIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(tableIndexes);
+                for (var i = 0; i <tableIndexes.length; i++){
+                    var beginIndex =tableIndexes[i].startPosition;
+                    var endIndex =tableIndexes[i].endPosition;
+															}
+               
+                if(l!=null){
+						l=prompt("Enter a count of row","");	
+						number=l;
+						console.log( 'l:' + l );
+								}
+								if(col!=null){
+									col=prompt("Enter a count of columns","");	
+									numbercol=col;
+									console.log( 'col:' +col );
+											}
+					
+					for(var i=0;i<number;i++){
+						console.log( 'number:' +number );
+						text = prompt("Enter text", "");
+						arr.push(text);
+						console.log( 'arr:' +arr );
+											}	
+											
+														
+					var resultStr=makeString(expressionText,l,col,arr);
+				
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}
-			function Smallicon()
+			numbercol=col;
+			function Smallicon(x)
             {
             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expressionText = getSelectiontextarea( document.getElementById("text") );
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-            
-                var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
+				var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
+				smalliconIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
+                AggregateSelection(smalliconIndexes);
+                for (var i = 0; i <smalliconIndexes.length; i++){
+                    var beginIndex =smalliconIndexes[i].startPosition;
+                    var endIndex =smalliconIndexes[i].endPosition;
+															}
+															 if(l!=null){
+						s=prompt("Enter a name of image","");	
+						image_name=s;
+						console.log( 's:' + s );
+								}
                  var resultStr=makeString(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
@@ -2509,7 +2649,27 @@ resultStr = makeString(expressionText);
 		 expressionText =( document.getElementById("text").value );
 		  document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
          var pos=caretPos(expressionText);
-                            
+              for (var i = 0;i < tableIndexe.length; i++){
+                 if(typeof tableIndexe[i] != "undefined"){
+                    var startPos = tableIndexe[i].startPosition;
+                    var size = tableIndexe[i].size;
+                  
+                     if(pos<=startPos){
+						startPos=startPos+1;
+										}
+       else
+			if((pos>startPos)&&(pos<startPos+size)){
+				size += 1;
+														}
+       tableIndexe[i].startPosition = startPos;
+       tableIndexe[i].size = size;
+																}
+				   resultStr=makeString(expressionText)
+				   console.log('resultStr:'+makeString(expressionText)); 
+			document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;	   
+															}
+			console.log('Txt indexes:'+JSON.stringify(tableIndexe));               
             for (var i = 0;i < txtIndexes.length; i++){
                  if(typeof txtIndexes[i] != "undefined"){
                     var startPos = txtIndexes[i].startPosition;
@@ -2679,7 +2839,7 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeString(expressionText));
 			            }
              console.log('DownPage_title indexes:'+JSON.stringify(downpage_titleIndexes));
-			 /*for (var t = 0;t < footerIndexes.length; t++){
+			for (var t = 0;t < footerIndexes.length; t++){
                  if(typeof footerIndexes[t] != "undefined"){
                     var startPos = footerIndexes[t].startPosition;
                     var size = footerIndexes[t].size;
@@ -2699,7 +2859,7 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeFooterStringHtml(expressionText));
 																	}
-             console.log('Footer indexes:'+JSON.stringify(footerIndexes));*/
+             console.log('Footer indexes:'+JSON.stringify(footerIndexes));
 			 for (var x = 0;x < hot_tipIndexes.length; x++){
                  if(typeof hot_tipIndexes[x] != "undefined"){
                     var startPos = hot_tipIndexes[x].startPosition;
