@@ -289,90 +289,12 @@ var text=prompt("Enter text","");
                 Make();
             }	
 
-/*function makeDisc_ListStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		   var expression = getSelectiontextarea( document.getElementById("text") );
-		    document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-        alert(" makeDisc_ListStringHtml");
-           var n=prompt("Enter a count of row","");
-                 var disc_list='<span class=" strong font_size">'+expression+'</span><ol class="disc">';
-for(var i=0;i<n;i++){
-        var worlds = getSelectiontextarea( document.getElementById("text") );
-        document.getElementById("text").innerHTML = worlds.replace(/\n/g, '<br>');
-        var text=prompt("Enter a text for  <li>","");
-        document.getElementById("text").focus();
-         disc_list+='<li>'+text+'</li>';
-                    }
-			var Disc_ListresultStr =" ";
-                Disc_ListresultStr = disc_list + '</ol>';
-            
-           	return Disc_ListresultStr;
-											}	
-	  
-	function makeTableStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeTableStringHtml");
-           var x=prompt("Enter a count of row","");
-var y=prompt("Enter a count of columns","");
-var table='<table class="syntax_description"><tbody>';
-for(var i = 0, text; i <= x;i++){
- table += '<tr>';
-  if(i == 0){
-    for(var j = 0; j < y; j++){
-        text = prompt("Enter text", "");
-        table += '<th>' + text + '</th>';
-            }
-  }
-  else{
-    for(var j = 0; j < y; j++){
-        text = prompt("Enter text", "");
-        table += '<td>' + text + '</td>';
-								}
-		}
-  table += '</tr>';
-								} 
-			var TableresultStr =" ";
-            
-            TableresultStr = table + '</tbody></table>';
-                    
-           	return TableresultStr;
-												}
-		/* function Smallicon()
-            {
-               
-                textarea=document.getElementById("text");
-                document.getElementById("text").focus();
-				var expression = getSelectiontextarea( document.getElementById("text") );
-				 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-                 var x=prompt("Enter a name of image","");
-                document.getElementById("RESULTHTML").innerText='<img src="img/'+x+'"alt="622">';
-				 document.getElementById("RESULTTEXT").innerText='<img src="img/'+x+'"alt="622">';
-                document.getElementById("RESULTTEXT").innerText='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
-                document.getElementById("RESULTHTML").innerHTML='<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
-                document.getElementById("RESULTTEXT").innerText=expressionStart+'<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">'+expressionEnd;
-                document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">'+expressionEnd;
-                Make();
-            }	*/	
-			/*function makeSmalliconStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		     var expressionText = getSelectiontextarea( document.getElementById("text") );
-			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeSmalliconStringHtml");
-           var x=prompt("Enter a name of image","");
-			var SmalliconresultStr =" ";
-                SmalliconresultStr = '<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
-                     
-           	return SmalliconresultStr;
-														}*/
+
+		
 														
 		
 											
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------											
-					
+
 					function getSymbolTypes(symbolIndex){
 						for (var k = 0; k < boldIndexes.length; k++){
 								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
@@ -513,17 +435,7 @@ for(var i = 0, text; i <= x;i++){
 return symbolIndex;
 					}
 //-----------------------------------------------------------------------------------------------------------------
-/*function makeSmalliconStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		     var expressionText = getSelectiontextarea( document.getElementById("text") );
-			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeSmalliconStringHtml");
-           var x=prompt("Enter a name of image","");
-			var SmalliconresultStr =" ";
-                SmalliconresultStr = '<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
-                     
-           	return SmalliconresultStr;
-														}*/
+
 var resultstr=[];
 	var stack=[];
 	function makeString(sourceStr,t,y,j,x){
@@ -1374,89 +1286,7 @@ else{
 			
            	return TopresultStr;
 										}
-			/*function makeHot_TipStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeHot_TipStringHtml");
-            var currentSymbolIndex = 0;
-			var Hot_TipresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < hot_tipIndexes.length; i++){
-                if (currentSymbolIndex<=hot_tipIndexes[i].startPosition){
-						Hot_TipresultStr += sourceStr.substring(currentSymbolIndex,hot_tipIndexes[i].startPosition);
-						Hot_TipresultStr = '<span>'+Hot_TipresultStr+'</span><div class="border">'+
-					  '<table class="elliptic">'+
-						'<tbody>'+
-						  '<tr>'+
-							'<td class="hotTipLeft">'+
-							  '<h1>Hot<br>Tip</h1>'+
-							'</td>'+
-							'<td class="hotTipRight">'+
-							  '<span>'+sourceStr.substring(hot_tipIndexes[i].startPosition,hot_tipIndexes[i].startPosition+hot_tipIndexes[i].size)+'</span>'+
-							'</td>'+
-						  '</tr>'+
-						'</tbody>'+
-					  '</table>'+
-					  '<br class="cbt">'+
-					'</div><span>'+sourceStr.substring(hot_tipIndexes[i].startPosition+hot_tipIndexes[i].size,sourceStr.length)+'</span>';
-																			}
-																}
-           	return Hot_TipresultStr;
-															}
-			
-			function makeDown_titleStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeDown_titleStringHtml");
-            var currentSymbolIndex = 0;
-			var Down_titleresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < down_titleIndexes.length; i++){
-                if (currentSymbolIndex<=down_titleIndexes[i].startPosition){
-						Down_titleresultStr += sourceStr.substring(currentSymbolIndex,down_titleIndexes[i].startPosition);
-						Down_titleresultStr =  '<span>'+Down_titleresultStr+'</span><div class="down_title">'+sourceStr.substring(down_titleIndexes[i].startPosition,down_titleIndexes[i].startPosition+down_titleIndexes[i].size)+'</div><span>'+sourceStr.substring(down_titleIndexes[i].startPosition+down_titleIndexes[i].size,sourceStr.length)+'</span>';
-																			}
-																}
-           	return Down_titleresultStr;
-															}
-			function makeMiddle_TitleStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert("makeMiddle_TitleStringHtml");
-            var currentSymbolIndex = 0;
-			var Middle_TitleresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < middle_titleIndexes.length; i++){
-                if (currentSymbolIndex<=middle_titleIndexes[i].startPosition){
-					Middle_TitleresultStr += sourceStr.substring(currentSymbolIndex,middle_titleIndexes[i].startPosition);
-					Middle_TitleresultStr = '<span>'+Middle_TitleresultStr+'</span><span class="middle_title">'+sourceStr.substring(middle_titleIndexes[i].startPosition,middle_titleIndexes[i].startPosition+middle_titleIndexes[i].size)+'</span><span>'+sourceStr.substring(middle_titleIndexes[i].startPosition+middle_titleIndexes[i].size,sourceStr.length)+'</span>';
-																			}
-																}
-           			
-            return Middle_TitleresultStr;
-																}
-			
-			function makeMain_titleStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;    
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-
-        alert("makeMain_titleStringHtml");
-            var currentSymbolIndex = 0;
-			var Main_titleresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < main_titleIndexes.length; i++){
-                if (currentSymbolIndex<main_titleIndexes[i].startPosition){
-					Main_titleresultStr += sourceStr.substring(currentSymbolIndex,main_titleIndexes[i].startPosition);
-					Main_titleresultStr = '<span>'+Main_titleresultStr+'</span><div class="main_title">'+sourceStr.substring(main_titleIndexes[i].startPosition,main_titleIndexes[i].startPosition+main_titleIndexes[i].size)+'</div><span>'+sourceStr.substring(main_titleIndexes[i].startPosition+main_titleIndexes[i].size,sourceStr.length)+'</span>';
-																			}
-																}
-           			
-            return Main_titleresultStr;
-															}
+			/*
 			function makeCBTStringHtml(sourceStr){
 				alert(" makeCBTStringHtml");
 		   textarea=document.getElementById("text");
@@ -2879,12 +2709,7 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
    
              textarea.oninput=function(){
    textarea=document.getElementById("text");
-   //var resultstrCollection = new Array();
-  // var resultTxtStr = makeTxtStringHtml(expressionText);
-   // var resultStr = makeRed_titleStringHtml(expressionText);
-    /*for(i = 0; i < resultStr.length; i++){
-                 resultstrCollection.push(resultStr[i]);
-   }*/
+   
       document.getElementById("text").innerHTML = (textarea.value).replace(/\n/g, '<br>');
        document.getElementById('RESULTHTML').innerHTML =textarea.value;
 											};
