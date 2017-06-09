@@ -176,7 +176,7 @@ var ua_vers   = parseInt(navigator.appVersion);
 		
 												}
 		
-	  function makeListingStringHtml(sourceStr){
+	 /* function makeListingStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -278,7 +278,7 @@ function makeDownPage_titleStringHtml(sourceStr){
            // for (var i = 0; i < footerIndexes.length; i++){
                // if (currentSymbolIndex<=footerIndexes[i].startPosition){
                // resultStr += sourceStr.substring(currentSymbolIndex,footerIndexes[i].startPosition);
-            FooterresultStr = /*'<span>'+ resultStr+'</span>*/'<div>'+
+            FooterresultStr = /*'<span>'+ resultStr+'</span>'<div>'+
                 '<div class="footer">'+
         '<span> DZone, Inc. | www.dzone.</span>'+
       '</div>'+
@@ -287,7 +287,7 @@ function makeDownPage_titleStringHtml(sourceStr){
 '</html>';
                      
            	return  FooterresultStr;
-														}
+														}*/
 			
 			 function makeDownStringHtml(sourceStr){
 			var y=prompt("Enter a count of columns","");
@@ -362,7 +362,7 @@ var text=prompt("Enter text","");
 			number=l;
 			
 				
-			 function makeSquare_ListStringHtml(sourceStr){
+			/* function makeSquare_ListStringHtml(sourceStr){
 				  var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 		   textarea=document.getElementById("text");
@@ -418,7 +418,7 @@ for(var i=0;i<n;i++){
 			var Decimal_ListresultStr =" ";
                 Decimal_ListresultStr = decimal_list + '</ol>';
                         	return Decimal_ListresultStr;
-															}
+															}*/
 	 function Disc_List(x,y)
             {
 				 var expressionText =  document.getElementById("text").value;
@@ -482,7 +482,7 @@ for(var i=0;i<n;i++){
 															}
 		return BoldresultStr;
 												}*/		
-function makeDisc_ListStringHtml(sourceStr){
+/*function makeDisc_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -550,7 +550,7 @@ for(var i = 0, text; i <= x;i++){
                 document.getElementById("RESULTHTML").innerHTML=expressionStart+'<br><img src="img/'+expression+'"alt="622" class="textwrap smallicon">'+expressionEnd;
                 Make();
             }	*/	
-			function makeSmalliconStringHtml(sourceStr){
+			/*function makeSmalliconStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		     var expressionText = getSelectiontextarea( document.getElementById("text") );
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -719,7 +719,7 @@ for(var i = 0, text; i <= x;i++){
 																			}
 						}
 						for (var k = 0; k <tableIndexes.length; k++){
-								if((symbolIndex>=tableIndexes[k].startPosition)&&(symbolIndex<tableIndexes[k].startPosition+tableIndexesk].size)){
+								if((symbolIndex>=tableIndexes[k].startPosition)&&(symbolIndex<tableIndexes[k].startPosition+tableIndexes[k].size)){
 									symbolIndex='Table';
 																			}
 						}
@@ -756,7 +756,7 @@ for(var i = 0, text; i <= x;i++){
 return symbolIndex;
 					}
 //-----------------------------------------------------------------------------------------------------------------
-function makeSmalliconStringHtml(sourceStr){
+/*function makeSmalliconStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		     var expressionText = getSelectiontextarea( document.getElementById("text") );
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -766,14 +766,16 @@ function makeSmalliconStringHtml(sourceStr){
                 SmalliconresultStr = '<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
                      
            	return SmalliconresultStr;
-														}
+														}*/
 var resultstr=[];
 	var stack=[];
 	function makeString(sourceStr,x,y,j){
 		x=x;
 		y=y;
 		j=j;
-		
+		 console.log( 'x:' + x );
+		console.log( 'y:' + y );
+		console.log( 'j:' + j );
 		textarea=document.getElementById("text");
 		 var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -792,7 +794,7 @@ var resultstr=[];
 											}
 							 stack.push('Footer');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																								}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -806,7 +808,7 @@ var resultstr=[];
 											}
 							 stack.push( 'Bold');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																							}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -821,7 +823,7 @@ var resultstr=[];
 						  
 						  stack.push('Code');
 						 console.log( 'resultStr:' + resultStr );	
-																		}
+																							}
 					  	 
 						resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -837,7 +839,7 @@ var resultstr=[];
 							
 							 stack.push( 'Text');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																							}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -852,7 +854,7 @@ var resultstr=[];
 							
 							 stack.push( 'Listing');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																								}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -867,7 +869,7 @@ var resultstr=[];
 							;
 							 stack.push('CBT');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																							}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -884,7 +886,7 @@ var resultstr=[];
 							
 							 stack.push('Link');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																							}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -899,7 +901,7 @@ var resultstr=[];
 							
 							 stack.push('Main_title');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																								}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -914,7 +916,7 @@ var resultstr=[];
 							
 							 stack.push('Middle_title');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																									}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -929,7 +931,7 @@ var resultstr=[];
 							resultStr ='</span><div class="down_title">'+ sourceStr[i];
 							 stack.push('Down_title');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																									}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -944,7 +946,7 @@ var resultstr=[];
 							
 							 stack.push('Downpage_title');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																										}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -974,7 +976,7 @@ var resultstr=[];
 											}
 								 stack.push('Hot_tip');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																								}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -989,7 +991,7 @@ var resultstr=[];
 											}
 							 stack.push('Red_title');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																									}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -1004,7 +1006,7 @@ var resultstr=[];
 											}
 							 stack.push('Small_title');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																									}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -1019,7 +1021,7 @@ var resultstr=[];
 											}
 							 stack.push('Capture');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																								}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1]);															
 																				
@@ -1038,7 +1040,7 @@ var resultstr=[];
 							
 							 stack.push( 'Smallicon');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																									}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1,x]);															
 																				
@@ -1055,7 +1057,7 @@ var resultstr=[];
 											}
 							stack.push('Square_List');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																									}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
@@ -1072,7 +1074,7 @@ var resultstr=[];
 											}
 							stack.push('Disc_List');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																								}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
@@ -1088,7 +1090,7 @@ var resultstr=[];
 											}
 							stack.push('Main_List');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																								}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
@@ -1104,7 +1106,7 @@ var resultstr=[];
 											}
 							stack.push('None_List');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																								}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
@@ -1120,7 +1122,7 @@ var resultstr=[];
 											}
 							stack.push('Decimal_List');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																									}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
 																				
@@ -1136,7 +1138,7 @@ var resultstr=[];
 											}
 							stack.push('Table');
 							  console.log( 'resultStr:' + resultStr );	
-																		}
+																							}
 								
 							resultStr = closeTag(resultStr,stack[stack.length-1],x,y,j);															
 																				
@@ -1156,12 +1158,11 @@ var resultstr=[];
 																
 								}
 								
-			function closeTag(resultStr,top,f, m,g){
+			function closeTag(resultStr,top,m, f,g){
 				 console.log( 'm:' + m );
 				console.log( 'g:' + g );
 				console.log( 'f:' + f );
-				console.log( 'h:' + h );
-			textarea=document.getElementById("text");
+				textarea=document.getElementById("text");
 		  expressionText =  document.getElementById("text").value ;		
 		//var top=stack[stack.length-1];
 				console.log( 'top:' +top );
@@ -1340,10 +1341,11 @@ var resultstr=[];
 					resultStr +='</span><br><br><img src="img/'+m+'"alt="622" class="textwrap smallicon">';
 					if(m==undefined){
 						resultStr +='</span><br><br><img src="img/'+image_name+'"alt="622" class="textwrap smallicon">';
+									
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
-				
+									}
 				} else 	if((top=='Smallicon')&&(n=='Smallicon')){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
@@ -1468,7 +1470,8 @@ console.log( 'arr[i]:' +arr[i] );
 														}
 				if((top=='Table')&&((n!='Table')||(k==decimal_listIndexes.length))){
 					resultStr +='</span><table class="syntax_description"><tbody>';
-					for(var j = 0, text; j <=m;j++){
+					for(var j = 0; j <m;j++){
+						
 						resultStr+='<tr>';
 						if(j == 0){
 					for(var i=0;i<f;i++){
@@ -1476,17 +1479,22 @@ console.log( 'arr[i]:' +arr[i] );
 resultStr+='<th>'+g[i]+'</th>';
 console.log( 'g[i]:' + g[i] );
  					 }
+					 console.log( 'i:' + i );
   }
-  else{
-	  for(var i=0;i<f;i++){
+  else if(j>0){
+	 
+	   console.log( 'i:' + i );
+	 for(var t=0;t<f;t++){
+		 
 	 console.log( 'f:' + f );
 resultStr+='<td>'+g[i]+'</td>';
+ i++;
 							}
 		}
 		resultStr+='</tr>';
 														}
 					if(m==undefined){
-					for(var j = 0, text; j <=number;j++){
+					for(var j = 0; j <number;j++){
 						resultStr+='<tr>';
 						if(j == 0){
 					for(var i=0;i<numbercol;i++){
@@ -1495,14 +1503,16 @@ resultStr+='<th>'+arr[i]+'</th>';
 console.log( 'g[i]:' +arr[i] );
  					 }
   }
-  else{
-	  for(var i=0;i<numbercol;i++){
-	 console.log( 'numbercol:' +numbercol );
+  else if(j>0){
+	  for(var t=0;t<numbercol;t++){
+	 console.log( 'numbercol:' +number );
 resultStr+='<td>'+arr[i]+'</td>';
+ i++;
 							}
 									}
 			resultStr+='</tr>';
 															}
+										}
 			resultStr+='</tbody></table>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1519,7 +1529,7 @@ resultStr+='<td>'+arr[i]+'</td>';
 				 
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 				 
-function makeMain_ListStringHtml(sourceStr){
+/*function makeMain_ListStringHtml(sourceStr){
 	PurgeRedoSequence();
  var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -1537,7 +1547,7 @@ for(var i=0;i<n;i++){
 			var Main_ListresultStr =" ";
             Main_ListresultStr = main_list + '</ul>';
              	return Main_ListresultStr;
-											}
+											}*/
 			function makeTopStringHtml(sourceStr){
 				 document.getElementById("text").focus();
 		   textarea=document.getElementById("text");
@@ -1620,7 +1630,7 @@ else{
 			
            	return TopresultStr;
 										}
-			function makeHot_TipStringHtml(sourceStr){
+			/*function makeHot_TipStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -1744,7 +1754,7 @@ else{
                      
            	return ImageresultStr;
 														}
-			function makeCaptureStringHtml(sourceStr){
+			/*function makeCaptureStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  (document.getElementById("text")).value;
 			            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -1760,7 +1770,7 @@ else{
 															}
            
 			return CaptureresultStr;
-															}
+															}*/
 			
             function getElementsById(elementID){
     var elementCollection = new Array();
@@ -2307,9 +2317,6 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-				var x=prompt("Enter a count of row","");
-				var y=prompt("Enter a count of columns","");
-				text = prompt("Enter text", "");
 				tableIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(tableIndexes);
                 for (var i = 0; i <tableIndexes.length; i++){
@@ -2328,7 +2335,7 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
 									console.log( 'col:' +col );
 											}
 					
-					for(var i=0;i<number;i++){
+					for(var i=0;i<number*numbercol;i++){
 						console.log( 'number:' +number );
 						text = prompt("Enter text", "");
 						arr.push(text);
@@ -2342,6 +2349,7 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}
+			number=l;
 			numbercol=col;
 			function Smallicon(x)
             {
@@ -2649,10 +2657,10 @@ resultStr = makeString(expressionText);
 		 expressionText =( document.getElementById("text").value );
 		  document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
          var pos=caretPos(expressionText);
-              for (var i = 0;i < tableIndexe.length; i++){
+              for (var i = 0;i < tableIndexes.length; i++){
                  if(typeof tableIndexe[i] != "undefined"){
-                    var startPos = tableIndexe[i].startPosition;
-                    var size = tableIndexe[i].size;
+                    var startPos = tableIndexes[i].startPosition;
+                    var size = tableIndexes[i].size;
                   
                      if(pos<=startPos){
 						startPos=startPos+1;
@@ -2669,7 +2677,7 @@ resultStr = makeString(expressionText);
 			document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;	   
 															}
-			console.log('Txt indexes:'+JSON.stringify(tableIndexe));               
+			console.log('Txt indexes:'+JSON.stringify(tableIndexes));               
             for (var i = 0;i < txtIndexes.length; i++){
                  if(typeof txtIndexes[i] != "undefined"){
                     var startPos = txtIndexes[i].startPosition;
