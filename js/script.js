@@ -176,118 +176,7 @@ var ua_vers   = parseInt(navigator.appVersion);
 		
 												}
 		
-	 /* function makeListingStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert("makeListingStringHtml");
-            var currentSymbolIndex = 0;
-			var ListingresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < listingIndexes.length; i++){
-                if (currentSymbolIndex<=listingIndexes[i].startPosition){
-					ListingresultStr += sourceStr.substring(currentSymbolIndex,listingIndexes[i].startPosition);
-					ListingresultStr =  '<span>'+ListingresultStr+'</span><br><span class="move_left "><span class="strong ">'+sourceStr.substring(listingIndexes[i].startPosition,listingIndexes[i].startPosition+listingIndexes[i].size)+'</span></span><span>'+sourceStr.substring(listingIndexes[i].startPosition+listingIndexes[i].size,sourceStr.length)+'</span>';
-										
-
-																		}
-															}
-			return ListingresultStr;
-												}
-           	
-	  function makeLinkStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var x=prompt("Enter a link","");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeLinkStringHtml");
-            var currentSymbolIndex = 0;
-			var LinkresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < linkIndexes.length; i++){
-                if (currentSymbolIndex<linkIndexes[i].startPosition){
-					LinkresultStr += sourceStr.substring(currentSymbolIndex,linkIndexes[i].startPosition);
-					LinkresultStr = '<span>'+ LinkresultStr+'</span><a  href="'+x+'">'+sourceStr.substring(linkIndexes[i].startPosition,linkIndexes[i].startPosition+linkIndexes[i].size)+'</a><span>'+sourceStr.substring(linkIndexes[i].startPosition+linkIndexes[i].size,sourceStr.length)+'</span>';
-																	}	
-														}
-           			
-            return LinkresultStr;
-												}
-           
-function makeDownPage_titleStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeDownPage_titleStringHtml");
-            var currentSymbolIndex = 0;
-			var DownPage_titleresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < downpage_titleIndexes.length; i++){
-                if (currentSymbolIndex<=downpage_titleIndexes[i].startPosition){
-					DownPage_titleresultStr += sourceStr.substring(currentSymbolIndex,downpage_titleIndexes[i].startPosition);
-					DownPage_titleresultStr = '<span>'+DownPage_titleresultStr+'</span><br><span class="move_left strong">'+sourceStr.substring(downpage_titleIndexes[i].startPosition,downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size)+'</span><br><span>'+sourceStr.substring(downpage_titleIndexes[i].startPosition+downpage_titleIndexes[i].size,sourceStr.length)+'</span>';
-
-																				}
-																	}
-           	return DownPage_titleresultStr;
-													}
-			function makeRed_titleStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeRed_titleStringHtml");
-            var currentSymbolIndex = 0;
-			var Red_titleresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < red_titleIndexes.length; i++){
-                if (currentSymbolIndex<=red_titleIndexes[i].startPosition){
-					Red_titleresultStr += sourceStr.substring(currentSymbolIndex,red_titleIndexes[i].startPosition);
-					Red_titleresultStr = '<span>'+Red_titleresultStr+'</span><div class="title strong"><span>'+sourceStr.substring(red_titleIndexes[i].startPosition,red_titleIndexes[i].startPosition+red_titleIndexes[i].size)+'</span></div><span>'+sourceStr.substring(red_titleIndexes[i].startPosition+red_titleIndexes[i].size,sourceStr.length)+'</span>';
-																		}
-																}
-           	return Red_titleresultStr;
-														}
-			
-			function makeSmall_titleStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeSmall_titleStringHtml");
-            var currentSymbolIndex = 0;
-			var Small_titleresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < small_titleIndexes.length; i++){
-                if (currentSymbolIndex<=small_titleIndexes[i].startPosition){
-					Small_titleresultStr += sourceStr.substring(currentSymbolIndex,small_titleIndexes[i].startPosition);
-					Small_titleresultStr = '<span>'+Small_titleresultStr+'</span><br><span class="move_left strong font_size">'+sourceStr.substring(small_titleIndexes[i].startPosition,small_titleIndexes[i].startPosition+small_titleIndexes[i].size)+'</span><span>'+sourceStr.substring(small_titleIndexes[i].startPosition+small_titleIndexes[i].size,sourceStr.length)+'</span>';
-										
-
-																			}																
-																}
-           	return Small_titleresultStr;
-															}
-			
-			function makeFooterStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeFooterStringHtml");
-            //var currentSymbolIndex = 0;
-			var FooterresultStr =" ";
-            //var usedSymbols = 0;
-           // for (var i = 0; i < footerIndexes.length; i++){
-               // if (currentSymbolIndex<=footerIndexes[i].startPosition){
-               // resultStr += sourceStr.substring(currentSymbolIndex,footerIndexes[i].startPosition);
-            FooterresultStr = /*'<span>'+ resultStr+'</span>'<div>'+
-                '<div class="footer">'+
-        '<span> DZone, Inc. | www.dzone.</span>'+
-      '</div>'+
-    '</div>'+  
-  '</body>'+
-'</html>';
-                     
-           	return  FooterresultStr;
-														}*/
+	 
 			
 			 function makeDownStringHtml(sourceStr){
 			var y=prompt("Enter a count of columns","");
@@ -362,63 +251,7 @@ var text=prompt("Enter text","");
 			number=l;
 			
 				
-			/* function makeSquare_ListStringHtml(sourceStr){
-				  var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		   textarea=document.getElementById("text");
-		   var expression = getSelectiontextarea( document.getElementById("text") );
-		    document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-        alert(" makeSquare_ListStringHtml");
-           var n=prompt("Enter a count of row","");
-                 var square_list='<span class=" strong font_size">'+expression+'</span><ul class="square">';
-for(var i=0;i<n;i++){
-var text=prompt("Enter a text for  <li>","");
-square_list+='<li>'+text+'</li>';
- 
-					}
-			var Square_ListresultStr =" ";
-                Square_ListresultStr = square_list + '</ul>';
-                      	
-           	return Square_ListresultStr;
-															}
-			           
-			function makeNone_ListStringHtml(sourceStr){
-				 var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		   textarea=document.getElementById("text");
-		    var expression = getSelectiontextarea( document.getElementById("text") );
-			 document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-        alert(" makeNone_ListStringHtml");
-          var n=prompt("Enter a count of row","");
-                 var none_list='<span class=" strong font_size">'+expression+'</span><ul class="none_list">';
-for(var i=0;i<n;i++){
-        var text=prompt("Enter a text for  <li>","");
-        none_list+='<li>'+text+'</li>';
- 
-					}
-			var None_ListresultStr =" ";
-                None_ListresultStr = none_list + '</ul>';
-                      
-			           	return None_ListresultStr;
-														}
-					
-			 function makeDecimal_ListStringHtml(sourceStr){
-				  var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		   textarea=document.getElementById("text");
-		     var expression = getSelectiontextarea( document.getElementById("text") );
-        alert(" makeDecimal_ListStringHtml");
-             var n=prompt("Enter a count of row","");
-                 var decimal_list='<span class=" strong font_size">'+expression+'</span><ol class="decimal">';
-for(var i=0;i<n;i++){
-        var text=prompt("Enter a text for  <li>","");
-         decimal_list+='<li>'+text+'</li>';
- 
-					}
-			var Decimal_ListresultStr =" ";
-                Decimal_ListresultStr = decimal_list + '</ol>';
-                        	return Decimal_ListresultStr;
-															}*/
+			
 	 function Disc_List(x,y)
             {
 				 var expressionText =  document.getElementById("text").value;
@@ -455,33 +288,7 @@ for(var i=0;i<n;i++){
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
             }	
-/*	function makeDisc_ListStringHtml(sourceStr){
-		textarea=document.getElementById("text");
-		expressionText =( document.getElementById("text").value );
-		document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		alert(" makeDisc_ListStringHtml");
-		var flag;
-		var BoldresultStr =" ";
-					for (var i = 0; i < sourceStr.length; i++){
-			flag=false;
-			for (var k = 0; k < boldIndexes.length; k++){
-				
-					
-		expressionText =( document.getElementById("text").value );	 
-		while((i>=boldIndexes[k].startPosition)&&(i<boldIndexes[k].startPosition+boldIndexes[k].size)){
-				 flag=true;	
-				 break;
-																										}
-															}	
-							if(flag==true){
-					BoldresultStr+= '<span class="strong">'+sourceStr[i]+'</span>';
-													}
-													else{
-														BoldresultStr+='<span>'+sourceStr[i]+'</span>';
-														}
-															}
-		return BoldresultStr;
-												}*/		
+
 /*function makeDisc_ListStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -560,63 +367,13 @@ for(var i = 0, text; i <= x;i++){
                 SmalliconresultStr = '<br><img src="img/'+x+'"alt="622" class="textwrap smallicon">';
                      
            	return SmalliconresultStr;
-														}
-														
-		/*function makeBoldStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    expressionText =( document.getElementById("text").value ); 
-			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeBoldStringHtml");
-		   	var resultStr =" ";
-           	for (var j = 0; j < sourceStr.length; j++){
-				for (var i = 0; i < boldIndexes.length; i++){
-					if(i==j){
-					
-                if (currentSymbolIndex<=boldIndexes[i].startPosition){
-					resultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
-					resultStr = '<span>'+resultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
-
-																		}					
-						}
-			}
-			for (var p = 0; p < captureIndexes.length; p++){											
-           	if((j==p)&&(i!=j)){
-              
-                if (currentSymbolIndex<=captureIndexes[p].startPosition){
-					resultStr += sourceStr.substring(currentSymbolIndex,captureIndexes[p].startPosition);
-					resultStr ='<span>'+resultStr+'</span><br><span class="move_left "><span class="strong underline">'+sourceStr.substring(captureIndexes[p].startPosition,captureIndexes[p].startPosition+captureIndexes[p].size)+'</span><span><span>'+sourceStr.substring(captureIndexes[p].startPosition+captureIndexes[p].size,sourceStr.length)+'</span>';
-																		}
-					}
-																}
-			}
-			
-			return resultStr;
 														}*/
+														
 		
-	/*  function makeBoldStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    expressionText =( document.getElementById("text").value );
-			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeBoldStringHtml");
-            var currentSymbolIndex = 0;
-			var BoldresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < boldIndexes.length; i++){
-				 expressionText =( document.getElementById("text").value );
-                if (currentSymbolIndex<=boldIndexes[i].startPosition){
-					BoldresultStr += sourceStr.substring(currentSymbolIndex,boldIndexes[i].startPosition);
-					BoldresultStr = '<span>'+BoldresultStr+'</span><span class="strong">'+sourceStr.substring(boldIndexes[i].startPosition,boldIndexes[i].startPosition+boldIndexes[i].size)+'</span><span>'+sourceStr.substring(boldIndexes[i].startPosition+boldIndexes[i].size,sourceStr.length)+'</span>';
-									
-																	}
-					//currentSymbolIndex=	sourceArray;											
-														}
-           	return BoldresultStr;
-											}*/
 											
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------											
 					
 					function getSymbolTypes(symbolIndex){
-						//alert("getSymbolTypes")
 						for (var k = 0; k < boldIndexes.length; k++){
 								if((symbolIndex>=boldIndexes[k].startPosition)&&(symbolIndex<boldIndexes[k].startPosition+boldIndexes[k].size)){
 									symbolIndex='Bold';
@@ -769,13 +526,16 @@ return symbolIndex;
 														}*/
 var resultstr=[];
 	var stack=[];
-	function makeString(sourceStr,x,y,j){
+	function makeString(sourceStr,t,y,j,x){
+		alert("makeString");
 		x=x;
 		y=y;
 		j=j;
+		t=t;
 		 console.log( 'x:' + x );
 		console.log( 'y:' + y );
 		console.log( 'j:' + j );
+		console.log( 't:' + t );
 		textarea=document.getElementById("text");
 		 var expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -1030,7 +790,7 @@ var resultstr=[];
 					 case 'Smallicon':
 					 
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Smallicon'))){
-							alert("Enter a name of image");
+							
            
 							if(i==0){
 							resultStr ='<br><span class="move_left strong">'+sourceStr[i];
@@ -1042,7 +802,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1,x]);															
+							resultStr = closeTag(resultStr,stack[stack.length-1],t);															
 																				
 					  break;
 					  
@@ -1158,10 +918,12 @@ var resultstr=[];
 																
 								}
 								
-			function closeTag(resultStr,top,m, f,g){
+			function closeTag(resultStr,top,c,f,g,m){
+				alert("closeTag");
 				 console.log( 'm:' + m );
 				console.log( 'g:' + g );
 				console.log( 'f:' + f );
+				console.log( 'c:' + c );
 				textarea=document.getElementById("text");
 		  expressionText =  document.getElementById("text").value ;		
 		//var top=stack[stack.length-1];
@@ -1338,8 +1100,8 @@ var resultstr=[];
 
 														}
 				if((top=='Smallicon')&&((n!='Smallicon')||(k==smalliconIndexes.length))){
-					resultStr +='</span><br><br><img src="img/'+m+'"alt="622" class="textwrap smallicon">';
-					if(m==undefined){
+					resultStr +='</span><br><br><img src="img/'+c+'"alt="622" class="textwrap smallicon">';
+					if(c==undefined){
 						resultStr +='</span><br><br><img src="img/'+image_name+'"alt="622" class="textwrap smallicon">';
 									
 					 console.log( 'resultStr:' + resultStr );
@@ -1468,7 +1230,7 @@ console.log( 'arr[i]:' +arr[i] );
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Table')&&((n!='Table')||(k==decimal_listIndexes.length))){
+				if((top=='Table')&&((n!='Table')||(k==tableIndexes.length))){
 					resultStr +='</span><table class="syntax_description"><tbody>';
 					for(var j = 0; j <m;j++){
 						
@@ -1529,25 +1291,7 @@ resultStr+='<td>'+arr[i]+'</td>';
 				 
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 				 
-/*function makeMain_ListStringHtml(sourceStr){
-	PurgeRedoSequence();
- var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-		   textarea=document.getElementById("text");
-		   var expression = getSelectiontextarea( document.getElementById("text") );
-		    document.getElementById("text").innerHTML = expression.replace(/\n/g, '<br>');
-        alert(" makeMain_ListStringHtml");
-           var n=prompt("Enter a count of row","");
-                 var main_list='<span class=" strong font_size">'+expression+'</span><ul class="top_page_list">';
-                 document.getElementById("text").value='';
-for(var i=0;i<n;i++){
-		var text=prompt("Enter a text for  <li>","");
-		 main_list+='<li>'+text+'</li>';
-					}
-			var Main_ListresultStr =" ";
-            Main_ListresultStr = main_list + '</ul>';
-             	return Main_ListresultStr;
-											}*/
+
 			function makeTopStringHtml(sourceStr){
 				 document.getElementById("text").focus();
 		   textarea=document.getElementById("text");
@@ -1724,26 +1468,10 @@ else{
             CBTresultStr = '</span><br class="cbt">';
 
             return CBTresultStr;
-													}
-
-			/*function makeTxtStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert("makeTxtStringHtml");
-            var currentSymbolIndex = 0;
-			var TxtresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < txtIndexes.length; i++){
-                if (currentSymbolIndex<=txtIndexes[i].startPosition){
-					TxtresultStr += sourceStr.substring(currentSymbolIndex,txtIndexes[i].startPosition);
-					TxtresultStr = '<span>'+TxtresultStr+'</span><br><span class="move_left">'+sourceStr.substring(txtIndexes[i].startPosition,txtIndexes[i].startPosition+txtIndexes[i].size)+'</span><span>'+sourceStr.substring(txtIndexes[i].startPosition+txtIndexes[i].size,sourceStr.length)+'</span>';
-																	}
-														}
-           
-			return TxtresultStr;
 													}*/
-			function makeImageStringHtml(sourceStr){
+
+			
+			/*function makeImageStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		     var expressionText = getSelectiontextarea( document.getElementById("text") );
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
@@ -1753,24 +1481,8 @@ else{
                 ImageresultStr = '<br><img src="img/'+x+'"alt="622">';
                      
            	return ImageresultStr;
-														}
-			/*function makeCaptureStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		    var expressionText =  (document.getElementById("text")).value;
-			            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert("makeCaptureStringHtml");
-            var currentSymbolIndex = 0;
-			var CaptureresultStr =" ";
-            var usedSymbols = 0;
-            for (var i = 0; i < captureIndexes.length; i++){
-                if (currentSymbolIndex<=captureIndexes[i].startPosition){
-					CaptureresultStr += sourceStr.substring(currentSymbolIndex,captureIndexes[i].startPosition);
-					CaptureresultStr ='<span>'+CaptureresultStr+'</span><br><span class="move_left "><span class="strong underline">'+sourceStr.substring(captureIndexes[i].startPosition,captureIndexes[i].startPosition+captureIndexes[i].size)+'</span><span><span>'+sourceStr.substring(captureIndexes[i].startPosition+captureIndexes[i].size,sourceStr.length)+'</span>';
-																		}
-															}
-           
-			return CaptureresultStr;
-															}*/
+														}*/
+			
 			
             function getElementsById(elementID){
     var elementCollection = new Array();
@@ -2350,8 +2062,10 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
                 Make();
 			}
 			number=l;
+			var s=0;
+			var image_name=0;
 			numbercol=col;
-			function Smallicon(x)
+			function Smallicon(t)
             {
             
             var textarea=document.getElementById("text");
@@ -2366,17 +2080,18 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
                     var beginIndex =smalliconIndexes[i].startPosition;
                     var endIndex =smalliconIndexes[i].endPosition;
 															}
-															 if(l!=null){
+															 if(s!=null){
 						s=prompt("Enter a name of image","");	
 						image_name=s;
 						console.log( 's:' + s );
 								}
-                 var resultStr=makeString(expressionText);
+                 var resultStr=makeString(expressionText,s);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}  
+			image_name=s;
 			function Reundo() {
     var html_res_array = getElementsById('RESULTHTML');
     var text_res_array = getElementsById('RESULTTEXT');
@@ -2699,7 +2414,27 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;	   
 															}
 			console.log('Txt indexes:'+JSON.stringify(txtIndexes));   
- 
+ for (var i = 0;i < smalliconIndexes.length; i++){
+                 if(typeof smalliconIndexes[i] != "undefined"){
+                    var startPos = smalliconIndexes[i].startPosition;
+                    var size = smalliconIndexes[i].size;
+                  
+                     if(pos<=startPos){
+						startPos=startPos+1;
+										}
+       else
+			if((pos>startPos)&&(pos<startPos+size)){
+				size += 1;
+														}
+       smalliconIndexes[i].startPosition = startPos;
+       smalliconIndexes[i].size = size;
+																}
+				   resultStr=makeString(expressionText)
+				   console.log('resultStr:'+makeString(expressionText)); 
+			document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;	   
+															}
+			console.log('Txt indexes:'+JSON.stringify(smalliconIndexes)); 
     for (var n = 0;n < listingIndexes.length; n++){
                  if(typeof listingIndexes[n] != "undefined"){
                     var startPos = listingIndexes[n].startPosition;
