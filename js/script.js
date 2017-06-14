@@ -178,7 +178,7 @@ var ua_vers   = parseInt(navigator.appVersion);
 		
 	 
 			
-			 function makeDownStringHtml(sourceStr){
+			 /*function makeDownStringHtml(sourceStr){
 			var y=prompt("Enter a count of columns","");
 		   textarea=document.getElementById("text");
 		    var expressionText =  document.getElementById("text").value;
@@ -203,7 +203,7 @@ var text=prompt("Enter text","");
    DownresultStr =table + '</div>';
 							}
 			return DownresultStr;
-														}
+														}*/
 			 var l=0;
 			 var text=0;
 			 var number=0;
@@ -435,24 +435,27 @@ var text=prompt("Enter text","");
 return symbolIndex;
 					}
 //-----------------------------------------------------------------------------------------------------------------
-
+var u=0;	
+var i = 0;
 var resultstr=[];
 	var stack=[];
-	function makeString(sourceStr,t,y,j,x){
+	function makeString(sourceStr,w,t,y,j,x){
 		alert("makeString");
 		x=x;
 		y=y;
 		j=j;
 		t=t;
+		console.log( 'w:' + w );
 		 console.log( 'x:' + x );
 		console.log( 'y:' + y );
 		console.log( 'j:' + j );
 		console.log( 't:' + t );
 		textarea=document.getElementById("text");
-		 var expressionText =  document.getElementById("text").value;
+		
+		 var expressionText =  getSelectiontextarea( document.getElementById("text") );
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 			resultstr.pop();
-		for (var i = 0; i < sourceStr.length; i++){														
+		for ( i = 0; i < sourceStr.length-1; i++){														
 				 
 				switch(getSymbolTypes(i)){
 					case 'Footer':
@@ -468,7 +471,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					 case 'Bold':
@@ -482,7 +485,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																							}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  case 'Code':
@@ -497,7 +500,7 @@ var resultstr=[];
 						 console.log( 'resultStr:' + resultStr );	
 																							}
 					  	 
-						resultStr = closeTag(resultStr,stack[stack.length-1]);															
+						resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 							
 					 break;
@@ -513,7 +516,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																							}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  case 'Listing':
@@ -528,7 +531,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  case 'CBT':
@@ -543,7 +546,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																							}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  case 'Link':
@@ -560,7 +563,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																							}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1]);															
 																				
 					  break;
 					  case 'Main_title':
@@ -575,7 +578,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  case 'Middle_title':
@@ -590,7 +593,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  case 'Down_title':
@@ -605,7 +608,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  case 'Downpage_title':
@@ -620,7 +623,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																										}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  case 'Hot_tip':
@@ -650,7 +653,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					 
@@ -665,7 +668,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  
@@ -680,7 +683,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  
@@ -695,7 +698,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
 					  break;
 					  
@@ -714,7 +717,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1],t);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],t,i);															
 																				
 					  break;
 					  
@@ -731,7 +734,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
 																				
 					  break;
 					  
@@ -748,7 +751,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
 																				
 					  break;
 					  case 'Main_List':
@@ -764,7 +767,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
 																				
 					  break;
 					  case 'None_List':
@@ -780,7 +783,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
 																				
 					  break;
 					  case 'Decimal_List':
@@ -796,7 +799,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1],x,y);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
 																				
 					  break;
 					   case 'Table':
@@ -812,7 +815,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																							}
 								
-							resultStr = closeTag(resultStr,stack[stack.length-1],x,y,j);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,i);															
 																				
 					  break;
 						
@@ -822,32 +825,44 @@ var resultstr=[];
 					 
 											}
 													}
-						
+					u=i;	
 					resultstr.push(resultStr);
 					resultStr=resultstr[resultstr.length-1];
 					console.log( 'resultStr:' + resultStr );
 				return resultStr;
 																
 								}
-								
-			function closeTag(resultStr,top,c,f,g,m){
+				u=i;			
+			function closeTag(sourceStr,resultStr,top,q,c,f,g,m){
+				textarea=document.getElementById("text");
+		
+				var expressionText =  document.getElementById("text");
 				alert("closeTag");
+				console.log( 'boldIndexes.length:' + boldIndexes.length);
+				console.log( 'sourceStr:' +sourceStr);
+				console.log( 'resultStr:' +resultStr);
+				console.log( 'q:' + q);
 				 console.log( 'm:' + m );
 				console.log( 'g:' + g );
 				console.log( 'f:' + f );
 				console.log( 'c:' + c );
 				textarea=document.getElementById("text");
 		  expressionText =  document.getElementById("text").value ;		
-		//var top=stack[stack.length-1];
-				console.log( 'top:' +top );
-		k=i+1;
+						console.log( 'top:' +top );
+		k=q+1;
+		if(q==undefined){
+			k=u+1;
+		}
+		console.log( 'k:' + k);
 		n=getSymbolTypes(k);
 		 console.log( 'n:' + n );
-
-				if(k>resultStr.length){
+console.log( 'expressionText.length:' +expressionText.length );
+console.log( 'sourceStr.length:' +sourceStr.length );
+				if(k>sourceStr.length){
 					n='noSymbolTypes';
 										}
-				if((top=='Footer')&&((n!='Footer')||(k==boldIndexes.length))){
+					 console.log( 'n:' + n );
+				if((top=='Footer')&&((n!='Footer')||(k==footerIndexes.length))){
 					resultStr +='</span>'+
       '</div>'+
     '</div>'+  
@@ -858,109 +873,143 @@ var resultstr=[];
 				console.log( 'top:' +top );
 				
 				} else 	if((top=='Footer')&&(n=='Footer')){
-		resultStr +=resultStr[k];
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
-														}	
-			if((top=='Bold')&&((n!='Bold')||(k==boldIndexes.length))){
+			console.log( 'resultStr:' + resultStr );											}	
+			if((top=='Footer')&&(n!='Footer')||(k==footerIndexes.length)){
 					resultStr +='</span>';
-					 console.log( 'resultStr:' + resultStr );
+					 console.log( 'footerIndexes.length:' +footerIndexes.length );
 					stack.pop();
 				console.log( 'top:' +top );
-				
-				} else 	if((top=='Bold')&&(n=='Bold')){
-		resultStr +=resultStr[k];
+																	}
+				 else 	if((top=='Bold')&&(n=='Bold')&&(k<boldIndexes.length)){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
-														}											
-			
-		
+																				}
+						else 	if((top=='Bold')&&((n=='Bold')&&(k>=boldIndexes.length))){																	
+									resultStr +=sourceStr[k]+'</span>';
+									console.log( 'resultStr:' + resultStr );
+																						}
 		if((top=='Code')&&((n!='Code')||(k==codeIndexes.length))){
 			resultStr+='</pre></div>';
 			console.log( 'resultStr:' + resultStr );
 					  stack.pop();
 																	 
 		}else if((top=='Code')&&(n=='Code')){
-		resultStr +=resultStr[k];
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 				}
+				else 	if((top=='Bold')&&((n=='Bold')&&(k>=boldIndexes.length))){																	
+									resultStr +=sourceStr[k]+'</span>';
+									console.log( 'resultStr:' + resultStr );
+																						}
 				if((top=='Text')&&((n!='Text')||(k==txtIndexes.length))){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Text')&&(n=='Text')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Text')&&((n=='Text')&&(k<txtIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+								else 	if((top=='Text')&&((n=='Text')&&(k>=txtIndexes.length))){																	
+											resultStr +=sourceStr[k]+'</span>';
+											console.log( 'resultStr:' + resultStr );
+																								}
 				if((top=='Listing')&&((n!='Listing')||(k==listingIndexes.length))){
 					resultStr +='</span></span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Listing')&&(n=='Listing')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Listing')&&((n=='Listing')&&(k>=listingIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Listing')&&((n=='Listing')&&(k>=listingIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																										}
 				if((top=='Link')&&((n!='Link')||(k==linkIndexes.length))){
 					resultStr +='</a><span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Link')&&(n=='Link')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Link')&&((n=='Link')&&(k>=linkIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Link')&&((n=='Link')&&(k>=linkIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																							}
 				if((top=='Main_title')&&((n!='Main_title')||(k==main_titleIndexes.length))){
 					resultStr +='</div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Main_title')&&(n=='Main_title')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Main_title')&&((n=='Main_title')&&(k>=main_titleIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Main_title')&&((n=='Main_title')&&(k>=main_titleIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																												}
 				if((top=='Middle_title')&&((n!='Middle_title')||(k==middle_titleIndexes.length))){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Middle_title')&&(n=='Middle_title')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Middle_title')&&((n=='Middle_title')&&(k>=middle_titleIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Middle_title')&&((n=='Middle_title')&&(k>=middle_titleIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																													}
 				if((top=='Down_title')&&((n!='Down_title')||(k==down_titleIndexes.length))){
 					resultStr +='</div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Down_title')&&(n=='Down_title')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Down_title')&&((n=='Down_title')&&(k>=down_titleIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Down_title')&&((n=='Down_title')&&(k>=down_titleIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																												}
 				if((top=='Downpage_title')&&((n!='Downpage_title')||(k==downpage_titleIndexes.length))){
 					resultStr +='</span><br>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Downpage_title')&&(n=='Downpage_title')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Downpage_title')&&((n=='Downpage_title')&&(k>=downpage_titleIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Downpage_title')&&((n=='Downpage_title')&&(k>=downpage_titleIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																															}
 				if((top=='Hot_tip')&&((n!='Hot_tip')||(k==hot_tipIndexes.length))){
 					resultStr +='</span>'+
 							'</td>'+
@@ -973,44 +1022,61 @@ var resultstr=[];
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Hot_tip')&&(n=='Hot_tip')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Hot_tip')&&((n=='Hot_tip')&&(k>=hot_tipIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-				if((top=='Red_title')&&((n!='Red_title')||(k==red_titleIndexess.length))){
+							else 	if((top=='Hot_tip')&&((n=='Hot_tip')&&(k>=hot_tipIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																										}
+				if((top=='Red_title')&&((n!='Red_title')||(k==red_titleIndexes.length))){
 					resultStr +='</span></div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Red_title')&&(n=='Red_title')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Red_title')&&((n=='Red_title')&&(k>=red_titleIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Red_title')&&((n=='Red_title')&&(k>=red_titleIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																											}
 				if((top=='Small_title')&&((n!='Small_title')||(k==small_titleIndexes.length))){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Small_title')&&(n=='Small_title')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Small_title')&&((n=='Small_title')&&(k>=small_titleIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Small_title')&&((n=='Small_title')&&(k>=small_titleIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																													}
+																						
 				if((top=='Capture')&&((n!='Capture')||(k==captureIndexes.length))){
 					resultStr +='</span></span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Capture')&&(n=='Capture')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Capture')&&((n=='Capture')&&(k>=captureIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Capture')&&((n=='Capture')&&(k>=captureIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																										}
 				if((top=='Smallicon')&&((n!='Smallicon')||(k==smalliconIndexes.length))){
 					resultStr +='</span><br><br><img src="img/'+c+'"alt="622" class="textwrap smallicon">';
 					if(c==undefined){
@@ -1020,11 +1086,15 @@ var resultstr=[];
 					stack.pop();
 				console.log( 'top:' +top );
 									}
-				} else 	if((top=='Smallicon')&&(n=='Smallicon')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Smallicon')&&((n=='Smallicon')&&(k>=smalliconIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Smallicon')&&((n=='Smallicon')&&(k>=smalliconIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																											}
 				if((top=='Square_List')&&((n!='Square_List')||(k==square_listIndexes.length))){
 					resultStr +='</span><ul class="square">';
 					
@@ -1044,11 +1114,15 @@ console.log( 'arr[i]:' +arr[i] );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Square_List')&&(n=='Square_List')){
+				} else 	if((top=='Square_List')&&((n=='Square_List')&&(k>=square_listIndexes.length))){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Square_List')&&((n=='Square_List')&&(k>=square_listIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																													}
 				if((top=='Disc_List')&&((n!='Disc_List')||(k==disc_listIndexes.length))){
 					resultStr +='</span><ol class="disc">';
 					for(var i=0;i<m;i++){
@@ -1067,11 +1141,15 @@ console.log( 'arr[i]:' +arr[i] );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Disc_List')&&(n=='Disc_List')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Disc_List')&&((n=='Disc_List')&&(k>=disc_listIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Disc_List')&&((n=='Disc_List')&&(k>=disc_listIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																											}
 				if((top=='Main_List')&&((n!='Main_List')||(k== main_listIndexes.length))){
 					resultStr +='</span><ul class="top_page_list">';
                     for(var i=0;i<m;i++){
@@ -1091,11 +1169,15 @@ console.log( 'arr[i]:' +arr[i] );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Main_List')&&(n=='Main_List')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Main_List')&&((n=='Main_List')&&(k>=main_listIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Main_List')&&((n=='Main_List')&&(k>=main_listIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																											}
 				if((top=='None_List')&&((n!='None_List')||(k== none_listIndexes.length))){
 					resultStr +='</span><ul class="none_list">';
 					for(var i=0;i<m;i++){
@@ -1114,11 +1196,15 @@ console.log( 'arr[i]:' +arr[i] );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='None_List')&&(n=='None_List')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='None_List')&&((n=='None_List')&&(k>=none_listIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='None_List')&&((n=='None_List')&&(k>=none_listIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																											}
 				if((top=='Decimal_List')&&((n!='Decimal_List')||(k==decimal_listIndexes.length))){
 					resultStr +='</span><ol class="decimal">';
 					for(var i=0;i<m;i++){
@@ -1137,11 +1223,15 @@ console.log( 'arr[i]:' +arr[i] );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Decimal_List')&&(n=='Decimal_List')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Decimal_List')&&((n=='Decimal_List')&&(k>=decimal_listIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
+							else 	if((top=='Decimal_List')&&((n=='Decimal_List')&&(k>=decimal_listIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>';
+										console.log( 'resultStr:' + resultStr );
+																														}
 				if((top=='Table')&&((n!='Table')||(k==tableIndexes.length))){
 					resultStr +='</span><table class="syntax_description"><tbody>';
 					for(var j = 0; j <m;j++){
@@ -1192,12 +1282,16 @@ resultStr+='<td>'+arr[i]+'</td>';
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Table')&&(n=='Table')){
-		resultStr +=resultStr[k];
+				} else 	if((top=='Table')&&((n=='Table')&&(k>=tableIndexes.length))){
+		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
-														}													
-													
+														}
+						else 	if((top=='Table')&&((n=='Table')&&(k>=tableIndexes.length))){																	
+															resultStr +=sourceStr[k]+'</span>';
+															console.log( 'resultStr:' + resultStr );
+																							}														
+												
 	return 	resultStr;								
 		}
 				 
@@ -1286,8 +1380,9 @@ else{
 			
            	return TopresultStr;
 										}
-			/*
+			
 			function makeCBTStringHtml(sourceStr){
+				//resultstr.pop();
 				alert(" makeCBTStringHtml");
 		   textarea=document.getElementById("text");
 		    var expressionText=  document.getElementById("text").value; 
@@ -1295,23 +1390,23 @@ else{
             var currentSymbolIndex = 0;
 			var CBTresultStr =" ";
             var usedSymbols = 0;
-            CBTresultStr = '</span><br class="cbt">';
-
-            return CBTresultStr;
-													}*/
+            resultStr += '</span><br class="cbt">';
+//resultstr.push(resultStr);
+//resultStr=resultstr[resultstr.length-1];
+            return resultStr;
+													}
 
 			
-			/*function makeImageStringHtml(sourceStr){
+			function makeImageStringHtml(sourceStr){
 		   textarea=document.getElementById("text");
 		     var expressionText = getSelectiontextarea( document.getElementById("text") );
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
         alert(" makeImageStringHtml");
            var x=prompt("Enter a name of image","");
-			var ImageresultStr =" ";
-                ImageresultStr = '<br><img src="img/'+x+'"alt="622">';
+			var resultStr = '<br><img src="img/'+x+'"alt="622">';
                      
-           	return ImageresultStr;
-														}*/
+           	return resultStr;
+														}
 			
 			
             function getElementsById(elementID){
@@ -1467,7 +1562,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                cbtIndexes.push(new CBTSelection(selectionBegin,selectionEnd-selectionBegin));
+                /*cbtIndexes.push(new CBTSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(cbtIndexes);
                 for (var i = 0; i < cbtIndexes.length; i++){
                     var beginIndex = cbtIndexes[i].startPosition;
@@ -1479,8 +1574,8 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 console.log('aggregated array:');
         for (var i =0; i < cbtIndexes.length; i++){  
             console.log(cbtIndexes[i].startPosition + " " + cbtIndexes[i].size);
-													}
-               var resultStr=makeString(expressionText);
+													}*/
+               var resultStr=makeCBTStringHtml(expressionText);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -1599,7 +1694,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
 			}
 			function Red_title()
 			{
-
+             alert("Red_title");
 var textarea=document.getElementById("text");
 document.getElementById("text").focus();
 expressionText =  document.getElementById("text").value;
@@ -1619,11 +1714,10 @@ expressionText =  document.getElementById("text").value;
 for (var i =0; i < red_titleIndexes.length; i++){  
 console.log(red_titleIndexes[i].startPosition + " " + red_titleIndexes[i].size);
 											}
-	  var resultStr=makeString(expressionText);
+	  var TopresultStr=makeString(expressionText);
 
 	document.getElementById("RESULTTEXT").innerText=resultStr;
 	document.getElementById("RESULTHTML").innerHTML=resultStr;
-	Make();t.getElementById("RESULTHTML").innerHTML=Red_titleresultStr/*Hot_TipresultStr+BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+TxtresultStr+CaptureresultStr/*+CBTresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Square_ListresultStr+ImageresultStr*/;
 	Make();
 }
 			function Small_title()
@@ -1734,10 +1828,10 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                var resultStr=makeString(expressionText);
+                var resultStr=makeTopStringHtml(expressionText);
 
-                document.getElementById("RESULTTEXT").innerText=resultStr;
-                document.getElementById("RESULTHTML").innerHTML=resultStr;
+                document.getElementById("RESULTTEXT").innerText=TopresultStr;
+                document.getElementById("RESULTHTML").innerHTML=TopresultStr;
                 Make();
 			}	
 			function Main_List(x,y)
@@ -2015,7 +2109,7 @@ redo = document.getElementById('redo');
 			}
 			function Image()
             {
-            
+             alert("Image");
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
             var expressionText = getSelectiontextarea( document.getElementById("text") );
@@ -2023,7 +2117,7 @@ redo = document.getElementById('redo');
             
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                 var ImageresultStr = makeImageStringHtml(expressionText);							
+                 var resultStr = makeImageStringHtml(expressionText);							
 			/*var Square_ListresultStr = makeSquare_ListStringHtml(expressionText);
 			var CaptureresultStr = makeCaptureStringHtml(expressionText);
 			var TxtresultStr = makeTxtStringHtml(expressionText);
@@ -2047,9 +2141,8 @@ redo = document.getElementById('redo');
 			var ListingresultStr = makeListingStringHtml(expressionText);										
 			var BoldresultStr = makeBoldStringHtml(expressionText);
 			var CoderesultStr=makeString(expressionText);*/
-                document.getElementById("RESULTTEXT").innerText=/*BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Hot_TipresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr+Square_ListresultStr+*/ImageresultStr;
-                document.getElementById("RESULTHTML").innerHTML=/*BoldresultStr+CoderesultStr+ListingresultStr+LinkresultStr+DownPage_titleresultStr+Red_titleresultStr+Small_titleresultStr+FooterresultStr+DownresultStr+None_ListresultStr+Decimal_ListresultStr+Disc_ListresultStr+TableresultStr+SmalliconresultStr+Main_ListresultStr+Hot_TipresultStr+Down_titleresultStr+Middle_TitleresultStr+Main_titleresultStr+CBTresultStr+TxtresultStr+CaptureresultStr+Square_ListresultStr+*/ImageresultStr;
-
+               document.getElementById("RESULTTEXT").innerText=resultStr;
+                document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}  
 			function DownPage_title()
@@ -2115,7 +2208,8 @@ redo = document.getElementById('redo');
     var y=document.getElementById("RESULTHTML");
    x.innerHTML=y.innerHTML;
                         }  
-						/*var AggregateSelection = function(sourceArray){
+						var AggregateSelection = function(sourceArray){
+							 alert("AggregateSelection");
 		var indexesToRemove = new Set();
 		for (var i = 0; i < sourceArray.length; i++){
 		for (var j = 0; j < sourceArray.length; j++){
@@ -2140,7 +2234,7 @@ redo = document.getElementById('redo');
 															}
 	 
 		   
-												}*/
+												}
     $( document ).ready(function() {
     					
  //  11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 
