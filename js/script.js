@@ -338,7 +338,7 @@ var text=prompt("Enter text","");
 																			}
 						}
 						for (var k = 0; k < down_titleIndexes.length; k++){
-								if((symbolIndex>=down_titleIndexes[k].startPosition)&&(downpage_titleymbolIndex<down_titleIndexes[k].startPosition+down_titleIndexes[k].size)){
+								if((symbolIndex>=down_titleIndexes[k].startPosition)&&(symbolIndex<down_titleIndexes[k].startPosition+down_titleIndexes[k].size)){
 									symbolIndex='Down_title';
 																			}
 						}
@@ -599,11 +599,11 @@ var resultstr=[];
 					  case 'Down_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Down_title'))){
 							if(i==0){
-							resultStr ='<span class="strong">'+ sourceStr[i];
-									} else{
-								resultStr +='<span class="strong">'+ sourceStr[i];
-											}
 							resultStr ='</span><div class="down_title">'+ sourceStr[i];
+									} else{
+								resultStr +='</span><div class="down_title">'+ sourceStr[i];
+											}
+							
 							 stack.push('Down_title');
 							  console.log( 'resultStr:' + resultStr );	
 																									}
@@ -872,37 +872,54 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Footer')&&(n=='Footer')){
+				} else 	if((top=='Footer')&&(n=='Footer')&&(k<boldIndexes.length)){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
-			console.log( 'resultStr:' + resultStr );											}	
-			if((top=='Footer')&&(n!='Footer')||(k==footerIndexes.length)){
+			console.log( 'resultStr:' + resultStr );	
+			}
+			else 	if((top=='Footer')&&((n=='Footer')&&(k>=footerIndexes.length))){																	
+									resultStr +=sourceStr[k]+'</span>'+
+      '</div>'+
+    '</div>'+  
+  '</body>'+
+'</html>';
+									console.log( 'resultStr:' + resultStr );
+																					}
+																					for(var b=0;b<boldIndexes.length; b++){
+																						 if(typeof boldIndexes[b] != "undefined"){
+																							var startPos = boldIndexes[b].startPosition;
+																							var size=boldIndexes[b].size;
+																																	}
+																						alert('25')
+																						//console.log( 'boldIndexes[b].startPosition:' + boldIndexes[b].startPosition );
+																						//console.log( 'boldIndexes[b].size:' + boldIndexes[b].size );
+										if((top=='Bold')&&((n!='Bold')||(k==startPos+size))){
 					resultStr +='</span>';
-					 console.log( 'footerIndexes.length:' +footerIndexes.length );
-					stack.pop();
+										stack.pop();
 				console.log( 'top:' +top );
 																	}
-				 else 	if((top=='Bold')&&(n=='Bold')&&(k<boldIndexes.length)){
+				 else 	if((top=='Bold')&&(n=='Bold')&&(k<startPos+size)){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 																				}
-						else 	if((top=='Bold')&&((n=='Bold')&&(k>=boldIndexes.length))){																	
+						else 	if((top=='Bold')&&((n=='Bold')&&(k>startPos+size))){																	
 									resultStr +=sourceStr[k]+'</span>';
 									console.log( 'resultStr:' + resultStr );
 																						}
+																																}																											
 		if((top=='Code')&&((n!='Code')||(k==codeIndexes.length))){
 			resultStr+='</pre></div>';
 			console.log( 'resultStr:' + resultStr );
 					  stack.pop();
 																	 
-		}else if((top=='Code')&&(n=='Code')){
+		}else if((top=='Code')&&(n=='Code')&&(k<codeIndexes.length)){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 				}
-				else 	if((top=='Bold')&&((n=='Bold')&&(k>=boldIndexes.length))){																	
-									resultStr +=sourceStr[k]+'</span>';
+				else 	if((top=='Code')&&((n=='Code')&&(k>=codeIndexes.length))){																	
+									resultStr +=sourceStr[k]+'</pre></div>';
 									console.log( 'resultStr:' + resultStr );
 																						}
 				if((top=='Text')&&((n!='Text')||(k==txtIndexes.length))){
@@ -926,13 +943,13 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Listing')&&((n=='Listing')&&(k>=listingIndexes.length))){
+				} else 	if((top=='Listing')&&((n=='Listing')&&(k<listingIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Listing')&&((n=='Listing')&&(k>=listingIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</span></span>';
 										console.log( 'resultStr:' + resultStr );
 																										}
 				if((top=='Link')&&((n!='Link')||(k==linkIndexes.length))){
@@ -941,13 +958,13 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Link')&&((n=='Link')&&(k>=linkIndexes.length))){
+				} else 	if((top=='Link')&&((n=='Link')&&(k<linkIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Link')&&((n=='Link')&&(k>=linkIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</a><span>';
 										console.log( 'resultStr:' + resultStr );
 																							}
 				if((top=='Main_title')&&((n!='Main_title')||(k==main_titleIndexes.length))){
@@ -956,13 +973,13 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Main_title')&&((n=='Main_title')&&(k>=main_titleIndexes.length))){
+				} else 	if((top=='Main_title')&&((n=='Main_title')&&(k<main_titleIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Main_title')&&((n=='Main_title')&&(k>=main_titleIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</div>';
 										console.log( 'resultStr:' + resultStr );
 																												}
 				if((top=='Middle_title')&&((n!='Middle_title')||(k==middle_titleIndexes.length))){
@@ -971,7 +988,7 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Middle_title')&&((n=='Middle_title')&&(k>=middle_titleIndexes.length))){
+				} else 	if((top=='Middle_title')&&((n=='Middle_title')&&(k<middle_titleIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
@@ -986,13 +1003,13 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Down_title')&&((n=='Down_title')&&(k>=down_titleIndexes.length))){
+				} else 	if((top=='Down_title')&&((n=='Down_title')&&(k<down_titleIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Down_title')&&((n=='Down_title')&&(k>=down_titleIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</div>';
 										console.log( 'resultStr:' + resultStr );
 																												}
 				if((top=='Downpage_title')&&((n!='Downpage_title')||(k==downpage_titleIndexes.length))){
@@ -1001,13 +1018,13 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Downpage_title')&&((n=='Downpage_title')&&(k>=downpage_titleIndexes.length))){
+				} else 	if((top=='Downpage_title')&&((n=='Downpage_title')&&(k<downpage_titleIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Downpage_title')&&((n=='Downpage_title')&&(k>=downpage_titleIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</span><br>';
 										console.log( 'resultStr:' + resultStr );
 																															}
 				if((top=='Hot_tip')&&((n!='Hot_tip')||(k==hot_tipIndexes.length))){
@@ -1027,8 +1044,14 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 		console.log( 'resultStr:' + resultStr );
 
 														}
-							else 	if((top=='Hot_tip')&&((n=='Hot_tip')&&(k>=hot_tipIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+							else 	if((top=='Hot_tip')&&((n=='Hot_tip')&&(k<hot_tipIndexes.length))){																	
+										resultStr +=sourceStr[k]+'</span>'+
+							'</td>'+
+						  '</tr>'+
+						'</tbody>'+
+					  '</table>'+
+					  '<br class="cbt">'+
+					'</div>';
 										console.log( 'resultStr:' + resultStr );
 																										}
 				if((top=='Red_title')&&((n!='Red_title')||(k==red_titleIndexes.length))){
@@ -1037,13 +1060,13 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Red_title')&&((n=='Red_title')&&(k>=red_titleIndexes.length))){
+				} else 	if((top=='Red_title')&&((n=='Red_title')&&(k<red_titleIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Red_title')&&((n=='Red_title')&&(k>=red_titleIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</span></div>';
 										console.log( 'resultStr:' + resultStr );
 																											}
 				if((top=='Small_title')&&((n!='Small_title')||(k==small_titleIndexes.length))){
@@ -1052,7 +1075,7 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Small_title')&&((n=='Small_title')&&(k>=small_titleIndexes.length))){
+				} else 	if((top=='Small_title')&&((n=='Small_title')&&(k<small_titleIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
@@ -1068,13 +1091,13 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Capture')&&((n=='Capture')&&(k>=captureIndexes.length))){
+				} else 	if((top=='Capture')&&((n=='Capture')&&(k<captureIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Capture')&&((n=='Capture')&&(k>=captureIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</span></span>';
 										console.log( 'resultStr:' + resultStr );
 																										}
 				if((top=='Smallicon')&&((n!='Smallicon')||(k==smalliconIndexes.length))){
@@ -1086,13 +1109,13 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 									}
-				} else 	if((top=='Smallicon')&&((n=='Smallicon')&&(k>=smalliconIndexes.length))){
+				} else 	if((top=='Smallicon')&&((n=='Smallicon')&&(k<smalliconIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Smallicon')&&((n=='Smallicon')&&(k>=smalliconIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</span><br><br><img src="img/'+c+'"alt="622" class="textwrap smallicon">';
 										console.log( 'resultStr:' + resultStr );
 																											}
 				if((top=='Square_List')&&((n!='Square_List')||(k==square_listIndexes.length))){
@@ -1114,13 +1137,13 @@ console.log( 'arr[i]:' +arr[i] );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Square_List')&&((n=='Square_List')&&(k>=square_listIndexes.length))){
+				} else 	if((top=='Square_List')&&((n=='Square_List')&&(k<square_listIndexes.length))){
 		resultStr +=resultStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Square_List')&&((n=='Square_List')&&(k>=square_listIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</span><ul class="square">';
 										console.log( 'resultStr:' + resultStr );
 																													}
 				if((top=='Disc_List')&&((n!='Disc_List')||(k==disc_listIndexes.length))){
@@ -1141,13 +1164,13 @@ console.log( 'arr[i]:' +arr[i] );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Disc_List')&&((n=='Disc_List')&&(k>=disc_listIndexes.length))){
+				} else 	if((top=='Disc_List')&&((n=='Disc_List')&&(k<disc_listIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Disc_List')&&((n=='Disc_List')&&(k>=disc_listIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</span><ol class="disc">';
 										console.log( 'resultStr:' + resultStr );
 																											}
 				if((top=='Main_List')&&((n!='Main_List')||(k== main_listIndexes.length))){
@@ -1169,13 +1192,13 @@ console.log( 'arr[i]:' +arr[i] );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Main_List')&&((n=='Main_List')&&(k>=main_listIndexes.length))){
+				} else 	if((top=='Main_List')&&((n=='Main_List')&&(k<main_listIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Main_List')&&((n=='Main_List')&&(k>=main_listIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</span><ul class="top_page_list">';
 										console.log( 'resultStr:' + resultStr );
 																											}
 				if((top=='None_List')&&((n!='None_List')||(k== none_listIndexes.length))){
@@ -1196,13 +1219,13 @@ console.log( 'arr[i]:' +arr[i] );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='None_List')&&((n=='None_List')&&(k>=none_listIndexes.length))){
+				} else 	if((top=='None_List')&&((n=='None_List')&&(k<none_listIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='None_List')&&((n=='None_List')&&(k>=none_listIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</span><ul class="none_list">';
 										console.log( 'resultStr:' + resultStr );
 																											}
 				if((top=='Decimal_List')&&((n!='Decimal_List')||(k==decimal_listIndexes.length))){
@@ -1223,13 +1246,13 @@ console.log( 'arr[i]:' +arr[i] );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Decimal_List')&&((n=='Decimal_List')&&(k>=decimal_listIndexes.length))){
+				} else 	if((top=='Decimal_List')&&((n=='Decimal_List')&&(k<decimal_listIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 							else 	if((top=='Decimal_List')&&((n=='Decimal_List')&&(k>=decimal_listIndexes.length))){																	
-										resultStr +=sourceStr[k]+'</span>';
+										resultStr +=sourceStr[k]+'</span><ol class="decimal">';
 										console.log( 'resultStr:' + resultStr );
 																														}
 				if((top=='Table')&&((n!='Table')||(k==tableIndexes.length))){
@@ -1282,13 +1305,13 @@ resultStr+='<td>'+arr[i]+'</td>';
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Table')&&((n=='Table')&&(k>=tableIndexes.length))){
+				} else 	if((top=='Table')&&((n=='Table')&&(k<tableIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
 						else 	if((top=='Table')&&((n=='Table')&&(k>=tableIndexes.length))){																	
-															resultStr +=sourceStr[k]+'</span>';
+															resultStr +=sourceStr[k]+'</span><table class="syntax_description"><tbody>';
 															console.log( 'resultStr:' + resultStr );
 																							}														
 												
