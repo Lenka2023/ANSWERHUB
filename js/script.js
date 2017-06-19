@@ -455,8 +455,8 @@ var resultstr=[];
 		 var expressionText =  getSelectiontextarea( document.getElementById("text") );
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 			resultstr.pop();
-		for ( i = 0; i < sourceStr.length-1; i++){														
-				 
+		for ( i = 0; i < sourceStr.length; i++){														
+				 console.log( 'i:' + i );
 				switch(getSymbolTypes(i)){
 					case 'Footer':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Footer'))){
@@ -472,7 +472,7 @@ var resultstr=[];
 																								}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					 case 'Bold':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
@@ -486,7 +486,7 @@ var resultstr=[];
 																							}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  case 'Code':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top !== 'Code'))){
@@ -502,7 +502,7 @@ var resultstr=[];
 					  	 
 						resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
 																				
-							
+						i++;	
 					 break;
 					  case 'Text':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Text'))){
@@ -517,7 +517,7 @@ var resultstr=[];
 																							}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  case 'Listing':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Listing'))){
@@ -532,7 +532,7 @@ var resultstr=[];
 																								}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  case 'CBT':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='CBT'))){
@@ -547,7 +547,7 @@ var resultstr=[];
 																							}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  case 'Link':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Link'))){
@@ -564,7 +564,7 @@ var resultstr=[];
 																							}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1]);															
-																				
+						i++;														
 					  break;
 					  case 'Main_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Main_title'))){
@@ -579,7 +579,7 @@ var resultstr=[];
 																								}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  case 'Middle_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Middle_title'))){
@@ -594,7 +594,7 @@ var resultstr=[];
 																									}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  case 'Down_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Down_title'))){
@@ -609,7 +609,7 @@ var resultstr=[];
 																									}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  case 'Downpage_title':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Downpage_title'))){
@@ -624,7 +624,7 @@ var resultstr=[];
 																										}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  case 'Hot_tip':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Hot_tip'))){
@@ -654,7 +654,7 @@ var resultstr=[];
 																								}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					 
 					 case 'Red_title':
@@ -669,7 +669,7 @@ var resultstr=[];
 																									}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  
 					 case 'Small_title':
@@ -684,7 +684,7 @@ var resultstr=[];
 																									}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  
 					 case 'Capture':
@@ -699,7 +699,7 @@ var resultstr=[];
 																								}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
-																				
+						i++;														
 					  break;
 					  
 					 case 'Smallicon':
@@ -718,7 +718,7 @@ var resultstr=[];
 																									}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],t,i);															
-																				
+						i++;														
 					  break;
 					  
 					 case 'Square_List':
@@ -735,7 +735,7 @@ var resultstr=[];
 																									}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
-																				
+						i++;														
 					  break;
 					  
 					 case 'Disc_List':
@@ -752,7 +752,7 @@ var resultstr=[];
 																								}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
-																				
+						i++;														
 					  break;
 					  case 'Main_List':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Main_List'))){
@@ -768,7 +768,7 @@ var resultstr=[];
 																								}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
-																				
+						i++;														
 					  break;
 					  case 'None_List':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='None_List'))){
@@ -784,7 +784,7 @@ var resultstr=[];
 																								}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
-																				
+						i++;														
 					  break;
 					  case 'Decimal_List':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Decimal_List'))){
@@ -800,7 +800,7 @@ var resultstr=[];
 																									}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
-																				
+						i++;														
 					  break;
 					   case 'Table':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top!=='Table'))){
@@ -816,7 +816,7 @@ var resultstr=[];
 																							}
 								
 							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,i);															
-																				
+						i++;														
 					  break;
 						
 					 default:
@@ -862,7 +862,10 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					n='noSymbolTypes';
 										}
 					 console.log( 'n:' + n );
-				if((top=='Footer')&&((n!='Footer')||(k==footerIndexes.length))){
+					 //----------------------------------------------------------------------------------------------------------Footer--------------------------------------------------------------------------------------------																				
+
+					 
+				if((top=='Footer')&&(n!='Footer')){
 					resultStr +='</span>'+
       '</div>'+
     '</div>'+  
@@ -886,43 +889,44 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 '</html>';
 									console.log( 'resultStr:' + resultStr );
 																					}
-																					for(var b=0;b<boldIndexes.length; b++){
-																						 if(typeof boldIndexes[b] != "undefined"){
-																							var startPos = boldIndexes[b].startPosition;
-																							var size=boldIndexes[b].size;
-																																	}
-																						alert('25')
-																						//console.log( 'boldIndexes[b].startPosition:' + boldIndexes[b].startPosition );
-																						//console.log( 'boldIndexes[b].size:' + boldIndexes[b].size );
-										if((top=='Bold')&&((n!='Bold')||(k==startPos+size))){
+//----------------------------------------------------------------------------------------------------------Bold--------------------------------------------------------------------------------------------																				
+																						
+										if((top=='Bold')&&(n!='Bold')){
 					resultStr +='</span>';
 										stack.pop();
 				console.log( 'top:' +top );
 																	}
-				 else 	if((top=='Bold')&&(n=='Bold')&&(k<startPos+size)){
+				 else 	if((top=='Bold')&&((n=='Bold')&&(k<boldIndexes.length))){
 		resultStr +=sourceStr[k];
+		q++;
 		console.log( 'resultStr:' + resultStr );
 
 																				}
-						else 	if((top=='Bold')&&((n=='Bold')&&(k>startPos+size))){																	
+						else 	if((top=='Bold')&&((n=='Bold')&&(k>=boldIndexes.length))){																	
 									resultStr +=sourceStr[k]+'</span>';
+									q++;
 									console.log( 'resultStr:' + resultStr );
 																						}
-																																}																											
-		if((top=='Code')&&((n!='Code')||(k==codeIndexes.length))){
+ //----------------------------------------------------------------------------------------------------------Code--------------------------------------------------------------------------------------------																				
+																					
+					console.log( 'q:' + q);																																																																					
+		if((top=='Code')&&(n!='Code')){
 			resultStr+='</pre></div>';
 			console.log( 'resultStr:' + resultStr );
 					  stack.pop();
 																	 
 		}else if((top=='Code')&&(n=='Code')&&(k<codeIndexes.length)){
 		resultStr +=sourceStr[k];
+		
 		console.log( 'resultStr:' + resultStr );
 				}
 				else 	if((top=='Code')&&((n=='Code')&&(k>=codeIndexes.length))){																	
 									resultStr +=sourceStr[k]+'</pre></div>';
 									console.log( 'resultStr:' + resultStr );
 																						}
-				if((top=='Text')&&((n!='Text')||(k==txtIndexes.length))){
+//----------------------------------------------------------------------------------------------------------Text--------------------------------------------------------------------------------------------																				
+																
+				if((top=='Text')&&(n!='Text')){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -937,7 +941,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 											resultStr +=sourceStr[k]+'</span>';
 											console.log( 'resultStr:' + resultStr );
 																								}
-				if((top=='Listing')&&((n!='Listing')||(k==listingIndexes.length))){
+//----------------------------------------------------------------------------------------------------------Listing--------------------------------------------------------------------------------------------																				
+
+				if((top=='Listing')&&(n!='Listing')){
 					resultStr +='</span></span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -952,7 +958,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 										resultStr +=sourceStr[k]+'</span></span>';
 										console.log( 'resultStr:' + resultStr );
 																										}
-				if((top=='Link')&&((n!='Link')||(k==linkIndexes.length))){
+//----------------------------------------------------------------------------------------------------------Link--------------------------------------------------------------------------------------------																				
+
+				if((top=='Link')&&(n!='Link')){
 					resultStr +='</a><span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -967,7 +975,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 										resultStr +=sourceStr[k]+'</a><span>';
 										console.log( 'resultStr:' + resultStr );
 																							}
-				if((top=='Main_title')&&((n!='Main_title')||(k==main_titleIndexes.length))){
+//----------------------------------------------------------------------------------------------------------Main_title--------------------------------------------------------------------------------------------																				
+
+				if((top=='Main_title')&&(n!='Main_title')){
 					resultStr +='</div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -982,7 +992,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 										resultStr +=sourceStr[k]+'</div>';
 										console.log( 'resultStr:' + resultStr );
 																												}
-				if((top=='Middle_title')&&((n!='Middle_title')||(k==middle_titleIndexes.length))){
+//----------------------------------------------------------------------------------------------------------Middle_title--------------------------------------------------------------------------------------------																				
+
+				if((top=='Middle_title')&&(n!='Middle_title')){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -997,7 +1009,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 										resultStr +=sourceStr[k]+'</span>';
 										console.log( 'resultStr:' + resultStr );
 																													}
-				if((top=='Down_title')&&((n!='Down_title')||(k==down_titleIndexes.length))){
+//---------------------------------------------------------------------------------------------------------Down_title--------------------------------------------------------------------------------------------																				
+
+				if((top=='Down_title')&&(n!='Down_title')){
 					resultStr +='</div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1012,7 +1026,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 										resultStr +=sourceStr[k]+'</div>';
 										console.log( 'resultStr:' + resultStr );
 																												}
-				if((top=='Downpage_title')&&((n!='Downpage_title')||(k==downpage_titleIndexes.length))){
+//---------------------------------------------------------------------------------------------------------Downpage_title--------------------------------------------------------------------------------------------																				
+
+				if((top=='Downpage_title')&&(n!='Downpage_title')){
 					resultStr +='</span><br>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1027,7 +1043,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 										resultStr +=sourceStr[k]+'</span><br>';
 										console.log( 'resultStr:' + resultStr );
 																															}
-				if((top=='Hot_tip')&&((n!='Hot_tip')||(k==hot_tipIndexes.length))){
+//---------------------------------------------------------------------------------------------------------Hot_tip--------------------------------------------------------------------------------------------																				
+																															
+				if((top=='Hot_tip')&&(n!='Hot_tip')){
 					resultStr +='</span>'+
 							'</td>'+
 						  '</tr>'+
@@ -1039,12 +1057,12 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					stack.pop();
 				console.log( 'top:' +top );
 				
-				} else 	if((top=='Hot_tip')&&((n=='Hot_tip')&&(k>=hot_tipIndexes.length))){
+				} else 	if((top=='Hot_tip')&&((n=='Hot_tip')&&(k<hot_tipIndexes.length))){
 		resultStr +=sourceStr[k];
 		console.log( 'resultStr:' + resultStr );
 
 														}
-							else 	if((top=='Hot_tip')&&((n=='Hot_tip')&&(k<hot_tipIndexes.length))){																	
+							else 	if((top=='Hot_tip')&&((n=='Hot_tip')&&(k>=hot_tipIndexes.length))){																	
 										resultStr +=sourceStr[k]+'</span>'+
 							'</td>'+
 						  '</tr>'+
@@ -1054,7 +1072,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 					'</div>';
 										console.log( 'resultStr:' + resultStr );
 																										}
-				if((top=='Red_title')&&((n!='Red_title')||(k==red_titleIndexes.length))){
+//---------------------------------------------------------------------------------------------------------Red_title--------------------------------------------------------------------------------------------																				
+
+				if((top=='Red_title')&&(n!='Red_title')){
 					resultStr +='</span></div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1069,7 +1089,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 										resultStr +=sourceStr[k]+'</span></div>';
 										console.log( 'resultStr:' + resultStr );
 																											}
-				if((top=='Small_title')&&((n!='Small_title')||(k==small_titleIndexes.length))){
+//---------------------------------------------------------------------------------------------------------Small_title--------------------------------------------------------------------------------------------																				
+
+				if((top=='Small_title')&&(n!='Small_title')){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1084,8 +1106,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 										resultStr +=sourceStr[k]+'</span>';
 										console.log( 'resultStr:' + resultStr );
 																													}
+//---------------------------------------------------------------------------------------------------------Capture--------------------------------------------------------------------------------------------																				
 																						
-				if((top=='Capture')&&((n!='Capture')||(k==captureIndexes.length))){
+				if((top=='Capture')&&(n!='Capture')){
 					resultStr +='</span></span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1100,7 +1123,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 										resultStr +=sourceStr[k]+'</span></span>';
 										console.log( 'resultStr:' + resultStr );
 																										}
-				if((top=='Smallicon')&&((n!='Smallicon')||(k==smalliconIndexes.length))){
+//---------------------------------------------------------------------------------------------------------Smallicon--------------------------------------------------------------------------------------------																				
+
+				if((top=='Smallicon')&&(n!='Smallicon')){
 					resultStr +='</span><br><br><img src="img/'+c+'"alt="622" class="textwrap smallicon">';
 					if(c==undefined){
 						resultStr +='</span><br><br><img src="img/'+image_name+'"alt="622" class="textwrap smallicon">';
@@ -1118,7 +1143,9 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 										resultStr +=sourceStr[k]+'</span><br><br><img src="img/'+c+'"alt="622" class="textwrap smallicon">';
 										console.log( 'resultStr:' + resultStr );
 																											}
-				if((top=='Square_List')&&((n!='Square_List')||(k==square_listIndexes.length))){
+//---------------------------------------------------------------------------------------------------------Square_List--------------------------------------------------------------------------------------------																				
+
+				if((top=='Square_List')&&(n!='Square_List')){
 					resultStr +='</span><ul class="square">';
 					
 for(var i=0;i<m;i++){
@@ -1144,9 +1171,23 @@ console.log( 'arr[i]:' +arr[i] );
 														}
 							else 	if((top=='Square_List')&&((n=='Square_List')&&(k>=square_listIndexes.length))){																	
 										resultStr +=sourceStr[k]+'</span><ul class="square">';
+										for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+			resultStr+='</ul>';
 										console.log( 'resultStr:' + resultStr );
 																													}
-				if((top=='Disc_List')&&((n!='Disc_List')||(k==disc_listIndexes.length))){
+//---------------------------------------------------------------------------------------------------------Disc_List--------------------------------------------------------------------------------------------																				
+
+				if((top=='Disc_List')&&(n!='Disc_List')){
 					resultStr +='</span><ol class="disc">';
 					for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
@@ -1171,9 +1212,23 @@ console.log( 'arr[i]:' +arr[i] );
 														}
 							else 	if((top=='Disc_List')&&((n=='Disc_List')&&(k>=disc_listIndexes.length))){																	
 										resultStr +=sourceStr[k]+'</span><ol class="disc">';
+										for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+               resultStr += '</ol>';
 										console.log( 'resultStr:' + resultStr );
 																											}
-				if((top=='Main_List')&&((n!='Main_List')||(k== main_listIndexes.length))){
+//---------------------------------------------------------------------------------------------------------Main_List--------------------------------------------------------------------------------------------																				
+
+				if((top=='Main_List')&&(n!='Main_List')){
 					resultStr +='</span><ul class="top_page_list">';
                     for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
@@ -1199,9 +1254,23 @@ console.log( 'arr[i]:' +arr[i] );
 														}
 							else 	if((top=='Main_List')&&((n=='Main_List')&&(k>=main_listIndexes.length))){																	
 										resultStr +=sourceStr[k]+'</span><ul class="top_page_list">';
+										 for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+            resultStr+='</ul>';
 										console.log( 'resultStr:' + resultStr );
 																											}
-				if((top=='None_List')&&((n!='None_List')||(k== none_listIndexes.length))){
+//---------------------------------------------------------------------------------------------------------None_List--------------------------------------------------------------------------------------------																				
+
+				if((top=='None_List')&&(n!='None_List')){
 					resultStr +='</span><ul class="none_list">';
 					for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
@@ -1226,9 +1295,23 @@ console.log( 'arr[i]:' +arr[i] );
 														}
 							else 	if((top=='None_List')&&((n=='None_List')&&(k>=none_listIndexes.length))){																	
 										resultStr +=sourceStr[k]+'</span><ul class="none_list">';
+										for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+			resultStr+= '</ul>';
 										console.log( 'resultStr:' + resultStr );
 																											}
-				if((top=='Decimal_List')&&((n!='Decimal_List')||(k==decimal_listIndexes.length))){
+//--------------------------------------------------------------------------------------------------------Decimal_List--------------------------------------------------------------------------------------------																				
+
+				if((top=='Decimal_List')&&(n!='Decimal_List')){
 					resultStr +='</span><ol class="decimal">';
 					for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
@@ -1253,9 +1336,23 @@ console.log( 'arr[i]:' +arr[i] );
 														}
 							else 	if((top=='Decimal_List')&&((n=='Decimal_List')&&(k>=decimal_listIndexes.length))){																	
 										resultStr +=sourceStr[k]+'</span><ol class="decimal">';
+										for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+			resultStr+='</ol>';
 										console.log( 'resultStr:' + resultStr );
 																														}
-				if((top=='Table')&&((n!='Table')||(k==tableIndexes.length))){
+//--------------------------------------------------------------------------------------------------------Table--------------------------------------------------------------------------------------------																				
+																														
+				if((top=='Table')&&(n!='Table')){
 					resultStr +='</span><table class="syntax_description"><tbody>';
 					for(var j = 0; j <m;j++){
 						
@@ -1311,7 +1408,52 @@ resultStr+='<td>'+arr[i]+'</td>';
 
 														}
 						else 	if((top=='Table')&&((n=='Table')&&(k>=tableIndexes.length))){																	
-															resultStr +=sourceStr[k]+'</span><table class="syntax_description"><tbody>';
+									resultStr +=sourceStr[k]+'</span><table class="syntax_description"><tbody>';
+									for(var j = 0; j <m;j++){
+
+										resultStr+='<tr>';
+										if(j == 0){
+									for(var i=0;i<f;i++){
+					 console.log( 'f:' + f );
+				resultStr+='<th>'+g[i]+'</th>';
+				console.log( 'g[i]:' + g[i] );
+									 }
+									 console.log( 'i:' + i );
+				  }
+				  else if(j>0){
+					 
+					   console.log( 'i:' + i );
+					 for(var t=0;t<f;t++){
+						 
+					 console.log( 'f:' + f );
+				resultStr+='<td>'+g[i]+'</td>';
+				 i++;
+											}
+						}
+						resultStr+='</tr>';
+																		}
+									if(m==undefined){
+									for(var j = 0; j <number;j++){
+										resultStr+='<tr>';
+										if(j == 0){
+									for(var i=0;i<numbercol;i++){
+					 console.log( 'numbercol:' +numbercol );
+				resultStr+='<th>'+arr[i]+'</th>';
+				console.log( 'g[i]:' +arr[i] );
+									 }
+				  }
+				  else if(j>0){
+					  for(var t=0;t<numbercol;t++){
+					 console.log( 'numbercol:' +number );
+				resultStr+='<td>'+arr[i]+'</td>';
+				 i++;
+											}
+													}
+							resultStr+='</tr>';
+																			}
+														}
+							resultStr+='</tbody></table>';
+
 															console.log( 'resultStr:' + resultStr );
 																							}														
 												
