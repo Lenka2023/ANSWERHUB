@@ -471,7 +471,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					 case 'Bold':
@@ -485,7 +485,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																							}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'Code':
@@ -500,7 +500,7 @@ var resultstr=[];
 						 console.log( 'resultStr:' + resultStr );	
 																							}
 					  	 
-						resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+						resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 																				
 						i++;	
 					 break;
@@ -516,7 +516,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																							}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'Listing':
@@ -531,7 +531,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);														
 						i++;														
 					  break;
 					  case 'CBT':
@@ -546,7 +546,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																							}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'Link':
@@ -563,7 +563,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																							}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1]);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'Main_title':
@@ -578,7 +578,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'Middle_title':
@@ -593,7 +593,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'Down_title':
@@ -608,7 +608,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'Downpage_title':
@@ -623,7 +623,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																										}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'Hot_tip':
@@ -653,7 +653,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					 
@@ -668,7 +668,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  
@@ -683,7 +683,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  
@@ -698,7 +698,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  
@@ -717,7 +717,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],t,i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  
@@ -734,7 +734,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  
@@ -751,7 +751,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'Main_List':
@@ -767,7 +767,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'None_List':
@@ -783,7 +783,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																								}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					  case 'Decimal_List':
@@ -799,7 +799,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																									}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 					   case 'Table':
@@ -815,7 +815,7 @@ var resultstr=[];
 							  console.log( 'resultStr:' + resultStr );	
 																							}
 								
-							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,i);															
+							resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,j,t,i);															
 						i++;														
 					  break;
 						
@@ -833,7 +833,7 @@ var resultstr=[];
 																
 								}
 				u=i;			
-			function closeTag(sourceStr,resultStr,top,q,c,f,g,m){
+			function closeTag(sourceStr,resultStr,top,g,c,f,m,q){
 				textarea=document.getElementById("text");
 		
 				var expressionText =  document.getElementById("text");
@@ -898,13 +898,11 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 																	}
 				 else 	if((top=='Bold')&&((n=='Bold')&&(k<boldIndexes.length))){
 		resultStr +=sourceStr[k];
-		q++;
 		console.log( 'resultStr:' + resultStr );
 
 																				}
 						else 	if((top=='Bold')&&((n=='Bold')&&(k>=boldIndexes.length))){																	
 									resultStr +=sourceStr[k]+'</span>';
-									q++;
 									console.log( 'resultStr:' + resultStr );
 																						}
  //----------------------------------------------------------------------------------------------------------Code--------------------------------------------------------------------------------------------																				
