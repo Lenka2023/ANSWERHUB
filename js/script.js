@@ -439,19 +439,20 @@ var u=0;
 var i = 0;
 var resultstr=[];
 	var stack=[];
-	function makeString(sourceStr,x,w,y,j,t){
+	function makeString(sourceStr,t,w,y,j,x){
 		alert("makeString");
 		x=x;
 		y=y;
 		j=j;
 		t=t;
+		console.log( 'sourceStr:' +sourceStr );
 		console.log( 'w:' + w );
 		 console.log( 'x:' + x );
 		console.log( 'y:' + y );
 		console.log( 'j:' + j );
 		console.log( 't:' + t );
 		textarea=document.getElementById("text");
-		var expressionText =  getSelectiontextarea( document.getElementById("text") );
+		expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 			resultstr.pop();
 		for ( i = 0; i < sourceStr.length; i++){														
@@ -716,7 +717,8 @@ var resultstr=[];
 																									}
 								
 						resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,w,t,i);			
-						i++;														
+						i++;
+						console.log( 'i:' + i);
 					  break;
 					  
 					 case 'Square_List':
@@ -823,7 +825,7 @@ var resultstr=[];
 					 
 											}
 													}
-					u=i;	
+					//u=i;	
 					resultstr.push(resultStr);
 					resultStr=resultstr[resultstr.length-1];
 					console.log( 'resultStr:' + resultStr );
@@ -1135,8 +1137,12 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 		console.log( 'resultStr:' + resultStr );
 
 														}
-							else 	if((top=='Smallicon')&&((n=='Smallicon')&&(k>=smalliconIndexes.length))){																	
+							else 	if((top=='Smallicon')&&((n=='Smallicon')&&(k>=smalliconIndexes.length))){	
+							console.log( 'q:' + q);	
 										resultStr +=sourceStr[k]+'</span><br><br><img src="img/'+c+'"alt="622" class="textwrap smallicon">';
+										if(c==undefined){
+						resultStr +=sourceStr[k]+'</span><br><br><img src="img/'+image_name+'"alt="622" class="textwrap smallicon">';
+														}
 										console.log( 'resultStr:' + resultStr );
 																											}
 //---------------------------------------------------------------------------------------------------------Square_List--------------------------------------------------------------------------------------------																				
@@ -2155,7 +2161,7 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
             
             var textarea=document.getElementById("text");
             document.getElementById("text").focus();
-            var expressionText = getSelectiontextarea( document.getElementById("text") );
+           expressionText =  document.getElementById("text").value;
 			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 				var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
