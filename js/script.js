@@ -434,7 +434,7 @@ var u=0;
 var i = 0;
 var resultstr=[];
 	var stack=[];
-	function makeString(sourceStr,t,w,y,j,x,dtxtms, dnms,darrms,tpl,mt,dt,answ){
+	function makeString(sourceStr,t,mt,dt,answ,x,dtxtms, dnms,darrms,tpl,w,y,j){
 		alert("makeString");
 		mt=mt;
 		dt=dt;
@@ -1017,9 +1017,9 @@ var resultstr=[];
 				console.log( 'boldIndexes.length:' + boldIndexes.length);
 				console.log( 'sourceStr:' +sourceStr);
 				console.log( 'resultStr:' +resultStr);
-				console.log( 'mt:' +mt);
-				console.log( 'dt:' +dt );
-				console.log( 'answ:' +answ );
+				console.log( 'mtcl:' +mtcl);
+				console.log( 'dtcl:' +dtcl);
+				console.log( 'answcl:' +answcl );
 				console.log( 'q:' + q);
 				 console.log( 'm:' + m );
 				console.log( 'g:' + g );
@@ -1114,7 +1114,7 @@ else{
 if(answcl=="yes"){
 		//var middle_title=prompt("Enter middle_title","");																
 					resultStr +='</span>'+
-		'<span class="middle_title">'+mdcl+'</span>'+
+		'<span class="middle_title">'+mtcl+'</span>'+
 		'</div>'+
 					'<div>'+
 					  '<div class="down_title ">'+
@@ -1127,7 +1127,7 @@ else{
 	'</div>'+
 				'<div>'+
 				  '<div class="down_title ">'+
-					'<span class="strong">'+dt+'</span>'+
+					'<span class="strong">'+dtcl+'</span>'+
 				  '</div>'+
 				'</div>';
 	}
@@ -1143,7 +1143,7 @@ else{
 			console.log( 'resultStr:' + resultStr );	
 																						}
 			else 	if((top=='TopPage')&&((n=='TopPage')&&(k>=top_pageIndexes.length))){																	
-									if(answ==undefined){
+									if(answcl==undefined){
 	 if(answer=="yes"){
 		//var middle_title=prompt("Enter middle_title","");																
 					resultStr +=sourceStr[k]+'</span>'+
@@ -2354,13 +2354,13 @@ var text=prompt("Enter text","");
 			dtxt=txt;
 			var dn=n;
 			var top_page_list=0;
-			var tpl=0;
+			var topl=0;
 			var down_title=0;
-			var dt=0;
+			var dtl=0;
 			var middle_title=0;
-			var mt=0;
+			var mtl=0;
 			var answer=0;
-			var answ=0;
+			var answr=0;
 			function Top(tpl,mt,dt,answ)
             {
             
@@ -2383,36 +2383,37 @@ var text=prompt("Enter text","");
         for (var i =0; i < top_pageIndexes.length; i++){  
             console.log(top_pageIndexes[i].startPosition + " " + top_pageIndexes[i].size);
 													}
-													if(tpl!=null){
-						tpl==prompt("Enter top_page_list","");
-						top_page_list=tpl;
-						console.log( 'tpl:'+tpl);
+													if(topl!=null){
+						topl==prompt("Enter top_page_list","");
+						top_page_list=topl;
+						console.log( 'topl:'+topl);
 								}
 								
-		if(answ!=null){
-						answ=prompt("is middle_title exist?(yes or no)","");	
-						answer=answ;
-						console.log( 'answ:' +answ);
+		if(answr!=null){
+						answr=prompt("is middle_title exist?(yes or no)","");	
+						answer=answr;
+						console.log( 'answr:' +answr);
 								}
-		if(mt!=null){
-						mt=prompt("Enter middle_title","");	
-						middle_title=mt;
-						console.log( 'txt:' +txt);
+		if(mtl!=null){
+						mtl=prompt("Enter middle_title","");	
+						middle_title=mtl;
+						console.log( 'mtl:' +mtl);
 								}
-								if(dt!=null){
-						dt=prompt("Enter down_title","");	
-						down_title=dt;
-						console.log( 'dt:' +dt);
+								if(dtl!=null){
+						dtl=prompt("Enter down_title","");	
+						down_title=dtl;
+						console.log( 'dtl:' +dtl);
 								}
 								
-			 var resultStr=makeString(expressionText,tpl,mt,dt,answ);
-            
+			 var resultStr=makeString(expressionText,topl,mtl,dtl,answr);
+            document.getElementById("RESULTTEXT").innerText=resultStr;
+            document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}
-			top_page_list=tpl;
-			middle_title=mt;
-			down_title=dt;
-			answer=answ;			
+			top_page_list=topl;
+			middle_title=mtl;
+			down_title=dtl;
+			answer=answr;			
 			function Main_List(x,y)
             {
              
@@ -3091,10 +3092,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        down_pageIndexes[t].startPosition = startPos;
        down_pageIndexes[t].size = size;
 															}
-			resultStr = makeFooterStringHtml(expressionText);
+			resultStr =makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeFooterStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 																	}
              console.log('Footer indexes:'+JSON.stringify(down_pageIndexes));
 			 for (var t = 0;t < top_pageIndexes.length; t++){
@@ -3112,10 +3113,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        top_pageIndexes[t].startPosition = startPos;
        top_pageIndexes[t].size = size;
 															}
-			resultStr = makeFooterStringHtml(expressionText);
+			resultStr =makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeFooterStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 																	}
              console.log('Footer indexes:'+JSON.stringify(top_pageIndexes));
 			 for (var t = 0;t < imageIndexes.length; t++){
@@ -3133,10 +3134,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        imageIndexes[t].startPosition = startPos;
        imageIndexes[t].size = size;
 															}
-			resultStr = makeFooterStringHtml(expressionText);
+			resultStr =makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeFooterStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 																	}
              console.log('Footer indexes:'+JSON.stringify(imageIndexes));
 			/*for (var t = 0;t < footerIndexes.length; t++){
@@ -3154,10 +3155,10 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        footerIndexes[t].startPosition = startPos;
        footerIndexes[t].size = size;
 															}
-			resultStr = makeFooterStringHtml(expressionText);
+			resultStr =makeString(expressionText);
 	   document.getElementById("RESULTTEXT").innerText=resultStr;
 document.getElementById("RESULTHTML").innerHTML=resultStr;
-	    console.log('resultStr:'+makeFooterStringHtml(expressionText));
+	    console.log('resultStr:'+makeString(expressionText));
 																	}
              console.log('Footer indexes:'+JSON.stringify(footerIndexes));*/
 			 for (var x = 0;x < hot_tipIndexes.length; x++){
