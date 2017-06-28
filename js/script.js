@@ -434,7 +434,7 @@ var u=0;
 var i = 0;
 var resultstr=[];
 	var stack=[];
-	function makeString(sourceStr,t,mt,dt,answ,x,dtxtms, dnms,darrms,tpl,w,y,j){
+	function makeString(sourceStr,tpl,mt,dt,answ,x,dtxtms, dnms,darrms,t,w,y,j){
 		alert("makeString");
 		mt=mt;
 		dt=dt;
@@ -1089,7 +1089,7 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 if((top=='TopPage')&&(n!='TopPage')){
 					//var down_title=prompt("Enter down_title","");
    //var x=prompt("is middle_title exist?(yes or no)","");
-   if(answ==undefined){
+   if(answcl==undefined){
 	 if(answer=="yes"){
 		//var middle_title=prompt("Enter middle_title","");																
 					resultStr +='</span>'+
@@ -1163,16 +1163,16 @@ else{
 				  '</div>'+
 				'</div>';
 	}  
-   }
+   
 							}else{
-if(answ=="yes"){
+if(answcl=="yes"){
 		//var middle_title=prompt("Enter middle_title","");																
 					resultStr +=sourceStr[k]+'</span>'+
-		'<span class="middle_title">'+md+'</span>'+
+		'<span class="middle_title">'+mtcl+'</span>'+
 		'</div>'+
 					'<div>'+
 					  '<div class="down_title ">'+
-						'<span class="strong">'+dt+'</span>'+
+						'<span class="strong">'+dtcl+'</span>'+
 					  '</div>'+
 					'</div>';
 			}
@@ -1181,13 +1181,13 @@ else{
 	'</div>'+
 				'<div>'+
 				  '<div class="down_title ">'+
-					'<span class="strong">'+dt+'</span>'+
+					'<span class="strong">'+dtcl+'</span>'+
 				  '</div>'+
 				'</div>';
 	}
 									}
 									console.log( 'resultStr:' + resultStr );
-																					
+																							}		
 					 //----------------------------------------------------------------------------------------------------------Footer--------------------------------------------------------------------------------------------																				
 
 					 
@@ -2352,7 +2352,7 @@ var text=prompt("Enter text","");
 			}
 			
 			dtxt=txt;
-			var dn=n;
+			 dn=n;
 			var top_page_list=0;
 			var topl=0;
 			var down_title=0;
@@ -2383,8 +2383,8 @@ var text=prompt("Enter text","");
         for (var i =0; i < top_pageIndexes.length; i++){  
             console.log(top_pageIndexes[i].startPosition + " " + top_pageIndexes[i].size);
 													}
-													if(topl!=null){
-						topl==prompt("Enter top_page_list","");
+						if(topl!=null){
+						topl=prompt("Enter top_page_list","");
 						top_page_list=topl;
 						console.log( 'topl:'+topl);
 								}
