@@ -434,7 +434,7 @@ var u=0;
 var i = 0;
 var resultstr=[];
 	var stack=[];
-	function makeString(sourceStr,tpl,mt,dt,answ,x,dtxtms, dnms,darrms,t,w,y,j){
+	function makeString(sourceStr,dtxtms,dnms,darrms,answ,x,dt,mt,tpl,t,w,y,j){
 		alert("makeString");
 		mt=mt;
 		dt=dt;
@@ -490,7 +490,7 @@ var resultstr=[];
                     var table='<div class="down_page float_right">';
                // var text=prompt("Enter text","");  
                 table +=' <div class="align_left medium_padding align_top float_left">'+dtxtms+'</div>';
-          for(var v = 0; v < dnms-1;v++){
+          for(var v = 0; v < dnms;v++){
           //var txt=prompt("Enter txt","");
  table += '<div class="align_left medium_padding align_top float_right">'+darrms[v]+ '</div>';
 										}
@@ -524,7 +524,7 @@ var resultstr=[];
                     var table='<div class="down_page float_right">';
                 //var text=prompt("Enter text","");  
                 table +=' <div class="align_left medium_padding align_top float_left">'+dtxtms+'</div>';
-          for(var v = 0; v < dnms-1;v++){
+          for(var v = 0; v < dnms;v++){
           //var dtext=prompt("Enter txt","");
  table += '<div class="align_left medium_padding align_top float_right">'+darrms[v]+'</div>';
 										}
@@ -1791,88 +1791,7 @@ resultStr+='<td>'+arr[i]+'</td>';
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 				 
 
-			/*function makeTopStringHtml(sourceStr){
-				 document.getElementById("text").focus();
-		   textarea=document.getElementById("text");
-		   var TopresultStr='';
-		    var expressionText =  document.getElementById("text").value;
-			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeTopStringHtml");
-           var top_page_list=prompt("Enter top_page_list","");
-PurgeRedoSequence();
-textarea=document.getElementById("text");
-    document.getElementById("text").focus();
-    var main_title=prompt("Enter main_title","");
-var down_title=prompt("Enter down_title","");
-    var result=document.getElementById("result");
-var x=prompt("is middle_title exist?(yes or no)","");
-if(x=="yes"){
-		var middle_title=prompt("Enter middle_title","");
-								  TopresultStr = '<!DOCTYPE html>'+
-		'<html>'+
-		  '<head>'+
-			'<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
-			'<link rel="stylesheet" href="css/style.css"type="text/css"/ '+
-			'</head>'+
-		  '<body>'+
-			'<div class="page_cont one">'+
-			  '<br class="cbt">'+
-			  '<div class="content">'+
-		'<div class="float_left">'+top_page_list+'</div>'+
-		'<div class="main_title float_right">'+
-		'<span class="title_font">'+main_title+'</span>'+
-		'<span class="middle_title">'+middle_title+'</span>'+
-		'</div>'+
-					'<div>'+
-					  '<div class="down_title ">'+
-						'<span class="strong">'+down_title+'</span>'+
-					  '</div>'+
-					'</div>';
-			}
-else{
-		 TopresultStr ='<!DOCTYPE html>'+
-	'<html>'+
-	  '<head>'+
-		'<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
-		'<link rel="stylesheet" href="css/style.css"type="text/css"/ '+
-		'</head>'+
-	  '<body>'+
-		'<div class="page_cont one">'+
-		  '<br class="cbt">'+
-		  '<div class="content">'+
-	'<div class="float_left">'+top_page_list+'</div>'+
-	'<div class="main_title float_right">'+
-	'<span class="title_font">'+main_title+'</span>'+
-	'</div>'+
-				'<div>'+
-				  '<div class="down_title ">'+
-					'<span class="strong">'+down_title+'</span>'+
-				  '</div>'+
-				'</div>';
-		document.getElementById("RESULTHTML").innerHTML='<!DOCTYPE html>'+
-	'<html>'+
-	  '<head>'+
-		'<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">'+
-		'<link rel="stylesheet" href="css/style.css"type="text/css"/> '+
-		'</head>'+
-	  '<body>'+
-		'<div class="page_cont one">'+
-		  '<br class="cbt">'+
-		  '<div class="content">'+
-		  '<div>'+
-	'<div class="float_left">'+top_page_list+'</div>'+
-	'<div class="main_title float_right">'+
-	'<span class="title_font">'+main_title+'</span>'+
-	'</div>'+
-				'<div>'+
-				  '<div class="down_title ">'+
-					'<span class="strong">'+down_title+'</span>'+
-				  '</div>'+
-				'</div></div> <br class="cbt">';
-    }
 			
-           	return TopresultStr;
-										}*/
 			
 			function makeCBTStringHtml(sourceStr){
 				//resultstr.pop();
@@ -1890,16 +1809,7 @@ else{
 													}
 
 			
-			/*function makeImageStringHtml(sourceStr){
-		   textarea=document.getElementById("text");
-		     var expressionText = getSelectiontextarea( document.getElementById("text") );
-			 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-        alert(" makeImageStringHtml");
-           var x=prompt("Enter a name of image","");
-			var resultStr = '<br><img src="img/'+x+'"alt="622">';
-                     
-           	return resultStr;
-														}*/
+			
 			
 			
             function getElementsById(elementID){
@@ -2101,34 +2011,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}					
-			 /*function  Main_title()
-						{
-						
-						var textarea=document.getElementById("text");
-						document.getElementById("text").focus();
-						expressionText =  document.getElementById("text").value;
-						 document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-							var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
-							var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-							main_titleIndexes.push(new Main_titleSelection(selectionBegin,selectionEnd-selectionBegin));
-							AggregateSelection(main_titleIndexes);
-							for (var i = 0; i < main_titleIndexes.length; i++){
-								var beginIndex = main_titleIndexes[i].startPosition;
-								var endIndex = main_titleIndexes[i].endPosition;
-																				}
-							main_titleIndexes.sort(function(a,b) {
-							return a.startPosition - b.startPosition;
-																});
-							console.log('aggregated array:');
-					for (var i =0; i < main_titleIndexes.length; i++){  
-						console.log(main_titleIndexes[i].startPosition + " " + main_titleIndexes[i].size);
-																	}
-							 var resultStr=makeString(expressionText);
-
-							document.getElementById("RESULTTEXT").innerText=resultStr;
-							document.getElementById("RESULTHTML").innerHTML=resultStr;
-							Make();
-						}*/
+			
 			function Middle_Title()
             {
             
@@ -2269,38 +2152,11 @@ console.log(hot_tipIndexes[i].startPosition + " " + hot_tipIndexes[i].size);
 	document.getElementById("RESULTHTML").innerHTML=resultStr;
 	Make();
 }
-			/*function Footer()
-			{
-
-var textarea=document.getElementById("text");
-document.getElementById("text").focus();
-expressionText =  document.getElementById("text").value;
- document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
-	var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
-	var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-	footerIndexes.push(new FooterSelection(selectionBegin,selectionEnd-selectionBegin));
-	AggregateSelection(footerIndexes);
-	for (var i = 0; i < footerIndexes.length; i++){
-		var beginIndex = footerIndexes[i].startPosition;
-		var endIndex = footerIndexes[i].endPosition;
-													}
-	footerIndexes.sort(function(a,b) {
-	return a.startPosition - b.startPosition;
-									});
-	console.log('aggregated array:');
-for (var i =0; i < footerIndexes.length; i++){  
-console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
-										}
-	var resultStr=makeString(expressionText);
-
-	document.getElementById("RESULTTEXT").innerText=resultStr;
-	document.getElementById("RESULTHTML").innerHTML=resultStr;
-	Make();
-}*/
+			
 			var txt=0;
-			dtxt=0;
+			var dtxt=0;
 			var n=0;
-			dn=0;
+			var dn=0;
 			function Down(dtxt, dn,darr)
 			{
             
@@ -2323,8 +2179,7 @@ console.log(footerIndexes[i].startPosition + " " + footerIndexes[i].size);
 for (var i =0; i < down_pageIndexes.length; i++){  
 console.log(down_pageIndexes[i].startPosition + " " + down_pageIndexes[i].size);
 												}
-	var y=prompt("Enter a count of columns","");
-var text=prompt("Enter text",""); 	
+		
  if(n!=null){
 						n=prompt("Enter a count of columns","");	
 						dn=n;
@@ -2332,19 +2187,19 @@ var text=prompt("Enter text","");
 								}
 					
          
-					for(var i=0;i<dn-1;i++){
+					for(var i=0;i<dn;i++){
 						console.log( 'dn:' +dn);
 						dtext=prompt("Enter txt","");
 						arr.push(dtext);
 						console.log( 'arr:' +arr );
 											}
 												
-												if(txt!=null){
-						txt=prompt("Enter a name of image","");	
+if(txt!=null){
+						txt=prompt("Enter text","");	
 						dtxt=txt;
 						console.log( 'txt:' +txt);
 								}
-               var resultStr=makeString(expressionText,txt,n);
+               var resultStr=makeString(expressionText,txt,n, arr);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
