@@ -460,6 +460,7 @@ var resultstr=[];
 		expressionText =  document.getElementById("text").value;
 			document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 			resultstr.pop();
+			 console.log( 'i:' + i );
 		for ( i = 0; i < sourceStr.length; i++){														
 				 console.log( 'i:' + i );
 				switch(getSymbolTypes(i)){
@@ -662,7 +663,7 @@ var resultstr=[];
 																							}
 								
 						resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,w,t,i);	
-						i++;														
+						//i++;														
 					  break;
 					  case 'Code':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top !== 'Code'))){
@@ -1217,18 +1218,20 @@ else{
 																					}*/
 //----------------------------------------------------------------------------------------------------------Bold--------------------------------------------------------------------------------------------																				
 																						
-										if((top=='Bold')&&(n!='Bold')){
+										if(((top=='Bold')&&(n!='Bold'))||(k>boldIndexes.length)){
 					resultStr +='</span>';
 										stack.pop();
 				console.log( 'top:' +top );
 																	}
 				 else 	if((top=='Bold')&&((n=='Bold')&&(k<boldIndexes.length))){
 		resultStr +=sourceStr[k];
+		q++:
 		console.log( 'resultStr:' + resultStr );
 
 																				}
-						else 	if((top=='Bold')&&((n=='Bold')&&(k>=boldIndexes.length))){																	
+						else 	if((top=='Bold')&&((n=='Bold')&&(k=boldIndexes.length))){																	
 									resultStr +=sourceStr[k]+'</span>';
+									q++:
 									console.log( 'resultStr:' + resultStr );
 																						}
  //----------------------------------------------------------------------------------------------------------Code--------------------------------------------------------------------------------------------																				
