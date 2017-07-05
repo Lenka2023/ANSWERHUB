@@ -434,15 +434,17 @@ var u=0;
 var i = 0;
 var resultstr=[];
 	var stack=[];
-	function makeString(sourceStr,dtxtms,dnms,darrms,answ,x,dt,mt,tpl,t,w,y,j){
+	function makeString(sourceStr,usl,bgind,darrms,answ,x,dt,mt,tpl,t,w,y,j,dtxtms,dnms){
 		alert("makeString");
 		mt=mt;
 		dt=dt;
 		answ=answ;
+		bgind=bgind;
 		x=x;
 		y=y;
 		j=j;
 		t=t;
+		console.log( 'boldIndexes.length:' +boldIndexes.length);
 		console.log( 'sourceStr:' +sourceStr );
 		console.log( 'dnms:' +dnms );
 		console.log( 'dtxtms:' +dtxtms );
@@ -452,6 +454,8 @@ var resultstr=[];
 		console.log( 'dt:' +dt );
 		console.log( 'answ:' +answ );
 		console.log( 'w:' + w );
+		console.log( 'usl:' +usl );
+		 console.log( 'bgind:' +bgind );
 		 console.log( 'x:' + x );
 		console.log( 'y:' + y );
 		console.log( 'j:' + j );
@@ -463,6 +467,7 @@ var resultstr=[];
 			 console.log( 'i:' + i );
 		for ( i = 0; i < sourceStr.length; i++){														
 				 console.log( 'i:' + i );
+				 
 				switch(getSymbolTypes(i)){
 					case 'DownPage':
 					//var y=prompt("Enter a count of columns","");
@@ -652,7 +657,11 @@ var resultstr=[];
 						i++;														
 					  break;*/
 					 case 'Bold':
-						if ((stack.length == 0) || ((stack.length !== 0)&&(top!== 'Bold'))){
+					
+			console.log( 'stack.length:' +stack.length );
+			console.log( 'stack[stack.length-1]:' +stack[stack.length-1] );														/*for(var us=0;us<usedLength;us++){
+																		if(us==0){*/
+						if ((stack.length == 0) || ((stack.length != 0)&&(stack[stack.length-1]!= 'Bold'))){
 							if(i==0){
 							resultStr ='<span class="strong">'+ sourceStr[i];
 									} else{
@@ -660,10 +669,42 @@ var resultstr=[];
 											}
 							 stack.push( 'Bold');
 							  console.log( 'resultStr:' + resultStr );	
+							  resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,w,t,i,usl,bgind);
 																							}
+						else if(stack[stack.length-1]== 'Bold'){
+							i--;
+						resultStr =resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,w,t,i,usl,bgind);	
+						
+						}
+							
 								
-						resultStr = closeTag(sourceStr,resultStr,stack[stack.length-1],x,y,w,t,i);	
-						//i++;														
+							
+						//console.log( 'ind:' +ind);
+						console.log( 'i:' +i);
+						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						//i++;	
+						  /*for (var ind =0; ind < boldIndexes.length; ind++){  
+            console.log(boldIndexes[ind].startPosition + " " + boldIndexes[ind].size);
+			usedLength=boldIndexes[ind].size-boldIndexes[ind].startPosition;
+			console.log( 'usedLength:' +usedLength );
+																	}*/
+																	if(usl==undefined){
+																	for (var r=0; r<boldIndexes.length; r++){
+					 console.log( 'i:' + i );
+					if(usedLen>1){					 
+									i++;
+									console.log( 'i:' + i );
+									}				
+													}
+																	}
+				 for (var r=0; r<boldIndexes.length; r++){
+					 console.log( 'i:' + i );
+					if(usl>1){					 
+									i++;
+									console.log( 'i:' + i );
+									}				
+													}
+					console.log( 'i:' + i );								
 					  break;
 					  case 'Code':
 						if ((stack.length == 0) || ((stack.length !== 0)&&(top !== 'Code'))){
@@ -1010,17 +1051,20 @@ var resultstr=[];
 																
 								}
 				u=i;			
-			function closeTag(sourceStr,resultStr,top,m,g,f,c,q,mtcl,dtcl,answcl){
+			function closeTag(sourceStr,resultStr,top,m,g,f,c,q,usedLen,beginInd,answcl,mtcl,dtcl){
 				textarea=document.getElementById("text");
 				k=q+1;
 				var expressionText =  document.getElementById("text");
 				alert("closeTag");
+				
 				console.log( 'boldIndexes.length:' + boldIndexes.length);
 				console.log( 'sourceStr:' +sourceStr);
 				console.log( 'resultStr:' +resultStr);
 				console.log( 'mtcl:' +mtcl);
 				console.log( 'dtcl:' +dtcl);
 				console.log( 'answcl:' +answcl );
+				console.log( 'usedLen:' +usedLen);
+				console.log( 'beginInd:' +beginInd);
 				console.log( 'q:' + q);
 				 console.log( 'm:' + m );
 				console.log( 'g:' + g );
@@ -1029,7 +1073,7 @@ var resultstr=[];
 				textarea=document.getElementById("text");
 		  expressionText =  document.getElementById("text").value ;		
 						console.log( 'top:' +top );
-		
+		//index=makeString(q);
 		if(q==undefined){
 			k=u+1;
 		}
@@ -1217,21 +1261,27 @@ else{
 									console.log( 'resultStr:' + resultStr );
 																					}*/
 //----------------------------------------------------------------------------------------------------------Bold--------------------------------------------------------------------------------------------																				
-																						
-										if(((top=='Bold')&&(n!='Bold'))||(k>boldIndexes.length)){
+										num=beginInd+usedLen;
+										console.log( 'num:' +num);												
+										if(((top=='Bold')&&(n!='Bold'))||(k>num-1)){
+											console.log( 'boldIndexes.length:' + boldIndexes.length);
 					resultStr +='</span>';
 										stack.pop();
 				console.log( 'top:' +top );
 																	}
-				 else 	if((top=='Bold')&&((n=='Bold')&&(k<boldIndexes.length))){
+				 else 	if((top=='Bold')&&((n=='Bold')&&(k<num-1))){
+					 console.log( 'boldIndexes.length:' + boldIndexes.length);
 		resultStr +=sourceStr[k];
-		q++:
+		//q++;
+		console.log( 'q:' + q);
 		console.log( 'resultStr:' + resultStr );
 
 																				}
-						else 	if((top=='Bold')&&((n=='Bold')&&(k=boldIndexes.length))){																	
+						else 	if((top=='Bold')&&((n=='Bold')&&(k=num-1))){	
+						console.log( 'boldIndexes.length:' + boldIndexes.length);
 									resultStr +=sourceStr[k]+'</span>';
-									q++:
+									//q++;
+									console.log( 'q:' + q);
 									console.log( 'resultStr:' + resultStr );
 																						}
  //----------------------------------------------------------------------------------------------------------Code--------------------------------------------------------------------------------------------																				
@@ -1787,7 +1837,8 @@ resultStr+='<td>'+arr[i]+'</td>';
 
 															console.log( 'resultStr:' + resultStr );
 																							}														
-												
+		console.log( 'q:' + q);	
+		console.log( 'stack.length:' +stack.length );		
 	return 	resultStr;								
 		}
 				 
@@ -2516,7 +2567,11 @@ redo = document.getElementById('redo');
     }
     if (historyIndex < historyIndexMax) { redo.disabled=''; }
 					};
-			function Bold()
+					var usedLen=0;
+					var usedLength=0;
+					var beginIndex=0;
+					var beginInd=0;
+			function Bold(usl,bgind)
             {
              
              textarea=document.getElementById("text");
@@ -2529,22 +2584,32 @@ redo = document.getElementById('redo');
                 boldIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(boldIndexes);
                 for (var i = 0; i < boldIndexes.length; i++){
+					console.log( 'boldIndexes.length:' + boldIndexes.length);
                     var beginIndex = boldIndexes[i].startPosition;
                     var endIndex = boldIndexes[i].endPosition;
+					console.log( 'endIndex:' +endIndex);
+					console.log( 'beginIndex:' +beginIndex);
 															}
+					beginInd=beginIndex;
                 boldIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
 												});
+				console.log( 'boldIndexes.length:' + boldIndexes.length);								
                 console.log('aggregated array:');
         for (var i =0; i < boldIndexes.length; i++){  
             console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
+			usedLength=boldIndexes[i].size;
+			console.log( 'usedLength:' +usedLength );
 													}
-			 var resultStr=makeString(expressionText);
+													usedLen=usedLength;
+			 var resultStr=makeString(expressionText,usedLength,beginIndex);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
                 Make();
 			}
+			usedLen=usedLength;
+			beginInd=beginIndex;
 			function Image()
             {
              alert("Image");
