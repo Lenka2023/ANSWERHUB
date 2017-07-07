@@ -2913,7 +2913,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
               document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                listingIndexes.push(new ListingSelection(selectionBegin,selectionEnd-selectionBegin));
+                listingIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(listingIndexes);
                 for (var i = 0; i < listingIndexes.length; i++){
                     var beginIndex = listingIndexes[i].startPosition;
@@ -2954,7 +2954,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
            document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                captureIndexes.push(new CaptureSelection(selectionBegin,selectionEnd-selectionBegin));
+                captureIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(captureIndexes);
                 for (var i = 0; i < captureIndexes.length; i++){
                     var beginIndex = captureIndexes[i].startPosition;
@@ -2996,7 +2996,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                /*cbtIndexes.push(new CBTSelection(selectionBegin,selectionEnd-selectionBegin));
+                /*cbtIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(cbtIndexes);
                 for (var i = 0; i < cbtIndexes.length; i++){
                     var beginIndex = cbtIndexes[i].startPosition;
@@ -3023,7 +3023,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                linkIndexes.push(new LinkSelection(selectionBegin,selectionEnd-selectionBegin));
+                linkIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(linkIndexes);
                 for (var i = 0; i < linkIndexes.length; i++){
                     var beginIndex = linkIndexes[i].startPosition;
@@ -3056,7 +3056,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                middle_titleIndexes.push(new Middle_TitleSelection(selectionBegin,selectionEnd-selectionBegin));
+                middle_titleIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(middle_titleIndexes );
                 for (var i = 0; i < middle_titleIndexes.length; i++){
                     var beginIndex = middle_titleIndexes[i].startPosition;
@@ -3088,7 +3088,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                down_titleIndexes.push(new Down_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+                down_titleIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(down_titleIndexes);
                 for (var i = 0; i < down_titleIndexes.length; i++){
                     var beginIndex = down_titleIndexes[i].startPosition;
@@ -3120,7 +3120,7 @@ expressionText =  document.getElementById("text").value;
  document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 	var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
 	var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-	red_titleIndexes.push(new Red_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+	red_titleIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
 	AggregateSelection(red_titleIndexes);
 	for (var i = 0; i < red_titleIndexes.length; i++){
 		var beginIndex = red_titleIndexes[i].startPosition;
@@ -3152,7 +3152,7 @@ expressionText =  document.getElementById("text").value;
  document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 	var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
 	var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-	small_titleIndexes.push(new Small_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+	small_titleIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
 	AggregateSelection(small_titleIndexes);
 	for (var i = 0; i < small_titleIndexes.length; i++){
 		var beginIndex = small_titleIndexes[i].startPosition;
@@ -3184,7 +3184,7 @@ expressionText =  document.getElementById("text").value;
  document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
 	var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
 	var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-	hot_tipIndexes.push(new Hot_TipSelection(selectionBegin,selectionEnd-selectionBegin));
+	hot_tipIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
 	AggregateSelection(hot_tipIndexes);
 	for (var i = 0; i < hot_tipIndexes.length; i++){
 		var beginIndex = hot_tipIndexes[i].startPosition;
@@ -3221,7 +3221,7 @@ console.log(hot_tipIndexes[i].startPosition + " " + hot_tipIndexes[i].size);
              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-				down_pageIndexes.push(new FooterSelection(selectionBegin,selectionEnd-selectionBegin));
+				down_pageIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
 	AggregateSelection(down_pageIndexes);
 	for (var i = 0; i < down_pageIndexes.length; i++){
 		var beginIndex = down_pageIndexes[i].startPosition;
@@ -3712,7 +3712,7 @@ redo = document.getElementById('redo');
             document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                downpage_titleIndexes.push(new DownPage_titleSelection(selectionBegin,selectionEnd-selectionBegin));
+                downpage_titleIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(downpage_titleIndexes);
                 for (var i = 0; i < downpage_titleIndexes.length; i++){
                     var beginIndex = downpage_titleIndexes[i].startPosition;
@@ -3744,7 +3744,7 @@ redo = document.getElementById('redo');
              document.getElementById("text").innerHTML = expressionText.replace(/\n/g, '<br>');
                 var selectionBegin = (textarea.selectionStart < textarea.selectionEnd) ? textarea.selectionStart : textarea.selectionEnd;
                 var selectionEnd = (textarea.selectionEnd > textarea.selectionStart) ? textarea.selectionEnd : textarea.selectionStart;
-                txtIndexes.push(new TxtSelection(selectionBegin,selectionEnd-selectionBegin));
+                txtIndexes.push(new UsedSelection(selectionBegin,selectionEnd-selectionBegin));
                 AggregateSelection(txtIndexes);
                 for (var i = 0; i < txtIndexes.length; i++){
                     var beginIndex = txtIndexes[i].startPosition;
