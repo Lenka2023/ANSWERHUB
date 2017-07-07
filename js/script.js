@@ -1742,8 +1742,16 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 						num=beginInd+useLen;
 										}
 					 					 //----------------------------------------------------------------------------------------------------------DownPage--------------------------------------------------------------------------------------------																				
-
-					 if((top=='DownPage')&&(n!='DownPage')){
+if((top=='DownPage')&&(k>num-1)){
+					resultStr +='</span>'+
+      '</div>'+
+    '</div>'+  
+  '</body>'+
+'</html>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+					} else if((top=='DownPage')&&(n!='DownPage')){
 					resultStr +='</span>'+
       '</div>'+
     '</div>'+  
@@ -1759,17 +1767,22 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 
 			console.log( 'resultStr:' + resultStr );	
 			}
-			else 	if((top=='DownPage')&&((n=='DownPage')&&(k>=num-1))){																	
+			else 	if((top=='DownPage')&&((n=='DownPage')&&(k=num-1))){																	
 									resultStr +=sourceStr[k]+'</span>'+
       '</div>'+
     '</div>'+  
   '</body>'+
 '</html>';
+stack.pop();
 									console.log( 'resultStr:' + resultStr );
 																					}
 											 //----------------------------------------------------------------------------------------------------------Image--------------------------------------------------------------------------------------------																				
-
-																					if((top=='Image')&&(n!='Image')){
+if((top=='Image')&&(k>num-1)){
+					resultStr +='"alt="622">';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+					} else if((top=='Image')&&(n!='Image')){
 					resultStr +='"alt="622">';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1781,12 +1794,62 @@ console.log( 'sourceStr.length:' +sourceStr.length );
 
 			console.log( 'resultStr:' + resultStr );	
 			}
-			else 	if((top=='Image')&&((n=='Image')&&(k>=num-1))){																	
+			else 	if((top=='Image')&&((n=='Image')&&(k=num-1))){																	
 									resultStr +=sourceStr[k]+'"alt="622">';
+									stack.pop();
 									console.log( 'resultStr:' + resultStr );
 																					}
 					//----------------------------------------------------------------------------------------------------------TopPage--------------------------------------------------------------------------------------------																				
-if((top=='TopPage')&&(n!='TopPage')){
+if((top=='TopPage')&&(k>num-1)){
+					//var down_title=prompt("Enter down_title","");
+   //var x=prompt("is middle_title exist?(yes or no)","");
+   if(answcl==undefined){
+	 if(answer=="yes"){
+		//var middle_title=prompt("Enter middle_title","");																
+					resultStr +='</span>'+
+		'<span class="middle_title">'+middle_title+'</span>'+
+		'</div>'+
+					'<div>'+
+					  '<div class="down_title ">'+down_title+'</span>'+
+					  '</div>'+
+					'</div>';
+						}
+else{
+	resultStr +='</span>'+
+	'</div>'+
+				'<div>'+
+				  '<div class="down_title ">'+
+					'<span class="strong">'+down_title+'</span>'+
+				  '</div>'+
+				'</div>';
+	}  
+   
+							}else{
+if(answcl=="yes"){
+		//var middle_title=prompt("Enter middle_title","");																
+					resultStr +='</span>'+
+		'<span class="middle_title">'+mtcl+'</span>'+
+		'</div>'+
+					'<div>'+
+					  '<div class="down_title ">'+
+						'<span class="strong">'+dtcl+'</span>'+
+					  '</div>'+
+					'</div>';
+			}
+else{
+	resultStr +='</span>'+
+	'</div>'+
+				'<div>'+
+				  '<div class="down_title ">'+
+					'<span class="strong">'+dtcl+'</span>'+
+				  '</div>'+
+				'</div>';
+	}
+									}
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+					} else if((top=='TopPage')&&(n!='TopPage')){
 					//var down_title=prompt("Enter down_title","");
    //var x=prompt("is middle_title exist?(yes or no)","");
    if(answcl==undefined){
@@ -1842,7 +1905,7 @@ else{
 
 			console.log( 'resultStr:' + resultStr );	
 																						}
-			else 	if((top=='TopPage')&&((n=='TopPage')&&(k>=num-1))){																	
+			else 	if((top=='TopPage')&&((n=='TopPage')&&(k=num-1))){																	
 									if(answcl==undefined){
 	 if(answer=="yes"){
 		//var middle_title=prompt("Enter middle_title","");																
@@ -1886,12 +1949,21 @@ else{
 				'</div>';
 	}
 									}
+									stack.pop();
 									console.log( 'resultStr:' + resultStr );
 																							}		
 					 //----------------------------------------------------------------------------------------------------------Footer--------------------------------------------------------------------------------------------																				
 
-					 
-				/*if((top=='Footer')&&(n!='Footer')){
+					/*if((top=='Footer')&&(k>num-1)){
+					resultStr +='</span>'+
+      '</div>'+
+    '</div>'+  
+  '</body>'+
+'</html>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top ); 
+				} else if((top=='Footer')&&(n!='Footer')){
 					resultStr +='</span>'+
       '</div>'+
     '</div>'+  
@@ -1907,18 +1979,24 @@ else{
 
 			console.log( 'resultStr:' + resultStr );	
 			}
-			else 	if((top=='Footer')&&((n=='Footer')&&(k>=num-1))){																	
+			else 	if((top=='Footer')&&((n=='Footer')&&(k=num-1))){																	
 									resultStr +=sourceStr[k]+'</span>'+
       '</div>'+
     '</div>'+  
   '</body>'+
 '</html>';
+stack.pop();
 									console.log( 'resultStr:' + resultStr );
 																					}*/
 //----------------------------------------------------------------------------------------------------------Bold--------------------------------------------------------------------------------------------																				
 										
-										console.log( 'num:' +num);												
-										if(((top=='Bold')&&(n!='Bold'))||(k>num-1)){
+										console.log( 'num:' +num);	
+if((top=='Bold')&&(k>num-1)){
+											console.log( 'boldIndexes.length:' + boldIndexes.length);
+					resultStr +='</span>';
+										stack.pop();
+				console.log( 'top:' +top );										
+										} else if((top=='Bold')&&(n!='Bold')){
 											console.log( 'boldIndexes.length:' + boldIndexes.length);
 					resultStr +='</span>';
 										stack.pop();
@@ -1937,12 +2015,17 @@ else{
 									resultStr +=sourceStr[k]+'</span>';
 									//q++;
 									console.log( 'q:' + q);
+									stack.pop();
 									console.log( 'resultStr:' + resultStr );
 																						}
  //----------------------------------------------------------------------------------------------------------Code--------------------------------------------------------------------------------------------																				
 																					
-					console.log( 'q:' + q);																																																																					
-		if(((top=='Code')&&(n!='Code'))||(k>num-1)){
+					console.log( 'q:' + q);	
+if((top=='Code')&&(k>num-1)){
+			resultStr+='</pre></div>';
+			console.log( 'resultStr:' + resultStr );
+					  stack.pop();					
+		} else if((top=='Code')&&(n!='Code')){
 			resultStr+='</pre></div>';
 			console.log( 'resultStr:' + resultStr );
 					  stack.pop();
@@ -1952,13 +2035,18 @@ else{
 		
 		console.log( 'resultStr:' + resultStr );
 				}
-				else 	if((top=='Code')&&((n=='Code')&&(k>=num-1))){																	
+				else 	if((top=='Code')&&((n=='Code')&&(k=num-1))){																	
 									resultStr +=sourceStr[k]+'</pre></div>';
 									console.log( 'resultStr:' + resultStr );
+									stack.pop();
 																						}
 //----------------------------------------------------------------------------------------------------------Text--------------------------------------------------------------------------------------------																				
-																
-				if(((top=='Text')&&(n!='Text'))||(k>num-1)){
+		if((top=='Text')&&(k>num-1)){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );														
+				} else if((top=='Text')&&(n!='Text')){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1971,11 +2059,16 @@ else{
 														}
 								else 	if((top=='Text')&&((n=='Text')&&(k=num-1))){																	
 											resultStr +=sourceStr[k]+'</span>';
+											stack.pop();
 											console.log( 'resultStr:' + resultStr );
 																								}
 //----------------------------------------------------------------------------------------------------------Listing--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Listing')&&(n!='Listing'))||(k>num-1)){
+ if((top=='Listing')&&(k>num-1)){
+					resultStr +='</span></span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Listing')&&(n!='Listing')){
 					resultStr +='</span></span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -1988,11 +2081,16 @@ else{
 														}
 							else 	if((top=='Listing')&&((n=='Listing')&&(k=num-1))){																	
 										resultStr +=sourceStr[k]+'</span></span>';
+										stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																										}
 //----------------------------------------------------------------------------------------------------------Link--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Link')&&(n!='Link'))||(k>num-1)){
+if((top=='Link')&&(k>num-1)){
+					resultStr +='</a><span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Link')&&(n!='Link')){
 					resultStr +='</a><span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -2005,11 +2103,16 @@ else{
 														}
 							else 	if((top=='Link')&&((n=='Link')&&(k=num-1))){																	
 										resultStr +=sourceStr[k]+'</a><span>';
+										stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																							}
 //----------------------------------------------------------------------------------------------------------Main_title--------------------------------------------------------------------------------------------																				
-
-				/*if(((top=='Main_title')&&(n!='Main_title'))||(k>num-1)){
+/*if((top=='Main_title')&&(k>num-1)){
+					resultStr +='</div>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Main_title')&&(n!='Main_title')){
 					resultStr +='</div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -2022,11 +2125,16 @@ else{
 														}
 							else 	if((top=='Main_title')&&((n=='Main_title')&&(k=num-1))){																	
 										resultStr +=sourceStr[k]+'</div>';
+										stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																												}*/
 //----------------------------------------------------------------------------------------------------------Middle_title--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Middle_title')&&(n!='Middle_title'))||(k>num-1)){
+if((top=='Middle_title')&&(k>num-1)){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Middle_title')&&(n!='Middle_title')){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -2039,11 +2147,16 @@ else{
 														}
 							else 	if((top=='Middle_title')&&((n=='Middle_title')&&(k=num-1))){																	
 										resultStr +=sourceStr[k]+'</span>';
+										stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																													}
 //---------------------------------------------------------------------------------------------------------Down_title--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Down_title')&&(n!='Down_title'))||(k>num-1)){
+if((top=='Down_title')&&(k>num-1)){
+					resultStr +='</div>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Down_title')&&(n!='Down_title')){
 					resultStr +='</div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -2056,11 +2169,16 @@ else{
 														}
 							else 	if((top=='Down_title')&&((n=='Down_title')&&(k=num-1))){																	
 										resultStr +=sourceStr[k]+'</div>';
+										stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																												}
 //---------------------------------------------------------------------------------------------------------Downpage_title--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Downpage_title')&&(n!='Downpage_title'))||(k>num-1)){
+if((top=='Downpage_title')&&(k>num-1)){
+					resultStr +='</span><br>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Downpage_title')&&(n!='Downpage_title')){
 					resultStr +='</span><br>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -2073,11 +2191,22 @@ else{
 														}
 							else 	if((top=='Downpage_title')&&((n=='Downpage_title')&&(k=num-1))){																	
 										resultStr +=sourceStr[k]+'</span><br>';
+										stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																															}
 //---------------------------------------------------------------------------------------------------------Hot_tip--------------------------------------------------------------------------------------------																				
-																															
-				if(((top=='Hot_tip')&&(n!='Hot_tip'))||(k>num-1)){
+		if((top=='Hot_tip')&&(k>num-1)){
+					resultStr +='</span>'+
+							'</td>'+
+						  '</tr>'+
+						'</tbody>'+
+					  '</table>'+
+					  '<br class="cbt">'+
+					'</div>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );																													
+				} else if((top=='Hot_tip')&&(n!='Hot_tip')){
 					resultStr +='</span>'+
 							'</td>'+
 						  '</tr>'+
@@ -2102,11 +2231,16 @@ else{
 					  '</table>'+
 					  '<br class="cbt">'+
 					'</div>';
+					stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																										}
 //---------------------------------------------------------------------------------------------------------Red_title--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Red_title')&&(n!='Red_title'))||(k>num-1)){
+if((top=='Red_title')&&(k>num-1)){
+					resultStr +='</span></div>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Red_title')&&(n!='Red_title')){
 					resultStr +='</span></div>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -2119,11 +2253,16 @@ else{
 														}
 							else 	if((top=='Red_title')&&((n=='Red_title')&&(k=num-1))){																	
 										resultStr +=sourceStr[k]+'</span></div>';
+										stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																											}
 //---------------------------------------------------------------------------------------------------------Small_title--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Small_title')&&(n!='Small_title'))||(k>num-1)){
+if((top=='Small_title')&&(k>num-1)){
+					resultStr +='</span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Small_title')&&(n!='Small_title')){
 					resultStr +='</span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -2136,11 +2275,16 @@ else{
 														}
 							else 	if((top=='Small_title')&&((n=='Small_title')&&(k=num-1))){																	
 										resultStr +=sourceStr[k]+'</span>';
+										stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																													}
 //---------------------------------------------------------------------------------------------------------Capture--------------------------------------------------------------------------------------------																				
-																						
-				if(((top=='Capture')&&(n!='Capture'))||(k>num-1)){
+	if((top=='Capture')&&(k>num-1)){
+					resultStr +='</span></span>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );																					
+				} else if((top=='Capture')&&(n!='Capture')){
 					resultStr +='</span></span>';
 					 console.log( 'resultStr:' + resultStr );
 					stack.pop();
@@ -2153,11 +2297,20 @@ else{
 														}
 							else 	if((top=='Capture')&&((n=='Capture')&&(k=num-1))){																	
 										resultStr +=sourceStr[k]+'</span></span>';
+										stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																										}
 //---------------------------------------------------------------------------------------------------------Smallicon--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Smallicon')&&(n!='Smallicon'))||(k>num-1)){
+if((top=='Smallicon')&&(k>num-1)){
+					resultStr +='</span><br><br><img src="img/'+c+'"alt="622" class="textwrap smallicon">';
+					if(c==undefined){
+						resultStr +='</span><br><br><img src="img/'+image_name+'"alt="622" class="textwrap smallicon">';
+									
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+									}
+				} else if((top=='Smallicon')&&(n!='Smallicon')){
 					resultStr +='</span><br><br><img src="img/'+c+'"alt="622" class="textwrap smallicon">';
 					if(c==undefined){
 						resultStr +='</span><br><br><img src="img/'+image_name+'"alt="622" class="textwrap smallicon">';
@@ -2177,11 +2330,29 @@ else{
 										if(c==undefined){
 						resultStr +=sourceStr[k]+'</span><br><br><img src="img/'+image_name+'"alt="622" class="textwrap smallicon">';
 														}
+														stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																											}
 //---------------------------------------------------------------------------------------------------------Square_List--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Square_List')&&(n!='Square_List'))||(k>num-1)){
+if((top=='Square_List')&&(k>num-1)){
+					resultStr +='</span><ul class="square">';
+					
+for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+			resultStr+='</ul>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Square_List')&&(n!='Square_List')){
 					resultStr +='</span><ul class="square">';
 					
 for(var i=0;i<m;i++){
@@ -2219,11 +2390,28 @@ console.log( 'arr[i]:' +arr[i] );
  					}
 									}
 			resultStr+='</ul>';
+			stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																													}
 //---------------------------------------------------------------------------------------------------------Disc_List--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Disc_List')&&(n!='Disc_List'))||(k>num-1)){
+if((top=='Disc_List')&&(k>num-1)){
+					resultStr +='</span><ol class="disc">';
+					for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+               resultStr += '</ol>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Disc_List')&&(n!='Disc_List')){
 					resultStr +='</span><ol class="disc">';
 					for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
@@ -2260,11 +2448,29 @@ console.log( 'arr[i]:' +arr[i] );
  					}
 									}
                resultStr += '</ol>';
+			   stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																											}
 //---------------------------------------------------------------------------------------------------------Main_List--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Main_List')&&(n!='Main_List'))||(k>num-1)){
+if((top=='Main_List')&&(k>num-1)){
+					resultStr +='</span><ul class="top_page_list">';
+                    for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+            resultStr+='</ul>';
+             	
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Main_List')&&(n!='Main_List')){
 					resultStr +='</span><ul class="top_page_list">';
                     for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
@@ -2302,11 +2508,28 @@ console.log( 'arr[i]:' +arr[i] );
  					}
 									}
             resultStr+='</ul>';
+			stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																											}
 //---------------------------------------------------------------------------------------------------------None_List--------------------------------------------------------------------------------------------																				
-
-				if(((top=='None_List')&&(n!='None_List'))||(k>num-1)){
+if((top=='None_List')&&(k>num-1)){
+					resultStr +='</span><ul class="none_list">';
+					for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+			resultStr+= '</ul>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='None_List')&&(n!='None_List')){
 					resultStr +='</span><ul class="none_list">';
 					for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
@@ -2343,11 +2566,28 @@ console.log( 'arr[i]:' +arr[i] );
  					}
 									}
 			resultStr+= '</ul>';
+			stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																											}
 //--------------------------------------------------------------------------------------------------------Decimal_List--------------------------------------------------------------------------------------------																				
-
-				if(((top=='Decimal_List')&&(n!='Decimal_List'))||(k>num-1)){
+if((top=='Decimal_List')&&(k>num-1)){
+					resultStr +='</span><ol class="decimal">';
+					for(var i=0;i<m;i++){
+	 console.log( 'm:' + m );
+resultStr+='<li>'+g[i]+'</li>';
+console.log( 'g[i]:' + g[i] );
+ 					}
+					if(m==undefined){
+					for(var i=0;i<number;i++){
+	resultStr+='<li>'+arr[i]+'</li>';
+console.log( 'arr[i]:' +arr[i] );
+ 					}
+									}
+			resultStr+='</ol>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );
+				} else if((top=='Decimal_List')&&(n!='Decimal_List')){
 					resultStr +='</span><ol class="decimal">';
 					for(var i=0;i<m;i++){
 	 console.log( 'm:' + m );
@@ -2384,11 +2624,60 @@ console.log( 'arr[i]:' +arr[i] );
  					}
 									}
 			resultStr+='</ol>';
+			stack.pop();
 										console.log( 'resultStr:' + resultStr );
 																														}
 //--------------------------------------------------------------------------------------------------------Table--------------------------------------------------------------------------------------------																				
-																														
-				if(((top=='Table')&&(n!='Table'))||(k>num-1)){
+				if((top=='Table')&&(k>num-1)){
+					resultStr +='</span><table class="syntax_description"><tbody>';
+					for(var j = 0; j <m;j++){
+						
+						resultStr+='<tr>';
+						if(j == 0){
+					for(var i=0;i<f;i++){
+	 console.log( 'f:' + f );
+resultStr+='<th>'+g[i]+'</th>';
+console.log( 'g[i]:' + g[i] );
+ 					 }
+					 console.log( 'i:' + i );
+  }
+  else if(j>0){
+	 
+	   console.log( 'i:' + i );
+	 for(var t=0;t<f;t++){
+		 
+	 console.log( 'f:' + f );
+resultStr+='<td>'+g[i]+'</td>';
+ i++;
+							}
+		}
+		resultStr+='</tr>';
+														}
+					if(m==undefined){
+					for(var j = 0; j <number;j++){
+						resultStr+='<tr>';
+						if(j == 0){
+					for(var i=0;i<numbercol;i++){
+	 console.log( 'numbercol:' +numbercol );
+resultStr+='<th>'+arr[i]+'</th>';
+console.log( 'g[i]:' +arr[i] );
+ 					 }
+  }
+  else if(j>0){
+	  for(var t=0;t<numbercol;t++){
+	 console.log( 'numbercol:' +number );
+resultStr+='<td>'+arr[i]+'</td>';
+ i++;
+							}
+									}
+			resultStr+='</tr>';
+															}
+										}
+			resultStr+='</tbody></table>';
+					 console.log( 'resultStr:' + resultStr );
+					stack.pop();
+				console.log( 'top:' +top );																										
+				} else if((top=='Table')&&(n!='Table')){
 					resultStr +='</span><table class="syntax_description"><tbody>';
 					for(var j = 0; j <m;j++){
 						
@@ -2489,7 +2778,7 @@ resultStr+='<td>'+arr[i]+'</td>';
 																			}
 														}
 							resultStr+='</tbody></table>';
-
+stack.pop();
 															console.log( 'resultStr:' + resultStr );
 																							}														
 		console.log( 'q:' + q);	
