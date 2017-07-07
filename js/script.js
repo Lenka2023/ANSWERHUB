@@ -243,15 +243,15 @@ var text=prompt("Enter text","");
 						boldIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
 												});
-				console.log( 'boldIndexes.length:' + boldIndexes.length);								
+				console.log( 'square_listIndexes.length:' + square_listIndexes.length);								
                 console.log('aggregated array:');
         for (var i =0; i < boldIndexes.length; i++){  
-            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
-			usedLength=boldIndexes[i].size;
+            console.log(square_listIndexes[i].startPosition + " " + square_listIndexes[i].size);
+			usedLength=square_listIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength;								
-					var resultStr=makeString(expressionText,l,arr,,usedLength,beginIndex);
+					var resultStr=makeString(expressionText,l,arr,usedLength,beginIndex);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -295,18 +295,18 @@ var text=prompt("Enter text","");
 						arr.push(text);
 						console.log( 'arr:' +arr );
 											}					
-					boldIndexes.sort(function(a,b) {
+					disc_listIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
 												});
-				console.log( 'boldIndexes.length:' + boldIndexes.length);								
+				console.log( 'disc_listIndexes.length:' + disc_listIndexes.length);								
                 console.log('aggregated array:');
-        for (var i =0; i < boldIndexes.length; i++){  
-            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
-			usedLength=boldIndexes[i].size;
+        for (var i =0; i < disc_listIndexes.length; i++){  
+            console.log(disc_listIndexes[i].startPosition + " " + disc_listIndexes[i].size);
+			usedLength=disc_listIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength;									
-					var resultStr=makeString(expressionText,l,arr,,usedLength,beginIndex);
+					var resultStr=makeString(expressionText,l,arr,usedLength,beginIndex);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -469,7 +469,7 @@ var resultstr=[];
 		y=y;
 		j=j;
 		t=t;
-		console.log( 'boldIndexes.length:' +boldIndexes.length);
+		
 		console.log( 'sourceStr:' +sourceStr );
 		console.log( 'dnms:' +dnms );
 		console.log( 'dtxtms:' +dtxtms );
@@ -580,10 +580,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -591,7 +591,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -685,10 +685,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -696,7 +696,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -726,10 +726,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -737,7 +737,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -769,10 +769,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -780,7 +780,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -811,10 +811,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -822,7 +822,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -853,10 +853,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -864,7 +864,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -895,10 +895,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -906,7 +906,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -937,10 +937,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -948,7 +948,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -979,10 +979,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -990,7 +990,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1023,10 +1023,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1034,7 +1034,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1065,10 +1065,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1076,7 +1076,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1107,10 +1107,10 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
+						
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1118,7 +1118,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1149,10 +1149,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1160,7 +1159,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1191,10 +1190,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1202,7 +1200,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1248,10 +1246,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1259,7 +1256,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1290,10 +1287,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1301,7 +1297,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1332,10 +1328,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1343,7 +1338,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1374,10 +1369,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1385,7 +1379,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1420,10 +1414,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1431,7 +1424,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1465,10 +1458,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1476,7 +1468,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1509,10 +1501,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1520,7 +1511,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1552,10 +1543,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1563,7 +1553,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1595,10 +1585,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1606,7 +1595,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1638,10 +1627,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1649,7 +1637,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1681,10 +1669,9 @@ var resultstr=[];
 								
 							
 						console.log( 'i:' +i);
-						console.log( 'boldIndexes.length:' +boldIndexes.length);
 						
 					if(usl==undefined){
-					for (var r=0; r<boldIndexes.length; r++){
+					for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usedLen>1){					 
 									i++;
@@ -1692,7 +1679,7 @@ var resultstr=[];
 									}				
 													}
 																	}
-				 for (var r=0; r<boldIndexes.length; r++){
+				 for (var r=0; r<1; r++){
 					 console.log( 'i:' + i );
 					if(usl>1){					 
 									i++;
@@ -1722,7 +1709,6 @@ var resultstr=[];
 				var expressionText =  document.getElementById("text");
 				alert("closeTag");
 				
-				console.log( 'boldIndexes.length:' + boldIndexes.length);
 				console.log( 'sourceStr:' +sourceStr);
 				console.log( 'resultStr:' +resultStr);
 				console.log( 'mtcl:' +mtcl);
@@ -2612,18 +2598,18 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         for (var i =0; i < codeIndexes.length; i++){  
             console.log(codeIndexes[i].startPosition + " " + codeIndexes[i].size);
 													}
-             boldIndexes.sort(function(a,b) {
+             codeIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
 												});
-				console.log( 'boldIndexes.length:' + boldIndexes.length);								
+				console.log( 'codeIndexes.length:' + codeIndexes.length);								
                 console.log('aggregated array:');
-        for (var i =0; i < boldIndexes.length; i++){  
-            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
-			usedLength=boldIndexes[i].size;
+        for (var i =0; i < codeIndexes.length; i++){  
+            console.log(codeIndexes[i].startPosition + " " + codeIndexes[i].size);
+			usedLength=codeIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength;  
-			var resultStr=makeString(expressionText,,usedLength,beginIndex);
+			var resultStr=makeString(expressionText,usedLength,beginIndex);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -2652,18 +2638,18 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         for (var i =0; i < listingIndexes.length; i++){  
             console.log(listingIndexes[i].startPosition + " " + listingIndexes[i].size);
 														}
-             boldIndexes.sort(function(a,b) {
+             listingIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
 												});
-				console.log( 'boldIndexes.length:' + boldIndexes.length);								
+				console.log( 'listingIndexes.length:' + listingIndexes.length);								
                 console.log('aggregated array:');
-        for (var i =0; i < boldIndexes.length; i++){  
-            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
-			usedLength=boldIndexes[i].size;
+        for (var i =0; i < listingIndexes.length; i++){  
+            console.log(listingIndexes[i].startPosition + " " + listingIndexes[i].size);
+			usedLength=listingIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength;   
-			var resultStr=makeString(expressionText,,usedLength,beginIndex);
+			var resultStr=makeString(expressionText,usedLength,beginIndex);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -2693,14 +2679,14 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
         for (var i =0; i < captureIndexes.length; i++){  
             console.log(captureIndexes[i].startPosition + " " + captureIndexes[i].size);
 														}
-            boldIndexes.sort(function(a,b) {
+            captureIndexes.sort(function(a,b) {
                 return a.startPosition - b.startPosition;
 												});
-				console.log( 'boldIndexes.length:' + boldIndexes.length);								
+				console.log( 'captureIndexes.length:' + captureIndexes.length);								
                 console.log('aggregated array:');
-        for (var i =0; i < boldIndexes.length; i++){  
-            console.log(boldIndexes[i].startPosition + " " + boldIndexes[i].size);
-			usedLength=boldIndexes[i].size;
+        for (var i =0; i < captureIndexes.length; i++){  
+            console.log(captureIndexes[i].startPosition + " " + captureIndexes[i].size);
+			usedLength=captureIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength;   
@@ -2761,11 +2747,11 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 console.log('aggregated array:');
         for (var i =0; i < linkIndexes.length; i++){  
             console.log(linkIndexes[i].startPosition + " " + linkIndexes[i].size);
-													usedLength=boldIndexes[i].size;
+													usedLength=linkIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength; 
-             var resultStr=makeString(expressionText,,usedLength,beginIndex);
+             var resultStr=makeString(expressionText,usedLength,beginIndex);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -2794,7 +2780,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 console.log('aggregated array:');
         for (var i =0; i < middle_titleIndexes.length; i++){  
             console.log(middle_titleIndexes[i].startPosition + " " + middle_titleIndexes[i].size);
-										usedLength=boldIndexes[i].size;
+										usedLength=middle_titleIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength; 
@@ -2826,7 +2812,7 @@ document.getElementById("RESULTHTML").contentEditable = true; void(0);
                 console.log('aggregated array:');
         for (var i =0; i < down_titleIndexes.length; i++){  
             console.log(down_titleIndexes[i].startPosition + " " + down_titleIndexes[i].size);
-								usedLength=boldIndexes[i].size;
+								usedLength=down_titleIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength; 
@@ -2858,7 +2844,7 @@ expressionText =  document.getElementById("text").value;
 	console.log('aggregated array:');
 for (var i =0; i < red_titleIndexes.length; i++){  
 console.log(red_titleIndexes[i].startPosition + " " + red_titleIndexes[i].size);
-							usedLength=boldIndexes[i].size;
+							usedLength=red_titleIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength; 
@@ -2890,7 +2876,7 @@ expressionText =  document.getElementById("text").value;
 	console.log('aggregated array:');
 for (var i =0; i < small_titleIndexes.length; i++){  
 console.log(small_titleIndexes[i].startPosition + " " + small_titleIndexes[i].size);
-								usedLength=boldIndexes[i].size;
+								usedLength=small_titleIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength; 
@@ -2922,7 +2908,7 @@ expressionText =  document.getElementById("text").value;
 	console.log('aggregated array:');
 for (var i =0; i < hot_tipIndexes.length; i++){  
 console.log(hot_tipIndexes[i].startPosition + " " + hot_tipIndexes[i].size);
-							usedLength=boldIndexes[i].size;
+							usedLength=hot_tipIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength; 
@@ -2959,7 +2945,7 @@ console.log(hot_tipIndexes[i].startPosition + " " + hot_tipIndexes[i].size);
 	console.log('aggregated array:');
 for (var i =0; i < down_pageIndexes.length; i++){  
 console.log(down_pageIndexes[i].startPosition + " " + down_pageIndexes[i].size);
-										usedLength=boldIndexes[i].size;
+										usedLength=down_pageIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength; 
@@ -3022,7 +3008,7 @@ if(txt!=null){
                 console.log('aggregated array:');
         for (var i =0; i < top_pageIndexes.length; i++){  
             console.log(top_pageIndexes[i].startPosition + " " + top_pageIndexes[i].size);
-									usedLength=boldIndexes[i].size;
+									usedLength=top_pageIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength; 
@@ -3358,7 +3344,6 @@ redo = document.getElementById('redo');
 					var usedLength=0;
 					var beginIndex=0;
 					var beginInd=0;
-					// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 			function Bold(usl,bgind)
             {
              
@@ -3419,7 +3404,7 @@ redo = document.getElementById('redo');
                 console.log('aggregated array:');
         for (var i =0; i < imageIndexes.length; i++){  
             console.log(imageIndexes[i].startPosition + " " + imageIndexes[i].size);
-			usedLength=boldIndexes[i].size;
+			usedLength=imageIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength;
@@ -3450,11 +3435,11 @@ redo = document.getElementById('redo');
                 console.log('aggregated array:');
         for (var i =0; i < downpage_titleIndexes.length; i++){  
             console.log(downpage_titleIndexes[i].startPosition + " " + downpage_titleIndexes[i].size);
-													usedLength=boldIndexes[i].size;
+													usedLength=downpage_titleIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength;
-                   var resultStr=makeString(expressionText,,usedLength,beginIndex);
+                   var resultStr=makeString(expressionText,usedLength,beginIndex);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -3482,11 +3467,11 @@ redo = document.getElementById('redo');
                 console.log('aggregated array:');
         for (var i =0; i < txtIndexes.length; i++){  
             console.log(txtIndexes[i].startPosition + " " + txtIndexes[i].size);
-										usedLength=boldIndexes[i].size;
+										usedLength=txtIndexes[i].size;
 			console.log( 'usedLength:' +usedLength );
 													}
 													usedLen=usedLength;
-                 var resultStr=makeString(expressionText,,usedLength,beginIndex);
+                 var resultStr=makeString(expressionText,usedLength,beginIndex);
 
                 document.getElementById("RESULTTEXT").innerText=resultStr;
                 document.getElementById("RESULTHTML").innerHTML=resultStr;
@@ -3980,14 +3965,12 @@ document.getElementById("RESULTHTML").innerHTML=resultStr;
        codeIndexes[k].startPosition = startPos;
        codeIndexes[k].size = size;
 														}
-			CoderesultStr = makeString(expressionText);
 			resultStr = makeString(expressionText);
-			if(codeIndexes.startPosition>boldIndexes.startPosition){
-	   document.getElementById("RESULTTEXT").innerText=CoderesultStr+resultStr;
-document.getElementById("RESULTHTML").innerHTML=CoderesultStr+resultStr;
+	   document.getElementById("RESULTTEXT").innerText=resultStr;
+document.getElementById("RESULTHTML").innerHTML=resultStr;
 	    console.log('resultStr:'+makeString(expressionText));
 			}
-													}
+													
              console.log('Code indexes:'+JSON.stringify(codeIndexes));
 			 for (var l = 0;l < captureIndexes.length; l++){
                  if(typeof captureIndexes[l] != "undefined"){
