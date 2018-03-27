@@ -14,7 +14,11 @@
   </head>
   <body>
     <div class="page_cont one">
-            <br class="cbt">
+      <div class="top_page">
+        <br class="cbt">
+        <img src="img/12.png" class="top_page_img" alt="2-êîïèÿ">
+      </div>
+      <br class="cbt">
       <div class="content">
         <table border=0>
           <tbody>
@@ -44,7 +48,7 @@
               </td>
               <td class="main_title">
 <span class="title_font">HTML5 WebSocket</span>
-                 <span class="middle_title">Full-duplex, Real-time Web Communication</span>
+                <h1>Full-duplex, Real-time Web Communication</h1>
               </td>
             </tr>
             <tr>
@@ -54,168 +58,170 @@
             </tr>
           </tbody>
         </table>
-<div class="title strong">
+<div class="titletop strong">
           <span id="towhy">WHY WEBSOCKET?</span>
         </div>
         <br><span class="move_left ">Let's take a look at how WebSocket can reduce unnecessary network
-		traffic and latency by comparing HTTP solutions to full-duplex "real time"
-		browser communication with WebSocket.</span>
-	<br class="cbt">
-		<br><span class="move_left ">Normally, when a browser visits a web page, an HTTP request is sent
-		to the web server that hosts that page. The web server acknowledges
-		the request and sends back a response. In many cases-for example,
-		for stock prices, news reports, ticket sales, traffic patterns, and medical
-		device readings-the response may be stale by the time the browser
-		renders the page. If you want to get the most up-to-date real-time
-		information, you can continually refresh the page manually. But that's
-		obviously not much of a solution.</span>
-	<br class="cbt">
-		<br><span class="move_left ">Previous attempts to provide real-time web applications largely revolve
-		around polling, long polling, and other server-side push technologies,
-		commonly referred to as "Comet." Ultimately, all of these methods for
-		providing real-time data involve HTTP request and response headers,
-		which contain lots of additional, unnecessary header data and introduce
-		latency.</span>
-	<br class="cbt">
-		<br><span class="move_left ">On top of that, full-duplex connectivity requires more than just the
-		downstream connection from server to client. In an effort to simulate fullduplex
-		communication over half-duplex HTTP, many of today's solutions
-		use two connections: one for the downstream and one for the upstream.
-		The maintenance and coordination of these two connections introduce
-		significant overhead in terms of resource consumption and add lots
-		of complexity. WebSocket gets you the most up-to-date and real-time
-		information since it is a new transport protocol for web applications that
-		provides a bi-directional stream of data that arrives in order, much like
-		TCP. As with TCP, higher-level protocols can run over WebSocket.</span>
-		<div class="title strong">
+traffic and latency by comparing HTTP solutions to full-duplex "real time"
+browser communication with WebSocket.</span>
+<br class="cbt">
+<br><span class="move_left ">Normally, when a browser visits a web page, an HTTP request is sent
+to the web server that hosts that page. The web server acknowledges
+the request and sends back a response. In many cases-for example,
+for stock prices, news reports, ticket sales, traffic patterns, and medical
+device readings-the response may be stale by the time the browser
+renders the page. If you want to get the most up-to-date real-time
+information, you can continually refresh the page manually. But that's
+obviously not much of a solution.</span>
+<br class="cbt">
+<br><span class="move_left ">Previous attempts to provide real-time web applications largely revolve
+around polling, long polling, and other server-side push technologies,
+commonly referred to as "Comet." Ultimately, all of these methods for
+providing real-time data involve HTTP request and response headers,
+which contain lots of additional, unnecessary header data and introduce
+latency.</span>
+<br class="cbt">
+<br><span class="move_left ">On top of that, full-duplex connectivity requires more than just the
+downstream connection from server to client. In an effort to simulate fullduplex
+communication over half-duplex HTTP, many of today's solutions
+use two connections: one for the downstream and one for the upstream.
+The maintenance and coordination of these two connections introduce
+significant overhead in terms of resource consumption and add lots
+of complexity. WebSocket gets you the most up-to-date and real-time
+information since it is a new transport protocol for web applications that
+provides a bi-directional stream of data that arrives in order, much like
+TCP. As with TCP, higher-level protocols can run over WebSocket.</span>
+<div class="titletop strong">
           <span id="toprotocol">THE WEBSOCKET PROTOCOL</span>
         </div>
-		<br><span class="move_left ">To establish a WebSocket connection, the client and server upgrade
-		from the HTTP protocol to the WebSocket protocol during their initial
-		handshake, as shown in Figure and Listing 1. Note that this connection
-		description represents the latest version of the protocol, as defined in
-		IETF RFC 6455.</span>
-		<div>
-		<img src="img/protocol2.png" alt="532">
-		</div>
-		<br><span class="move_left "><span class="strong underline">Figure 1.</span> WebSocket Upgrade handshake</span>
-	<br class="cbt">
-		<br><span class="move_left "><span class="strong">Listing 1.</span> Example WebSocket Upgrade handshake</span>
-		<br><span class="move_left strong">From client to server:</span>
-		<div class="commands"><pre>
-    GET /chat HTTP/1.1
-    Host: server.example.com
-    Upgrade: websocket
-    Connection: Upgrade
-    Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
-    Origin: http://example.com
-    Sec-WebSocket-Protocol: chat, superchat
-    Sec-WebSocket-Version: 13</pre>
+<br><span class="move_left ">To establish a WebSocket connection, the client and server upgrade
+from the HTTP protocol to the WebSocket protocol during their initial
+handshake, as shown in Figure and Listing 1. Note that this connection
+description represents the latest version of the protocol, as defined in
+IETF RFC 6455.</span>
+<div>
+  <img src="img/protocol2.png" alt="532">
+</div>
+<br><span class="move_left "><span class="strong underline">Figure 1.</span> WebSocket Upgrade handshake</span>
+<br class="cbt">
+<br><span class="move_left "><span class="strong">Listing 1.</span> Example WebSocket Upgrade handshake</span>
+<br><span ñlass="move_left strong">From client to server:</span>
+<div class="commands">
+          <br><span>GET /chat HTTP/1.1</span>
+<br><span>Host: server.example.com</span>
+<br><span>Upgrade: websocket</span>
+<br><span>Connection: Upgrade</span>
+<br><span>Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==</span>
+<br><span>Origin: http://example.com</span>
+<br><span>Sec-WebSocket-Protocol: chat, superchat</span>
+<br><span>Sec-WebSocket-Version: 13</span>
         </div>
-		<br><span class="move_left strong">From server to client:</span>
-		<div class="commands"><pre>
-    HTTP/1.1 HTTP/1.1 101 Switching Protocols
-    Upgrade: websocket
-    Connection: Upgrade
-    Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzz...</pre>
-        	</div>
-		<br><span class="move_left ">After the handshake, the client and server can send messages at any time.
-		The client and the server construct messages according to the WebSocket
-		protocol. The bytes preceding the data payload mark the frame length
-		and type. Text frames are UTF-8 encoded.</span>
-	<br class="cbt">
-		<br><span class="move_left ">The data sent from the browser to the server is masked, which is an
-		unusual feature of the WebSocket protocol. Every byte of payload data
-		is XORed with a random mask to ensure that WebSocket traffic does
-		not look like other protocols. Like the Sec-WebSocket-Key hash, this
-		is meant to mitigate an arcane form of cross-protocol attack against a
-		non-compliant network infrastructure. Figure 2 shows an example of a
-		WebSocket frame.</span>
-		<div>
-		<img src="img/figure12.png" alt="532">
-		</div>
-		<br><span class="move_left "><span class="strong underline">Figure 2.</span> Components of a WebSocket Frame</span>
-	<br class="cbt">
-		<br><span class="move_left strong font_size">Dramatic Reduction in Unnecessary Network Overhead
-		and Latency</span>
-	<br class="cbt">
-		<br><span class="move_left ">Imagine performing a Yahoo! or Google search. As you type in a letter, an
-		Ajax request is fired off to the server for a list of suggested words that start
-		with that letter. An HTTP request may look like the one shown in Listing 2.</span>
-		<br><span class="move_left "><span class="strong">Listing 2.</span> HTTP request headers</span>
-		<div class="commands"><pre>
-    GET /HTTP/1.1
-    Host:example.com
-    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:12.0a2) Gecko/20120218 Firefox/12.0a2
-    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-    Accept-Language: en-us,en;q=0.5
-    Accept-Encoding: gzip, deflate
-    Connection: keep-alive
-    Cookie: __utma=2... (add lots of characters here)
-    Cache-Control: max-age=0</pre>
-        	</div>
-		<br><span class="move_left ">The server then shoots back a response that looks like this:</span>
-		<br><span class="move_left "><span class="strong">Listing 3.</span> HTTP response headers</span>
-		<div class="commands"><pre>
-    HTTP/1.1 200 OK
-    Cache-Control: private, max-age=0
-    Content-Disposition: attachment
-    Content-Encoding: gzip
-    Content-Type: application/json; charset=UTF-8
-    Date: Wed, 22 Feb 2012 01:06:16 GMT
-    Expires: -1
-    Server: gws
-    x-frame-options: SAMEORIGIN
-    X-XSS-Protection: 1; mode=block
-    X-Firefox-Spdy: 1</pre>
-        	</div>
-		<br><span class="move_left ">Just for fun, let's add up all the characters. The total HTTP request and
-		response header information overhead (not even including all the cookie
-		data!) contains 871 bytes-and that's just the overhead. Of course, this is
-		just an example and there could be less than 871 bytes of header data...
-		but we also know that the header data commonly exceeds 2,000 bytes. So,
-		what happens when we deploy an application that makes frequent polling
-		HTTP requests for real-time updates to a large number of users? Let's take
-		a look at the network overhead for just the HTTP request and the response
-		header data associated with this request in three different cases.</span>
-	<br class="cbt">
-		<br><span class="move_left ">Figure 3 compares the dramatic reduction in unnecessary network traffic
-		that is obtained for the polling solution with 1,000, 10,000, and 100,000
-		concurrently connected clients and compares it to what that would look
-		like with WebSocket instead.</span>
-		<div>
-			<img src="img/figure32.png" alt="532">
-		</div>
-		<br><span class="move_left "><span class="strong underline">Figure 3.</span> Comparison of unnecessary network overhead between polling
-		and WebSocket traffic</span>
-	<br class="cbt">
-		<br><span class="move_left ">In the bottom half of the figure, you see the reduction in latency provided
-		by the WebSocket solution. Once the connection is upgraded to
-		WebSocket, messages can flow from server to browser the moment they
-		arrive. It still takes 50 ms for messages to travel from server to browser,
-		but the WebSocket connection remains open, so there is no need to send
-		another request to the server.</span>
-		<div>
-			<img src="img/figure42.png" alt="532">
-		</div>
-		<br><span class="move_left "><span class="strong underline">Figure 4.</span> Comparison between latency of polling and WebSocket
-		applications</span>
-	<br class="cbt">
-		<br><span class="move_left ">WebSocket provides an enormous step forward in the scalability of the
-		real-time web. As we have just shown, WebSocket can provide a 500:1
-		or-depending on the size of the HTTP headers-even a 1000:1 reduction
-		in unnecessary HTTP header traffic and a 3:1 reduction in latency.</span>
-	<br class="cbt">
-		<br><span class="move_left strong font_size">Websocket Servers</span>
-	<br class="cbt">
-		<br><span class="move_left ">All of today's widely used browsers already support WebSocket. For
-		details, see http://caniuse.com. To create a successful WebSocket
-		connection, however, you need a WebSocket-enabled server. Fortunately,
-		there are already lots of WebSocket server implementations out there and
-		even more under development. The following are just a few of the existing
-		WebSocket servers.</span>
-	<br class="cbt">
-<ol class="disc">
+<br><span class="move_left strong">From server to client:</span>
+<div class="commands">
+          <br><span>HTTP/1.1 HTTP/1.1 101 Switching Protocols</span>
+<br><span>Upgrade: websocket</span>
+<br><span>Connection: Upgrade</span>
+<br><span>Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzz...</span>
+        </div>
+<br><span class="move_left ">After the handshake, the client and server can send messages at any time.
+The client and the server construct messages according to the WebSocket
+protocol. The bytes preceding the data payload mark the frame length
+and type. Text frames are UTF-8 encoded.</span>
+<br class="cbt">
+<br><span class="move_left ">The data sent from the browser to the server is masked, which is an
+unusual feature of the WebSocket protocol. Every byte of payload data
+is XORed with a random mask to ensure that WebSocket traffic does
+not look like other protocols. Like the Sec-WebSocket-Key hash, this
+is meant to mitigate an arcane form of cross-protocol attack against a
+non-compliant network infrastructure. Figure 2 shows an example of a
+WebSocket frame.</span>
+<div>
+  <img src="img/figure12.png" alt="532">
+</div>
+<br><span class="move_left "><span class="strong underline">Figure 2.</span> Components of a WebSocket Frame</span>
+<br class="cbt">
+<div>
+  <img src="img/figure22.png" alt="532">
+</div>
+<br><span class="move_left strong font_size">Dramatic Reduction in Unnecessary Network Overhead
+and Latency</span>
+<br class="cbt">
+<br><span class="move_left ">Imagine performing a Yahoo! or Google search. As you type in a letter, an
+Ajax request is fired off to the server for a list of suggested words that start
+with that letter. An HTTP request may look like the one shown in Listing 2.</span>
+<br><span class="move_left "><span class="strong">Listing 2.</span> HTTP request headers</span>
+<div class="commands">
+          <br><span>GET /HTTP/1.1</span>
+<br><span>Host:example.com</span>
+<br><span>User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:12.0a2) Gecko/20120218 Firefox/12.0a2</span>
+<br><span>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span>
+<br><span>Accept-Language: en-us,en;q=0.5</span>
+<br><span>Accept-Encoding: gzip, deflate</span>
+<br><span>Connection: keep-alive</span>
+<br><span>Cookie: __utma=2... (add lots of characters here)</span>
+<br><span>Cache-Control: max-age=0</span>
+        </div>
+<br><span class="move_left ">The server then shoots back a response that looks like this:</span>
+<br><span class="move_left "><span class="strong">Listing 3.</span> HTTP response headers</span>
+<div class="commands">
+          <br><span>HTTP/1.1 200 OK</span>
+<br><span>Cache-Control: private, max-age=0</span>
+<br><span>Content-Disposition: attachment</span>
+<br><span>Content-Encoding: gzip</span>
+<br><span>Content-Type: application/json; charset=UTF-8</span>
+<br><span>Date: Wed, 22 Feb 2012 01:06:16 GMT</span>
+<br><span>Expires: -1</span>
+<br><span>Server: gws</span>
+<br><span>x-frame-options: SAMEORIGIN</span>
+<br><span>X-XSS-Protection: 1; mode=block</span>
+<br><span>X-Firefox-Spdy: 1</span>
+        </div>
+<br><span class="move_left ">Just for fun, let's add up all the characters. The total HTTP request and
+response header information overhead (not even including all the cookie
+data!) contains 871 bytes-and that's just the overhead. Of course, this is
+just an example and there could be less than 871 bytes of header data...
+but we also know that the header data commonly exceeds 2,000 bytes. So,
+what happens when we deploy an application that makes frequent polling
+HTTP requests for real-time updates to a large number of users? Let's take
+a look at the network overhead for just the HTTP request and the response
+header data associated with this request in three different cases.</span>
+<br class="cbt">
+<br><span class="move_left ">Figure 3 compares the dramatic reduction in unnecessary network traffic
+that is obtained for the polling solution with 1,000, 10,000, and 100,000
+concurrently connected clients and compares it to what that would look
+like with WebSocket instead.</span>
+<div>
+  <img src="img/figure32.png" alt="532">
+</div>
+<br><span class="move_left "><span class="strong underline">Figure 3.</span> Comparison of unnecessary network overhead between polling
+and WebSocket traffic</span>
+<br class="cbt">
+<br><span class="move_left ">In the bottom half of the figure, you see the reduction in latency provided
+by the WebSocket solution. Once the connection is upgraded to
+WebSocket, messages can flow from server to browser the moment they
+arrive. It still takes 50 ms for messages to travel from server to browser,
+but the WebSocket connection remains open, so there is no need to send
+another request to the server.</span>
+<div>
+  <img src="img/figure42.png" alt="532">
+</div>
+<br><span class="move_left "><span class="strong underline">Figure 4.</span> Comparison between latency of polling and WebSocket
+applications</span>
+<br class="cbt">
+<br><span class="move_left ">WebSocket provides an enormous step forward in the scalability of the
+real-time web. As we have just shown, WebSocket can provide a 500:1
+or-depending on the size of the HTTP headers-even a 1000:1 reduction
+in unnecessary HTTP header traffic and a 3:1 reduction in latency.</span>
+<br><span class="move_left strong font_size">Websocket Servers</span>
+<br class="cbt">
+<br><span class="move_left ">All of today's widely used browsers already support WebSocket. For
+details, see http://caniuse.com. To create a successful WebSocket
+connection, however, you need a WebSocket-enabled server. Fortunately,
+there are already lots of WebSocket server implementations out there and
+even more under development. The following are just a few of the existing
+WebSocket servers.</span>
+<br class="cbt">
+<ol>
    <li><span><span class="strong">Alchemy-Websockets (.NET)</span>- http://alchemywebsockets.net/</span></li>
    <li><span><span class="strong">Apache ActiveMQ (Java)</span>- http://activemq.apache.org/</span></li>
    <li><span><span class="strong">Apache-websocket (Apache module)</span>- https://github.com/
@@ -268,339 +274,327 @@ WebSocket-Node</span></li>
    <li><span><span class="strong">Yaws (Erlang)</span>- http://yaws.hyber.org/websockets.yaws</span></li>
    </ol>   
 
-		<div class="title strong">
-          		<span id="tousing">USING THE WEBSOCKET API</span>
-        	</div>
-		<br><span class="move_left strong font_size">Checking for Browser Support</span>
-	<br class="cbt">
-		<br><span class="move_left ">Before you use the WebSocket API, you need to make sure that the
-		browser supports it. This way, you can provide a message, prompting the
-		users of your application to upgrade to a more up-to-date browser. You
-		can use the following code to test for browser support:</span>
-		<br><span class="move_left "><span class="strong">Listing 4.</span> Checking for browser support</span>
-		<div class="commands"><pre>
-    if (window.WebSocket) 
-    {
-	    alert("WebSocket is supported");
-    } 
-    else 
-    {
-	    alert("WebSocket is not supported");
-    }
-    Date: Wed, 22 Feb 2012 01:06:16 GMT
-    Expires: -1
-    Server: gws
-    x-frame-options: SAMEORIGIN
-    X-XSS-Protection: 1; mode=block
-    X-Firefox-Spdy: 1</pre>
-
+<div class="titletop strong">
+          <span id="tousing">USING THE WEBSOCKET API</span>
         </div>
-		<br><span class="move_left ">Listing 4 shows how a call to window.WebSocket returns the WebSocket
-		object if it exists or triggers a failure case if it does not. Figure 5 shows the
-		resulting message in Microsoft Internet Explorer 10, which does support
-		Webocket.</span>
-		<div>
-			<img src="img/figure52.png" alt="532">
-		</div>
-		<br><span class="move_left "><span class="strong underline">Figure 5.</span> Resulting message in Microsoft Internet Explorer</span>
-	<br class="cbt">
-		<br><span class="move_left ">Another way to see if your browser supports WebSocket is to use
-		the browser's developer tools. Figure 5 shows how you can use the
-		WebSocket API from the debug console. You can also test to see if
-		WebSocket is supported there. If it is not, the window.WebSocket
-		command returns "undefined."</span>
-		<div>
-			<img src="img/figure62.png" alt="532">
-		</div>
-		<br><span class="move_left "><span class="strong underline">Figure 6.</span> WebSocket connectivity in Chrome Developer Tools' Network
-		panel</span>
-	<br class="cbt">
-		<br><span class="move_left ">In Google Chrome, you can also navigate to chrome://netinternals/#sockets
-		to get fine-grained information about all socket
-		connections as shown in Figure 6.</span>
-		<div>
-			<img src="img/figure72.png" alt="532">
-		</div>
-		<br><span class="move_left "><span class="strong underline">Figure 7.</span> Socket internals page chrome://net-internals/#sockets</span>
-	<br class="cbt">
-		<br><span class="move_left strong font_size">Creating a WebSocket object and Connecting to a
-		WebSocket Server</span>
-	<br class="cbt">
-		<br><span class="move_left ">Using the WebSocket interface is quite straightforward. To connect to an
-		endpoint, just create a new WebSocket instance, providing the new object
-		with a URL that represents the endpoint to which you wish to connect.
-		You can use the ws:// and wss:// prefixes to indicate a WebSocket and a
-		WebSocket Secure connection, respectively.</span>
-		<div class="commands"><pre>
-    url = "ws://localhost:8080/echo";
-    w = new WebSocket(url)</pre>
-        	</div>
-		<br><span class="move_left ">When you make a WebSocket connection, you have the option of listing
-		the protocols your application can speak. The second argument to the
-		WebSocket constructor can be a string or array of strings with the names
-		of the subprotocols that your application understands and wishes to use
-		to communicate.</span>
-		<div class="commands"><pre>
-    w = new WebSocket(url, protocol);</pre>
-        	</div>
-		<br><span class="move_left ">You can even list several protocols:</span>
-		<div class="commands"><pre>
-    w = new WebSocket(url, ["proto1", "proto2"]);</pre>
-        	</div>
-		<br><span class="move_left ">Hypothetically, proto1 and proto2 are well defined protocol names that
-		both the client and server can understand; they may even be registered
-		and standardized. The server will select a prefered protocol from the list.
-		When the socket opens, its protocol property will contain the protocol that
-		the server chooses.</span>
-		<div class="commands"><pre>
-    onopen = function(e) 
-    {
-	    // determine which protocol the server selected
-	    log(e.target.protocol)
-    }
-    Content-Type: application/json; charset=UTF-8
-    Date: Wed, 22 Feb 2012 01:06:16 GMT
-    Expires: -1
-    Server: gws
-    x-frame-options: SAMEORIGIN
-    X-XSS-Protection: 1; mode=block
-    X-Firefox-Spdy: 1</pre>
+<br><span class="move_left strong font_size">Checking for Browser Support</span>
+<br class="cbt">
+<br><span class="move_left ">Before you use the WebSocket API, you need to make sure that the
+browser supports it. This way, you can provide a message, prompting the
+users of your application to upgrade to a more up-to-date browser. You
+can use the following code to test for browser support:</span>
+<br><span class="move_left "><span class="strong">Listing 4.</span> Checking for browser support</span>
+<div class="commands">
+          <br><span>if (window.WebSocket) {</span>
+<br><span>alert("WebSocket is supported");</span>
+<br><span>} else {</span>
+<br><span>alert("WebSocket is not supported");</span>
+<br><span>}</span>
+<br><span>Date: Wed, 22 Feb 2012 01:06:16 GMT</span>
+<br><span>Expires: -1</span>
+<br><span>Server: gws</span>
+<br><span>x-frame-options: SAMEORIGIN</span>
+<br><span>X-XSS-Protection: 1; mode=block</span>
+<br><span>X-Firefox-Spdy: 1</span>
         </div>
-		<br><span class="move_left strong font_size">Adding Event Listeners</span>
-	<br class="cbt">
-		<br><span class="move_left ">WebSocket programming follows an asynchronous programming model;
-		once you have an open socket, you simply wait for events. You don't have
-		to actively poll the server anymore. You add callback functions to the
-		WebSocket object in order to listen for events.</span> 
-	<br class="cbt">
-		<br><span class="move_left ">A WebSocket object dispatches four events: open, message, close, and
-		error. The open event fires when a connection is established, the message
-		event when messages are received, the close event when the WebSocket
-		connection is closed, and the error event when an error occurs. The error
-		event fires in response to unexpected failure. As in most JavaScript APIs,
-		there are corresponding callbacks (onopen, onmessage, onclose, and
-		onerror) that are called when events are dispatched.</span>
-		<div class="commands"><pre>
-    w.onopen = function() 
-    {
-	    console.log("open");
-	    w.send("Connection open");
-    }
-    w.onmessage = function(e) 
-    {
-	    console.log(e.data);
-    }
-    w.onclose = function(e) 
-    {
-	    console.log("closed");
-    }
-    w.onerror = function(e) 
-    {
-	    console.log("error");
-    }</pre>
-        	</div>
-		<br><span class="move_left ">Let's take another look at this message handler. The data attribute on
-		the message event is a string if the WebSocket protocol message was
-		encoded as text. For binary messages, data can be either a Blob or an
-		ArrayBuffer, depending on the value of the WebSocket's binaryType
-		property.</span>
-		<div class="commands"><pre>
-    w.binaryType = "arraybuffer";
-    w.onmessage = function(e) 
-    {
-	    // data can now be either a string or an ArrayBuffer
-        console.log(e.data);
-    }
-    Date: Wed, 22 Feb 2012 01:06:16 GMT
-    Expires: -1
-    Server: gws
-    x-frame-options: SAMEORIGIN
-    X-XSS-Protection: 1; mode=block
-    X-Firefox-Spdy: 1</pre>
-        	</div>
-		<br><span class="move_left strong font_size">Sending Messages</span>
-	<br class="cbt">
-		<br><span class="move_left ">While the socket is open (that is, after the onopen listener is called and
-		efore the onclose listener is called), you can use the send function to
-		send messages. After sending one or more messages, you can also call
-		close to terminate the connection or you can leave the connection open.
-		<div class="commands"><pre>
-    document.getElementById("sendButton").onclick = function() 
-    {
-	    w.send(document.getElementById("inputMessage").value);
-    }
-    Content-Encoding: gzip
-    Content-Type: application/json; charset=UTF-8
-    Date: Wed, 22 Feb 2012 01:06:16 GMT
-    Expires: -1
-    Server: gws
-    x-frame-options: SAMEORIGIN
-    X-XSS-Protection: 1; mode=block
-    X-Firefox-Spdy: 1</pre>
-        	</div>
-		<br><span class="move_left ">In more advanced uses of WebSocket, you may want to measure how
-		much data is backed up in the outgoing buffer before calling send( ). The
-		bufferedAmount attribute represents the number of bytes that have been sent
-		on the WebSocket that have not yet been written onto the network. This could
-		be useful for throttling the rate at which the application sends data.</span>
-		<div class="commands"><pre>
-    document.getElementById("sendButton").onclick = function() 
-    {
-	    if (w.bufferedAmount < bufferThreshold) 
-	    {
-		    w.send(document.getElementById("inputMessage").value);
-	    }
-    }</pre>
-				</div>
-		<br><span class="move_left ">In addition to strings, WebSocket can also send binary data. This is
-		especially useful when you want to implement binary protocols, such
-		as the standard Internet protocols that are typically layered on top of
-		TCP. The WebSocket API supports the sending of Blob and ArrayBuffer
-		instances as binary data.</span>
-		<div class="commands"><pre>
-    var a = new Uint8Array([8,6,7,5,3,0,9]);
-    w.send(a.buffer);</pre>
-				</div>
-		<div class="title strong">
-				  <span id="tonewclass">A NEW CLASS OF WEB APPLICATIONS</span>
-				</div>
-		<br><span class="move_left ">Now that you have a socket connection in your browser, you can do
-		lots of things that were not previously possible in a browser. In fact, the
-		first line in the WebSocket API specification defines WebSocket as an
-		"API that enables Web pages to use the WebSocket protocol for twoway
-		communication with a remote host". Combine the powerful socket
-		connectivity over standard web ports with other HTML5 features such as
-		canvas and SVG for visualization of the WebSocket data, local storage,
-		and offline capabilities, and you can create web applications that are on
-		par with desktop applications with the added benefit that they don't have
-		to open non-standard ports to communicate to a backend server.</span>
-	<br class="cbt">
-		<br><span class="move_left ">A common approach is to use some JSON format over WebSocket. But
-		once you start writing your own syntax for how traffic should flow over the
-		wire, you should consider using existing protocols. For example, you may
-		want to use include Extensible Messaging and Presence Protocol (XMPP
-		or Jabber), Advanced Message Queuing Protocol (AMQP), Remote Frame
-		Buffer (RFB, or VNC), and Streaming Text Oriented Messaging Protocol
-		(STOMP). </span>
-	<br class="cbt">
-		<br><span class="move_left ">These are real-world protocols that are in use by many desktop clients and
-		servers. Using a standard protocol ensures that there is interoperability
-		between web applications and servers from different organizations
-		(protocols are programming-language agnostic). It also opens the door
-		for public WebSocket services. You can speak to a server using a known
-		protocol. Client applications that understand the same protocol can
-		then connect and participate. There are already quite a few WebSocketbased
-		protocol implementations available, and we expect to see many
-		more over time. Some examples are stomp-websocket, a JavaScript
-		implementation of STOMP (http://jmesnil.net/stomp-websocket/doc/)
-		and a proposed draft of XMPP over WebSocket (http://tools.ietf.org/html/
-		draft-moffitt-xmpp-over-websocket-00).</span>
-	<br class="cbt">
-		<br><span class="move_left ">Traditional web pages, shown in Figure 8, are usually assembled on
-		the server side and pushed out as static, stateless content to the client.
-		Conversely, modern web apps, shown in Figure 9, can behave more
-		like client-server applications in which the browser first requests the
-		static resources for the web page from an HTTP server (or a network
-		edge caching server), then makes stateful WebSocket-based backend
-		connections.</span>
-		<div>
-		  <img src="img/figure82.png" alt="532">
-		</div>
-		<br><span class="move_left "><span class="strong underline">Figure 8.</span> Traditional web apps generated server-side available for the
-		viewer</span>
-	<br class="cbt">
-		<div>
-		  <img src="img/figure92.png" alt="532">
-		</div>
-		<br><span class="move_left "><span class="strong underline">Figure 9.</span> HTML5 client-side generated web app</span>
-		<br class="cbt">
-		<br><span class="move_left ">Architectures like this are often achieved by using some sort of higherlevel
-		protocol, which in turn enable HTML5 web apps to rapidly become
-		first class network citizens.</span>
-		<div class="title strong">
-				  <span id="torealworld">WEBSOCKET IN THE REAL WORLD</span>
-				</div>
-		<br><span class="move_left ">What happens with WebSocket connectivity in the real world-when
-		you move away from localhost tests and proof of concepts? This section
-		will cover what happens when a WebSocket connection traverses
-		intermediaries on the network and what can be done to make WebSocket
-		work in older browsers.</span>
-	<br class="cbt">
-		<br><span class="move_left strong font_size">Transparent Proxy Servers</span>
-	<br class="cbt">
-		<br><span class="move_left ">Real-world WebSocket traffic will flow through proxy servers. Figure
-		10 shows a simplified network topology in which clients use a browser
-		to access back-end TCP-based services using a full-duplex HTML5
-		WebSocket connection. Some clients are located inside a corporate
-		network that's protected by a corporate firewall and configured to access
-		the Internet through explicit or known proxy servers, which may also
-		provide content caching and security. Other clients access the WebSocket
-		server directly over the Internet. In both cases, the client requests may
-		be routed through transparent, or unknown, proxy servers (for example,
-		a proxy server in a data center or a reverse proxy server in front of the
-		remote server). It is even possible for proxy servers to have their own
-		explicit proxy servers, which increases the number of hops the WebSocket
-		traffic has to make.</span>
-		<div>
-		  <img src="img/figure102.png" alt="532">
-		</div>
-		<br><span class="move_left "><span class="strong underline">Figure 10.</span> WebSocket architecture with explicit and transparent proxy
-		servers</span>
-	<br class="cbt">
-		<br><span class="move_left ">If a browser is configured to use an explicit proxy server, it will first issue
-		the HTTP CONNECT method to that proxy server while establishing the
-		WebSocket connection. For example, to connect to the server example.
-		com using the ws:// scheme (typically over port 80), the browser client
-		sends the HTTP CONNECT method to the proxy server as follows:</span>
-		<div class="commands"><pre>
-    CONNECT example.com:80 HTTP/1.1
-    Host: example.com</pre>
-		</div>
-		<br><span class="move_left ">When the explicit proxy server allows the CONNECT method, the
-		WebSocket connection upgrade handshake can be made. When that
-		handshake succeeds, WebSocket traffic can begin to flow unimpeded
-		through the proxy server.</span>
-	<br class="cbt">
-		<br><span class="move_left ">In the case that the unencrypted WebSocket traffic flows through a
-		transparent proxy on its way to the WebSocket server, the connection is
-		likely to fail in practice since the browser will not issue the CONNECT
-		method. When a proxy server forwards a request to the (WebSocket)
-		server, it is expected to strip off certain headers, including the Connection
-		header. Therefore, a well behaved transparent proxy server will cause the
-		WebSocket upgrade handshake to fail almost immediately.</span>
-	<br class="cbt">
-		<br><span class="move_left ">Not all proxy servers conform to the HTTP standard in terms of expected
-		proxy behavior. For example, some proxy servers are configured such
-		that they do not remove the Connection: Upgrade header ; instead, they
-		pass it on to the WebSocket server, which in turn sends the 101 Switching
-		Protocols response. Problems then arise when the client or the server
-		begins sending the first WebSocket frame. Since the frame does not
-		resemble anything the proxy server might expect (such as regular HTTP
-		traffic), some form of rejection or hiccup will likely occur unless the proxy
-		server is specifically configured to handle WebSocket traffic.</span> 
-	<br class="cbt">
-		<br><span class="move_left ">Fortunately, there is a solution to this problem. You can use WebSocket
-		Secure (wss:// scheme), which will first establish an end-to-end encrypted
-		tunnel. With the wire traffic now encrypted, intermediate transparent
-		proxy servers will simply allow the encrypted traffic through, so there is
-		every likelihood that the WebSocket connection will succeed. Therefore, it
-		is always best to use WebSocket Secure using TLS (a.k.a. SSL) encryption
-		to connect to a WebSocket server unless you're absolutely certain there
-		are no intermediaries. While TLS encryption has the added benefit of
-		being more secure, it does increase CPU consumption for both the client
-		and the server, though usually not to a dramatic degree. With hardware
-		TLS acceleration, you can reduce CPU consumption to near zero on the
-		server side.</span>
-	<br class="cbt">
-		<br><span class="move_left strong font_size">What about browsers that do not support websocket?</span>
-	<br class="cbt">
-		<br><span class="move_left ">WebSocket is now supported by all of today's widely used browsers,
-		but what if you have to support an old version of Internet Explorer or a
-		version of a mobile browser that does not support WebSocket? There is
-		good news here. There are quite a few polyfills (libraries that emulate the
-		WebSocket API in browsers that do not have native support). Here are a
-		few of these polyfills:</span>
-<ol class="disc">
+<br><span class="move_left ">Listing 4 shows how a call to window.WebSocket returns the WebSocket
+object if it exists or triggers a failure case if it does not. Figure 5 shows the
+resulting message in Microsoft Internet Explorer 10, which does support
+Webocket.</span>
+<div>
+  <img src="img/figure52.png" alt="532">
+</div>
+<br><span class="move_left "><span class="strong underline">Figure 5.</span> Resulting message in Microsoft Internet Explorer</span>
+<br class="cbt">
+<br><span class="move_left ">Another way to see if your browser supports WebSocket is to use
+the browser's developer tools. Figure 5 shows how you can use the
+WebSocket API from the debug console. You can also test to see if
+WebSocket is supported there. If it is not, the window.WebSocket
+command returns "undefined."</span>
+<div>
+  <img src="img/figure62.png" alt="532">
+</div>
+<br><span class="move_left "><span class="strong underline">Figure 6.</span> WebSocket connectivity in Chrome Developer Tools' Network
+panel</span>
+<br class="cbt">
+<br><span class="move_left ">In Google Chrome, you can also navigate to chrome://netinternals/#sockets
+to get fine-grained information about all socket
+connections as shown in Figure 6.</span>
+<div>
+  <img src="img/figure72.png" alt="532">
+</div>
+<br><span class="move_left "><span class="strong underline">Figure 7.</span> Socket internals page chrome://net-internals/#sockets</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Creating a WebSocket object and Connecting to a
+WebSocket Server</span>
+<br class="cbt">
+<br><span class="move_left ">Using the WebSocket interface is quite straightforward. To connect to an
+endpoint, just create a new WebSocket instance, providing the new object
+with a URL that represents the endpoint to which you wish to connect.
+You can use the ws:// and wss:// prefixes to indicate a WebSocket and a
+WebSocket Secure connection, respectively.</span>
+<div class="commands">
+          <br><span>url = "ws://localhost:8080/echo";</span>
+<br><span>w = new WebSocket(url)</span>
+        </div>
+<br><span class="move_left ">When you make a WebSocket connection, you have the option of listing
+the protocols your application can speak. The second argument to the
+WebSocket constructor can be a string or array of strings with the names
+of the subprotocols that your application understands and wishes to use
+to communicate.</span>
+<div class="commands">
+          <br><span>w = new WebSocket(url, protocol);</span>
+        </div>
+<br><span class="move_left ">You can even list several protocols:</span>
+<div class="commands">
+          <br><span>w = new WebSocket(url, ["proto1", "proto2"]);</span>
+        </div>
+<br><span class="move_left ">Hypothetically, proto1 and proto2 are well defined protocol names that
+both the client and server can understand; they may even be registered
+and standardized. The server will select a prefered protocol from the list.
+When the socket opens, its protocol property will contain the protocol that
+the server chooses.</span>
+<div class="commands">
+          <br><span>onopen = function(e) {</span>
+<br><span>// determine which protocol the server selected</span>
+<br><span>log(e.target.protocol)</span>
+<br><span>}</span>
+<br><span>Content-Type: application/json; charset=UTF-8</span>
+<br><span>Date: Wed, 22 Feb 2012 01:06:16 GMT</span>
+<br><span>Expires: -1</span>
+<br><span>Server: gws</span>
+<br><span>x-frame-options: SAMEORIGIN</span>
+<br><span>X-XSS-Protection: 1; mode=block</span>
+<br><span>X-Firefox-Spdy: 1</span>
+        </div>
+<br><span class="move_left strong font_size">Adding Event Listeners</span>
+<br class="cbt">
+<br><span class="move_left ">WebSocket programming follows an asynchronous programming model;
+once you have an open socket, you simply wait for events. You don't have
+to actively poll the server anymore. You add callback functions to the
+WebSocket object in order to listen for events.</span> 
+<br class="cbt">
+<br><span class="move_left ">A WebSocket object dispatches four events: open, message, close, and
+error. The open event fires when a connection is established, the message
+event when messages are received, the close event when the WebSocket
+connection is closed, and the error event when an error occurs. The error
+event fires in response to unexpected failure. As in most JavaScript APIs,
+there are corresponding callbacks (onopen, onmessage, onclose, and
+onerror) that are called when events are dispatched.</span>
+<div class="commands">
+          <br><span>w.onopen = function() {</span>
+<br><span>console.log("open");</span>
+<br><span>w.send("Connection open");</span>
+<br><span>}</span>
+<br><span>w.onmessage = function(e) {</span>
+<br><span>console.log(e.data);</span>
+<br><span>}</span>
+<br><span>w.onclose = function(e) {</span>
+<br><span>console.log("closed");</span>
+<br><span>}</span>
+<br><span>w.onerror = function(e) {</span>
+<br><span>console.log("error");</span>
+<br><span>}</span>
+        </div>
+<br><span class="move_left ">Let's take another look at this message handler. The data attribute on
+the message event is a string if the WebSocket protocol message was
+encoded as text. For binary messages, data can be either a Blob or an
+ArrayBuffer, depending on the value of the WebSocket's binaryType
+property.</span>
+<div class="commands">
+          <br><span>w.binaryType = "arraybuffer";</span>
+<br><span>w.onmessage = function(e) {</span>
+<br><span>// data can now be either a string or an ArrayBuffer</span>
+<br><span>console.log(e.data);</span>
+<br><span>}</span>
+<br><span>Date: Wed, 22 Feb 2012 01:06:16 GMT</span>
+<br><span>Expires: -1</span>
+<br><span>Server: gws</span>
+<br><span>x-frame-options: SAMEORIGIN</span>
+<br><span>X-XSS-Protection: 1; mode=block</span>
+<br><span>X-Firefox-Spdy: 1</span>
+        </div>
+<br><span class="move_left strong font_size">Sending Messages</span>
+<br class="cbt">
+<br><span class="move_left ">While the socket is open (that is, after the onopen listener is called and
+before the onclose listener is called), you can use the send function to
+send messages. After sending one or more messages, you can also call
+close to terminate the connection or you can leave the connection open.
+<div class="commands">
+          <br><span>document.getElementById("sendButton").onclick = function() {</span>
+<br><span>w.send(document.getElementById("inputMessage").value);</span>
+<br><span>}</span>
+<br><span>Content-Encoding: gzip</span>
+<br><span>Content-Type: application/json; charset=UTF-8</span>
+<br><span>Date: Wed, 22 Feb 2012 01:06:16 GMT</span>
+<br><span>Expires: -1</span>
+<br><span>Server: gws</span>
+<br><span>x-frame-options: SAMEORIGIN</span>
+<br><span>X-XSS-Protection: 1; mode=block</span>
+<br><span>X-Firefox-Spdy: 1</span>
+        </div>
+<br><span class="move_left ">In more advanced uses of WebSocket, you may want to measure how
+much data is backed up in the outgoing buffer before calling send( ). The
+bufferedAmount attribute represents the number of bytes that have been sent
+on the WebSocket that have not yet been written onto the network. This could
+be useful for throttling the rate at which the application sends data.</span>
+<div class="commands">
+          <br><span>document.getElementById("sendButton").onclick = function() {</span>
+<br><span>if (w.bufferedAmount < bufferThreshold) {</span>
+<br><span>w.send(document.getElementById("inputMessage").value);</span>
+<br><span> }</span>
+<br><span>}</span>
+        </div>
+<br><span class="move_left ">In addition to strings, WebSocket can also send binary data. This is
+especially useful when you want to implement binary protocols, such
+as the standard Internet protocols that are typically layered on top of
+TCP. The WebSocket API supports the sending of Blob and ArrayBuffer
+instances as binary data.</span>
+<div class="commands">
+          <br><span>var a = new Uint8Array([8,6,7,5,3,0,9]);</span>
+<br><span>w.send(a.buffer);</span>
+        </div>
+<div class="titletop strong">
+          <span id="tonewclass">A NEW CLASS OF WEB APPLICATIONS</span>
+        </div>
+<br><span class="move_left ">Now that you have a socket connection in your browser, you can do
+lots of things that were not previously possible in a browser. In fact, the
+first line in the WebSocket API specification defines WebSocket as an
+"API that enables Web pages to use the WebSocket protocol for twoway
+communication with a remote host". Combine the powerful socket
+connectivity over standard web ports with other HTML5 features such as
+canvas and SVG for visualization of the WebSocket data, local storage,
+and offline capabilities, and you can create web applications that are on
+par with desktop applications with the added benefit that they don't have
+to open non-standard ports to communicate to a backend server.</span>
+<br class="cbt">
+<br><span class="move_left ">A common approach is to use some JSON format over WebSocket. But
+once you start writing your own syntax for how traffic should flow over the
+wire, you should consider using existing protocols. For example, you may
+want to use include Extensible Messaging and Presence Protocol (XMPP
+or Jabber), Advanced Message Queuing Protocol (AMQP), Remote Frame
+Buffer (RFB, or VNC), and Streaming Text Oriented Messaging Protocol
+(STOMP). </span>
+<br class="cbt">
+<br><span class="move_left ">These are real-world protocols that are in use by many desktop clients and
+servers. Using a standard protocol ensures that there is interoperability
+between web applications and servers from different organizations
+(protocols are programming-language agnostic). It also opens the door
+for public WebSocket services. You can speak to a server using a known
+protocol. Client applications that understand the same protocol can
+then connect and participate. There are already quite a few WebSocketbased
+protocol implementations available, and we expect to see many
+more over time. Some examples are stomp-websocket, a JavaScript
+implementation of STOMP (http://jmesnil.net/stomp-websocket/doc/)
+and a proposed draft of XMPP over WebSocket (http://tools.ietf.org/html/
+draft-moffitt-xmpp-over-websocket-00).</span>
+<br class="cbt">
+<br><span class="move_left ">Traditional web pages, shown in Figure 8, are usually assembled on
+the server side and pushed out as static, stateless content to the client.
+Conversely, modern web apps, shown in Figure 9, can behave more
+like client-server applications in which the browser first requests the
+static resources for the web page from an HTTP server (or a network
+edge caching server), then makes stateful WebSocket-based backend
+connections.</span>
+<div>
+  <img src="img/figure82.png" alt="532">
+</div>
+<br><span class="move_left "><span class="strong underline">Figure 8.</span> Traditional web apps generated server-side available for the
+viewer</span>
+<br class="cbt">
+<div>
+  <img src="img/figure92.png" alt="532">
+</div>
+<br><span class="move_left "><span class="strong underline">Figure 9.</span> HTML5 client-side generated web app</span>
+<br class="cbt">
+<br><span class="move_left ">Architectures like this are often achieved by using some sort of higherlevel
+protocol, which in turn enable HTML5 web apps to rapidly become
+first class network citizens.</span>
+<div class="titletop strong">
+          <span id="torealworld">WEBSOCKET IN THE REAL WORLD</span>
+        </div>
+<br><span class="move_left ">What happens with WebSocket connectivity in the real world-when
+you move away from localhost tests and proof of concepts? This section
+will cover what happens when a WebSocket connection traverses
+intermediaries on the network and what can be done to make WebSocket
+work in older browsers.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">Transparent Proxy Servers</span>
+<br class="cbt">
+<br><span class="move_left ">Real-world WebSocket traffic will flow through proxy servers. Figure
+10 shows a simplified network topology in which clients use a browser
+to access back-end TCP-based services using a full-duplex HTML5
+WebSocket connection. Some clients are located inside a corporate
+network that's protected by a corporate firewall and configured to access
+the Internet through explicit or known proxy servers, which may also
+provide content caching and security. Other clients access the WebSocket
+server directly over the Internet. In both cases, the client requests may
+be routed through transparent, or unknown, proxy servers (for example,
+a proxy server in a data center or a reverse proxy server in front of the
+remote server). It is even possible for proxy servers to have their own
+explicit proxy servers, which increases the number of hops the WebSocket
+traffic has to make.</span>
+<div>
+  <img src="img/figure102.png" alt="532">
+</div>
+<br><span class="move_left "><span class="strong underline">Figure 10.</span> WebSocket architecture with explicit and transparent proxy
+servers</span>
+<br class="cbt">
+<br><span class="move_left ">If a browser is configured to use an explicit proxy server, it will first issue
+the HTTP CONNECT method to that proxy server while establishing the
+WebSocket connection. For example, to connect to the server example.
+com using the ws:// scheme (typically over port 80), the browser client
+sends the HTTP CONNECT method to the proxy server as follows:</span>
+<div class="commands">
+          <br><span>CONNECT example.com:80 HTTP/1.1</span>
+<br><span>Host: example.com</span>
+        </div>
+<br><span class="move_left ">When the explicit proxy server allows the CONNECT method, the
+WebSocket connection upgrade handshake can be made. When that
+handshake succeeds, WebSocket traffic can begin to flow unimpeded
+through the proxy server.</span>
+<br class="cbt">
+<br><span class="move_left ">In the case that the unencrypted WebSocket traffic flows through a
+transparent proxy on its way to the WebSocket server, the connection is
+likely to fail in practice since the browser will not issue the CONNECT
+method. When a proxy server forwards a request to the (WebSocket)
+server, it is expected to strip off certain headers, including the Connection
+header. Therefore, a well behaved transparent proxy server will cause the
+WebSocket upgrade handshake to fail almost immediately.</span>
+<br class="cbt">
+<br><span class="move_left ">Not all proxy servers conform to the HTTP standard in terms of expected
+proxy behavior. For example, some proxy servers are configured such
+that they do not remove the Connection: Upgrade header ; instead, they
+pass it on to the WebSocket server, which in turn sends the 101 Switching
+Protocols response. Problems then arise when the client or the server
+begins sending the first WebSocket frame. Since the frame does not
+resemble anything the proxy server might expect (such as regular HTTP
+traffic), some form of rejection or hiccup will likely occur unless the proxy
+server is specifically configured to handle WebSocket traffic.</span> 
+<br class="cbt">
+<br><span class="move_left ">Fortunately, there is a solution to this problem. You can use WebSocket
+Secure (wss:// scheme), which will first establish an end-to-end encrypted
+tunnel. With the wire traffic now encrypted, intermediate transparent
+proxy servers will simply allow the encrypted traffic through, so there is
+every likelihood that the WebSocket connection will succeed. Therefore, it
+is always best to use WebSocket Secure using TLS (a.k.a. SSL) encryption
+to connect to a WebSocket server unless you're absolutely certain there
+are no intermediaries. While TLS encryption has the added benefit of
+being more secure, it does increase CPU consumption for both the client
+and the server, though usually not to a dramatic degree. With hardware
+TLS acceleration, you can reduce CPU consumption to near zero on the
+server side.</span>
+<br class="cbt">
+<br><span class="move_left strong font_size">WHAT ABOUT BROWSERS THAT DO NOT SUPPORT
+WEBSOCKET?</span>
+<br class="cbt">
+<br><span class="move_left ">WebSocket is now supported by all of today's widely used browsers,
+but what if you have to support an old version of Internet Explorer or a
+version of a mobile browser that does not support WebSocket? There is
+good news here. There are quite a few polyfills (libraries that emulate the
+WebSocket API in browsers that do not have native support). Here are a
+few of these polyfills:</span>
+<ol>
    <li><span><span class="strong">Kaazing WebSocket Gateway</span>-pure JavaScript polyfill as far
 back as I.E. 6</span></li>
    <li><span><span class="strong">Socket.IO</span>-works with Node.js</span></li>
@@ -610,53 +604,53 @@ extra port for the policy file, and Flash has some known proxy
 poisoning-attack issues)</span></li>
 </ol>  
 <br><span class=" strong font_size">Additional Resources</span>
-<ol class="disc">
+<ol>
    <li><span><span class="strong">WebSocket API (W3C):</span>http://dev.w3.org/html5/websockets/</span></li>
    <li><span><span class="strong">WebSocket Protocol (IETF):</span>http://tools.ietf.org/html/rfc6455</span></li>
    <li><span><span class="strong">WebSocket test server:</span>http://www.websocket.org</span></li>
    <li><span><span class="strong">How HTML5 WebSockets Interact with Proxy Servers:</span>http://
 www.infoq.com/articles/Web-Sockets-Proxy-Servers</span></li>
 </ol>  
-		</div>
-		<div class="down_page">
-				<table>
-				  <tbody>
-					<tr>
-					  <td class="align_left medium_padding align_top">
-						<br><span class="move_left strong">ABOUT THE AUTHORS</span><br>
-						<br><img src="img/author2.png" alt="622" class="textwrap smallicon" ><span  class="move_left ">Peter Lubbers (@peterlubbers) lives
-		and breathes HTML5. Even his car has
-		the California 'HTML5' license plate.
-		Peter is the co-author of Pro HTML5
-		Programming (Apress, 2011) and the cofounder
-		of the San Francisco HTML5 User
-		Group, the largest HTML5 User Group
-		in the world. Peter oversees all aspects
-		of documentation and global training at Kaazing, a start-up
-		company specialized in building a high-performance HTML5
-		WebSocket platform that revolutionizes web communication
-		and the first company to offer HTML5 training worldwide.</span>
-					  </td>
-					  <td  class="align_left medium_padding align_top">
-						<br><span class="move_left  strong">RECOMMENDED BOOK</span><br>
-						<br><span class="move_left  strong font_size">Pro HTML 5 Programming</span>
-						<br><img src="img/book2.png" alt="612" class="textwrap smallicon"><span  class="move_left ">HTML5 is here, and with it, web applications have
-		acquired power, ease, scalability, and responsiveness like
-		never before. With this book, developers will learn how
-		to use the latest cutting-edge HTML5 web technology-
-		available in the most recent versions of modern
-		browsers-to build web applications with unparalleled
-		functionality, speed, and responsiveness. </span>
-				</td>
-					</tr>
-					</div>
-					
-				  </tbody>
-				</table>
-			  </div>
-		<div class="footer">
-				<span> DZone, Inc. | www.dzone.</span>
-			  </div>
-			</div>	
+</div>
+<div class="down_page">
+        <table>
+          <tbody>
+            <tr>
+              <td class="align_left medium_padding align_top">
+                <br><span class="move_left strong">ABOUT THE AUTHORS</span><br>
+                <br><img src="img/author2.png" alt="622" class="textWrap smallIcon" ><span  class="move_left ">Peter Lubbers (@peterlubbers) lives
+and breathes HTML5. Even his car has
+the California 'HTML5' license plate.
+Peter is the co-author of Pro HTML5
+Programming (Apress, 2011) and the cofounder
+of the San Francisco HTML5 User
+Group, the largest HTML5 User Group
+in the world. Peter oversees all aspects
+of documentation and global training at Kaazing, a start-up
+company specialized in building a high-performance HTML5
+WebSocket platform that revolutionizes web communication
+and the first company to offer HTML5 training worldwide.</span>
+              </td>
+              <td  class="align_left medium_padding align_top">
+                <br><span class="move_left  strong">RECOMMENDED BOOK</span><br>
+                <br><span class="move_left  strong font_size">Pro HTML 5 Programming</span>
+                <br><img src="img/book2.png" alt="612" class="textWrap smallIcon"><span  class="move_left ">HTML5 is here, and with it, web applications have
+acquired power, ease, scalability, and responsiveness like
+never before. With this book, developers will learn how
+to use the latest cutting-edge HTML5 web technology-
+available in the most recent versions of modern
+browsers-to build web applications with unparalleled
+functionality, speed, and responsiveness. </span>
+	    </td>
+            </tr>
+			</div>
+			
+          </tbody>
+        </table class="pow">
+      </div>
+<div class="footer">
+        <span> DZone, Inc. | www.dzone.</span>
+      </div>
+    </div>	
   </body>
 </html>

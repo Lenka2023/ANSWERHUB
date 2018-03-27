@@ -211,6 +211,11 @@ var text=prompt("Enter text","");
 			var usedLength=0;
 			var beginIndex=0;
 			var beginInd=0;
+			function Send_to_DB()
+            {
+				var RESULSERVER =  document.getElementById("RESULSERVER");
+				 RESULSERVER.value = resultStr;
+			}
 			 function Square_List(x,y,usl,bgind)
             {
 				 var expressionText =  document.getElementById("text").value;
