@@ -4,6 +4,14 @@ if(isset($_POST['reg'])){
 	$password=htmlspecialchars($_POST['password']);
 	$bad=false;
 	session_start();
+	if(!isset($_SESSION['text']))
+{
+$_SESSION['text'] = "";
+}
+else
+{
+echo 0;
+}
 	unset($_SESSION['errror_login']);
 	unset($_SESSION['errror_password']);
 	unset($_SESSION['reg_succes']);
@@ -35,7 +43,7 @@ if(isset($_POST['reg'])){
 	<table border='1' width='100%;' cellpadding='0' cellspacing='0'>
 			<tr>
 				<td colspan='2'>
-					<img src="images/logo.jpg" width='100%;' alt="Шапка сайта"/>
+					<img src="img/logo.jpg" width='100%;' alt="Шапка сайта"/>
 				</td>
 				</tr>
 				<tr>
@@ -51,21 +59,42 @@ if(isset($_POST['reg'])){
 							if ($_SESSION['errror_password']==1) echo "<p><span style='color:red;'>Invalid password</span></p>";
 unset($_SESSION['reg_succes']);
 								?>
-								<p>
-									<label>Login</label>
-									<input type='text' name='login'/>
-								</p>
-								<p>
-									<label>Password</label>
-									<input type='password' name='password'/>
-								</p>
-								<p>
-									<input type='submit' name='reg' value='Log in'/>
-								</p>
+								<table  border='0' width='15%;' cellpadding='0' cellspacing='0'align="center">
+			<tr>
+				<td >
+					<label   style = "float:left;">Login</label>
+				</td>
+				<td >
+					<input type='text' name='login' id="login"style = "float:left;"/>
+				
+				</td>
+					
+				
+			</tr>
+			<tr>
+				<td >
+					<label >Password</label>
+				</td>
+				<td >
+					<input type='password' name='password' id="password"/>
+				</td>
+					
+				
+			</tr>
+			<tr>
+				<td colspan='1'>
+					
+				</td>
+				<td >
+					<input type='submit' name='reg' value='Log in' style = "margin: 0 auto; margin-top:20px;"/>
+				</td>
+			</tr>
+								
+								
 							</form>
 						</div>
 					</td>
 				</tr>
 				<tr>
 				
-				https://www.youtube.com/watch?v=VgElYceb7-M2:06
+				
