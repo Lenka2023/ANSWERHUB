@@ -13,18 +13,31 @@
         width: 487px;
     }
 }
+.fieldmain{
+	
+	width:100%;
+margin: auto;
+	text-align:center;
+}
 .mainfield {
+
+	
 	float:left;
+	 position: absolute;
+    
+    left: 50%;
+    margin-right: -50%;
+	
+	
 	}
 label
  {
-	margin-right:0.5em;
-	width:10em;float:left;
-	text-align:left;
-	display:block;
+	float:left; 
+	padding-right:10px;
 	}
 .regfield {
+	margin: auto;
 	clear:both; 
-	text-align:right;
+	text-align:right; 
 	line-height:25px;
 	}

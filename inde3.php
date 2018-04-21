@@ -12,21 +12,22 @@ $_SESSION['text'] = "";
 	unset($_SESSION['reg_succes']);
 										
 	$mysqli=new mysqli ('localhost', 'Mysitefour', '00000', "mysite-local");
-	$query="SELECT* FROM `users`";
+	$query="SELECT* FROM `users` WHERE `login` = '$e_login'";
 	$result = mysqli_query($mysqli, $query);
 	
 	$user_data=mysqli_fetch_array($result);
-	if($user_data[login]!=$e_login){
-		echo"<p><span style='color:red;'>Register please or enter login correctly</span></p>";
-									}
-	if(($user_data[login]==$e_login)&&($user_data[password]==$e_password)){
-		echo"<p><span style='color:red;'>Succes entering</span></p>";
+	if($user_data[password]==$e_password){
+		echo"<p><span style='color:red;'>Succes registration</span></p>";
 		header("Location:editor.php");
-																			}
-	if(($user_data[login]==$e_login)&&($user_data[password]!=$e_password)){
-			echo"<p><span style='color:red;'>Incorrect password</span></p>";	
-																				}
-		
+	}else if($user_data[password]!=$e_password){
+	echo"<p><span style='color:red;'>Incorrect password</span></p>";	
+	}
+	$userquery="SELECT* FROM `users`";
+	$result = mysqli_query($mysqli, $userquery);
+	$userquery_data=mysqli_fetch_array($result);
+	if($userquery_data[login]!=$e_login){
+	echo"<p><span style='color:red;'>Register please or enter login correctly</span></p>";
+											}													
 	$mysqli->close();
 	?>
 <!DOCTYPE html>
@@ -50,7 +51,6 @@ $_SESSION['text'] = "";
 					<td style= 'width:80%;' >
 						<div style = "text-align:center; ">
 							<h1>Entering</h1>
-							
 							<form id="form1" action="" method="post">
 								<div class="fieldmain">	
 								<div class="mainfield">
@@ -62,10 +62,8 @@ $_SESSION['text'] = "";
 										<label for="password">Password</label>
 										<input type='password' name='e_password' id="password" placeholder="Password" required/>
 									</div>
-									
 									<div class="regfield">
-										<input type='submit' name='enter' value='Log in'/><br><a href="register.php">Registration</a>
-							
+										<input type='submit' name='enter' value='Log in'/>
 									</div>
 								</div>
 							</div>	
