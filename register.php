@@ -41,23 +41,8 @@ echo 0;
 													$mysqli=new mysqli ('localhost', 'Mysitefour', '00000', "mysite-local");
 													$password=md5($password);
 													$query="SELECT * FROM `users`";
-													//$queryid="SELECT `id` FROM `users`";
 													$result = mysqli_query($mysqli, $query);
-													//$resultid = mysqli_query($mysqli, $queryid);
 													$user_data=mysqli_fetch_assoc($result);
-													//$user_dataid=mysqli_fetch_array($resultid);
-													//$count=mysqli_num_rows($result);
-													//while ($user_data=$result->fetch_assoc()){
-														//echo $ID = $user_data['id'];
-														//echo $username = $user_data['username'];
-														//echo $login = $user_data['login'];
-														//echo $password = $user_data['password'];
-																								
-													//for($i=1;$i<10;$i++){
-													//var_dump($user_data);
-													//echo $user_data;
-													//printf($user_data);
-													//}
 													if($e_login==$user_data[login]){
 														echo"<p><span style='color:red;'>This login is already exist, please enter enother login</span></p>";
 																					}
@@ -66,15 +51,14 @@ echo 0;
 																							}
 													$mysqli->close();
 													$_SESSION['reg_succes']=1;
-													//header("Location:editor.php");
-														}
-						}
+																											}
+															}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<link rel="stylesheet" href="css/regstyle.css"type="text/css"/>
+	<link rel="stylesheet" href="css/style1.css"type="text/css"/>
     <title>Registration</title>
 	</head>
 	<body>
