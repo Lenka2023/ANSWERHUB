@@ -29,7 +29,7 @@ $_SESSION['text'] = "";
 													
 	$mysqli->close();
 							}
-	<?php
+	
     // включаем отображение всех ошибок, кроме E_NOTICE
     error_reporting(E_ALL & ~E_NOTICE);
     ini_set('display_errors', 1);

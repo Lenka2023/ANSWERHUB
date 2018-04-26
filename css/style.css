@@ -1,19 +1,21 @@
-
+/*ноутбуки*/
 @media (min-width: 1000px) {
     .one {
         width: 1005px;
     }
-}
+}/*планшеты*/
 @media (min-width: 768px) and (max-width: 999px) {
     .one {
         width: 800px;
     }
-}
+}/*смартфоны*/
 @media (min-width: 487px) and (max-width: 767px) {
     .one {
         width: 487px;
     }
 }
+
+
 
 body {
         /*font-family: 'Open Sans', Roboto-Black, Graublau Sans Web, EuroSansProLig, Arial, sans-serif;*/
