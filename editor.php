@@ -1,5 +1,5 @@
 <?php
-session_start();
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,10 +24,10 @@ session_start();
             <div class="edit_cont">
                 <div class="middle">
 				<?php
-				if ($_SESSION['reg_succes']==1){
-								echo "<p><span style='color:red;'>Succes registration</span></p>";
-								unset($_SESSION['reg_succes']);
-															}
+					if ($_SESSION['reg_succes']==1){
+									echo "<p><span style='color:red;'>Succes registration</span></p>";
+									unset($_SESSION['reg_succes']);
+																}
 ?>
 										<button onclick="Main_List()"> Main List</button>
                                         <button onclick="Square_List()">Square List</button>
@@ -67,25 +67,24 @@ session_start();
 	<input type="submit">
 	</form>
 <?php
-$db=new mysqli('localhost','mysql','mysql',"Pages");
-if(mysqli_connect_errno()){
-	printf("Error connect to DB:%S\n",mysqli_error($db));
-	exit();
-							}
-if(!empty($_POST['page'])){print_r($_POST['page']);}
-if(isset($_POST['page'])&&!empty($_POST['page'])){
-		$page=(string)$_POST['page'];
-		$query = "INSERT INTO Pages(text) VALUES ('$page')";
-		mysqli_query($db, $query);
-												}
-$filename ='file.html';
-$file=fopen($filename,"a");
-if(!$file){
-	echo("Ошибка открытия файла");
-			}
-fwrite($file, $page);
-var_dump($file);
-	
+	$db=new mysqli('localhost', 'Mysitefour', '00000', "mysite-local");
+	if(mysqli_connect_errno()){
+		printf("Error connect to DB:%S\n",mysqli_error($db));
+		exit();
+								}
+	if(!empty($_POST['page'])){print_r($_POST['page']);}
+	if(isset($_POST['page'])&&!empty($_POST['page'])){
+			$page=(string)$_POST['page'];
+			$query = "INSERT INTO Pages(text) VALUES ('$page')";
+			mysqli_query($db, $query);
+													}
+	$filename ='file.html';
+	$file=fopen($filename,"a");
+	if(!$file){
+		echo("Ошибка открытия файла");
+				}
+	fwrite($file, $page);
+	var_dump($file);
 	fclose($file);
 ?>
 		</div>
