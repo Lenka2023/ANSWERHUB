@@ -60,7 +60,7 @@
                                     <span id="RESULTHTML" onkeypress="myFunction();" onclick="getCaretPosition()" onkeypress="ChangeSelection"></span>
                                    
                                     </div>
-									<button onclick="Log_out()"> Logout</button>
+									
 									
 									<button onclick="Send_to_DB()"> Send_to_DB</button>
 									<form action="#" method="POST">
@@ -84,22 +84,10 @@
 			$query = "INSERT INTO Pages(text) VALUES ('$page')";
 			mysqli_query($db, $query);
 													}
-	//if (@$_REQUEST['out']) {
-//echo 15;
-		//unset($_SESSION['userid']);
-		//unset($_SESSION['userlogin']);
-		//$_SESSION = Array(); 
-
-		//session_destroy();
-		//echo '<script>location.replace("http://d.ru/index.php");</script>'; 
-		  //exit;
-//}												
-	if (isset($_POST['out']))
+									
+	if (isset($_POST['out'])){
     
-		//function Log_out()
-		{
-
-        echo 15;
+		echo 15;
 		unset($_SESSION['userid']);
 		unset($_SESSION['userlogin']);
 		session_unset();
@@ -107,8 +95,8 @@
 		
 		session_destroy();
 		echo '<script>location.replace("http://d.ru/index.php");</script>'; 
-	//exit;}
-	}
+		exit;
+								}
 	$filename ='file.html';
 	$file=fopen($filename,"a");
 	if(!$file){
@@ -117,19 +105,7 @@
 	fwrite($file, $page);
 	var_dump($file);
 	fclose($file);
-	//var_dump($userinfoid);
-	//var_dump($userinfologin);
-		//function Log_out(){
-			//echo 15;
-		//unset($_SESSION['userid']);
-		//unset($_SESSION['userlogin']);
-		//$_SESSION = Array(); 
-//echo '<script>location.replace("http://d.ru/index.php");</script>'; 
-		  //exit;
-		//session_destroy();	
-		//echo '<script>location.replace("http://d.ru/index.php");</script>'; 
-		 // exit;
-						//}
+	
 			var_dump($userinfoid);
 			var_dump($userinfologin);
 ?>
