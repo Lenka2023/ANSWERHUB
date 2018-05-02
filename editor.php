@@ -60,13 +60,19 @@
                                     <span id="RESULTHTML" onkeypress="myFunction();" onclick="getCaretPosition()" onkeypress="ChangeSelection"></span>
                                    
                                     </div>
+									<button onclick="Log_out()"> Logout</button>
 									
 									<button onclick="Send_to_DB()"> Send_to_DB</button>
 									<form action="#" method="POST">
 	page:<input type="text" name="page" id="RESULSERVER"><br>
-	<input type="submit">
+	<input type="submit"><input type='submit' name='out' value='Log out'/>
 	</form>
+	
+	http://dayte2.com/php-sessions-authorization
 <?php
+	$userinfoid=$_SESSION['userid'];
+	$userinfologin=$_SESSION['userlogin'];
+	
 	$db=new mysqli('localhost', 'Mysitefour', '00000', "mysite-local");
 	if(mysqli_connect_errno()){
 		printf("Error connect to DB:%S\n",mysqli_error($db));
@@ -78,6 +84,31 @@
 			$query = "INSERT INTO Pages(text) VALUES ('$page')";
 			mysqli_query($db, $query);
 													}
+	//if (@$_REQUEST['out']) {
+//echo 15;
+		//unset($_SESSION['userid']);
+		//unset($_SESSION['userlogin']);
+		//$_SESSION = Array(); 
+
+		//session_destroy();
+		//echo '<script>location.replace("http://d.ru/index.php");</script>'; 
+		  //exit;
+//}												
+	if (isset($_POST['out']))
+    
+		//function Log_out()
+		{
+
+        echo 15;
+		unset($_SESSION['userid']);
+		unset($_SESSION['userlogin']);
+		session_unset();
+		$_SESSION = Array(); 
+		
+		session_destroy();
+		echo '<script>location.replace("http://d.ru/index.php");</script>'; 
+	//exit;}
+	}
 	$filename ='file.html';
 	$file=fopen($filename,"a");
 	if(!$file){
@@ -86,6 +117,21 @@
 	fwrite($file, $page);
 	var_dump($file);
 	fclose($file);
+	//var_dump($userinfoid);
+	//var_dump($userinfologin);
+		//function Log_out(){
+			//echo 15;
+		//unset($_SESSION['userid']);
+		//unset($_SESSION['userlogin']);
+		//$_SESSION = Array(); 
+//echo '<script>location.replace("http://d.ru/index.php");</script>'; 
+		  //exit;
+		//session_destroy();	
+		//echo '<script>location.replace("http://d.ru/index.php");</script>'; 
+		 // exit;
+						//}
+			var_dump($userinfoid);
+			var_dump($userinfologin);
 ?>
 		</div>
 	</div>

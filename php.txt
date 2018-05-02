@@ -1,0 +1,57 @@
+<?php
+	$userinfoid=$_SESSION['userid'];
+	$userinfologin=$_SESSION['userlogin'];
+	
+	$db=new mysqli('localhost', 'Mysitefour', '00000', "mysite-local");
+	if(mysqli_connect_errno()){
+		printf("Error connect to DB:%S\n",mysqli_error($db));
+		exit();
+								}
+	if(!empty($_POST['page'])){print_r($_POST['page']);}
+	if(isset($_POST['page'])&&!empty($_POST['page'])){
+			$page=(string)$_POST['page'];
+			$query = "INSERT INTO Pages(text) VALUES ('$page')";
+			mysqli_query($db, $query);
+													}
+	//if (@$_REQUEST['button1']) {
+//echo 15;
+		//unset($_SESSION['userid']);
+		//unset($_SESSION['userlogin']);
+		//$_SESSION = Array(); 
+//echo '<script>location.replace("http://d.ru/index.php");</script>'; 
+		  //exit;
+		//session_destroy();
+//}												
+	/*if (isset($_POST['out']))
+    {
+		Log_out();
+
+       /* unset($_SESSION['userid']);
+		unset($_SESSION['userlogin']);
+		$_SESSION = Array(); 
+		session_destroy();
+    }*/
+	$filename ='file.html';
+	$file=fopen($filename,"a");
+	if(!$file){
+		echo("Ошибка открытия файла");
+				}
+	fwrite($file, $page);
+	var_dump($file);
+	fclose($file);
+	//var_dump($userinfoid);
+	//var_dump($userinfologin);
+		//function Log_out(){
+			//echo 15;
+		//unset($_SESSION['userid']);
+		//unset($_SESSION['userlogin']);
+		//$_SESSION = Array(); 
+//echo '<script>location.replace("http://d.ru/index.php");</script>'; 
+		  //exit;
+		//session_destroy();	
+		//echo '<script>location.replace("http://d.ru/index.php");</script>'; 
+		 // exit;
+						//}
+			var_dump($userinfoid);
+			var_dump($userinfologin);
+?>

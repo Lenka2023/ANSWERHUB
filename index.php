@@ -24,11 +24,18 @@
 		$result = mysqli_query($mysqli, $query);
 		$flag = false;
 		$user_data=mysqli_fetch_array($result);
-		  
+		 $_SESSION['userid'] = $user_data[id];
+		$_SESSION['userlogin'] = $user_data[login]; 
 	  if ($user_data[password] == $e_password) {
-		  echo '<script>location.replace("http://d.ru/editor.php");</script>'; 
-		  exit;
-
+		  echo "<p><span style='color:red;'>Succes entering</span></p>";
+		  var_dump($_SESSION['userid']);	
+		var_dump($_SESSION['userlogin']);
+		 //sleep(10);
+		 echo '<script>location.replace("http://d.ru/editor.php");</script>'; 
+		  //echo '<script>setTimeout("location.replace("http://d.ru/editor.php");",1000);</script>'; 
+		  //setTimeout("location.href = 'http://www.your_site.com';",1500);
+		 exit;
+//sleep(10);
 			//header("Location:editor.php");
 			//exit;
 			echo "<p><span style='color:red;'>Succes entering</span></p>";
@@ -36,10 +43,28 @@
 	  elseif ($user_data[password] == !$e_password) {
 			echo "<p><span style='color:red;'>Incorrect password</span></p>";
 													} 
-												
-														
+		
+		//function Log_out(){
+		//unset($_SESSION['userid']);
+		//$_SESSION = Array(); 
+		//session_destroy();										
+						//}	
+///var_dump($user_data[id]);	
+//var_dump($user_data[login]);					
 		$mysqli->close();
 								}
+if (isset($_POST['out']))
+    {
+        echo 15;
+		unset($_SESSION['userid']);
+		unset($_SESSION['userlogin']);
+		session_unset();
+		$_SESSION = Array(); 
+
+		//session_destroy();
+		//echo '<script>location.replace("http://d.ru/index.php");</script>'; 
+		  //exit;
+    }
 		
 		// включаем отображение всех ошибок, кроме E_NOTICE
 		error_reporting(E_ALL & ~E_NOTICE);
@@ -126,7 +151,7 @@
 									<div class="regfield">
 										<input type='submit' name='enter' value='Log in'/>
 										<br>
-										<a href="register.php">Registration</a>
+										<a href="register.php">Registration</a><input type='submit' name='out' value='Log out'/>
 							
 									</div>
 								</div>

@@ -116,7 +116,7 @@
 									<div class="regfield">
 										<input type='submit' name='reg' value='Register'/>
 										<br>
-										<a href="index.php">Log in</a>
+										<a href="index.php">Log in</a><button onclick="Logout()"> Logout</button>
 									</div>
 								</div>
 							</div>	
