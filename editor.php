@@ -87,7 +87,6 @@
 									
 	if (isset($_POST['out'])){
     
-		echo 15;
 		unset($_SESSION['userid']);
 		unset($_SESSION['userlogin']);
 		session_unset();
