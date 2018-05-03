@@ -17,7 +17,7 @@
 		$log_query="SELECT * FROM `users`";
 		$log_result = mysqli_query($mysqli, $log_query);
 		$log_user_data=mysqli_fetch_assoc($log_result);
-		if($e_login==$log_user_data[login]){
+		if($e_login!=$log_user_data[login]){
 			echo"<p><span style='color:red;'>User which has such login was not registered. Register please or enter correct login</span></p>";
 										}
 		$query="SELECT* FROM `users` WHERE `login` = '$e_login'";								
