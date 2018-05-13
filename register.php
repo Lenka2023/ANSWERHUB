@@ -13,44 +13,40 @@
 		unset($_SESSION['errror_password']);
 		unset($_SESSION['reg_succes']);
 		$mysqli=new mysqli ('localhost', 'Mysitefour', '00000', "mysite-local");
-		if (!$mysqli)
-{
-echo "Sorry <br>";
-echo mysqli_connect_error();
-exit();
-}
-			$password=md5($password);
-			$r_password=md5($r_password);
-			$query="SELECT * FROM `users`";
-			$result = mysqli_query($mysqli, $query);
-			$user_data=mysqli_fetch_assoc($result);
-					//var_dump($user_data['login']);
+		if (!$mysqli){
+			echo "Sorry <br>";
+			echo mysqli_connect_error();
+			exit();
+						}
+		$password=md5($password);
+		$r_password=md5($r_password);
+		$query="SELECT * FROM `users`";
+		$result = mysqli_query($mysqli, $query);
+		$user_data=mysqli_fetch_assoc($result);
+					
 
 		$count_query="SELECT COUNT(*) FROM `users`";
-$res = mysqli_query($mysqli, $count_query);
-$row = mysqli_fetch_row($res);
-$total = $row[0]; // всего записей
-echo $total;
-$stack = array();
-for($n=1;$n<=$total;$n++){
- 
- 
-		$log_query="SELECT  `login` FROM `users` WHERE `id`=$n";
-		$log_result = mysqli_query($mysqli, $log_query);
-		$log_user_data=mysqli_fetch_assoc($log_result);
-		$log_user=reset($log_user_data);
-		//print_r($log_user);
-		array_push($stack, $log_user);
+		$res = mysqli_query($mysqli, $count_query);
+		$row = mysqli_fetch_row($res);
+		$total = $row[0]; // всего записей
+		echo $total;
+		$stack = array();
+		for($n=1;$n<=$total;$n++){
+			$log_query="SELECT  `login` FROM `users` WHERE `id`=$n";
+			$log_result = mysqli_query($mysqli, $log_query);
+			$log_user_data=mysqli_fetch_assoc($log_result);
+			$log_user=reset($log_user_data);
+			array_push($stack, $log_user);
 
-							}
+								}
 							
-	for($n=0;$n<$total;$n++){
-		if((strlen($login)!=0)&&($login==$stack[$n])){
-			echo "<p><span style='color:red;'>This login is already exist, please enter enother login</span></p>";
-			$_SESSION['reg_succes']=0;
-			$bad=true;							
-																}	
-							}
+		for($n=0;$n<$total;$n++){
+			if((strlen($login)!=0)&&($login==$stack[$n])){
+				echo "<p><span style='color:red;'>This login is already exist, please enter another login</span></p>";
+				$_SESSION['reg_succes']=0;
+				$bad=true;							
+															}	
+								}
 		if((strlen($username)!=0)&&((strlen($username)<=1)||(strlen($username)>32))){
 			$_SESSION['errror_username']=1;
 			$bad=true;
@@ -104,8 +100,8 @@ for($n=1;$n<=$total;$n++){
 							<form id="form1" action="" method="post">
 <?php
 	if((isset($_SESSION['reg_succes']))&&($_SESSION['reg_succes']==1)){
-		//echo '<script>location.replace("index.php");</script>';		
-		//exit;
+		echo '<script>location.replace("index.php");</script>';		
+		exit;
 		echo "<p><span style='color:red;'>Succes registration</span></p>";
 																		}
 	if((isset($_SESSION['errror_username']))&&($_SESSION['errror_username']==1)){
@@ -115,7 +111,6 @@ for($n=1;$n<=$total;$n++){
 		echo "<p><span style='color:red;'>Incorrect login</span></p>";
 																			}
 	if((isset($_SESSION['errror_password']))&&($_SESSION['errror_password']==1)){
-																		
 		echo "<p><span style='color:red;'>Incorrect password</span></p>";
 																				}																								
 	unset($_SESSION['reg_succes']);

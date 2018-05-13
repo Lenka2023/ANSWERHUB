@@ -10,44 +10,42 @@
 		unset($_SESSION['reg_succes']);
 		
 		$mysqli=new mysqli ('localhost', 'Mysitefour', '00000', "mysite-local");
-		if (!$mysqli)
-{
-echo "Sorry <br>";
-echo mysqli_connect_error();
-exit();
-}
-$count_query="SELECT COUNT(*) FROM `users`";
-$res = mysqli_query($mysqli, $count_query);
-$row = mysqli_fetch_row($res);
-$total = $row[0]; // всего записей
-//echo $total;
-$stack = array();
-for($n=1;$n<=$total;$n++){
- 
- 
-		$log_query="SELECT  `login` FROM `users` WHERE `id`=$n";
-		$log_result = mysqli_query($mysqli, $log_query);
-		$log_user_data=mysqli_fetch_assoc($log_result);
-		$log_user=reset($log_user_data);
-		//print_r($log_user);
-		$flag=true;
-		array_push($stack, $log_user);
+		if (!$mysqli){
+			echo "Sorry <br>";
+			echo mysqli_connect_error();
+			exit();
+					}
+		$count_query="SELECT COUNT(*) FROM `users`";
+		$res = mysqli_query($mysqli, $count_query);
+		$row = mysqli_fetch_row($res);
+		$total = $row[0]; // всего записей
+		//echo $total;
+		$stack = array();
+		for($n=1;$n<=$total;$n++){
+			$log_query="SELECT  `login` FROM `users` WHERE `id`=$n";
+			$log_result = mysqli_query($mysqli, $log_query);
+			$log_user_data=mysqli_fetch_assoc($log_result);
+			$log_user=reset($log_user_data);
+			//print_r($log_user);
+			$flag=true;
+			array_push($stack, $log_user);
 
-							}
+									}
 							
-	for($n=0;$n<$total;$n++){
-		if((strlen($e_login)!=0)&&($e_login==$stack[$n])){
-					$flag=false;
+		for($n=0;$n<$total;$n++){
+			if((strlen($e_login)!=0)&&($e_login==$stack[$n])){
+				$flag=false;
 
-			echo"<p><span style='color:red;'>You are welcome</span></p>";
-															} if((strlen($e_login)!=0)&&($e_login!=$stack[$n])){
-																//$flag=true;
-			
-																												}
+				echo"<p><span style='color:red;'>You are welcome</span></p>";
+															} 
+			if((strlen($e_login)!=0)&&($e_login!=$stack[$n])){
+				$flag=true;
+
+															}
 								}
-if($flag==true){
+		if($flag==true){
 	echo"<p><span style='color:red;'>User which has such login was not registered. Register please or enter correct login</span></p>";
-				}
+						}
 	
 		$query="SELECT* FROM `users` WHERE `login` = '$e_login'";								
 		$result = mysqli_query($mysqli, $query);
@@ -57,11 +55,10 @@ if($flag==true){
 		$_SESSION['userlogin'] = $user_data['login']; 
 	  if ($user_data['password'] == $e_password) {
 		  echo "<p><span style='color:red;'>Succes entering</span></p>";
-		//var_dump($_SESSION['userid']);	
-		//var_dump($_SESSION['userlogin']);
 		
-		//echo '<script>location.replace("editor.php");</script>'; 
-		//exit;
+		
+			echo '<script>location.replace("editor.php");</script>'; 
+			exit;
 		
 												} 
 	  elseif ($user_data['password'] == !$e_password) {
