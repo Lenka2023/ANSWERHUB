@@ -1,5 +1,4 @@
-<?php
-	session_start();
+<?php session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +23,7 @@
             <div class="edit_cont">
                 <div class="middle">
 				<?php
-					if ($_SESSION['reg_succes']==1){
+					if((isset($_SESSION['reg_succes']))&&($_SESSION['reg_succes']==1)){
 									echo "<p><span style='color:red;'>Succes registration</span></p>";
 									unset($_SESSION['reg_succes']);
 																}
@@ -68,10 +67,16 @@
 	<input type="submit"><input type='submit' name='out' value='Log out'/>
 	</form>
 	
-	http://dayte2.com/php-sessions-authorization
+	
 <?php
-	$userinfoid=$_SESSION['userid'];
-	$userinfologin=$_SESSION['userlogin'];
+	if((isset($_POST['userid']))&&(!empty($_POST['submit']))){
+		$userinfoid=$_SESSION['userid'];
+															}
+	if((isset($_POST['userlogin']))&&(!empty($_POST['userlogin']))){
+		$userinfologin=$_SESSION['userlogin'];
+															}
+	
+	
 	
 	$db=new mysqli('localhost', 'Mysitefour', '00000', "mysite-local");
 	if(mysqli_connect_errno()){
@@ -83,6 +88,14 @@
 			$page=(string)$_POST['page'];
 			$query = "INSERT INTO Pages(text) VALUES ('$page')";
 			mysqli_query($db, $query);
+			$filename ='file.html';
+	$file=fopen($filename,"a");
+	if(!$file){
+		echo("Ошибка открытия файла");
+				}
+	fwrite($file, $page);
+	var_dump($file);
+	fclose($file);
 													}
 									
 	if (isset($_POST['out'])){
@@ -93,20 +106,12 @@
 		$_SESSION = Array(); 
 		
 		session_destroy();
-		echo '<script>location.replace("http://d.ru/index.php");</script>'; 
+		echo '<script>location.replace("index.php");</script>'; 
 		exit;
 								}
-	$filename ='file.html';
-	$file=fopen($filename,"a");
-	if(!$file){
-		echo("Ошибка открытия файла");
-				}
-	fwrite($file, $page);
-	var_dump($file);
-	fclose($file);
 	
-			var_dump($userinfoid);
-			var_dump($userinfologin);
+	
+			
 ?>
 		</div>
 	</div>
