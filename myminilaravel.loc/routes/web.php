@@ -16,5 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('insert', 'EditorController@edit');
 Route::get('/editor', 'EditorController@edit')->name('edit');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('create','EditorController@insert');

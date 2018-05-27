@@ -46,7 +46,8 @@
 									
 									
 									<button onclick="Send_to_DB()"> Send_to_DB</button>
-									<form action="#" method="POST">
+									<form action="/create" method="POST">
+									<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 	page:<input type="text" name="page" id="RESULSERVER"><br>
 	<input type="submit"><input type='submit' name='out' value='Log out'/>
 	</form>
