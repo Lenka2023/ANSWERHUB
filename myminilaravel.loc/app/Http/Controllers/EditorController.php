@@ -20,6 +20,8 @@ class EditorController extends Controller
 $text = $request->input('page');
 DB::insert('insert into pages (text) values(?)',[$text]);
 echo "Record inserted successfully.<br/>";
-echo '<a href = "/insert">Click Here</a> to go back.';
+//echo '<a href = "/insert">Click Here</a> to go back.';
+return view('editor');
 }
+
 }
