@@ -23,5 +23,11 @@ echo "Record inserted successfully.<br/>";
 //echo '<a href = "/insert">Click Here</a> to go back.';
 return view('editor');
 }
-
+public function log_out(){
+//$text = $request->input('page');
+//DB::insert('insert into pages (text) values(?)',[$text]);
+//echo "Record inserted successfully.<br/>";
+//echo '<a href = "/insert">Click Here</a> to go back.';
+return view('welcome');
+}
 }

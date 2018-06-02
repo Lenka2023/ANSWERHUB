@@ -49,10 +49,11 @@
 									<form action="editor" method="POST">
 									<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 	page:<input type="text" name="page" id="RESULSERVER"><br>
-	<input type="submit"><input type='submit' name='out' value='Log out'/>
+	<input type="submit">
 	</form>
-	
-	
+	<form action="welcome" method="GET">
+	<input type='submit' name='out' value='Log out'/>
+	</form>
 <?php
 	/*if((isset($_POST['userid']))&&(!empty($_POST['submit']))){
 		$userinfoid=$_SESSION['userid'];
