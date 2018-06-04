@@ -19,5 +19,12 @@ Auth::routes();
 Route::get('insert', 'EditorController@edit');
 Route::get('/editor', 'EditorController@edit')->name('edit');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/welcome', 'EditorController@log_out');
-Route::post('/editor','EditorController@insert');
+Route::get('welcome', 'EditorController@log_out');
+Route::post('editor','EditorController@insert');
+Route::get('test', function()
+{
+Mail::send('Email.test', [], function ($message)
+{
+    $message->to('example@gmail.com', 'HisName')->subject('Welcome!');
+});
+});

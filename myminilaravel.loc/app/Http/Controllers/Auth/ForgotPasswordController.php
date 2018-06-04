@@ -7,6 +7,14 @@ use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
 {
+
+public function Sending_Email()
+{
+   $this->call('GET','Email.test');
+    return View('Email.test');
+}
+
+
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
