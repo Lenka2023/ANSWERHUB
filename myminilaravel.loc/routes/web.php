@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 Route::get('insert', 'EditorController@edit');
 Route::get('/editor', 'EditorController@edit')->name('edit');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -28,3 +29,10 @@ Mail::send('Email.test', [], function ($message)
     $message->to('example@gmail.com', 'HisName')->subject('Welcome!');
 });
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
