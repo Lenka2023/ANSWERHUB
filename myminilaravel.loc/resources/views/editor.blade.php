@@ -51,7 +51,8 @@
 	page:<input type="text" name="page" id="RESULSERVER"><br>
 	<input type="submit">
 	</form>
-	<form action="welcome" method="GET">
+	<form   id="logout1-form" action="{{ route('logout') }}" method="POST" >
+		 {{ csrf_field() }}
 	<input type='submit' name='out' value='Log out'/>
 	</form>
 <?php
