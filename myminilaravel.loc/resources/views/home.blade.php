@@ -15,6 +15,7 @@
                     @endif
 
                     You are registered!.
+                   
                 </div>
             </div>
         </div>

@@ -19,14 +19,14 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
+//$request->session()->put('log_in',true)
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/editor';
-
+        protected $redirectTo = '/editor';
+     
     /**
      * Create a new controller instance.
      *
