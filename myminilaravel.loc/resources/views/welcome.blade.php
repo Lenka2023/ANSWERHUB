@@ -48,6 +48,13 @@
             .title {
                 font-size: 84px;
             }
+            .text {
+                font-size: 30px;
+                 font-weight: 600;
+                letter-spacing: .2rem;
+                text-decoration: none;
+            }
+
 
             .links > a {
                 color: #636b6f;
@@ -59,8 +66,9 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
+           .m-b-md {
+                margin-bottom: 100px;
+
             }
         </style>
     </head>
@@ -78,8 +86,10 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="text m-b-md">
+                    <p>This editor is designed to create pages with the same text formatting in them. Pages are designed to display information from a specific topic (programming). They consist of parts. Each part is formatted with certain styles. For each part corresponds the button. <p>To format the text you need to insert the text in the field, highlight it and click on the desired button. <p>There are also buttons for canceling a previous action, repeating the canceled action and deleting it.
+When the text is formatted, click the submit button to send it to the form. Then send it to the database using the Send_to_DB button.
+<p>In order to use the editor, you must register or log in for registered users.
                 </div>
 
                 <div class="links">

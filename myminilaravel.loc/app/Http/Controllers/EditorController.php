@@ -35,7 +35,5 @@ return view('editor');
 }
 public function log_out(){
 	event.preventDefault();
-	
-
-}
+	}
 }

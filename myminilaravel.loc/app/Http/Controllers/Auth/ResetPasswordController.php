@@ -7,10 +7,7 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
 {
-   public function showResetForm()
-    {
-        return view('reset');
-    } 
+   
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
