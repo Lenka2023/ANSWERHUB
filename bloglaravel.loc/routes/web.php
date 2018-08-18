@@ -25,14 +25,11 @@ Route::get('/', function () {
 		'intro'=>"Sed ut perspiciatis, unde omnis iste natus error ",
 		'body'=>" Et harum quidem rerum facilis est et expedita distinctio."
 	],
-	[
-		'id'=>1,
-		'title'=>"Thank to seed",
-		'intro'=>"Sed ut perspiciatis, unde omnis iste natus error ",
-		'body'=>" Et harum quidem rerum facilis est et expedita distinctio."
-	],
+	
                         );
-    return view('index', compact('posts')  );
+	$posts=DB::table('posts')->get();
+	return $posts;
+   // return view('index', compact('posts')  );
 });
 
 Auth::routes();
