@@ -5,9 +5,9 @@
         @foreach($posts as $post)
 
                 <div class="col-md-4">
-                    <h2>{{ $post['title'] }}</h2>
-                    <p>{{ $post['intro'] }}</p>
-                    <p><a href="" class="btn btn-default">Читать далее</a> </p>
+                    <h2>{{ $post->title }}</h2>
+                    <p>{{ $post->intro }}</p>
+                    <p><a href="/posts/{{ $post->id }}" class="btn btn-default">Читать далее</a> </p>
                     
                 </div>
 
