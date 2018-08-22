@@ -11,19 +11,48 @@
 |
 */
 
+/*Route::get('/', "PostsController@index");
+Route::get('posts/{post}', "PostsController@show");
+Route::get('/posts/create',"PostsController@create");
+Route::post('/post',"PostsController@store");
+	/*
+ * GET /posts
+ * GET /posts/create
+ * POST /posts
+ * GET /posts/{id}/edit
+ * PATCH /posts/{id}
+ * GET /posts/{id}
+ * DELETE /posts/{ID}
+ */
+
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');*/
+/*Route::get('/posts/{id}',function($id){
+	$post=DB::table('posts')->find($id);
+	//dd($post);
+	//dd($id);
+	return view('posts.show', compact('post')  );
+});*/
 Route::get('/', function () {
 	
 	$posts=DB::table('posts')->get();
 	//dd($posts);
+
 	//return $posts;
-   return view('index', compact('posts')  );
+   return view('index', compact('posts'));
 });
 
 //Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');*/
 Route::get('/posts/{id}',function($id){
+	//$posts=DB::table('posts')->get();
+	//dd($posts);
 	$post=DB::table('posts')->find($id);
-	dd($post);
+	 return view('posts.show', compact('post'));
+	//dd($post);
 	//dd($id);
+	//dd("123");
 });
