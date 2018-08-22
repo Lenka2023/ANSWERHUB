@@ -11,9 +11,9 @@
 |
 */
 
-/*Route::get('/', "PostsController@index");
+Route::get('/', "PostsController@index");
 Route::get('posts/{post}', "PostsController@show");
-Route::get('/posts/create',"PostsController@create");
+/*Route::get('/posts/create',"PostsController@create");
 Route::post('/post',"PostsController@store");
 	/*
  * GET /posts
@@ -35,7 +35,7 @@ Route::post('/post',"PostsController@store");
 	//dd($id);
 	return view('posts.show', compact('post')  );
 });*/
-Route::get('/', function () {
+/*Route::get('/', function () {
 	
 	$posts=DB::table('posts')->get();
 	//dd($posts);
@@ -47,7 +47,7 @@ Route::get('/', function () {
 //Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');*/
-Route::get('/posts/{id}',function($id){
+/*Route::get('/posts/{id}',function($id){
 	//$posts=DB::table('posts')->get();
 	//dd($posts);
 	$post=DB::table('posts')->find($id);
