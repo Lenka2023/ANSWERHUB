@@ -12,9 +12,9 @@ class PostsController extends Controller
       $posts = Post::all();
        return view('index', compact('posts'));
     }
-    public function show(/*Post $post*/$id)
+    public function show(Post $post)
     {
-    	$post= Post::find($id);
+    	//$post= Post::find($id);
         return view('posts.show', compact('post'));
     }
     public function create()
