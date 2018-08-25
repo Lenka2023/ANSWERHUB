@@ -19,7 +19,7 @@ Route::get('/posts/{post}', "PostsController@show");
 
 Route::post('/post', "PostsController@store");
 
-Route::get('/posts/{post}/edit', "PostsController@edit");
+Route::get('posts/{post}/edit', "PostsController@edit");
 
 Route::patch('/posts/{post}', "PostsController@update");
 

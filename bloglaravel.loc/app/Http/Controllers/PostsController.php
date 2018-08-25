@@ -25,7 +25,7 @@ class PostsController extends Controller
 	 public function store()
     {
         $this->validate(request(), [
-           // 'title' => 'required|min:2',
+            'title' => 'required|min:2',
             'alias' => 'required',
             'intro' => 'required',
             'body' => 'required',
@@ -44,7 +44,7 @@ class PostsController extends Controller
     }
      public function update(Post $post)
     {
-//        dd(request()->all());
+       // dd(request()->all());
         $this->validate(request(), [
             'title' => 'required|min:2',
             'alias' => 'required',

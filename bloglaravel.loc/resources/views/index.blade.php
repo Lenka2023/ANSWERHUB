@@ -8,7 +8,7 @@
                      <h2>{{ $post->title }}</h2>
                     <p>{{ $post->intro }}</p>
                    <p><a href="posts/{{ $post->id}}" class="btn btn-default">Читать далее</a> </p>
-                   <p><a href="posts/{{$post->id}}/edit" class="btn btn-primary">Редактировать</a> </p>
+                   <p><a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Редактировать</a> </p>
                     <form action="/posts/{{$post->id}}" method="post">
                         {{csrf_field()}}
                         {!! method_field('delete') !!}
