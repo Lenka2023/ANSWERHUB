@@ -22,37 +22,22 @@ class PostsController extends Controller
     	
         return view("posts.create");
     }
-	public function store()
-	    {
-	    	/*$post=new Post;
-	    	$post->title=request('title');
-	    	$post->alias=request('alias');
-	    	$post->intro=request('intro');
-	    	$post->body=request('body');
-	    	$post->save();
-	    	*/
-	    	/*$this->validate(request(), [
-            'title' => 'required|min:2',
+	 public function store()
+    {
+        $this->validate(request(), [
+           // 'title' => 'required|min:2',
             'alias' => 'required',
             'intro' => 'required',
             'body' => 'required',
-        ]);*/
+        ]);
 
-	    	//Post::create(
-	    		/*['title'=>request('title'),
-	    		'alias'=>request('alias'),
-	    		'intro'=>request('intro'),
-	    		'body'=>request('body'),
-	    	]*/
-	    	/*request()->all();*/
-	    	//request(array('title', 'alias', 'intro', 'body'))
-	   // );
+        Post::create(
+            request(array('title', 'alias', 'intro', 'body'))
+        );
 
-	    	dd("123");
-	    	dd('$post');
-		dd(request()->all());
-		return redirect('/');
-	    }
+        return redirect('/');
+    }
+
 	    public function edit(Post $post)
     {
         return view("posts.edit", compact('post'));

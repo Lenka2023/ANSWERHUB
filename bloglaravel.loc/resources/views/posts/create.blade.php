@@ -5,7 +5,7 @@
 
     <form action="/post" method="post" >
 
-       <!-- {{csrf_field()}}-->
+        {{csrf_field()}}
         <div class="form-group">
             <label for="title">Title:</label>
             <input class="form-control" type="text" name="title"  id="title">
