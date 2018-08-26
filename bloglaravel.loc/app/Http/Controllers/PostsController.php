@@ -44,7 +44,8 @@ class PostsController extends Controller
     }
      public function update(Post $post)
     {
-       // dd(request()->all());
+       
+        //dd(request()->all());
         $this->validate(request(), [
             'title' => 'required|min:2',
             'alias' => 'required',
