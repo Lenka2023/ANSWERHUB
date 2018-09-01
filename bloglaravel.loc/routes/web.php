@@ -13,17 +13,17 @@
 
 Route::get('/', "PostsController@index");
 
-Route::get('/posts/{post}', "PostsController@show");
-
-Route::get('posts/create',"PostsController@create");
+Route::get('/posts/create',"PostsController@create");
 
 Route::post('/post', "PostsController@store");
+
+Route::get('/posts/{post}', "PostsController@show");
 
 Route::get('posts/{post}/edit', "PostsController@edit");
 
 Route::patch('posts/{post}', "PostsController@update");
 
-Route::delete('/posts/{post}', "PostsController@destroy");
+Route::delete('posts/{post}', "PostsController@destroy");
 
 
 	/*
@@ -39,31 +39,3 @@ Route::delete('/posts/{post}', "PostsController@destroy");
 
 //Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');*/
-/*Route::get('/posts/{id}',function($id){
-	$post=DB::table('posts')->find($id);
-	//dd($post);
-	//dd($id);
-	return view('posts.show', compact('post')  );
-});*/
-/*Route::get('/', function () {
-	
-	$posts=DB::table('posts')->get();
-	//dd($posts);
-
-	//return $posts;
-   return view('index', compact('posts'));
-});
-
-//Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');*/
-/*Route::get('/posts/{id}',function($id){
-	//$posts=DB::table('posts')->get();
-	//dd($posts);
-	$post=DB::table('posts')->find($id);
-	 return view('posts.show', compact('post'));
-	//dd($post);
-	//dd($id);
-	//dd("123");
-});

@@ -24,6 +24,7 @@ class PostsController extends Controller
     }
 	 public function store()
     {
+        //dd("store");
         $this->validate(request(), [
             'title' => 'required|min:2',
             'alias' => 'required',
@@ -44,7 +45,6 @@ class PostsController extends Controller
     }
      public function update(Post $post)
     {
-       
         //dd(request()->all());
         $this->validate(request(), [
             'title' => 'required|min:2',
@@ -56,6 +56,7 @@ class PostsController extends Controller
         return redirect('/');
     }
     public function destroy(Post $post){
+         // dd("destroy");
         $post->delete();
         return redirect('/');
     }

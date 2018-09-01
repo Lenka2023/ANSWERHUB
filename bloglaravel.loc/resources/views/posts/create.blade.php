@@ -3,7 +3,7 @@
 @section('content')
     <h2>Publish a post:</h2>
 
-    <form action="/post" method="post" >
+    <form action="/bloglaraveldone.loc/post" method="post" >
 
         {{csrf_field()}}
         <div class="form-group">
